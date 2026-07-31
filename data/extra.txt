@@ -1,0 +1,10 @@
+# Extra words merged into the dictionary at boot.
+# One word per line, lowercase a-z, 3+ letters. Lines starting with # are ignored.
+# Diacritics are folded at load time (cafe <- café), so raw paste is fine.
+# For one-off adds without a restart use the admin command: !addword <word>
+#
+# Seeded with famous long words missing from words_alpha:
+floccinaucinihilipilification
+pneumonoultramicroscopicsilicovolcanoconiosis
+hippopotomonstrosesquipedaliophobia
+pseudopseudohypoparathyroidism

@@ -1,0 +1,7 @@
+node_modules/
+session/
+*.log
+.env
+wcg.db*
+.remember/
+# data/ IS committed — 7.9MB of word lists, needed at boot. Regenerate: node data/build.mjs
