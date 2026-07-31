@@ -28,6 +28,11 @@ function writeLock(file) {
 // Throws if a live instance already holds the lock. Clears + retakes a stale
 // lock (dead pid) left behind by a crash.
 export function acquireLock(dir, logger = console) {
+  // Ensure the session directory exists. On a fresh deployment, the directory
+  // is created by useMultiFileAuthState (which runs after acquireLock), so we
+  // must create it here or the lock write will fail with ENOENT. recursive:true
+  // is idempotent and does not throw if the directory already exists.
+  fs.mkdirSync(dir, { recursive: true });
   const file = path.join(dir, '.lock');
   try {
     writeLock(file);

@@ -79,6 +79,23 @@ const tests = [
       assert.equal(isProcessAlive(process.pid + 1_000_000), false)
     },
   },
+  {
+    name: 'acquireLock creates the directory if it does not exist and writes our pid',
+    fn: async () => {
+      const tmpBase = fs.mkdtempSync(path.join(os.tmpdir(), 'wcg-lock-'))
+      const dir = path.join(tmpBase, 'nonexistent-dir')
+      try {
+        assert.equal(fs.existsSync(dir), false)
+        acquireLock(dir)
+        assert.equal(fs.existsSync(dir), true)
+        const contents = fs.readFileSync(path.join(dir, '.lock'), 'utf8')
+        assert.equal(contents, String(process.pid))
+      } finally {
+        releaseLock()
+        fs.rmSync(tmpBase, { recursive: true, force: true })
+      }
+    },
+  },
 ]
 
 let passed = 0
