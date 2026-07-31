@@ -1,3 +1,13 @@
+// Load .env file if present. Hosting panels that cannot pass --env-file=.env
+// rely on this to fill environment variables from an uploaded file.
+// Real environment variables take priority over file values.
+try {
+  process.loadEnvFile();
+} catch (err) {
+  if (err.code !== 'ENOENT') throw err;
+  // No .env file is normal when all variables come from the hosting panel
+}
+
 export const PREFIX = process.env.PREFIX ?? '/';
 export const PHONE_NUMBER = process.env.PHONE_NUMBER;
 export const OWNER = process.env.OWNER;

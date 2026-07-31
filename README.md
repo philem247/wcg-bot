@@ -19,6 +19,20 @@ A WhatsApp word-chain game bot: players take turns submitting words starting wit
 
 On first run, the bot prints an 8-digit pairing code to the console. Enter that code in WhatsApp under **Linked Devices → Link with phone number**. A `515 restartRequired` disconnect immediately after pairing is normal — wait for the bot to reconnect.
 
+### Deploying to a hosting panel
+
+Configuration works two ways: variables set in the panel, or an uploaded `.env` file. Panel variables take priority and act as overrides.
+
+`session/` and `.env` are gitignored, so they do not arrive via git deploy:
+- Upload them over SFTP, or
+- Pair fresh on the host using the 8-digit code printed to the panel console
+
+**Critical: only one instance may run against a given `session/` at a time.** If you upload `session/` from your machine, stop the local bot first. Two live instances corrupt each other's Signal ratchets and force a re-pair.
+
+When copying `session/` from another machine, skip any lock files inside it — a stale lock from a different OS can block startup.
+
+Node 22+ is required on the host for the builtin `node:sqlite`.
+
 ## Configuration
 
 Environment variables (defined in `.env` and read from `config.js`):
