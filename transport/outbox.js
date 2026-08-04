@@ -76,7 +76,19 @@ export function createOutbox({ sendFn, logger, perChatGapMs = 400, globalPerSeco
     inFlightChats.add(jid)
     inFlightCount++
     lastSentAt.set(jid, now)
-    sendFn(jid, { text: msg.text, mentions: msg.mentions, quoted: msg.quoted, react: msg.react })
+
+    // Race sendFn against a 30s timeout so a hanging baileys send can't
+    // permanently block this chat's queue. The timeout fires an error that
+    // the catch block handles like any other send failure.
+    const SEND_TIMEOUT_MS = 30_000
+    const timeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('send timed out after 30s')), SEND_TIMEOUT_MS)
+    )
+
+    Promise.race([
+      sendFn(jid, { text: msg.text, mentions: msg.mentions, quoted: msg.quoted, react: msg.react }),
+      timeout,
+    ])
       .then(() => {
         inFlightChats.delete(jid)
         inFlightCount--

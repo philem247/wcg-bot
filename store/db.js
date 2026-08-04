@@ -36,12 +36,21 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     CREATE INDEX IF NOT EXISTS idx_rejections_jid_word ON rejections(jid, word);
   `)
 
+  // Migration: add player_pn column for phone-form JID aggregation.
+  // Same person can appear under @s.whatsapp.net and @lid namespaces;
+  // player_pn stores the phone-form JID so leaderboard groups correctly.
+  try {
+    db.exec('ALTER TABLE results ADD COLUMN player_pn TEXT')
+  } catch {
+    // Column already exists — expected on every run after the first migration.
+  }
+
   // Prepare statements once
   const stmtInsertGame = db.prepare(
     'INSERT INTO games (jid, mode, type, started_at, ended_at, words) VALUES (?, ?, ?, ?, ?, ?)'
   )
   const stmtInsertResult = db.prepare(
-    'INSERT INTO results (game_id, jid, player, placement, player_count, ended_at) VALUES (?, ?, ?, ?, ?, ?)'
+    'INSERT INTO results (game_id, jid, player, player_pn, placement, player_count, ended_at) VALUES (?, ?, ?, ?, ?, ?, ?)'
   )
   const stmtInsertRejection = db.prepare(
     'INSERT INTO rejections (jid, word, player, ts) VALUES (?, ?, ?, ?)'
@@ -65,7 +74,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     'SELECT word FROM custom_words ORDER BY word'
   )
   const stmtSelectResults = db.prepare(`
-    SELECT player, placement, player_count
+    SELECT COALESCE(player_pn, player) AS player, placement, player_count
     FROM results
     WHERE jid = ? AND ended_at >= ?
     ORDER BY player
@@ -84,8 +93,8 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
         const info = stmtInsertGame.run(jid, mode, type, startedAt, endedAt, words)
         const gameId = info.lastInsertRowid
 
-        for (const { player, placement } of results) {
-          stmtInsertResult.run(gameId, jid, player, placement, results.length, endedAt)
+        for (const { player, placement, player_pn } of results) {
+          stmtInsertResult.run(gameId, jid, player, player_pn ?? null, placement, results.length, endedAt)
         }
 
         db.exec('COMMIT')

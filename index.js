@@ -10,6 +10,8 @@ import { loadDictionary } from './engine/dictionary.js';
 import { createScheduler } from './engine/tick.js';
 import { PHONE_NUMBER, OWNER, LOG_LEVEL, SESSION_DIR, QUIET_SIGNAL_NOISE } from './config.js';
 
+const bootStart = Date.now();
+
 const logger = pino(
   { level: LOG_LEVEL },
   pinoPretty({ colorize: true, translateTime: true, ignore: 'pid,hostname' })
@@ -42,7 +44,18 @@ for (const w of db.customWords()) {
   dict.add(w);
   customWordCount++;
 }
-logger.info(`Merged ${customWordCount} approved custom word(s) from the store`);
+logger.info(`Merged ${customWordCount} approved custom word(s) from the store`)
+
+// Crash handlers — log and attempt graceful shutdown instead of silently dying.
+// Without these, an unhandled rejection in baileys or a stray TypeError in the
+// message handler kills the event loop with no visible output.
+process.on('unhandledRejection', (reason) => {
+  logger.error({ err: reason }, 'Unhandled promise rejection');
+});
+process.on('uncaughtException', (err) => {
+  logger.fatal({ err }, 'Uncaught exception — shutting down');
+  shutdown('uncaughtException');
+});
 
 const games = new Map(); // jid -> game
 
@@ -80,11 +93,7 @@ async function shutdown(signal) {
   try {
     scheduler.stop();
     outbox.stop();
-    waShutdown();
-    // useMultiFileAuthState's creds.update writes are fire-and-forget async;
-    // a truncated key file here permanently breaks Signal decryption for that
-    // peer, so give any in-flight write a moment to land before we exit.
-    await new Promise((r) => setTimeout(r, 500));
+    waShutdown(); // also calls authFlush() internally
   } catch (e) {
     logger.error({ err: e }, 'Error during shutdown');
   }
@@ -105,8 +114,38 @@ async function handleMessage(msg) {
   await router.handleMessage({ jid, sender, senderPn, text, isGroup, raw }, Date.now());
 }
 
+// Welcome message — sent to the OWNER once on first connect. Reconnections
+// (e.g. after a brief disconnect) do not re-send it.
+let welcomeSent = false;
+function onConnected() {
+  if (welcomeSent) return;
+  welcomeSent = true;
+  if (!OWNER) return;
+  const ownerJid = `${OWNER}@s.whatsapp.net`;
+  const bootSec = ((Date.now() - bootStart) / 1000).toFixed(1);
+  const dictSize = dict.size.toLocaleString();
+  const msg = [
+    `🎮 *W·C·G  B·O·T* 🎮`,
+    `━━━━━━━━━━━━━━━━━━━`,
+    ``,
+    `⚡ *Online* and locked in.`,
+    ``,
+    `📚 *${dictSize}* words loaded`,
+    `🕐 Booted in *${bootSec}s*`,
+    ``,
+    `_"First they ignore your vocabulary._`,
+    `_Then they time out."_`,
+    ``,
+    `▸ */help* — all commands`,
+    `▸ */wcg start* — drop into a group and go`,
+    ``,
+    `🔗 Chain. Survive. Win.`,
+  ].join('\n');
+  send(ownerJid, { text: msg, mentions: [] });
+}
+
 try {
-  const { pairingCodeRequested } = await connect(handleMessage, logger);
+  const { pairingCodeRequested } = await connect(handleMessage, logger, onConnected);
   logger.info('WhatsApp socket connected');
   if (pairingCodeRequested) {
     logger.info('A pairing code was logged above - enter it in WhatsApp > Linked Devices > Link with phone number.');

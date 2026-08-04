@@ -21,12 +21,7 @@ const lastTurn = new Map() // jid -> { letter, minLength }
 // carries no mode/type/startedAt/roster) can still be turned into a store record.
 // Built up incrementally as lobby_open -> game_start -> eliminated* -> winner events
 // pass through sendEvents (across separate calls - one per tick/submit).
-const gameMeta = new Map() // jid -> { mode, type, startedAt, players, eliminated }
-
-// How long the ✅ reaction sits on an accepted word before its clearing (empty-text)
-// reaction is due. Baileys clears a reaction by re-sending the same key with text: ''
-// (see node_modules/baileys/lib/Utils/messages.js updateMessageWithReaction).
-export const REACTION_TTL_MS = 8000
+const gameMeta = new Map() // jid -> { mode, type, startedAt, players, eliminated, pnMap }
 
 // Event type -> outbox kind (transport/outbox.js). Anything not listed here
 // (command replies, permission refusals) is enqueued directly as 'misc'.
@@ -61,7 +56,6 @@ const KIND_BY_EVENT = {
 // gameplay beats cosmetics. Both the ✅ and its clearer are 'cosmetic' kind so the
 // outbox sheds them first under load.
 export function sendEvents(enqueue, jid, events, quoted, now, db) {
-  let reactKey = null
   for (const event of events) {
     let toRender = event
     if (event.type === 'turn') {
@@ -76,10 +70,8 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
           // store failure must never break gameplay
         }
       }
-    } else if (event.type === 'accepted' && quoted?.key) {
-      reactKey = quoted.key
     } else if (event.type === 'lobby_open') {
-      gameMeta.set(jid, { mode: event.mode, type: event.gameType, eliminated: [] })
+      gameMeta.set(jid, { mode: event.mode, type: event.gameType, eliminated: [], pnMap: new Map() })
     } else if (event.type === 'game_start') {
       const meta = gameMeta.get(jid)
       if (meta) {
@@ -91,14 +83,16 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
     } else if (event.type === 'winner') {
       const meta = gameMeta.get(jid)
       if (meta) {
-        const results = [{ player: event.player, placement: 1 }]
+        const pnMap = meta.pnMap || new Map()
+        const results = [{ player: event.player, placement: 1, player_pn: pnMap.get(event.player) }]
         for (let i = meta.eliminated.length - 1; i >= 0; i--) {
-          results.push({ player: meta.eliminated[i], placement: results.length + 1 })
+          const p = meta.eliminated[i]
+          results.push({ player: p, placement: results.length + 1, player_pn: pnMap.get(p) })
         }
         const accounted = new Set(results.map((r) => r.player))
         for (const p of meta.players ?? []) {
           if (!accounted.has(p)) {
-            results.push({ player: p, placement: results.length + 1 })
+            results.push({ player: p, placement: results.length + 1, player_pn: pnMap.get(p) })
             accounted.add(p)
           }
         }
@@ -130,10 +124,6 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       })
     }
   }
-  if (reactKey) {
-    enqueue(jid, { react: { text: '✅', key: reactKey }, kind: 'cosmetic' })
-    enqueue(jid, { react: { text: '', key: reactKey }, kind: 'cosmetic', notBefore: now + REACTION_TTL_MS })
-  }
 }
 
 function formatLeaderboard(board, heading) {
@@ -153,7 +143,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
   const starters = new Map()
 
-  async function startGame(jid, sender, args, type, now) {
+  async function startGame(jid, sender, senderPn, args, type, now) {
     if (games.has(jid)) {
       enqueue(jid, { text: `A game is already running here. Use ${PREFIX}wcg end to stop it first.`, mentions: [], kind: 'misc' })
       return
@@ -164,6 +154,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
     games.set(jid, game)
     starters.set(jid, sender)
     sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
+    // Record starter's phone-form JID for leaderboard aggregation
+    if (senderPn) {
+      const meta = gameMeta.get(jid)
+      if (meta?.pnMap) meta.pnMap.set(sender, senderPn)
+    }
   }
 
   async function endGame(jid, sender, senderPn, isGroup, now) {
@@ -308,7 +303,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
         await endGame(jid, sender, senderPn, isGroup, now)
         return
       }
-      await startGame(jid, sender, args, cmd === 'wrg' ? 'random' : 'chain', now)
+      await startGame(jid, sender, senderPn, args, cmd === 'wrg' ? 'random' : 'chain', now)
       return
     }
 
@@ -332,6 +327,14 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
         events = game.join(sender, now)
       } else if (game.state === 'playing' && trimmed.length > 0 && !/\s/.test(trimmed)) {
         events = game.submit(sender, trimmed, now)
+      }
+
+      // Record sender's phone-form JID for leaderboard aggregation.
+      // Done before sendEvents so the pnMap is populated when a winner
+      // event is processed in the same batch.
+      if (senderPn) {
+        const meta = gameMeta.get(jid)
+        if (meta?.pnMap) meta.pnMap.set(sender, senderPn)
       }
 
       sendEvents(enqueue, jid, events, raw, now, db)

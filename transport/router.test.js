@@ -5,7 +5,7 @@ process.env.PHONE_NUMBER = '1234567890'
 process.env.OWNER = '15550000000'
 process.env.ADMINS = '15550000001'
 
-const { sendEvents, createRouter, REACTION_TTL_MS } = await import('./router.js')
+const { sendEvents, createRouter } = await import('./router.js')
 const { LOBBY_WINDOW_MS } = await import('../engine/modes.js')
 
 // Minimal fake settings store backing getSetting/setSetting, shared by the /lives tests.
@@ -68,37 +68,14 @@ const tests = [
     },
   },
   {
-    name: 'sendEvents: accepted enqueues a ✅ reaction and a clearing reaction, both cosmetic, no text',
+    name: 'sendEvents: accepted enqueues nothing (reactions removed for speed)',
     fn: async () => {
       const calls = []
       const enqueue = (jid, payload) => calls.push({ jid, ...payload })
       const quoted = { key: { remoteJid: 'jid4', id: 'ABC', fromMe: false } }
       const now = 1_000_000
       sendEvents(enqueue, 'jid4', [{ type: 'accepted', player: 'a', word: 'apple' }], quoted, now)
-      assert.equal(calls.length, 2)
-      assert.equal(calls[0].kind, 'cosmetic')
-      assert.deepEqual(calls[0].react, { text: '✅', key: quoted.key })
-      assert.equal(calls[0].text, undefined)
-      assert.equal(calls[0].notBefore, undefined)
-      assert.equal(calls[1].kind, 'cosmetic')
-      assert.deepEqual(calls[1].react, { text: '', key: quoted.key })
-      assert.equal(calls[1].notBefore, now + REACTION_TTL_MS)
-    },
-  },
-  {
-    name: 'sendEvents: turn message is enqueued before the ✅ reaction (accepted->turn batch)',
-    fn: async () => {
-      const calls = []
-      const enqueue = (jid, payload) => calls.push({ jid, ...payload })
-      const quoted = { key: { remoteJid: 'jid5', id: 'DEF', fromMe: false } }
-      const turnEvent = { type: 'turn', player: 'b', next: 'a', letter: 'y', minLength: 3, seconds: 20, alive: 2, total: 2, totalWords: 6, deadline: 0 }
-      sendEvents(enqueue, 'jid5', [{ type: 'accepted', player: 'a', word: 'apple' }, turnEvent], quoted, 0)
-      assert.equal(calls.length, 3)
-      assert.equal(calls[0].kind, 'turn', 'turn message must be enqueued first, ahead of the reaction')
-      assert.equal(calls[1].kind, 'cosmetic')
-      assert.deepEqual(calls[1].react.text, '✅')
-      assert.equal(calls[2].kind, 'cosmetic')
-      assert.equal(calls[2].react.text, '')
+      assert.equal(calls.length, 0, 'accepted must not enqueue anything — no reactions, no text')
     },
   },
   {

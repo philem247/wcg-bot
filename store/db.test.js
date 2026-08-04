@@ -286,6 +286,48 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'player_pn: same person under two JID namespaces aggregates into one leaderboard entry',
+    fn: () => {
+      const db = openDb(':memory:')
+      // Game 1: player recorded under @lid JID, but player_pn is phone-form
+      db.recordGame({
+        jid: 'test-jid',
+        mode: 'easy',
+        type: 'chain',
+        startedAt: 1000,
+        endedAt: 2000,
+        words: 5,
+        results: [
+          { player: '12345@lid', placement: 1, player_pn: '2349137123224@s.whatsapp.net' },
+          { player: 'bob@s.whatsapp.net', placement: 2 },
+        ],
+      })
+      // Game 2: same person, now under phone-form JID directly
+      db.recordGame({
+        jid: 'test-jid',
+        mode: 'easy',
+        type: 'chain',
+        startedAt: 3000,
+        endedAt: 4000,
+        words: 5,
+        results: [
+          { player: '2349137123224@s.whatsapp.net', placement: 1, player_pn: '2349137123224@s.whatsapp.net' },
+          { player: 'bob@s.whatsapp.net', placement: 2 },
+        ],
+      })
+
+      const board = db.leaderboard({ jid: 'test-jid' })
+      // Should have 2 entries (one per unique person), not 3
+      assert.equal(board.length, 2, 'same person under 2 JIDs should merge into 1 entry')
+      // The merged player should have 2 games and 2 wins
+      const merged = board.find(r => r.player === '2349137123224@s.whatsapp.net')
+      assert(merged, 'merged player should appear under phone-form JID')
+      assert.equal(merged.games, 2, 'merged player should have 2 games')
+      assert.equal(merged.wins, 2, 'merged player should have 2 wins')
+      db.close()
+    },
+  },
 ]
 
 let passed = 0
