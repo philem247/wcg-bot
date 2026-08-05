@@ -171,7 +171,7 @@ is not always in the same slot.
 
 ```js
 createTriviaGame({ bank, category, questionCount = 10,
-                   clockSeconds = 15, now, random })
+                   clockSeconds = 30, now, random })
 // state: 'asking' | 'over'
 // submit(player, text, now) -> events
 // tick(now) -> events
@@ -183,7 +183,7 @@ mirroring how `engine/modes.js` holds the chain game's knobs. They are **not**
 per-group settings in v1 — no command exposes them, and the `settings` table is not
 involved. Make them per-group only if a group actually asks.
 
-**Race format.** Bot posts a question with four options and a 15-second clock. The
+**Race format.** Bot posts a question with four options and a 30-second clock. The
 first player to answer correctly takes the point and the game **advances
 immediately** — there is no reason to wait out a clock nobody can still win. Clock
 expiry with no correct answer reveals the answer and advances. After the last
@@ -229,7 +229,7 @@ per game with no batching machinery. Rendered:
 ✅ *Phil* — *B)* Real Madrid
 ━━━━━━━━━━━━━━━━
 
-⚽ *FOOTBALL*  ·  *Q4/10*  ·  ⏱ *15s*
+⚽ *FOOTBALL*  ·  *Q4/10*  ·  ⏱ *30s*
 
 *Which club broke PSG's Ligue 1
 dominance in 2020/21?*
