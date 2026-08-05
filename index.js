@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
 import pino from 'pino';
 import pinoPretty from 'pino-pretty';
-import { connect, send, getGroupAdmins, resolvePn, shutdown as waShutdown } from './transport/wa.js';
+import { connect, send, getGroupAdmins, resolvePn, isConnected, shutdown as waShutdown } from './transport/wa.js';
 import { createRouter, sendEvents } from './transport/router.js';
 import { createOutbox } from './transport/outbox.js';
 import { acquireLock, releaseLock } from './transport/lock.js';
@@ -73,7 +73,7 @@ const games = new Map(); // jid -> game
 // send() is direct network I/O; the outbox paces/queues everything in front of it
 // so no single game's sends can blow past WhatsApp's rate limit or starve another
 // chat. See transport/outbox.js.
-const outbox = createOutbox({ sendFn: send, logger });
+const outbox = createOutbox({ sendFn: send, logger, isReady: isConnected });
 outbox.start();
 
 const router = createRouter({ dict, games, enqueue: outbox.enqueue, logger, getGroupAdmins, db, bank, resolvePn });
@@ -125,52 +125,45 @@ async function handleMessage(msg) {
   await router.handleMessage({ jid, sender, senderPn, text, isGroup, raw }, Date.now());
 }
 
-// Welcome message — sent to the OWNER on every connect, including reconnects.
-// Cooldown (not a one-shot boolean) because the generic reconnect branch in
-// transport/wa.js retries every 3s; without this a flapping connection would
-// DM the owner in a loop.
-const WELCOME_COOLDOWN_MS = 5 * 60 * 1000;
-let lastWelcomeAt = 0;
+// Welcome message — sent to the OWNER once, on the first successful connect only.
+// Not re-sent on reconnects: the generic reconnect branch in transport/wa.js retries
+// every 3s, so a flapping connection would DM the owner in a loop. Reconnects are
+// already recorded in the log; the DM added nothing.
+let welcomeSent = false;
 function onConnected() {
-  if (!OWNER) return;
-  const now = Date.now();
-  if (now - lastWelcomeAt < WELCOME_COOLDOWN_MS) return;
-  const isFirstSend = lastWelcomeAt === 0;
-  lastWelcomeAt = now;
+  if (!OWNER || welcomeSent) return;
+  welcomeSent = true;
 
-  const ownerJid = `${OWNER}@s.whatsapp.net`;
-  let msg;
-  if (isFirstSend) {
-    const bootSec = ((Date.now() - bootStart) / 1000).toFixed(1);
-    const dictSize = dict.size.toLocaleString();
-    msg = [
-      `🎮 *W·C·G  B·O·T* 🎮`,
-      `━━━━━━━━━━━━━━━━━━━`,
-      ``,
-      `⚡ *Online* and locked in.`,
-      ``,
-      `📚 *${dictSize}* words loaded`,
-      `🕐 Booted in *${bootSec}s*`,
-      ``,
-      `_"First they ignore your vocabulary._`,
-      `_Then they time out."_`,
-      ``,
-      `▸ */help* — all commands`,
-      `▸ */wcg start* — drop into a group and go`,
-      ``,
-      `🔗 Chain. Survive. Win.`,
-    ].join('\n');
-  } else {
-    msg = [
-      `🎮 *W·C·G  B·O·T* 🎮`,
-      `━━━━━━━━━━━━━━━━━━━`,
-      ``,
-      `⚡ *Reconnected.*`,
-      ``,
-      `▸ */help* — all commands`,
-    ].join('\n');
-  }
-  send(ownerJid, { text: msg, mentions: [] });
+  const bootSec = ((Date.now() - bootStart) / 1000).toFixed(1);
+  const dictSize = dict.size.toLocaleString();
+  const questionCount = bank
+    ? bank.categories().reduce((n, c) => n + bank.size(c), 0)
+    : 0;
+  const triviaLine = bank
+    ? `🧠 *${questionCount.toLocaleString()}* trivia questions · *${bank.categories().length}* categories`
+    : `🧠 Trivia unavailable — no question bank`;
+
+  const msg = [
+    `🎮 *W·C·G  B·O·T* 🎮`,
+    `━━━━━━━━━━━━━━━━━━━`,
+    ``,
+    `⚡ *Online* and locked in.`,
+    ``,
+    `📚 *${dictSize}* words loaded`,
+    triviaLine,
+    `🕐 Booted in *${bootSec}s*`,
+    ``,
+    `_"First they ignore your vocabulary._`,
+    `_Then they time out."_`,
+    ``,
+    `▸ */help* — all commands`,
+    `▸ */wcg start* — word chain`,
+    `▸ */trivia* — quiz race`,
+    ``,
+    `🔗 Chain. Survive. Win.`,
+  ].join('\n');
+
+  send(`${OWNER}@s.whatsapp.net`, { text: msg, mentions: [] });
 }
 
 try {

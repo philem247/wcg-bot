@@ -9,7 +9,13 @@ let sock;
 let onMessageHandler;
 let logger;
 let shuttingDown = false;
+let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
 let authFlush = null; // set by connect(), called by shutdown()
+// One auth state for the process lifetime. Re-creating it per connect() re-reads
+// creds.json from disk while the previous instance may still hold unwritten keys
+// in its 500ms debounce (the restartRequired branch reconnects with no delay) —
+// the stale read then overwrites them, losing prekeys and causing 500 badSession.
+let authState = null;
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
 const groupAdminCache = new Map(); // jid -> { admins, ts }
@@ -81,7 +87,8 @@ export async function connect(onMessage, appLogger, onConnected) {
   logger = appLogger;
   onMessageHandler = onMessage;
 
-  const { state, saveCreds, flush } = useSingleFileAuthState(SESSION_FILE);
+  if (!authState) authState = useSingleFileAuthState(SESSION_FILE);
+  const { state, saveCreds, flush } = authState;
   authFlush = flush;
 
   sock = makeWASocket({
@@ -116,9 +123,12 @@ export async function connect(onMessage, appLogger, onConnected) {
     if (connection === 'connecting') {
       logger.info('Connecting to WhatsApp...');
     } else if (connection === 'open') {
+      connectedAt = Date.now();
       logger.info(`Connected to WhatsApp as ${sock.user?.id ?? 'unknown'}`);
       if (onConnected) onConnected();
     } else if (connection === 'close') {
+      const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
+      connectedAt = 0;
       if (shuttingDown) return; // shutdown() closed this on purpose - do not reconnect
       const reason = lastDisconnect?.error?.output?.statusCode;
       const reasonName = disconnectReasonName(reason);
@@ -126,11 +136,11 @@ export async function connect(onMessage, appLogger, onConnected) {
         logger.error(`Logged out (${reason} ${reasonName}). Session is dead: delete the session/ folder and re-pair from scratch, then restart the bot.`);
         process.exit(1);
       } else if (reason === DisconnectReason.restartRequired) {
-        logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}]`);
+        logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
         sock.ev.removeAllListeners();
         connect(onMessage, logger, onConnected);
       } else {
-        logger.info(`Disconnected (${reason} ${reasonName}), reconnecting in ${RECONNECT_DELAY}ms...`);
+        logger.info(`Disconnected (${reason} ${reasonName}) after ${upSec}s connected, reconnecting in ${RECONNECT_DELAY}ms...`);
         sock.ev.removeAllListeners();
         setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
       }
@@ -222,6 +232,13 @@ export function shutdown() {
 
 export function getSocket() {
   return sock;
+}
+
+// True only between a 'connection: open' and the following 'close'. The outbox
+// uses this to hold messages instead of dispatching them into a socket that is
+// being torn down and replaced — sends there fail and the message is lost.
+export function isConnected() {
+  return connectedAt !== 0;
 }
 
 export async function getGroupAdmins(jid) {

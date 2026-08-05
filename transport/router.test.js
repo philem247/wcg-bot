@@ -10,6 +10,7 @@ import { openDb } from '../store/db.js'
 const OWNER_NUMBER = '15550000000'
 
 const { sendEvents, createRouter } = await import('./router.js')
+const { GAP_SECONDS } = await import('../engine/trivia.js')
 
 // Minimal fake bot_admins store backing addBotAdmin/delBotAdmin/botAdmins, shared by the /promote tests.
 function makeBotAdminDb() {
@@ -475,6 +476,11 @@ const tests = [
       const letter = ['A', 'B', 'C', 'D'].find((l) => posted.includes(`*${l})*  right`))
       await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: letter, isGroup: true }, 1000)
 
+      // A gap now separates the answer reveal from trivia_over. The global
+      // scheduler drives that tick in production; drive it by hand here.
+      const at = 1000 + GAP_SECONDS * 1000
+      sendEvents((_, m) => sent.push(m.text), 'g@g.us', games.get('g@g.us').tick(at), undefined, at, db)
+
       const board = db.leaderboard({ jid: 'g@g.us', since: 0, type: 'trivia' })
       assert.equal(board.length, 1)
       assert.equal(board[0].wins, 1)
@@ -709,6 +715,64 @@ const tests = [
       assert.ok(text.includes('OWNER'))
       assert.ok(text.includes('/promote'))
       db.close()
+    },
+  },
+  {
+    name: 'a bare answer with no game running explains the bot restarted',
+    fn: async () => {
+      const sent = []
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: undefined, getGroupAdmins: async () => [], db: {}, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text: 'B', isGroup: true, raw: undefined }, 1000)
+      assert.equal(sent.length, 1)
+      assert.ok(sent[0].includes('/trivia'))
+    },
+  },
+  {
+    name: 'the restart notice is rate-limited, not sent per message',
+    fn: async () => {
+      const sent = []
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: undefined, getGroupAdmins: async () => [], db: {}, resolvePn: () => undefined,
+      })
+      const msg = (text, now) => router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text, isGroup: true, raw: undefined }, now)
+      await msg('B', 0)
+      await msg('C', 1000)
+      await msg('A', 60_000)
+      assert.equal(sent.length, 1, 'all three are inside the 5-minute window')
+      await msg('D', 5 * 60 * 1000)
+      assert.equal(sent.length, 2, 'window elapsed, second notice sent')
+    },
+  },
+  {
+    name: 'the first notice fires regardless of the absolute clock value',
+    fn: async () => {
+      const sent = []
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: undefined, getGroupAdmins: async () => [], db: {}, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text: 'B', isGroup: true, raw: undefined }, 0)
+      assert.equal(sent.length, 1)
+    },
+  },
+  {
+    name: 'ordinary chatter with no game running stays silent',
+    fn: async () => {
+      const sent = []
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: undefined, getGroupAdmins: async () => [], db: {}, resolvePn: () => undefined,
+      })
+      const msg = (text) => router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text, isGroup: true, raw: undefined }, 0)
+      await msg('lol')
+      await msg('hello there')
+      await msg('BB')
+      await msg('')
+      assert.equal(sent.length, 0)
     },
   },
 ]

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { createTriviaGame, parseAnswer, LETTERS, QUESTION_COUNT, CLOCK_SECONDS } from './trivia.js'
+import { createTriviaGame, parseAnswer, LETTERS, QUESTION_COUNT, CLOCK_SECONDS, GAP_SECONDS } from './trivia.js'
 
 const fixed = (v = 0) => () => v
 
@@ -18,6 +18,9 @@ function startGame(n = 3, opts = {}) {
   return { g, first: ev[0] }
 }
 
+const CLOCK_MS = CLOCK_SECONDS * 1000
+const GAP_MS = GAP_SECONDS * 1000
+
 const tests = [
   {
     name: 'parseAnswer: accepts a-d and 1-4 in any case, rejects everything else',
@@ -35,7 +38,7 @@ const tests = [
     },
   },
   {
-    name: 'first tick emits question 1 with four options and no previous result',
+    name: 'first tick emits question 1 with four options',
     fn: () => {
       const { first } = startGame(3)
       assert.equal(first.type, 'trivia_question')
@@ -43,8 +46,7 @@ const tests = [
       assert.equal(first.total, 3)
       assert.equal(first.category, 'general')
       assert.equal(first.options.length, 4)
-      assert.equal(first.previous, undefined, 'nothing precedes the first question')
-      assert.equal(first.endsAt, CLOCK_SECONDS * 1000)
+      assert.equal(first.endsAt, CLOCK_MS)
       assert.deepEqual(first.options.map((o) => o.letter), LETTERS)
     },
   },
@@ -58,15 +60,49 @@ const tests = [
     },
   },
   {
-    name: 'correct answer scores and advances immediately, carrying the result forward',
+    name: 'correct answer emits trivia_answer and enters gap state',
     fn: () => {
       const { g, first } = startGame(3)
       const correct = first.options.find((o) => o.text === 'right0').letter
       const ev = g.submit('alice', correct, 1000)
       assert.equal(ev.length, 1)
+      assert.equal(ev[0].type, 'trivia_answer')
+      assert.equal(ev[0].outcome, 'correct')
+      assert.equal(ev[0].player, 'alice')
+      assert.equal(ev[0].letter, correct)
+      assert.equal(ev[0].answer, 'right0')
+      assert.equal(g.state, 'playing', 'game is not over yet — in gap')
+    },
+  },
+  {
+    name: 'during gap, tick before gap end emits nothing',
+    fn: () => {
+      const { g, first } = startGame(3)
+      const correct = first.options.find((o) => o.text === 'right0').letter
+      g.submit('alice', correct, 1000)
+      assert.deepEqual(g.tick(1000 + GAP_MS - 1), [], 'gap has not elapsed yet')
+    },
+  },
+  {
+    name: 'tick after gap emits next question',
+    fn: () => {
+      const { g, first } = startGame(3)
+      const correct = first.options.find((o) => o.text === 'right0').letter
+      g.submit('alice', correct, 1000)
+      const ev = g.tick(1000 + GAP_MS)
+      assert.equal(ev.length, 1)
       assert.equal(ev[0].type, 'trivia_question')
-      assert.equal(ev[0].index, 2, 'advanced without waiting out the clock')
-      assert.deepEqual(ev[0].previous, { outcome: 'correct', player: 'alice', letter: correct, answer: 'right0' })
+      assert.equal(ev[0].index, 2, 'advanced to Q2')
+    },
+  },
+  {
+    name: 'during gap, submit is ignored',
+    fn: () => {
+      const { g, first } = startGame(3)
+      const correct = first.options.find((o) => o.text === 'right0').letter
+      g.submit('alice', correct, 1000)
+      // In gap state now — another submit should be ignored
+      assert.deepEqual(g.submit('bob', 'A', 1500), [])
     },
   },
   {
@@ -93,9 +129,6 @@ const tests = [
     name: 'spamming every letter cannot win the point',
     fn: () => {
       const { g, first } = startGame(3)
-      // Submit a deliberately wrong letter first, then every other letter.
-      // The wrong one consumes the single attempt, so the correct letter that
-      // follows must not score — otherwise a spammer wins every question.
       const correct = first.options.find((o) => o.text === 'right0').letter
       const wrongFirst = LETTERS.find((l) => l !== correct)
       const order = [wrongFirst, ...LETTERS.filter((l) => l !== wrongFirst)]
@@ -105,7 +138,7 @@ const tests = [
       // And the point is genuinely still available to someone else.
       const ev = g.submit('honest', correct, 1100)
       assert.equal(ev.length, 1)
-      assert.equal(ev[0].previous.player, 'honest')
+      assert.equal(ev[0].player, 'honest')
     },
   },
   {
@@ -115,38 +148,65 @@ const tests = [
       assert.deepEqual(g.submit('alice', 'lol what', 1000), [])
       assert.deepEqual(g.submit('alice', 'hello', 1100), [])
       // Chatter must not consume the player's one attempt.
-      const q = g.tick(CLOCK_SECONDS * 1000)
-      assert.equal(q[0].previous.outcome, 'timeout')
+      const ev = g.tick(CLOCK_MS)
+      assert.equal(ev[0].type, 'trivia_answer')
+      assert.equal(ev[0].outcome, 'timeout')
     },
   },
   {
-    name: 'clock expiry reveals the answer and advances',
+    name: 'clock expiry emits trivia_answer with timeout',
     fn: () => {
       const { g, first } = startGame(3)
       const correctText = 'right0'
       const correctLetter = first.options.find((o) => o.text === correctText).letter
-      const ev = g.tick(CLOCK_SECONDS * 1000)
+      const ev = g.tick(CLOCK_MS)
       assert.equal(ev.length, 1)
-      assert.equal(ev[0].index, 2)
-      assert.deepEqual(ev[0].previous, { outcome: 'timeout', letter: correctLetter, answer: correctText })
+      assert.equal(ev[0].type, 'trivia_answer')
+      assert.equal(ev[0].outcome, 'timeout')
+      assert.equal(ev[0].letter, correctLetter)
+      assert.equal(ev[0].answer, correctText)
+    },
+  },
+  {
+    name: 'timeout -> gap -> next question flow works end to end',
+    fn: () => {
+      const { g } = startGame(3)
+      // Q1 times out
+      const ans = g.tick(CLOCK_MS)
+      assert.equal(ans[0].type, 'trivia_answer')
+      // Gap hasn't elapsed
+      assert.deepEqual(g.tick(CLOCK_MS + GAP_MS - 1), [])
+      // Gap elapses -> Q2
+      const q2 = g.tick(CLOCK_MS + GAP_MS)
+      assert.equal(q2[0].type, 'trivia_question')
+      assert.equal(q2[0].index, 2)
     },
   },
   {
     name: 'tick before the deadline emits nothing',
     fn: () => {
       const { g } = startGame(3)
-      assert.deepEqual(g.tick(CLOCK_SECONDS * 1000 - 1), [])
+      assert.deepEqual(g.tick(CLOCK_MS - 1), [])
     },
   },
   {
-    name: 'game ends after the last question with ranked standings',
+    name: 'game ends after the last question gap with ranked standings',
     fn: () => {
       const { g } = startGame(2)
-      let ev = g.tick(CLOCK_SECONDS * 1000)      // Q1 times out -> Q2
+      // Q1 times out -> answer reveal
+      let ev = g.tick(CLOCK_MS)
+      assert.equal(ev[0].type, 'trivia_answer')
+      // Gap elapses -> Q2
+      ev = g.tick(CLOCK_MS + GAP_MS)
+      assert.equal(ev[0].type, 'trivia_question')
       assert.equal(ev[0].index, 2)
+      // Answer Q2 correctly
       const correct = ev[0].options.find((o) => o.text === 'right1').letter
-      ev = g.submit('alice', correct, 20_000)
-      assert.equal(ev.length, 1)
+      ev = g.submit('alice', correct, CLOCK_MS + GAP_MS + 1000)
+      assert.equal(ev[0].type, 'trivia_answer')
+      assert.equal(ev[0].outcome, 'correct')
+      // Gap after last question -> trivia_over
+      ev = g.tick(CLOCK_MS + GAP_MS + 1000 + GAP_MS)
       assert.equal(ev[0].type, 'trivia_over')
       assert.equal(g.state, 'over')
       assert.deepEqual(ev[0].standings, [{ player: 'alice', score: 1 }])
@@ -160,9 +220,24 @@ const tests = [
       const g = createTriviaGame({ questions: makeQs(3), category: 'general', now: 0, random: fixed(0) })
       let ev = g.tick(0)
       const letterFor = (q, text) => q.options.find((o) => o.text === text).letter
-      ev = g.submit('bob', letterFor(ev[0], 'right0'), 1000)      // bob scores at 1000
-      ev = g.submit('alice', letterFor(ev[0], 'right1'), 2000)    // alice scores at 2000
-      ev = g.submit('bob', letterFor(ev[0], 'right2'), 3000)      // bob scores again
+
+      // bob answers Q1 correctly
+      ev = g.submit('bob', letterFor(ev[0], 'right0'), 1000)
+      assert.equal(ev[0].type, 'trivia_answer')
+      // Gap -> Q2
+      ev = g.tick(1000 + GAP_MS)
+      assert.equal(ev[0].type, 'trivia_question')
+      // alice answers Q2
+      ev = g.submit('alice', letterFor(ev[0], 'right1'), 1000 + GAP_MS + 1000)
+      assert.equal(ev[0].type, 'trivia_answer')
+      // Gap -> Q3
+      ev = g.tick(1000 + GAP_MS + 1000 + GAP_MS)
+      assert.equal(ev[0].type, 'trivia_question')
+      // bob answers Q3
+      ev = g.submit('bob', letterFor(ev[0], 'right2'), 1000 + GAP_MS + 1000 + GAP_MS + 1000)
+      assert.equal(ev[0].type, 'trivia_answer')
+      // Gap -> trivia_over
+      ev = g.tick(1000 + GAP_MS + 1000 + GAP_MS + 1000 + GAP_MS)
       assert.equal(ev[0].type, 'trivia_over')
       assert.deepEqual(ev[0].standings, [
         { player: 'bob', score: 2 },
@@ -177,29 +252,45 @@ const tests = [
       const wrong = first.options.find((o) => o.text !== 'right0').letter
       const ev = g.submit('ghost', wrong, 1000)
       assert.deepEqual(ev, [], 'wrong answer is silent')
-      const over = g.tick(CLOCK_SECONDS * 1000)
+      // Q1 times out -> answer reveal
+      const ans = g.tick(CLOCK_MS)
+      assert.equal(ans[0].type, 'trivia_answer')
+      // Gap -> trivia_over
+      const over = g.tick(CLOCK_MS + GAP_MS)
       assert.equal(over[0].type, 'trivia_over')
       assert.deepEqual(over[0].standings, [], 'nobody scored, nobody ranks')
     },
   },
   {
-    name: 'the final question is never dropped: a timeout on it still reveals the answer via trivia_over.previous',
+    name: 'the final question timeout emits trivia_answer, then gap leads to trivia_over',
     fn: () => {
       const { g, first } = startGame(1)
       const correctLetter = first.options.find((o) => o.text === 'right0').letter
-      const ev = g.tick(CLOCK_SECONDS * 1000)
-      assert.equal(ev[0].type, 'trivia_over')
-      assert.deepEqual(ev[0].previous, { outcome: 'timeout', letter: correctLetter, answer: 'right0' })
+      // Q1 times out
+      const ans = g.tick(CLOCK_MS)
+      assert.equal(ans[0].type, 'trivia_answer')
+      assert.equal(ans[0].outcome, 'timeout')
+      assert.equal(ans[0].letter, correctLetter)
+      assert.equal(ans[0].answer, 'right0')
+      // Gap elapses -> trivia_over
+      const over = g.tick(CLOCK_MS + GAP_MS)
+      assert.equal(over[0].type, 'trivia_over')
     },
   },
   {
-    name: 'the final question is never dropped: a correct final answer is still revealed via trivia_over.previous',
+    name: 'the final question correct answer emits trivia_answer, then gap leads to trivia_over',
     fn: () => {
       const { g, first } = startGame(1)
       const correct = first.options.find((o) => o.text === 'right0').letter
-      const ev = g.submit('alice', correct, 1000)
-      assert.equal(ev[0].type, 'trivia_over')
-      assert.deepEqual(ev[0].previous, { outcome: 'correct', player: 'alice', letter: correct, answer: 'right0' })
+      // Answer correctly
+      const ans = g.submit('alice', correct, 1000)
+      assert.equal(ans[0].type, 'trivia_answer')
+      assert.equal(ans[0].outcome, 'correct')
+      assert.equal(ans[0].player, 'alice')
+      // Gap elapses -> trivia_over
+      const over = g.tick(1000 + GAP_MS)
+      assert.equal(over[0].type, 'trivia_over')
+      assert.deepEqual(over[0].standings, [{ player: 'alice', score: 1 }])
     },
   },
   {
@@ -229,10 +320,11 @@ const tests = [
     },
   },
   {
-    name: 'QUESTION_COUNT and CLOCK_SECONDS are the documented defaults',
+    name: 'QUESTION_COUNT is 10, CLOCK_SECONDS is 20, GAP_SECONDS is 5',
     fn: () => {
       assert.equal(QUESTION_COUNT, 10)
-      assert.equal(CLOCK_SECONDS, 15)
+      assert.equal(CLOCK_SECONDS, 20)
+      assert.equal(GAP_SECONDS, 5)
     },
   },
 ]

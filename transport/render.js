@@ -94,38 +94,31 @@ export function render(event) {
     case 'ended':
       return { text: `Game Ends`, mentions: [] }
 
+    case 'trivia_answer': {
+      const mentions = []
+      let text
+      if (event.outcome === 'correct') {
+        text = `✅ ${mention(event.player)} got it! — *${event.letter}) ${event.answer}*`
+        mentions.push(event.player)
+      } else {
+        text = `⏱ Time's up! — *${event.letter}) ${event.answer}*`
+      }
+      return { text, mentions }
+    }
+
     case 'trivia_question': {
       const lines = []
-      const mentions = []
-      if (event.previous) {
-        if (event.previous.outcome === 'correct') {
-          lines.push(`✅ ${mention(event.previous.player)} — *${event.previous.letter})* ${event.previous.answer}`)
-          mentions.push(event.previous.player)
-        } else {
-          lines.push(`⏱ *Time!* Nobody got it — *${event.previous.letter})* ${event.previous.answer}`)
-        }
-        lines.push('━━━━━━━━━━━━━━━━', '')
-      }
       lines.push(`${CATEGORY_LABEL[event.category] ?? event.category}  ·  *Q${event.index}/${event.total}*  ·  ⏱ *${event.clockSeconds}s*`, '')
       lines.push(`*${event.question}*`, '')
       // Stacked, never columns: WhatsApp's proportional font cannot align columns.
       for (const o of event.options) lines.push(`*${o.letter})*  ${o.text}`)
       lines.push('', '_Reply A, B, C or D_')
-      return { text: lines.join('\n'), mentions }
+      return { text: lines.join('\n'), mentions: [] }
     }
 
     case 'trivia_over': {
       const lines = []
       const mentions = []
-      if (event.previous) {
-        if (event.previous.outcome === 'correct') {
-          lines.push(`✅ ${mention(event.previous.player)} — *${event.previous.letter})* ${event.previous.answer}`)
-          mentions.push(event.previous.player)
-        } else {
-          lines.push(`⏱ *Time!* Nobody got it — *${event.previous.letter})* ${event.previous.answer}`)
-        }
-        lines.push('━━━━━━━━━━━━━━━━', '')
-      }
       if (event.standings.length === 0) {
         lines.push('🏁 *FINAL*', '━━━━━━━━━━━━━━━━', '', 'Nobody scored. Brutal.')
         return { text: lines.join('\n'), mentions }

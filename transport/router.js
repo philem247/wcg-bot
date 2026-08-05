@@ -3,7 +3,7 @@ import { parseCommand } from './commands.js'
 import { render } from './render.js'
 import { isAdmin, isAdminEither, toNumber } from './admin.js'
 import { createGame } from '../engine/game.js'
-import { createTriviaGame, QUESTION_COUNT } from '../engine/trivia.js'
+import { createTriviaGame, QUESTION_COUNT, parseAnswer } from '../engine/trivia.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
 import { PREFIX, OWNER, ADMINS } from '../config.js'
@@ -165,6 +165,12 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   // game type. Same bounded-leak note as `starters`: scheduler-driven (timeout)
   // deletions don't clean this map, it's overwritten on the jid's next game.
   const gameTypes = new Map()
+
+  // A restart wipes `games` (in-memory) while the group is still playing. Bare
+  // A-D answers then hit the no-game path and vanish, so the bot looks dead.
+  // Rate-limited per jid: same bounded-leak note as `starters`.
+  const ORPHAN_NOTICE_MS = 5 * 60 * 1000
+  const lastOrphanNotice = new Map() // jid -> ts of the last notice sent
 
   // Group admins are a group-only concept. Calling getGroupAdmins on a DM jid
   // never gets a reply and baileys blocks for its full 60s query timeout.
@@ -550,7 +556,18 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
 
       const game = games.get(jid)
-      if (!game) return // hot path: no game here, nothing to do
+      if (!game) {
+        // Only a bare A-D/1-4 is unambiguous enough to answer. A lone word could
+        // be any chat message; nobody types a lone "C" into a group by accident.
+        if (parseAnswer(text)) {
+          const last = lastOrphanNotice.get(jid)
+          if (last === undefined || now - last >= ORPHAN_NOTICE_MS) {
+            lastOrphanNotice.set(jid, now)
+            enqueue(jid, { text: `No trivia game running here — the bot restarted. ${PREFIX}trivia to start a new one.`, mentions: [], kind: 'misc' })
+          }
+        }
+        return
+      }
 
       const trimmed = text.trim()
       let events = []

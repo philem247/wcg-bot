@@ -295,6 +295,47 @@ const tests = [
     },
   },
   {
+    name: 'pump dispatches nothing while isReady() is false',
+    fn: async () => {
+      const calls = []
+      const sendFn = async (jid, { text }) => { calls.push(text) }
+      let ready = false
+      const ob = createOutbox({ sendFn, isReady: () => ready, perChatGapMs: 0, globalPerSecond: 1000, maxConcurrent: 1000 })
+      ob.enqueue('A', { text: 'a1', mentions: [], kind: 'misc' })
+
+      ob.pump(0)
+      await flush()
+      ob.pump(100)
+      await flush()
+      ob.pump(200)
+      await flush()
+
+      assert.deepEqual(calls, [])
+      assert.equal(ob.stats().queued, 1)
+    },
+  },
+  {
+    name: 'a message queued while down is sent once the transport returns',
+    fn: async () => {
+      const calls = []
+      const sendFn = async (jid, { text }) => { calls.push(text) }
+      let ready = false
+      const ob = createOutbox({ sendFn, isReady: () => ready, perChatGapMs: 0, globalPerSecond: 1000, maxConcurrent: 1000 })
+      ob.enqueue('A', { text: 'a1', mentions: [], kind: 'misc' })
+
+      ob.pump(0)
+      await flush()
+      assert.deepEqual(calls, [])
+
+      ready = true
+      ob.pump(1000)
+      await flush()
+
+      assert.deepEqual(calls, ['a1'])
+      assert.equal(ob.stats().queued, 0)
+    },
+  },
+  {
     name: "cosmetic entries are dropped once a chat's queue is above threshold, and stats() reports the count",
     fn: async () => {
       const sendFn = async () => {}

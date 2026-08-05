@@ -10,7 +10,7 @@ const QUEUE_CAP = 50
 // ponytail: fixed threshold, not a constructor param — same reasoning as QUEUE_CAP.
 const COSMETIC_QUEUE_THRESHOLD = 5
 
-export function createOutbox({ sendFn, logger, perChatGapMs = 400, globalPerSecond = 8, maxConcurrent = 4 }) {
+export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapMs = 400, globalPerSecond = 8, maxConcurrent = 4 }) {
   // ponytail: queues/lastSentAt entries are never removed for a jid that goes
   // idle (same unbounded-but-bounded-by-distinct-jids pattern as router.js's
   // `starters` map) — fine at group-chat scale, revisit if jid churn is high.
@@ -118,6 +118,11 @@ export function createOutbox({ sendFn, logger, perChatGapMs = 400, globalPerSeco
       tokens = Math.min(globalPerSecond, tokens + (elapsed / 1000) * globalPerSecond)
       lastRefill = now
     }
+    // Transport down (reconnecting): hold everything queued rather than dispatch
+    // into a dead socket. A failed send burns both retry attempts and drops the
+    // message for good, so a 3s reconnect would silently eat a live question.
+    // Tokens keep refilling above, so the backlog drains promptly on reconnect.
+    if (!isReady()) return
     while (inFlightCount < maxConcurrent && tokens >= 1) {
       const jid = pickNext(now)
       if (!jid) break
