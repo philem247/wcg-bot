@@ -35,7 +35,7 @@ const tests = [
     },
   },
   {
-    name: 'leaderboard score math: 4-player game, winner gets 6, last place gets 0',
+    name: 'leaderboard score math: 4-player game, winner gets 3, runner-up 1, rest 0',
     fn: () => {
       const db = openDb(':memory:')
       db.recordGame({
@@ -56,19 +56,15 @@ const tests = [
       const board = db.leaderboard({ jid: 'test-jid' })
       const scores = new Map(board.map(r => [r.player, r.score]))
 
-      // alice (placement 1): min(4-1, 3) + 3 = 3 + 3 = 6
-      assert.equal(scores.get('alice'), 6, 'winner should get 6')
-      // bob (placement 2): min(4-2, 3) + 0 = 2
-      assert.equal(scores.get('bob'), 2, 'second place should get 2')
-      // charlie (placement 3): min(4-3, 3) + 0 = 1
-      assert.equal(scores.get('charlie'), 1, 'third place should get 1')
-      // dave (placement 4): min(4-4, 3) + 0 = 0
+      assert.equal(scores.get('alice'), 3, 'winner should get 3')
+      assert.equal(scores.get('bob'), 1, 'second place should get 1')
+      assert.equal(scores.get('charlie'), 0, 'third place should get 0')
       assert.equal(scores.get('dave'), 0, 'last place should get 0')
       db.close()
     },
   },
   {
-    name: 'per-game cap: 8-player game still gives winner 6, not 10',
+    name: 'football scoring: 8-player game still gives winner exactly 3, not scaled by player count',
     fn: () => {
       const db = openDb(':memory:')
       const results = []
@@ -88,8 +84,7 @@ const tests = [
 
       const board = db.leaderboard({ jid: 'test-jid' })
       const winner = board.find(r => r.player === 'player1')
-      // min(8-1, 3) + 3 = 3 + 3 = 6
-      assert.equal(winner.score, 6, 'winner capped at 6 even in 8-player game')
+      assert.equal(winner.score, 3, 'winner gets 3 regardless of player count')
       db.close()
     },
   },
@@ -420,6 +415,67 @@ const tests = [
       })
       const chain = db.leaderboard({ jid: 'g', since: 0, type: 'chain' })
       assert.deepEqual(chain.map((r) => r.player), ['wordy'], 'chain means every non-trivia type')
+      db.close()
+    },
+  },
+  {
+    name: 'leaderboard: a win is 3 points, runner-up is 1, everyone else is 0',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.recordGame({
+        jid: 'test-jid', mode: 'easy', type: 'chain', startedAt: 0, endedAt: 1000, words: 5,
+        results: [
+          { player: 'p1', placement: 1 },
+          { player: 'p2', placement: 2 },
+          { player: 'p3', placement: 3 },
+          { player: 'p4', placement: 4 },
+        ],
+      })
+      const board = db.leaderboard({ jid: 'test-jid' })
+      const scores = new Map(board.map(r => [r.player, r.score]))
+      assert.equal(scores.get('p1'), 3)
+      assert.equal(scores.get('p2'), 1)
+      assert.equal(scores.get('p3'), 0)
+      assert.equal(scores.get('p4'), 0)
+      db.close()
+    },
+  },
+  {
+    name: 'leaderboard: placing last in a big game still scores nothing',
+    fn: () => {
+      const db = openDb(':memory:')
+      const results = []
+      for (let i = 1; i <= 6; i++) results.push({ player: `p${i}`, placement: i })
+      db.recordGame({
+        jid: 'test-jid', mode: 'easy', type: 'chain', startedAt: 0, endedAt: 1000, words: 5, results,
+      })
+      const board = db.leaderboard({ jid: 'test-jid' })
+      const last = board.find(r => r.player === 'p6')
+      assert.equal(last.score, 0, 'last place scores nothing')
+      assert.equal(last.games, 1)
+      db.close()
+    },
+  },
+  {
+    name: 'leaderboard: trivia uses the same football scoring as chain',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.recordGame({
+        jid: 'test-jid', mode: 'general', type: 'trivia', startedAt: 0, endedAt: 1000, words: 10,
+        results: [{ player: 'tq1', placement: 1 }, { player: 'tq2', placement: 2 }],
+      })
+      db.recordGame({
+        jid: 'test-jid', mode: 'easy', type: 'chain', startedAt: 0, endedAt: 1000, words: 5,
+        results: [{ player: 'cq1', placement: 1 }, { player: 'cq2', placement: 2 }],
+      })
+
+      const trivia = db.leaderboard({ jid: 'test-jid', type: 'trivia' })
+      const chain = db.leaderboard({ jid: 'test-jid', type: 'chain' })
+
+      assert.equal(trivia.find(r => r.player === 'tq1').score, 3, 'trivia winner gets 3')
+      assert.equal(chain.find(r => r.player === 'cq1').score, 3, 'chain winner gets 3')
+      assert(!trivia.some(r => r.player === 'cq1' || r.player === 'cq2'), 'trivia board excludes chain players')
+      assert(!chain.some(r => r.player === 'tq1' || r.player === 'tq2'), 'chain board excludes trivia players')
       db.close()
     },
   },

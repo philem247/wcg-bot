@@ -165,16 +165,17 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       const rows = stmt.all(jid, since)
 
       const agg = new Map()
-      for (const { player, placement, player_count } of rows) {
+      for (const { player, placement } of rows) {
         if (!agg.has(player)) {
           agg.set(player, { score: 0, wins: 0, games: 0 })
         }
         const stats = agg.get(player)
         stats.games++
-        // ponytail: per-game cap of 6 is deliberate, stops marathon players owning the week
-        const survivalPoints = Math.min(player_count - placement, 3)
-        const bonusPoints = placement === 1 ? 3 : 0
-        stats.score += survivalPoints + bonusPoints
+        // Football scoring: a win is 3, second place is the "draw" at 1, and
+        // nobody else takes anything. Points are derived from placement on every
+        // read rather than stored, so changing this re-scores all past games.
+        if (placement === 1) stats.score += 3
+        else if (placement === 2) stats.score += 1
         if (placement === 1) stats.wins++
       }
 

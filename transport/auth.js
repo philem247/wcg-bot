@@ -11,7 +11,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, renameSync } from 'node:fs'
 import { dirname } from 'node:path'
-import { initAuthCreds, BufferJSON } from 'baileys'
+import { initAuthCreds, BufferJSON, proto } from 'baileys'
 
 export function useSingleFileAuthState(filePath) {
   const dir = dirname(filePath)
@@ -81,7 +81,15 @@ export function useSingleFileAuthState(filePath) {
         const result = {}
         for (const id of ids) {
           if (id in typeStore) {
-            result[id] = typeStore[id]
+            let value = typeStore[id]
+            // Mirrors baileys' own useMultiFileAuthState: app-state-sync keys
+            // must come back as proto message instances, not plain JSON
+            // objects, or baileys' app-state machinery misbehaves. Don't
+            // "simplify" this away.
+            if (type === 'app-state-sync-key' && value) {
+              value = proto.Message.AppStateSyncKeyData.fromObject(value)
+            }
+            result[id] = value
           }
         }
         return result

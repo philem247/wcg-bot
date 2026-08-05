@@ -129,10 +129,21 @@ async function handleMessage(msg) {
 // Not re-sent on reconnects: the generic reconnect branch in transport/wa.js retries
 // every 3s, so a flapping connection would DM the owner in a loop. Reconnects are
 // already recorded in the log; the DM added nothing.
+let freshPair = false;
+const WELCOME_DELAY_MS = 10_000;
 let welcomeSent = false;
 function onConnected() {
   if (!OWNER || welcomeSent) return;
   welcomeSent = true;
+
+  // A device that just paired must not send anything yet: WhatsApp kills it with
+  // 401 loggedOut, and the message arrives undecryptable ("waiting for this
+  // message"). Skip the boot DM entirely on the run that paired — the operator is
+  // watching the console at that point anyway.
+  if (freshPair) {
+    logger.info('Freshly paired — skipping the boot DM this run. Send /help in a chat to verify the bot.');
+    return;
+  }
 
   const bootSec = ((Date.now() - bootStart) / 1000).toFixed(1);
   const dictSize = dict.size.toLocaleString();
@@ -163,11 +174,20 @@ function onConnected() {
     `🔗 Chain. Survive. Win.`,
   ].join('\n');
 
-  send(`${OWNER}@s.whatsapp.net`, { text: msg, mentions: [] });
+  // Even on an established device, sending the instant the socket opens races
+  // session setup. A short settle beats a message the phone cannot decrypt.
+  const t = setTimeout(() => {
+    if (!isConnected()) return; // dropped while we waited — not worth chasing
+    send(`${OWNER}@s.whatsapp.net`, { text: msg, mentions: [] });
+  }, WELCOME_DELAY_MS);
+  t.unref?.();
 }
 
 try {
   const { pairingCodeRequested } = await connect(handleMessage, logger, onConnected);
+  // Safe ordering: on a fresh pair connect() resolves right after it prints the
+  // pairing code, long before the user finishes pairing and 'open' fires.
+  freshPair = pairingCodeRequested;
   logger.info('WhatsApp socket connected');
   if (pairingCodeRequested) {
     logger.info('A pairing code was logged above - enter it in WhatsApp > Linked Devices > Link with phone number.');

@@ -52,6 +52,33 @@ const tests = [
       }
     },
   },
+  {
+    name: 'app-state-sync-key values come back as proto messages, not plain objects',
+    fn: async () => {
+      const filePath = tmpFile()
+      try {
+        const { state } = useSingleFileAuthState(filePath)
+        state.keys.set({
+          'app-state-sync-key': {
+            '1': {
+              keyData: new Uint8Array([1, 2, 3]),
+              fingerprint: { rawId: 1, currentIndex: 1, deviceIndexes: [0] },
+              timestamp: 123,
+            },
+          },
+          session: { a: { some: 'value' } },
+        })
+
+        const [syncKey] = Object.values(state.keys.get('app-state-sync-key', ['1']))
+        assert.notEqual(Object.getPrototypeOf(syncKey), Object.prototype)
+
+        const session = state.keys.get('session', ['a'])
+        assert.deepEqual(session, { a: { some: 'value' } })
+      } finally {
+        fs.rmSync(path.dirname(filePath), { recursive: true, force: true })
+      }
+    },
+  },
 ]
 
 let passed = 0
