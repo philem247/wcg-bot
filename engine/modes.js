@@ -21,9 +21,6 @@ export const MODES = {
 
 export const DEFAULT_MODE = 'easy'
 
-// Lives granted per player when /lives on.
-export const LIVES_WHEN_ON = 3
-
 export function getMode(name) {
   return MODES[name] || MODES[DEFAULT_MODE]
 }

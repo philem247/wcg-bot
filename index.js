@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import pino from 'pino';
 import pinoPretty from 'pino-pretty';
 import { connect, send, getGroupAdmins, resolvePn, shutdown as waShutdown } from './transport/wa.js';
@@ -44,7 +45,7 @@ for (const w of db.customWords()) {
   dict.add(w);
   customWordCount++;
 }
-logger.info(`Merged ${customWordCount} approved custom word(s) from the store`)
+logger.info(`Merged ${customWordCount} approved custom word(s) from the store (db: ${resolve(process.env.DB_PATH ?? 'wcg.db')})`)
 
 // Crash handlers — log and attempt graceful shutdown instead of silently dying.
 // Without these, an unhandled rejection in baileys or a stray TypeError in the

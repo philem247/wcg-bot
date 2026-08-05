@@ -6,9 +6,6 @@
 //   `lobby_open` (+ the starter's `joined`) is therefore emitted lazily, the first
 //   time `tick` or `join` is called on the game. In practice the scheduler's first
 //   `pump` after a game is added to the map delivers it.
-// - Timeout with lives>0 that does NOT eliminate emits an invented event
-//   `{ type:'life_lost', player, livesLeft }` (spec explicitly left this as "your
-//   call, document it").
 // - `ended: 'no_players'` can only happen via `end()` on an empty lobby, since this
 //   phase has no `leave()` method.
 
@@ -36,7 +33,7 @@ function shuffle(arr, random) {
   return out
 }
 
-export function createGame({ mode = 'easy', type = 'chain', dict, starter, lives = 0, now, random = () => 0.5 } = {}) {
+export function createGame({ mode = 'easy', type = 'chain', dict, starter, now, random = () => 0.5 } = {}) {
   const modeCfg = getMode(mode)
 
   let state = 'lobby'
@@ -59,7 +56,6 @@ export function createGame({ mode = 'easy', type = 'chain', dict, starter, lives
   let lastWordLastLetter = null // chain mode only
 
   const used = new Set()
-  const livesMap = new Map()
   let longestWord = ''
   let longestBy = null
 
@@ -143,10 +139,10 @@ export function createGame({ mode = 'easy', type = 'chain', dict, starter, lives
     })
   }
 
-  function eliminateCurrent(now, events, livesLeft) {
+  function eliminateCurrent(now, events) {
     const player = active[turnIndex]
     active.splice(turnIndex, 1)
-    events.push({ type: 'eliminated', player, reason: 'timeout', livesLeft })
+    events.push({ type: 'eliminated', player, reason: 'timeout' })
 
     if (active.length === 1) {
       declareWinner(now, events)
@@ -173,9 +169,6 @@ export function createGame({ mode = 'easy', type = 'chain', dict, starter, lives
     turnIndex = 0
     roundsCompleted = 0
     gameStartAt = now
-    if (lives > 0) {
-      for (const p of order) livesMap.set(p, lives)
-    }
     state = 'playing'
     events.push({ type: 'game_start', players: order.slice() })
     events.push(makeTurnEvent(now))
@@ -266,18 +259,7 @@ export function createGame({ mode = 'easy', type = 'chain', dict, starter, lives
       // playing
       if (now < currentDeadline) return events
 
-      if (lives > 0) {
-        const remaining = livesMap.get(currentPlayer) - 1
-        livesMap.set(currentPlayer, remaining)
-        if (remaining <= 0) {
-          eliminateCurrent(now, events, 0)
-        } else {
-          events.push({ type: 'life_lost', player: currentPlayer, livesLeft: remaining })
-          advanceSameSize(now, events)
-        }
-      } else {
-        eliminateCurrent(now, events, 0)
-      }
+      eliminateCurrent(now, events)
       return events
     },
 

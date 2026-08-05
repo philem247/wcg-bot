@@ -139,17 +139,9 @@ const tests = [
   {
     name: 'eliminated: verbatim "timeout" string, mentions player',
     fn: () => {
-      const r = render({ type: 'eliminated', player: P1, reason: 'timeout', livesLeft: 0 })
+      const r = render({ type: 'eliminated', player: P1, reason: 'timeout' })
       assert.equal(r.text, 'Time out @111111111! You are out! 🚫')
       assert.deepEqual(r.mentions, [P1])
-    },
-  },
-  {
-    name: 'life_lost: mentions player and lives left',
-    fn: () => {
-      const r = render({ type: 'life_lost', player: P1, livesLeft: 2 })
-      assert.deepEqual(r.mentions, [P1])
-      assert(r.text.includes('2'))
     },
   },
   {

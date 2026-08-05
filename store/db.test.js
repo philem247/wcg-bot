@@ -245,8 +245,8 @@ const tests = [
     name: 'settings round-trip: setSetting then getSetting returns the stored value',
     fn: () => {
       const db = openDb(':memory:')
-      db.setSetting('jid-a', 'lives', 'on')
-      assert.equal(db.getSetting('jid-a', 'lives'), 'on')
+      db.setSetting('jid-a', 'pool', 'on')
+      assert.equal(db.getSetting('jid-a', 'pool'), 'on')
       db.close()
     },
   },
@@ -254,8 +254,8 @@ const tests = [
     name: 'settings: getSetting returns fallback when unset',
     fn: () => {
       const db = openDb(':memory:')
-      assert.equal(db.getSetting('jid-a', 'lives', 'off'), 'off')
-      assert.equal(db.getSetting('jid-a', 'lives'), null, 'default fallback is null')
+      assert.equal(db.getSetting('jid-a', 'pool', 'off'), 'off')
+      assert.equal(db.getSetting('jid-a', 'pool'), null, 'default fallback is null')
       db.close()
     },
   },
@@ -263,13 +263,13 @@ const tests = [
     name: 'settings: setSetting upserts, overwriting rather than duplicating',
     fn: () => {
       const db = openDb(':memory:')
-      db.setSetting('jid-a', 'lives', 'on')
-      db.setSetting('jid-a', 'lives', 'off')
-      assert.equal(db.getSetting('jid-a', 'lives'), 'off', 'second call should overwrite, not add a row')
+      db.setSetting('jid-a', 'pool', 'on')
+      db.setSetting('jid-a', 'pool', 'off')
+      assert.equal(db.getSetting('jid-a', 'pool'), 'off', 'second call should overwrite, not add a row')
       // different jid/key are independent
-      db.setSetting('jid-b', 'lives', 'on')
-      assert.equal(db.getSetting('jid-a', 'lives'), 'off')
-      assert.equal(db.getSetting('jid-b', 'lives'), 'on')
+      db.setSetting('jid-b', 'pool', 'on')
+      assert.equal(db.getSetting('jid-a', 'pool'), 'off')
+      assert.equal(db.getSetting('jid-b', 'pool'), 'on')
       db.close()
     },
   },

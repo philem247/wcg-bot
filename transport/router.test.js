@@ -6,16 +6,6 @@ process.env.OWNER = '15550000000'
 process.env.ADMINS = '15550000001'
 
 const { sendEvents, createRouter } = await import('./router.js')
-const { LOBBY_WINDOW_MS } = await import('../engine/modes.js')
-
-// Minimal fake settings store backing getSetting/setSetting, shared by the /lives tests.
-function makeSettingsDb() {
-  const store = new Map()
-  return {
-    getSetting: (jid, key, fallback = null) => (store.has(`${jid}:${key}`) ? store.get(`${jid}:${key}`) : fallback),
-    setSetting: (jid, key, value) => store.set(`${jid}:${key}`, value),
-  }
-}
 
 // Minimal fake bot_admins store backing addBotAdmin/delBotAdmin/botAdmins, shared by the /promote tests.
 function makeBotAdminDb() {
@@ -46,7 +36,7 @@ const tests = [
       const enqueue = (jid, payload) => calls.push({ jid, ...payload })
 
       const events = [
-        { type: 'eliminated', player: 'a', reason: 'timeout', livesLeft: 0 },
+        { type: 'eliminated', player: 'a', reason: 'timeout' },
         { type: 'turn', player: 'a', next: 'b', letter: 'x', minLength: 4, seconds: 20, alive: 2, total: 2, totalWords: 5, deadline: 0 },
       ]
 
@@ -109,8 +99,8 @@ const tests = [
 
       sendEvents(enqueue, jid, [{ type: 'lobby_open', deadline: 0, mode: 'easy', gameType: 'chain' }], undefined, 1000, fakeDb)
       sendEvents(enqueue, jid, [{ type: 'game_start', players: ['a', 'b', 'c'] }], undefined, 1000, fakeDb)
-      sendEvents(enqueue, jid, [{ type: 'eliminated', player: 'b', reason: 'timeout', livesLeft: 0 }], undefined, 2000, fakeDb)
-      sendEvents(enqueue, jid, [{ type: 'eliminated', player: 'c', reason: 'timeout', livesLeft: 0 }], undefined, 3000, fakeDb)
+      sendEvents(enqueue, jid, [{ type: 'eliminated', player: 'b', reason: 'timeout' }], undefined, 2000, fakeDb)
+      sendEvents(enqueue, jid, [{ type: 'eliminated', player: 'c', reason: 'timeout' }], undefined, 3000, fakeDb)
       sendEvents(enqueue, jid, [{ type: 'winner', player: 'a', totalWords: 10, longestWord: 'zoo', longestBy: 'a', elapsedMs: 3000 }], undefined, 4000, fakeDb)
 
       assert.equal(recordGameCalls.length, 1)
@@ -162,7 +152,7 @@ const tests = [
       sendEvents(enqueue, 'no-db-jid', [
         { type: 'lobby_open', deadline: 0, mode: 'easy', gameType: 'chain' },
         { type: 'game_start', players: ['a', 'b'] },
-        { type: 'eliminated', player: 'a', reason: 'timeout', livesLeft: 0 },
+        { type: 'eliminated', player: 'a', reason: 'timeout' },
         { type: 'winner', player: 'b', totalWords: 1, longestWord: 'ab', longestBy: 'b', elapsedMs: 10 },
         { type: 'rejected', player: 'b', word: 'zz', reason: 'not_in_list' },
       ], undefined, 100)
@@ -276,143 +266,6 @@ const tests = [
 
       assert.equal(pendingCalls.length, 0, 'db.pending must not be called for a non-admin')
       assert.equal(replies.length, 1)
-    },
-  },
-  {
-    name: '/lives on from a non-admin is refused, no setSetting call',
-    fn: async () => {
-      const fakeDb = makeSettingsDb()
-      const replies = []
-      const enqueue = (jid, payload) => replies.push(payload)
-      const router = createRouter({
-        dict: {},
-        games: new Map(),
-        enqueue,
-        logger: undefined,
-        getGroupAdmins: async () => [],
-        db: fakeDb,
-      })
-
-      await router.handleMessage(
-        { jid: 'g-lives-1', sender: '9999999@s.whatsapp.net', senderPn: undefined, text: '/lives on', isGroup: true, raw: undefined },
-        1000
-      )
-
-      assert.equal(replies.length, 1)
-      assert(replies[0].text.includes('Admins only'))
-      assert.equal(fakeDb.getSetting('g-lives-1', 'lives'), null, 'setSetting must not have been called')
-    },
-  },
-  {
-    name: '/lives with no argument reports current state without an admin check',
-    fn: async () => {
-      const fakeDb = makeSettingsDb()
-      const replies = []
-      const enqueue = (jid, payload) => replies.push(payload)
-      const router = createRouter({
-        dict: {},
-        games: new Map(),
-        enqueue,
-        logger: undefined,
-        getGroupAdmins: async () => [],
-        db: fakeDb,
-      })
-
-      await router.handleMessage(
-        { jid: 'g-lives-2', sender: '9999999@s.whatsapp.net', senderPn: undefined, text: '/lives', isGroup: true, raw: undefined },
-        1000
-      )
-
-      assert.equal(replies.length, 1)
-      assert(!replies[0].text.includes('Admins only'), 'bare /lives must not be admin-gated')
-      assert(replies[0].text.includes('off'), 'default is off when unset')
-    },
-  },
-  {
-    name: '/lives on persists, and a subsequently started game receives lives: 3 (first timeout costs a life, not an elimination)',
-    fn: async () => {
-      const fakeDb = makeSettingsDb()
-      const games = new Map()
-      const replies = []
-      const enqueue = (jid, payload) => replies.push(payload)
-      const dict = { randomLetter: () => 'a' }
-      const router = createRouter({
-        dict,
-        games,
-        enqueue,
-        logger: undefined,
-        getGroupAdmins: async () => ['2340001@s.whatsapp.net'],
-        db: fakeDb,
-      })
-
-      await router.handleMessage(
-        { jid: 'g-lives-3', sender: '2340001@s.whatsapp.net', senderPn: undefined, text: '/lives on', isGroup: true, raw: undefined },
-        1000
-      )
-      assert.equal(fakeDb.getSetting('g-lives-3', 'lives'), 'on')
-
-      await router.handleMessage(
-        { jid: 'g-lives-3', sender: 'p1@s.whatsapp.net', senderPn: undefined, text: '/wcg start', isGroup: true, raw: undefined },
-        1000
-      )
-      const game = games.get('g-lives-3')
-      assert(game, 'game should be created')
-
-      await router.handleMessage(
-        { jid: 'g-lives-3', sender: 'p2@s.whatsapp.net', senderPn: undefined, text: 'join', isGroup: true, raw: undefined },
-        1000
-      )
-
-      const startEvents = game.tick(1000 + LOBBY_WINDOW_MS + 1)
-      assert(startEvents.some((e) => e.type === 'game_start'), 'lobby should hand off to game_start')
-      const turnEvent = startEvents.find((e) => e.type === 'turn')
-
-      const timeoutEvents = game.tick(turnEvent.deadline)
-      assert(
-        timeoutEvents.some((e) => e.type === 'life_lost' && e.livesLeft === 2),
-        'lives:3 means the first timeout costs a life instead of eliminating'
-      )
-    },
-  },
-  {
-    name: '/lives off (default) gives lives: 0, first timeout eliminates directly',
-    fn: async () => {
-      const fakeDb = makeSettingsDb()
-      const games = new Map()
-      const enqueue = () => {}
-      const dict = { randomLetter: () => 'a' }
-      const router = createRouter({
-        dict,
-        games,
-        enqueue,
-        logger: undefined,
-        getGroupAdmins: async () => ['2340001@s.whatsapp.net'],
-        db: fakeDb,
-      })
-
-      await router.handleMessage(
-        { jid: 'g-lives-4', sender: '2340001@s.whatsapp.net', senderPn: undefined, text: '/lives off', isGroup: true, raw: undefined },
-        1000
-      )
-      assert.equal(fakeDb.getSetting('g-lives-4', 'lives'), 'off')
-
-      await router.handleMessage(
-        { jid: 'g-lives-4', sender: 'p1@s.whatsapp.net', senderPn: undefined, text: '/wcg start', isGroup: true, raw: undefined },
-        1000
-      )
-      const game = games.get('g-lives-4')
-      await router.handleMessage(
-        { jid: 'g-lives-4', sender: 'p2@s.whatsapp.net', senderPn: undefined, text: 'join', isGroup: true, raw: undefined },
-        1000
-      )
-
-      const startEvents = game.tick(1000 + LOBBY_WINDOW_MS + 1)
-      const turnEvent = startEvents.find((e) => e.type === 'turn')
-      const timeoutEvents = game.tick(turnEvent.deadline)
-      assert(
-        timeoutEvents.some((e) => e.type === 'eliminated' && e.livesLeft === 0),
-        'lives:0 means the first timeout eliminates directly'
-      )
     },
   },
   {

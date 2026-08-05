@@ -3,7 +3,6 @@ import { parseCommand } from './commands.js'
 import { render } from './render.js'
 import { isAdmin, isAdminEither, toNumber } from './admin.js'
 import { createGame } from '../engine/game.js'
-import { LIVES_WHEN_ON } from '../engine/modes.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
 import { PREFIX, OWNER, ADMINS } from '../config.js'
@@ -36,7 +35,6 @@ const KIND_BY_EVENT = {
   eliminated: 'result',
   terminated: 'result',
   ended: 'result',
-  life_lost: 'result',
 }
 
 // Ordering (ramp->turn, accepted->turn, eliminated->winner, ...) carries meaning,
@@ -143,6 +141,16 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
   const starters = new Map()
 
+  // Group admins are a group-only concept. Calling getGroupAdmins on a DM jid
+  // never gets a reply and baileys blocks for its full 60s query timeout.
+  // Never query group metadata for a non-group JID: WhatsApp simply never answers,
+  // so baileys blocks for its full 60s query timeout before the command can run.
+  // Group admins are a group-only concept anyway; [] in a DM is the right answer,
+  // and the OWNER/ADMINS/bot-admin checks still apply.
+  async function groupAdminsFor(jid, isGroup) {
+    return isGroup ? await getGroupAdmins(jid) : []
+  }
+
   // Admin check used by every existing admin-gated command: also accepts
   // db-stored bot admins (per-group, /promote'd), and resolves a @lid sender's
   // phone-form JID via resolvePn when senderPn wasn't already supplied.
@@ -184,8 +192,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
     const mode = MODE_NAMES.has(args[0]) ? args[0] : undefined
-    const lives = db.getSetting(jid, 'lives', 'off') === 'on' ? LIVES_WHEN_ON : 0
-    const game = createGame({ mode, type, dict, starter: sender, lives, now, random: Math.random })
+    const game = createGame({ mode, type, dict, starter: sender, now, random: Math.random })
     games.set(jid, game)
     starters.set(jid, sender)
     sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
@@ -199,7 +206,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   async function endGame(jid, sender, senderPn, isGroup, now) {
     const game = games.get(jid)
     if (!game) return
-    const groupAdmins = await getGroupAdmins(jid)
+    const groupAdmins = await groupAdminsFor(jid, isGroup)
     const allowed = sender === starters.get(jid) || isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)
     if (!allowed) {
       enqueue(jid, { text: `Only the player who started the game or a group admin can end it.`, mentions: [], kind: 'misc' })
@@ -220,27 +227,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
 
     if (cmd === 'help') {
       enqueue(jid, {
-        text: `Commands:\n${PREFIX}ping - check the bot is alive\n${PREFIX}wcg start|easy|medium|hard - start a chain game (group only)\n${PREFIX}wrg start - start a random-letter game (group only)\n${PREFIX}wcg end - end the current game (starter or admin)\n${PREFIX}stats [all] - weekly or all-time leaderboard\n${PREFIX}pending - most-rejected words (admin)\n${PREFIX}addword <word>|all - approve a word (admin)\n${PREFIX}delword <word> - remove a word (admin)\n${PREFIX}lives [on|off] - toggle lives mode (admin to change)\n${PREFIX}admin - who can run admin commands here\n${PREFIX}promote @user - make a bot admin here (owner only)\n${PREFIX}demote @user - remove a bot admin here (owner only)\njoin - join the lobby\n<word> - submit a word on your turn`,
+        text: `Commands:\n${PREFIX}ping - check the bot is alive\n${PREFIX}wcg start|easy|medium|hard - start a chain game (group only)\n${PREFIX}wrg start - start a random-letter game (group only)\n${PREFIX}wcg end - end the current game (starter or admin)\n${PREFIX}stats [all] - weekly or all-time leaderboard\n${PREFIX}pending - most-rejected words (admin)\n${PREFIX}addword <word>|all - approve a word (admin)\n${PREFIX}delword <word> - remove a word (admin)\n${PREFIX}admin - who can run admin commands here\n${PREFIX}promote @user - make a bot admin here (owner only)\n${PREFIX}demote @user - remove a bot admin here (owner only)\njoin - join the lobby\n<word> - submit a word on your turn`,
         mentions: [],
         kind: 'misc',
       })
-      return
-    }
-
-    if (cmd === 'lives') {
-      const sub = args[0]
-      if (sub === 'on' || sub === 'off') {
-        const groupAdmins = await getGroupAdmins(jid)
-        if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)) {
-          enqueue(jid, { text: `Admins only.`, mentions: [], kind: 'misc' })
-          return
-        }
-        db.setSetting(jid, 'lives', sub)
-        enqueue(jid, { text: `Lives ${sub}.`, mentions: [], kind: 'misc' })
-        return
-      }
-      const state = db.getSetting(jid, 'lives', 'off')
-      enqueue(jid, { text: `Lives: ${state}.`, mentions: [], kind: 'misc' })
       return
     }
 
@@ -260,7 +250,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         lines.push(`Global: none`)
       }
       if (isGroup) {
-        const groupAdmins = await getGroupAdmins(jid)
+        const groupAdmins = await groupAdminsFor(jid, isGroup)
         if (groupAdmins.length > 0) {
           lines.push(`Group: ${groupAdmins.map((a) => `@${toNumber(a)}`).join(' ')}`)
           mentions.push(...groupAdmins)
@@ -290,7 +280,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     }
 
     if (cmd === 'pending' || cmd === 'addword' || cmd === 'delword') {
-      const groupAdmins = await getGroupAdmins(jid)
+      const groupAdmins = await groupAdminsFor(jid, isGroup)
       if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)) {
         enqueue(jid, { text: `Admins only.`, mentions: [], kind: 'misc' })
         return

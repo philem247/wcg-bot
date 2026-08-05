@@ -75,9 +75,6 @@ export function render(event) {
     case 'eliminated':
       return { text: `Time out ${mention(event.player)}! You are out! 🚫`, mentions: [event.player] }
 
-    case 'life_lost':
-      return { text: `💔 ${mention(event.player)} lost a life! ${event.livesLeft} left.`, mentions: [event.player] }
-
     case 'winner':
       return {
         text: `${mention(event.player)} won the game 🏆\nWords : *${event.totalWords}*\nLongest word : *${event.longestWord} (${event.longestWord.length})* by ${mention(event.longestBy)} 📚\nTime : *${formatElapsed(event.elapsedMs)}* ⏱️`,

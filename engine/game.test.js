@@ -195,69 +195,6 @@ const tests = [
     },
   },
   {
-    name: 'timeouts: lives=3 takes three timeouts to eliminate; ramp fires after 1 completed round; winner has correct stats',
-    fn: () => {
-      const dict = makeDict(['apple', 'elephant'])
-      const g = createGame({ dict, starter: 'a', lives: 3, now: 0 })
-      g.tick(0)
-      g.join('b', 0)
-      const startEv = g.tick(60_000) // turn a, letter null, deadline 100000
-      const turn0 = startEv[1]
-      assert.equal(turn0.player, 'a')
-      assert.equal(turn0.deadline, 60_000 + MODES.easy.clockSeconds * 1000)
-
-      // a timeout #1 -> life_lost, turn passes to b
-      let ev = g.tick(turn0.deadline)
-      assert.deepEqual(ev[0], { type: 'life_lost', player: 'a', livesLeft: 2 })
-      assert.equal(ev[1].player, 'b')
-      assert.equal(ev[1].letter, null) // a never submitted, so still unset
-      const bDeadline1 = ev[1].deadline
-
-      // b submits 'apple' -> completes round 1 -> ramp applies (length only, clock cadence is 2)
-      ev = g.submit('b', 'apple', bDeadline1 - 1)
-      assert.deepEqual(ev[0], { type: 'accepted', player: 'b', word: 'apple' })
-      assert.deepEqual(ev[1], { type: 'ramp', round: 1, minLength: MODES.easy.minLength + RAMP_MIN_LENGTH_STEP, seconds: MODES.easy.clockSeconds })
-      assert.equal(ev[2].player, 'a')
-      assert.equal(ev[2].letter, 'e')
-      assert.equal(ev[2].minLength, MODES.easy.minLength + RAMP_MIN_LENGTH_STEP)
-      assert.equal(ev[2].seconds, MODES.easy.clockSeconds, 'clock unchanged after round 1 (cadence is 2)')
-      const aDeadline2 = ev[2].deadline
-
-      // a timeout #2
-      ev = g.tick(aDeadline2)
-      assert.deepEqual(ev[0], { type: 'life_lost', player: 'a', livesLeft: 1 })
-      assert.equal(ev[1].player, 'b')
-      assert.equal(ev[1].letter, 'e') // still unchanged, a didn't submit
-      const bDeadline2 = ev[1].deadline
-
-      // b submits 'elephant' -> completes round 2 -> ramp applies (both length and clock)
-      ev = g.submit('b', 'elephant', bDeadline2 - 1)
-      assert.deepEqual(ev[0], { type: 'accepted', player: 'b', word: 'elephant' })
-      assert.deepEqual(ev[1], { type: 'ramp', round: 2, minLength: MODES.easy.minLength + 2 * RAMP_MIN_LENGTH_STEP, seconds: MODES.easy.clockSeconds - RAMP_CLOCK_STEP_S })
-      assert.equal(ev[2].player, 'a')
-      assert.equal(ev[2].minLength, MODES.easy.minLength + 2 * RAMP_MIN_LENGTH_STEP)
-      assert.equal(ev[2].seconds, MODES.easy.clockSeconds - RAMP_CLOCK_STEP_S, 'clock decreases on round 2')
-      const aDeadline3 = ev[2].deadline
-
-      // a timeout #3 -> eliminated -> winner
-      ev = g.tick(aDeadline3)
-      assert.deepEqual(ev[0], { type: 'eliminated', player: 'a', reason: 'timeout', livesLeft: 0 })
-      assert.equal(ev[1].type, 'winner')
-      assert.equal(ev[1].player, 'b')
-      assert.equal(ev[1].totalWords, 2)
-      assert.equal(ev[1].longestWord, 'elephant')
-      assert.equal(ev[1].longestBy, 'b')
-      assert.equal(ev[1].elapsedMs, aDeadline3 - 60_000)
-      assert.equal(g.state, 'over')
-
-      // over: every method returns []
-      assert.equal(g.join('z', aDeadline3 + 1).length, 0)
-      assert.equal(g.submit('b', 'x', aDeadline3 + 1).length, 0)
-      assert.equal(g.tick(aDeadline3 + 1).length, 0)
-      assert.equal(g.end(aDeadline3 + 1).length, 0)
-    },
-  },
-  {
     name: 'ramp: minLength clamps at 13, clock clamps at 20; both no-op after clamping',
     fn: () => {
       const words = new Set()

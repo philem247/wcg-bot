@@ -64,7 +64,6 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | `/addword <word>` | admin | approve a rejected word into the dictionary, live |
 | `/addword all` | admin | approve the top 10 rejected words at once |
 | `/delword <word>` | admin | remove a word |
-| `/lives [on\|off]` | admin to change | toggle lives mode (default off, 3 lives when on) |
 | `/promote @user` | owner | grant bot-admin rights in this group (persists) |
 | `/demote @user` | owner | revoke them |
 | `/admin` | anyone | list who can run admin commands here and why |
@@ -86,7 +85,7 @@ Only the OWNER and global ADMINS can run `/promote` and `/demote` — WhatsApp g
 npm test
 ```
 
-Assert-based test suite with no framework. Runs with no WhatsApp connection needed. 170 tests total across:
+Assert-based test suite with no framework. Runs with no WhatsApp connection needed. 164 tests total across:
 - `transport/test.js` — command parsing, admin layers, message filtering
 - `transport/render.test.js` — event-to-text rendering
 - `transport/router.test.js` — command routing and game lifecycle
