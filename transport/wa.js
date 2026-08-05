@@ -11,11 +11,6 @@ let logger;
 let shuttingDown = false;
 let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
 let authFlush = null; // set by connect(), called by shutdown()
-// One auth state for the process lifetime. Re-creating it per connect() re-reads
-// creds.json from disk while the previous instance may still hold unwritten keys
-// in its 500ms debounce (the restartRequired branch reconnects with no delay) —
-// the stale read then overwrites them, losing prekeys and causing 500 badSession.
-let authState = null;
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
 const groupAdminCache = new Map(); // jid -> { admins, ts }
@@ -87,8 +82,11 @@ export async function connect(onMessage, appLogger, onConnected) {
   logger = appLogger;
   onMessageHandler = onMessage;
 
-  if (!authState) authState = useSingleFileAuthState(SESSION_FILE);
-  const { state, saveCreds, flush } = authState;
+  // Re-read per connect. Caching this across reconnects is the canonical baileys
+  // pattern and looked safe (baileys mutates creds in place), but it coincided
+  // with a hard 401 loggedOut loop on a fresh pair — reverted until that is
+  // understood. See the debounce race noted in transport/auth.js.
+  const { state, saveCreds, flush } = useSingleFileAuthState(SESSION_FILE);
   authFlush = flush;
 
   sock = makeWASocket({
