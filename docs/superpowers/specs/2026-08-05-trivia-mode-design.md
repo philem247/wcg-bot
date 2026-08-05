@@ -15,9 +15,12 @@ Seven, curated rather than mirroring any upstream taxonomy:
 
 `general` · `football` · `science` · `tech` · `entertainment` · `geography` · `history`
 
-`/trivia` with no argument plays a general mode drawing across all seven.
+`/trivia` with no argument plays **mixed** mode, drawing across all seven. "Mixed" is
+deliberately not called "general": `general` is itself one of the seven categories
+(OpenTDB's General Knowledge), so `/trivia general` must mean that category alone and
+nothing else.
 
-**General mode draws each category with equal probability, not in proportion to bank
+**Mixed mode draws each category with equal probability, not in proportion to bank
 size.** Pooling the banks and drawing uniformly would let entertainment supply ~35%
 of every game purely because it is the largest. Equal weighting is what makes the
 mode feel general.
