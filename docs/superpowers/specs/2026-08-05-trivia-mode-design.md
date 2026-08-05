@@ -101,8 +101,36 @@ interesting at no extra data cost.
 - **Club-they-never-played-for**: "Which club did Fernandinho NOT play for?"
 - Superlative: most goals, most assists
 - Stadium ↔ club, manager-at-the-time, nationality, squad number
+- **"Who am I?"** — a player synthesised from career facts
 - FPL-native: price, ownership, and classification gotchas (FPL lists Trent
   Alexander-Arnold as a defender)
+
+### Difficulty calibration
+
+Benchmarked 2026-08-05 against published quizzes aimed at serious fans (Goal.com,
+FourFourTwo, GiveMeSport, Planet Football). They consistently test: records and
+superlatives, historical precision by season, career journeys across clubs,
+managers, and "who am I?" synthesis.
+
+That is a close match for what Wikidata already encodes via `P54`, `P1346` and
+`P286`. These fact types are not a compromise forced by the data source — they are
+the same ones serious quizzes use.
+
+**Third-party quiz questions are not harvested.** Those pages are copyrighted
+editorial content; they were consulted to calibrate difficulty and question shape
+only. All shipped questions are generated from CC0 Wikidata, the public FPL API, or
+CC BY-SA OpenTDB.
+
+### Hard requirement: answer uniqueness
+
+"Who am I?" and odd-one-out templates can silently produce questions with more than
+one correct answer. *"Dutch, played for Ajax, Barcelona and Man United, won the 1995
+Champions League with Ajax"* matches Kluivert, Davids **and** de Boer.
+
+Every generated question must be verified to resolve to **exactly one** correct
+answer before emission — a `COUNT = 1` check on the generating query. A question
+failing the check is discarded, not shipped. This applies to all generated
+templates, not just "who am I?".
 
 **Distractor quality is the main design risk.** Wrong answers must be drawn from the
 same result set — other Champions League winners, not random clubs — or questions
@@ -195,12 +223,38 @@ One event, one message, `render()` stays pure, and the budget falls to 11 messag
 per game with no batching machinery. Rendered:
 
 ```
-✅ @Phil got it — B) Ronaldo
+✅ *Phil* — *B)* Real Madrid
+━━━━━━━━━━━━━━━━
 
-*Q4/10* · Football · 15s
-Which club won the 2016 Champions League?
-A) Atlético      B) Real Madrid
-C) Bayern        D) Juventus
+⚽ *FOOTBALL*  ·  *Q4/10*  ·  ⏱ *15s*
+
+*Which club broke PSG's Ligue 1
+dominance in 2020/21?*
+
+*A)*  Monaco
+*B)*  Lille
+*C)*  Lyon
+*D)*  Marseille
+
+_Reply A, B, C or D_
+```
+
+**Options are stacked one per line, never in columns.** WhatsApp renders text in a
+proportional font, so two-column layouts do not align — they look ragged, and
+differently ragged on every device.
+
+The first question of a game omits the result line and rule. On a timeout the
+result line reads `⏱ *Time!* Nobody got it — *B)* Lille`.
+
+Final standings, on `trivia_over`:
+
+```
+🏁 *FINAL*
+━━━━━━━━━━━━━━━━
+
+🥇 *Phil* — 5
+🥈 *Ada* — 3
+🥉 *Sam* — 2
 ```
 
 Other events: `trivia_over { standings }`, `trivia_terminated`.
@@ -226,10 +280,16 @@ Group-only, matching `/wcg`.
 - `games.type = 'trivia'`, `games.mode = <category>`.
 - On `trivia_over`, rank by score descending into placements and record via the
   existing `recordGame` path.
-- **`/stats` must gain `WHERE games.type != 'trivia'`.** It has no type filter today,
-  so without this change trivia results would silently pollute the word-chain board.
-  `/trivia stats` is the same query filtered to `= 'trivia'`. `results.game_id` already
-  joins to `games.type`, so this needs no schema migration.
+**The two leaderboards are separate.** Both game types write to the same `results`
+table, tagged by `games.type`, and each board filters to its own type:
+
+- `/stats` gains `WHERE games.type != 'trivia'` — word chain only.
+- `/trivia stats` is the same query with `WHERE games.type = 'trivia'`.
+
+`results.game_id` already joins to `games.type`, so this needs no schema migration —
+it is two `WHERE` clauses. The `/stats` change is called out specifically because it
+edits a query that currently works correctly: without the filter, trivia results
+would silently start appearing on the word chain board.
 
 **Deliberate cut:** no `score` column on `results`. Ranking reuses the existing
 `min(player_count - placement, 3) + 3` formula verbatim, so both boards share one
@@ -299,8 +359,12 @@ your word — or A–D for trivia
 - `store/db.test.js` — `asked_questions` round-trip and recycle, type-filtered
   leaderboards not leaking across game types.
 
-`data/build-trivia.mjs` is **not** tested — it hits the network, same as the existing
-`data/build.mjs`.
+`data/build-trivia.mjs`'s **network fetching** is not tested, same as the existing
+`data/build.mjs`. Its **pure transforms are**, and must be, because they are where
+bad questions come from: the answer-uniqueness check (a question whose fact set
+matches two players is discarded), distractor selection drawing from the same result
+set, and HTML-entity decoding. These take data in and give data out, so they test
+without a network.
 
 ## Phasing
 
