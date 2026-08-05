@@ -689,11 +689,19 @@ const tests = [
     name: 'spamming every letter cannot win the point',
     fn: () => {
       const { g, first } = startGame(3)
-      const results = LETTERS.map((l) => g.submit('cheat', l, 1000))
-      assert.equal(results.filter((r) => r.length > 0).length, results[0].length > 0 ? 1 : 0)
-      // Only the very first submission counted; if it was wrong, none advanced.
-      const advanced = results.filter((r) => r.length > 0)
-      assert.ok(advanced.length <= 1, 'at most the first submission can score')
+      // Submit a deliberately wrong letter first, then every other letter.
+      // The wrong one consumes the single attempt, so the correct letter that
+      // follows must not score — otherwise a spammer wins every question.
+      const correct = first.options.find((o) => o.text === 'right0').letter
+      const wrongFirst = LETTERS.find((l) => l !== correct)
+      const order = [wrongFirst, ...LETTERS.filter((l) => l !== wrongFirst)]
+      const emitted = order.flatMap((l) => g.submit('cheat', l, 1000))
+      assert.deepEqual(emitted, [], 'no submission after the first can score')
+      assert.equal(g.state, 'playing', 'still on question 1')
+      // And the point is genuinely still available to someone else.
+      const ev = g.submit('honest', correct, 1100)
+      assert.equal(ev.length, 1)
+      assert.equal(ev[0].previous.player, 'honest')
     },
   },
   {
