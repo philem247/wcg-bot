@@ -14,6 +14,26 @@ const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
 const groupAdminCache = new Map(); // jid -> { admins, ts }
 
+// ponytail: bounded lid->phone map instead of a real LRU/persistent store — we only
+// need enough recent groups' worth of participants to resolve @lid senders for admin
+// checks. Cap at 5000 entries, evict oldest once past it.
+const LID_MAP_CAP = 5000;
+const lidToPhone = new Map(); // lid-form JID -> phone-form JID
+
+function rememberLidPhone(lidJid, phoneJid) {
+  if (!lidJid || !phoneJid) return;
+  lidToPhone.set(lidJid, phoneJid);
+  while (lidToPhone.size > LID_MAP_CAP) {
+    lidToPhone.delete(lidToPhone.keys().next().value);
+  }
+}
+
+// Resolves a lid-form JID to its phone-form JID, learned from group metadata
+// (see getGroupAdmins). Returns undefined if never seen.
+export function resolvePn(jid) {
+  return lidToPhone.get(jid);
+}
+
 // ponytail: bounded id cache instead of a real LRU/expiry — we only need to recognize
 // the immediate echo of our own sends, so keeping the most-recent 500 ids is plenty.
 export const SENT_ID_CAP = 500;
@@ -108,11 +128,11 @@ export async function connect(onMessage, appLogger, onConnected) {
       } else if (reason === DisconnectReason.restartRequired) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}]`);
         sock.ev.removeAllListeners();
-        connect(onMessage, logger);
+        connect(onMessage, logger, onConnected);
       } else {
         logger.info(`Disconnected (${reason} ${reasonName}), reconnecting in ${RECONNECT_DELAY}ms...`);
         sock.ev.removeAllListeners();
-        setTimeout(() => connect(onMessage, logger), RECONNECT_DELAY);
+        setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
       }
     }
   });
@@ -148,7 +168,9 @@ export async function connect(onMessage, appLogger, onConnected) {
         // Phone-form JID alongside `sender`, which may be @lid under lid addressing.
         // No participant (DM) means sender is already phone-form; participantPn may
         // legitimately be undefined (non-lid groups, or older baileys behaviour).
-        const senderPn = msg.key.participant ? msg.key.participantPn : sender;
+        const senderPn = msg.key.fromMe
+          ? ownJid
+          : msg.key.participant ? msg.key.participantPn : sender;
         const isGroup = jid.endsWith('@g.us');
 
         onMessageHandler({ jid, sender, senderPn, text, isGroup, raw: msg });
@@ -210,9 +232,11 @@ export async function getGroupAdmins(jid) {
   if (!sock) return [];
   try {
     const metadata = await sock.groupMetadata(jid);
-    const admins = (metadata.participants || [])
-      .filter((p) => p.admin === 'admin' || p.admin === 'superadmin')
-      .map((p) => p.id);
+    const admins = [];
+    for (const p of metadata.participants || []) {
+      if (p.lid && p.jid) rememberLidPhone(p.lid, p.jid);
+      if (p.admin === 'admin' || p.admin === 'superadmin') admins.push(p.id);
+    }
     groupAdminCache.set(jid, { admins, ts: now });
     return admins;
   } catch (e) {

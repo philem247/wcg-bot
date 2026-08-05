@@ -328,6 +328,28 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'bot_admins round-trip: add, duplicate returns false, list, delete, delete-missing returns false',
+    fn: () => {
+      const db = openDb(':memory:')
+      const added = db.addBotAdmin('jid-a', '5551234567', { addedBy: '9999999999', ts: 1000 })
+      assert(added, 'first add should return true')
+
+      const dup = db.addBotAdmin('jid-a', '5551234567', { addedBy: '9999999999', ts: 1100 })
+      assert(!dup, 'duplicate add should return false')
+
+      assert.deepEqual(db.botAdmins('jid-a'), ['5551234567'])
+      assert.deepEqual(db.botAdmins('jid-b'), [], 'different jid should be unaffected')
+
+      const removed = db.delBotAdmin('jid-a', '5551234567')
+      assert(removed, 'delete existing should return true')
+      assert.deepEqual(db.botAdmins('jid-a'), [])
+
+      const removedAgain = db.delBotAdmin('jid-a', '5551234567')
+      assert(!removedAgain, 'delete missing should return false')
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

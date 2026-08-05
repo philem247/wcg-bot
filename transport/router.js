@@ -1,7 +1,7 @@
 // Group-only game commands routed to the engine. No transport connection here.
 import { parseCommand } from './commands.js'
 import { render } from './render.js'
-import { isAdminEither, toNumber } from './admin.js'
+import { isAdmin, isAdminEither, toNumber } from './admin.js'
 import { createGame } from '../engine/game.js'
 import { LIVES_WHEN_ON } from '../engine/modes.js'
 import { fold, isWord } from '../engine/normalize.js'
@@ -137,11 +137,46 @@ function formatPending(rows) {
   return { text: `📝 Most-rejected words here:\n${rows.map((r) => `${r.word} x${r.count}`).join('\n')}`, mentions: [] }
 }
 
-export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db }) {
+export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db, resolvePn = () => undefined }) {
   // Engine games don't expose who started them; track it here, mirroring `games`.
   // ponytail: scheduler-driven deletions (timeout/lobby-fail) don't clean this map,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
   const starters = new Map()
+
+  // Admin check used by every existing admin-gated command: also accepts
+  // db-stored bot admins (per-group, /promote'd), and resolves a @lid sender's
+  // phone-form JID via resolvePn when senderPn wasn't already supplied.
+  function isBotAdminEither(sender, senderPn, isGroup, groupAdmins, gJid) {
+    return isAdminEither({
+      sender,
+      senderPn: senderPn ?? resolvePn(sender),
+      isGroup,
+      groupAdmins,
+      extraAdmins: db.botAdmins?.(gJid) ?? [],
+    })
+  }
+
+  // /promote and /demote are gated to OWNER/ADMINS only — group admins and
+  // db-stored bot admins must not be able to mint new bot admins.
+  function isOwnerOrGlobalAdmin(sender, senderPn) {
+    const pn = senderPn ?? resolvePn(sender)
+    return isAdmin({ sender: pn, isGroup: false, groupAdmins: [] }) || isAdmin({ sender, isGroup: false, groupAdmins: [] })
+  }
+
+  // Mentioned JID takes priority over a typed number in args. A mentioned
+  // @lid JID is resolved to phone-form first, since bot_admins stores numbers.
+  function resolveTarget(raw, args) {
+    const mentionedJid = raw?.message?.extendedTextMessage?.contextInfo?.mentionedJid?.[0]
+    let number
+    if (mentionedJid) {
+      const pnJid = mentionedJid.endsWith('@lid') ? resolvePn(mentionedJid) : mentionedJid
+      number = pnJid ? toNumber(pnJid) : undefined
+    } else {
+      // Strip +, spaces and dashes so a typed "+234 913..." still resolves.
+      number = (args[0] ?? '').replace(/[^\d]/g, '')
+    }
+    return /^\d+$/.test(number ?? '') ? number : undefined
+  }
 
   async function startGame(jid, sender, senderPn, args, type, now) {
     if (games.has(jid)) {
@@ -165,7 +200,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
     const game = games.get(jid)
     if (!game) return
     const groupAdmins = await getGroupAdmins(jid)
-    const allowed = sender === starters.get(jid) || isAdminEither({ sender, senderPn, isGroup, groupAdmins })
+    const allowed = sender === starters.get(jid) || isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)
     if (!allowed) {
       enqueue(jid, { text: `Only the player who started the game or a group admin can end it.`, mentions: [], kind: 'misc' })
       return
@@ -177,7 +212,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
     }
   }
 
-  async function handleCommand(jid, sender, senderPn, isGroup, cmd, args, now) {
+  async function handleCommand(jid, sender, senderPn, isGroup, cmd, args, now, raw) {
     if (cmd === 'ping') {
       enqueue(jid, { text: 'pong', mentions: [], kind: 'misc' })
       return
@@ -185,7 +220,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
 
     if (cmd === 'help') {
       enqueue(jid, {
-        text: `Commands:\n${PREFIX}ping - check the bot is alive\n${PREFIX}wcg start|easy|medium|hard - start a chain game (group only)\n${PREFIX}wrg start - start a random-letter game (group only)\n${PREFIX}wcg end - end the current game (starter or admin)\n${PREFIX}stats [all] - weekly or all-time leaderboard\n${PREFIX}pending - most-rejected words (admin)\n${PREFIX}addword <word>|all - approve a word (admin)\n${PREFIX}delword <word> - remove a word (admin)\n${PREFIX}lives [on|off] - toggle lives mode (admin to change)\n${PREFIX}admin - who can run admin commands here\njoin - join the lobby\n<word> - submit a word on your turn`,
+        text: `Commands:\n${PREFIX}ping - check the bot is alive\n${PREFIX}wcg start|easy|medium|hard - start a chain game (group only)\n${PREFIX}wrg start - start a random-letter game (group only)\n${PREFIX}wcg end - end the current game (starter or admin)\n${PREFIX}stats [all] - weekly or all-time leaderboard\n${PREFIX}pending - most-rejected words (admin)\n${PREFIX}addword <word>|all - approve a word (admin)\n${PREFIX}delword <word> - remove a word (admin)\n${PREFIX}lives [on|off] - toggle lives mode (admin to change)\n${PREFIX}admin - who can run admin commands here\n${PREFIX}promote @user - make a bot admin here (owner only)\n${PREFIX}demote @user - remove a bot admin here (owner only)\njoin - join the lobby\n<word> - submit a word on your turn`,
         mentions: [],
         kind: 'misc',
       })
@@ -196,7 +231,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
       const sub = args[0]
       if (sub === 'on' || sub === 'off') {
         const groupAdmins = await getGroupAdmins(jid)
-        if (!isAdminEither({ sender, senderPn, isGroup, groupAdmins })) {
+        if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)) {
           enqueue(jid, { text: `Admins only.`, mentions: [], kind: 'misc' })
           return
         }
@@ -232,6 +267,13 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
         } else {
           lines.push(`Group: none`)
         }
+        const botAdmins = db.botAdmins?.(jid) ?? []
+        if (botAdmins.length > 0) {
+          lines.push(`Bot admins: ${botAdmins.map((n) => `@${n}`).join(' ')}`)
+          mentions.push(...botAdmins.map((n) => `${n}@s.whatsapp.net`))
+        } else {
+          lines.push(`Bot admins: none`)
+        }
       } else {
         lines.push(`Group admins do not apply in a DM.`)
       }
@@ -249,7 +291,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
 
     if (cmd === 'pending' || cmd === 'addword' || cmd === 'delword') {
       const groupAdmins = await getGroupAdmins(jid)
-      if (!isAdminEither({ sender, senderPn, isGroup, groupAdmins })) {
+      if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)) {
         enqueue(jid, { text: `Admins only.`, mentions: [], kind: 'misc' })
         return
       }
@@ -293,6 +335,30 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
       return
     }
 
+    if (cmd === 'promote' || cmd === 'demote') {
+      if (!isGroup) {
+        enqueue(jid, { text: `${PREFIX}${cmd} only works inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+      if (!isOwnerOrGlobalAdmin(sender, senderPn)) {
+        enqueue(jid, { text: `Only the owner can ${cmd}.`, mentions: [], kind: 'misc' })
+        return
+      }
+      const target = resolveTarget(raw, args)
+      if (!target) {
+        enqueue(jid, { text: `Mention who you want to ${cmd}.`, mentions: [], kind: 'misc' })
+        return
+      }
+      if (cmd === 'promote') {
+        const added = db.addBotAdmin(jid, target, { addedBy: toNumber(sender), ts: now })
+        enqueue(jid, { text: added ? `Promoted @${target}.` : `@${target} is already a bot admin.`, mentions: [`${target}@s.whatsapp.net`], kind: 'misc' })
+      } else {
+        const removed = db.delBotAdmin(jid, target)
+        enqueue(jid, { text: removed ? `Demoted @${target}.` : `@${target} is not a bot admin.`, mentions: [`${target}@s.whatsapp.net`], kind: 'misc' })
+      }
+      return
+    }
+
     if (cmd === 'wcg' || cmd === 'wrg') {
       if (!isGroup) {
         enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
@@ -314,7 +380,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db 
     async handleMessage({ jid, sender, senderPn, text, isGroup, raw }, now) {
       const parsed = parseCommand(text, PREFIX)
       if (parsed) {
-        await handleCommand(jid, sender, senderPn, isGroup, parsed.cmd, parsed.args, now)
+        await handleCommand(jid, sender, senderPn, isGroup, parsed.cmd, parsed.args, now, raw)
         return
       }
 

@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "node transport/test.js && node transport/render.test.js && node transport/router.test.js && node engine/test.js && node engine/game.test.js && node transport/outbox.test.js && node transport/lock.test.js && node transport/quiet.test.js && node store/db.test.js"
+    "test": "node transport/test.js && node transport/render.test.js && node transport/router.test.js && node engine/test.js && node engine/game.test.js && node transport/outbox.test.js && node transport/lock.test.js && node transport/quiet.test.js && node transport/auth.test.js && node store/db.test.js"
   },
   "dependencies": {
     "baileys": "~6.7.24",

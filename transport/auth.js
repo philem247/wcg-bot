@@ -9,7 +9,7 @@
 // Additional: flush() for graceful shutdown — forces any debounced write to
 // disk synchronously before the process exits.
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync, mkdirSync, renameSync } from 'node:fs'
 import { dirname } from 'node:path'
 import { initAuthCreds, BufferJSON } from 'baileys'
 
@@ -23,8 +23,14 @@ export function useSingleFileAuthState(filePath) {
   if (existsSync(filePath)) {
     try {
       store = JSON.parse(readFileSync(filePath, 'utf-8'), BufferJSON.reviver)
-    } catch {
-      // Corrupted file — start fresh (same as baileys' own behaviour)
+    } catch (e) {
+      // Corrupted file (e.g. a crash mid-write before atomic rename existed) —
+      // preserve it instead of silently discarding, it may be recoverable.
+      const corruptPath = `${filePath}.corrupt-${Date.now()}`
+      try {
+        renameSync(filePath, corruptPath)
+      } catch { /* best effort */ }
+      console.error(`Session file could not be read (${e.message}). Preserved as ${corruptPath}. Starting fresh — re-pairing will be needed.`)
       store = { creds: null, keys: {} }
     }
   }
@@ -41,7 +47,9 @@ export function useSingleFileAuthState(filePath) {
   function persist() {
     try {
       store.creds = creds
-      writeFileSync(filePath, JSON.stringify(store, BufferJSON.replacer))
+      const tmpPath = `${filePath}.tmp`
+      writeFileSync(tmpPath, JSON.stringify(store, BufferJSON.replacer))
+      renameSync(tmpPath, filePath) // atomic on same filesystem — live file is never partial
     } catch (e) {
       console.error('Failed to save auth state:', e.message)
     }

@@ -1,6 +1,6 @@
 import pino from 'pino';
 import pinoPretty from 'pino-pretty';
-import { connect, send, getGroupAdmins, shutdown as waShutdown } from './transport/wa.js';
+import { connect, send, getGroupAdmins, resolvePn, shutdown as waShutdown } from './transport/wa.js';
 import { createRouter, sendEvents } from './transport/router.js';
 import { createOutbox } from './transport/outbox.js';
 import { acquireLock, releaseLock } from './transport/lock.js';
@@ -65,7 +65,7 @@ const games = new Map(); // jid -> game
 const outbox = createOutbox({ sendFn: send, logger });
 outbox.start();
 
-const router = createRouter({ dict, games, enqueue: outbox.enqueue, logger, getGroupAdmins, db });
+const router = createRouter({ dict, games, enqueue: outbox.enqueue, logger, getGroupAdmins, db, resolvePn });
 
 // pump() (engine/tick.js) walks all games synchronously and does not await onEvents.
 // That's fine now: sendEvents just enqueues (synchronous), so it can never block
@@ -114,33 +114,51 @@ async function handleMessage(msg) {
   await router.handleMessage({ jid, sender, senderPn, text, isGroup, raw }, Date.now());
 }
 
-// Welcome message — sent to the OWNER once on first connect. Reconnections
-// (e.g. after a brief disconnect) do not re-send it.
-let welcomeSent = false;
+// Welcome message — sent to the OWNER on every connect, including reconnects.
+// Cooldown (not a one-shot boolean) because the generic reconnect branch in
+// transport/wa.js retries every 3s; without this a flapping connection would
+// DM the owner in a loop.
+const WELCOME_COOLDOWN_MS = 5 * 60 * 1000;
+let lastWelcomeAt = 0;
 function onConnected() {
-  if (welcomeSent) return;
-  welcomeSent = true;
   if (!OWNER) return;
+  const now = Date.now();
+  if (now - lastWelcomeAt < WELCOME_COOLDOWN_MS) return;
+  const isFirstSend = lastWelcomeAt === 0;
+  lastWelcomeAt = now;
+
   const ownerJid = `${OWNER}@s.whatsapp.net`;
-  const bootSec = ((Date.now() - bootStart) / 1000).toFixed(1);
-  const dictSize = dict.size.toLocaleString();
-  const msg = [
-    `🎮 *W·C·G  B·O·T* 🎮`,
-    `━━━━━━━━━━━━━━━━━━━`,
-    ``,
-    `⚡ *Online* and locked in.`,
-    ``,
-    `📚 *${dictSize}* words loaded`,
-    `🕐 Booted in *${bootSec}s*`,
-    ``,
-    `_"First they ignore your vocabulary._`,
-    `_Then they time out."_`,
-    ``,
-    `▸ */help* — all commands`,
-    `▸ */wcg start* — drop into a group and go`,
-    ``,
-    `🔗 Chain. Survive. Win.`,
-  ].join('\n');
+  let msg;
+  if (isFirstSend) {
+    const bootSec = ((Date.now() - bootStart) / 1000).toFixed(1);
+    const dictSize = dict.size.toLocaleString();
+    msg = [
+      `🎮 *W·C·G  B·O·T* 🎮`,
+      `━━━━━━━━━━━━━━━━━━━`,
+      ``,
+      `⚡ *Online* and locked in.`,
+      ``,
+      `📚 *${dictSize}* words loaded`,
+      `🕐 Booted in *${bootSec}s*`,
+      ``,
+      `_"First they ignore your vocabulary._`,
+      `_Then they time out."_`,
+      ``,
+      `▸ */help* — all commands`,
+      `▸ */wcg start* — drop into a group and go`,
+      ``,
+      `🔗 Chain. Survive. Win.`,
+    ].join('\n');
+  } else {
+    msg = [
+      `🎮 *W·C·G  B·O·T* 🎮`,
+      `━━━━━━━━━━━━━━━━━━━`,
+      ``,
+      `⚡ *Reconnected.*`,
+      ``,
+      `▸ */help* — all commands`,
+    ].join('\n');
+  }
   send(ownerJid, { text: msg, mentions: [] });
 }
 

@@ -17,6 +17,27 @@ function makeSettingsDb() {
   }
 }
 
+// Minimal fake bot_admins store backing addBotAdmin/delBotAdmin/botAdmins, shared by the /promote tests.
+function makeBotAdminDb() {
+  const store = new Map() // jid -> Set(number)
+  return {
+    addBotAdmin: (jid, number) => {
+      if (!store.has(jid)) store.set(jid, new Set())
+      const set = store.get(jid)
+      if (set.has(number)) return false
+      set.add(number)
+      return true
+    },
+    delBotAdmin: (jid, number) => {
+      const set = store.get(jid)
+      if (!set || !set.has(number)) return false
+      set.delete(number)
+      return true
+    },
+    botAdmins: (jid) => Array.from(store.get(jid) ?? []),
+  }
+}
+
 const tests = [
   {
     name: 'sendEvents: enqueues in emission order with the right kind per event',
@@ -418,6 +439,103 @@ const tests = [
       assert(replies[0].mentions.includes('444444444@s.whatsapp.net'))
       assert(replies[0].text.includes('@15550000000'), 'should mention OWNER from config')
       assert(replies[0].text.includes('@15550000001'), 'should mention global ADMINS from config')
+    },
+  },
+  {
+    name: '/promote: a non-owner group admin is refused',
+    fn: async () => {
+      const fakeDb = makeBotAdminDb()
+      const replies = []
+      const enqueue = (jid, payload) => replies.push(payload)
+      const router = createRouter({
+        dict: {},
+        games: new Map(),
+        enqueue,
+        logger: undefined,
+        getGroupAdmins: async () => ['444444444@s.whatsapp.net'],
+        db: fakeDb,
+      })
+
+      await router.handleMessage(
+        {
+          jid: 'g-promote-1',
+          sender: '444444444@s.whatsapp.net', // group admin, not OWNER/ADMINS
+          senderPn: undefined,
+          text: '/promote 1231231234',
+          isGroup: true,
+          raw: undefined,
+        },
+        1000
+      )
+
+      assert.equal(replies.length, 1)
+      assert(replies[0].text.includes('Only the owner can promote'))
+      assert.deepEqual(fakeDb.botAdmins('g-promote-1'), [], 'group admin must not be able to mint a bot admin')
+    },
+  },
+  {
+    name: '/promote: the owner with a mentionedJid persists the number',
+    fn: async () => {
+      const fakeDb = makeBotAdminDb()
+      const replies = []
+      const enqueue = (jid, payload) => replies.push(payload)
+      const router = createRouter({
+        dict: {},
+        games: new Map(),
+        enqueue,
+        logger: undefined,
+        getGroupAdmins: async () => [],
+        db: fakeDb,
+      })
+
+      const raw = { message: { extendedTextMessage: { contextInfo: { mentionedJid: ['1231231234@s.whatsapp.net'] } } } }
+
+      await router.handleMessage(
+        {
+          jid: 'g-promote-2',
+          sender: '15550000000@s.whatsapp.net', // OWNER from config
+          senderPn: undefined,
+          text: '/promote @user',
+          isGroup: true,
+          raw,
+        },
+        1000
+      )
+
+      assert.deepEqual(fakeDb.botAdmins('g-promote-2'), ['1231231234'])
+      assert.equal(replies.length, 1)
+      assert(replies[0].text.includes('Promoted'))
+      assert(replies[0].mentions.includes('1231231234@s.whatsapp.net'))
+    },
+  },
+  {
+    name: '/promote then /pending: a promoted user passes the admin gate',
+    fn: async () => {
+      const fakeDb = makeBotAdminDb()
+      const pendingCalls = []
+      fakeDb.pending = (...a) => { pendingCalls.push(a); return [] }
+      const enqueue = () => {}
+      const router = createRouter({
+        dict: {},
+        games: new Map(),
+        enqueue,
+        logger: undefined,
+        getGroupAdmins: async () => [],
+        db: fakeDb,
+      })
+
+      const raw = { message: { extendedTextMessage: { contextInfo: { mentionedJid: ['1231231234@s.whatsapp.net'] } } } }
+      await router.handleMessage(
+        { jid: 'g-promote-3', sender: '15550000000@s.whatsapp.net', senderPn: undefined, text: '/promote @user', isGroup: true, raw },
+        1000
+      )
+
+      await router.handleMessage(
+        { jid: 'g-promote-3', sender: '1231231234@s.whatsapp.net', senderPn: undefined, text: '/pending', isGroup: true, raw: undefined },
+        1000
+      )
+
+      assert.equal(pendingCalls.length, 1, 'promoted user should pass the admin gate')
     },
   },
 ]

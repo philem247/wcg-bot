@@ -32,6 +32,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       jid TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
       PRIMARY KEY (jid, key)
     );
+    CREATE TABLE IF NOT EXISTS bot_admins (
+      jid TEXT NOT NULL, number TEXT NOT NULL, added_by TEXT, added_at INTEGER,
+      PRIMARY KEY (jid, number)
+    );
     CREATE INDEX IF NOT EXISTS idx_results_jid_ended ON results(jid, ended_at);
     CREATE INDEX IF NOT EXISTS idx_rejections_jid_word ON rejections(jid, word);
   `)
@@ -84,6 +88,15 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   )
   const stmtSetSetting = db.prepare(
     'INSERT INTO settings (jid, key, value) VALUES (?, ?, ?) ON CONFLICT(jid, key) DO UPDATE SET value = excluded.value'
+  )
+  const stmtInsertBotAdmin = db.prepare(
+    'INSERT OR IGNORE INTO bot_admins (jid, number, added_by, added_at) VALUES (?, ?, ?, ?)'
+  )
+  const stmtDeleteBotAdmin = db.prepare(
+    'DELETE FROM bot_admins WHERE jid = ? AND number = ?'
+  )
+  const stmtSelectBotAdmins = db.prepare(
+    'SELECT number FROM bot_admins WHERE jid = ? ORDER BY number'
   )
 
   return {
@@ -162,6 +175,20 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
 
     setSetting(jid, key, value) {
       stmtSetSetting.run(jid, key, value)
+    },
+
+    addBotAdmin(jid, number, { addedBy, ts }) {
+      const result = stmtInsertBotAdmin.run(jid, number, addedBy, ts)
+      return result.changes > 0
+    },
+
+    delBotAdmin(jid, number) {
+      const result = stmtDeleteBotAdmin.run(jid, number)
+      return result.changes > 0
+    },
+
+    botAdmins(jid) {
+      return stmtSelectBotAdmins.all(jid).map(row => row.number)
     },
 
     close() {

@@ -13,13 +13,14 @@ export function isPhoneJid(jid) {
   return !domain || domain === 's.whatsapp.net';
 }
 
-export function isAdmin({ sender, isGroup, groupAdmins }) {
+export function isAdmin({ sender, isGroup, groupAdmins, extraAdmins = [] }) {
   const senderNumber = toNumber(sender);
 
-  // Only check OWNER/ADMINS for actual phone JIDs, not @lid
+  // Only check OWNER/ADMINS/extraAdmins for actual phone JIDs, not @lid
   if (isPhoneJid(sender)) {
     if (senderNumber === OWNER) return true;
     if (ADMINS.includes(senderNumber)) return true;
+    if (extraAdmins.includes(senderNumber)) return true;
   }
 
   if (isGroup && groupAdmins?.length > 0) {
@@ -34,7 +35,7 @@ export function isAdmin({ sender, isGroup, groupAdmins }) {
 // possible, by design — see isAdmin above) while `senderPn` carries the phone-form
 // JID for the same participant (may be undefined). Group-admin JIDs arrive in
 // whatever namespace the group uses (same as `sender`), so try both forms.
-export function isAdminEither({ sender, senderPn, isGroup, groupAdmins }) {
-  if (isAdmin({ sender: senderPn, isGroup, groupAdmins })) return true;
-  return isAdmin({ sender, isGroup, groupAdmins });
+export function isAdminEither({ sender, senderPn, isGroup, groupAdmins, extraAdmins = [] }) {
+  if (isAdmin({ sender: senderPn, isGroup, groupAdmins, extraAdmins })) return true;
+  return isAdmin({ sender, isGroup, groupAdmins, extraAdmins });
 }

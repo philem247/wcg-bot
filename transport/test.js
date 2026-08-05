@@ -189,6 +189,18 @@ const adminTests = [
     fn: 'isAdminEither',
     expected: false,
   },
+  {
+    name: 'isAdmin: extraAdmins grants admin for a phone-form JID',
+    input: { sender: '4443332222@s.whatsapp.net', isGroup: false, groupAdmins: undefined, extraAdmins: ['4443332222'] },
+    fn: 'isAdmin',
+    expected: true,
+  },
+  {
+    name: 'isAdmin: extraAdmins does NOT grant admin for a @lid JID (security)',
+    input: { sender: '4443332222@lid', isGroup: false, groupAdmins: undefined, extraAdmins: ['4443332222'] },
+    fn: 'isAdmin',
+    expected: false,
+  },
 ];
 
 const waTests = [

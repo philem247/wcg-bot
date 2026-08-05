@@ -65,6 +65,8 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | `/addword all` | admin | approve the top 10 rejected words at once |
 | `/delword <word>` | admin | remove a word |
 | `/lives [on\|off]` | admin to change | toggle lives mode (default off, 3 lives when on) |
+| `/promote @user` | owner | grant bot-admin rights in this group (persists) |
+| `/demote @user` | owner | revoke them |
 | `/admin` | anyone | list who can run admin commands here and why |
 | `/help` | anyone | show all commands |
 | `join` | anyone | join the lobby (bare word, no prefix) |
@@ -74,6 +76,9 @@ Admin layers (checked in order):
 1. **OWNER** — full control everywhere
 2. **ADMINS** (global) — same power as owner
 3. **WhatsApp group admins** — control the bot in their group only
+4. **Promoted bot admins** — per-group, granted with `/promote`, stored in the database, survive restarts
+
+Only the OWNER and global ADMINS can run `/promote` and `/demote` — WhatsApp group admins cannot.
 
 ## Tests
 
@@ -81,7 +86,7 @@ Admin layers (checked in order):
 npm test
 ```
 
-Assert-based test suite with no framework. Runs with no WhatsApp connection needed. 161 tests total across:
+Assert-based test suite with no framework. Runs with no WhatsApp connection needed. 170 tests total across:
 - `transport/test.js` — command parsing, admin layers, message filtering
 - `transport/render.test.js` — event-to-text rendering
 - `transport/router.test.js` — command routing and game lifecycle
@@ -90,6 +95,7 @@ Assert-based test suite with no framework. Runs with no WhatsApp connection need
 - `transport/outbox.test.js` — send queue and rate limiting
 - `transport/lock.test.js` — single-instance guard
 - `transport/quiet.test.js` — signal-noise suppression
+- `transport/auth.test.js` — single-file session state, atomic writes
 - `store/db.test.js` — sqlite schema and queries
 
 ## Dictionary
@@ -111,6 +117,7 @@ Players grow the dictionary at runtime:
 - Never share it, never paste it anywhere
 - Back it up over SFTP before any host reinstall — it is the only recovery path
 - Never run two instances against the same `session/` directory; a lock file inside `session/` prevents this to guard against Signal ratchet corruption
+- Session writes are atomic (temp file + rename), and an unreadable `creds.json` is preserved as `creds.json.corrupt-<timestamp>` rather than silently discarded
 
 The bot handles graceful shutdown via `SIGINT`/`SIGTERM` to ensure credentials are flushed before exit. Avoid `kill -9` and avoid just closing the terminal window.
 
