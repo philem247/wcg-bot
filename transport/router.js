@@ -23,6 +23,12 @@ const lastTurn = new Map() // jid -> { letter, minLength }
 // pass through sendEvents (across separate calls - one per tick/submit).
 const gameMeta = new Map() // jid -> { mode, type, startedAt, players, eliminated, pnMap }
 
+// When each chat's last trivia game ended, so a new one cannot start immediately.
+// Module-level beside gameMeta because trivia_over arrives through sendEvents,
+// which is module-level too.
+const lastTriviaEnd = new Map() // jid -> ts
+export const TRIVIA_COOLDOWN_MS = 2 * 60 * 1000
+
 // Event type -> outbox kind (transport/outbox.js). Anything not listed here
 // (command replies, permission refusals) is enqueued directly as 'misc'.
 const KIND_BY_EVENT = {
@@ -113,6 +119,7 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
     } else if (event.type === 'terminated' || event.type === 'ended') {
       gameMeta.delete(jid)
     } else if (event.type === 'trivia_over') {
+      lastTriviaEnd.set(jid, now)
       const meta = gameMeta.get(jid)
       const pnMap = meta?.pnMap || new Map()
       const results = event.standings.map((s, i) => ({
@@ -131,6 +138,7 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       }
       gameMeta.delete(jid)
     } else if (event.type === 'trivia_terminated') {
+      lastTriviaEnd.set(jid, now)
       gameMeta.delete(jid)
     }
     const rendered = render(toRender)
@@ -172,6 +180,25 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   const ORPHAN_NOTICE_MS = 5 * 60 * 1000
   const lastOrphanNotice = new Map() // jid -> ts of the last notice sent
 
+  // Command flood guard. Only commands are counted — gameplay messages must never
+  // be limited or a fast round breaks. Over the limit we drop SILENTLY: replying
+  // "stop spamming" is itself more spam and doubles the flood.
+  // ponytail: fixed window per sender, not a token bucket — same bounded-leak note
+  // as `starters`.
+  const CMD_WINDOW_MS = 30_000
+  const CMD_MAX = 5
+  const cmdHits = new Map() // sender -> { windowStart, count }
+
+  function overCommandLimit(sender, now) {
+    const hit = cmdHits.get(sender)
+    if (!hit || now - hit.windowStart >= CMD_WINDOW_MS) {
+      cmdHits.set(sender, { windowStart: now, count: 1 })
+      return false
+    }
+    hit.count++
+    return hit.count > CMD_MAX
+  }
+
   // Group admins are a group-only concept. Calling getGroupAdmins on a DM jid
   // never gets a reply and baileys blocks for its full 60s query timeout.
   // Never query group metadata for a non-group JID: WhatsApp simply never answers,
@@ -202,6 +229,13 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     return isAdmin({ sender: pn, isGroup: false, groupAdmins: [] }) || isAdmin({ sender, isGroup: false, groupAdmins: [] })
   }
 
+  // Starting a game is now admin-only: group admins, /promote'd bot admins, the
+  // OWNER, or a global ADMIN. Everyone can still play, answer and read stats.
+  async function mayStartGame(jid, sender, senderPn, isGroup) {
+    const groupAdmins = await groupAdminsFor(jid, isGroup)
+    return isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid) || isOwnerOrGlobalAdmin(sender, senderPn)
+  }
+
   // Mentioned JID takes priority over a typed number in args. A mentioned
   // @lid JID is resolved to phone-form first, since bot_admins stores numbers.
   function resolveTarget(raw, args) {
@@ -217,7 +251,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     return /^\d+$/.test(number ?? '') ? number : undefined
   }
 
-  async function startGame(jid, sender, senderPn, args, type, now) {
+  async function startGame(jid, sender, senderPn, args, type, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
+      return
+    }
     if (games.has(jid)) {
       enqueue(jid, { text: `A game is already running here. Use ${PREFIX}wcg end to stop it first.`, mentions: [], kind: 'misc' })
       return
@@ -236,13 +274,25 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   }
 
   // No lobby: the first question posts immediately and answering is joining.
-  async function startTrivia(jid, sender, senderPn, args, now) {
+  async function startTrivia(jid, sender, senderPn, args, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
+      return
+    }
     if (games.has(jid)) {
       enqueue(jid, { text: `A game is already running here. Use ${PREFIX}trivia end to stop it first.`, mentions: [], kind: 'misc' })
       return
     }
     if (!bank) {
       enqueue(jid, { text: `Trivia is unavailable — no question bank loaded.`, mentions: [], kind: 'misc' })
+      return
+    }
+    // Group admins are subject to this too — otherwise, with starts already
+    // restricted to admins, the cooldown would never apply to anyone.
+    const endedAt = lastTriviaEnd.get(jid)
+    if (endedAt !== undefined && now - endedAt < TRIVIA_COOLDOWN_MS && !isOwnerOrGlobalAdmin(sender, senderPn)) {
+      const waitSec = Math.ceil((TRIVIA_COOLDOWN_MS - (now - endedAt)) / 1000)
+      enqueue(jid, { text: `Hold on — another trivia round can start in ${waitSec}s.`, mentions: [], kind: 'misc' })
       return
     }
     const available = bank.categories()
@@ -336,13 +386,13 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `🎮 *W·C·G  B·O·T*`,
         `━━━━━━━━━━━━━━━━`,
         ``,
-        `*🔤 WORD CHAIN*`,
+        `*🔤 WORD CHAIN* _(start: admins only)_`,
         `▸ ${PREFIX}wcg start`,
         `▸ ${PREFIX}wcg easy|medium|hard`,
         `▸ ${PREFIX}wrg start`,
         `▸ ${PREFIX}wcg end`,
         ``,
-        `*🧠 TRIVIA*`,
+        `*🧠 TRIVIA* _(start: admins only)_`,
         `▸ ${PREFIX}trivia`,
         `▸ ${PREFIX}trivia <category>`,
         `▸ ${PREFIX}trivia categories`,
@@ -526,7 +576,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         return
       }
 
-      await startTrivia(jid, sender, senderPn, args, now)
+      await startTrivia(jid, sender, senderPn, args, now, isGroup)
       return
     }
 
@@ -540,7 +590,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         await endGame(jid, sender, senderPn, isGroup, now, 'wcg')
         return
       }
-      await startGame(jid, sender, senderPn, args, cmd === 'wrg' ? 'random' : 'chain', now)
+      await startGame(jid, sender, senderPn, args, cmd === 'wrg' ? 'random' : 'chain', now, isGroup)
       return
     }
 
@@ -551,6 +601,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     async handleMessage({ jid, sender, senderPn, text, isGroup, raw }, now) {
       const parsed = parseCommand(text, PREFIX)
       if (parsed) {
+        if (overCommandLimit(sender, now)) return // silent by design, see overCommandLimit
         await handleCommand(jid, sender, senderPn, isGroup, parsed.cmd, parsed.args, now, raw)
         return
       }

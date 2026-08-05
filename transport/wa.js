@@ -11,6 +11,13 @@ let logger;
 let shuttingDown = false;
 let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
 let authFlush = null; // set by connect(), called by shutdown()
+// ONE auth state for the process lifetime. Rebuilding it per connect() gives each
+// socket its own store and its own debounce timer over the same file: an orphaned
+// timer from the previous socket can fire after the new one has written, rolling
+// Signal ratchet counters backwards. That surfaces as
+// "MessageCounterError: Key used already or never filled" and, once written to
+// disk, survives restarts. Reusing one state is also baileys' own documented pattern.
+let authState = null;
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
 const groupAdminCache = new Map(); // jid -> { admins, ts }
@@ -82,11 +89,8 @@ export async function connect(onMessage, appLogger, onConnected) {
   logger = appLogger;
   onMessageHandler = onMessage;
 
-  // Re-read per connect. Caching this across reconnects is the canonical baileys
-  // pattern and looked safe (baileys mutates creds in place), but it coincided
-  // with a hard 401 loggedOut loop on a fresh pair — reverted until that is
-  // understood. See the debounce race noted in transport/auth.js.
-  const { state, saveCreds, flush } = useSingleFileAuthState(SESSION_FILE);
+  if (!authState) authState = useSingleFileAuthState(SESSION_FILE);
+  const { state, saveCreds, flush } = authState;
   authFlush = flush;
 
   sock = makeWASocket({
@@ -135,10 +139,12 @@ export async function connect(onMessage, appLogger, onConnected) {
         process.exit(1);
       } else if (reason === DisconnectReason.restartRequired) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
+        authFlush?.(); // land any debounced key writes before the next socket starts
         sock.ev.removeAllListeners();
         connect(onMessage, logger, onConnected);
       } else {
         logger.info(`Disconnected (${reason} ${reasonName}) after ${upSec}s connected, reconnecting in ${RECONNECT_DELAY}ms...`);
+        authFlush?.(); // land any debounced key writes before the next socket starts
         sock.ev.removeAllListeners();
         setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
       }
