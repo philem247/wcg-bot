@@ -5,6 +5,10 @@ process.env.PHONE_NUMBER = '1234567890'
 process.env.OWNER = '15550000000'
 process.env.ADMINS = '15550000001'
 
+import { openDb } from '../store/db.js'
+
+const OWNER_NUMBER = '15550000000'
+
 const { sendEvents, createRouter } = await import('./router.js')
 
 // Minimal fake bot_admins store backing addBotAdmin/delBotAdmin/botAdmins, shared by the /promote tests.
@@ -389,6 +393,322 @@ const tests = [
       )
 
       assert.equal(pendingCalls.length, 1, 'promoted user should pass the admin gate')
+    },
+  },
+  {
+    name: '/trivia starts a mixed game and posts the first question',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = {
+        categories: () => ['general', 'science'],
+        pick: ({ count }) => Array.from({ length: count }, (_, i) => ({
+          id: `q${i}`, q: `Q${i}?`, correct: 'right', wrong: ['a', 'b', 'c'], category: i % 2 === 0 ? 'general' : 'science',
+        })),
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'game registered so the scheduler ticks it')
+      assert.ok(sent.some((t) => t.includes('*Q1/10*')), 'first question posted immediately, no lobby')
+      db.close()
+    },
+  },
+  {
+    name: '/trivia rejects an unknown or empty category and lists what is available',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = { categories: () => ['general'], pick: () => [] }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia football', isGroup: true }, 0)
+      assert.equal(games.size, 0, 'no unplayable game started')
+      assert.ok(sent.some((t) => t.toLowerCase().includes('general')), 'tells the user what they can play')
+      db.close()
+    },
+  },
+  {
+    name: '/trivia is refused in a DM',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = { categories: () => ['general'], pick: () => [{ id: 'q', q: 'Q?', correct: 'r', wrong: ['a', 'b', 'c'] }] }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'x@s.whatsapp.net', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia', isGroup: false }, 0)
+      assert.equal(games.size, 0)
+      db.close()
+    },
+  },
+  {
+    name: 'trivia_over records a game of type trivia, ranked by placement',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = {
+        categories: () => ['general'],
+        pick: () => [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }],
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia general', isGroup: true }, 0)
+
+      // Find the correct letter from the posted question, then answer it.
+      const posted = sent.find((t) => t.includes('*Q1/1*')) ?? sent[sent.length - 1]
+      const letter = ['A', 'B', 'C', 'D'].find((l) => posted.includes(`*${l})*  right`))
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: letter, isGroup: true }, 1000)
+
+      const board = db.leaderboard({ jid: 'g@g.us', since: 0, type: 'trivia' })
+      assert.equal(board.length, 1)
+      assert.equal(board[0].wins, 1)
+      assert.equal(db.leaderboard({ jid: 'g@g.us', since: 0, type: 'chain' }).length, 0, 'must not touch the chain board')
+      db.close()
+    },
+  },
+  {
+    name: 'asked questions are recorded so the next game does not repeat them',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      let excludeSeen = null
+      const bank = {
+        categories: () => ['general'],
+        pick: ({ exclude }) => {
+          excludeSeen = exclude
+          return [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }]
+        },
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia general', isGroup: true }, 0)
+      assert.deepEqual([...db.askedIds('g@g.us')], ['q0'])
+
+      games.clear()
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia general', isGroup: true }, 5000)
+      assert.ok(excludeSeen.has('q0'), 'second game excludes what the first asked')
+      db.close()
+    },
+  },
+  {
+    name: 'a question already seen via /trivia mixed is excluded from /trivia <category>, and vice versa',
+    fn: async () => {
+      const games = new Map()
+      const db = openDb(':memory:')
+      const enqueue = () => {}
+      let lastExclude = null
+      const bank = {
+        categories: () => ['general', 'science'],
+        pick: ({ category, exclude }) => {
+          lastExclude = exclude
+          if (category === 'mixed') return [{ id: 'g1', q: 'Q?', correct: 'r', wrong: ['a', 'b', 'c'], category: 'general' }]
+          return [{ id: `${category[0]}2`, q: 'Q?', correct: 'r', wrong: ['a', 'b', 'c'], category }]
+        },
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue,
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+
+      // Mixed mode serves a 'general' question (g1); tag it under 'general' in the store.
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia', isGroup: true }, 0)
+      assert.deepEqual([...db.askedIds('g@g.us')], ['g1'])
+
+      // A direct /trivia general must see g1 as already-asked, even though it was served by mixed mode.
+      games.clear()
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia general', isGroup: true }, 1000)
+      assert.ok(lastExclude.has('g1'), 'mixed-served question must block a same-category direct game')
+      db.close()
+    },
+  },
+  {
+    name: '/trivia still starts when db.askedIds throws (store failure must never break gameplay)',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const bank = {
+        categories: () => ['general'],
+        pick: ({ exclude }) => {
+          assert.equal(exclude.size, 0, 'falls back to an empty Set when the store fails')
+          return [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }]
+        },
+      }
+      const db = {
+        askedIds: () => { throw new Error('SQLITE_BUSY') },
+        clearAsked: () => {},
+        markAsked: () => {},
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia general', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'game still started despite the store failure')
+      assert.ok(sent.some((t) => t.includes('*Q1/1*')))
+    },
+  },
+  {
+    name: '/trivia still recycles when db.clearAsked throws (store failure must never break gameplay)',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      let pickCalls = 0
+      const bank = {
+        categories: () => ['general'],
+        pick: () => {
+          pickCalls++
+          if (pickCalls === 1) return [] // pretend exhausted, forcing the recycle path
+          return [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }]
+        },
+      }
+      const db = {
+        askedIds: () => new Set(['q0']),
+        clearAsked: () => { throw new Error('SQLITE_BUSY') },
+        markAsked: () => {},
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia general', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'game still started despite clearAsked throwing')
+      assert.equal(pickCalls, 2, 'recycle retry still happened after the throw was swallowed')
+    },
+  },
+  {
+    name: '/trivia end does not terminate a running /wcg game',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: {}, games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/wcg', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'wcg game running')
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia end', isGroup: true }, 100)
+      assert.equal(games.size, 1, '/trivia end must not touch the running word-chain game')
+      db.close()
+    },
+  },
+  {
+    name: '/wcg end does not terminate a running /trivia game',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = {
+        categories: () => ['general'],
+        pick: () => [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }],
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia general', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'trivia game running')
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/wcg end', isGroup: true }, 100)
+      assert.equal(games.size, 1, '/wcg end must not touch the running trivia game')
+      db.close()
+    },
+  },
+  {
+    name: '/trivia with no bank loaded refuses cleanly instead of throwing',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia', isGroup: true }, 0)
+      assert.equal(games.size, 0, 'no game started without a bank')
+      assert.ok(sent.some((t) => t.toLowerCase().includes('unavailable')), 'refusal message enqueued')
+      db.close()
+    },
+  },
+  {
+    name: '/help hides admin and owner blocks from a normal player',
+    fn: async () => {
+      const sent = []
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: '99999@s.whatsapp.net', senderPn: '99999@s.whatsapp.net', text: '/help', isGroup: true }, 0)
+      const text = sent[0]
+      assert.ok(text.includes('WORD CHAIN'))
+      assert.ok(text.includes('TRIVIA'))
+      assert.ok(!text.includes('ADMIN'), 'a player cannot use these')
+      assert.ok(!text.includes('OWNER'))
+      assert.ok(!text.includes('/promote'))
+      db.close()
+    },
+  },
+  {
+    name: '/help shows the admin block to a group admin but not the owner block',
+    fn: async () => {
+      const sent = []
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['77777@s.whatsapp.net'], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: '77777@s.whatsapp.net', senderPn: '77777@s.whatsapp.net', text: '/help', isGroup: true }, 0)
+      const text = sent[0]
+      assert.ok(text.includes('ADMIN'))
+      assert.ok(text.includes('/addword'))
+      assert.ok(!text.includes('/promote'), 'group admins cannot mint bot admins')
+      db.close()
+    },
+  },
+  {
+    name: '/help shows everything to the owner',
+    fn: async () => {
+      const sent = []
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g@g.us', sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: `${OWNER_NUMBER}@s.whatsapp.net`, text: '/help', isGroup: true }, 0)
+      const text = sent[0]
+      assert.ok(text.includes('ADMIN'))
+      assert.ok(text.includes('OWNER'))
+      assert.ok(text.includes('/promote'))
+      db.close()
     },
   },
 ]

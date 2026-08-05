@@ -3,6 +3,7 @@ import { parseCommand } from './commands.js'
 import { render } from './render.js'
 import { isAdmin, isAdminEither, toNumber } from './admin.js'
 import { createGame } from '../engine/game.js'
+import { createTriviaGame, QUESTION_COUNT } from '../engine/trivia.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
 import { PREFIX, OWNER, ADMINS } from '../config.js'
@@ -111,6 +112,26 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'terminated' || event.type === 'ended') {
       gameMeta.delete(jid)
+    } else if (event.type === 'trivia_over') {
+      const meta = gameMeta.get(jid)
+      const pnMap = meta?.pnMap || new Map()
+      const results = event.standings.map((s, i) => ({
+        player: s.player, placement: i + 1, player_pn: pnMap.get(s.player),
+      }))
+      if (results.length > 0) {
+        try {
+          db?.recordGame({
+            jid, mode: event.category, type: 'trivia',
+            startedAt: meta?.startedAt ?? now, endedAt: now,
+            words: event.total, results,
+          })
+        } catch (e) {
+          // store failure must never break gameplay
+        }
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'trivia_terminated') {
+      gameMeta.delete(jid)
     }
     const rendered = render(toRender)
     if (rendered) {
@@ -135,11 +156,15 @@ function formatPending(rows) {
   return { text: `📝 Most-rejected words here:\n${rows.map((r) => `${r.word} x${r.count}`).join('\n')}`, mentions: [] }
 }
 
-export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db, resolvePn = () => undefined }) {
+export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db, bank = null, resolvePn = () => undefined }) {
   // Engine games don't expose who started them; track it here, mirroring `games`.
   // ponytail: scheduler-driven deletions (timeout/lobby-fail) don't clean this map,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
   const starters = new Map()
+  // jid -> 'wcg' | 'trivia', so /wcg end and /trivia end each only end their own
+  // game type. Same bounded-leak note as `starters`: scheduler-driven (timeout)
+  // deletions don't clean this map, it's overwritten on the jid's next game.
+  const gameTypes = new Map()
 
   // Group admins are a group-only concept. Calling getGroupAdmins on a DM jid
   // never gets a reply and baileys blocks for its full 60s query timeout.
@@ -195,6 +220,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     const game = createGame({ mode, type, dict, starter: sender, now, random: Math.random })
     games.set(jid, game)
     starters.set(jid, sender)
+    gameTypes.set(jid, 'wcg')
     sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
     // Record starter's phone-form JID for leaderboard aggregation
     if (senderPn) {
@@ -203,9 +229,78 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     }
   }
 
-  async function endGame(jid, sender, senderPn, isGroup, now) {
+  // No lobby: the first question posts immediately and answering is joining.
+  async function startTrivia(jid, sender, senderPn, args, now) {
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. Use ${PREFIX}trivia end to stop it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (!bank) {
+      enqueue(jid, { text: `Trivia is unavailable — no question bank loaded.`, mentions: [], kind: 'misc' })
+      return
+    }
+    const available = bank.categories()
+    const requested = args[0]
+    const category = requested ? requested.toLowerCase() : 'mixed'
+    if (category !== 'mixed' && !available.includes(category)) {
+      enqueue(jid, {
+        text: `No questions for "${requested}" yet.\nAvailable: ${available.join(', ') || 'none'}`,
+        mentions: [], kind: 'misc',
+      })
+      return
+    }
+
+    // A store failure here must never break gameplay — fall back to an empty
+    // Set (a possible repeat this one time) rather than let /trivia die silently.
+    let exclude
+    try {
+      exclude = db?.askedIds(jid) ?? new Set()
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed loading asked questions')
+      exclude = new Set()
+    }
+    let picked = bank.pick({ category, count: QUESTION_COUNT, exclude, random: Math.random })
+    // Pool exhausted for this group: recycle rather than serving a short game.
+    if (picked.length === 0) {
+      try {
+        // Mixed draws from every category, and rows are tagged by each
+        // question's own source category (not 'mixed') — recycle them all.
+        if (category === 'mixed') {
+          for (const c of available) db?.clearAsked(jid, c)
+        } else {
+          db?.clearAsked(jid, category)
+        }
+      } catch (e) {
+        logger?.error({ err: e }, 'Failed clearing asked questions')
+      }
+      picked = bank.pick({ category, count: QUESTION_COUNT, exclude: new Set(), random: Math.random })
+    }
+    if (picked.length === 0) {
+      enqueue(jid, { text: `No questions available for that category.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    const game = createTriviaGame({ questions: picked, category, now, random: Math.random })
+    games.set(jid, game)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'trivia')
+    gameMeta.set(jid, { mode: category, type: 'trivia', startedAt: now, players: [], eliminated: [], pnMap: new Map() })
+    if (senderPn) gameMeta.get(jid).pnMap.set(sender, senderPn)
+    try {
+      db?.markAsked(jid, picked, now)
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed recording asked questions')
+    }
+    sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
+  }
+
+  // `expectedType` ('wcg' | 'trivia') keeps /wcg end and /trivia end from
+  // terminating each other's game — only one game runs per jid at a time, so
+  // without this check either command would end whatever happens to be running.
+  async function endGame(jid, sender, senderPn, isGroup, now, expectedType) {
     const game = games.get(jid)
     if (!game) return
+    if (expectedType && gameTypes.get(jid) !== expectedType) return
     const groupAdmins = await groupAdminsFor(jid, isGroup)
     const allowed = sender === starters.get(jid) || isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)
     if (!allowed) {
@@ -216,6 +311,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     if (game.state === 'over') {
       games.delete(jid)
       starters.delete(jid)
+      gameTypes.delete(jid)
     }
   }
 
@@ -226,11 +322,59 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     }
 
     if (cmd === 'help') {
-      enqueue(jid, {
-        text: `Commands:\n${PREFIX}ping - check the bot is alive\n${PREFIX}wcg start|easy|medium|hard - start a chain game (group only)\n${PREFIX}wrg start - start a random-letter game (group only)\n${PREFIX}wcg end - end the current game (starter or admin)\n${PREFIX}stats [all] - weekly or all-time leaderboard\n${PREFIX}pending - most-rejected words (admin)\n${PREFIX}addword <word>|all - approve a word (admin)\n${PREFIX}delword <word> - remove a word (admin)\n${PREFIX}admin - who can run admin commands here\n${PREFIX}promote @user - make a bot admin here (owner only)\n${PREFIX}demote @user - remove a bot admin here (owner only)\njoin - join the lobby\n<word> - submit a word on your turn`,
-        mentions: [],
-        kind: 'misc',
-      })
+      const groupAdmins = await groupAdminsFor(jid, isGroup)
+      const isAdmin = isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)
+      const isOwner = isOwnerOrGlobalAdmin(sender, senderPn)
+
+      const lines = [
+        `🎮 *W·C·G  B·O·T*`,
+        `━━━━━━━━━━━━━━━━`,
+        ``,
+        `*🔤 WORD CHAIN*`,
+        `▸ ${PREFIX}wcg start`,
+        `▸ ${PREFIX}wcg easy|medium|hard`,
+        `▸ ${PREFIX}wrg start`,
+        `▸ ${PREFIX}wcg end`,
+        ``,
+        `*🧠 TRIVIA*`,
+        `▸ ${PREFIX}trivia`,
+        `▸ ${PREFIX}trivia <category>`,
+        `▸ ${PREFIX}trivia categories`,
+        `▸ ${PREFIX}trivia end`,
+        ``,
+        `*📊 SCORES*`,
+        `▸ ${PREFIX}stats [all]`,
+        `▸ ${PREFIX}trivia stats [all]`,
+      ]
+
+      // Hidden from players who cannot use them: no point listing a command
+      // whose only possible response is "Admins only."
+      if (isAdmin) {
+        lines.push(
+          ``,
+          `*⚙️ ADMIN*`,
+          `▸ ${PREFIX}pending`,
+          `▸ ${PREFIX}addword <word>|all`,
+          `▸ ${PREFIX}delword <word>`,
+          `▸ ${PREFIX}admin`,
+        )
+      }
+      if (isOwner) {
+        lines.push(
+          ``,
+          `*👑 OWNER*`,
+          `▸ ${PREFIX}promote @user`,
+          `▸ ${PREFIX}demote @user`,
+        )
+      }
+
+      lines.push(
+        ``,
+        `_In game:_ send join, then`,
+        `your word — or A–D for trivia`,
+      )
+
+      enqueue(jid, { text: lines.join('\n'), mentions: [], kind: 'misc' })
       return
     }
 
@@ -273,7 +417,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
 
     if (cmd === 'stats') {
       const all = args[0] === 'all'
-      const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10 })
+      const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'chain' })
       const { text, mentions } = formatLeaderboard(board, all ? '🏆 All-time' : '🏆 This week')
       enqueue(jid, { text, mentions, kind: 'misc' })
       return
@@ -349,6 +493,37 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
+    if (cmd === 'trivia') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'categories') {
+        const available = bank ? bank.categories() : []
+        enqueue(jid, { text: `*Categories*\n${available.map((c) => `▸ ${c}`).join('\n') || 'none'}\n\n${PREFIX}trivia for a mix of all.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'stats') {
+        const all = args[1] === 'all'
+        const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'trivia' })
+        const { text, mentions } = formatLeaderboard(board, all ? '🏆 Trivia — all-time' : '🏆 Trivia — this week')
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end') {
+        await endGame(jid, sender, senderPn, isGroup, now, 'trivia')
+        return
+      }
+
+      await startTrivia(jid, sender, senderPn, args, now)
+      return
+    }
+
     if (cmd === 'wcg' || cmd === 'wrg') {
       if (!isGroup) {
         enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
@@ -356,7 +531,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
       const sub = args[0]
       if (sub === 'end') {
-        await endGame(jid, sender, senderPn, isGroup, now)
+        await endGame(jid, sender, senderPn, isGroup, now, 'wcg')
         return
       }
       await startGame(jid, sender, senderPn, args, cmd === 'wrg' ? 'random' : 'chain', now)
@@ -397,6 +572,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       if (game.state === 'over') {
         games.delete(jid)
         starters.delete(jid)
+        gameTypes.delete(jid)
       }
     },
   }

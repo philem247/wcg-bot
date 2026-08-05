@@ -8,6 +8,7 @@ import { acquireLock, releaseLock } from './transport/lock.js';
 import { installQuietSignalNoise } from './transport/quiet.js';
 import { openDb } from './store/db.js';
 import { loadDictionary } from './engine/dictionary.js';
+import { loadBank } from './engine/bank.js';
 import { createScheduler } from './engine/tick.js';
 import { PHONE_NUMBER, OWNER, LOG_LEVEL, SESSION_DIR, QUIET_SIGNAL_NOISE } from './config.js';
 
@@ -47,6 +48,15 @@ for (const w of db.customWords()) {
 }
 logger.info(`Merged ${customWordCount} approved custom word(s) from the store (db: ${resolve(process.env.DB_PATH ?? 'wcg.db')})`)
 
+let bank = null;
+try {
+  bank = loadBank();
+  const counts = bank.categories().map((c) => `${c} ${bank.size(c)}`).join(', ');
+  logger.info(`Trivia bank loaded: ${counts || 'empty'}`);
+} catch (e) {
+  logger.warn(`Trivia bank unavailable (${e.message}); /trivia will be disabled`);
+}
+
 // Crash handlers — log and attempt graceful shutdown instead of silently dying.
 // Without these, an unhandled rejection in baileys or a stray TypeError in the
 // message handler kills the event loop with no visible output.
@@ -66,7 +76,7 @@ const games = new Map(); // jid -> game
 const outbox = createOutbox({ sendFn: send, logger });
 outbox.start();
 
-const router = createRouter({ dict, games, enqueue: outbox.enqueue, logger, getGroupAdmins, db, resolvePn });
+const router = createRouter({ dict, games, enqueue: outbox.enqueue, logger, getGroupAdmins, db, bank, resolvePn });
 
 // pump() (engine/tick.js) walks all games synchronously and does not await onEvents.
 // That's fine now: sendEvents just enqueues (synchronous), so it can never block

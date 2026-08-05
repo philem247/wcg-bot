@@ -58,7 +58,12 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | `/wcg easy\|medium\|hard` | anyone | start a chain game at that difficulty |
 | `/wcg end` | starter or admin | stop the current game |
 | `/wrg start` | anyone | start a random-letter game |
+| `/trivia` | anyone | start a mixed-category trivia game |
+| `/trivia <category>` | anyone | start a trivia game in one category |
+| `/trivia end` | starter or admin | stop the current trivia game |
+| `/trivia categories` | anyone | list playable categories |
 | `/stats` | anyone | weekly leaderboard |
+| `/trivia stats [all]` | anyone | weekly or all-time trivia leaderboard |
 | `/stats all` | anyone | all-time leaderboard |
 | `/pending` | admin | most-rejected words in this group |
 | `/addword <word>` | admin | approve a rejected word into the dictionary, live |
@@ -85,12 +90,15 @@ Only the OWNER and global ADMINS can run `/promote` and `/demote` — WhatsApp g
 npm test
 ```
 
-Assert-based test suite with no framework. Runs with no WhatsApp connection needed. 164 tests total across:
+Assert-based test suite with no framework. Runs with no WhatsApp connection needed. 215 tests total across:
 - `transport/test.js` — command parsing, admin layers, message filtering
 - `transport/render.test.js` — event-to-text rendering
 - `transport/router.test.js` — command routing and game lifecycle
 - `engine/test.js` — validation and rejection logic
 - `engine/game.test.js` — game state machine
+- `engine/trivia.test.js` — trivia game state machine
+- `engine/bank.test.js` — trivia question bank selection
+- `data/build-trivia.test.js` — trivia data normalization and build
 - `transport/outbox.test.js` — send queue and rate limiting
 - `transport/lock.test.js` — single-instance guard
 - `transport/quiet.test.js` — signal-noise suppression
@@ -107,6 +115,10 @@ Players grow the dictionary at runtime:
 - `/pending` — admin-only view of most-rejected words, with `/addword all` for bulk approval
 
 `/delword <w>` removes words added via `/addword` (persisted in `custom_words` table). For base words from `data/words.txt`, the removal only lasts until restart — to remove them permanently, edit `data/extra.txt` or rebuild with `node data/build.mjs`. This is a real gotcha: admins should know that `/delword` on a base word will not stick.
+
+## Trivia
+
+Questions live in `data/trivia.json`, committed, no network at runtime. Regenerate with `npm run build:trivia`. Questions are CC BY-SA 4.0 — see `LICENSES.md` for attribution.
 
 ## Security
 

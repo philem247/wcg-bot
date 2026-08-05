@@ -24,6 +24,13 @@ const REJECTION_TEXT = {
   not_in_list: () => `_This word is not in my list_`,
 }
 
+const CATEGORY_LABEL = {
+  general: '🧠 GENERAL', football: '⚽ FOOTBALL', science: '🔬 SCIENCE',
+  tech: '💻 TECH', entertainment: '🎬 ENTERTAINMENT', geography: '🌍 GEOGRAPHY',
+  history: '📜 HISTORY', mixed: '🎲 MIXED',
+}
+const MEDALS = ['🥇', '🥈', '🥉']
+
 export function render(event) {
   switch (event.type) {
     case 'lobby_open': {
@@ -86,6 +93,53 @@ export function render(event) {
 
     case 'ended':
       return { text: `Game Ends`, mentions: [] }
+
+    case 'trivia_question': {
+      const lines = []
+      const mentions = []
+      if (event.previous) {
+        if (event.previous.outcome === 'correct') {
+          lines.push(`✅ ${mention(event.previous.player)} — *${event.previous.letter})* ${event.previous.answer}`)
+          mentions.push(event.previous.player)
+        } else {
+          lines.push(`⏱ *Time!* Nobody got it — *${event.previous.letter})* ${event.previous.answer}`)
+        }
+        lines.push('━━━━━━━━━━━━━━━━', '')
+      }
+      lines.push(`${CATEGORY_LABEL[event.category] ?? event.category}  ·  *Q${event.index}/${event.total}*  ·  ⏱ *${event.clockSeconds}s*`, '')
+      lines.push(`*${event.question}*`, '')
+      // Stacked, never columns: WhatsApp's proportional font cannot align columns.
+      for (const o of event.options) lines.push(`*${o.letter})*  ${o.text}`)
+      lines.push('', '_Reply A, B, C or D_')
+      return { text: lines.join('\n'), mentions }
+    }
+
+    case 'trivia_over': {
+      const lines = []
+      const mentions = []
+      if (event.previous) {
+        if (event.previous.outcome === 'correct') {
+          lines.push(`✅ ${mention(event.previous.player)} — *${event.previous.letter})* ${event.previous.answer}`)
+          mentions.push(event.previous.player)
+        } else {
+          lines.push(`⏱ *Time!* Nobody got it — *${event.previous.letter})* ${event.previous.answer}`)
+        }
+        lines.push('━━━━━━━━━━━━━━━━', '')
+      }
+      if (event.standings.length === 0) {
+        lines.push('🏁 *FINAL*', '━━━━━━━━━━━━━━━━', '', 'Nobody scored. Brutal.')
+        return { text: lines.join('\n'), mentions }
+      }
+      lines.push('🏁 *FINAL*', '━━━━━━━━━━━━━━━━', '')
+      event.standings.forEach((s, i) => {
+        lines.push(`${MEDALS[i] ?? '　'} ${mention(s.player)} — *${s.score}*`)
+        mentions.push(s.player)
+      })
+      return { text: lines.join('\n'), mentions }
+    }
+
+    case 'trivia_terminated':
+      return { text: `Trivia stopped.`, mentions: [] }
 
     default:
       return null

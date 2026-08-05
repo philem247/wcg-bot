@@ -185,6 +185,135 @@ const tests = [
       assert.equal(r, null)
     },
   },
+  {
+    name: 'trivia_question: first question has no result header',
+    fn: () => {
+      const out = render({
+        type: 'trivia_question', index: 1, total: 10, category: 'general',
+        question: 'Capital of France?', clockSeconds: 15, endsAt: 15000,
+        options: [
+          { letter: 'A', text: 'Paris' }, { letter: 'B', text: 'Rome' },
+          { letter: 'C', text: 'Madrid' }, { letter: 'D', text: 'Berlin' },
+        ],
+      })
+      assert.ok(out.text.includes('*Q1/10*'))
+      assert.ok(out.text.includes('*Capital of France?*'))
+      assert.ok(out.text.includes('*A)*  Paris'))
+      assert.ok(out.text.includes('*D)*  Berlin'))
+      assert.ok(!out.text.includes('━'), 'no divider without a previous result')
+      assert.deepEqual(out.mentions, [])
+    },
+  },
+  {
+    name: 'trivia_question: a correct previous result mentions the scorer',
+    fn: () => {
+      const out = render({
+        type: 'trivia_question', index: 2, total: 10, category: 'football',
+        question: 'Who?', clockSeconds: 15, endsAt: 30000,
+        options: [
+          { letter: 'A', text: 'a' }, { letter: 'B', text: 'b' },
+          { letter: 'C', text: 'c' }, { letter: 'D', text: 'd' },
+        ],
+        previous: { outcome: 'correct', player: '234111@s.whatsapp.net', letter: 'B', answer: 'Lille' },
+      })
+      assert.ok(out.text.startsWith('✅'))
+      assert.ok(out.text.includes('@234111'))
+      assert.ok(out.text.includes('*B)* Lille'))
+      assert.ok(out.text.includes('━'), 'divider separates result from question')
+      assert.deepEqual(out.mentions, ['234111@s.whatsapp.net'])
+    },
+  },
+  {
+    name: 'trivia_question: a timed-out previous result reveals the answer and mentions nobody',
+    fn: () => {
+      const out = render({
+        type: 'trivia_question', index: 3, total: 10, category: 'science',
+        question: 'Q?', clockSeconds: 15, endsAt: 45000,
+        options: [
+          { letter: 'A', text: 'a' }, { letter: 'B', text: 'b' },
+          { letter: 'C', text: 'c' }, { letter: 'D', text: 'd' },
+        ],
+        previous: { outcome: 'timeout', letter: 'C', answer: 'Helium' },
+      })
+      assert.ok(out.text.includes('Nobody got it'))
+      assert.ok(out.text.includes('*C)* Helium'))
+      assert.deepEqual(out.mentions, [], 'no player to mention on a timeout')
+    },
+  },
+  {
+    name: 'trivia_over: standings are medalled and every player is mentioned',
+    fn: () => {
+      const out = render({
+        type: 'trivia_over', category: 'general', total: 10,
+        standings: [
+          { player: '1@s.whatsapp.net', score: 5 },
+          { player: '2@s.whatsapp.net', score: 3 },
+          { player: '3@s.whatsapp.net', score: 2 },
+          { player: '4@s.whatsapp.net', score: 1 },
+        ],
+      })
+      assert.ok(out.text.includes('🥇'))
+      assert.ok(out.text.includes('🥈'))
+      assert.ok(out.text.includes('🥉'))
+      assert.ok(out.text.includes('@4'), 'fourth place still listed')
+      assert.equal(out.mentions.length, 4)
+    },
+  },
+  {
+    name: 'trivia_over: nobody scoring still renders without crashing',
+    fn: () => {
+      const out = render({ type: 'trivia_over', category: 'general', total: 10, standings: [] })
+      assert.ok(out.text.length > 0)
+      assert.deepEqual(out.mentions, [])
+    },
+  },
+  {
+    name: 'trivia_over: a correct previous result renders above FINAL with the same wording as trivia_question',
+    fn: () => {
+      const out = render({
+        type: 'trivia_over', category: 'general', total: 3,
+        standings: [{ player: '1@s.whatsapp.net', score: 2 }],
+        previous: { outcome: 'correct', player: '1@s.whatsapp.net', letter: 'B', answer: 'Lille' },
+      })
+      assert.ok(out.text.startsWith('✅'))
+      assert.ok(out.text.includes('@1'))
+      assert.ok(out.text.includes('*B)* Lille'))
+      assert.ok(out.text.includes('━━━━━━━━━━━━━━━━'))
+      assert.ok(out.text.includes('🏁 *FINAL*'))
+      assert.ok(out.text.indexOf('✅') < out.text.indexOf('🏁 *FINAL*'), 'previous result sits above the FINAL header')
+      assert.ok(out.mentions.includes('1@s.whatsapp.net'))
+    },
+  },
+  {
+    name: 'trivia_over: a timed-out previous result reveals the answer above FINAL and mentions nobody for it',
+    fn: () => {
+      const out = render({
+        type: 'trivia_over', category: 'general', total: 3, standings: [],
+        previous: { outcome: 'timeout', letter: 'C', answer: 'Helium' },
+      })
+      assert.ok(out.text.includes('⏱ *Time!* Nobody got it'))
+      assert.ok(out.text.includes('*C)* Helium'))
+      assert.ok(out.text.includes('🏁 *FINAL*'))
+      assert.deepEqual(out.mentions, [], 'no player to mention on a timeout')
+    },
+  },
+  {
+    name: 'trivia_over: no previous (game ended early / zero questions) renders without a result block',
+    fn: () => {
+      const out = render({ type: 'trivia_over', category: 'general', total: 0, standings: [] })
+      assert.ok(!out.text.includes('✅'))
+      assert.ok(!out.text.includes('⏱ *Time!*'))
+      assert.ok(out.text.startsWith('🏁 *FINAL*'))
+    },
+  },
+  {
+    name: 'trivia_terminated renders a stop message',
+    fn: () => {
+      const out = render({ type: 'trivia_terminated' })
+      assert.ok(out.text.length > 0)
+      assert.deepEqual(out.mentions, [])
+    },
+  },
 ]
 
 let passed = 0

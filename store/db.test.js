@@ -350,6 +350,79 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'asked_questions: markAsked then askedIds round-trips, scoped per group not per category',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.markAsked('jid-a', [{ id: 'q1', category: 'general' }, { id: 'q2', category: 'general' }], 1000)
+      db.markAsked('jid-a', [{ id: 'q9', category: 'science' }], 1000)
+      // askedIds(jid) is the whole group's seen set, no category filter — that is
+      // the invariant a mixed-mode pick and a direct-category pick both rely on.
+      assert.deepEqual([...db.askedIds('jid-a')].sort(), ['q1', 'q2', 'q9'])
+      assert.equal(db.askedIds('jid-b').size, 0, 'scoped per group')
+      db.close()
+    },
+  },
+  {
+    name: 'asked_questions: re-marking the same id does not throw or duplicate',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.markAsked('jid-a', [{ id: 'q1', category: 'general' }], 1000)
+      db.markAsked('jid-a', [{ id: 'q1', category: 'general' }, { id: 'q2', category: 'general' }], 2000)
+      assert.deepEqual([...db.askedIds('jid-a')].sort(), ['q1', 'q2'])
+      db.close()
+    },
+  },
+  {
+    name: 'asked_questions: a question tagged with its own category is freed only when that category is recycled',
+    fn: () => {
+      const db = openDb(':memory:')
+      // markAsked tags rows by the QUESTION's category, regardless of which mode served it
+      // (e.g. a 'mixed' game serving a 'general' question tags the row 'general') — see
+      // engine/bank.js pick() and transport/router.js's markAsked call.
+      db.markAsked('jid-a', [{ id: 'q1', category: 'general' }], 1000)
+      db.markAsked('jid-a', [{ id: 'q9', category: 'science' }], 1000)
+      db.clearAsked('jid-a', 'general')
+      assert.deepEqual([...db.askedIds('jid-a')], ['q9'], 'q1 freed, q9 (science) untouched')
+      db.close()
+    },
+  },
+  {
+    name: 'leaderboard: trivia and chain results never appear on each other s board',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.recordGame({
+        jid: 'g', mode: 'easy', type: 'chain', startedAt: 0, endedAt: 1000, words: 5,
+        results: [{ player: 'wordy', placement: 1 }, { player: 'other', placement: 2 }],
+      })
+      db.recordGame({
+        jid: 'g', mode: 'general', type: 'trivia', startedAt: 0, endedAt: 1000, words: 10,
+        results: [{ player: 'quizzy', placement: 1 }, { player: 'other', placement: 2 }],
+      })
+
+      const chain = db.leaderboard({ jid: 'g', since: 0, type: 'chain' })
+      const trivia = db.leaderboard({ jid: 'g', since: 0, type: 'trivia' })
+
+      assert.deepEqual(chain.map((r) => r.player).sort(), ['other', 'wordy'])
+      assert.deepEqual(trivia.map((r) => r.player).sort(), ['other', 'quizzy'])
+      assert.equal(chain.find((r) => r.player === 'other').games, 1, 'one chain game only')
+      assert.equal(trivia.find((r) => r.player === 'other').games, 1, 'one trivia game only')
+      db.close()
+    },
+  },
+  {
+    name: 'leaderboard: chain board includes legacy rows recorded as type random',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.recordGame({
+        jid: 'g', mode: 'easy', type: 'random', startedAt: 0, endedAt: 1000, words: 5,
+        results: [{ player: 'wordy', placement: 1 }],
+      })
+      const chain = db.leaderboard({ jid: 'g', since: 0, type: 'chain' })
+      assert.deepEqual(chain.map((r) => r.player), ['wordy'], 'chain means every non-trivia type')
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

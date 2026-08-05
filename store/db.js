@@ -36,6 +36,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       jid TEXT NOT NULL, number TEXT NOT NULL, added_by TEXT, added_at INTEGER,
       PRIMARY KEY (jid, number)
     );
+    CREATE TABLE IF NOT EXISTS asked_questions (
+      jid TEXT NOT NULL, category TEXT NOT NULL, qid TEXT NOT NULL, ts INTEGER NOT NULL,
+      PRIMARY KEY (jid, qid)
+    );
     CREATE INDEX IF NOT EXISTS idx_results_jid_ended ON results(jid, ended_at);
     CREATE INDEX IF NOT EXISTS idx_rejections_jid_word ON rejections(jid, word);
   `)
@@ -77,12 +81,27 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const stmtSelectCustomWords = db.prepare(
     'SELECT word FROM custom_words ORDER BY word'
   )
-  const stmtSelectResults = db.prepare(`
-    SELECT COALESCE(player_pn, player) AS player, placement, player_count
-    FROM results
-    WHERE jid = ? AND ended_at >= ?
+  const stmtSelectResultsTrivia = db.prepare(`
+    SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
+    FROM results r JOIN games g ON g.id = r.game_id
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'trivia'
     ORDER BY player
   `)
+  const stmtSelectResultsChain = db.prepare(`
+    SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
+    FROM results r JOIN games g ON g.id = r.game_id
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type IS NOT 'trivia'
+    ORDER BY player
+  `)
+  const stmtMarkAsked = db.prepare(
+    'INSERT OR IGNORE INTO asked_questions (jid, category, qid, ts) VALUES (?, ?, ?, ?)'
+  )
+  const stmtAskedIds = db.prepare(
+    'SELECT qid FROM asked_questions WHERE jid = ?'
+  )
+  const stmtClearAsked = db.prepare(
+    'DELETE FROM asked_questions WHERE jid = ? AND category = ?'
+  )
   const stmtGetSetting = db.prepare(
     'SELECT value FROM settings WHERE jid = ? AND key = ?'
   )
@@ -141,8 +160,9 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       return stmtSelectCustomWords.all().map(row => row.word)
     },
 
-    leaderboard({ jid, since = 0, limit = 10 }) {
-      const rows = stmtSelectResults.all(jid, since)
+    leaderboard({ jid, since = 0, limit = 10, type = 'chain' }) {
+      const stmt = type === 'trivia' ? stmtSelectResultsTrivia : stmtSelectResultsChain
+      const rows = stmt.all(jid, since)
 
       const agg = new Map()
       for (const { player, placement, player_count } of rows) {
@@ -166,6 +186,25 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       }))
 
       return result.sort((a, b) => b.score - a.score || a.games - b.games).slice(0, limit)
+    },
+
+    // `questions` are tagged with their own source category (engine/bank.js's
+    // pick() attaches it), not the mode that served them — a mixed-mode pick
+    // still tags each row with the category it actually came from. This is
+    // what lets askedIds(jid) enforce "never repeat" across modes while
+    // clearAsked(jid, category) still recycles one category at a time.
+    markAsked(jid, questions, ts) {
+      for (const q of questions) stmtMarkAsked.run(jid, q.category, q.id, ts)
+    },
+
+    // No category filter: a question already seen via ANY mode must not be
+    // served again by any other mode.
+    askedIds(jid) {
+      return new Set(stmtAskedIds.all(jid).map((r) => r.qid))
+    },
+
+    clearAsked(jid, category) {
+      stmtClearAsked.run(jid, category)
     },
 
     getSetting(jid, key, fallback = null) {
