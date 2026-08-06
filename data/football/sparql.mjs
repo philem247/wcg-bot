@@ -13,6 +13,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 // error for ~14s. Only throttling (429) and server faults (5xx) are worth a retry.
 class PermanentError extends Error {}
 
+// 502/503/504: the endpoint is overloaded or the query timed out server-side.
+// Retrying the same expensive shape moments later just times out again.
+class GatewayError extends Error {}
+
 // Serial by design with a delay between calls: WDQS is a shared public service
 // and parallel bursts are what gets a client banned.
 export async function runQuery(sparql, {
@@ -22,15 +26,29 @@ export async function runQuery(sparql, {
   delayMs = 1000,
   maxAttempts = 4,
 } = {}) {
-  const url = `${endpoint}?format=json&query=${encodeURIComponent(sparql)}`
   let lastErr
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+  let attempt = 1
+  for (; attempt <= maxAttempts; attempt++) {
     try {
-      const res = await fetchImpl(url, {
-        headers: { 'User-Agent': userAgent, Accept: 'application/sparql-results+json' },
+      const res = await fetchImpl(`${endpoint}?format=json`, {
+        method: 'POST',
+        headers: {
+          'User-Agent': userAgent,
+          Accept: 'application/sparql-results+json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `query=${encodeURIComponent(sparql)}`,
       })
-      if (res.status === 429 || res.status >= 500) {
+      // 429 is genuine throttling and clears with backoff — worth the full
+      // maxAttempts. 502/503/504 mean the query itself is too expensive for
+      // WDQS; it will time out again on retry the same way, so cap it at one
+      // extra attempt instead of burning ~66s x 4 plus backoff on a query
+      // that was never going to succeed.
+      if (res.status === 429) {
         throw new Error(`WDQS ${res.status}`)
+      }
+      if (res.status >= 500) {
+        throw new GatewayError(`WDQS ${res.status}`)
       }
       if (!res.ok) {
         throw new PermanentError(`WDQS ${res.status}: ${(await res.text()).slice(0, 200)}`)
@@ -45,10 +63,11 @@ export async function runQuery(sparql, {
     } catch (e) {
       if (e instanceof PermanentError) throw e
       lastErr = e
-      if (attempt === maxAttempts) break
+      const limit = e instanceof GatewayError ? Math.min(maxAttempts, 2) : maxAttempts
+      if (attempt >= limit) break
       // Exponential backoff: 2s, 4s, 8s.
       await sleep(1000 * 2 ** attempt)
     }
   }
-  throw new Error(`SPARQL query failed after ${maxAttempts} attempts: ${lastErr?.message}`)
+  throw new Error(`SPARQL query failed after ${Math.min(attempt, maxAttempts)} attempts: ${lastErr?.message}`)
 }

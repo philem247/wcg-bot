@@ -67,6 +67,7 @@ export function fplQuestions(bootstrap, { random }) {
       pool: Object.values(POSITIONS),
       league: 'fpl',
       random,
+      template: 'fpl-position',
     })
     if (q) out.push(q)
   }
@@ -82,6 +83,7 @@ export function fplQuestions(bootstrap, { random }) {
       pool: [...teamById.values()],
       league: 'fpl',
       random,
+      template: 'fpl-club',
     })
     if (q) out.push(q)
   }
@@ -99,6 +101,7 @@ export function fplQuestions(bootstrap, { random }) {
         pool: ranked.slice(1, 12).map((p) => playerName(p)),
         league: 'fpl',
         random,
+        template: 'fpl-points',
       })
       if (q) out.push(q)
     }

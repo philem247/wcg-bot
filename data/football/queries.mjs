@@ -42,17 +42,21 @@ export async function leagueWinners(leagueQid, opts) {
 // P54 member of sports team, P118 league (club plays in), P115 home venue.
 // ?player selected alongside ?playerLabel: two players sharing a label (two
 // "Tommy Wilson"s) must not merge into one career — templates.mjs keys on id.
-// LIMIT keeps the response inside WDQS's timeout — the uncapped Premier League
-// query returns ~19k rows (~5MB) and gets truncated mid-stream under load,
-// surfacing as a JSON parse error. We only ship a few hundred questions per
-// league, so this costs nothing.
+// neverPlayedForQuestions only uses players with 3+ known clubs, so the
+// HAVING clause filters server-side (same trick as playerNationalitiesQuery)
+// instead of downloading every player-club row and discarding most locally —
+// that discarding is what collapsed this template to near-nothing under the
+// old flat LIMIT. Verified live against Q9448: 2968 rows, no 504.
 export function playerClubsQuery(leagueQid) {
   return `SELECT ?player ?playerLabel ?clubLabel WHERE {
+  { SELECT ?player WHERE {
+      ?player wdt:P54 ?c . ?c wdt:P118 wd:${leagueQid} .
+    } GROUP BY ?player HAVING(COUNT(DISTINCT ?c) >= 3) }
   ?player wdt:P54 ?club .
   ?club wdt:P118 wd:${leagueQid} .
   ${NO_FICTIONAL}
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-} LIMIT 10000`
+}`
 }
 
 export async function playerClubs(leagueQid, opts) {
@@ -95,32 +99,40 @@ export async function cupWinners(compQid, opts) {
     .map((r) => ({ season: r.edLabel, winner: r.winnerLabel }))
 }
 
-// P54 member of sports team, P118 league, P27 country of citizenship.
-// Uniqueness is enforced IN the query (GROUP BY/HAVING COUNT=1) rather than
-// client-side: LIMIT 3000 with no ORDER BY made the row subset arbitrary, and
-// a dual-national's two P27 rows could straddle the cut so only one showed up
-// — the old client-side "nats.size !== 1" guard never fired. Verified live:
-// 200 status, rows returned, no 504 (23s response, one retry under sparql.mjs
-// backoff covers the occasional 502).
+// P27 country of citizenship. Takes the player URIs the caller already has
+// from playerClubs and asks only about those, via VALUES — the earlier
+// league-wide GROUP BY/HAVING(COUNT=1) subquery timed out server-side for the
+// Premier League (measured: HTTP 504 on GET at 66s, HTTP 500 on POST at 60s)
+// and was not fixable by retrying, so it was retired. This shape was measured
+// live: 891 PL players in, 1062 rows back, 6.3s.
 // ?player selected alongside ?playerLabel for the same reason as playerClubsQuery:
 // two players sharing a label must not merge into one identity.
-// LIMIT keeps the response inside WDQS's timeout — the uncapped Premier League
-// query returns ~19k rows (~5MB) and gets truncated mid-stream under load,
-// surfacing as a JSON parse error. We only ship a few hundred questions per
-// league, so this costs nothing.
-export function playerNationalitiesQuery(leagueQid) {
+// Uniqueness is no longer server-side: every P27 row for a player comes back
+// now, so playerNationalities groups by player and keeps only those with
+// exactly one distinct nationality.
+export function playerNationalitiesQuery(playerUris) {
   return `SELECT ?player ?playerLabel ?natLabel WHERE {
-  { SELECT ?player WHERE {
-      ?player wdt:P54 ?c . ?c wdt:P118 wd:${leagueQid} . ?player wdt:P27 ?n .
-    } GROUP BY ?player HAVING(COUNT(DISTINCT ?n) = 1) }
+  VALUES ?player { ${playerUris.map((u) => `<${u}>`).join(' ')} }
   ?player wdt:P27 ?nat .
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-} LIMIT 10000`
+}`
 }
 
-export async function playerNationalities(leagueQid, opts) {
-  const rows = await runQuery(playerNationalitiesQuery(leagueQid), opts)
-  return rows
-    .filter((r) => r.player && r.playerLabel && r.natLabel && !isQid(r.playerLabel) && !isQid(r.natLabel))
-    .map((r) => ({ id: r.player, player: r.playerLabel, nat: r.natLabel }))
+export async function playerNationalities(playerUris, opts) {
+  if (playerUris.length === 0) return []
+  const rows = await runQuery(playerNationalitiesQuery(playerUris), opts)
+  const byPlayer = new Map()
+  for (const r of rows) {
+    if (!r.player || !r.playerLabel || !r.natLabel || isQid(r.playerLabel) || isQid(r.natLabel)) continue
+    if (!byPlayer.has(r.player)) byPlayer.set(r.player, [])
+    byPlayer.get(r.player).push(r)
+  }
+  const out = []
+  for (const [, playerRows] of byPlayer) {
+    const nats = new Set(playerRows.map((r) => r.natLabel))
+    if (nats.size !== 1) continue
+    const r = playerRows[0]
+    out.push({ id: r.player, player: r.playerLabel, nat: r.natLabel })
+  }
+  return out
 }

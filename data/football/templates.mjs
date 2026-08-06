@@ -18,13 +18,13 @@ export function pickDistractors(correct, pool, count, random) {
 }
 
 // The single choke point. Returns null if the question cannot be built safely.
-export function makeQuestion({ q, correct, pool, league, random }) {
+export function makeQuestion({ q, correct, pool, league, random, template }) {
   if (!q || !correct) return null
   const wrong = pickDistractors(correct, pool, 3, random)
   if (!wrong) return null
   // Belt and braces: same check normalizeQuestion applies to OpenTDB questions.
   if (new Set([correct, ...wrong].map((s) => s.toLowerCase())).size !== 4) return null
-  return { id: questionId(q), q, correct, wrong, league }
+  return { id: questionId(q), q, correct, wrong, league, template }
 }
 
 // "Who won the 2019/20 Premier League?"
@@ -48,6 +48,7 @@ export function winnerQuestions(rows, { leagueName, league, random }) {
       pool: allWinners,
       league,
       random,
+      template: 'winner',
     })
     if (question) out.push(question)
   }
@@ -83,6 +84,7 @@ export function neverWonQuestions(rows, allClubs, { leagueName, league, random }
     pool: [...winners],
     league,
     random,
+    template: 'never-won',
   })
   return question ? [question] : []
 }
@@ -119,6 +121,7 @@ export function neverPlayedForQuestions(rows, { league, random }) {
       pool: [...clubs],
       league,
       random,
+      template: 'never-played',
     })
     if (question) out.push(question)
   }
@@ -148,6 +151,7 @@ export function venueQuestions(rows, { league, random }) {
       pool: allVenues,
       league,
       random,
+      template: 'venue',
     })
     if (question) out.push(question)
   }
@@ -175,6 +179,7 @@ export function nationalityQuestions(rows, { league, random }) {
       pool: allNats,
       league,
       random,
+      template: 'nationality',
     })
     if (question) out.push(question)
   }
