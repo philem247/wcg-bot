@@ -11,6 +11,7 @@ const OWNER_NUMBER = '15550000000'
 
 const { sendEvents, createRouter } = await import('./router.js')
 const { GAP_SECONDS } = await import('../engine/trivia.js')
+const { PREFIX } = await import('../config.js')
 
 // Minimal fake bot_admins store backing addBotAdmin/delBotAdmin/botAdmins, shared by the /promote tests.
 function makeBotAdminDb() {
@@ -723,12 +724,12 @@ const tests = [
     },
   },
   {
-    name: 'a bare answer with no game running explains the bot restarted',
+    name: 'a bare answer with no game running explains the bot restarted, when this chat had a recent game',
     fn: async () => {
       const sent = []
       const router = createRouter({
         dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
-        logger: undefined, getGroupAdmins: async () => [], db: {}, resolvePn: () => undefined,
+        logger: undefined, getGroupAdmins: async () => [], db: { lastGameActivity: () => 900 }, resolvePn: () => undefined,
       })
       await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text: 'B', isGroup: true, raw: undefined }, 1000)
       assert.equal(sent.length, 1)
@@ -741,7 +742,7 @@ const tests = [
       const sent = []
       const router = createRouter({
         dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
-        logger: undefined, getGroupAdmins: async () => [], db: {}, resolvePn: () => undefined,
+        logger: undefined, getGroupAdmins: async () => [], db: { lastGameActivity: () => 0 }, resolvePn: () => undefined,
       })
       const msg = (text, now) => router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text, isGroup: true, raw: undefined }, now)
       await msg('B', 0)
@@ -758,10 +759,50 @@ const tests = [
       const sent = []
       const router = createRouter({
         dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
-        logger: undefined, getGroupAdmins: async () => [], db: {}, resolvePn: () => undefined,
+        logger: undefined, getGroupAdmins: async () => [], db: { lastGameActivity: () => 0 }, resolvePn: () => undefined,
       })
       await router.handleMessage({ jid: 'g@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text: 'B', isGroup: true, raw: undefined }, 0)
       assert.equal(sent.length, 1)
+    },
+  },
+  {
+    name: 'a bare answer in a chat with NO recorded game activity produces no message at all',
+    fn: async () => {
+      const sent = []
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: undefined, getGroupAdmins: async () => [], db: {}, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'never-played@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text: '4', isGroup: true, raw: undefined }, 1000)
+      assert.equal(sent.length, 0, 'a group the bot has never run a game in must stay silent')
+    },
+  },
+  {
+    name: "a bare answer in a chat whose recorded game is older than ORPHAN_GATE_MS produces no message",
+    fn: async () => {
+      const sent = []
+      const now = 60 * 60 * 1000 // 1 hour
+      const db = { lastGameActivity: () => now - 31 * 60 * 1000 } // 31 minutes ago, past the 30-minute gate
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: undefined, getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'stale-game@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text: 'A', isGroup: true, raw: undefined }, now)
+      assert.equal(sent.length, 0, 'a game that ran over 30 minutes ago must not trigger the notice')
+    },
+  },
+  {
+    name: 'a bare answer in a chat with a recent recorded game DOES produce the notice',
+    fn: async () => {
+      const sent = []
+      const now = 60 * 60 * 1000
+      const db = { lastGameActivity: () => now - 5 * 60 * 1000 } // 5 minutes ago, inside the gate
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: undefined, getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'recent-game@g.us', sender: 'a@s.whatsapp.net', senderPn: undefined, text: 'A', isGroup: true, raw: undefined }, now)
+      assert.equal(sent.length, 1, 'a recently-active chat should still get the restart notice')
     },
   },
   {
@@ -1059,6 +1100,149 @@ const tests = [
       await router.handleMessage({ jid, sender: `${num}@s.whatsapp.net`, senderPn: `${num}@s.whatsapp.net`, text: letter, isGroup: true }, 1000)
       assert.ok(sent.length > before, "unbanned user's answer now produces a reply")
       db.close()
+    },
+  },
+  {
+    name: '/tourney start is refused for a non-admin',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const bank = { categories: () => ['general'], pick: () => [] }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db: {}, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g-tny-1@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/tourney start', isGroup: true }, 0)
+      assert.equal(games.size, 0, 'no tournament created for a non-admin')
+      assert.ok(sent[0].includes('admin'))
+    },
+  },
+  {
+    name: '/tourney start refuses when a trivia game is already running here',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = { categories: () => ['general'], pick: () => [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }] }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, bank, resolvePn: () => undefined,
+      })
+      const jid = 'g-tny-2@g.us'
+      await router.handleMessage({ jid, sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/trivia general', isGroup: true }, 0)
+      assert.equal(games.size, 1)
+      await router.handleMessage({ jid, sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/tourney start', isGroup: true }, 100)
+      assert.ok(sent.some((t) => t.includes('already running')), 'tournament refused while trivia runs')
+      db.close()
+    },
+  },
+  {
+    name: '/tourney start opens registration, join enters, and next after the window starts the first match',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = {
+        categories: () => ['general'],
+        pick: ({ count }) => Array.from({ length: count }, (_, i) => ({
+          id: `q${i}`, q: `Q${i}?`, correct: 'right', wrong: ['a', 'b', 'c'], category: 'general',
+        })),
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, bank, resolvePn: () => undefined,
+      })
+      const jid = 'g-tny-3@g.us'
+      await router.handleMessage({ jid, sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/tourney start', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'tournament registered so the scheduler ticks it')
+      assert.ok(sent.some((t) => t.includes('TOURNAMENT')))
+
+      await router.handleMessage({ jid, sender: 'p1@s.whatsapp.net', senderPn: 'p1@s.whatsapp.net', text: 'join', isGroup: true }, 100)
+      await router.handleMessage({ jid, sender: 'p2@s.whatsapp.net', senderPn: 'p2@s.whatsapp.net', text: 'join', isGroup: true }, 200)
+      assert.ok(sent.some((t) => t.includes('2 joined')))
+
+      // Advance past the registration window: the scheduler would call tick()
+      // every second in production; drive it by hand here.
+      const closeEv = games.get(jid).tick(120_000)
+      sendEvents((j, m) => sent.push(m.text), jid, closeEv, undefined, 120_000, db)
+      assert.ok(sent.some((t) => t.includes('BRACKET SET')))
+
+      await router.handleMessage({ jid, sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/tourney next', isGroup: true }, 120_100)
+      assert.ok(sent.some((t) => t.includes('ROUND 1')), 'admin next started the first match')
+      db.close()
+    },
+  },
+  {
+    name: '/tourney next is refused for a non-admin',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = { categories: () => ['general'], pick: () => [] }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, bank, resolvePn: () => undefined,
+      })
+      const jid = 'g-tny-4@g.us'
+      await router.handleMessage({ jid, sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/tourney start', isGroup: true }, 0)
+      await router.handleMessage({ jid, sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/tourney next', isGroup: true }, 100)
+      assert.ok(sent.some((t) => t.includes('admin')))
+      db.close()
+    },
+  },
+  {
+    name: '/tourney stats reads the tournament_wins table, not the trivia/chain leaderboards',
+    fn: async () => {
+      const sent = []
+      const db = openDb(':memory:')
+      db.recordTournamentWin('g-tny-5@g.us', '11111111', 1000)
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: undefined, getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g-tny-5@g.us', sender: 'x@s.whatsapp.net', senderPn: undefined, text: '/tourney stats', isGroup: true }, 2000)
+      assert.ok(sent[0].includes('11111111'))
+      assert.ok(sent[0].includes('title'))
+      db.close()
+    },
+  },
+  {
+    name: '/help lists /tourney status and stats to everyone, but start|next|end only to an admin',
+    fn: async () => {
+      const sentPlayer = []
+      const dbA = openDb(':memory:')
+      const routerPlayer = createRouter({
+        dict: new Set(), games: new Map(), enqueue: (j, m) => sentPlayer.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db: dbA, resolvePn: () => undefined,
+      })
+      await routerPlayer.handleMessage({ jid: 'g@g.us', sender: '99999@s.whatsapp.net', senderPn: '99999@s.whatsapp.net', text: '/help', isGroup: true }, 0)
+      const playerText = sentPlayer[0]
+      assert.ok(playerText.includes('TOURNAMENT'))
+      assert.ok(playerText.includes(`${PREFIX}tourney status`))
+      assert.ok(playerText.includes(`${PREFIX}tourney stats`))
+      assert.ok(!playerText.includes(`${PREFIX}tourney start`), 'a non-admin must not see the admin-gated tourney commands')
+      assert.ok(!playerText.includes(`${PREFIX}tourney next`))
+      assert.ok(!playerText.includes(`${PREFIX}tourney end`))
+      dbA.close()
+
+      const sentAdmin = []
+      const dbB = openDb(':memory:')
+      const routerAdmin = createRouter({
+        dict: new Set(), games: new Map(), enqueue: (j, m) => sentAdmin.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['77777@s.whatsapp.net'], db: dbB, resolvePn: () => undefined,
+      })
+      await routerAdmin.handleMessage({ jid: 'g@g.us', sender: '77777@s.whatsapp.net', senderPn: '77777@s.whatsapp.net', text: '/help', isGroup: true }, 0)
+      const adminText = sentAdmin[0]
+      assert.ok(adminText.includes(`${PREFIX}tourney start`))
+      assert.ok(adminText.includes(`${PREFIX}tourney next`))
+      assert.ok(adminText.includes(`${PREFIX}tourney end`))
+      dbB.close()
     },
   },
 ]

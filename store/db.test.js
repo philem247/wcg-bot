@@ -517,6 +517,63 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'tournament_wins: recordTournamentWin then tournamentStats aggregates by player, per-jid',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.recordTournamentWin('jid-a', '1111111111', 1000)
+      db.recordTournamentWin('jid-a', '1111111111', 2000)
+      db.recordTournamentWin('jid-a', '2222222222', 3000)
+      db.recordTournamentWin('jid-b', '3333333333', 4000)
+
+      const board = db.tournamentStats('jid-a')
+      assert.equal(board.length, 2)
+      assert.equal(board[0].player, '1111111111', '2 wins ranks first')
+      assert.equal(board[0].wins, 2)
+      assert.equal(board[1].player, '2222222222')
+      assert.equal(board[1].wins, 1)
+      const boardB = db.tournamentStats('jid-b')
+      assert.equal(boardB.length, 1, 'scoped per group')
+      assert.equal(boardB[0].player, '3333333333')
+      assert.equal(boardB[0].wins, 1)
+      db.close()
+    },
+  },
+  {
+    name: 'tournaments: saveTournament/loadTournament/deleteTournament round-trip a JSON blob per jid',
+    fn: () => {
+      const db = openDb(':memory:')
+      assert.equal(db.loadTournament('jid-a'), null, 'nothing saved yet')
+
+      const snapshot = { v: 1, state: 'awaiting', players: ['a', 'b'], roundIndex: 0 }
+      db.saveTournament('jid-a', snapshot, 1000)
+      assert.deepEqual(db.loadTournament('jid-a'), snapshot)
+
+      // Overwrite, not duplicate.
+      const snapshot2 = { ...snapshot, roundIndex: 1 }
+      db.saveTournament('jid-a', snapshot2, 2000)
+      assert.deepEqual(db.loadTournament('jid-a'), snapshot2)
+
+      assert.equal(db.loadTournament('jid-b'), null, 'scoped per group')
+
+      db.deleteTournament('jid-a')
+      assert.equal(db.loadTournament('jid-a'), null, 'deleted')
+      db.close()
+    },
+  },
+  {
+    name: 'game_activity: recordGameActivity then lastGameActivity round-trips and upserts',
+    fn: () => {
+      const db = openDb(':memory:')
+      assert.equal(db.lastGameActivity('jid-a'), undefined, 'nothing recorded yet')
+      db.recordGameActivity('jid-a', 1000)
+      assert.equal(db.lastGameActivity('jid-a'), 1000)
+      db.recordGameActivity('jid-a', 2000)
+      assert.equal(db.lastGameActivity('jid-a'), 2000, 'overwrites rather than duplicating')
+      assert.equal(db.lastGameActivity('jid-b'), undefined, 'scoped per group')
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

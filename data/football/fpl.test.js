@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { seasonLabel, seasons, fplQuestions, POSITIONS, MIN_OWNERSHIP_PCT } from './fpl.mjs'
+import { seasonLabel, seasons, fplQuestions, POSITIONS, MIN_OWNERSHIP_PCT, recognisablePlayers, seasonFolders, fetchSeasons, parseCsv, fplSeasonQuestions, fplGoalsQuestions, FPL_MIN_MINUTES, VAASTAV_START_YEAR } from './fpl.mjs'
 
 const fixture = JSON.parse(readFileSync(new URL('./fpl.fixture.json', import.meta.url), 'utf8'))
 const fixed = (v = 0) => () => v
@@ -138,6 +138,149 @@ const tests = [
       assert.ok(topScorerQ, 'fixture must produce a top-scorer question')
       assert.ok(positionQ.q.includes(s.squad) && !positionQ.q.includes(s.stats), 'squad fact must carry squad season only')
       assert.ok(topScorerQ.q.includes(s.stats) && !topScorerQ.q.includes(s.squad), 'stat fact must carry stats season only')
+    },
+  },
+  {
+    name: 'recognisablePlayers: filters by web_name, known position and ownership threshold',
+    fn: () => {
+      const bootstrap = {
+        elements: [
+          { id: 1, web_name: 'A', element_type: 1, selected_by_percent: '5.0' },
+          { id: 2, web_name: '', element_type: 1, selected_by_percent: '5.0' }, // no name
+          { id: 3, web_name: 'C', element_type: 99, selected_by_percent: '5.0' }, // unknown position
+          { id: 4, web_name: 'D', element_type: 1, selected_by_percent: String(MIN_OWNERSHIP_PCT - 0.9) }, // below threshold
+        ],
+      }
+      const out = recognisablePlayers(bootstrap)
+      assert.deepEqual(out.map((p) => p.id), [1])
+    },
+  },
+  {
+    name: 'parseCsv: quoted fields containing commas do not misalign columns',
+    fn: () => {
+      const csv = 'first_name,second_name,goals_scored\n"Bruno","Fernandes, Jr",10\nErling,Haaland,27\n'
+      const rows = parseCsv(csv)
+      assert.equal(rows.length, 2)
+      assert.equal(rows[0].second_name, 'Fernandes, Jr')
+      assert.equal(rows[0].goals_scored, '10')
+      assert.equal(rows[1].first_name, 'Erling')
+    },
+  },
+  {
+    name: 'seasonFolders: excludes an un-started season — its folder mirrors the prior season\'s final totals',
+    fn: () => {
+      // Regression for the vaastav pre-season trap: 2025-26 and 2026-27 both
+      // reported Haaland on 239 points when 2026-27 hadn't been played.
+      const bootstrap = { events: [{ deadline_time: '2026-08-21T17:30:00Z', finished: false }] }
+      const folders = seasonFolders(bootstrap)
+      assert.ok(!folders.includes('2026-27'), 'the un-started season must never be read')
+      assert.equal(folders[folders.length - 1], '2025-26', 'the newest folder is the last COMPLETED season')
+      assert.equal(folders[0], `${VAASTAV_START_YEAR}-${String((VAASTAV_START_YEAR + 1) % 100).padStart(2, '0')}`)
+    },
+  },
+  {
+    name: 'seasonFolders: returns [] when the season cannot be dated',
+    fn: () => {
+      assert.deepEqual(seasonFolders({ events: [] }), [])
+    },
+  },
+  {
+    name: 'fetchSeasons: serial, in order, one failing season is skipped without aborting the batch',
+    fn: async () => {
+      const calls = []
+      const fetchImpl = async (url) => {
+        calls.push(url)
+        if (url.includes('2017-18')) throw new Error('network blip')
+        return { ok: true, text: async () => 'first_name,second_name,goals_scored,minutes,total_points\nA,One,5,1000,50\n' }
+      }
+      const result = await fetchSeasons(['2016-17', '2017-18', '2018-19'], { fetchImpl, delayMs: 0 })
+      assert.deepEqual(calls, [
+        'https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data/2016-17/cleaned_players.csv',
+        'https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data/2017-18/cleaned_players.csv',
+        'https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data/2018-19/cleaned_players.csv',
+      ], 'requests fire one at a time, in input order')
+      assert.equal(result.size, 2, 'the failing season is skipped, not aborting the batch')
+      assert.ok(result.has('2016-17') && result.has('2018-19') && !result.has('2017-18'))
+    },
+  },
+  {
+    name: 'fetchSeasons: a non-ok HTTP response is skipped like a thrown error',
+    fn: async () => {
+      const fetchImpl = async () => ({ ok: false, status: 404 })
+      const result = await fetchSeasons(['2016-17'], { fetchImpl, delayMs: 0 })
+      assert.equal(result.size, 0)
+    },
+  },
+  {
+    name: 'fplSeasonQuestions: names the top scorer of a named season from real CSV totals',
+    fn: () => {
+      const rows = [
+        { first_name: 'A', second_name: 'One', total_points: '200', minutes: '2000', goals_scored: '10' },
+        { first_name: 'B', second_name: 'Two', total_points: '150', minutes: '2000', goals_scored: '5' },
+        { first_name: 'C', second_name: 'Three', total_points: '100', minutes: '2000', goals_scored: '3' },
+        { first_name: 'D', second_name: 'Four', total_points: '50', minutes: '2000', goals_scored: '1' },
+      ]
+      const qs = fplSeasonQuestions(new Map([['2023-24', rows]]), { random: fixed(0) })
+      const q = qs.find((x) => x.q.includes('2023/24 season'))
+      assert.ok(q, 'four eligible players in one season yield a season-top question')
+      assert.equal(q.correct, 'A One')
+      for (const w of q.wrong) assert.ok(['B Two', 'C Three', 'D Four'].includes(w))
+    },
+  },
+  {
+    name: 'fplSeasonQuestions: a tied top score, or fewer than 4 eligible players, ships nothing',
+    fn: () => {
+      const tied = [
+        { first_name: 'A', second_name: 'One', total_points: '200', minutes: '2000', goals_scored: '1' },
+        { first_name: 'B', second_name: 'Two', total_points: '200', minutes: '2000', goals_scored: '1' },
+        { first_name: 'C', second_name: 'Three', total_points: '100', minutes: '2000', goals_scored: '1' },
+        { first_name: 'D', second_name: 'Four', total_points: '50', minutes: '2000', goals_scored: '1' },
+      ]
+      assert.equal(fplSeasonQuestions(new Map([['2023-24', tied]]), { random: fixed(0) }).length, 0, 'tied top must not ship')
+
+      const tooFew = tied.slice(0, 3).map((r, i) => ({ ...r, total_points: String(200 - i * 10) }))
+      assert.equal(fplSeasonQuestions(new Map([['2023-24', tooFew]]), { random: fixed(0) }).length, 0, 'fewer than 4 must not ship')
+    },
+  },
+  {
+    name: 'fplSeasonQuestions: a cameo player below FPL_MIN_MINUTES is excluded even with a high total',
+    fn: () => {
+      const rows = [
+        { first_name: 'Cameo', second_name: 'Kid', total_points: '999', minutes: String(FPL_MIN_MINUTES - 1), goals_scored: '1' },
+        { first_name: 'B', second_name: 'Two', total_points: '150', minutes: '2000', goals_scored: '1' },
+        { first_name: 'C', second_name: 'Three', total_points: '100', minutes: '2000', goals_scored: '1' },
+        { first_name: 'D', second_name: 'Four', total_points: '50', minutes: '2000', goals_scored: '1' },
+      ]
+      const qs = fplSeasonQuestions(new Map([['2023-24', rows]]), { random: fixed(0) })
+      assert.ok(!qs.some((q) => q.q.includes('2023/24 season')), 'below-minutes cameo leaves only 3 eligible players')
+    },
+  },
+  {
+    name: 'fplGoalsQuestions: asks a real goal total, distractors are other players\' real totals from the same season',
+    fn: () => {
+      const rows = [
+        { first_name: 'Erling', second_name: 'Haaland', goals_scored: '27', minutes: '2500' },
+        { first_name: 'Mohamed', second_name: 'Salah', goals_scored: '18', minutes: '3000' },
+        { first_name: 'Cole', second_name: 'Palmer', goals_scored: '11', minutes: '2800' },
+      ]
+      const qs = fplGoalsQuestions(new Map([['2023-24', rows]]), { random: fixed(0) })
+      const q = qs.find((x) => x.q.includes('Erling Haaland'))
+      assert.ok(q, 'a player with real goals and enough minutes yields a question')
+      assert.equal(q.correct, '27')
+      for (const w of q.wrong) assert.ok(['18', '11'].includes(w))
+    },
+  },
+  {
+    name: 'fplGoalsQuestions: a player with zero goals is never asked about',
+    fn: () => {
+      const rows = [
+        { first_name: 'Keeper', second_name: 'One', goals_scored: '0', minutes: '3000' },
+        { first_name: 'B', second_name: 'Two', goals_scored: '5', minutes: '2000' },
+        { first_name: 'C', second_name: 'Three', goals_scored: '3', minutes: '2000' },
+        { first_name: 'D', second_name: 'Four', goals_scored: '1', minutes: '2000' },
+      ]
+      const qs = fplGoalsQuestions(new Map([['2023-24', rows]]), { random: fixed(0) })
+      assert.ok(!qs.some((q) => q.q.includes('Keeper One')), 'zero goals must never be the subject of the question')
     },
   },
 ]

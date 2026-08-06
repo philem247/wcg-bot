@@ -44,8 +44,18 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       jid TEXT NOT NULL, number TEXT NOT NULL,
       PRIMARY KEY (jid, number)
     );
+    CREATE TABLE IF NOT EXISTS tournament_wins (
+      jid TEXT NOT NULL, player TEXT NOT NULL, won_at INTEGER NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS tournaments (
+      jid TEXT PRIMARY KEY, data TEXT NOT NULL, updated_at INTEGER NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS game_activity (
+      jid TEXT PRIMARY KEY, last_at INTEGER NOT NULL
+    );
     CREATE INDEX IF NOT EXISTS idx_results_jid_ended ON results(jid, ended_at);
     CREATE INDEX IF NOT EXISTS idx_rejections_jid_word ON rejections(jid, word);
+    CREATE INDEX IF NOT EXISTS idx_tournament_wins_jid ON tournament_wins(jid);
   `)
 
   // Migration: add player_pn column for phone-form JID aggregation.
@@ -129,6 +139,28 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   )
   const stmtSelectBans = db.prepare(
     'SELECT number FROM trivia_bans WHERE jid = ? ORDER BY number'
+  )
+  const stmtInsertTournamentWin = db.prepare(
+    'INSERT INTO tournament_wins (jid, player, won_at) VALUES (?, ?, ?)'
+  )
+  const stmtSelectTournamentWins = db.prepare(`
+    SELECT player, COUNT(*) as wins FROM tournament_wins
+    WHERE jid = ? GROUP BY player ORDER BY wins DESC, player ASC LIMIT ?
+  `)
+  const stmtSaveTournament = db.prepare(
+    'INSERT INTO tournaments (jid, data, updated_at) VALUES (?, ?, ?) ON CONFLICT(jid) DO UPDATE SET data = excluded.data, updated_at = excluded.updated_at'
+  )
+  const stmtLoadTournament = db.prepare(
+    'SELECT data FROM tournaments WHERE jid = ?'
+  )
+  const stmtDeleteTournament = db.prepare(
+    'DELETE FROM tournaments WHERE jid = ?'
+  )
+  const stmtUpsertActivity = db.prepare(
+    'INSERT INTO game_activity (jid, last_at) VALUES (?, ?) ON CONFLICT(jid) DO UPDATE SET last_at = excluded.last_at'
+  )
+  const stmtGetActivity = db.prepare(
+    'SELECT last_at FROM game_activity WHERE jid = ?'
   )
 
   return {
@@ -256,6 +288,50 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
 
     bans(jid) {
       return stmtSelectBans.all(jid).map(row => row.number)
+    },
+
+    // Tournament wins only — one row per championship. Never reads/writes
+    // `results` (trivia/chain leaderboard), so /tourney stats can never leak or
+    // be leaked into by the other game modes.
+    recordTournamentWin(jid, player, ts) {
+      stmtInsertTournamentWin.run(jid, player, ts)
+    },
+
+    tournamentStats(jid, limit = 10) {
+      return stmtSelectTournamentWins.all(jid, limit)
+    },
+
+    // Single-row-per-group JSON blob: the whole bracket (entrants, rounds,
+    // fixtures, whose turn it is) so a tournament survives a restart. See
+    // engine/tournament.js's serialize()/restore.
+    saveTournament(jid, data, ts) {
+      stmtSaveTournament.run(jid, JSON.stringify(data), ts)
+    },
+
+    loadTournament(jid) {
+      const row = stmtLoadTournament.get(jid)
+      if (!row) return null
+      try {
+        return JSON.parse(row.data)
+      } catch {
+        return null // corrupt row: caller must treat this the same as "not found"
+      }
+    },
+
+    deleteTournament(jid) {
+      stmtDeleteTournament.run(jid)
+    },
+
+    // Last time ANY game (wcg/trivia/tournament) started or ran in this chat.
+    // Gates the "bot restarted" orphan notice so it only fires in a chat that
+    // was actually mid-game, not every group the bot happens to sit in.
+    recordGameActivity(jid, ts) {
+      stmtUpsertActivity.run(jid, ts)
+    },
+
+    lastGameActivity(jid) {
+      const row = stmtGetActivity.get(jid)
+      return row ? row.last_at : undefined
     },
 
     close() {

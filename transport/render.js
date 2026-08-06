@@ -1,6 +1,7 @@
 // Pure event -> WhatsApp text renderer. No side effects, no sending, no wa.js import.
 import { toNumber } from './admin.js'
 import { LOBBY_WINDOW_MS } from '../engine/modes.js'
+import { PREFIX } from '../config.js'
 
 const mention = (jid) => `@${toNumber(jid)}`
 
@@ -133,6 +134,107 @@ export function render(event) {
 
     case 'trivia_terminated':
       return { text: `Trivia stopped.`, mentions: [] }
+
+    case 'tournament_registration_open':
+      return {
+        text: `🏆 *TOURNAMENT*\n━━━━━━━━━━━━━━━━\n${CATEGORY_LABEL[event.category] ?? event.category}\nType *join* — registration closes in ${event.seconds}s.`,
+        mentions: [],
+      }
+
+    case 'tournament_joined':
+      return { text: `${mention(event.player)} is in 🙋 (${event.count} joined)`, mentions: [event.player] }
+
+    case 'tournament_cancelled':
+      return { text: `🏆 Tournament cancelled — only ${event.count} joined, need at least 2.`, mentions: [] }
+
+    case 'tournament_bracket_ready': {
+      const lines = [`🏆 *BRACKET SET* — ${event.players.length} players, ${event.totalRounds} round${event.totalRounds === 1 ? '' : 's'}`, '']
+      const mentions = []
+      if (event.byes.length > 0) {
+        lines.push(`_Byes:_ ${event.byes.map((p) => mention(p)).join(', ')}`)
+        mentions.push(...event.byes)
+      }
+      for (const m of event.matches) {
+        lines.push(`▸ ${mention(m.p1)} vs ${mention(m.p2)}`)
+        mentions.push(m.p1, m.p2)
+      }
+      lines.push('', `Admin: run ${PREFIX}tourney next to start the first match.`)
+      return { text: lines.join('\n'), mentions }
+    }
+
+    case 'tournament_match_start':
+      return {
+        text: `🏆 *ROUND ${event.round}/${event.totalRounds}*\n${mention(event.p1)} 🆚 ${mention(event.p2)}\n\nHighest score after 10 questions wins.`,
+        mentions: [event.p1, event.p2],
+      }
+
+    case 'tournament_sudden_death':
+      return {
+        text: `⚔️ *Tied!* Sudden death — one question at a time until exactly one of you is right.\n${mention(event.p1)} 🆚 ${mention(event.p2)}`,
+        mentions: [event.p1, event.p2],
+      }
+
+    case 'tournament_sudden_death_repeat':
+      return {
+        text: `⚔️ Still tied — another sudden-death question.\n${mention(event.p1)} 🆚 ${mention(event.p2)}`,
+        mentions: [event.p1, event.p2],
+      }
+
+    case 'tournament_match_over': {
+      const lines = [
+        `🏁 *MATCH RESULT*${event.suddenDeath ? ' (sudden death)' : ''}`,
+        `${mention(event.p1)} ${event.scoreP1} — ${event.scoreP2} ${mention(event.p2)}`,
+        `Winner: ${mention(event.winner)} 🏆`,
+        '',
+        event.roundComplete
+          ? `Round ${event.round} complete! Admin: run ${PREFIX}tourney next for round ${event.round + 1}.`
+          : `Admin: run ${PREFIX}tourney next for the next match.`,
+      ]
+      return { text: lines.join('\n'), mentions: [event.p1, event.p2, event.winner] }
+    }
+
+    case 'tournament_champion':
+      return {
+        text: `👑 *TOURNAMENT CHAMPION*\n━━━━━━━━━━━━━━━━\n${mention(event.player)} takes it all after ${event.rounds} round${event.rounds === 1 ? '' : 's'}! 🏆🎉`,
+        mentions: [event.player],
+      }
+
+    case 'tournament_ended':
+      return { text: `Tournament cancelled.`, mentions: [] }
+
+    case 'tournament_next_denied': {
+      const TEXT = {
+        still_registering: `Registration is still open — it closes on its own timer.`,
+        match_in_progress: `A match is already in progress.`,
+        no_active_tournament: `No tournament to advance here.`,
+      }
+      return { text: TEXT[event.reason] ?? `Can't advance the tournament right now.`, mentions: [] }
+    }
+
+    case 'tournament_status': {
+      if (event.state === 'registering') {
+        return { text: `🏆 *TOURNAMENT* — registration open\n${event.players.length} joined so far.`, mentions: [] }
+      }
+      if (event.state === 'over') {
+        return event.champion
+          ? { text: `🏆 Tournament over. Champion: ${mention(event.champion)}`, mentions: [event.champion] }
+          : { text: `🏆 No tournament running here.`, mentions: [] }
+      }
+      const lines = [`🏆 *BRACKET* — round ${event.round}/${event.totalRounds}`, '']
+      const mentions = []
+      for (const f of event.fixtures) {
+        if (f.type === 'bye') {
+          lines.push(`　${mention(f.player)} (bye)`)
+          mentions.push(f.player)
+        } else {
+          const decided = f.winner ? ` → ${mention(f.winner)}` : ''
+          lines.push(`▸ ${mention(f.p1)} vs ${mention(f.p2)}${decided}`)
+          mentions.push(f.p1, f.p2)
+          if (f.winner) mentions.push(f.winner)
+        }
+      }
+      return { text: lines.join('\n'), mentions }
+    }
 
     default:
       return null

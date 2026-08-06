@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
 import pino from 'pino';
 import pinoPretty from 'pino-pretty';
-import { connect, send, getGroupAdmins, resolvePn, isConnected, shutdown as waShutdown } from './transport/wa.js';
+import { connect, send, getGroupAdmins, resolvePn, isConnected, setTrafficProbe, shutdown as waShutdown } from './transport/wa.js';
 import { createRouter, sendEvents } from './transport/router.js';
 import { createOutbox } from './transport/outbox.js';
 import { acquireLock, releaseLock } from './transport/lock.js';
@@ -69,6 +69,9 @@ process.on('uncaughtException', (err) => {
 });
 
 const games = new Map(); // jid -> game
+// Traffic is expected while a game is actively playing, or a lobby already
+// has a player in it (state==='playing' covers trivia too — it has no lobby).
+setTrafficProbe(() => [...games.values()].some(g => g.state === 'playing' || (g.state === 'lobby' && g.playerCount >= 1)));
 
 // send() is direct network I/O; the outbox paces/queues everything in front of it
 // so no single game's sends can blow past WhatsApp's rate limit or starve another

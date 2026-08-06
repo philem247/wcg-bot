@@ -320,11 +320,11 @@ const tests = [
     },
   },
   {
-    name: 'QUESTION_COUNT is 10, CLOCK_SECONDS is 30, GAP_SECONDS is 10',
+    name: 'QUESTION_COUNT is 10, CLOCK_SECONDS is 30, GAP_SECONDS is 15',
     fn: () => {
       assert.equal(QUESTION_COUNT, 10)
       assert.equal(CLOCK_SECONDS, 30)
-      assert.equal(GAP_SECONDS, 10)
+      assert.equal(GAP_SECONDS, 15)
     },
   },
 ]

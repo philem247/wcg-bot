@@ -10,12 +10,12 @@
 import { shuffle } from './bank.js'
 
 export const QUESTION_COUNT = 10
-// 30s to answer, 10s between questions. Deliberately unhurried: players said the
+// 30s to answer, 15s between questions. Deliberately unhurried: players said the
 // old 20s/5s felt rushed, and a wider gap also absorbs late answers — submit() is
 // a no-op during the gap, so an answer that arrives after its question closed is
 // discarded instead of scoring against the NEXT question's options.
 export const CLOCK_SECONDS = 30
-export const GAP_SECONDS = 10
+export const GAP_SECONDS = 15
 export const LETTERS = ['A', 'B', 'C', 'D']
 
 const DIGITS = { 1: 'A', 2: 'B', 3: 'C', 4: 'D' }

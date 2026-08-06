@@ -4,6 +4,7 @@ import { render } from './render.js'
 import { isAdmin, isAdminEither, toNumber } from './admin.js'
 import { createGame } from '../engine/game.js'
 import { createTriviaGame, QUESTION_COUNT, parseAnswer } from '../engine/trivia.js'
+import { createTournament } from '../engine/tournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
 import { PREFIX, OWNER, ADMINS } from '../config.js'
@@ -28,6 +29,18 @@ const gameMeta = new Map() // jid -> { mode, type, startedAt, players, eliminate
 // which is module-level too.
 const lastTriviaEnd = new Map() // jid -> ts
 export const TRIVIA_COOLDOWN_MS = 2 * 60 * 1000
+
+// The "bot restarted" orphan notice (see createRouter's handleMessage) must only
+// fire in a chat that was actually mid-game recently — otherwise a bare "4" typed
+// in any random group the bot sits in triggers an unsolicited reply. Gated on
+// db.lastGameActivity(jid), recorded whenever any game (wcg/trivia/tournament)
+// starts. ORPHAN_NOTICE_MS (below, per-jid cooldown once the gate has passed) is
+// unrelated and unchanged.
+export const ORPHAN_GATE_MS = 30 * 60 * 1000
+
+// Per-jid cooldown on the notice itself, once ORPHAN_GATE_MS says it's allowed —
+// unchanged from before, just hoisted next to ORPHAN_GATE_MS.
+export const ORPHAN_NOTICE_MS = 5 * 60 * 1000
 
 // Event type -> outbox kind (transport/outbox.js). Anything not listed here
 // (command replies, permission refusals) is enqueued directly as 'misc'.
@@ -140,7 +153,37 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
     } else if (event.type === 'trivia_terminated') {
       lastTriviaEnd.set(jid, now)
       gameMeta.delete(jid)
+    } else if (event.type === 'tournament_champion') {
+      // Tournament wins are a SEPARATE table from trivia/chain results — never
+      // touches `results`/leaderboard(). Keyed on the winner's phone-form number
+      // (via gameMeta's pnMap, same aggregation the trivia/wcg leaderboards use)
+      // so the same human under two JID namespaces doesn't split into two winners.
+      const meta = gameMeta.get(jid)
+      const pn = meta?.pnMap?.get(event.player)
+      try {
+        db?.recordTournamentWin(jid, toNumber(pn ?? event.player), now)
+      } catch (e) {
+        // store failure must never break gameplay
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'tournament_cancelled' || event.type === 'tournament_ended') {
+      gameMeta.delete(jid)
     }
+
+    // Tournament state transitions carry a full bracket snapshot to persist —
+    // see engine/tournament.js's serialize(). Mid-match ticks (trivia_question/
+    // trivia_answer pass-through) carry none and are deliberately not persisted:
+    // a restart mid-match collapses back to 'awaiting' on the next /tourney next
+    // rather than trying to resume a live trivia clock.
+    if (event.snapshot) {
+      try {
+        if (event.snapshot.state === 'over') db?.deleteTournament(jid)
+        else db?.saveTournament(jid, event.snapshot, now)
+      } catch (e) {
+        // store failure must never break gameplay
+      }
+    }
+
     const rendered = render(toRender)
     if (rendered) {
       enqueue(jid, {
@@ -157,6 +200,12 @@ function formatLeaderboard(board, heading) {
   if (board.length === 0) return { text: `${heading}\nNo games yet.`, mentions: [] }
   const lines = board.map((r, i) => `${i + 1}. @${toNumber(r.player)} - ${r.score} ${r.score === 1 ? 'pt' : 'pts'} (${r.wins}W/${r.games}G)`)
   return { text: `${heading}\n${lines.join('\n')}`, mentions: board.map((r) => r.player) }
+}
+
+function formatTournamentStats(board) {
+  if (board.length === 0) return { text: `🏆 No tournaments won yet.`, mentions: [] }
+  const lines = board.map((r, i) => `${i + 1}. @${toNumber(r.player)} - ${r.wins} ${r.wins === 1 ? 'title' : 'titles'}`)
+  return { text: `🏆 Tournament wins\n${lines.join('\n')}`, mentions: board.map((r) => r.player) }
 }
 
 function formatPending(rows) {
@@ -177,7 +226,6 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   // A restart wipes `games` (in-memory) while the group is still playing. Bare
   // A-D answers then hit the no-game path and vanish, so the bot looks dead.
   // Rate-limited per jid: same bounded-leak note as `starters`.
-  const ORPHAN_NOTICE_MS = 5 * 60 * 1000
   const lastOrphanNotice = new Map() // jid -> ts of the last notice sent
 
   // Command flood guard. Only commands are counted — gameplay messages must never
@@ -272,6 +320,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     games.set(jid, game)
     starters.set(jid, sender)
     gameTypes.set(jid, 'wcg')
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
     sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
     // Record starter's phone-form JID for leaderboard aggregation
     if (senderPn) {
@@ -358,7 +407,81 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     } catch (e) {
       logger?.error({ err: e }, 'Failed recording asked questions')
     }
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
     sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
+  }
+
+  // Open registration for a head-to-head tournament. `args` here is everything
+  // after "start" (e.g. /tourney start football -> args = ['football']).
+  async function startTournament(jid, sender, senderPn, args, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a tournament.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. End it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (!bank) {
+      enqueue(jid, { text: `Trivia is unavailable — no question bank loaded.`, mentions: [], kind: 'misc' })
+      return
+    }
+    const available = bank.categories()
+    const requested = args[0]
+    const category = requested ? requested.toLowerCase() : 'mixed'
+    if (category !== 'mixed' && !available.includes(category)) {
+      enqueue(jid, {
+        text: `No questions for "${requested}" yet.\nAvailable: ${available.join(', ') || 'none'}`,
+        mentions: [], kind: 'misc',
+      })
+      return
+    }
+
+    const tourney = createTournament({ now, random: Math.random, bank, category })
+    games.set(jid, tourney)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'tournament')
+    gameMeta.set(jid, { type: 'tournament', startedAt: now, pnMap: new Map() })
+    if (senderPn) gameMeta.get(jid).pnMap.set(sender, senderPn)
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+    sendEvents(enqueue, jid, tourney.tick(now), undefined, now, db)
+  }
+
+  // A tournament may exist in the store but not in memory (the process
+  // restarted). Reconstruct it from the persisted bracket so /tourney next
+  // (etc.) can resume it instead of silently acting like nothing is running.
+  // See engine/tournament.js's `restore` — a mid-match snapshot collapses to
+  // 'awaiting' since the live trivia clock can't be recovered.
+  function resumeTournament(jid, sender, now) {
+    let persisted
+    try {
+      persisted = db.loadTournament?.(jid)
+    } catch (e) {
+      persisted = undefined
+      logger?.error({ err: e }, 'Failed loading persisted tournament')
+    }
+    if (!persisted) return false
+    try {
+      const tourney = createTournament({ now, random: Math.random, bank, restore: persisted })
+      if (tourney.state === 'over') {
+        try { db.deleteTournament?.(jid) } catch (e) { /* best effort cleanup */ }
+        return false
+      }
+      games.set(jid, tourney)
+      gameTypes.set(jid, 'tournament')
+      if (!starters.has(jid)) starters.set(jid, sender)
+      if (!gameMeta.has(jid)) gameMeta.set(jid, { type: 'tournament', startedAt: now, pnMap: new Map() })
+      enqueue(jid, { text: `🏆 Tournament resumed after a restart.`, mentions: [], kind: 'misc' })
+      return true
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed to resume tournament')
+      try { db.deleteTournament?.(jid) } catch (e2) { /* best effort cleanup */ }
+      enqueue(jid, {
+        text: `Couldn't resume the tournament here — its saved state was unreadable. An admin needs to run ${PREFIX}tourney start again.`,
+        mentions: [], kind: 'misc',
+      })
+      return false
+    }
   }
 
   // `expectedType` ('wcg' | 'trivia') keeps /wcg end and /trivia end from
@@ -409,6 +532,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}trivia categories`,
         `▸ ${PREFIX}trivia end`,
         ``,
+        `*🏆 TOURNAMENT* _(start/next/end: admins only)_`,
+        `▸ ${PREFIX}tourney status`,
+        `▸ ${PREFIX}tourney stats`,
+        ``,
         `*📊 SCORES*`,
         `▸ ${PREFIX}stats [all]`,
         `▸ ${PREFIX}trivia stats [all]`,
@@ -424,6 +551,9 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
           `▸ ${PREFIX}addword <word>|all`,
           `▸ ${PREFIX}delword <word>`,
           `▸ ${PREFIX}admin`,
+          `▸ ${PREFIX}tourney start`,
+          `▸ ${PREFIX}tourney next`,
+          `▸ ${PREFIX}tourney end`,
         )
       }
       if (isOwner) {
@@ -432,6 +562,9 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
           `*👑 OWNER*`,
           `▸ ${PREFIX}promote @user`,
           `▸ ${PREFIX}demote @user`,
+          `▸ ${PREFIX}ban @user`,
+          `▸ ${PREFIX}unban @user`,
+          `▸ ${PREFIX}bans`,
         )
       }
 
@@ -624,6 +757,77 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
+    if (cmd === 'tourney') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'stats') {
+        const board = db.tournamentStats?.(jid, 10) ?? []
+        const { text, mentions } = formatTournamentStats(board)
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      // A restart drops the in-memory tournament; try to resume it from the
+      // store before acting like nothing is running. Every sub-command except
+      // stats (handled above, no game/jid dependency beyond a db read) needs this.
+      if (!games.has(jid)) resumeTournament(jid, sender, now)
+
+      if (sub === 'status') {
+        const tourney = games.get(jid)
+        if (!tourney || gameTypes.get(jid) !== 'tournament') {
+          enqueue(jid, { text: `No tournament running here.`, mentions: [], kind: 'misc' })
+          return
+        }
+        const { text, mentions } = render({ type: 'tournament_status', ...tourney.status() })
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end') {
+        if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+          enqueue(jid, { text: `Only a group admin can end the tournament.`, mentions: [], kind: 'misc' })
+          return
+        }
+        const tourney = games.get(jid)
+        if (!tourney || gameTypes.get(jid) !== 'tournament') {
+          enqueue(jid, { text: `No tournament running here.`, mentions: [], kind: 'misc' })
+          return
+        }
+        sendEvents(enqueue, jid, tourney.end(now), undefined, now, db)
+        if (tourney.state === 'over') { games.delete(jid); starters.delete(jid); gameTypes.delete(jid) }
+        return
+      }
+
+      if (sub === 'next') {
+        if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+          enqueue(jid, { text: `Only a group admin can advance the tournament.`, mentions: [], kind: 'misc' })
+          return
+        }
+        const tourney = games.get(jid)
+        if (!tourney || gameTypes.get(jid) !== 'tournament') {
+          enqueue(jid, { text: `No tournament running here. ${PREFIX}tourney start to begin one.`, mentions: [], kind: 'misc' })
+          return
+        }
+        try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+        sendEvents(enqueue, jid, tourney.next(now), undefined, now, db)
+        if (tourney.state === 'over') { games.delete(jid); starters.delete(jid); gameTypes.delete(jid) }
+        return
+      }
+
+      if (sub === 'start') {
+        await startTournament(jid, sender, senderPn, args.slice(1), now, isGroup)
+        return
+      }
+
+      enqueue(jid, { text: `Unknown ${PREFIX}tourney command. Try start, next, status, end or stats.`, mentions: [], kind: 'misc' })
+      return
+    }
+
     if (cmd === 'wcg' || cmd === 'wrg') {
       if (!isGroup) {
         enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
@@ -654,11 +858,22 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       if (!game) {
         // Only a bare A-D/1-4 is unambiguous enough to answer. A lone word could
         // be any chat message; nobody types a lone "C" into a group by accident.
+        // Gated on recent game activity in THIS chat (ORPHAN_GATE_MS) so a bare
+        // "4" typed in some unrelated group the bot merely sits in stays silent —
+        // only a chat that was actually mid-game recently gets the notice.
         if (parseAnswer(text)) {
-          const last = lastOrphanNotice.get(jid)
-          if (last === undefined || now - last >= ORPHAN_NOTICE_MS) {
-            lastOrphanNotice.set(jid, now)
-            enqueue(jid, { text: `No trivia game running here — the bot restarted. ${PREFIX}trivia to start a new one.`, mentions: [], kind: 'misc' })
+          let lastActivity
+          try {
+            lastActivity = db.lastGameActivity?.(jid)
+          } catch (e) {
+            lastActivity = undefined
+          }
+          if (lastActivity !== undefined && now - lastActivity < ORPHAN_GATE_MS) {
+            const last = lastOrphanNotice.get(jid)
+            if (last === undefined || now - last >= ORPHAN_NOTICE_MS) {
+              lastOrphanNotice.set(jid, now)
+              enqueue(jid, { text: `No trivia game running here — the bot restarted. ${PREFIX}trivia to start a new one.`, mentions: [], kind: 'misc' })
+            }
           }
         }
         return
@@ -668,6 +883,13 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       let events = []
       if (trimmed.toLowerCase() === 'join') {
         events = game.join(sender, now)
+      } else if (gameTypes.get(jid) === 'tournament') {
+        // Tournament states are registering/awaiting/match/over, not 'playing' —
+        // its own submit() already ignores non-contestants and phases outside
+        // 'match' silently, so no banned-player check is needed here.
+        if (game.state === 'match' && trimmed.length > 0 && !/\s/.test(trimmed)) {
+          events = game.submit(sender, trimmed, now)
+        }
       } else if (game.state === 'playing' && trimmed.length > 0 && !/\s/.test(trimmed)) {
         // A trivia-banned player's answer is dropped silently — replying would
         // just give a spammer a second target to flood. Word chain is unaffected.

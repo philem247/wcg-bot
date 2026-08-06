@@ -1,6 +1,6 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } from 'baileys';
 import pino from 'pino';
-import { SESSION_DIR, PHONE_NUMBER, WA_LOG_LEVEL } from '../config.js';
+import { SESSION_DIR, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS } from '../config.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
 
@@ -18,6 +18,74 @@ let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
 let authState = null;
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
+
+// Inbound-path instrumentation only: no effect on parsing/dispatch/reconnect.
+// The deployed bot runs without debug logging, so this is the only record of
+// inbound traffic on the console — a run of noPayload is the signature of a
+// Signal ratchet problem; byType separates live traffic (notify) from backfill
+// (append).
+const SUMMARY_INTERVAL_MS = 5 * 60 * 1000;
+let inboundStats = { total: 0, byType: {}, noPayload: 0, echo: 0, dispatched: 0 };
+let summaryTimer = null;
+
+function resetInboundStats() {
+  inboundStats = { total: 0, byType: {}, noPayload: 0, echo: 0, dispatched: 0 };
+}
+
+// Stall watchdog: baileys' keepalive only proves the websocket is alive, not
+// that inbound messages are still being delivered over it. When delivery
+// silently wedges mid-game, this forces a reconnect instead of waiting the
+// minutes it otherwise takes baileys to notice on its own.
+const WATCHDOG_INTERVAL_MS = 30_000;
+let lastDispatchAt = 0;
+let watchdogTimer = null;
+let trafficProbe = () => false;
+
+// Lets the app say "traffic is expected right now" (e.g. a game is running),
+// so a quiet group at 3am never trips the watchdog.
+export function setTrafficProbe(fn) {
+  trafficProbe = fn;
+}
+
+// Pure decision logic, exported so it's testable without a socket.
+export function shouldForceReconnect({ connected, trafficExpected, msSinceLastDispatch, timeoutMs }) {
+  if (!timeoutMs) return false; // 0 disables the watchdog
+  return connected && trafficExpected && msSinceLastDispatch > timeoutMs;
+}
+
+function startWatchdogTimer() {
+  if (watchdogTimer) return; // connect() re-runs on every reconnect; only one timer ever
+  watchdogTimer = setInterval(() => {
+    if (shuttingDown) return;
+    const silentMs = Date.now() - lastDispatchAt;
+    if (!shouldForceReconnect({
+      connected: isConnected(),
+      trafficExpected: trafficProbe(),
+      msSinceLastDispatch: silentMs,
+      timeoutMs: STALL_TIMEOUT_MS,
+    })) return;
+    const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
+    logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s) — forcing reconnect`);
+    lastDispatchAt = Date.now(); // don't refire against the same stall while the new socket comes up
+    sock?.end(undefined);
+  }, WATCHDOG_INTERVAL_MS);
+  watchdogTimer.unref?.();
+}
+
+function startSummaryTimer() {
+  if (summaryTimer) return; // connect() re-runs on every reconnect; only one timer ever
+  summaryTimer = setInterval(() => {
+    if (inboundStats.total === 0) return; // idle bot: say nothing
+    const byType = Object.entries(inboundStats.byType).map(([k, v]) => `${k}=${v}`).join(',') || 'none';
+    const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
+    logger.info(
+      `inbound 5m: total=${inboundStats.total} byType=${byType} noPayload=${inboundStats.noPayload} ` +
+      `echo=${inboundStats.echo} dispatched=${inboundStats.dispatched} connected=${isConnected()} upSec=${upSec}`
+    );
+    resetInboundStats();
+  }, SUMMARY_INTERVAL_MS);
+  summaryTimer.unref?.();
+}
 const groupAdminCache = new Map(); // jid -> { admins, ts }
 
 // ponytail: bounded lid->phone map instead of a real LRU/persistent store — we only
@@ -86,6 +154,8 @@ function disconnectReasonName(code) {
 export async function connect(onMessage, appLogger, onConnected) {
   logger = appLogger;
   onMessageHandler = onMessage;
+  startSummaryTimer();
+  startWatchdogTimer();
 
   // baileys' own multi-file store. A previous hand-rolled single-file version
   // batched every Signal key write behind a 500ms debounce and rewrote the whole
@@ -129,6 +199,7 @@ export async function connect(onMessage, appLogger, onConnected) {
       logger.info('Connecting to WhatsApp...');
     } else if (connection === 'open') {
       connectedAt = Date.now();
+      lastDispatchAt = Date.now();
       logger.info(`Connected to WhatsApp as ${sock.user?.id ?? 'unknown'}`);
       if (onConnected) onConnected();
     } else if (connection === 'close') {
@@ -155,12 +226,14 @@ export async function connect(onMessage, appLogger, onConnected) {
   sock.ev.on('messages.upsert', async ({ messages, type }) => {
     try {
       logger.debug(`upsert type=${type} count=${messages.length}`);
+      inboundStats.total += messages.length;
+      inboundStats.byType[type] = (inboundStats.byType[type] ?? 0) + messages.length;
       for (const msg of messages) {
         logger.debug(
           `raw jid=${msg.key.remoteJid} fromMe=${msg.key.fromMe} id=${msg.key.id} ` +
           `keys=${Object.keys(msg.message ?? {}).join(',') || 'none'}`
         );
-        if (shouldSkip(msg.key, sentIds)) { logger.debug('  skip: own echo'); continue; }
+        if (shouldSkip(msg.key, sentIds)) { inboundStats.echo++; logger.debug('  skip: own echo'); continue; }
 
         let text;
         if (msg.message?.conversation) {
@@ -168,6 +241,7 @@ export async function connect(onMessage, appLogger, onConnected) {
         } else if (msg.message?.extendedTextMessage?.text) {
           text = msg.message.extendedTextMessage.text;
         } else {
+          if (!msg.message) inboundStats.noPayload++;
           logger.debug('  skip: no text payload');
           continue;
         }
@@ -188,6 +262,8 @@ export async function connect(onMessage, appLogger, onConnected) {
           : msg.key.participant ? msg.key.participantPn : sender;
         const isGroup = jid.endsWith('@g.us');
 
+        inboundStats.dispatched++;
+        lastDispatchAt = Date.now();
         onMessageHandler({ jid, sender, senderPn, text, isGroup, raw: msg });
       }
     } catch (e) {
@@ -230,6 +306,10 @@ export async function send(jid, payload) {
 // exactly what we must not do on a routine restart.
 export function shutdown() {
   shuttingDown = true;
+  clearInterval(summaryTimer);
+  summaryTimer = null;
+  clearInterval(watchdogTimer);
+  watchdogTimer = null;
   if (!sock) return;
   sock.end(undefined);
 }

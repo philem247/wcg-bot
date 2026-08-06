@@ -128,6 +128,71 @@ export function neverPlayedForQuestions(rows, { league, random }) {
   return out
 }
 
+// "Which club did Kevin De Bruyne play for?"
+// Correct: a club he's attested at. Distractors: three clubs he never played
+// for, drawn from other players' clubs so every option is real. Keyed on
+// r.id, same reasoning as neverPlayedForQuestions: two players sharing a
+// name must not merge into one combined career.
+export function playedForQuestions(rows, { league, random }) {
+  const byPlayer = new Map() // id -> { name, clubs: Set }
+  const allClubs = new Set()
+  for (const r of rows) {
+    if (!r.id || !r.player || !r.club) continue
+    if (!byPlayer.has(r.id)) byPlayer.set(r.id, { name: r.player, clubs: new Set() })
+    byPlayer.get(r.id).clubs.add(r.club)
+    allClubs.add(r.club)
+  }
+
+  const out = []
+  for (const { name: player, clubs } of byPlayer.values()) {
+    const playedKeys = new Set([...clubs].map(clubKey))
+    const notPlayed = [...allClubs].filter((c) => !playedKeys.has(clubKey(c)))
+    const correct = shuffle([...clubs], random)[0]
+    const question = makeQuestion({
+      q: `Which club did ${player} play for?`,
+      correct,
+      pool: notPlayed,
+      league,
+      random,
+      template: 'played-for',
+    })
+    if (question) out.push(question)
+  }
+  return out
+}
+
+// "Which of these players played for Manchester City?"
+// Correct: a player attested at that club. Distractors: three players with no
+// attested row there. Grouped by clubKey so "Arsenal F.C." and "Arsenal FC"
+// pool the same players — see clubKey above.
+export function clubPlayerQuestions(rows, { league, random }) {
+  const byClub = new Map() // clubKey -> { name, players: Set<string> }
+  const allPlayers = new Set()
+  for (const r of rows) {
+    if (!r.id || !r.player || !r.club) continue
+    const key = clubKey(r.club)
+    if (!byClub.has(key)) byClub.set(key, { name: r.club, players: new Set() })
+    byClub.get(key).players.add(r.player)
+    allPlayers.add(r.player)
+  }
+
+  const out = []
+  for (const { name: club, players } of byClub.values()) {
+    const notPlayers = [...allPlayers].filter((p) => !players.has(p))
+    const correct = shuffle([...players], random)[0]
+    const question = makeQuestion({
+      q: `Which of these players played for ${club}?`,
+      correct,
+      pool: notPlayers,
+      league,
+      random,
+      template: 'club-player',
+    })
+    if (question) out.push(question)
+  }
+  return out
+}
+
 // "Which club plays its home games at Anfield?" — asked venue -> club so the
 // distractors are other venues, which reads better than four club names.
 // A club with more than one recorded venue is dropped: historic grounds mean

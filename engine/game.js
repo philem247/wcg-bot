@@ -178,6 +178,12 @@ export function createGame({ mode = 'easy', type = 'chain', dict, starter, now, 
     get state() {
       return state
     },
+    // Lobby roster size. Used by the stall watchdog's traffic probe (index.js)
+    // to tell an empty, genuinely-quiet lobby from one where people are typing
+    // "join" — only the latter counts as traffic in flight.
+    get playerCount() {
+      return players.length
+    },
     get queued() {
       return queuedList.slice()
     },
