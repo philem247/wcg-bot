@@ -1,7 +1,6 @@
-import { default as makeWASocket, DisconnectReason, Browsers } from 'baileys';
+import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } from 'baileys';
 import pino from 'pino';
-import { SESSION_FILE, PHONE_NUMBER, WA_LOG_LEVEL } from '../config.js';
-import { useSingleFileAuthState } from './auth.js';
+import { SESSION_DIR, PHONE_NUMBER, WA_LOG_LEVEL } from '../config.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
 
@@ -10,7 +9,6 @@ let onMessageHandler;
 let logger;
 let shuttingDown = false;
 let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
-let authFlush = null; // set by connect(), called by shutdown()
 // ONE auth state for the process lifetime. Rebuilding it per connect() gives each
 // socket its own store and its own debounce timer over the same file: an orphaned
 // timer from the previous socket can fire after the new one has written, rolling
@@ -89,9 +87,14 @@ export async function connect(onMessage, appLogger, onConnected) {
   logger = appLogger;
   onMessageHandler = onMessage;
 
-  if (!authState) authState = useSingleFileAuthState(SESSION_FILE);
-  const { state, saveCreds, flush } = authState;
-  authFlush = flush;
+  // baileys' own multi-file store. A previous hand-rolled single-file version
+  // batched every Signal key write behind a 500ms debounce and rewrote the whole
+  // store each time; ratchet advances lost inside that window showed up in
+  // production as "MessageCounterError: Key used already or never filled" and
+  // left the bot unable to decrypt, persistently, across restarts. Per-key
+  // immediate writes are the entire point — do not "tidy" this back into one file.
+  if (!authState) authState = await useMultiFileAuthState(SESSION_DIR);
+  const { state, saveCreds } = authState;
 
   sock = makeWASocket({
     auth: state,
@@ -139,12 +142,10 @@ export async function connect(onMessage, appLogger, onConnected) {
         process.exit(1);
       } else if (reason === DisconnectReason.restartRequired) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
-        authFlush?.(); // land any debounced key writes before the next socket starts
         sock.ev.removeAllListeners();
         connect(onMessage, logger, onConnected);
       } else {
         logger.info(`Disconnected (${reason} ${reasonName}) after ${upSec}s connected, reconnecting in ${RECONNECT_DELAY}ms...`);
-        authFlush?.(); // land any debounced key writes before the next socket starts
         sock.ev.removeAllListeners();
         setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
       }
@@ -229,7 +230,6 @@ export async function send(jid, payload) {
 // exactly what we must not do on a routine restart.
 export function shutdown() {
   shuttingDown = true;
-  if (authFlush) authFlush();
   if (!sock) return;
   sock.end(undefined);
 }

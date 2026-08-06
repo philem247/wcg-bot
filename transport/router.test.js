@@ -919,6 +919,148 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: '/ban: a non-owner group admin is refused',
+    fn: async () => {
+      const db = openDb(':memory:')
+      const replies = []
+      const enqueue = (jid, payload) => replies.push(payload)
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue, logger: undefined,
+        getGroupAdmins: async () => ['444444444@s.whatsapp.net'], db, resolvePn: () => undefined,
+      })
+
+      await router.handleMessage(
+        { jid: 'g-ban-1', sender: '444444444@s.whatsapp.net', senderPn: undefined, text: '/ban 1231231234', isGroup: true, raw: undefined },
+        1000
+      )
+
+      assert.equal(replies.length, 1)
+      assert(replies[0].text.includes('Only the owner can ban'))
+      assert.deepEqual(db.bans('g-ban-1'), [], 'non-owner must not be able to ban')
+      db.close()
+    },
+  },
+  {
+    name: "/ban by the owner works, and /bans then lists the banned number",
+    fn: async () => {
+      const db = openDb(':memory:')
+      const replies = []
+      const enqueue = (jid, payload) => replies.push(payload)
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue, logger: undefined,
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      const raw = { message: { extendedTextMessage: { contextInfo: { mentionedJid: ['1231231234@s.whatsapp.net'] } } } }
+
+      await router.handleMessage(
+        { jid: 'g-ban-2', sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: undefined, text: '/ban @user', isGroup: true, raw },
+        1000
+      )
+      assert(replies[0].text.includes('Banned'))
+      assert.deepEqual(db.bans('g-ban-2'), ['1231231234'])
+
+      await router.handleMessage(
+        { jid: 'g-ban-2', sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: undefined, text: '/bans', isGroup: true, raw: undefined },
+        1100
+      )
+      assert.equal(replies.length, 2)
+      assert(replies[1].text.includes('1231231234'), '/bans lists the banned number')
+      db.close()
+    },
+  },
+  {
+    name: "a banned user's trivia answer is ignored and produces no reply at all",
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = {
+        categories: () => ['general'],
+        pick: () => [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }],
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      const jid = 'g-ban-trivia@g.us'
+      const banned = '2223334444'
+
+      await router.handleMessage({ jid, sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: `${OWNER_NUMBER}@s.whatsapp.net`, text: '/trivia general', isGroup: true }, 0)
+      const posted = sent.find((t) => t.includes('*Q1/1*'))
+      const letter = ['A', 'B', 'C', 'D'].find((l) => posted.includes(`*${l})*  right`))
+
+      db.addBan(jid, banned)
+      const before = sent.length
+      await router.handleMessage({ jid, sender: `${banned}@s.whatsapp.net`, senderPn: `${banned}@s.whatsapp.net`, text: letter, isGroup: true }, 1000)
+      assert.equal(sent.length, before, 'a banned player answering trivia must produce zero messages')
+      db.close()
+    },
+  },
+  {
+    name: 'a trivia-banned user can still play word chain: their word still reaches the wcg game',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: { has: () => true, randomLetter: () => 'a' }, games, enqueue: (j, m) => sent.push(m),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      const jid = 'g-ban-wcg@g.us'
+      const banned = '2223334444'
+      db.addBan(jid, banned)
+
+      await router.handleMessage({ jid, sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: `${OWNER_NUMBER}@s.whatsapp.net`, text: '/wcg', isGroup: true }, 0)
+      await router.handleMessage({ jid, sender: `${banned}@s.whatsapp.net`, senderPn: `${banned}@s.whatsapp.net`, text: 'join', isGroup: true }, 100)
+
+      // Advance past the lobby window so the game moves to 'playing'.
+      sendEvents((j, m) => sent.push(m), jid, games.get(jid).tick(60_000), undefined, 60_000, db)
+
+      const game = games.get(jid)
+      let submitCalls = 0
+      const originalSubmit = game.submit.bind(game)
+      game.submit = (...args) => { submitCalls++; return originalSubmit(...args) }
+
+      await router.handleMessage({ jid, sender: `${banned}@s.whatsapp.net`, senderPn: `${banned}@s.whatsapp.net`, text: 'apple', isGroup: true }, 60_100)
+      assert.equal(submitCalls, 1, 'a trivia ban must not block a word-chain submission from reaching the game')
+      db.close()
+    },
+  },
+  {
+    name: "/unban restores a banned user's ability to answer trivia",
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = {
+        categories: () => ['general'],
+        pick: () => [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }],
+      }
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      const jid = 'g-unban@g.us'
+      const num = '2223334444'
+      db.addBan(jid, num)
+
+      await router.handleMessage({ jid, sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: `${OWNER_NUMBER}@s.whatsapp.net`, text: '/trivia general', isGroup: true }, 0)
+      const posted = sent.find((t) => t.includes('*Q1/1*'))
+      const letter = ['A', 'B', 'C', 'D'].find((l) => posted.includes(`*${l})*  right`))
+
+      await router.handleMessage({ jid, sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: `${OWNER_NUMBER}@s.whatsapp.net`, text: `/unban ${num}`, isGroup: true }, 500)
+      assert.deepEqual(db.bans(jid), [], 'number should no longer be banned')
+
+      const before = sent.length
+      await router.handleMessage({ jid, sender: `${num}@s.whatsapp.net`, senderPn: `${num}@s.whatsapp.net`, text: letter, isGroup: true }, 1000)
+      assert.ok(sent.length > before, "unbanned user's answer now produces a reply")
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

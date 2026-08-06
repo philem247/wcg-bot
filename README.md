@@ -120,6 +120,18 @@ Players grow the dictionary at runtime:
 
 Questions live in `data/trivia.json`, committed, no network at runtime. Regenerate with `npm run build:trivia`. Questions are CC BY-SA 4.0 — see `LICENSES.md` for attribution.
 
+### Rebuilding the football category
+
+    npm run build:football
+
+Queries Wikidata and the FPL API and rewrites `categories.football` in
+`data/trivia.json`. Leaves every other category alone, so it does not re-fetch
+Open Trivia DB.
+
+Re-run it when you want fresher football data. FPL questions are stamped with the
+season they describe, so they do not become wrong when a season rolls over — but a
+rebuild after a completed season adds that season's questions.
+
 ## Security
 
 **`session/` is the bot's full WhatsApp account credentials.** This is not a scoped token — anyone who has it controls the account.

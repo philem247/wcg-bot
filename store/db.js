@@ -40,6 +40,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       jid TEXT NOT NULL, category TEXT NOT NULL, qid TEXT NOT NULL, ts INTEGER NOT NULL,
       PRIMARY KEY (jid, qid)
     );
+    CREATE TABLE IF NOT EXISTS trivia_bans (
+      jid TEXT NOT NULL, number TEXT NOT NULL,
+      PRIMARY KEY (jid, number)
+    );
     CREATE INDEX IF NOT EXISTS idx_results_jid_ended ON results(jid, ended_at);
     CREATE INDEX IF NOT EXISTS idx_rejections_jid_word ON rejections(jid, word);
   `)
@@ -116,6 +120,15 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   )
   const stmtSelectBotAdmins = db.prepare(
     'SELECT number FROM bot_admins WHERE jid = ? ORDER BY number'
+  )
+  const stmtInsertBan = db.prepare(
+    'INSERT OR IGNORE INTO trivia_bans (jid, number) VALUES (?, ?)'
+  )
+  const stmtDeleteBan = db.prepare(
+    'DELETE FROM trivia_bans WHERE jid = ? AND number = ?'
+  )
+  const stmtSelectBans = db.prepare(
+    'SELECT number FROM trivia_bans WHERE jid = ? ORDER BY number'
   )
 
   return {
@@ -229,6 +242,20 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
 
     botAdmins(jid) {
       return stmtSelectBotAdmins.all(jid).map(row => row.number)
+    },
+
+    addBan(jid, number) {
+      const result = stmtInsertBan.run(jid, number)
+      return result.changes > 0
+    },
+
+    delBan(jid, number) {
+      const result = stmtDeleteBan.run(jid, number)
+      return result.changes > 0
+    },
+
+    bans(jid) {
+      return stmtSelectBans.all(jid).map(row => row.number)
     },
 
     close() {

@@ -229,6 +229,13 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     return isAdmin({ sender: pn, isGroup: false, groupAdmins: [] }) || isAdmin({ sender, isGroup: false, groupAdmins: [] })
   }
 
+  // Bans are stored as bare phone numbers; sender may arrive as an @lid JID,
+  // so resolve to phone-form the same way isBotAdminEither does.
+  function isTriviaBanned(jid, sender, senderPn) {
+    const num = toNumber(senderPn ?? resolvePn(sender))
+    return (db.bans?.(jid) ?? []).includes(num)
+  }
+
   // Starting a game is now admin-only: group admins, /promote'd bot admins, the
   // OWNER, or a global ADMIN. Everyone can still play, answer and read stats.
   async function mayStartGame(jid, sender, senderPn, isGroup) {
@@ -285,6 +292,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     }
     if (!bank) {
       enqueue(jid, { text: `Trivia is unavailable — no question bank loaded.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (isTriviaBanned(jid, sender, senderPn)) {
+      enqueue(jid, { text: `You're banned from trivia here.`, mentions: [], kind: 'misc' })
       return
     }
     // Group admins are subject to this too — otherwise, with starts already
@@ -549,6 +560,39 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
+    if (cmd === 'ban' || cmd === 'unban' || cmd === 'bans') {
+      if (!isGroup) {
+        enqueue(jid, { text: `${PREFIX}${cmd} only works inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+      if (!isOwnerOrGlobalAdmin(sender, senderPn)) {
+        enqueue(jid, { text: `Only the owner can ${cmd}.`, mentions: [], kind: 'misc' })
+        return
+      }
+      if (cmd === 'bans') {
+        const list = db.bans(jid)
+        if (list.length === 0) {
+          enqueue(jid, { text: `No one is banned from trivia here.`, mentions: [], kind: 'misc' })
+        } else {
+          enqueue(jid, { text: `*Banned from trivia:*\n${list.map((n) => `@${n}`).join('\n')}`, mentions: list.map((n) => `${n}@s.whatsapp.net`), kind: 'misc' })
+        }
+        return
+      }
+      const target = resolveTarget(raw, args)
+      if (!target) {
+        enqueue(jid, { text: `Mention who you want to ${cmd}.`, mentions: [], kind: 'misc' })
+        return
+      }
+      if (cmd === 'ban') {
+        const added = db.addBan(jid, target)
+        enqueue(jid, { text: added ? `Banned @${target} from trivia.` : `@${target} is already banned.`, mentions: [`${target}@s.whatsapp.net`], kind: 'misc' })
+      } else {
+        const removed = db.delBan(jid, target)
+        enqueue(jid, { text: removed ? `Unbanned @${target}.` : `@${target} is not banned.`, mentions: [`${target}@s.whatsapp.net`], kind: 'misc' })
+      }
+      return
+    }
+
     if (cmd === 'trivia') {
       const sub = (args[0] ?? '').toLowerCase()
 
@@ -625,7 +669,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       if (trimmed.toLowerCase() === 'join') {
         events = game.join(sender, now)
       } else if (game.state === 'playing' && trimmed.length > 0 && !/\s/.test(trimmed)) {
-        events = game.submit(sender, trimmed, now)
+        // A trivia-banned player's answer is dropped silently — replying would
+        // just give a spammer a second target to flood. Word chain is unaffected.
+        const banned = gameTypes.get(jid) === 'trivia' && isTriviaBanned(jid, sender, senderPn)
+        if (!banned) events = game.submit(sender, trimmed, now)
       }
 
       // Record sender's phone-form JID for leaderboard aggregation.

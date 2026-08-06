@@ -72,17 +72,24 @@ career histories, managers, stadiums, nationalities.
 public and unauthenticated, ~80 fields per player: price, ownership %, total points,
 form, position, squad number, xG/xA.
 
-Two caveats confirmed on 2026-08-05:
+Caveats, **re-verified against the live API on 2026-08-06** (the 2026-08-05 notes
+below them were wrong and are corrected here):
 
-1. The 2026/27 season starts **21 Aug 2026**. Until then every performance stat is
-   zero. Price, position, team and ownership are populated pre-season; points, form
-   and goals are not.
-2. FPL data is volatile — prices drift, ownership swings weekly.
+1. The 2026/27 season starts **21 Aug 2026**. The earlier claim that every
+   performance stat is zero until then is **false**: the API currently serves the
+   *completed 2025/26* totals (570 players, 400 with `total_points > 0`). Those
+   totals reset when the new season opens.
+2. There is **no current gameweek** to stamp against pre-season — `bootstrap-static`
+   reports Gameweek 1 with `is_current: false`. A `"As of GW12, ..."` stamp is
+   therefore unavailable, and would in any case rot at every gameweek roll.
+3. FPL data is volatile — prices drift, ownership swings weekly.
 
-**Decision:** bake FPL questions at build time with a gameweek stamp, phrased
-`"As of GW12, ..."`. A stale answer is then still a *correct* answer rather than a
-wrong one. Refresh is a manual `npm run build:trivia` plus re-upload. This keeps the
-project's no-network-at-runtime property fully intact.
+**Decision (supersedes the gameweek stamp):** stamp FPL questions with the
+**season**, phrased `"…in the 2025/26 season"`. A completed season is a permanent
+fact, so the question stays correct forever and survives the 21 Aug reset with no
+rebuild. Questions about volatile *current* values (price, ownership) must either
+carry the same season/date stamp or be omitted. Refresh is a manual
+`npm run build:football` plus re-upload; no runtime network access.
 
 ### League weighting
 
@@ -105,8 +112,11 @@ interesting at no extra data cost.
 - Superlative: most goals, most assists
 - Stadium ↔ club, manager-at-the-time, nationality, squad number
 - **"Who am I?"** — a player synthesised from career facts
-- FPL-native: price, ownership, and classification gotchas (FPL lists Trent
-  Alexander-Arnold as a defender)
+- FPL-native: price, ownership, and classification gotchas (FPL classifying an
+  attacking full-back as a defender). NOTE: this spec originally cited Trent
+  Alexander-Arnold as the example; he is **no longer in the FPL dataset** as of
+  2026-08-06, having left the league. Every named example here must be
+  re-verified against the live API before it is used in a generated question.
 
 ### Difficulty calibration
 

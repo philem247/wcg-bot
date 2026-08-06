@@ -479,6 +479,44 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'trivia_bans: add/list/delete round-trip',
+    fn: () => {
+      const db = openDb(':memory:')
+      const added = db.addBan('jid-a', '5551234567')
+      assert(added, 'first ban should return true')
+      assert.deepEqual(db.bans('jid-a'), ['5551234567'])
+
+      const removed = db.delBan('jid-a', '5551234567')
+      assert(removed, 'delete existing ban should return true')
+      assert.deepEqual(db.bans('jid-a'), [])
+      db.close()
+    },
+  },
+  {
+    name: 'trivia_bans: addBan twice returns false the second time; delBan on unbanned number returns false',
+    fn: () => {
+      const db = openDb(':memory:')
+      const first = db.addBan('jid-a', '5551234567')
+      assert(first, 'first add should return true')
+      const dup = db.addBan('jid-a', '5551234567')
+      assert(!dup, 'duplicate ban should return false')
+
+      const missing = db.delBan('jid-a', '9999999999')
+      assert(!missing, 'delete of an unbanned number should return false')
+      db.close()
+    },
+  },
+  {
+    name: 'trivia_bans: bans are per-jid',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.addBan('jid-a', '5551234567')
+      assert.deepEqual(db.bans('jid-a'), ['5551234567'])
+      assert.deepEqual(db.bans('jid-b'), [], 'banning in one group must not ban in another')
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

@@ -15,7 +15,6 @@ export const LOG_LEVEL = process.env.LOG_LEVEL ?? 'info';
 export const WA_LOG_LEVEL = process.env.WA_LOG_LEVEL ?? 'silent';
 export const QUIET_SIGNAL_NOISE = (process.env.QUIET_SIGNAL_NOISE ?? 'true') !== 'false';
 export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
-export const SESSION_FILE = process.env.SESSION_FILE ?? `${SESSION_DIR}/creds.json`;
 export const ADMINS = (process.env.ADMINS || '')
   .split(',')
   .map(s => s.trim())

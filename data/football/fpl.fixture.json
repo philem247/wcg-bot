@@ -1,0 +1,552 @@
+{
+ "events": [
+  {
+   "id": 1,
+   "name": "Gameweek 1",
+   "is_current": false,
+   "is_next": true,
+   "deadline_time": "2026-08-21T17:30:00Z",
+   "finished": false
+  },
+  {
+   "id": 2,
+   "name": "Gameweek 2",
+   "is_current": false,
+   "is_next": false,
+   "deadline_time": "2026-08-28T17:30:00Z",
+   "finished": false
+  },
+  {
+   "id": 3,
+   "name": "Gameweek 3",
+   "is_current": false,
+   "is_next": false,
+   "deadline_time": "2026-09-04T17:30:00Z",
+   "finished": false
+  }
+ ],
+ "teams": [
+  {
+   "id": 1,
+   "name": "Arsenal"
+  },
+  {
+   "id": 2,
+   "name": "Aston Villa"
+  },
+  {
+   "id": 3,
+   "name": "Bournemouth"
+  },
+  {
+   "id": 4,
+   "name": "Brentford"
+  },
+  {
+   "id": 5,
+   "name": "Brighton"
+  },
+  {
+   "id": 6,
+   "name": "Chelsea"
+  },
+  {
+   "id": 7,
+   "name": "Coventry City"
+  },
+  {
+   "id": 8,
+   "name": "Crystal Palace"
+  },
+  {
+   "id": 9,
+   "name": "Everton"
+  },
+  {
+   "id": 10,
+   "name": "Fulham"
+  },
+  {
+   "id": 11,
+   "name": "Hull City"
+  },
+  {
+   "id": 12,
+   "name": "Ipswich Town"
+  },
+  {
+   "id": 13,
+   "name": "Leeds"
+  },
+  {
+   "id": 14,
+   "name": "Liverpool"
+  },
+  {
+   "id": 15,
+   "name": "Man City"
+  },
+  {
+   "id": 16,
+   "name": "Man Utd"
+  },
+  {
+   "id": 17,
+   "name": "Newcastle"
+  },
+  {
+   "id": 18,
+   "name": "Nott'm Forest"
+  },
+  {
+   "id": 19,
+   "name": "Spurs"
+  },
+  {
+   "id": 20,
+   "name": "Sunderland"
+  }
+ ],
+ "elements": [
+  {
+   "id": 1,
+   "web_name": "Raya",
+   "first_name": "David",
+   "second_name": "Raya Martín",
+   "team": 1,
+   "element_type": 1,
+   "now_cost": 60,
+   "selected_by_percent": "30.9",
+   "total_points": 162
+  },
+  {
+   "id": 2,
+   "web_name": "Arrizabalaga",
+   "first_name": "Kepa",
+   "second_name": "Arrizabalaga Revuelta",
+   "team": 1,
+   "element_type": 1,
+   "now_cost": 50,
+   "selected_by_percent": "0.1",
+   "total_points": 2
+  },
+  {
+   "id": 3,
+   "web_name": "Meslier",
+   "first_name": "Illan",
+   "second_name": "Meslier",
+   "team": 1,
+   "element_type": 1,
+   "now_cost": 50,
+   "selected_by_percent": "0.1",
+   "total_points": 0
+  },
+  {
+   "id": 4,
+   "web_name": "Gabriel",
+   "first_name": "Gabriel",
+   "second_name": "dos Santos Magalhães",
+   "team": 1,
+   "element_type": 2,
+   "now_cost": 80,
+   "selected_by_percent": "26.1",
+   "total_points": 209
+  },
+  {
+   "id": 5,
+   "web_name": "J.Timber",
+   "first_name": "Jurriën",
+   "second_name": "Timber",
+   "team": 1,
+   "element_type": 2,
+   "now_cost": 65,
+   "selected_by_percent": "0.5",
+   "total_points": 149
+  },
+  {
+   "id": 6,
+   "web_name": "Saliba",
+   "first_name": "William",
+   "second_name": "Saliba",
+   "team": 1,
+   "element_type": 2,
+   "now_cost": 60,
+   "selected_by_percent": "0.5",
+   "total_points": 137
+  },
+  {
+   "id": 7,
+   "web_name": "Lewis-Skelly",
+   "first_name": "Myles",
+   "second_name": "Lewis-Skelly",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 55,
+   "selected_by_percent": "0.3",
+   "total_points": 29
+  },
+  {
+   "id": 8,
+   "web_name": "Calafiori",
+   "first_name": "Riccardo",
+   "second_name": "Calafiori",
+   "team": 1,
+   "element_type": 2,
+   "now_cost": 55,
+   "selected_by_percent": "15.9",
+   "total_points": 109
+  },
+  {
+   "id": 9,
+   "web_name": "Hincapie",
+   "first_name": "Piero",
+   "second_name": "Hincapié",
+   "team": 1,
+   "element_type": 2,
+   "now_cost": 55,
+   "selected_by_percent": "4.3",
+   "total_points": 87
+  },
+  {
+   "id": 10,
+   "web_name": "White",
+   "first_name": "Benjamin",
+   "second_name": "White",
+   "team": 1,
+   "element_type": 2,
+   "now_cost": 55,
+   "selected_by_percent": "0.3",
+   "total_points": 45
+  },
+  {
+   "id": 11,
+   "web_name": "Mosquera",
+   "first_name": "Cristhian",
+   "second_name": "Mosquera",
+   "team": 1,
+   "element_type": 2,
+   "now_cost": 55,
+   "selected_by_percent": "16.7",
+   "total_points": 40
+  },
+  {
+   "id": 12,
+   "web_name": "Saka",
+   "first_name": "Bukayo",
+   "second_name": "Saka",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 95,
+   "selected_by_percent": "10.6",
+   "total_points": 157
+  },
+  {
+   "id": 13,
+   "web_name": "Rice",
+   "first_name": "Declan",
+   "second_name": "Rice",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 75,
+   "selected_by_percent": "22.4",
+   "total_points": 184
+  },
+  {
+   "id": 14,
+   "web_name": "Eze",
+   "first_name": "Eberechi",
+   "second_name": "Eze",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 65,
+   "selected_by_percent": "3.3",
+   "total_points": 113
+  },
+  {
+   "id": 15,
+   "web_name": "Ødegaard",
+   "first_name": "Martin",
+   "second_name": "Ødegaard",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 65,
+   "selected_by_percent": "3.0",
+   "total_points": 74
+  },
+  {
+   "id": 16,
+   "web_name": "Madueke",
+   "first_name": "Noni",
+   "second_name": "Madueke",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 65,
+   "selected_by_percent": "0.4",
+   "total_points": 72
+  },
+  {
+   "id": 17,
+   "web_name": "Merino",
+   "first_name": "Mikel",
+   "second_name": "Merino Zazón",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 60,
+   "selected_by_percent": "1.2",
+   "total_points": 67
+  },
+  {
+   "id": 18,
+   "web_name": "Martinelli",
+   "first_name": "Gabriel",
+   "second_name": "Martinelli Silva",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 65,
+   "selected_by_percent": "0.3",
+   "total_points": 57
+  },
+  {
+   "id": 19,
+   "web_name": "Zubimendi",
+   "first_name": "Martín",
+   "second_name": "Zubimendi Ibáñez",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 55,
+   "selected_by_percent": "1.5",
+   "total_points": 133
+  },
+  {
+   "id": 20,
+   "web_name": "Dowman",
+   "first_name": "Max",
+   "second_name": "Dowman",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 55,
+   "selected_by_percent": "0.2",
+   "total_points": 16
+  },
+  {
+   "id": 21,
+   "web_name": "Nørgaard",
+   "first_name": "Christian",
+   "second_name": "Nørgaard",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 50,
+   "selected_by_percent": "0.3",
+   "total_points": 7
+  },
+  {
+   "id": 22,
+   "web_name": "Nwaneri",
+   "first_name": "Ethan",
+   "second_name": "Nwaneri",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 55,
+   "selected_by_percent": "0.0",
+   "total_points": 8
+  },
+  {
+   "id": 23,
+   "web_name": "Fábio Vieira",
+   "first_name": "Fábio",
+   "second_name": "Ferreira Vieira",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 55,
+   "selected_by_percent": "0.0",
+   "total_points": 0
+  },
+  {
+   "id": 24,
+   "web_name": "Nelson",
+   "first_name": "Reiss",
+   "second_name": "Nelson",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 55,
+   "selected_by_percent": "0.0",
+   "total_points": 13
+  },
+  {
+   "id": 25,
+   "web_name": "Gyökeres",
+   "first_name": "Viktor",
+   "second_name": "Gyökeres",
+   "team": 1,
+   "element_type": 4,
+   "now_cost": 75,
+   "selected_by_percent": "13.0",
+   "total_points": 128
+  },
+  {
+   "id": 26,
+   "web_name": "Havertz",
+   "first_name": "Kai",
+   "second_name": "Havertz",
+   "team": 1,
+   "element_type": 4,
+   "now_cost": 75,
+   "selected_by_percent": "4.0",
+   "total_points": 36
+  },
+  {
+   "id": 27,
+   "web_name": "G.Jesus",
+   "first_name": "Gabriel",
+   "second_name": "Fernando de Jesus",
+   "team": 1,
+   "element_type": 4,
+   "now_cost": 60,
+   "selected_by_percent": "0.4",
+   "total_points": 24
+  },
+  {
+   "id": 557,
+   "web_name": "Tzolis",
+   "first_name": "Christos",
+   "second_name": "Tzolis",
+   "team": 1,
+   "element_type": 3,
+   "now_cost": 65,
+   "selected_by_percent": "2.0",
+   "total_points": 0
+  },
+  {
+   "id": 28,
+   "web_name": "Martinez",
+   "first_name": "Emiliano",
+   "second_name": "Martínez Romero",
+   "team": 2,
+   "element_type": 1,
+   "now_cost": 50,
+   "selected_by_percent": "4.6",
+   "total_points": 120
+  },
+  {
+   "id": 29,
+   "web_name": "M.Bizot",
+   "first_name": "Marco",
+   "second_name": "Bizot",
+   "team": 2,
+   "element_type": 1,
+   "now_cost": 45,
+   "selected_by_percent": "0.1",
+   "total_points": 16
+  },
+  {
+   "id": 30,
+   "web_name": "Digne",
+   "first_name": "Lucas",
+   "second_name": "Digne",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 45,
+   "selected_by_percent": "1.4",
+   "total_points": 97
+  },
+  {
+   "id": 31,
+   "web_name": "Konsa",
+   "first_name": "Ezri",
+   "second_name": "Konsa Ngoyo",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 45,
+   "selected_by_percent": "17.0",
+   "total_points": 100
+  },
+  {
+   "id": 32,
+   "web_name": "Cash",
+   "first_name": "Matty",
+   "second_name": "Cash",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 45,
+   "selected_by_percent": "7.8",
+   "total_points": 117
+  },
+  {
+   "id": 33,
+   "web_name": "Mings",
+   "first_name": "Tyrone",
+   "second_name": "Mings",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 45,
+   "selected_by_percent": "0.2",
+   "total_points": 50
+  },
+  {
+   "id": 34,
+   "web_name": "Pau",
+   "first_name": "Pau",
+   "second_name": "Torres",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 45,
+   "selected_by_percent": "0.2",
+   "total_points": 64
+  },
+  {
+   "id": 35,
+   "web_name": "Bogarde",
+   "first_name": "Lamare",
+   "second_name": "Bogarde",
+   "team": 2,
+   "element_type": 3,
+   "now_cost": 50,
+   "selected_by_percent": "0.1",
+   "total_points": 40
+  },
+  {
+   "id": 36,
+   "web_name": "Maatsen",
+   "first_name": "Ian",
+   "second_name": "Maatsen",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 45,
+   "selected_by_percent": "0.6",
+   "total_points": 54
+  },
+  {
+   "id": 37,
+   "web_name": "Lindelöf",
+   "first_name": "Victor",
+   "second_name": "Lindelöf",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 45,
+   "selected_by_percent": "0.2",
+   "total_points": 29
+  },
+  {
+   "id": 38,
+   "web_name": "A.García",
+   "first_name": "Andrés",
+   "second_name": "García",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 40,
+   "selected_by_percent": "1.5",
+   "total_points": 5
+  },
+  {
+   "id": 39,
+   "web_name": "Nedeljkovic",
+   "first_name": "Kosta",
+   "second_name": "Nedeljkovic",
+   "team": 2,
+   "element_type": 2,
+   "now_cost": 40,
+   "selected_by_percent": "0.5",
+   "total_points": 0
+  }
+ ]
+}
