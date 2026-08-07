@@ -9,15 +9,16 @@
 // State machine: registering -> awaiting -> match -> (awaiting -> match)* -> over.
 // An admin drives every awaiting -> match transition via next(); nothing here
 // ever advances a round on its own — see tick()'s 'awaiting' branch.
-import { createTriviaGame, QUESTION_COUNT, parseAnswer } from './trivia.js'
+import { createTriviaGame, QUESTION_COUNT } from './trivia.js'
 import { shuffle } from './bank.js'
 
 export const REGISTRATION_MS = 120_000
 // Shorter than group trivia's 30s (CLOCK_SECONDS in trivia.js, deliberately tuned
-// there for casual group play) — a 1v1 elimination match has real stakes, so the
-// window to search an answer up mid-match is deliberately narrower here. Do not
-// change trivia.js's default for this; that would regress group trivia too.
-export const TOURNAMENT_CLOCK_SECONDS = 20
+// there for casual group play) — a 1v1 elimination match has real stakes, so 7s
+// is used instead: anti-cheat, short enough nobody can search an answer up
+// mid-match. Do not change trivia.js's default for this; that would regress
+// group trivia too.
+export const TOURNAMENT_CLOCK_SECONDS = 7
 // Pause between a match/sudden-death announcement and its first question, so
 // players have a moment to read who's playing before Q1 lands (Fix 2).
 export const MATCH_START_DELAY_MS = 4000
@@ -42,16 +43,6 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
   let sd = false      // in sudden death for the current match
   let sdCorrect = null // Set of contestants who answered THIS sudden-death question correctly
   let matchScores = null // Map(contestant -> score) for the current 10-question match
-  // Independent scoring for the current match/sudden-death question (Change 1):
-  // each contestant gets their own attempt, judged against correctLetterThisQ,
-  // nobody's answer closes the question for the other. currentPicked/qIdx let us
-  // recover the correct letter from the (already public) trivia_question event's
-  // shuffled options, since inner.submit() is never called for real players.
-  let currentPicked = null
-  let qIdx = 0
-  let correctLetterThisQ = null
-  let answeredThisQ = new Map()
-  let qEndsAt = null // this question's deadline (trivia_question's ev.endsAt) — used to force an early reveal (Fix 1)
   let matchStartDeadline = null // state === 'match_starting': wait until this, then reveal question 1 (Fix 2)
 
   if (restore) {
@@ -169,11 +160,6 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
     sdCorrect = null
     const picked = pickQuestions(QUESTION_COUNT)
     if (picked.length === 0) return coinFlipFinish(fixture, now)
-    currentPicked = picked
-    qIdx = 0
-    correctLetterThisQ = null
-    qEndsAt = null
-    answeredThisQ = new Map()
     inner = createTriviaGame({ questions: picked, category, clockSeconds: TOURNAMENT_CLOCK_SECONDS, now, random })
     // Fix 2: don't tick inner yet — announce the match now, wait out
     // MATCH_START_DELAY_MS (via tick()'s 'match_starting' branch), then
@@ -185,20 +171,15 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
     ]
   }
 
-  // Independent scoring (Change 1): both contestants get their own attempt at
-  // the sudden-death question. Exactly one correct -> that player wins; nobody
-  // correct or both correct -> repeat (see resolveRound).
+  // Race scoring: exactly one contestant can answer correctly per sudden-death
+  // question (inner.submit() closes it the instant the first correct answer
+  // lands). Nobody correct -> repeat; see resolveRound.
   function startSuddenDeath(now, repeat) {
     const fixture = rounds[roundIndex].fixtures[fixtureIndex]
     sd = true
     sdCorrect = new Set()
     const picked = pickQuestions(1)
     if (picked.length === 0) return coinFlipFinish(fixture, now)
-    currentPicked = picked
-    qIdx = 0
-    correctLetterThisQ = null
-    qEndsAt = null
-    answeredThisQ = new Map()
     inner = createTriviaGame({ questions: picked, category, clockSeconds: TOURNAMENT_CLOCK_SECONDS, now, random })
     // Same announcement/question split as startMatch (Fix 2) — the sudden-death
     // announcement had the identical immediate-together problem, so it gets the
@@ -265,28 +246,25 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
     const out = []
     for (const ev of events) {
       if (ev.type === 'trivia_question') {
-        // Public field (options with shuffled letters) — derive the correct
-        // letter for our own independent scoring, matching text against the
-        // unshuffled picked question at the same index.
-        correctLetterThisQ = ev.options.find((o) => o.text === currentPicked[qIdx].correct)?.letter
-        qEndsAt = ev.endsAt
-        answeredThisQ = new Map()
-        qIdx++
-        out.push(ev) // still passes through unchanged — reuse the trivia rendering
+        out.push(ev) // passes through unchanged — reuse the trivia rendering
         continue
       }
       if (ev.type === 'trivia_answer') {
-        // Replace inner's (now-generic, nobody-real-submits) reveal with the
-        // tournament's own independent-scoring reveal. Nothing about
-        // correctness is known to either contestant before this point.
         const fixture = rounds[roundIndex].fixtures[fixtureIndex]
-        const resultFor = (p) => answeredThisQ.get(p) ?? { letter: null, correct: false }
+        const scorer = ev.outcome === 'correct' ? ev.player : null
+        if (scorer) {
+          if (sd) sdCorrect.add(scorer)
+          else matchScores.set(scorer, matchScores.get(scorer) + 1)
+        }
         out.push({
           type: 'tournament_question_result',
           index: ev.index, total: ev.total,
           correctLetter: ev.letter, correctAnswer: ev.answer,
           p1: fixture.p1, p2: fixture.p2,
-          resultP1: resultFor(fixture.p1), resultP2: resultFor(fixture.p2),
+          winner: scorer, // null when nobody answered correctly in time
+          sd,
+          scoreP1: matchScores?.get(fixture.p1) ?? 0,
+          scoreP2: matchScores?.get(fixture.p2) ?? 0,
         })
         continue
       }
@@ -331,31 +309,14 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
       return [{ type: 'tournament_joined', player, count: players.length, snapshot: serialize() }]
     },
 
-    // Independent scoring (Change 1): each contestant's own attempt, judged
-    // against correctLetterThisQ. Never forwarded to inner.submit() — that
-    // would race-close the question against the other contestant. Nothing is
-    // revealed here on a single submission. Once BOTH contestants have
-    // answered, the reveal fires immediately (Fix 1: force inner.tick(qEndsAt),
-    // which passes its own `at >= deadline` check and reveals early — the gap
-    // afterward is untouched, only the asking phase closes early). If only one
-    // contestant answers (or neither does), no early close happens here and the
-    // full TOURNAMENT_CLOCK_SECONDS clock is what eventually reveals it, same
-    // as before.
+    // Race scoring: forward straight to the inner trivia engine, which owns
+    // "one attempt per player," "wrong answer is silently ignored," and
+    // "first correct answer reveals immediately."
     submit(player, text, now) {
       if (state !== 'match') return []
       const fixture = rounds[roundIndex].fixtures[fixtureIndex]
-      if (player !== fixture.p1 && player !== fixture.p2) return [] // not a contestant: ignored silently, the whole point of the mode
-      if (answeredThisQ.has(player)) return [] // one attempt each, matching trivia.js's own rule
-      const letter = parseAnswer(text)
-      if (!letter) return [] // chatter, does not consume the attempt
-      const correct = letter === correctLetterThisQ
-      answeredThisQ.set(player, { letter, correct })
-      if (sd) { if (correct) sdCorrect.add(player) }
-      else if (correct) matchScores.set(player, matchScores.get(player) + 1)
-      if (answeredThisQ.size === 2) {
-        return processInnerEvents(inner.tick(qEndsAt), now)
-      }
-      return []
+      if (player !== fixture.p1 && player !== fixture.p2) return [] // not a contestant: ignored silently
+      return processInnerEvents(inner.submit(player, text, now), now)
     },
 
     // Admin-only advance: registering -> awaiting (closes registration early is

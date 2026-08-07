@@ -324,34 +324,46 @@ const tests = [
     },
   },
   {
-    name: 'tournament_question_result: shows the correct answer and each contestant\'s independent outcome',
+    name: 'tournament_question_result: shows the correct answer, the winner, and the running score',
     fn: () => {
       const out = render({
         type: 'tournament_question_result', index: 3, total: 10,
         correctLetter: 'B', correctAnswer: 'Lille',
-        p1: P1, p2: P2,
-        resultP1: { letter: 'B', correct: true },
-        resultP2: { letter: 'C', correct: false },
+        p1: P1, p2: P2, winner: P1, sd: false,
+        scoreP1: 2, scoreP2: 1,
       })
       assert.ok(out.text.includes('Q3/10'))
       assert.ok(out.text.includes('B) Lille'))
       assert.ok(out.text.includes('✅ @111111111'))
-      assert.ok(out.text.includes('❌ @222222222 (chose C)'))
+      assert.ok(out.text.includes('▫️ @222222222'))
+      assert.ok(out.text.includes('Score: 2 - 1'))
       assert.deepEqual(out.mentions, [P1, P2])
     },
   },
   {
-    name: 'tournament_question_result: a non-answering contestant is shown distinctly, not as wrong',
+    name: 'tournament_question_result: nobody answering in time shows no winner',
     fn: () => {
       const out = render({
         type: 'tournament_question_result', index: 1, total: 10,
         correctLetter: 'A', correctAnswer: 'Paris',
-        p1: P1, p2: P2,
-        resultP1: { letter: null, correct: false },
-        resultP2: { letter: 'A', correct: true },
+        p1: P1, p2: P2, winner: null, sd: false,
+        scoreP1: 0, scoreP2: 0,
       })
-      assert.ok(out.text.includes('⏱ @111111111'))
-      assert.ok(!out.text.includes('chose null'))
+      assert.ok(out.text.includes('▫️ @111111111'))
+      assert.ok(out.text.includes('▫️ @222222222'))
+      assert.ok(out.text.includes('Score: 0 - 0'))
+    },
+  },
+  {
+    name: 'tournament_question_result: the Score line is suppressed during sudden death',
+    fn: () => {
+      const out = render({
+        type: 'tournament_question_result', index: 1, total: 1,
+        correctLetter: 'A', correctAnswer: 'Paris',
+        p1: P1, p2: P2, winner: P1, sd: true,
+        scoreP1: 0, scoreP2: 0,
+      })
+      assert.ok(!out.text.includes('Score:'), 'sudden death is single-question winner-take-all — no running score to show')
     },
   },
 ]

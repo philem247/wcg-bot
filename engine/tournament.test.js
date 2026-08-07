@@ -37,25 +37,6 @@ function wrongLetter(q) {
   return q.options.find((o) => o.text !== 'right').letter
 }
 
-// Advances past the current question's full clock (reveal) and its gap
-// (next question or trivia_over -> tournament resolution), independent of
-// what either contestant submitted. Returns { events, now }.
-function advancePastQuestion(t, q, now) {
-  now = q.endsAt // let the full clock elapse — no early close, ever
-  const revealEv = t.tick(now)
-  assert.ok(revealEv.find((e) => e.type === 'tournament_question_result'), 'reveal only after the full clock elapses')
-  now += GAP_MS
-  let nextEv = t.tick(now)
-  // If the gap led into sudden death, that announcement now arrives alone
-  // (Fix 2: match_starting) — chase the same MATCH_START_DELAY_MS to pick up
-  // its first question so callers can keep finding trivia_question here.
-  if (nextEv.find((e) => e.type === 'tournament_sudden_death' || e.type === 'tournament_sudden_death_repeat')) {
-    now += MATCH_START_DELAY_MS
-    nextEv = [...nextEv, ...t.tick(now)]
-  }
-  return { events: nextEv, now }
-}
-
 // next() only announces the match now (Fix 2); the first question arrives on
 // a separate tick() after MATCH_START_DELAY_MS. Merge both so existing call
 // sites that expect the question in the same batch still work.
@@ -66,19 +47,28 @@ function startMatch(t, now) {
 }
 
 // Drives a full 10-question match where `winner` answers correctly every
-// question (loser never answers) -> ends 10-0, no sudden death.
+// question (loser never answers) -> ends 10-0, no sudden death. Race scoring:
+// the winning submit() call itself closes the question immediately.
 function winOneSidedMatch(t, startEvents, winner, now) {
   let q = startEvents.find((e) => e.type === 'trivia_question')
   let result
   for (let i = 0; i < QUESTION_COUNT; i++) {
-    const sub = t.submit(winner, correctLetter(q), now + 1000)
-    assert.deepEqual(sub, [], 'submit never reveals anything itself')
-    const { events, now: nextNow } = advancePastQuestion(t, q, now)
-    now = nextNow
+    const at = now + 100
+    const sub = t.submit(winner, correctLetter(q), at)
+    const reveal = sub.find((e) => e.type === 'tournament_question_result')
+    assert.ok(reveal, 'the first correct answer closes the question immediately')
+    assert.equal(reveal.winner, winner)
+    const gapEnd = at + GAP_MS
+    let afterGap = t.tick(gapEnd)
+    now = gapEnd
+    if (afterGap.find((e) => e.type === 'tournament_sudden_death' || e.type === 'tournament_sudden_death_repeat')) {
+      now += MATCH_START_DELAY_MS
+      afterGap = [...afterGap, ...t.tick(now)]
+    }
     if (i < QUESTION_COUNT - 1) {
-      q = events.find((e) => e.type === 'trivia_question')
+      q = afterGap.find((e) => e.type === 'trivia_question')
     } else {
-      result = events
+      result = afterGap
     }
   }
   return { result, now }
@@ -158,15 +148,15 @@ const tests = [
     },
   },
   {
-    name: 'match questions run the tournament-specific 20s clock, not group trivia\'s 30s',
+    name: 'match questions run the tournament-specific 7s clock, not group trivia\'s 30s',
     fn: () => {
       const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0) })
       registerPlayers(t, 2)
       const { events: ev, now: afterStart } = startMatch(t, REGISTRATION_MS)
       const q = ev.find((e) => e.type === 'trivia_question')
       assert.equal(q.clockSeconds, TOURNAMENT_CLOCK_SECONDS)
-      assert.equal(q.clockSeconds, 20)
-      assert.equal(q.endsAt, afterStart + 20_000)
+      assert.equal(q.clockSeconds, 7)
+      assert.equal(q.endsAt, afterStart + 7_000)
     },
   },
   {
@@ -201,11 +191,10 @@ const tests = [
       const outsider = t.submit('outsider', letter, afterStart + 100)
       assert.deepEqual(outsider, [], 'a non-contestant must be ignored silently')
 
-      // A genuine contestant's submission is accepted (still reveals nothing,
-      // since the OTHER contestant hasn't answered yet — Fix 1 only closes
-      // early once BOTH have answered).
+      // A genuine contestant's correct submission is the race engine's own
+      // first-correct-answer-closes-it behavior — it reveals immediately.
       const ans = t.submit('p0', letter, afterStart + 200)
-      assert.deepEqual(ans, [], 'a contestant submission never reveals anything on its own')
+      assert.ok(ans.find((e) => e.type === 'tournament_question_result'), 'a contestant\'s correct answer closes the question immediately')
     },
   },
   {
@@ -225,93 +214,67 @@ const tests = [
     },
   },
   {
-    name: 'Fix 1: one right one wrong on the same question — both having answered closes it early, only the right one scores',
+    name: 'race scoring: the first correct answer scores the point and closes the question immediately, not after the full clock',
+    fn: () => {
+      const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0) })
+      registerPlayers(t, 2)
+      const { events: ev, now: afterStart } = startMatch(t, REGISTRATION_MS)
+      const q = ev.find((e) => e.type === 'trivia_question')
+
+      const sub = t.submit('p0', correctLetter(q), afterStart + 100)
+      const reveal = sub.find((e) => e.type === 'tournament_question_result')
+      assert.ok(reveal, 'the result event fires right after the winning submit() call')
+      assert.ok(afterStart + 100 < q.endsAt, 'sanity: this really is early, not a coincidence of timing')
+      assert.equal(reveal.winner, 'p0')
+      assert.equal(reveal.scoreP1 + reveal.scoreP2, 1, 'exactly one point awarded')
+
+      // The other contestant's submission after the question has closed is a no-op.
+      const late = t.submit('p1', wrongLetter(q), afterStart + 200)
+      assert.deepEqual(late, [], "a submission after the question has already closed is ignored")
+    },
+  },
+  {
+    name: "a contestant who never answers is never recorded as the winner of that question (regression: non-answerer previously scored)",
+    fn: () => {
+      const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0) })
+      registerPlayers(t, 2)
+      const { events: ev, now: afterStart } = startMatch(t, REGISTRATION_MS)
+      const q = ev.find((e) => e.type === 'trivia_question') // neither p0 nor p1 submits anything
+
+      const reveal = t.tick(q.endsAt).find((e) => e.type === 'tournament_question_result')
+      assert.ok(reveal, 'reveals once the full clock elapses with no answer')
+      assert.equal(reveal.winner, null, 'nobody answered — winner must not be set to either contestant')
+      assert.equal(reveal.scoreP1, 0)
+      assert.equal(reveal.scoreP2, 0)
+    },
+  },
+  {
+    name: 'tournament_question_result carries scoreP1/scoreP2 that increment correctly across multiple questions in a match',
     fn: () => {
       const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0) })
       registerPlayers(t, 2)
       const { events: ev, now: afterStart } = startMatch(t, REGISTRATION_MS)
       const matchStart = ev.find((e) => e.type === 'tournament_match_start')
-      let q = ev.find((e) => e.type === 'trivia_question')
-
-      const subP0 = t.submit('p0', correctLetter(q), afterStart + 100)
-      assert.deepEqual(subP0, [], 'no reveal from the first contestant answering')
-      const subP1 = t.submit('p1', wrongLetter(q), afterStart + 200)
-      assert.ok(subP1.find((e) => e.type === 'tournament_question_result'),
-        'Fix 1: both have now answered — reveal fires immediately, well before the full clock')
-      assert.ok(afterStart + 200 < q.endsAt, 'sanity: this really is early, not a coincidence of timing')
-
-      // Drive the rest of the match with p0 continuing to win (p1 never answers
-      // again, so no further early closes) to inspect the final score.
-      let now = q.endsAt + GAP_MS
-      let afterGap = t.tick(now)
-      q = afterGap.find((e) => e.type === 'trivia_question')
-      for (let i = 1; i < QUESTION_COUNT; i++) {
-        t.submit('p0', correctLetter(q), now + 100)
-        const adv = advancePastQuestion(t, q, now)
-        now = adv.now
-        if (i < QUESTION_COUNT - 1) q = adv.events.find((e) => e.type === 'trivia_question')
-        else {
-          const over = adv.events.find((e) => e.type === 'tournament_match_over')
-          assert.ok(over)
-          const p0Score = matchStart.p1 === 'p0' ? over.scoreP1 : over.scoreP2
-          assert.equal(p0Score, 10, 'p0 scored every question including the first')
-          assert.equal(over.winner, 'p0')
-        }
-      }
-    },
-  },
-  {
-    name: 'Fix 1: both contestants answer correctly within a second of each other — closes immediately, both score',
-    fn: () => {
-      const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0) })
-      registerPlayers(t, 2)
-      const { events: ev, now: afterStart } = startMatch(t, REGISTRATION_MS)
       let q = ev.find((e) => e.type === 'trivia_question')
       let now = afterStart
 
-      for (let i = 0; i < QUESTION_COUNT; i++) {
-        assert.ok(now + 900 < q.endsAt, 'sanity: well inside the full 20s clock')
-        t.submit('p0', correctLetter(q), now + 100)
-        const closeEv = t.submit('p1', correctLetter(q), now + 900) // within a second of p0
-        const reveal = closeEv.find((e) => e.type === 'tournament_question_result')
-        assert.ok(reveal, 'both answered — Fix 1 closes the question immediately, before the full clock elapses')
-        assert.equal(reveal.resultP1.correct, true)
-        assert.equal(reveal.resultP2.correct, true)
-        const gapEnd = q.endsAt + GAP_MS
+      // p0 wins Q1 and Q2; check the running score after each.
+      for (let i = 0; i < 2; i++) {
+        const at = now + 100
+        const sub = t.submit(matchStart.p1, correctLetter(q), at)
+        const reveal = sub.find((e) => e.type === 'tournament_question_result')
+        assert.ok(reveal)
+        const p1Score = matchStart.p1 === reveal.p1 ? reveal.scoreP1 : reveal.scoreP2
+        assert.equal(p1Score, i + 1, `p1's score should be ${i + 1} after question ${i + 1}`)
+        const gapEnd = at + GAP_MS
         const afterGap = t.tick(gapEnd)
         now = gapEnd
-        if (i < QUESTION_COUNT - 1) {
-          q = afterGap.find((e) => e.type === 'trivia_question')
-        } else {
-          // Tied 10-10 -> sudden death, not a match_over — proves both scored every question.
-          assert.ok(afterGap.find((e) => e.type === 'tournament_sudden_death'), 'both scoring every question ties the match 10-10')
-        }
+        q = afterGap.find((e) => e.type === 'trivia_question')
       }
     },
   },
   {
-    name: 'Fix 1: only one contestant answers — no early close, still reveals at the full clock (also: non-answerer gets a null/false result)',
-    fn: () => {
-      const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0) })
-      registerPlayers(t, 2)
-      const { events: ev, now: afterStart } = startMatch(t, REGISTRATION_MS)
-      const matchStart = ev.find((e) => e.type === 'tournament_match_start')
-      const q = ev.find((e) => e.type === 'trivia_question')
-
-      const sub = t.submit('p0', correctLetter(q), afterStart + 100) // p1 never answers
-      assert.deepEqual(sub, [], 'only one contestant has answered — no early close')
-      assert.deepEqual(t.tick(afterStart + 200), [], 'still nothing well before the full clock elapses')
-      assert.deepEqual(t.tick(q.endsAt - 1), [], 'still nothing one tick before the deadline')
-
-      const reveal = t.tick(q.endsAt).find((e) => e.type === 'tournament_question_result')
-      assert.ok(reveal, 'reveals once the full clock elapses')
-      const [p0Result, p1Result] = matchStart.p1 === 'p0' ? [reveal.resultP1, reveal.resultP2] : [reveal.resultP2, reveal.resultP1]
-      assert.deepEqual(p0Result, { letter: correctLetter(q), correct: true })
-      assert.deepEqual(p1Result, { letter: null, correct: false }, "the non-answering contestant is not blocked by p0's result")
-    },
-  },
-  {
-    name: 'a level match goes to sudden death; it repeats on both wrong and on both right, resolves once exactly one is right',
+    name: 'a level match goes to sudden death; it repeats when nobody answers in time, resolves once someone does',
     fn: () => {
       const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0) })
       registerPlayers(t, 2)
@@ -322,54 +285,44 @@ const tests = [
       // Alternate scorers across the 10 main questions so the match ties 5-5.
       for (let i = 0; i < QUESTION_COUNT; i++) {
         const scorer = i % 2 === 0 ? 'p0' : 'p1'
-        t.submit(scorer, correctLetter(q), now + 100)
-        const adv = advancePastQuestion(t, q, now)
-        now = adv.now
+        const at = now + 100
+        const sub = t.submit(scorer, correctLetter(q), at)
+        assert.ok(sub.find((e) => e.type === 'tournament_question_result'), 'the scorer\'s answer closes the question')
+        const gapEnd = at + GAP_MS
+        const afterGap = t.tick(gapEnd)
+        now = gapEnd
         if (i < QUESTION_COUNT - 1) {
-          q = adv.events.find((e) => e.type === 'trivia_question')
+          q = afterGap.find((e) => e.type === 'trivia_question')
         } else {
-          assert.ok(adv.events.find((e) => e.type === 'tournament_sudden_death'), 'a tied match enters sudden death')
-          q = adv.events.find((e) => e.type === 'trivia_question')
-          assert.ok(q, 'sudden death posts a question immediately')
+          assert.ok(afterGap.find((e) => e.type === 'tournament_sudden_death'), 'a tied match enters sudden death')
+          // Fix 2: the sudden-death announcement lands alone — chase the start
+          // delay for its question.
+          now += MATCH_START_DELAY_MS
+          q = t.tick(now).find((e) => e.type === 'trivia_question')
+          assert.ok(q, 'sudden death posts its question after the start delay')
         }
       }
 
-      // Both contestants answer every SD round below, so Fix 1 closes each one
-      // early (via the second submit()'s return) rather than waiting the full
-      // clock — unlike the main-question loop above, where only one contestant
-      // ever answers a given question.
-
-      // SD round 1: both wrong -> repeat.
-      t.submit('p0', wrongLetter(q), now + 100)
-      let closeEv = t.submit('p1', wrongLetter(q), now + 200)
-      assert.ok(closeEv.find((e) => e.type === 'tournament_question_result'), 'both answered — closes early')
+      // SD round 1: nobody answers -> timeout -> repeat.
+      let afterGap = t.tick(q.endsAt)
+      const timeoutReveal = afterGap.find((e) => e.type === 'tournament_question_result')
+      assert.equal(timeoutReveal.winner, null, 'nobody answered this sudden-death question')
       let gapEnd = q.endsAt + GAP_MS
-      let afterGap = t.tick(gapEnd)
-      assert.ok(afterGap.find((e) => e.type === 'tournament_sudden_death_repeat'), 'both wrong repeats sudden death')
+      afterGap = t.tick(gapEnd)
+      assert.ok(afterGap.find((e) => e.type === 'tournament_sudden_death_repeat'), 'nobody answering repeats sudden death')
       // The repeat announcement lands alone (Fix 2) — chase the delay for its question.
       now = gapEnd + MATCH_START_DELAY_MS
       q = t.tick(now).find((e) => e.type === 'trivia_question')
       assert.ok(q, 'sudden-death repeat posts its question after the start delay')
 
-      // SD round 2: both right -> repeat again (independent scoring: no race winner).
-      t.submit('p0', correctLetter(q), now + 100)
-      closeEv = t.submit('p1', correctLetter(q), now + 200)
-      assert.ok(closeEv.find((e) => e.type === 'tournament_question_result'), 'both answered — closes early')
-      gapEnd = q.endsAt + GAP_MS
-      afterGap = t.tick(gapEnd)
-      assert.ok(afterGap.find((e) => e.type === 'tournament_sudden_death_repeat'), 'both right also repeats sudden death')
-      now = gapEnd + MATCH_START_DELAY_MS
-      q = t.tick(now).find((e) => e.type === 'trivia_question')
-      assert.ok(q, 'sudden-death repeat posts its question after the start delay')
-
-      // SD round 3: p0 right, p1 wrong -> resolves.
-      t.submit('p0', correctLetter(q), now + 100)
-      closeEv = t.submit('p1', wrongLetter(q), now + 200)
-      assert.ok(closeEv.find((e) => e.type === 'tournament_question_result'), 'both answered — closes early')
-      gapEnd = q.endsAt + GAP_MS
+      // SD round 2: p0 answers correctly -> resolves.
+      const at = now + 100
+      const sub = t.submit('p0', correctLetter(q), at)
+      assert.ok(sub.find((e) => e.type === 'tournament_question_result'), 'p0\'s answer closes the question')
+      gapEnd = at + GAP_MS
       const afterFinalGap = t.tick(gapEnd)
       const overEv = afterFinalGap.find((e) => e.type === 'tournament_match_over')
-      assert.ok(overEv, 'exactly one correct in sudden death resolves the match')
+      assert.ok(overEv, 'a correct answer in sudden death resolves the match')
       assert.equal(overEv.winner, 'p0')
       assert.equal(overEv.suddenDeath, true)
       // Only 2 players: this WAS the final, so it crowns a champion outright

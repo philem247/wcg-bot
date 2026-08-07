@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
 
-const { shouldForceReconnect } = await import('./wa.js')
+const { shouldForceReconnect, armGraceFallback } = await import('./wa.js')
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const tests = [
   {
@@ -87,6 +89,27 @@ const tests = [
       }), false)
     },
   },
+  // Grace-timer fallback (sock.end() -> close may never arrive): armGraceFallback
+  // schedules onForce() unless cancelled first.
+  {
+    name: 'grace fallback: cancelled before it elapses -> onForce never runs (no double-reconnect)',
+    fn: async () => {
+      let forced = false
+      const cancel = armGraceFallback(10, () => { forced = true })
+      cancel()
+      await sleep(30)
+      assert.equal(forced, false)
+    },
+  },
+  {
+    name: 'grace fallback: not cancelled -> onForce runs once the window elapses',
+    fn: async () => {
+      let forced = false
+      armGraceFallback(10, () => { forced = true })
+      await sleep(30)
+      assert.equal(forced, true)
+    },
+  },
 ]
 
 let passed = 0
@@ -94,7 +117,7 @@ let failed = 0
 
 for (const test of tests) {
   try {
-    test.fn()
+    await test.fn()
     console.log(`✓ ${test.name}`)
     passed++
   } catch (e) {

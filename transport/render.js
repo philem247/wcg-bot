@@ -172,16 +172,13 @@ export function render(event) {
       }
 
     case 'tournament_question_result': {
-      const line = (p, r) => {
-        if (r.correct) return `✅ ${mention(p)}`
-        if (r.letter) return `❌ ${mention(p)} (chose ${r.letter})`
-        return `⏱ ${mention(p)} — no answer`
-      }
+      const line = (p, isWinner) => (isWinner ? `✅ ${mention(p)}` : `▫️ ${mention(p)}`)
       const lines = [
         `📊 *Q${event.index}/${event.total}* — *${event.correctLetter}) ${event.correctAnswer}*`,
-        line(event.p1, event.resultP1),
-        line(event.p2, event.resultP2),
+        line(event.p1, event.winner === event.p1),
+        line(event.p2, event.winner === event.p2),
       ]
+      if (!event.sd) lines.push(`Score: ${event.scoreP1} - ${event.scoreP2}`)
       return { text: lines.join('\n'), mentions: [event.p1, event.p2] }
     }
 

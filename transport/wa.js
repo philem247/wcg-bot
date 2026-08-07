@@ -6,6 +6,7 @@ import { toNumber } from './admin.js';
 
 let sock;
 let onMessageHandler;
+let onConnectedHandler;
 let logger;
 let shuttingDown = false;
 let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
@@ -61,6 +62,57 @@ export function shouldForceReconnect({ connected, trafficExpected, msSinceLastDi
   return trafficExpected || msSinceLastNotify < timeoutMs;
 }
 
+// Bounded fallback for sock.end()'s close event, which the watchdog's whole
+// recovery chain depends on but which is not guaranteed to fire: baileys'
+// end() only emits connection.update('close') itself (see node_modules/baileys
+// lib/Socket/socket.js) when its internal `closed` flag is still false at call
+// time, and does so synchronously — so a zombied/already-half-closed socket
+// can silently swallow the call, leaving the watchdog's own guard
+// (lastDispatchAt reset) blind to the failure for another full
+// STALL_TIMEOUT_MS. 10s is comfortably longer than a normal close takes
+// (immediate, in-process) but far shorter than STALL_TIMEOUT_MS.
+const GRACE_TIMEOUT_MS = 10_000;
+let cancelGrace = null;
+
+// Exported for testing: arms a timer that calls onForce() after delayMs
+// unless the returned canceller runs first (or a later arm() call preempts
+// it, which callers must do themselves - this just owns one timer).
+export function armGraceFallback(delayMs, onForce) {
+  const timer = setTimeout(onForce, delayMs);
+  timer.unref?.();
+  return () => clearTimeout(timer);
+}
+
+function cancelGraceFallback() {
+  cancelGrace?.();
+  cancelGrace = null;
+}
+
+// Call right after sock.end() where a close event is expected to drive
+// reconnect. If no new connect() cycle has started by the time the grace
+// timer elapses, baileys' own close event never arrived: force it by
+// terminating the raw websocket (node's `ws` library exposes .terminate()
+// for exactly this "don't wait for a clean handshake" case - baileys'
+// sock.ws is its own WebSocketClient wrapper, sock.ws.socket is the
+// underlying ws instance) and drive the reconnect directly instead of
+// waiting on an event that may never come.
+function armGraceFallbackForStalledEnd() {
+  cancelGraceFallback(); // only one grace timer in-flight at a time
+  const startedSock = sock;
+  cancelGrace = armGraceFallback(GRACE_TIMEOUT_MS, () => {
+    cancelGrace = null;
+    if (sock !== startedSock) return; // a real close already started a new cycle
+    logger.warn('Stall watchdog: no close event within grace window — forcing hard socket teardown and reconnect');
+    try {
+      startedSock?.ws?.socket?.terminate?.();
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed to terminate stuck websocket');
+    }
+    startedSock?.ev?.removeAllListeners(); // defuse a late close from the old socket
+    connect(onMessageHandler, logger, onConnectedHandler);
+  });
+}
+
 function startWatchdogTimer() {
   if (watchdogTimer) return; // connect() re-runs on every reconnect; only one timer ever
   watchdogTimer = setInterval(() => {
@@ -80,6 +132,7 @@ function startWatchdogTimer() {
     logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s, ${cause}) — forcing reconnect`);
     lastDispatchAt = Date.now(); // don't refire against the same stall while the new socket comes up
     sock?.end(undefined);
+    armGraceFallbackForStalledEnd();
   }, WATCHDOG_INTERVAL_MS);
   watchdogTimer.unref?.();
 }
@@ -166,6 +219,7 @@ function disconnectReasonName(code) {
 export async function connect(onMessage, appLogger, onConnected) {
   logger = appLogger;
   onMessageHandler = onMessage;
+  onConnectedHandler = onConnected;
   startSummaryTimer();
   startWatchdogTimer();
 
@@ -215,6 +269,7 @@ export async function connect(onMessage, appLogger, onConnected) {
       logger.info(`Connected to WhatsApp as ${sock.user?.id ?? 'unknown'}`);
       if (onConnected) onConnected();
     } else if (connection === 'close') {
+      cancelGraceFallback(); // a real close arrived - the fallback must not also fire
       const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
       connectedAt = 0;
       if (shuttingDown) return; // shutdown() closed this on purpose - do not reconnect
@@ -323,6 +378,7 @@ export function shutdown() {
   summaryTimer = null;
   clearInterval(watchdogTimer);
   watchdogTimer = null;
+  cancelGraceFallback();
   if (!sock) return;
   sock.end(undefined);
 }
