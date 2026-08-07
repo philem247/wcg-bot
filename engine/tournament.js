@@ -18,7 +18,7 @@ export const REGISTRATION_MS = 120_000
 // is used instead: anti-cheat, short enough nobody can search an answer up
 // mid-match. Do not change trivia.js's default for this; that would regress
 // group trivia too.
-export const TOURNAMENT_CLOCK_SECONDS = 7
+export const TOURNAMENT_CLOCK_SECONDS = 10
 // Pause between a match/sudden-death announcement and its first question, so
 // players have a moment to read who's playing before Q1 lands (Fix 2).
 export const MATCH_START_DELAY_MS = 4000

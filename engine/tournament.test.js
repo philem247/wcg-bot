@@ -148,15 +148,15 @@ const tests = [
     },
   },
   {
-    name: 'match questions run the tournament-specific 7s clock, not group trivia\'s 30s',
+    name: 'match questions run the tournament-specific 10s clock, not group trivia\'s 30s',
     fn: () => {
       const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0) })
       registerPlayers(t, 2)
       const { events: ev, now: afterStart } = startMatch(t, REGISTRATION_MS)
       const q = ev.find((e) => e.type === 'trivia_question')
       assert.equal(q.clockSeconds, TOURNAMENT_CLOCK_SECONDS)
-      assert.equal(q.clockSeconds, 7)
-      assert.equal(q.endsAt, afterStart + 7_000)
+      assert.equal(q.clockSeconds, 10)
+      assert.equal(q.endsAt, afterStart + TOURNAMENT_CLOCK_SECONDS * 1000)
     },
   },
   {
@@ -375,7 +375,7 @@ const tests = [
       const t = createTournament({ bank, now: 0, random: fixed(0) })
       const db = openDb(':memory:')
       const jid = 'tourney-jid'
-      const noop = () => {}
+      const noop = () => { }
 
       sendEvents(noop, jid, t.tick(0), undefined, 0, db) // registration open
       t.join('a', 0)

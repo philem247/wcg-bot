@@ -1,5 +1,7 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } from 'baileys';
 import pino from 'pino';
+import { readdir, unlink } from 'node:fs/promises';
+import { join } from 'node:path';
 import { SESSION_DIR, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS } from '../config.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
@@ -17,6 +19,33 @@ let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
 // "MessageCounterError: Key used already or never filled" and, once written to
 // disk, survives restarts. Reusing one state is also baileys' own documented pattern.
 let authState = null;
+
+// Purge corrupted Signal ratchet state from disk. Called on badSession (500)
+// disconnect, which means the server has decided this device's Signal sessions
+// are out of sync. Deletes per-contact session files (session-*.json) and
+// group sender-key files (sender-key-*.json) so baileys negotiates fresh
+// sessions via pre-key messages on reconnect. creds.json and pre-key files
+// are preserved — the device identity and unused pre-keys are still valid.
+async function purgeSignalSessions(sessionDir, log) {
+  let files;
+  try {
+    files = await readdir(sessionDir);
+  } catch (e) {
+    log?.warn({ err: e }, 'purgeSignalSessions: cannot read session dir, skipping');
+    return 0;
+  }
+  const stale = files.filter(f => f.startsWith('session-') || f.startsWith('sender-key-'));
+  let purged = 0;
+  for (const f of stale) {
+    try {
+      await unlink(join(sessionDir, f));
+      purged++;
+    } catch (e) {
+      if (e.code !== 'ENOENT') log?.warn({ err: e, file: f }, 'purgeSignalSessions: failed to delete');
+    }
+  }
+  return purged;
+}
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
 
@@ -282,6 +311,26 @@ export async function connect(onMessage, appLogger, onConnected) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
         sock.ev.removeAllListeners();
         connect(onMessage, logger, onConnected);
+      } else if (reason === DisconnectReason.badSession) {
+        // badSession (500): the server decided our Signal ratchets are out of
+        // sync. Purge the corrupted session files, rebuild authState from disk
+        // so the in-memory store picks up the cleaned state, then reconnect.
+        // Without this, every message after reconnect hits
+        // "MessageCounterError: Key used already or never filled" and the bot
+        // sits there unable to decrypt anything — exactly the mid-game hang.
+        logger.warn(`Bad session (${reason} ${reasonName}) after ${upSec}s connected — purging Signal sessions and reconnecting...`);
+        sock.ev.removeAllListeners();
+        purgeSignalSessions(SESSION_DIR, logger).then(n => {
+          logger.info(`Purged ${n} stale Signal session file(s) from ${SESSION_DIR}`);
+          // Force authState to reload from disk on next connect() so it sees
+          // the cleaned directory rather than serving stale in-memory sessions.
+          authState = null;
+          setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
+        }).catch(e => {
+          logger.error({ err: e }, 'Failed to purge signal sessions, reconnecting anyway');
+          authState = null;
+          setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
+        });
       } else {
         logger.info(`Disconnected (${reason} ${reasonName}) after ${upSec}s connected, reconnecting in ${RECONNECT_DELAY}ms...`);
         sock.ev.removeAllListeners();

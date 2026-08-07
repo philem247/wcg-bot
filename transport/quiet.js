@@ -13,8 +13,13 @@
 const NOISE_PATTERNS = [
   (s) => s === 'Failed to decrypt message with any known session...',
   (s) => s.startsWith('Session error:') && s.includes('Bad MAC'),
+  (s) => s.startsWith('Session error:') && s.includes('MessageCounterError'),
   (s) => s === 'Closing open session in favor of incoming prekey bundle',
   (s) => s.startsWith('Closing session:'),
+  (s) => s.startsWith('Removing old closed session:'),
+  (s) => s === 'Decrypted message with closed session.',
+  (s) => s === 'Session already open',
+  (s) => s.startsWith('Opening session:'),
 ]
 
 // Exported standalone so it's testable without touching the real console.
