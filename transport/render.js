@@ -151,13 +151,16 @@ export function render(event) {
       const lines = [`🏆 *BRACKET SET* — ${event.players.length} players, ${event.totalRounds} round${event.totalRounds === 1 ? '' : 's'}`, '']
       const mentions = []
       if (event.byes.length > 0) {
-        lines.push(`_Byes:_ ${event.byes.map((p) => mention(p)).join(', ')}`)
+        lines.push('_Byes (advance to round 2):_')
+        for (const p of event.byes) lines.push(`▸ ${mention(p)}`)
         mentions.push(...event.byes)
+        lines.push('')
       }
-      for (const m of event.matches) {
-        lines.push(`▸ ${mention(m.p1)} vs ${mention(m.p2)}`)
+      lines.push('*Round 1 matches:*')
+      event.matches.forEach((m, i) => {
+        lines.push(`${i + 1}. ${mention(m.p1)}  🆚  ${mention(m.p2)}`)
         mentions.push(m.p1, m.p2)
-      }
+      })
       lines.push('', `Admin: run ${PREFIX}tourney next to start the first match.`)
       return { text: lines.join('\n'), mentions }
     }
@@ -167,6 +170,20 @@ export function render(event) {
         text: `🏆 *ROUND ${event.round}/${event.totalRounds}*\n${mention(event.p1)} 🆚 ${mention(event.p2)}\n\nHighest score after 10 questions wins.`,
         mentions: [event.p1, event.p2],
       }
+
+    case 'tournament_question_result': {
+      const line = (p, r) => {
+        if (r.correct) return `✅ ${mention(p)}`
+        if (r.letter) return `❌ ${mention(p)} (chose ${r.letter})`
+        return `⏱ ${mention(p)} — no answer`
+      }
+      const lines = [
+        `📊 *Q${event.index}/${event.total}* — *${event.correctLetter}) ${event.correctAnswer}*`,
+        line(event.p1, event.resultP1),
+        line(event.p2, event.resultP2),
+      ]
+      return { text: lines.join('\n'), mentions: [event.p1, event.p2] }
+    }
 
     case 'tournament_sudden_death':
       return {

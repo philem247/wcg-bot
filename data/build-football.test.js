@@ -132,15 +132,17 @@ const tests = [
     },
   },
   {
-    name: 'mergeFootball: replaces football and leaves every other category untouched',
+    name: 'mergeFootball: replaces football and fpl, leaves every other category untouched',
     fn: () => {
       const bank = {
         generated: 'old', attribution: 'ATTR',
-        categories: { general: [{ id: 'g1' }], football: [{ id: 'stale' }] },
+        categories: { general: [{ id: 'g1' }], football: [{ id: 'stale' }], fpl: [{ id: 'stale-fpl' }] },
       }
-      const out = mergeFootball(bank, make('pl', 2))
+      const out = mergeFootball(bank, make('pl', 2), make('fpl', 1))
       assert.equal(out.categories.football.length, 2)
+      assert.equal(out.categories.fpl.length, 1)
       assert.ok(!out.categories.football.some((q) => q.id === 'stale'), 'stale football questions are replaced')
+      assert.ok(!out.categories.fpl.some((q) => q.id === 'stale-fpl'), 'stale fpl questions are replaced')
       assert.deepEqual(out.categories.general, [{ id: 'g1' }], 'other categories untouched')
       assert.equal(out.attribution, 'ATTR')
     },
@@ -148,9 +150,9 @@ const tests = [
   {
     name: 'mergeFootball: does not mutate the bank it was given',
     fn: () => {
-      const bank = { categories: { general: [{ id: 'g1' }], football: [] } }
+      const bank = { categories: { general: [{ id: 'g1' }], football: [], fpl: [] } }
       const before = JSON.stringify(bank)
-      mergeFootball(bank, make('pl', 2))
+      mergeFootball(bank, make('pl', 2), make('fpl', 1))
       assert.equal(JSON.stringify(bank), before)
     },
   },

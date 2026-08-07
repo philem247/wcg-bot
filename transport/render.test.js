@@ -288,6 +288,72 @@ const tests = [
       assert.deepEqual(out.mentions, [])
     },
   },
+  {
+    name: 'tournament_bracket_ready: byes get their own labeled block, matches are numbered',
+    fn: () => {
+      const out = render({
+        type: 'tournament_bracket_ready',
+        players: [P1, P2, '3@s.whatsapp.net', '4@s.whatsapp.net', '5@s.whatsapp.net', '6@s.whatsapp.net'],
+        byes: ['5@s.whatsapp.net', '6@s.whatsapp.net'],
+        matches: [{ p1: P1, p2: P2 }, { p1: '3@s.whatsapp.net', p2: '4@s.whatsapp.net' }],
+        totalRounds: 3,
+      })
+      assert.ok(out.text.includes('6 players, 3 rounds'))
+      assert.ok(out.text.includes('_Byes (advance to round 2):_'))
+      assert.ok(out.text.includes('▸ @5'))
+      assert.ok(out.text.includes('▸ @6'))
+      assert.ok(out.text.includes('*Round 1 matches:*'))
+      assert.ok(out.text.includes('1. @111111111  🆚  @222222222'))
+      assert.ok(out.text.includes('2. @3  🆚  @4'))
+      assert.ok(out.text.includes('/tourney next'))
+      assert.deepEqual(out.mentions, ['5@s.whatsapp.net', '6@s.whatsapp.net', P1, P2, '3@s.whatsapp.net', '4@s.whatsapp.net'])
+    },
+  },
+  {
+    name: 'tournament_bracket_ready: no byes omits the byes block entirely',
+    fn: () => {
+      const out = render({
+        type: 'tournament_bracket_ready',
+        players: [P1, P2],
+        byes: [],
+        matches: [{ p1: P1, p2: P2 }],
+        totalRounds: 1,
+      })
+      assert.ok(!out.text.includes('Byes'))
+      assert.ok(out.text.includes('1. @111111111  🆚  @222222222'))
+    },
+  },
+  {
+    name: 'tournament_question_result: shows the correct answer and each contestant\'s independent outcome',
+    fn: () => {
+      const out = render({
+        type: 'tournament_question_result', index: 3, total: 10,
+        correctLetter: 'B', correctAnswer: 'Lille',
+        p1: P1, p2: P2,
+        resultP1: { letter: 'B', correct: true },
+        resultP2: { letter: 'C', correct: false },
+      })
+      assert.ok(out.text.includes('Q3/10'))
+      assert.ok(out.text.includes('B) Lille'))
+      assert.ok(out.text.includes('✅ @111111111'))
+      assert.ok(out.text.includes('❌ @222222222 (chose C)'))
+      assert.deepEqual(out.mentions, [P1, P2])
+    },
+  },
+  {
+    name: 'tournament_question_result: a non-answering contestant is shown distinctly, not as wrong',
+    fn: () => {
+      const out = render({
+        type: 'tournament_question_result', index: 1, total: 10,
+        correctLetter: 'A', correctAnswer: 'Paris',
+        p1: P1, p2: P2,
+        resultP1: { letter: null, correct: false },
+        resultP2: { letter: 'A', correct: true },
+      })
+      assert.ok(out.text.includes('⏱ @111111111'))
+      assert.ok(!out.text.includes('chose null'))
+    },
+  },
 ]
 
 let passed = 0

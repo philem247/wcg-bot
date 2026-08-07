@@ -14,11 +14,19 @@ export const MIN_YEAR = 2000
 
 // The era cap alone did not solve unguessable subjects — a 2008 journeyman is
 // as unrecognisable as a 1956 one. Wikipedia sitelink count is the proxy for
-// fame: measured live on the Premier League (era filter already applied),
-// >=25 keeps 191 players and the least-famous survivor is Glenn Murray /
-// Anthony Stokes / Eric Lichaj — a reasonable "would a casual fan know them"
-// bar. Single exported constant so the owner can retune in one edit.
-export const MIN_SITELINKS = 25
+// fame, but it is NOT uniformly strict across leagues: at 25, Serie A's
+// least-famous survivors (Stendardo, Oduamadi, Tomović) are clearly more
+// obscure to an English-speaking fan than the Premier League's at the same
+// threshold (Glenn Murray, Anthony Stokes, Jimmy Bullard) — Serie A players
+// accumulate sitelinks from auto-generated stubs across small-language wikis
+// more than from real press coverage, so one number doesn't mean the same
+// thing in both leagues. Raised to 45 to compensate: verified live on the
+// Premier League, 95 players survive, least-famous is Jonjo Shelvey / Danny
+// Drinkwater / Sam Vokes — a clear step up in recognizability from 25. Costs
+// player-question volume (nationality/never-played/played-for/club-player);
+// does not touch winner/never-won or FPL questions, the bank's real volume
+// drivers. Single exported constant so the owner can retune in one edit.
+export const MIN_SITELINKS = 45
 
 // Q14623646 = fictional organisation. Applied at query time (not row-shaping)
 // so it also shrinks the distractor pool, not just the correct answer.
@@ -53,6 +61,17 @@ export const LEAGUES = {
   club_world_cup: { qid: 'Q223366', name: 'FIFA Club World Cup', tag: 'ucl', cup: true },
   euros:          { qid: 'Q260858', name: 'UEFA European Championship', tag: 'ucl', cup: true, national: true },
   europa_league:  { qid: 'Q18760', name: 'UEFA Europa League', tag: 'other', cup: true },
+  coupe_de_france:       { qid: 'Q212412', name: 'Coupe de France', tag: 'other', cup: true },
+  trophee_des_champions: { qid: 'Q653544', name: 'Trophée des Champions', tag: 'other', cup: true },
+  supercopa_espana:      { qid: 'Q485997', name: 'Supercopa de España', tag: 'other', cup: true },
+  fa_community_shield:   { qid: 'Q189188', name: 'FA Community Shield', tag: 'pl', cup: true },
+  coupe_de_la_ligue:     { qid: 'Q476539', name: 'Coupe de la Ligue', tag: 'other', cup: true },
+  efl_championship:      { qid: 'Q19510', name: 'EFL Championship', tag: 'pl', cup: true },
+  supercoppa_italiana:   { qid: 'Q19618', name: 'Supercoppa Italiana', tag: 'other', cup: true },
+  // Contested by national teams, same as World Cup/Euros/Copa América/AFCON —
+  // national: true keeps never-won distractors drawn from national teams.
+  confederations_cup:    { qid: 'Q171789', name: 'FIFA Confederations Cup', tag: 'ucl', cup: true, national: true },
+  nations_league:         { qid: 'Q15980635', name: 'UEFA Nations League', tag: 'ucl', cup: true, national: true },
 }
 
 // P31 season-of-a-league, P3450 is-a-season-of, P1346 winner, P580 start time.

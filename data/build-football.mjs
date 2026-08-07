@@ -9,7 +9,7 @@ import { readFile, writeFile, rename } from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 import { shuffle } from '../engine/bank.js'
 import { LEAGUES, leagueWinners, playerClubs, clubVenues, cupWinners, playerNationalities } from './football/queries.mjs'
-import { winnerQuestions, neverWonQuestions, neverPlayedForQuestions, venueQuestions, nationalityQuestions } from './football/templates.mjs'
+import { winnerQuestions, neverWonQuestions, neverPlayedForQuestions, venueQuestions, nationalityQuestions, playedForQuestions, clubPlayerQuestions } from './football/templates.mjs'
 import { fetchBootstrap, fplQuestions, seasonFolders, fetchSeasons, fplSeasonQuestions, fplGoalsQuestions } from './football/fpl.mjs'
 
 // The bank ships every valid question generated — no target size, no per-league
@@ -37,11 +37,11 @@ export function capAnswers(questions, random) {
 }
 
 // Returns a NEW bank; never mutates the one passed in.
-export function mergeFootball(bank, questions) {
+export function mergeFootball(bank, football, fpl) {
   return {
     ...bank,
     generated: new Date().toISOString(),
-    categories: { ...bank.categories, football: questions },
+    categories: { ...bank.categories, football, fpl },
   }
 }
 
@@ -99,6 +99,8 @@ async function main() {
       ...neverPlayedForQuestions(clubs, { league: league.tag, random }),
       ...venueQuestions(venues, { league: league.tag, random }),
       ...nationalityQuestions(nationalities, { league: league.tag, random }),
+      ...playedForQuestions(clubs, { league: league.tag, random }),
+      ...clubPlayerQuestions(clubs, { league: league.tag, random }),
     ]
     byTag[league.tag].push(...generated)
     console.log(`  ${league.name}: ${generated.length} questions`)
@@ -120,22 +122,28 @@ async function main() {
 
   if (process.env.DUMP_BYTAG) await writeFile(process.env.DUMP_BYTAG, JSON.stringify(byTag))
 
-  const pool = capAnswers(Object.values(byTag).flat(), random)
-  if (pool.length === 0) {
-    console.error('\nBuilt pool is empty — refusing to overwrite categories.football with nothing.')
+  // FPL is now its own category, split from football before capping. Each pool
+  // is capped separately: the per-template+answer cap guards football against
+  // one guessable fact (PL nationality) flooding, and guards fpl against its
+  // own analogous risk (e.g. one goal-count dominating fpl-goals) — same
+  // mechanism, scoped per category, rather than one combined cap or none at all.
+  const footballPool = capAnswers([...byTag.pl, ...byTag.other, ...byTag.ucl], random)
+  const fplPool = capAnswers(byTag.fpl, random)
+  if (footballPool.length === 0 && fplPool.length === 0) {
+    console.error('\nBuilt pool is empty — refusing to overwrite categories.football/fpl with nothing.')
     process.exit(1)
   }
 
   const bank = JSON.parse(await readFile('data/trivia.json', 'utf8'))
   // Atomic write: a ~6-minute network build interrupted mid-writeFile would
-  // otherwise truncate trivia.json and destroy all seven categories. Write to
-  // a temp file, then rename into place.
-  await writeFile('data/trivia.json.tmp', JSON.stringify(mergeFootball(bank, pool), null, 0))
+  // otherwise truncate trivia.json and destroy every category. Write to a
+  // temp file, then rename into place. One write, one rename, both categories.
+  await writeFile('data/trivia.json.tmp', JSON.stringify(mergeFootball(bank, footballPool, fplPool), null, 0))
   await rename('data/trivia.json.tmp', 'data/trivia.json')
 
-  const tags = [...new Set(pool.map((q) => q.league))].sort()
-  const counts = tags.map((t) => `${t} ${pool.filter((q) => q.league === t).length}`).join(', ')
-  console.log(`\nWrote ${pool.length} football questions (${counts})`)
+  const tags = [...new Set(footballPool.map((q) => q.league))].sort()
+  const counts = tags.map((t) => `${t} ${footballPool.filter((q) => q.league === t).length}`).join(', ')
+  console.log(`\nWrote ${footballPool.length} football questions, ${fplPool.length} fpl questions (${counts})`)
   if (failures.length > 0) {
     console.log(`FAILED: ${failures.join(', ')}`)
   }

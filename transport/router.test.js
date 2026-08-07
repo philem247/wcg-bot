@@ -1211,6 +1211,55 @@ const tests = [
     },
   },
   {
+    name: 'Fix 3: /tourney stats mentions are full JIDs, not bare digits (the WhatsApp mention tag needs the full JID to resolve)',
+    fn: async () => {
+      const sentMsgs = []
+      const db = openDb(':memory:')
+      // Full JID, as router.js's tournament_champion handler now writes (Fix 3:
+      // storage stopped calling toNumber() before the write).
+      db.recordTournamentWin('g-tny-mentions@g.us', '2349137123224@s.whatsapp.net', 1000)
+      const router = createRouter({
+        dict: {}, games: new Map(), enqueue: (j, m) => sentMsgs.push(m),
+        logger: undefined, getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g-tny-mentions@g.us', sender: 'x@s.whatsapp.net', senderPn: undefined, text: '/tourney stats', isGroup: true }, 2000)
+      assert.equal(sentMsgs.length, 1)
+      assert.deepEqual(sentMsgs[0].mentions, ['2349137123224@s.whatsapp.net'])
+      for (const m of sentMsgs[0].mentions) {
+        assert.ok(!/^\d+$/.test(m), `mentions entry "${m}" must not be a plain numeric string`)
+      }
+      db.close()
+    },
+  },
+  {
+    name: 'Fix 3: tournament_champion writes the winner as a full JID (not bare digits) when a pnMap entry resolves it',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = { categories: () => ['general'], pick: () => [] }
+      const jid = 'g-tny-champ@g.us'
+      const winnerPn = '2349137654321@s.whatsapp.net'
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid, sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/tourney start', isGroup: true }, 0)
+      // A player's message records their phone-form JID into gameMeta's
+      // pnMap — the same map tournament_champion consults to resolve the
+      // winner's JID (transport/router.js line ~904-908).
+      await router.handleMessage({ jid, sender: 'winner@s.whatsapp.net', senderPn: winnerPn, text: 'join', isGroup: true }, 100)
+
+      sendEvents((j, m) => sent.push(m), jid, [{ type: 'tournament_champion', player: 'winner@s.whatsapp.net', rounds: 1 }], undefined, 200, db)
+
+      const stats = db.tournamentStats(jid)
+      assert.equal(stats.length, 1)
+      assert.equal(stats[0].player, winnerPn, 'recorded as the full JID from pnMap, not bare digits')
+      db.close()
+    },
+  },
+  {
     name: '/help lists /tourney status and stats to everyone, but start|next|end only to an admin',
     fn: async () => {
       const sentPlayer = []

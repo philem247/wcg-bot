@@ -38,6 +38,7 @@ function resetInboundStats() {
 // minutes it otherwise takes baileys to notice on its own.
 const WATCHDOG_INTERVAL_MS = 30_000;
 let lastDispatchAt = 0;
+let lastNotifyAt = 0; // ms of the last live ('notify'-type) messages.upsert, regardless of dispatch outcome
 let watchdogTimer = null;
 let trafficProbe = () => false;
 
@@ -47,10 +48,17 @@ export function setTrafficProbe(fn) {
   trafficProbe = fn;
 }
 
-// Pure decision logic, exported so it's testable without a socket.
-export function shouldForceReconnect({ connected, trafficExpected, msSinceLastDispatch, timeoutMs }) {
+// Pure decision logic, exported so it's testable without a socket. Two
+// independent trip conditions, either one forces a reconnect:
+//   - trafficExpected: a game is running and nothing dispatched (original signal)
+//   - msSinceLastNotify < timeoutMs: messages are visibly ARRIVING but nothing is
+//     being dispatched — catches an idle-bot hang with no game running, without
+//     ever tripping against a genuinely quiet group (which has no notify traffic
+//     either, so msSinceLastNotify stays >= timeoutMs there).
+export function shouldForceReconnect({ connected, trafficExpected, msSinceLastDispatch, msSinceLastNotify, timeoutMs }) {
   if (!timeoutMs) return false; // 0 disables the watchdog
-  return connected && trafficExpected && msSinceLastDispatch > timeoutMs;
+  if (!connected || msSinceLastDispatch <= timeoutMs) return false;
+  return trafficExpected || msSinceLastNotify < timeoutMs;
 }
 
 function startWatchdogTimer() {
@@ -58,14 +66,18 @@ function startWatchdogTimer() {
   watchdogTimer = setInterval(() => {
     if (shuttingDown) return;
     const silentMs = Date.now() - lastDispatchAt;
+    const notifyMs = Date.now() - lastNotifyAt;
+    const trafficExpected = trafficProbe();
     if (!shouldForceReconnect({
       connected: isConnected(),
-      trafficExpected: trafficProbe(),
+      trafficExpected,
       msSinceLastDispatch: silentMs,
+      msSinceLastNotify: notifyMs,
       timeoutMs: STALL_TIMEOUT_MS,
     })) return;
     const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
-    logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s) — forcing reconnect`);
+    const cause = trafficExpected ? 'game traffic expected' : 'messages arriving but not dispatching';
+    logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s, ${cause}) — forcing reconnect`);
     lastDispatchAt = Date.now(); // don't refire against the same stall while the new socket comes up
     sock?.end(undefined);
   }, WATCHDOG_INTERVAL_MS);
@@ -226,6 +238,7 @@ export async function connect(onMessage, appLogger, onConnected) {
   sock.ev.on('messages.upsert', async ({ messages, type }) => {
     try {
       logger.debug(`upsert type=${type} count=${messages.length}`);
+      if (type === 'notify') lastNotifyAt = Date.now(); // live traffic, regardless of payload/dispatch outcome
       inboundStats.total += messages.length;
       inboundStats.byType[type] = (inboundStats.byType[type] ?? 0) + messages.length;
       for (const msg of messages) {

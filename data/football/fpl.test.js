@@ -262,12 +262,13 @@ const tests = [
         { first_name: 'Erling', second_name: 'Haaland', goals_scored: '27', minutes: '2500' },
         { first_name: 'Mohamed', second_name: 'Salah', goals_scored: '18', minutes: '3000' },
         { first_name: 'Cole', second_name: 'Palmer', goals_scored: '11', minutes: '2800' },
+        { first_name: 'Bukayo', second_name: 'Saka', goals_scored: '9', minutes: '2600' },
       ]
       const qs = fplGoalsQuestions(new Map([['2023-24', rows]]), { random: fixed(0) })
       const q = qs.find((x) => x.q.includes('Erling Haaland'))
       assert.ok(q, 'a player with real goals and enough minutes yields a question')
       assert.equal(q.correct, '27')
-      for (const w of q.wrong) assert.ok(['18', '11'].includes(w))
+      for (const w of q.wrong) assert.ok(['18', '11', '9'].includes(w))
     },
   },
   {

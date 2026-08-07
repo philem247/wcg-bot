@@ -58,6 +58,35 @@ const tests = [
       assert.equal(shouldForceReconnect({ connected: true, trafficExpected, msSinceLastDispatch: 200_000, timeoutMs: 180_000 }), false)
     },
   },
+  // Widened watchdog (Change 3): no game running, but messages are visibly
+  // ARRIVING and nothing is dispatching — an idle-bot hang, not a quiet group.
+  {
+    name: 'no game running, notify traffic recent, silent past timeout -> reconnect',
+    fn: () => {
+      assert.equal(shouldForceReconnect({
+        connected: true, trafficExpected: false,
+        msSinceLastDispatch: 200_000, msSinceLastNotify: 5_000, timeoutMs: 180_000,
+      }), true)
+    },
+  },
+  {
+    name: 'no game running, no notify traffic, silent past timeout -> do NOT reconnect (must never regress: a genuinely idle bot stays idle)',
+    fn: () => {
+      assert.equal(shouldForceReconnect({
+        connected: true, trafficExpected: false,
+        msSinceLastDispatch: 200_000, msSinceLastNotify: 200_000, timeoutMs: 180_000,
+      }), false)
+    },
+  },
+  {
+    name: 'notify traffic recent, silent past timeout, timeoutMs 0 -> never reconnects',
+    fn: () => {
+      assert.equal(shouldForceReconnect({
+        connected: true, trafficExpected: false,
+        msSinceLastDispatch: 999_999_999, msSinceLastNotify: 0, timeoutMs: 0,
+      }), false)
+    },
+  },
 ]
 
 let passed = 0

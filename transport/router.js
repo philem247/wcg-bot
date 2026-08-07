@@ -155,13 +155,15 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'tournament_champion') {
       // Tournament wins are a SEPARATE table from trivia/chain results — never
-      // touches `results`/leaderboard(). Keyed on the winner's phone-form number
-      // (via gameMeta's pnMap, same aggregation the trivia/wcg leaderboards use)
-      // so the same human under two JID namespaces doesn't split into two winners.
+      // touches `results`/leaderboard(). Keyed on the winner's FULL JID (via
+      // gameMeta's pnMap, same as results.player_pn) so the same human under
+      // two JID namespaces doesn't split into two winners; toNumber() is a
+      // display-time-only concern (formatTournamentStats), not a storage one —
+      // storing bare digits here broke the WhatsApp `mentions` tag (Fix 3).
       const meta = gameMeta.get(jid)
       const pn = meta?.pnMap?.get(event.player)
       try {
-        db?.recordTournamentWin(jid, toNumber(pn ?? event.player), now)
+        db?.recordTournamentWin(jid, pn ?? event.player, now)
       } catch (e) {
         // store failure must never break gameplay
       }

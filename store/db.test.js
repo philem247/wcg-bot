@@ -540,6 +540,22 @@ const tests = [
     },
   },
   {
+    name: 'Fix 3: tournamentStats() returns a mentionable (full-JID, non-bare-digit) identifier when recorded via a resolved pnMap entry',
+    fn: () => {
+      const db = openDb(':memory:')
+      // Full JID, as router.js's tournament_champion handler now writes
+      // (pn ?? event.player, no toNumber() stripping) — see transport/router.js.
+      const fullJid = '2349137123224@s.whatsapp.net'
+      db.recordTournamentWin('jid-a', fullJid, 1000)
+
+      const board = db.tournamentStats('jid-a')
+      assert.equal(board.length, 1)
+      assert.equal(board[0].player, fullJid, 'stored/returned as the full JID, not stripped to bare digits')
+      assert.ok(!/^\d+$/.test(board[0].player), 'must not be a bare numeric string — WhatsApp mentions need the full JID to resolve')
+      db.close()
+    },
+  },
+  {
     name: 'tournaments: saveTournament/loadTournament/deleteTournament round-trip a JSON blob per jid',
     fn: () => {
       const db = openDb(':memory:')
