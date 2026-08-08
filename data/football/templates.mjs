@@ -250,3 +250,80 @@ export function nationalityQuestions(rows, { league, random }) {
   }
   return out
 }
+
+// "Which club plays its home games at Anfield?"
+export function clubVenueQuestions(rows, { league, random }) {
+  const byVenue = new Map()
+  const allClubs = new Set()
+  for (const r of rows) {
+    if (!r.club || !r.venue) continue
+    const vKey = r.venue.toLowerCase()
+    if (!byVenue.has(vKey)) byVenue.set(vKey, { venue: r.venue, clubs: new Set() })
+    byVenue.get(vKey).clubs.add(r.club)
+    allClubs.add(r.club)
+  }
+  const out = []
+  for (const { venue, clubs } of byVenue.values()) {
+    if (clubs.size !== 1) continue // multiple clubs at same stadium -> ambiguous answer
+    const notClubs = [...allClubs].filter(c => !clubs.has(c))
+    const question = makeQuestion({
+      q: `Which club plays its home games at ${venue}?`,
+      correct: [...clubs][0],
+      pool: notClubs,
+      league,
+      random,
+      template: 'club-venue'
+    })
+    if (question) out.push(question)
+  }
+  return out
+}
+
+// "Which of these players is from Brazil?"
+export function nationalityPlayerQuestions(rows, { league, random }) {
+  const byNat = new Map() 
+  const allPlayers = new Set()
+  for (const r of rows) {
+    if (!r.id || !r.player || !r.nat) continue
+    if (!byNat.has(r.nat)) byNat.set(r.nat, { name: r.nat, players: new Set() })
+    byNat.get(r.nat).players.add(r.player)
+    allPlayers.add(r.player)
+  }
+  const out = []
+  for (const { name: nat, players } of byNat.values()) {
+    const notPlayers = [...allPlayers].filter(p => !players.has(p))
+    const correct = shuffle([...players], random)[0]
+    const question = makeQuestion({
+      q: `Which of these players is from ${nat}?`,
+      correct,
+      pool: notPlayers,
+      league,
+      random,
+      template: 'nationality-player'
+    })
+    if (question) out.push(question)
+  }
+  return out
+}
+
+// "Which of these clubs has won the Premier League?"
+export function hasWonQuestions(rows, allClubs, { leagueName, league, random }) {
+  const winners = new Set(rows.map((r) => r.winner).filter(Boolean))
+  const winnerKeys = new Set([...winners].map(clubKey))
+  const neverWon = allClubs.filter((c) => !winnerKeys.has(clubKey(c)))
+  if (neverWon.length < 3) return [] 
+  
+  const out = []
+  for (const winner of winners) {
+    const question = makeQuestion({
+      q: `Which of these clubs has won the ${leagueName}?`,
+      correct: winner,
+      pool: neverWon,
+      league,
+      random,
+      template: 'has-won',
+    })
+    if (question) out.push(question)
+  }
+  return out
+}

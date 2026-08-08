@@ -9,8 +9,8 @@ import { readFile, writeFile, rename } from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 import { shuffle } from '../engine/bank.js'
 import { LEAGUES, leagueWinners, playerClubs, clubVenues, cupWinners, playerNationalities } from './football/queries.mjs'
-import { winnerQuestions, neverWonQuestions, neverPlayedForQuestions, venueQuestions, nationalityQuestions, playedForQuestions, clubPlayerQuestions } from './football/templates.mjs'
-import { fetchBootstrap, fplQuestions, seasonFolders, fetchSeasons, fplSeasonQuestions, fplGoalsQuestions } from './football/fpl.mjs'
+import { winnerQuestions, neverWonQuestions, neverPlayedForQuestions, venueQuestions, nationalityQuestions, playedForQuestions, clubPlayerQuestions, clubVenueQuestions, nationalityPlayerQuestions, hasWonQuestions } from './football/templates.mjs'
+import { fetchBootstrap, fplQuestions, seasonFolders, fetchSeasons, fplSeasonQuestions, fplGoalsQuestions, fplSeasonPositionQuestions, fplAssistsQuestions, fplCleanSheetsQuestions } from './football/fpl.mjs'
 
 // The bank ships every valid question generated — no target size, no per-league
 // ratio to hit. The only limiter left is per TEMPLATE+ANSWER pair, and its job
@@ -79,6 +79,7 @@ async function main() {
       if (!league.national) {
         const neverWonPool = [...new Set([...winners.map((r) => r.winner), ...domesticClubs])]
         generated.push(...neverWonQuestions(winners, neverWonPool, { leagueName: league.name, league: league.tag, random }))
+        generated.push(...hasWonQuestions(winners, neverWonPool, { leagueName: league.name, league: league.tag, random }))
       }
       byTag[league.tag].push(...generated)
       console.log(`  ${league.name}: ${generated.length} questions`)
@@ -95,10 +96,13 @@ async function main() {
 
     const generated = [
       ...winnerQuestions(winners, { leagueName: league.name, league: league.tag, random }),
+      ...hasWonQuestions(winners, allClubs, { leagueName: league.name, league: league.tag, random }),
       ...neverWonQuestions(winners, allClubs, { leagueName: league.name, league: league.tag, random }),
       ...neverPlayedForQuestions(clubs, { league: league.tag, random }),
       ...venueQuestions(venues, { league: league.tag, random }),
+      ...clubVenueQuestions(venues, { league: league.tag, random }),
       ...nationalityQuestions(nationalities, { league: league.tag, random }),
+      ...nationalityPlayerQuestions(nationalities, { league: league.tag, random }),
       ...playedForQuestions(clubs, { league: league.tag, random }),
       ...clubPlayerQuestions(clubs, { league: league.tag, random }),
     ]
@@ -117,6 +121,9 @@ async function main() {
     const bySeasonCsv = await fetchSeasons(folders)
     byTag.fpl.push(...fplSeasonQuestions(bySeasonCsv, { random }))
     byTag.fpl.push(...fplGoalsQuestions(bySeasonCsv, { random }))
+    byTag.fpl.push(...fplSeasonPositionQuestions(bySeasonCsv, { random }))
+    byTag.fpl.push(...fplAssistsQuestions(bySeasonCsv, { random }))
+    byTag.fpl.push(...fplCleanSheetsQuestions(bySeasonCsv, { random }))
   }
   console.log(`  FPL: ${byTag.fpl.length} questions`)
 

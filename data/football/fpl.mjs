@@ -170,7 +170,7 @@ export function fplQuestions(bootstrap, { random }) {
     const club = teamById.get(p.team)
     if (!club) continue
     const q = makeQuestion({
-      q: `Which club did ${playerName(p)} play for at the start of the ${s.squad} season?`,
+      q: `Which club does ${playerName(p)} play for in the ${s.squad} season?`,
       correct: club,
       pool: [...teamById.values()],
       league: 'fpl',
@@ -266,6 +266,82 @@ export function fplGoalsQuestions(bySeasonCsv, { random }) {
         league: 'fpl',
         random,
         template: 'fpl-goals',
+      })
+      if (q) out.push(q)
+    }
+  }
+  return out
+}
+
+const CSV_POS = { GK: 'goalkeeper', DEF: 'defender', MID: 'midfielder', FWD: 'forward' }
+
+export function fplSeasonPositionQuestions(bySeasonCsv, { random }) {
+  const out = []
+  for (const [folder, rows] of bySeasonCsv) {
+    const season = seasonDisplay(folder)
+    const players = rows
+      .filter((r) => csvInt(r, 'minutes') >= FPL_MIN_MINUTES)
+      .map((r) => ({ name: csvName(r), pos: r.element_type }))
+      .filter((r) => r.name && CSV_POS[r.pos])
+    
+    for (const p of players) {
+      const q = makeQuestion({
+        q: `In the ${season} season, which position did FPL classify ${p.name} as?`,
+        correct: CSV_POS[p.pos],
+        pool: Object.values(CSV_POS),
+        league: 'fpl',
+        random,
+        template: 'fpl-past-position',
+      })
+      if (q) out.push(q)
+    }
+  }
+  return out
+}
+
+export function fplAssistsQuestions(bySeasonCsv, { random }) {
+  const out = []
+  for (const [folder, rows] of bySeasonCsv) {
+    const season = seasonDisplay(folder)
+    const players = rows
+      .filter((r) => csvInt(r, 'minutes') >= FPL_MIN_MINUTES)
+      .map((r) => ({ name: csvName(r), assists: csvInt(r, 'assists') }))
+      .filter((r) => r.name)
+    const allCounts = players.map((p) => String(p.assists))
+    for (const { name, assists } of players) {
+      if (assists <= 0) continue 
+      const q = makeQuestion({
+        q: `How many assists did ${name} provide in the ${season} season?`,
+        correct: String(assists),
+        pool: allCounts,
+        league: 'fpl',
+        random,
+        template: 'fpl-assists',
+      })
+      if (q) out.push(q)
+    }
+  }
+  return out
+}
+
+export function fplCleanSheetsQuestions(bySeasonCsv, { random }) {
+  const out = []
+  for (const [folder, rows] of bySeasonCsv) {
+    const season = seasonDisplay(folder)
+    const players = rows
+      .filter((r) => csvInt(r, 'minutes') >= FPL_MIN_MINUTES)
+      .map((r) => ({ name: csvName(r), clean_sheets: csvInt(r, 'clean_sheets') }))
+      .filter((r) => r.name)
+    const allCounts = players.map((p) => String(p.clean_sheets))
+    for (const { name, clean_sheets } of players) {
+      if (clean_sheets <= 0) continue 
+      const q = makeQuestion({
+        q: `How many clean sheets did ${name} keep in the ${season} season?`,
+        correct: String(clean_sheets),
+        pool: allCounts,
+        league: 'fpl',
+        random,
+        template: 'fpl-cleansheets',
       })
       if (q) out.push(q)
     }
