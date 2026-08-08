@@ -10,6 +10,7 @@ let onMessageHandler;
 let onConnectedHandler;
 let logger;
 let shuttingDown = false;
+let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
 // ONE auth state for the process lifetime. When SESSION_ID is set, this is a
 // SQLite-backed store (store/auth.js) — all Signal keys live in wcg.db with
 // atomic writes, no file races, no session folder to corrupt. When SESSION_ID
