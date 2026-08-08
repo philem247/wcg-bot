@@ -1,7 +1,7 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } from 'baileys';
 import pino from 'pino';
 import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS } from '../config.js';
-import { useSqliteAuthState } from '../store/auth.js';
+import { useSqliteAuthState, encodeCreds } from '../store/auth.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
 
@@ -272,11 +272,11 @@ export async function connect(onMessage, appLogger, onConnected) {
       lastDispatchAt = Date.now();
       logger.info(`Connected to WhatsApp as ${sock.user?.id ?? 'unknown'}`);
 
-      // After a fresh pair: print the SESSION_ID so the user can save it.
-      // This runs exactly once — on the restartRequired reconnect that follows
-      // pairing, creds.registered is already true so this block won't fire again.
-      if (pairingCodeRequested && authState.getSessionId) {
-        const sid = authState.getSessionId();
+      // If the user hasn't set a SESSION_ID in their env yet, it means they just
+      // paired or are still running on the legacy file-based auth. Print the base64
+      // string so they can set it and transition to SQLite.
+      if (!SESSION_ID) {
+        const sid = encodeCreds(state.creds);
         console.log('\n' + '═'.repeat(60));
         console.log('  ✅ SESSION_ID (copy this entire string into your .env):');
         console.log('═'.repeat(60));
