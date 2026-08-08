@@ -1,0 +1,194 @@
+[
+  {
+    "id": "static_ng_mus_01",
+    "template": "static",
+    "category": "nigerian-music",
+    "q": "Which Nigerian artist's debut album is titled 'Superstar', released in 2011?",
+    "correct": "Wizkid",
+    "wrong": ["Davido", "Burna Boy", "Olamide"]
+  },
+  {
+    "id": "static_ng_mus_02",
+    "template": "static",
+    "category": "nigerian-music",
+    "q": "Who won the prestigious 'Next Rated' award at The Headies in 2015?",
+    "correct": "Reekado Banks",
+    "wrong": ["Lil Kesh", "Kiss Daniel", "Korede Bello"]
+  },
+  {
+    "id": "static_ng_mus_03",
+    "template": "static",
+    "category": "nigerian-music",
+    "q": "Which Nigerian artist is known as the 'African Giant'?",
+    "correct": "Burna Boy",
+    "wrong": ["Wizkid", "Davido", "Tiwa Savage"]
+  },
+  {
+    "id": "static_ng_mus_04",
+    "template": "static",
+    "category": "nigerian-music",
+    "q": "Olamide's record label is called YBNL. What does YBNL stand for?",
+    "correct": "Yahoo Boy No Laptop",
+    "wrong": ["Young Boss Nation Life", "Your Boy Needs Love", "Yoruba Boys National League"]
+  },
+  {
+    "id": "static_ng_mus_05",
+    "template": "static",
+    "category": "nigerian-music",
+    "q": "Which female artist is commonly referred to as the 'Queen of Afrobeats'?",
+    "correct": "Tiwa Savage",
+    "wrong": ["Yemi Alade", "Tems", "Simi"]
+  },
+  {
+    "id": "static_ng_ent_01",
+    "template": "static",
+    "category": "nigerian-entertainment",
+    "q": "Which Nollywood actress played the lead role of Dunni in 'The Wedding Party'?",
+    "correct": "Adesua Etomi",
+    "wrong": ["Genevieve Nnaji", "Funke Akindele", "Rita Dominic"]
+  },
+  {
+    "id": "static_ng_ent_02",
+    "template": "static",
+    "category": "nigerian-entertainment",
+    "q": "Who is the creator of the popular Nigerian comic character 'Jenifa'?",
+    "correct": "Funke Akindele",
+    "wrong": ["Toyin Abraham", "Eniola Badmus", "Mercy Johnson"]
+  },
+  {
+    "id": "static_ng_ent_03",
+    "template": "static",
+    "category": "nigerian-entertainment",
+    "q": "Which of these is a popular Nigerian reality TV show?",
+    "correct": "Big Brother Naija",
+    "wrong": ["Survivor Africa", "Lagos Wives", "Nollywood Stars"]
+  },
+  {
+    "id": "static_ng_his_01",
+    "template": "static",
+    "category": "nigerian-history",
+    "q": "Who was the first democratically elected president of Nigeria in the Fourth Republic (1999)?",
+    "correct": "Olusegun Obasanjo",
+    "wrong": ["Goodluck Jonathan", "Umaru Musa Yar'Adua", "Muhammadu Buhari"]
+  },
+  {
+    "id": "static_ng_his_02",
+    "template": "static",
+    "category": "nigerian-history",
+    "q": "In what year did Nigeria gain independence from British rule?",
+    "correct": "1960",
+    "wrong": ["1963", "1957", "1966"]
+  },
+  {
+    "id": "static_ng_his_03",
+    "template": "static",
+    "category": "nigerian-history",
+    "q": "Who was the first Prime Minister of Nigeria?",
+    "correct": "Abubakar Tafawa Balewa",
+    "wrong": ["Nnamdi Azikiwe", "Obafemi Awolowo", "Ahmadu Bello"]
+  },
+  {
+    "id": "static_ng_food_01",
+    "template": "static",
+    "category": "nigerian-food",
+    "q": "Which of these leaves is the primary ingredient in Afang soup?",
+    "correct": "Okazi (Ukazi) leaves",
+    "wrong": ["Bitter leaves", "Scent leaves", "Ugu leaves"]
+  },
+  {
+    "id": "static_ng_food_02",
+    "template": "static",
+    "category": "nigerian-food",
+    "q": "What is the main ingredient used to prepare the Nigerian snack 'Akara'?",
+    "correct": "Beans",
+    "wrong": ["Corn", "Cassava", "Yam"]
+  },
+  {
+    "id": "static_ng_food_03",
+    "template": "static",
+    "category": "nigerian-food",
+    "q": "Suya, a popular Nigerian street food, is heavily seasoned with a spice blend called what?",
+    "correct": "Yaji",
+    "wrong": ["Jollof spice", "Pepper soup spice", "Banga spice"]
+  },
+  {
+    "id": "static_pidgin_01",
+    "template": "static",
+    "category": "pidgin-english",
+    "q": "In Nigerian slang, what does the term 'Sapa' refer to?",
+    "correct": "Extreme brokenness or lack of money",
+    "wrong": ["A type of local gin", "A popular dance move", "A fast car"]
+  },
+  {
+    "id": "static_pidgin_02",
+    "template": "static",
+    "category": "pidgin-english",
+    "q": "What does 'E choke' mean in Nigerian pop culture?",
+    "correct": "An expression of shock or something being overwhelmingly impressive",
+    "wrong": ["Someone is literally choking", "The food is too spicy", "The weather is very hot"]
+  },
+  {
+    "id": "static_web3_01",
+    "template": "static",
+    "category": "web3",
+    "q": "In Web3 slang, what does the acronym 'WAGMI' stand for?",
+    "correct": "We're All Gonna Make It",
+    "wrong": ["Web3 And Gaming Meta Initiative", "When Are Guys Making It", "Where Are Going Men Inside"]
+  },
+  {
+    "id": "static_web3_02",
+    "template": "static",
+    "category": "web3",
+    "q": "What does 'HODL' originally mean in the cryptocurrency space?",
+    "correct": "A typo for 'hold', meaning to keep your assets",
+    "wrong": ["Hold On for Dear Life", "Hide Our Digital Ledger", "High Order Decentralized Lending"]
+  },
+  {
+    "id": "static_web3_03",
+    "template": "static",
+    "category": "web3",
+    "q": "Who is the pseudonymous creator of Bitcoin?",
+    "correct": "Satoshi Nakamoto",
+    "wrong": ["Vitalik Buterin", "Gavin Wood", "Charles Hoskinson"]
+  },
+  {
+    "id": "static_tech_01",
+    "template": "static",
+    "category": "tech",
+    "q": "Which African fintech startup was acquired by Stripe in 2020 for $200 million?",
+    "correct": "Paystack",
+    "wrong": ["Flutterwave", "Chipper Cash", "Opay"]
+  },
+  {
+    "id": "static_tech_02",
+    "template": "static",
+    "category": "tech",
+    "q": "Who is the co-founder and current CEO of Flutterwave?",
+    "correct": "Olugbenga Agboola",
+    "wrong": ["Shola Akinlade", "Iyinoluwa Aboyeji", "Tayo Oviosu"]
+  },
+  {
+    "id": "static_bible_01",
+    "template": "static",
+    "category": "bible",
+    "q": "Who was the oldest man mentioned in the Bible, living to be 969 years old?",
+    "correct": "Methuselah",
+    "wrong": ["Noah", "Adam", "Enoch"]
+  },
+  {
+    "id": "static_bible_02",
+    "template": "static",
+    "category": "bible",
+    "q": "In the Bible, who led the Israelites across the parted Red Sea?",
+    "correct": "Moses",
+    "wrong": ["Joshua", "Abraham", "David"]
+  },
+  {
+    "id": "static_bible_03",
+    "template": "static",
+    "category": "bible",
+    "q": "What is the shortest verse in the English Bible?",
+    "correct": "Jesus wept",
+    "wrong": ["God is love", "Pray without ceasing", "In the beginning"]
+  }
+]

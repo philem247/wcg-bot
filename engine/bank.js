@@ -3,7 +3,7 @@
 // reproducible, same rule as the rest of engine/.
 import { readFileSync } from 'node:fs'
 
-export const CATEGORIES = ['general', 'football', 'fpl', 'science', 'tech', 'entertainment', 'geography', 'history']
+export const CATEGORIES = ['general', 'football', 'fpl', 'science', 'tech', 'entertainment', 'geography', 'history', 'anime', 'animals', 'videogames', 'cartoons', 'art', 'mythology', 'vehicles', 'nigerian-music', 'nigerian-entertainment', 'nigerian-history', 'nigerian-food', 'pidgin-english', 'web3', 'bible']
 
 // Fisher-Yates. Returns a new array; the caller's is untouched.
 export function shuffle(array, random) {

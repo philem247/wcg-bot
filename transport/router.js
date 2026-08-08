@@ -553,7 +553,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
           `▸ ${PREFIX}addword <word>|all`,
           `▸ ${PREFIX}delword <word>`,
           `▸ ${PREFIX}admin`,
-          `▸ ${PREFIX}tourney start`,
+          `▸ ${PREFIX}tourney start [category]`,
           `▸ ${PREFIX}tourney next`,
           `▸ ${PREFIX}tourney end`,
         )

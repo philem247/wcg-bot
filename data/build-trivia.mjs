@@ -18,6 +18,13 @@ export const CATEGORY_SOURCES = {
   entertainment: [11, 12, 14],
   geography: [22],
   history: [23],
+  anime: [31],
+  animals: [27],
+  videogames: [15],
+  cartoons: [32],
+  art: [25],
+  mythology: [20],
+  vehicles: [28],
 }
 
 const ENTITIES = {

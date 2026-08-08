@@ -24,9 +24,9 @@ const fixture = {
 
 const tests = [
   {
-    name: 'CATEGORIES lists all eight, with football and fpl included',
+    name: 'CATEGORIES lists all twenty-two, with football and fpl included',
     fn: () => {
-      assert.equal(CATEGORIES.length, 8)
+      assert.equal(CATEGORIES.length, 22)
       assert.ok(CATEGORIES.includes('football'))
       assert.ok(CATEGORIES.includes('fpl'))
       assert.ok(!CATEGORIES.includes('mixed'), 'mixed is a mode, not a category')

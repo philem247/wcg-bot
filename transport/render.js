@@ -26,9 +26,14 @@ const REJECTION_TEXT = {
 }
 
 const CATEGORY_LABEL = {
-  general: '🧠 GENERAL', football: '⚽ FOOTBALL', science: '🔬 SCIENCE',
+  general: '🧠 GENERAL', football: '⚽ FOOTBALL', fpl: '🦁 FPL', science: '🔬 SCIENCE',
   tech: '💻 TECH', entertainment: '🎬 ENTERTAINMENT', geography: '🌍 GEOGRAPHY',
-  history: '📜 HISTORY', mixed: '🎲 MIXED',
+  history: '📜 HISTORY', mixed: '🎲 MIXED', anime: '🌸 ANIME', animals: '🐾 ANIMALS',
+  videogames: '🎮 VIDEO GAMES', cartoons: '📺 CARTOONS', art: '🎨 ART',
+  mythology: '🐉 MYTHOLOGY', vehicles: '🚗 VEHICLES', 'nigerian-music': '🎵 NIGERIAN MUSIC',
+  'nigerian-entertainment': '🎥 NIGERIAN ENTERTAINMENT', 'nigerian-history': '🇳🇬 NIGERIAN HISTORY',
+  'nigerian-food': '🍛 NIGERIAN FOOD', 'pidgin-english': '🗣️ PIDGIN ENGLISH',
+  web3: '⛓️ WEB3 & CRYPTO', bible: '📖 BIBLE',
 }
 const MEDALS = ['🥇', '🥈', '🥉']
 
