@@ -44,5 +44,19 @@ Ran the comprehensive unit test suite (`npm test`) consisting of 358 tests acros
 - **0 Failures.**
 - Confirms the connection wrapper logic and everything else continues to function correctly alongside the new SQLite authentication state.
 
+## Post-Deployment Bug Fixes & Observations
+
+### 1. Fixed `connectedAt` ReferenceError
+During the initial migration to SQLite auth, the `let connectedAt = 0;` global variable was accidentally deleted from the top of `transport/wa.js`. This caused a `ReferenceError` when the socket disconnected and the bot tried to record the uptime.
+- **Fix:** Restored `let connectedAt = 0;` at the top of the file.
+
+### 2. Fixed `SESSION_ID` Printing Logic
+WhatsApp immediately disconnects the socket with a `515 restartRequired` error code right after a fresh device pairing. Because the bot automatically reconnected, the original logic designed to print the base64 `SESSION_ID` completely skipped because it thought the pairing phase was already over. Additionally, the legacy `useMultiFileAuthState` did not expose the necessary `.getSessionId()` method.
+- **Fix:** Refactored the logic in `transport/wa.js` to trigger if `!SESSION_ID` is defined in the environment. It now uses the `encodeCreds(state.creds)` function imported directly from `store/auth.js` to reliably generate and print the `SESSION_ID` block on the console immediately after a successful pairing connection.
+
+### 3. Harmless "Connection Closed" Watchdog Error
+The bot's Stall Watchdog forcefully terminates connections that are hanging (no messages dispatched for 3 minutes). Sometimes, Baileys will be attempting a background task (e.g., requesting missing message keys) precisely when the watchdog terminates the socket. This results in an `Unhandled promise rejection (Error: Connection Closed, statusCode 428)` error appearing in the console. 
+- **Status:** This is completely harmless and simply indicates that the watchdog successfully intervened to reboot a stuck socket. The bot immediately reconnects and continues normally. No action required.
+
 ## How to Proceed
 No further action is required on this front. If any transport/auth modifications are needed in the future, remember that the source of truth for the bot's identity is the `SESSION_ID` string, while the rapidly changing Signal ratchets are transient data that live in `wa_keys` inside SQLite.
