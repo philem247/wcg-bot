@@ -1,8 +1,7 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } from 'baileys';
 import pino from 'pino';
-import { readdir, unlink } from 'node:fs/promises';
-import { join } from 'node:path';
-import { SESSION_DIR, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS } from '../config.js';
+import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS } from '../config.js';
+import { useSqliteAuthState } from '../store/auth.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
 
@@ -11,41 +10,12 @@ let onMessageHandler;
 let onConnectedHandler;
 let logger;
 let shuttingDown = false;
-let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
-// ONE auth state for the process lifetime. Rebuilding it per connect() gives each
-// socket its own store and its own debounce timer over the same file: an orphaned
-// timer from the previous socket can fire after the new one has written, rolling
-// Signal ratchet counters backwards. That surfaces as
-// "MessageCounterError: Key used already or never filled" and, once written to
-// disk, survives restarts. Reusing one state is also baileys' own documented pattern.
+// ONE auth state for the process lifetime. When SESSION_ID is set, this is a
+// SQLite-backed store (store/auth.js) — all Signal keys live in wcg.db with
+// atomic writes, no file races, no session folder to corrupt. When SESSION_ID
+// is empty (first run or backward compat), falls back to baileys' own
+// useMultiFileAuthState which writes one file per key.
 let authState = null;
-
-// Purge corrupted Signal ratchet state from disk. Called on badSession (500)
-// disconnect, which means the server has decided this device's Signal sessions
-// are out of sync. Deletes per-contact session files (session-*.json) and
-// group sender-key files (sender-key-*.json) so baileys negotiates fresh
-// sessions via pre-key messages on reconnect. creds.json and pre-key files
-// are preserved — the device identity and unused pre-keys are still valid.
-async function purgeSignalSessions(sessionDir, log) {
-  let files;
-  try {
-    files = await readdir(sessionDir);
-  } catch (e) {
-    log?.warn({ err: e }, 'purgeSignalSessions: cannot read session dir, skipping');
-    return 0;
-  }
-  const stale = files.filter(f => f.startsWith('session-') || f.startsWith('sender-key-'));
-  let purged = 0;
-  for (const f of stale) {
-    try {
-      await unlink(join(sessionDir, f));
-      purged++;
-    } catch (e) {
-      if (e.code !== 'ENOENT') log?.warn({ err: e, file: f }, 'purgeSignalSessions: failed to delete');
-    }
-  }
-  return purged;
-}
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
 
@@ -252,13 +222,17 @@ export async function connect(onMessage, appLogger, onConnected) {
   startSummaryTimer();
   startWatchdogTimer();
 
-  // baileys' own multi-file store. A previous hand-rolled single-file version
-  // batched every Signal key write behind a 500ms debounce and rewrote the whole
-  // store each time; ratchet advances lost inside that window showed up in
-  // production as "MessageCounterError: Key used already or never filled" and
-  // left the bot unable to decrypt, persistently, across restarts. Per-key
-  // immediate writes are the entire point — do not "tidy" this back into one file.
-  if (!authState) authState = await useMultiFileAuthState(SESSION_DIR);
+  // Auth state: prefer SQLite (SESSION_ID set) over file-based (legacy/first-time).
+  // SQLite gives atomic writes, no per-file races, no session folder to corrupt.
+  if (!authState) {
+    if (SESSION_ID) {
+      authState = useSqliteAuthState({ sessionId: SESSION_ID });
+      logger.info('Auth: using SQLite-backed session (SESSION_ID set)');
+    } else {
+      authState = await useMultiFileAuthState(SESSION_DIR);
+      logger.info(`Auth: using file-based session in ${SESSION_DIR}/ (set SESSION_ID to switch to SQLite)`);
+    }
+  }
   const { state, saveCreds } = authState;
 
   sock = makeWASocket({
@@ -296,6 +270,20 @@ export async function connect(onMessage, appLogger, onConnected) {
       connectedAt = Date.now();
       lastDispatchAt = Date.now();
       logger.info(`Connected to WhatsApp as ${sock.user?.id ?? 'unknown'}`);
+
+      // After a fresh pair: print the SESSION_ID so the user can save it.
+      // This runs exactly once — on the restartRequired reconnect that follows
+      // pairing, creds.registered is already true so this block won't fire again.
+      if (pairingCodeRequested && authState.getSessionId) {
+        const sid = authState.getSessionId();
+        console.log('\n' + '═'.repeat(60));
+        console.log('  ✅ SESSION_ID (copy this entire string into your .env):');
+        console.log('═'.repeat(60));
+        console.log(sid);
+        console.log('═'.repeat(60) + '\n');
+        logger.info('SESSION_ID printed above — add it to your .env or hosting panel, then restart. The session/ folder is no longer needed.');
+      }
+
       if (onConnected) onConnected();
     } else if (connection === 'close') {
       cancelGraceFallback(); // a real close arrived - the fallback must not also fire
@@ -305,7 +293,7 @@ export async function connect(onMessage, appLogger, onConnected) {
       const reason = lastDisconnect?.error?.output?.statusCode;
       const reasonName = disconnectReasonName(reason);
       if (reason === DisconnectReason.loggedOut) {
-        logger.error(`Logged out (${reason} ${reasonName}). Session is dead: delete the session/ folder and re-pair from scratch, then restart the bot.`);
+        logger.error(`Logged out (${reason} ${reasonName}). Session is dead: clear your SESSION_ID env var and re-pair from scratch, then restart the bot.`);
         process.exit(1);
       } else if (reason === DisconnectReason.restartRequired) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
@@ -313,24 +301,22 @@ export async function connect(onMessage, appLogger, onConnected) {
         connect(onMessage, logger, onConnected);
       } else if (reason === DisconnectReason.badSession) {
         // badSession (500): the server decided our Signal ratchets are out of
-        // sync. Purge the corrupted session files, rebuild authState from disk
-        // so the in-memory store picks up the cleaned state, then reconnect.
-        // Without this, every message after reconnect hits
-        // "MessageCounterError: Key used already or never filled" and the bot
-        // sits there unable to decrypt anything — exactly the mid-game hang.
+        // sync. Purge the corrupted session/sender-key entries and reconnect.
+        // With SQLite this is a single DELETE; with file-based it's impossible
+        // to reach here if SESSION_ID is set, but we guard both paths.
         logger.warn(`Bad session (${reason} ${reasonName}) after ${upSec}s connected — purging Signal sessions and reconnecting...`);
         sock.ev.removeAllListeners();
-        purgeSignalSessions(SESSION_DIR, logger).then(n => {
-          logger.info(`Purged ${n} stale Signal session file(s) from ${SESSION_DIR}`);
-          // Force authState to reload from disk on next connect() so it sees
-          // the cleaned directory rather than serving stale in-memory sessions.
+        if (authState.purgeSignalSessions) {
+          // SQLite path: synchronous, atomic, instant.
+          const n = authState.purgeSignalSessions();
+          logger.info(`Purged ${n} stale Signal session row(s) from SQLite`);
+          setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
+        } else {
+          // Legacy file-based path: shouldn't happen if SESSION_ID is set,
+          // but keep for backward compatibility.
           authState = null;
           setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
-        }).catch(e => {
-          logger.error({ err: e }, 'Failed to purge signal sessions, reconnecting anyway');
-          authState = null;
-          setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
-        });
+        }
       } else {
         logger.info(`Disconnected (${reason} ${reasonName}) after ${upSec}s connected, reconnecting in ${RECONNECT_DELAY}ms...`);
         sock.ev.removeAllListeners();

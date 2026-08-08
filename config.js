@@ -14,6 +14,7 @@ export const OWNER = process.env.OWNER;
 export const LOG_LEVEL = process.env.LOG_LEVEL ?? 'info';
 export const WA_LOG_LEVEL = process.env.WA_LOG_LEVEL ?? 'silent';
 export const QUIET_SIGNAL_NOISE = (process.env.QUIET_SIGNAL_NOISE ?? 'true') !== 'false';
+export const SESSION_ID = process.env.SESSION_ID ?? '';
 export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
 // Force a reconnect when a game is running but no message has dispatched for
 // this long — see transport/wa.js's watchdog. 0 disables it.
