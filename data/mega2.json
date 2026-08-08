@@ -1,0 +1,3214 @@
+{
+  "attribution": "Mega Generator 2",
+  "generated": "2026-08-08T04:44:05.858Z",
+  "categories": {
+    "tech": [
+      {
+        "id": "c1a1af39-56b3-4b85-89b7-6ee03e73f9bf",
+        "q": "What does 'CPU' mean in technology?",
+        "correct": "The central processing unit, the primary component of a computer that acts as its 'brain'.",
+        "wrong": [
+          "A high-level, class-based, object-oriented programming language.",
+          "The process of encoding information so that only authorized parties can access it.",
+          "An interpreted high-level general-purpose programming language."
+        ]
+      },
+      {
+        "id": "cbc9453f-3010-4374-9c63-8b5d26fd525b",
+        "q": "What does 'RAM' mean in technology?",
+        "correct": "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+        "wrong": [
+          "JavaScript Object Notation, an open standard file format and data interchange format.",
+          "Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.",
+          "Distributed version control system for tracking changes in source code during software development."
+        ]
+      },
+      {
+        "id": "3c0a1a2c-53b5-4848-96f4-ea274b00f936",
+        "q": "What does 'GPU' mean in technology?",
+        "correct": "Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images.",
+        "wrong": [
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+          "A high-level, class-based, object-oriented programming language.",
+          "JavaScript Object Notation, an open standard file format and data interchange format."
+        ]
+      },
+      {
+        "id": "9e51daa6-9eaa-4c91-80c1-db975239d601",
+        "q": "What does 'Motherboard' mean in technology?",
+        "correct": "The main printed circuit board found in general purpose computers.",
+        "wrong": [
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.",
+          "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language."
+        ]
+      },
+      {
+        "id": "1ab8b6d3-4937-4a60-a889-e09c2e382754",
+        "q": "What does 'SSD' mean in technology?",
+        "correct": "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently.",
+        "wrong": [
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user."
+        ]
+      },
+      {
+        "id": "cd9a9704-cd51-4cec-9a4a-cba09c0f0aef",
+        "q": "What does 'HDD' mean in technology?",
+        "correct": "Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.",
+        "wrong": [
+          "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+          "Internet of Things, describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet."
+        ]
+      },
+      {
+        "id": "9b6184ea-b650-4d44-a400-1e20fd6b5b7d",
+        "q": "What does 'OS' mean in technology?",
+        "correct": "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.",
+        "wrong": [
+          "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language.",
+          "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language.",
+          "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet."
+        ]
+      },
+      {
+        "id": "cfdfda60-545d-47c4-8c7a-42f126f4f7b9",
+        "q": "What does 'Linux' mean in technology?",
+        "correct": "A family of open-source Unix-like operating systems based on the Linux kernel.",
+        "wrong": [
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+          "The study of computer algorithms that can improve automatically through experience and by the use of data.",
+          "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently."
+        ]
+      },
+      {
+        "id": "1575160e-1a68-459d-b479-2a97f849a846",
+        "q": "What does 'IP Address' mean in technology?",
+        "correct": "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+        "wrong": [
+          "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet.",
+          "HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.",
+          "Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images."
+        ]
+      },
+      {
+        "id": "301e38ca-0c43-46f0-81d0-3989e67cf3cc",
+        "q": "What does 'DNS' mean in technology?",
+        "correct": "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet.",
+        "wrong": [
+          "The central processing unit, the primary component of a computer that acts as its 'brain'.",
+          "JavaScript Object Notation, an open standard file format and data interchange format.",
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user."
+        ]
+      },
+      {
+        "id": "607dfa89-07bb-4c81-bee7-1386e79fdc0e",
+        "q": "What does 'HTTP' mean in technology?",
+        "correct": "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web.",
+        "wrong": [
+          "A high-level, class-based, object-oriented programming language.",
+          "The practice of protecting systems, networks, and programs from digital attacks.",
+          "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers."
+        ]
+      },
+      {
+        "id": "ff87fc8b-917f-4e93-a518-1340b140a0d9",
+        "q": "What does 'API' mean in technology?",
+        "correct": "Application Programming Interface, a connection between computers or between computer programs.",
+        "wrong": [
+          "Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.",
+          "Distributed version control system for tracking changes in source code during software development.",
+          "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently."
+        ]
+      },
+      {
+        "id": "277fd80b-420a-48a0-b698-975410d53b64",
+        "q": "What does 'HTML' mean in technology?",
+        "correct": "HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.",
+        "wrong": [
+          "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+          "Application Programming Interface, a connection between computers or between computer programs.",
+          "The main printed circuit board found in general purpose computers."
+        ]
+      },
+      {
+        "id": "6c4b1860-c2ad-4505-b0f0-2f75ae6e9247",
+        "q": "What does 'CSS' mean in technology?",
+        "correct": "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language.",
+        "wrong": [
+          "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web.",
+          "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.",
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user."
+        ]
+      },
+      {
+        "id": "00d52760-3225-4944-bdbd-c7b24830a3c5",
+        "q": "What does 'JavaScript' mean in technology?",
+        "correct": "A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.",
+        "wrong": [
+          "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet.",
+          "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order."
+        ]
+      },
+      {
+        "id": "e3dc2609-f04b-45f9-b04e-7cdbc0f37002",
+        "q": "What does 'Python' mean in technology?",
+        "correct": "An interpreted high-level general-purpose programming language.",
+        "wrong": [
+          "JavaScript Object Notation, an open standard file format and data interchange format.",
+          "Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.",
+          "An open-source container-orchestration system for automating computer application deployment, scaling, and management."
+        ]
+      },
+      {
+        "id": "755f0cfa-cca9-4930-9802-36e6198899de",
+        "q": "What does 'Java' mean in technology?",
+        "correct": "A high-level, class-based, object-oriented programming language.",
+        "wrong": [
+          "Distributed version control system for tracking changes in source code during software development.",
+          "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+          "Application Programming Interface, a connection between computers or between computer programs."
+        ]
+      },
+      {
+        "id": "7ae84c8d-828b-48b4-b8fc-d179643283d6",
+        "q": "What does 'C++' mean in technology?",
+        "correct": "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language.",
+        "wrong": [
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.",
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs."
+        ]
+      },
+      {
+        "id": "742b418f-ac8b-45f8-b125-bf74b604fbc6",
+        "q": "What does 'SQL' mean in technology?",
+        "correct": "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+        "wrong": [
+          "Distributed version control system for tracking changes in source code during software development.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+          "A family of open-source Unix-like operating systems based on the Linux kernel."
+        ]
+      },
+      {
+        "id": "5b4eee88-ea53-42b2-b34d-2fad0d727454",
+        "q": "What does 'JSON' mean in technology?",
+        "correct": "JavaScript Object Notation, an open standard file format and data interchange format.",
+        "wrong": [
+          "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans."
+        ]
+      },
+      {
+        "id": "a2e5cc87-8149-4a99-8409-8cde785234fe",
+        "q": "What does 'XML' mean in technology?",
+        "correct": "Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.",
+        "wrong": [
+          "The main printed circuit board found in general purpose computers.",
+          "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user."
+        ]
+      },
+      {
+        "id": "23b5e9a2-4584-43a0-a043-a1de9d007898",
+        "q": "What does 'Git' mean in technology?",
+        "correct": "Distributed version control system for tracking changes in source code during software development.",
+        "wrong": [
+          "An interpreted high-level general-purpose programming language.",
+          "The study of computer algorithms that can improve automatically through experience and by the use of data.",
+          "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web."
+        ]
+      },
+      {
+        "id": "8425ed8c-0376-4364-a91f-494c30fcc13a",
+        "q": "What does 'Docker' mean in technology?",
+        "correct": "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+        "wrong": [
+          "Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.",
+          "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.",
+          "The process of encoding information so that only authorized parties can access it."
+        ]
+      },
+      {
+        "id": "f511b3d4-b7b1-4d12-a7de-18e916d8f53a",
+        "q": "What does 'Kubernetes' mean in technology?",
+        "correct": "An open-source container-orchestration system for automating computer application deployment, scaling, and management.",
+        "wrong": [
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+          "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+          "A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS."
+        ]
+      },
+      {
+        "id": "8ed54f40-c4e3-41ed-a77e-5d5475d6ef80",
+        "q": "What does 'Cloud Computing' mean in technology?",
+        "correct": "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.",
+        "wrong": [
+          "The main printed circuit board found in general purpose computers.",
+          "A high-level, class-based, object-oriented programming language.",
+          "Application Programming Interface, a connection between computers or between computer programs."
+        ]
+      },
+      {
+        "id": "c7f81694-d79e-4fd0-8379-cf8b1e64cbce",
+        "q": "What does 'Machine Learning' mean in technology?",
+        "correct": "The study of computer algorithms that can improve automatically through experience and by the use of data.",
+        "wrong": [
+          "HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.",
+          "Application Programming Interface, a connection between computers or between computer programs.",
+          "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently."
+        ]
+      },
+      {
+        "id": "c77a1657-f1b4-4fd5-9bae-fe2472ace943",
+        "q": "What does 'Artificial Intelligence' mean in technology?",
+        "correct": "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+        "wrong": [
+          "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+          "JavaScript Object Notation, an open standard file format and data interchange format.",
+          "Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images."
+        ]
+      },
+      {
+        "id": "59c4fd96-ea41-4fee-816b-f3f253b0dd7b",
+        "q": "What does 'IoT' mean in technology?",
+        "correct": "Internet of Things, describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet.",
+        "wrong": [
+          "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently.",
+          "A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.",
+          "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language."
+        ]
+      },
+      {
+        "id": "3df2ca1f-0a30-4c35-aacf-58e619a7415f",
+        "q": "What does 'Cybersecurity' mean in technology?",
+        "correct": "The practice of protecting systems, networks, and programs from digital attacks.",
+        "wrong": [
+          "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language.",
+          "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+          "Distributed version control system for tracking changes in source code during software development."
+        ]
+      },
+      {
+        "id": "f017876b-1046-4abd-b461-18a1789d890a",
+        "q": "What does 'Encryption' mean in technology?",
+        "correct": "The process of encoding information so that only authorized parties can access it.",
+        "wrong": [
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order."
+        ]
+      },
+      {
+        "id": "42c05de0-84a6-4e27-86a4-fd0f39c3a703",
+        "q": "Which technology concept is defined as: \"The central processing unit, the primary component of a computer that acts as its 'brain'.\"?",
+        "correct": "CPU",
+        "wrong": [
+          "Docker",
+          "Kubernetes",
+          "Encryption"
+        ]
+      },
+      {
+        "id": "a94710dc-b5a3-4ead-92ea-eb917536b7f0",
+        "q": "Which technology concept is defined as: \"Random Access Memory, a type of computer memory that can be read and changed in any order.\"?",
+        "correct": "RAM",
+        "wrong": [
+          "XML",
+          "Kubernetes",
+          "SQL"
+        ]
+      },
+      {
+        "id": "1e220f90-d851-4cba-88b4-dd8c32f93119",
+        "q": "Which technology concept is defined as: \"Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images.\"?",
+        "correct": "GPU",
+        "wrong": [
+          "Machine Learning",
+          "C++",
+          "JavaScript"
+        ]
+      },
+      {
+        "id": "14847ae4-672d-4877-9f9f-54a99add7976",
+        "q": "Which technology concept is defined as: \"The main printed circuit board found in general purpose computers.\"?",
+        "correct": "Motherboard",
+        "wrong": [
+          "HTTP",
+          "DNS",
+          "Linux"
+        ]
+      },
+      {
+        "id": "6e606d1a-6544-4b70-9a0f-d35f62ee4df3",
+        "q": "Which technology concept is defined as: \"Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently.\"?",
+        "correct": "SSD",
+        "wrong": [
+          "Machine Learning",
+          "OS",
+          "Motherboard"
+        ]
+      },
+      {
+        "id": "be3aaf36-be10-46c1-9337-85b5ac56a8d7",
+        "q": "Which technology concept is defined as: \"Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.\"?",
+        "correct": "HDD",
+        "wrong": [
+          "Artificial Intelligence",
+          "DNS",
+          "CSS"
+        ]
+      },
+      {
+        "id": "1eef4ded-6829-4878-87c8-17b9a88b83fb",
+        "q": "Which technology concept is defined as: \"Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.\"?",
+        "correct": "OS",
+        "wrong": [
+          "SQL",
+          "Java",
+          "GPU"
+        ]
+      },
+      {
+        "id": "d30cf227-a449-4109-bd49-9644b195ad30",
+        "q": "Which technology concept is defined as: \"A family of open-source Unix-like operating systems based on the Linux kernel.\"?",
+        "correct": "Linux",
+        "wrong": [
+          "OS",
+          "SSD",
+          "Cloud Computing"
+        ]
+      },
+      {
+        "id": "a3f4b26c-9584-4b27-866a-a0335b93438f",
+        "q": "Which technology concept is defined as: \"A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.\"?",
+        "correct": "IP Address",
+        "wrong": [
+          "Java",
+          "JSON",
+          "HTML"
+        ]
+      },
+      {
+        "id": "5985464c-ce87-4a0a-bd33-b5c553e51629",
+        "q": "Which technology concept is defined as: \"Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet.\"?",
+        "correct": "DNS",
+        "wrong": [
+          "XML",
+          "GPU",
+          "SQL"
+        ]
+      },
+      {
+        "id": "787bd032-6a93-475d-a4d8-d6f7e54dd42f",
+        "q": "Which technology concept is defined as: \"Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web.\"?",
+        "correct": "HTTP",
+        "wrong": [
+          "Cloud Computing",
+          "Machine Learning",
+          "DNS"
+        ]
+      },
+      {
+        "id": "dd7c0332-6d24-4ca9-9637-3f92e29c39d9",
+        "q": "Which technology concept is defined as: \"Application Programming Interface, a connection between computers or between computer programs.\"?",
+        "correct": "API",
+        "wrong": [
+          "HTTP",
+          "Java",
+          "HTML"
+        ]
+      },
+      {
+        "id": "466b7116-d9b9-4cb2-9ee3-d217d5132d4a",
+        "q": "Which technology concept is defined as: \"HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.\"?",
+        "correct": "HTML",
+        "wrong": [
+          "Cybersecurity",
+          "API",
+          "CSS"
+        ]
+      },
+      {
+        "id": "a112c4e8-1a16-4562-9377-bd7ff3ed3791",
+        "q": "Which technology concept is defined as: \"Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language.\"?",
+        "correct": "CSS",
+        "wrong": [
+          "Artificial Intelligence",
+          "Cloud Computing",
+          "HDD"
+        ]
+      },
+      {
+        "id": "2e2bfa33-2e3c-4b6c-b763-71857cf87786",
+        "q": "Which technology concept is defined as: \"A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.\"?",
+        "correct": "JavaScript",
+        "wrong": [
+          "HTTP",
+          "Docker",
+          "OS"
+        ]
+      },
+      {
+        "id": "6a4fedea-a566-40a9-b98c-220311c5251c",
+        "q": "Which technology concept is defined as: \"An interpreted high-level general-purpose programming language.\"?",
+        "correct": "Python",
+        "wrong": [
+          "JavaScript",
+          "XML",
+          "HDD"
+        ]
+      },
+      {
+        "id": "6e3d2ca0-fc3d-4582-90cb-7a8a74eca4c4",
+        "q": "Which technology concept is defined as: \"A high-level, class-based, object-oriented programming language.\"?",
+        "correct": "Java",
+        "wrong": [
+          "HDD",
+          "Artificial Intelligence",
+          "Linux"
+        ]
+      },
+      {
+        "id": "fd6d83c6-c243-4bfc-80a8-3103e8e506b6",
+        "q": "Which technology concept is defined as: \"A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language.\"?",
+        "correct": "C++",
+        "wrong": [
+          "GPU",
+          "API",
+          "IoT"
+        ]
+      },
+      {
+        "id": "15661fc9-58cf-4f3f-a2eb-d8d8397dd6df",
+        "q": "Which technology concept is defined as: \"Structured Query Language, used in programming and designed for managing data held in a relational database management system.\"?",
+        "correct": "SQL",
+        "wrong": [
+          "Artificial Intelligence",
+          "Linux",
+          "IoT"
+        ]
+      },
+      {
+        "id": "5ef8465e-1c68-4535-9a0f-62163bbc3c0a",
+        "q": "Which technology concept is defined as: \"JavaScript Object Notation, an open standard file format and data interchange format.\"?",
+        "correct": "JSON",
+        "wrong": [
+          "Python",
+          "OS",
+          "Cybersecurity"
+        ]
+      },
+      {
+        "id": "d496376d-7171-451c-955a-b62aa189bebb",
+        "q": "Which technology concept is defined as: \"Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.\"?",
+        "correct": "XML",
+        "wrong": [
+          "Python",
+          "IoT",
+          "JSON"
+        ]
+      },
+      {
+        "id": "cb847bb9-e44a-402a-842c-926245cf81a6",
+        "q": "Which technology concept is defined as: \"Distributed version control system for tracking changes in source code during software development.\"?",
+        "correct": "Git",
+        "wrong": [
+          "GPU",
+          "DNS",
+          "API"
+        ]
+      },
+      {
+        "id": "3b59af35-e8fd-4436-843a-d98c755768c5",
+        "q": "Which technology concept is defined as: \"A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.\"?",
+        "correct": "Docker",
+        "wrong": [
+          "Java",
+          "RAM",
+          "CSS"
+        ]
+      },
+      {
+        "id": "2a976246-b2f5-46a4-92fa-049f4a7c6441",
+        "q": "Which technology concept is defined as: \"An open-source container-orchestration system for automating computer application deployment, scaling, and management.\"?",
+        "correct": "Kubernetes",
+        "wrong": [
+          "GPU",
+          "SSD",
+          "JavaScript"
+        ]
+      },
+      {
+        "id": "f87a5016-eb46-4509-a9fa-b0598668a55c",
+        "q": "Which technology concept is defined as: \"The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.\"?",
+        "correct": "Cloud Computing",
+        "wrong": [
+          "Encryption",
+          "XML",
+          "CPU"
+        ]
+      },
+      {
+        "id": "9866e9d2-7266-4ac2-9b21-b90a26ad9d27",
+        "q": "Which technology concept is defined as: \"The study of computer algorithms that can improve automatically through experience and by the use of data.\"?",
+        "correct": "Machine Learning",
+        "wrong": [
+          "SSD",
+          "Motherboard",
+          "IP Address"
+        ]
+      },
+      {
+        "id": "9874a7e8-4126-4d4b-bb49-719fd8f713d8",
+        "q": "Which technology concept is defined as: \"Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.\"?",
+        "correct": "Artificial Intelligence",
+        "wrong": [
+          "XML",
+          "Java",
+          "Docker"
+        ]
+      },
+      {
+        "id": "efc86ade-a580-4cfd-b839-4227030eebec",
+        "q": "Which technology concept is defined as: \"Internet of Things, describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet.\"?",
+        "correct": "IoT",
+        "wrong": [
+          "Motherboard",
+          "Artificial Intelligence",
+          "Java"
+        ]
+      },
+      {
+        "id": "4b4eba50-9c8c-40df-9641-86555bdc37e9",
+        "q": "Which technology concept is defined as: \"The practice of protecting systems, networks, and programs from digital attacks.\"?",
+        "correct": "Cybersecurity",
+        "wrong": [
+          "API",
+          "XML",
+          "HTML"
+        ]
+      },
+      {
+        "id": "600c4679-dce8-41de-aea6-937a3b85500e",
+        "q": "Which technology concept is defined as: \"The process of encoding information so that only authorized parties can access it.\"?",
+        "correct": "Encryption",
+        "wrong": [
+          "Docker",
+          "JSON",
+          "API"
+        ]
+      },
+      {
+        "id": "ee3d2633-fe49-41af-b281-b77dd48df500",
+        "q": "TRIVIA: What does 'CPU' mean in technology?",
+        "correct": "The central processing unit, the primary component of a computer that acts as its 'brain'.",
+        "wrong": [
+          "A high-level, class-based, object-oriented programming language.",
+          "The process of encoding information so that only authorized parties can access it.",
+          "An interpreted high-level general-purpose programming language."
+        ]
+      },
+      {
+        "id": "8d064a7d-c948-4320-a58e-06fb51c81b25",
+        "q": "TRIVIA: What does 'RAM' mean in technology?",
+        "correct": "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+        "wrong": [
+          "JavaScript Object Notation, an open standard file format and data interchange format.",
+          "Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.",
+          "Distributed version control system for tracking changes in source code during software development."
+        ]
+      },
+      {
+        "id": "2bfcff8e-fcd7-4d47-8eb2-aff81517523d",
+        "q": "TRIVIA: What does 'GPU' mean in technology?",
+        "correct": "Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images.",
+        "wrong": [
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+          "A high-level, class-based, object-oriented programming language.",
+          "JavaScript Object Notation, an open standard file format and data interchange format."
+        ]
+      },
+      {
+        "id": "cb6df2ea-3f04-404c-a451-25572858feb2",
+        "q": "TRIVIA: What does 'Motherboard' mean in technology?",
+        "correct": "The main printed circuit board found in general purpose computers.",
+        "wrong": [
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.",
+          "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language."
+        ]
+      },
+      {
+        "id": "7bf112d7-d3dd-47b7-b96c-778e4815d1a3",
+        "q": "TRIVIA: What does 'SSD' mean in technology?",
+        "correct": "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently.",
+        "wrong": [
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user."
+        ]
+      },
+      {
+        "id": "f57e6820-7d14-4919-a4b5-1d3dbb1dba53",
+        "q": "TRIVIA: What does 'HDD' mean in technology?",
+        "correct": "Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.",
+        "wrong": [
+          "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+          "Internet of Things, describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet."
+        ]
+      },
+      {
+        "id": "ee32150b-1d55-45d6-aee5-604e8a947ec5",
+        "q": "TRIVIA: What does 'OS' mean in technology?",
+        "correct": "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.",
+        "wrong": [
+          "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language.",
+          "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language.",
+          "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet."
+        ]
+      },
+      {
+        "id": "853c7e04-39c8-49a8-b2cc-d0d03dad6b9c",
+        "q": "TRIVIA: What does 'Linux' mean in technology?",
+        "correct": "A family of open-source Unix-like operating systems based on the Linux kernel.",
+        "wrong": [
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+          "The study of computer algorithms that can improve automatically through experience and by the use of data.",
+          "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently."
+        ]
+      },
+      {
+        "id": "9a7be57f-72c4-4e8d-a159-eec761a6abf6",
+        "q": "TRIVIA: What does 'IP Address' mean in technology?",
+        "correct": "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+        "wrong": [
+          "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet.",
+          "HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.",
+          "Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images."
+        ]
+      },
+      {
+        "id": "d2b39f76-2df7-4d2f-abde-540f2d06fa67",
+        "q": "TRIVIA: What does 'DNS' mean in technology?",
+        "correct": "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet.",
+        "wrong": [
+          "The central processing unit, the primary component of a computer that acts as its 'brain'.",
+          "JavaScript Object Notation, an open standard file format and data interchange format.",
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user."
+        ]
+      },
+      {
+        "id": "0bcfccec-718c-4705-9239-782adf6ff031",
+        "q": "TRIVIA: What does 'HTTP' mean in technology?",
+        "correct": "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web.",
+        "wrong": [
+          "A high-level, class-based, object-oriented programming language.",
+          "The practice of protecting systems, networks, and programs from digital attacks.",
+          "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers."
+        ]
+      },
+      {
+        "id": "16672335-e146-4ba3-84a1-10df7a91c6c3",
+        "q": "TRIVIA: What does 'API' mean in technology?",
+        "correct": "Application Programming Interface, a connection between computers or between computer programs.",
+        "wrong": [
+          "Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.",
+          "Distributed version control system for tracking changes in source code during software development.",
+          "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently."
+        ]
+      },
+      {
+        "id": "0938ce6b-153b-49cf-868c-b1febd23454c",
+        "q": "TRIVIA: What does 'HTML' mean in technology?",
+        "correct": "HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.",
+        "wrong": [
+          "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+          "Application Programming Interface, a connection between computers or between computer programs.",
+          "The main printed circuit board found in general purpose computers."
+        ]
+      },
+      {
+        "id": "46bcacd9-43b3-4853-be0d-0d61ff41246a",
+        "q": "TRIVIA: What does 'CSS' mean in technology?",
+        "correct": "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language.",
+        "wrong": [
+          "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web.",
+          "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.",
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user."
+        ]
+      },
+      {
+        "id": "acfb3c2b-c7c7-4d6a-a1bf-05fb6370bc50",
+        "q": "TRIVIA: What does 'JavaScript' mean in technology?",
+        "correct": "A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.",
+        "wrong": [
+          "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet.",
+          "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order."
+        ]
+      },
+      {
+        "id": "315aa6f6-6fe3-451d-aa04-d937adaa9a41",
+        "q": "TRIVIA: What does 'Python' mean in technology?",
+        "correct": "An interpreted high-level general-purpose programming language.",
+        "wrong": [
+          "JavaScript Object Notation, an open standard file format and data interchange format.",
+          "Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.",
+          "An open-source container-orchestration system for automating computer application deployment, scaling, and management."
+        ]
+      },
+      {
+        "id": "76ba37dc-0d2f-4820-b1e6-611763018970",
+        "q": "TRIVIA: What does 'Java' mean in technology?",
+        "correct": "A high-level, class-based, object-oriented programming language.",
+        "wrong": [
+          "Distributed version control system for tracking changes in source code during software development.",
+          "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+          "Application Programming Interface, a connection between computers or between computer programs."
+        ]
+      },
+      {
+        "id": "1c33afea-f138-4a09-b2f2-e950747fa84a",
+        "q": "TRIVIA: What does 'C++' mean in technology?",
+        "correct": "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language.",
+        "wrong": [
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.",
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs."
+        ]
+      },
+      {
+        "id": "1aae0d1c-34a6-4752-a4c2-382a7849ed5e",
+        "q": "TRIVIA: What does 'SQL' mean in technology?",
+        "correct": "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+        "wrong": [
+          "Distributed version control system for tracking changes in source code during software development.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order.",
+          "A family of open-source Unix-like operating systems based on the Linux kernel."
+        ]
+      },
+      {
+        "id": "1b3ec4c6-68ff-4ff4-9567-2b2d29b338b8",
+        "q": "TRIVIA: What does 'JSON' mean in technology?",
+        "correct": "JavaScript Object Notation, an open standard file format and data interchange format.",
+        "wrong": [
+          "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans."
+        ]
+      },
+      {
+        "id": "4c47d08f-966c-451e-97ef-156a4488bc24",
+        "q": "TRIVIA: What does 'XML' mean in technology?",
+        "correct": "Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.",
+        "wrong": [
+          "The main printed circuit board found in general purpose computers.",
+          "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+          "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user."
+        ]
+      },
+      {
+        "id": "9e2ae6b5-5bf8-4037-b0b1-8a80aef823de",
+        "q": "TRIVIA: What does 'Git' mean in technology?",
+        "correct": "Distributed version control system for tracking changes in source code during software development.",
+        "wrong": [
+          "An interpreted high-level general-purpose programming language.",
+          "The study of computer algorithms that can improve automatically through experience and by the use of data.",
+          "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web."
+        ]
+      },
+      {
+        "id": "8ab69a66-f129-4757-9df2-2bf3fc7b9aaf",
+        "q": "TRIVIA: What does 'Docker' mean in technology?",
+        "correct": "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+        "wrong": [
+          "Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.",
+          "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.",
+          "The process of encoding information so that only authorized parties can access it."
+        ]
+      },
+      {
+        "id": "d76ee17c-2459-46e5-a354-9bc5b8492238",
+        "q": "TRIVIA: What does 'Kubernetes' mean in technology?",
+        "correct": "An open-source container-orchestration system for automating computer application deployment, scaling, and management.",
+        "wrong": [
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+          "Structured Query Language, used in programming and designed for managing data held in a relational database management system.",
+          "A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS."
+        ]
+      },
+      {
+        "id": "b9205f2b-af02-4bb0-85f3-2da4670fa1e5",
+        "q": "TRIVIA: What does 'Cloud Computing' mean in technology?",
+        "correct": "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.",
+        "wrong": [
+          "The main printed circuit board found in general purpose computers.",
+          "A high-level, class-based, object-oriented programming language.",
+          "Application Programming Interface, a connection between computers or between computer programs."
+        ]
+      },
+      {
+        "id": "f4fd1837-7e42-498a-9f02-1e001dde4f15",
+        "q": "TRIVIA: What does 'Machine Learning' mean in technology?",
+        "correct": "The study of computer algorithms that can improve automatically through experience and by the use of data.",
+        "wrong": [
+          "HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.",
+          "Application Programming Interface, a connection between computers or between computer programs.",
+          "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently."
+        ]
+      },
+      {
+        "id": "5ca9f803-5071-475c-b0f1-c2410f79cce0",
+        "q": "TRIVIA: What does 'Artificial Intelligence' mean in technology?",
+        "correct": "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+        "wrong": [
+          "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+          "JavaScript Object Notation, an open standard file format and data interchange format.",
+          "Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images."
+        ]
+      },
+      {
+        "id": "fbec5f19-777e-46fa-b4a8-3c77abfeaf1a",
+        "q": "TRIVIA: What does 'IoT' mean in technology?",
+        "correct": "Internet of Things, describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet.",
+        "wrong": [
+          "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently.",
+          "A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.",
+          "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language."
+        ]
+      },
+      {
+        "id": "34770861-2c9b-44a3-98c6-15aafdc216c1",
+        "q": "TRIVIA: What does 'Cybersecurity' mean in technology?",
+        "correct": "The practice of protecting systems, networks, and programs from digital attacks.",
+        "wrong": [
+          "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language.",
+          "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+          "Distributed version control system for tracking changes in source code during software development."
+        ]
+      },
+      {
+        "id": "71fa047f-86e0-4018-83bb-4cfbeef0230e",
+        "q": "TRIVIA: What does 'Encryption' mean in technology?",
+        "correct": "The process of encoding information so that only authorized parties can access it.",
+        "wrong": [
+          "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.",
+          "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.",
+          "Random Access Memory, a type of computer memory that can be read and changed in any order."
+        ]
+      },
+      {
+        "id": "c475d868-a1c9-4b7f-9b15-f1f5e7671ce7",
+        "q": "TRIVIA: Which technology concept is defined as: \"The central processing unit, the primary component of a computer that acts as its 'brain'.\"?",
+        "correct": "CPU",
+        "wrong": [
+          "Docker",
+          "Kubernetes",
+          "Encryption"
+        ]
+      },
+      {
+        "id": "38a3a2b1-84f5-4bc5-9576-d94739bd7cc0",
+        "q": "TRIVIA: Which technology concept is defined as: \"Random Access Memory, a type of computer memory that can be read and changed in any order.\"?",
+        "correct": "RAM",
+        "wrong": [
+          "XML",
+          "Kubernetes",
+          "SQL"
+        ]
+      },
+      {
+        "id": "edb56c6c-2501-4d55-93de-e07c6cb13db7",
+        "q": "TRIVIA: Which technology concept is defined as: \"Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images.\"?",
+        "correct": "GPU",
+        "wrong": [
+          "Machine Learning",
+          "C++",
+          "JavaScript"
+        ]
+      },
+      {
+        "id": "3c1593a6-06b5-4d30-b973-ec491365d3e3",
+        "q": "TRIVIA: Which technology concept is defined as: \"The main printed circuit board found in general purpose computers.\"?",
+        "correct": "Motherboard",
+        "wrong": [
+          "HTTP",
+          "DNS",
+          "Linux"
+        ]
+      },
+      {
+        "id": "ae0d6111-fbe9-4399-8ad1-694e9b6c4506",
+        "q": "TRIVIA: Which technology concept is defined as: \"Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently.\"?",
+        "correct": "SSD",
+        "wrong": [
+          "Machine Learning",
+          "OS",
+          "Motherboard"
+        ]
+      },
+      {
+        "id": "ba335d7e-3209-4d3c-b2c3-9020c8af1336",
+        "q": "TRIVIA: Which technology concept is defined as: \"Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.\"?",
+        "correct": "HDD",
+        "wrong": [
+          "Artificial Intelligence",
+          "DNS",
+          "CSS"
+        ]
+      },
+      {
+        "id": "639f3254-ebd4-4e5c-87a3-ee704480e331",
+        "q": "TRIVIA: Which technology concept is defined as: \"Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs.\"?",
+        "correct": "OS",
+        "wrong": [
+          "SQL",
+          "Java",
+          "GPU"
+        ]
+      },
+      {
+        "id": "084f9680-3847-49cb-b285-bc577081bfeb",
+        "q": "TRIVIA: Which technology concept is defined as: \"A family of open-source Unix-like operating systems based on the Linux kernel.\"?",
+        "correct": "Linux",
+        "wrong": [
+          "OS",
+          "SSD",
+          "Cloud Computing"
+        ]
+      },
+      {
+        "id": "1d45f39d-ea0f-4e9b-a0f5-4b066a4fd24e",
+        "q": "TRIVIA: Which technology concept is defined as: \"A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.\"?",
+        "correct": "IP Address",
+        "wrong": [
+          "Java",
+          "JSON",
+          "HTML"
+        ]
+      },
+      {
+        "id": "1c82c549-1741-413d-9ecf-eabe63e499f4",
+        "q": "TRIVIA: Which technology concept is defined as: \"Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet.\"?",
+        "correct": "DNS",
+        "wrong": [
+          "XML",
+          "GPU",
+          "SQL"
+        ]
+      },
+      {
+        "id": "55941230-4e49-4bad-9629-9ba635016570",
+        "q": "TRIVIA: Which technology concept is defined as: \"Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web.\"?",
+        "correct": "HTTP",
+        "wrong": [
+          "Cloud Computing",
+          "Machine Learning",
+          "DNS"
+        ]
+      },
+      {
+        "id": "5769deb0-a830-43b2-9355-f08222cdbfbb",
+        "q": "TRIVIA: Which technology concept is defined as: \"Application Programming Interface, a connection between computers or between computer programs.\"?",
+        "correct": "API",
+        "wrong": [
+          "HTTP",
+          "Java",
+          "HTML"
+        ]
+      },
+      {
+        "id": "94b5e098-89ba-4539-abd5-deefead31c0c",
+        "q": "TRIVIA: Which technology concept is defined as: \"HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.\"?",
+        "correct": "HTML",
+        "wrong": [
+          "Cybersecurity",
+          "API",
+          "CSS"
+        ]
+      },
+      {
+        "id": "c678f5f7-9240-438f-8667-2419be6af229",
+        "q": "TRIVIA: Which technology concept is defined as: \"Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language.\"?",
+        "correct": "CSS",
+        "wrong": [
+          "Artificial Intelligence",
+          "Cloud Computing",
+          "HDD"
+        ]
+      },
+      {
+        "id": "f874733f-5052-4246-a153-101e9772ffc6",
+        "q": "TRIVIA: Which technology concept is defined as: \"A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.\"?",
+        "correct": "JavaScript",
+        "wrong": [
+          "HTTP",
+          "Docker",
+          "OS"
+        ]
+      },
+      {
+        "id": "3631a771-a31f-4085-90c5-8907799c0616",
+        "q": "TRIVIA: Which technology concept is defined as: \"An interpreted high-level general-purpose programming language.\"?",
+        "correct": "Python",
+        "wrong": [
+          "JavaScript",
+          "XML",
+          "HDD"
+        ]
+      },
+      {
+        "id": "3e137955-bcb8-48bf-9e60-1d365347cb6f",
+        "q": "TRIVIA: Which technology concept is defined as: \"A high-level, class-based, object-oriented programming language.\"?",
+        "correct": "Java",
+        "wrong": [
+          "HDD",
+          "Artificial Intelligence",
+          "Linux"
+        ]
+      },
+      {
+        "id": "6135a366-969b-4379-9937-df332e4c3a3d",
+        "q": "TRIVIA: Which technology concept is defined as: \"A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language.\"?",
+        "correct": "C++",
+        "wrong": [
+          "GPU",
+          "API",
+          "IoT"
+        ]
+      },
+      {
+        "id": "64288b45-31d4-4610-8ca5-0d84a0a6078f",
+        "q": "TRIVIA: Which technology concept is defined as: \"Structured Query Language, used in programming and designed for managing data held in a relational database management system.\"?",
+        "correct": "SQL",
+        "wrong": [
+          "Artificial Intelligence",
+          "Linux",
+          "IoT"
+        ]
+      },
+      {
+        "id": "acae972f-c52e-4376-b7b5-62938ba35ac6",
+        "q": "TRIVIA: Which technology concept is defined as: \"JavaScript Object Notation, an open standard file format and data interchange format.\"?",
+        "correct": "JSON",
+        "wrong": [
+          "Python",
+          "OS",
+          "Cybersecurity"
+        ]
+      },
+      {
+        "id": "7c312639-b439-4ebb-94ee-2bcc0cded705",
+        "q": "TRIVIA: Which technology concept is defined as: \"Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.\"?",
+        "correct": "XML",
+        "wrong": [
+          "Python",
+          "IoT",
+          "JSON"
+        ]
+      },
+      {
+        "id": "aa1c2183-3a10-4e23-9729-1422ff596917",
+        "q": "TRIVIA: Which technology concept is defined as: \"Distributed version control system for tracking changes in source code during software development.\"?",
+        "correct": "Git",
+        "wrong": [
+          "GPU",
+          "DNS",
+          "API"
+        ]
+      },
+      {
+        "id": "24ca7b3f-0c1d-4340-84ae-bb5616d2bd52",
+        "q": "TRIVIA: Which technology concept is defined as: \"A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.\"?",
+        "correct": "Docker",
+        "wrong": [
+          "Java",
+          "RAM",
+          "CSS"
+        ]
+      },
+      {
+        "id": "555ae855-54b9-440b-a0e7-70ec4c4d6637",
+        "q": "TRIVIA: Which technology concept is defined as: \"An open-source container-orchestration system for automating computer application deployment, scaling, and management.\"?",
+        "correct": "Kubernetes",
+        "wrong": [
+          "GPU",
+          "SSD",
+          "JavaScript"
+        ]
+      },
+      {
+        "id": "6e4eab5d-b1f9-4c1a-b694-3b25e0744d51",
+        "q": "TRIVIA: Which technology concept is defined as: \"The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.\"?",
+        "correct": "Cloud Computing",
+        "wrong": [
+          "Encryption",
+          "XML",
+          "CPU"
+        ]
+      },
+      {
+        "id": "39793eb0-fe7a-426d-ba99-18603d1d8179",
+        "q": "TRIVIA: Which technology concept is defined as: \"The study of computer algorithms that can improve automatically through experience and by the use of data.\"?",
+        "correct": "Machine Learning",
+        "wrong": [
+          "SSD",
+          "Motherboard",
+          "IP Address"
+        ]
+      },
+      {
+        "id": "55672a7b-9b70-4989-91a8-b80fc59ec2ff",
+        "q": "TRIVIA: Which technology concept is defined as: \"Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.\"?",
+        "correct": "Artificial Intelligence",
+        "wrong": [
+          "XML",
+          "Java",
+          "Docker"
+        ]
+      },
+      {
+        "id": "c93bcb50-69e9-410d-9d50-7561d86c7604",
+        "q": "TRIVIA: Which technology concept is defined as: \"Internet of Things, describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet.\"?",
+        "correct": "IoT",
+        "wrong": [
+          "Motherboard",
+          "Artificial Intelligence",
+          "Java"
+        ]
+      },
+      {
+        "id": "3c18bc80-8bd7-4f07-8554-c804049de22b",
+        "q": "TRIVIA: Which technology concept is defined as: \"The practice of protecting systems, networks, and programs from digital attacks.\"?",
+        "correct": "Cybersecurity",
+        "wrong": [
+          "API",
+          "XML",
+          "HTML"
+        ]
+      },
+      {
+        "id": "089b2df4-6c6e-4e7e-af04-3c6f1b7bbcf2",
+        "q": "TRIVIA: Which technology concept is defined as: \"The process of encoding information so that only authorized parties can access it.\"?",
+        "correct": "Encryption",
+        "wrong": [
+          "Docker",
+          "JSON",
+          "API"
+        ]
+      }
+    ],
+    "anime": [
+      {
+        "id": "93129ad0-0811-478d-9bab-672eafa10f67",
+        "q": "Which animation studio produced the anime \"Naruto\"?",
+        "correct": "Pierrot",
+        "wrong": [
+          "Toei Animation",
+          "Wit Studio / CloverWorks",
+          "White Fox"
+        ]
+      },
+      {
+        "id": "ead3fc1b-ab4f-4945-a2ee-e277762fd9fa",
+        "q": "Which animation studio produced the anime \"One Piece\"?",
+        "correct": "Toei Animation",
+        "wrong": [
+          "Pierrot",
+          "Wit Studio / MAPPA",
+          "Madhouse / J.C.Staff"
+        ]
+      },
+      {
+        "id": "5d9f596a-fa64-4083-bd1c-1bb11dea111c",
+        "q": "Which animation studio produced the anime \"Attack on Titan\"?",
+        "correct": "Wit Studio / MAPPA",
+        "wrong": [
+          "White Fox",
+          "Wit Studio / CloverWorks",
+          "A-1 Pictures"
+        ]
+      },
+      {
+        "id": "3172db82-7573-4dcc-9c4b-1b0b43a3c561",
+        "q": "Which animation studio produced the anime \"My Hero Academia\"?",
+        "correct": "Bones",
+        "wrong": [
+          "Wit Studio / CloverWorks",
+          "A-1 Pictures",
+          "MAPPA"
+        ]
+      },
+      {
+        "id": "80cac2c0-a8b9-40b0-a165-8136f6cf4d86",
+        "q": "Which animation studio produced the anime \"Demon Slayer\"?",
+        "correct": "Ufotable",
+        "wrong": [
+          "Gainax / Tatsunoko",
+          "MAPPA",
+          "A-1 Pictures"
+        ]
+      },
+      {
+        "id": "0ed047f4-36fd-4176-80a1-27dda2b6f206",
+        "q": "Which animation studio produced the anime \"Death Note\"?",
+        "correct": "Madhouse",
+        "wrong": [
+          "Sunrise",
+          "Toei Animation",
+          "White Fox"
+        ]
+      },
+      {
+        "id": "cac14e22-76c1-4832-96da-e644c4c6ae7a",
+        "q": "Which animation studio produced the anime \"Fullmetal Alchemist: Brotherhood\"?",
+        "correct": "Bones",
+        "wrong": [
+          "Toei Animation",
+          "Madhouse / J.C.Staff",
+          "Ufotable"
+        ]
+      },
+      {
+        "id": "0ed1b915-9a5a-4808-a4db-f6752314aaac",
+        "q": "Which animation studio produced the anime \"Hunter x Hunter\"?",
+        "correct": "Madhouse",
+        "wrong": [
+          "White Fox",
+          "Bones",
+          "Toei Animation"
+        ]
+      },
+      {
+        "id": "e10d3d9f-6a0f-4a0d-822e-d644872537b8",
+        "q": "Which animation studio produced the anime \"Dragon Ball Z\"?",
+        "correct": "Toei Animation",
+        "wrong": [
+          "Wit Studio / CloverWorks",
+          "Wit Studio / MAPPA",
+          "A-1 Pictures"
+        ]
+      },
+      {
+        "id": "44af9e09-2394-4fc8-acc3-c536c4b516f5",
+        "q": "Which animation studio produced the anime \"Bleach\"?",
+        "correct": "Pierrot",
+        "wrong": [
+          "Bones",
+          "White Fox",
+          "Wit Studio / CloverWorks"
+        ]
+      },
+      {
+        "id": "b89f85e0-d6a8-4d11-afb3-b86133f0051f",
+        "q": "Which animation studio produced the anime \"Sword Art Online\"?",
+        "correct": "A-1 Pictures",
+        "wrong": [
+          "White Fox",
+          "Madhouse / J.C.Staff",
+          "Ufotable"
+        ]
+      },
+      {
+        "id": "d8c02b50-7e84-4869-966e-98580057cbfa",
+        "q": "Which animation studio produced the anime \"Tokyo Ghoul\"?",
+        "correct": "Pierrot",
+        "wrong": [
+          "Madhouse / J.C.Staff",
+          "Wit Studio / MAPPA",
+          "Wit Studio / CloverWorks"
+        ]
+      },
+      {
+        "id": "749c5228-4e7b-4b1a-90c5-2e81307731ee",
+        "q": "Which animation studio produced the anime \"Jujutsu Kaisen\"?",
+        "correct": "MAPPA",
+        "wrong": [
+          "Sunrise",
+          "Bones",
+          "Ufotable"
+        ]
+      },
+      {
+        "id": "35f8ba8b-656b-4019-8213-d0d130f06228",
+        "q": "Which animation studio produced the anime \"Chainsaw Man\"?",
+        "correct": "MAPPA",
+        "wrong": [
+          "A-1 Pictures",
+          "Gainax / Tatsunoko",
+          "Bones"
+        ]
+      },
+      {
+        "id": "70dd4e59-de53-4d8c-baa3-ae290d7890b2",
+        "q": "Which animation studio produced the anime \"Spy x Family\"?",
+        "correct": "Wit Studio / CloverWorks",
+        "wrong": [
+          "A-1 Pictures",
+          "Wit Studio / MAPPA",
+          "Toei Animation"
+        ]
+      },
+      {
+        "id": "8ac1e613-38f0-4656-81f7-ca8d5f7fde86",
+        "q": "Which animation studio produced the anime \"Steins;Gate\"?",
+        "correct": "White Fox",
+        "wrong": [
+          "Toei Animation",
+          "Madhouse / J.C.Staff",
+          "Ufotable"
+        ]
+      },
+      {
+        "id": "b740bd14-287b-4556-8c91-b1239def3b57",
+        "q": "Which animation studio produced the anime \"Code Geass\"?",
+        "correct": "Sunrise",
+        "wrong": [
+          "Toei Animation",
+          "Ufotable",
+          "Wit Studio / CloverWorks"
+        ]
+      },
+      {
+        "id": "7259ae55-4457-4c8b-854d-80660713a36b",
+        "q": "Which animation studio produced the anime \"Neon Genesis Evangelion\"?",
+        "correct": "Gainax / Tatsunoko",
+        "wrong": [
+          "Wit Studio / MAPPA",
+          "Ufotable",
+          "Pierrot"
+        ]
+      },
+      {
+        "id": "2760c7d7-b6e8-4924-94a4-e9933f799cf4",
+        "q": "Which animation studio produced the anime \"Cowboy Bebop\"?",
+        "correct": "Sunrise",
+        "wrong": [
+          "Bones",
+          "Wit Studio / CloverWorks",
+          "Gainax / Tatsunoko"
+        ]
+      },
+      {
+        "id": "4e9fb58b-ff78-4f19-b48c-0c994800f1dc",
+        "q": "Which animation studio produced the anime \"One Punch Man\"?",
+        "correct": "Madhouse / J.C.Staff",
+        "wrong": [
+          "Wit Studio / MAPPA",
+          "Pierrot",
+          "Sunrise"
+        ]
+      },
+      {
+        "id": "79d57a73-80df-48ed-9eec-b358eeec252c",
+        "q": "In what year did the anime \"Naruto\" originally premiere/release?",
+        "correct": "2002",
+        "wrong": [
+          "1989",
+          "2004",
+          "1999"
+        ]
+      },
+      {
+        "id": "e9b07a88-5ae5-406d-b6a6-30ed877b6387",
+        "q": "In what year did the anime \"One Piece\" originally premiere/release?",
+        "correct": "1999",
+        "wrong": [
+          "2022",
+          "2009",
+          "2002"
+        ]
+      },
+      {
+        "id": "7f9588ab-479d-4ddc-a339-e56910a5806b",
+        "q": "In what year did the anime \"Attack on Titan\" originally premiere/release?",
+        "correct": "2013",
+        "wrong": [
+          "2016",
+          "2022",
+          "2006"
+        ]
+      },
+      {
+        "id": "02cf4d01-557e-469e-b8ce-8e5a2d80984f",
+        "q": "In what year did the anime \"My Hero Academia\" originally premiere/release?",
+        "correct": "2016",
+        "wrong": [
+          "2004",
+          "2015",
+          "2013"
+        ]
+      },
+      {
+        "id": "51972772-e221-4010-8040-823e59d0c2cb",
+        "q": "In what year did the anime \"Demon Slayer\" originally premiere/release?",
+        "correct": "2019",
+        "wrong": [
+          "2009",
+          "2014",
+          "2016"
+        ]
+      },
+      {
+        "id": "3a14c8a8-52bf-4965-8650-fe8c4881fbd0",
+        "q": "In what year did the anime \"Death Note\" originally premiere/release?",
+        "correct": "2006",
+        "wrong": [
+          "1999",
+          "2011",
+          "2019"
+        ]
+      },
+      {
+        "id": "6e04a32c-0a6a-4f6b-abe7-36f106369bc0",
+        "q": "In what year did the anime \"Fullmetal Alchemist: Brotherhood\" originally premiere/release?",
+        "correct": "2009",
+        "wrong": [
+          "2015",
+          "2019",
+          "2002"
+        ]
+      },
+      {
+        "id": "6cc7354c-f12b-4ff4-8e06-911c0e76bdd0",
+        "q": "In what year did the anime \"Hunter x Hunter\" originally premiere/release?",
+        "correct": "2011",
+        "wrong": [
+          "2004",
+          "1989",
+          "2012"
+        ]
+      },
+      {
+        "id": "292f7376-c3ad-4ca6-bb21-2a213533f06a",
+        "q": "In what year did the anime \"Dragon Ball Z\" originally premiere/release?",
+        "correct": "1989",
+        "wrong": [
+          "2004",
+          "2013",
+          "2006"
+        ]
+      },
+      {
+        "id": "badf0823-386f-41f2-8e02-8552e9a84d7f",
+        "q": "In what year did the anime \"Bleach\" originally premiere/release?",
+        "correct": "2004",
+        "wrong": [
+          "2016",
+          "1989",
+          "1998"
+        ]
+      },
+      {
+        "id": "715763fc-94df-4248-9c5f-bb32eb452ddc",
+        "q": "In what year did the anime \"Sword Art Online\" originally premiere/release?",
+        "correct": "2012",
+        "wrong": [
+          "2006",
+          "2002",
+          "2014"
+        ]
+      },
+      {
+        "id": "0fa550fe-a77a-4533-8a84-641fba10c34f",
+        "q": "In what year did the anime \"Tokyo Ghoul\" originally premiere/release?",
+        "correct": "2014",
+        "wrong": [
+          "2019",
+          "2022",
+          "2011"
+        ]
+      },
+      {
+        "id": "feadd8bb-3b65-4a32-b8e3-7f3089ea0692",
+        "q": "In what year did the anime \"Jujutsu Kaisen\" originally premiere/release?",
+        "correct": "2020",
+        "wrong": [
+          "1998",
+          "2011",
+          "2014"
+        ]
+      },
+      {
+        "id": "29e0df14-48af-4b15-9a05-975e680ab835",
+        "q": "In what year did the anime \"Chainsaw Man\" originally premiere/release?",
+        "correct": "2022",
+        "wrong": [
+          "1995",
+          "1999",
+          "2016"
+        ]
+      },
+      {
+        "id": "df72d4f5-5370-4ba6-9bf6-c3205a28ea91",
+        "q": "In what year did the anime \"Spy x Family\" originally premiere/release?",
+        "correct": "2022",
+        "wrong": [
+          "1989",
+          "2015",
+          "2004"
+        ]
+      },
+      {
+        "id": "779f0058-39bb-4fcc-846a-84d99be2b8c4",
+        "q": "In what year did the anime \"Steins;Gate\" originally premiere/release?",
+        "correct": "2011",
+        "wrong": [
+          "2004",
+          "1999",
+          "2020"
+        ]
+      },
+      {
+        "id": "f0d72b65-f4a8-4c63-9fae-ad964f22cac5",
+        "q": "In what year did the anime \"Code Geass\" originally premiere/release?",
+        "correct": "2006",
+        "wrong": [
+          "2002",
+          "2004",
+          "1998"
+        ]
+      },
+      {
+        "id": "58eaa6a0-5ca8-48bb-a918-b4b6cc276569",
+        "q": "In what year did the anime \"Neon Genesis Evangelion\" originally premiere/release?",
+        "correct": "1995",
+        "wrong": [
+          "1998",
+          "2020",
+          "2006"
+        ]
+      },
+      {
+        "id": "c0f655ee-0399-4c23-b450-37abbab0bdec",
+        "q": "In what year did the anime \"Cowboy Bebop\" originally premiere/release?",
+        "correct": "1998",
+        "wrong": [
+          "2015",
+          "2006",
+          "2016"
+        ]
+      },
+      {
+        "id": "6b9ee300-7efd-48e7-8cb4-75b71225dcf3",
+        "q": "In what year did the anime \"One Punch Man\" originally premiere/release?",
+        "correct": "2015",
+        "wrong": [
+          "1998",
+          "2020",
+          "2016"
+        ]
+      },
+      {
+        "id": "1543c004-bf35-4445-af89-c93e9aeec531",
+        "q": "TRIVIA: Which animation studio produced the anime \"Naruto\"?",
+        "correct": "Pierrot",
+        "wrong": [
+          "Toei Animation",
+          "Wit Studio / CloverWorks",
+          "White Fox"
+        ]
+      },
+      {
+        "id": "af250b5f-e573-4d3c-8103-8d33e5d901e8",
+        "q": "TRIVIA: Which animation studio produced the anime \"One Piece\"?",
+        "correct": "Toei Animation",
+        "wrong": [
+          "Pierrot",
+          "Wit Studio / MAPPA",
+          "Madhouse / J.C.Staff"
+        ]
+      },
+      {
+        "id": "a2ad97a1-f4c4-46a3-ba6c-b12c66e79675",
+        "q": "TRIVIA: Which animation studio produced the anime \"Attack on Titan\"?",
+        "correct": "Wit Studio / MAPPA",
+        "wrong": [
+          "White Fox",
+          "Wit Studio / CloverWorks",
+          "A-1 Pictures"
+        ]
+      },
+      {
+        "id": "e802cded-9829-48dd-a068-03dba617ef9e",
+        "q": "TRIVIA: Which animation studio produced the anime \"My Hero Academia\"?",
+        "correct": "Bones",
+        "wrong": [
+          "Wit Studio / CloverWorks",
+          "A-1 Pictures",
+          "MAPPA"
+        ]
+      },
+      {
+        "id": "88bde190-7f34-48ec-a723-8e9b80988bb3",
+        "q": "TRIVIA: Which animation studio produced the anime \"Demon Slayer\"?",
+        "correct": "Ufotable",
+        "wrong": [
+          "Gainax / Tatsunoko",
+          "MAPPA",
+          "A-1 Pictures"
+        ]
+      },
+      {
+        "id": "c2e3ce04-088c-40cc-b72c-90a71cbea752",
+        "q": "TRIVIA: Which animation studio produced the anime \"Death Note\"?",
+        "correct": "Madhouse",
+        "wrong": [
+          "Sunrise",
+          "Toei Animation",
+          "White Fox"
+        ]
+      },
+      {
+        "id": "d9281d07-f3a3-419b-a250-8e624e934fbd",
+        "q": "TRIVIA: Which animation studio produced the anime \"Fullmetal Alchemist: Brotherhood\"?",
+        "correct": "Bones",
+        "wrong": [
+          "Toei Animation",
+          "Madhouse / J.C.Staff",
+          "Ufotable"
+        ]
+      },
+      {
+        "id": "e02de3c8-f896-4225-bb33-f98369a8bb31",
+        "q": "TRIVIA: Which animation studio produced the anime \"Hunter x Hunter\"?",
+        "correct": "Madhouse",
+        "wrong": [
+          "White Fox",
+          "Bones",
+          "Toei Animation"
+        ]
+      },
+      {
+        "id": "9416d89b-996d-49cb-a7ef-ce0ef354752c",
+        "q": "TRIVIA: Which animation studio produced the anime \"Dragon Ball Z\"?",
+        "correct": "Toei Animation",
+        "wrong": [
+          "Wit Studio / CloverWorks",
+          "Wit Studio / MAPPA",
+          "A-1 Pictures"
+        ]
+      },
+      {
+        "id": "368434f3-6fd3-4e3d-a7b5-c5f00e0a418f",
+        "q": "TRIVIA: Which animation studio produced the anime \"Bleach\"?",
+        "correct": "Pierrot",
+        "wrong": [
+          "Bones",
+          "White Fox",
+          "Wit Studio / CloverWorks"
+        ]
+      },
+      {
+        "id": "77e6bbfe-5d69-4635-9948-e81870ab757a",
+        "q": "TRIVIA: Which animation studio produced the anime \"Sword Art Online\"?",
+        "correct": "A-1 Pictures",
+        "wrong": [
+          "White Fox",
+          "Madhouse / J.C.Staff",
+          "Ufotable"
+        ]
+      },
+      {
+        "id": "e62642d1-c5dc-427d-ac97-eb2dbec1bc5f",
+        "q": "TRIVIA: Which animation studio produced the anime \"Tokyo Ghoul\"?",
+        "correct": "Pierrot",
+        "wrong": [
+          "Madhouse / J.C.Staff",
+          "Wit Studio / MAPPA",
+          "Wit Studio / CloverWorks"
+        ]
+      },
+      {
+        "id": "0fca421c-fe2e-40ce-a29e-550cc92feab7",
+        "q": "TRIVIA: Which animation studio produced the anime \"Jujutsu Kaisen\"?",
+        "correct": "MAPPA",
+        "wrong": [
+          "Sunrise",
+          "Bones",
+          "Ufotable"
+        ]
+      },
+      {
+        "id": "5e2f8bb2-5195-4365-bbb4-1c31f1b9605f",
+        "q": "TRIVIA: Which animation studio produced the anime \"Chainsaw Man\"?",
+        "correct": "MAPPA",
+        "wrong": [
+          "A-1 Pictures",
+          "Gainax / Tatsunoko",
+          "Bones"
+        ]
+      },
+      {
+        "id": "3f82df9f-b558-4128-a0e0-f056beef205a",
+        "q": "TRIVIA: Which animation studio produced the anime \"Spy x Family\"?",
+        "correct": "Wit Studio / CloverWorks",
+        "wrong": [
+          "A-1 Pictures",
+          "Wit Studio / MAPPA",
+          "Toei Animation"
+        ]
+      },
+      {
+        "id": "b578c4ca-8595-4da3-ae71-a7b984c61d25",
+        "q": "TRIVIA: Which animation studio produced the anime \"Steins;Gate\"?",
+        "correct": "White Fox",
+        "wrong": [
+          "Toei Animation",
+          "Madhouse / J.C.Staff",
+          "Ufotable"
+        ]
+      },
+      {
+        "id": "9e96f530-cc37-42f3-a9fb-b55452eb5082",
+        "q": "TRIVIA: Which animation studio produced the anime \"Code Geass\"?",
+        "correct": "Sunrise",
+        "wrong": [
+          "Toei Animation",
+          "Ufotable",
+          "Wit Studio / CloverWorks"
+        ]
+      },
+      {
+        "id": "db99f3d6-b8c7-418c-b800-c4f7337e232c",
+        "q": "TRIVIA: Which animation studio produced the anime \"Neon Genesis Evangelion\"?",
+        "correct": "Gainax / Tatsunoko",
+        "wrong": [
+          "Wit Studio / MAPPA",
+          "Ufotable",
+          "Pierrot"
+        ]
+      },
+      {
+        "id": "2e51e0d1-4d48-40f4-9508-4c021bde49e0",
+        "q": "TRIVIA: Which animation studio produced the anime \"Cowboy Bebop\"?",
+        "correct": "Sunrise",
+        "wrong": [
+          "Bones",
+          "Wit Studio / CloverWorks",
+          "Gainax / Tatsunoko"
+        ]
+      },
+      {
+        "id": "894ac5d3-b19d-40ac-abcf-6a3aaa4f750e",
+        "q": "TRIVIA: Which animation studio produced the anime \"One Punch Man\"?",
+        "correct": "Madhouse / J.C.Staff",
+        "wrong": [
+          "Wit Studio / MAPPA",
+          "Pierrot",
+          "Sunrise"
+        ]
+      },
+      {
+        "id": "eaa0028d-f6b7-4d00-8a2c-fd181921745a",
+        "q": "TRIVIA: In what year did the anime \"Naruto\" originally premiere/release?",
+        "correct": "2002",
+        "wrong": [
+          "1989",
+          "2004",
+          "1999"
+        ]
+      },
+      {
+        "id": "3494ee86-a44e-44ed-a0ff-3a6873dd19ed",
+        "q": "TRIVIA: In what year did the anime \"One Piece\" originally premiere/release?",
+        "correct": "1999",
+        "wrong": [
+          "2022",
+          "2009",
+          "2002"
+        ]
+      },
+      {
+        "id": "06893fe3-5ed3-4e3b-8baf-981a60bf0e6e",
+        "q": "TRIVIA: In what year did the anime \"Attack on Titan\" originally premiere/release?",
+        "correct": "2013",
+        "wrong": [
+          "2016",
+          "2022",
+          "2006"
+        ]
+      },
+      {
+        "id": "466dd315-0431-465c-a474-758b9bb8de0a",
+        "q": "TRIVIA: In what year did the anime \"My Hero Academia\" originally premiere/release?",
+        "correct": "2016",
+        "wrong": [
+          "2004",
+          "2015",
+          "2013"
+        ]
+      },
+      {
+        "id": "5250197b-e60f-42d0-a8a7-725676754245",
+        "q": "TRIVIA: In what year did the anime \"Demon Slayer\" originally premiere/release?",
+        "correct": "2019",
+        "wrong": [
+          "2009",
+          "2014",
+          "2016"
+        ]
+      },
+      {
+        "id": "5c7141d6-e35a-46c3-8d0d-2236580b538d",
+        "q": "TRIVIA: In what year did the anime \"Death Note\" originally premiere/release?",
+        "correct": "2006",
+        "wrong": [
+          "1999",
+          "2011",
+          "2019"
+        ]
+      },
+      {
+        "id": "7c38c843-436f-4171-86da-eeec781c8253",
+        "q": "TRIVIA: In what year did the anime \"Fullmetal Alchemist: Brotherhood\" originally premiere/release?",
+        "correct": "2009",
+        "wrong": [
+          "2015",
+          "2019",
+          "2002"
+        ]
+      },
+      {
+        "id": "5cb4badd-b022-4c65-aa21-a0c4d238fdc3",
+        "q": "TRIVIA: In what year did the anime \"Hunter x Hunter\" originally premiere/release?",
+        "correct": "2011",
+        "wrong": [
+          "2004",
+          "1989",
+          "2012"
+        ]
+      },
+      {
+        "id": "443619eb-79be-4eb9-9373-b3605b0b0c13",
+        "q": "TRIVIA: In what year did the anime \"Dragon Ball Z\" originally premiere/release?",
+        "correct": "1989",
+        "wrong": [
+          "2004",
+          "2013",
+          "2006"
+        ]
+      },
+      {
+        "id": "67f947ae-885a-4688-b22d-d9f531c35d9f",
+        "q": "TRIVIA: In what year did the anime \"Bleach\" originally premiere/release?",
+        "correct": "2004",
+        "wrong": [
+          "2016",
+          "1989",
+          "1998"
+        ]
+      },
+      {
+        "id": "e28de17e-6b96-43b9-bccb-2d3827866a03",
+        "q": "TRIVIA: In what year did the anime \"Sword Art Online\" originally premiere/release?",
+        "correct": "2012",
+        "wrong": [
+          "2006",
+          "2002",
+          "2014"
+        ]
+      },
+      {
+        "id": "d236a834-f4a7-4825-85fb-8835e416d4df",
+        "q": "TRIVIA: In what year did the anime \"Tokyo Ghoul\" originally premiere/release?",
+        "correct": "2014",
+        "wrong": [
+          "2019",
+          "2022",
+          "2011"
+        ]
+      },
+      {
+        "id": "f07f7bbf-43e6-403c-8046-12a2ddf2fe14",
+        "q": "TRIVIA: In what year did the anime \"Jujutsu Kaisen\" originally premiere/release?",
+        "correct": "2020",
+        "wrong": [
+          "1998",
+          "2011",
+          "2014"
+        ]
+      },
+      {
+        "id": "f1cd9c39-b3e8-4d21-8af8-2e8b9967c409",
+        "q": "TRIVIA: In what year did the anime \"Chainsaw Man\" originally premiere/release?",
+        "correct": "2022",
+        "wrong": [
+          "1995",
+          "1999",
+          "2016"
+        ]
+      },
+      {
+        "id": "c2b48a93-6644-4206-86b5-fa684f126283",
+        "q": "TRIVIA: In what year did the anime \"Spy x Family\" originally premiere/release?",
+        "correct": "2022",
+        "wrong": [
+          "1989",
+          "2015",
+          "2004"
+        ]
+      },
+      {
+        "id": "4cee14a5-3603-4dc5-baa3-45ab230a8a65",
+        "q": "TRIVIA: In what year did the anime \"Steins;Gate\" originally premiere/release?",
+        "correct": "2011",
+        "wrong": [
+          "2004",
+          "1999",
+          "2020"
+        ]
+      },
+      {
+        "id": "d1dafd79-7cce-4023-a344-16fedc8c288a",
+        "q": "TRIVIA: In what year did the anime \"Code Geass\" originally premiere/release?",
+        "correct": "2006",
+        "wrong": [
+          "2002",
+          "2004",
+          "1998"
+        ]
+      },
+      {
+        "id": "57cf3df7-6905-4461-bdf7-39050cced8cc",
+        "q": "TRIVIA: In what year did the anime \"Neon Genesis Evangelion\" originally premiere/release?",
+        "correct": "1995",
+        "wrong": [
+          "1998",
+          "2020",
+          "2006"
+        ]
+      },
+      {
+        "id": "3a6a2dd2-64d0-4cf6-ab1d-6d1550c43531",
+        "q": "TRIVIA: In what year did the anime \"Cowboy Bebop\" originally premiere/release?",
+        "correct": "1998",
+        "wrong": [
+          "2015",
+          "2006",
+          "2016"
+        ]
+      },
+      {
+        "id": "4e845dfe-d9d6-45be-96ce-2ea8619e4bad",
+        "q": "TRIVIA: In what year did the anime \"One Punch Man\" originally premiere/release?",
+        "correct": "2015",
+        "wrong": [
+          "1998",
+          "2020",
+          "2016"
+        ]
+      }
+    ],
+    "cartoons": [
+      {
+        "id": "56fbe115-c7ea-40fc-a24d-a9248ef2c6ef",
+        "q": "Who is the creator of the animated series \"SpongeBob SquarePants\"?",
+        "correct": "Stephen Hillenburg",
+        "wrong": [
+          "Rebecca Sugar",
+          "Man of Action",
+          "Justin Roiland and Dan Harmon"
+        ]
+      },
+      {
+        "id": "3319499b-495c-42bb-b276-b624b86c7bd5",
+        "q": "Who is the creator of the animated series \"The Simpsons\"?",
+        "correct": "Matt Groening",
+        "wrong": [
+          "Ben Bocquelet",
+          "Alex Hirsch",
+          "Stephen Hillenburg"
+        ]
+      },
+      {
+        "id": "11b5a5c2-8fd8-4565-9121-ab104ae6320f",
+        "q": "Who is the creator of the animated series \"Avatar: The Last Airbender\"?",
+        "correct": "Michael Dante DiMartino and Bryan Konietzko",
+        "wrong": [
+          "Glen Murakami",
+          "Pendleton Ward",
+          "Alex Hirsch"
+        ]
+      },
+      {
+        "id": "5b363726-41c2-4ff1-991a-2870ee665d60",
+        "q": "Who is the creator of the animated series \"Rick and Morty\"?",
+        "correct": "Justin Roiland and Dan Harmon",
+        "wrong": [
+          "Warner Bros.",
+          "Joe Ruby and Ken Spears",
+          "Stephen Hillenburg"
+        ]
+      },
+      {
+        "id": "f09a0933-a881-44a8-8b96-990b57ec0935",
+        "q": "Who is the creator of the animated series \"Family Guy\"?",
+        "correct": "Seth MacFarlane",
+        "wrong": [
+          "J.G. Quintel",
+          "Justin Roiland and Dan Harmon",
+          "Glen Murakami"
+        ]
+      },
+      {
+        "id": "4ec6f251-e1ed-4244-b751-22d43d9699ff",
+        "q": "Who is the creator of the animated series \"South Park\"?",
+        "correct": "Trey Parker and Matt Stone",
+        "wrong": [
+          "J.G. Quintel",
+          "Alex Hirsch",
+          "Seth MacFarlane"
+        ]
+      },
+      {
+        "id": "14a54aa1-3a5c-4cca-b4b9-a1231411b65e",
+        "q": "Who is the creator of the animated series \"Adventure Time\"?",
+        "correct": "Pendleton Ward",
+        "wrong": [
+          "Warner Bros.",
+          "Dan Povenmire and Jeff 'Swampy' Marsh",
+          "Glen Murakami"
+        ]
+      },
+      {
+        "id": "61462e4b-b2b2-4b30-bbb5-d6a789933e24",
+        "q": "Who is the creator of the animated series \"Regular Show\"?",
+        "correct": "J.G. Quintel",
+        "wrong": [
+          "Glen Murakami",
+          "William Hanna and Joseph Barbera",
+          "Dan Povenmire and Jeff 'Swampy' Marsh"
+        ]
+      },
+      {
+        "id": "16e24c18-44b2-49e3-a761-77d179a39ac8",
+        "q": "Who is the creator of the animated series \"The Amazing World of Gumball\"?",
+        "correct": "Ben Bocquelet",
+        "wrong": [
+          "Justin Roiland and Dan Harmon",
+          "Man of Action",
+          "Bruce Timm and Eric Radomski"
+        ]
+      },
+      {
+        "id": "64b31daa-0613-4488-9ba0-acc9d9f55ede",
+        "q": "Who is the creator of the animated series \"Steven Universe\"?",
+        "correct": "Rebecca Sugar",
+        "wrong": [
+          "Joe Ruby and Ken Spears",
+          "William Hanna and Joseph Barbera",
+          "Alex Hirsch"
+        ]
+      },
+      {
+        "id": "73e0d30e-af9e-42be-ab38-031cb7efada7",
+        "q": "Who is the creator of the animated series \"Gravity Falls\"?",
+        "correct": "Alex Hirsch",
+        "wrong": [
+          "Bruce Timm and Eric Radomski",
+          "Justin Roiland and Dan Harmon",
+          "Man of Action"
+        ]
+      },
+      {
+        "id": "3f0b95c3-3d4e-4b9b-8cae-8516cdc00da0",
+        "q": "Who is the creator of the animated series \"Futurama\"?",
+        "correct": "Matt Groening",
+        "wrong": [
+          "Dan Povenmire and Jeff 'Swampy' Marsh",
+          "J.G. Quintel",
+          "Alex Hirsch"
+        ]
+      },
+      {
+        "id": "1c7e1dda-80ad-4636-8000-f5162542d103",
+        "q": "Who is the creator of the animated series \"Batman: The Animated Series\"?",
+        "correct": "Bruce Timm and Eric Radomski",
+        "wrong": [
+          "Stephen Hillenburg",
+          "Dan Povenmire and Jeff 'Swampy' Marsh",
+          "William Hanna and Joseph Barbera"
+        ]
+      },
+      {
+        "id": "343d6fca-2c41-4351-8ac3-338190df92f0",
+        "q": "Who is the creator of the animated series \"Teen Titans\"?",
+        "correct": "Glen Murakami",
+        "wrong": [
+          "Seth MacFarlane",
+          "Dan Povenmire and Jeff 'Swampy' Marsh",
+          "Michael Dante DiMartino and Bryan Konietzko"
+        ]
+      },
+      {
+        "id": "bb08c85e-2c6b-410d-9370-3d16d101cf56",
+        "q": "Who is the creator of the animated series \"Ben 10\"?",
+        "correct": "Man of Action",
+        "wrong": [
+          "Ben Bocquelet",
+          "Joe Ruby and Ken Spears",
+          "Pendleton Ward"
+        ]
+      },
+      {
+        "id": "7d9f6de2-a5d3-45d8-9719-bc33caf28be6",
+        "q": "Who is the creator of the animated series \"Phineas and Ferb\"?",
+        "correct": "Dan Povenmire and Jeff 'Swampy' Marsh",
+        "wrong": [
+          "Pendleton Ward",
+          "Rebecca Sugar",
+          "Justin Roiland and Dan Harmon"
+        ]
+      },
+      {
+        "id": "2a5f114a-e70f-4d25-ab0a-1615f519fb5b",
+        "q": "Who is the creator of the animated series \"Scooby-Doo, Where Are You!\"?",
+        "correct": "Joe Ruby and Ken Spears",
+        "wrong": [
+          "Bruce Timm and Eric Radomski",
+          "Trey Parker and Matt Stone",
+          "Man of Action"
+        ]
+      },
+      {
+        "id": "901d51fb-d6c6-45b1-9633-ec3b52086311",
+        "q": "Who is the creator of the animated series \"Tom and Jerry\"?",
+        "correct": "William Hanna and Joseph Barbera",
+        "wrong": [
+          "Justin Roiland and Dan Harmon",
+          "Warner Bros.",
+          "Stephen Hillenburg"
+        ]
+      },
+      {
+        "id": "e0ffedb6-57ed-450e-825b-22f6ffc93d98",
+        "q": "Who is the creator of the animated series \"Looney Tunes\"?",
+        "correct": "Warner Bros.",
+        "wrong": [
+          "Bruce Timm and Eric Radomski",
+          "Joe Ruby and Ken Spears",
+          "Pendleton Ward"
+        ]
+      },
+      {
+        "id": "4c02d70e-7904-454c-add2-5224f3d31192",
+        "q": "Who is the creator of the animated series \"The Flintstones\"?",
+        "correct": "William Hanna and Joseph Barbera",
+        "wrong": [
+          "Pendleton Ward",
+          "Michael Dante DiMartino and Bryan Konietzko",
+          "Joe Ruby and Ken Spears"
+        ]
+      },
+      {
+        "id": "26bc2f9e-da90-4a9c-84b0-c679ad857597",
+        "q": "TRIVIA: Who is the creator of the animated series \"SpongeBob SquarePants\"?",
+        "correct": "Stephen Hillenburg",
+        "wrong": [
+          "Rebecca Sugar",
+          "Man of Action",
+          "Justin Roiland and Dan Harmon"
+        ]
+      },
+      {
+        "id": "7e541f2a-b852-492b-993b-0f6d6ed303a4",
+        "q": "TRIVIA: Who is the creator of the animated series \"The Simpsons\"?",
+        "correct": "Matt Groening",
+        "wrong": [
+          "Ben Bocquelet",
+          "Alex Hirsch",
+          "Stephen Hillenburg"
+        ]
+      },
+      {
+        "id": "53a34c37-8738-42e1-8a13-efaee4bf82c1",
+        "q": "TRIVIA: Who is the creator of the animated series \"Avatar: The Last Airbender\"?",
+        "correct": "Michael Dante DiMartino and Bryan Konietzko",
+        "wrong": [
+          "Glen Murakami",
+          "Pendleton Ward",
+          "Alex Hirsch"
+        ]
+      },
+      {
+        "id": "c57760e5-938f-495c-bc2f-8554db2a8c54",
+        "q": "TRIVIA: Who is the creator of the animated series \"Rick and Morty\"?",
+        "correct": "Justin Roiland and Dan Harmon",
+        "wrong": [
+          "Warner Bros.",
+          "Joe Ruby and Ken Spears",
+          "Stephen Hillenburg"
+        ]
+      },
+      {
+        "id": "4393f772-7605-40d8-84cc-c4693080558d",
+        "q": "TRIVIA: Who is the creator of the animated series \"Family Guy\"?",
+        "correct": "Seth MacFarlane",
+        "wrong": [
+          "J.G. Quintel",
+          "Justin Roiland and Dan Harmon",
+          "Glen Murakami"
+        ]
+      },
+      {
+        "id": "bfecdb01-77e5-4b5f-9771-0913de58f8b6",
+        "q": "TRIVIA: Who is the creator of the animated series \"South Park\"?",
+        "correct": "Trey Parker and Matt Stone",
+        "wrong": [
+          "J.G. Quintel",
+          "Alex Hirsch",
+          "Seth MacFarlane"
+        ]
+      },
+      {
+        "id": "604025df-4890-4fe1-90b5-71092568cd58",
+        "q": "TRIVIA: Who is the creator of the animated series \"Adventure Time\"?",
+        "correct": "Pendleton Ward",
+        "wrong": [
+          "Warner Bros.",
+          "Dan Povenmire and Jeff 'Swampy' Marsh",
+          "Glen Murakami"
+        ]
+      },
+      {
+        "id": "51f1c1f5-0b3e-483c-a32c-b1fad97bb279",
+        "q": "TRIVIA: Who is the creator of the animated series \"Regular Show\"?",
+        "correct": "J.G. Quintel",
+        "wrong": [
+          "Glen Murakami",
+          "William Hanna and Joseph Barbera",
+          "Dan Povenmire and Jeff 'Swampy' Marsh"
+        ]
+      },
+      {
+        "id": "d546a397-e062-4cd2-9925-68ee3deb7d8a",
+        "q": "TRIVIA: Who is the creator of the animated series \"The Amazing World of Gumball\"?",
+        "correct": "Ben Bocquelet",
+        "wrong": [
+          "Justin Roiland and Dan Harmon",
+          "Man of Action",
+          "Bruce Timm and Eric Radomski"
+        ]
+      },
+      {
+        "id": "9b21c326-eb6b-4587-82bc-f743f9375492",
+        "q": "TRIVIA: Who is the creator of the animated series \"Steven Universe\"?",
+        "correct": "Rebecca Sugar",
+        "wrong": [
+          "Joe Ruby and Ken Spears",
+          "William Hanna and Joseph Barbera",
+          "Alex Hirsch"
+        ]
+      },
+      {
+        "id": "c0c14ed4-4c9a-4987-8952-cb106707f666",
+        "q": "TRIVIA: Who is the creator of the animated series \"Gravity Falls\"?",
+        "correct": "Alex Hirsch",
+        "wrong": [
+          "Bruce Timm and Eric Radomski",
+          "Justin Roiland and Dan Harmon",
+          "Man of Action"
+        ]
+      },
+      {
+        "id": "c7af33f2-46db-47af-a3cb-ca771be9b5fe",
+        "q": "TRIVIA: Who is the creator of the animated series \"Futurama\"?",
+        "correct": "Matt Groening",
+        "wrong": [
+          "Dan Povenmire and Jeff 'Swampy' Marsh",
+          "J.G. Quintel",
+          "Alex Hirsch"
+        ]
+      },
+      {
+        "id": "1047031f-66b6-4d26-8f6a-e9af054f88b5",
+        "q": "TRIVIA: Who is the creator of the animated series \"Batman: The Animated Series\"?",
+        "correct": "Bruce Timm and Eric Radomski",
+        "wrong": [
+          "Stephen Hillenburg",
+          "Dan Povenmire and Jeff 'Swampy' Marsh",
+          "William Hanna and Joseph Barbera"
+        ]
+      },
+      {
+        "id": "495c9cf8-aba6-436a-b409-c796dd1a492b",
+        "q": "TRIVIA: Who is the creator of the animated series \"Teen Titans\"?",
+        "correct": "Glen Murakami",
+        "wrong": [
+          "Seth MacFarlane",
+          "Dan Povenmire and Jeff 'Swampy' Marsh",
+          "Michael Dante DiMartino and Bryan Konietzko"
+        ]
+      },
+      {
+        "id": "8840c916-4436-4438-9ee5-8af75f1f31d7",
+        "q": "TRIVIA: Who is the creator of the animated series \"Ben 10\"?",
+        "correct": "Man of Action",
+        "wrong": [
+          "Ben Bocquelet",
+          "Joe Ruby and Ken Spears",
+          "Pendleton Ward"
+        ]
+      },
+      {
+        "id": "a8cfbe79-b42e-4f49-a16e-a495561c22d4",
+        "q": "TRIVIA: Who is the creator of the animated series \"Phineas and Ferb\"?",
+        "correct": "Dan Povenmire and Jeff 'Swampy' Marsh",
+        "wrong": [
+          "Pendleton Ward",
+          "Rebecca Sugar",
+          "Justin Roiland and Dan Harmon"
+        ]
+      },
+      {
+        "id": "2d11a994-3d4c-45f8-9fc7-cbb4fe896fe3",
+        "q": "TRIVIA: Who is the creator of the animated series \"Scooby-Doo, Where Are You!\"?",
+        "correct": "Joe Ruby and Ken Spears",
+        "wrong": [
+          "Bruce Timm and Eric Radomski",
+          "Trey Parker and Matt Stone",
+          "Man of Action"
+        ]
+      },
+      {
+        "id": "510d0322-3319-4f0e-95d6-df99b035ccf8",
+        "q": "TRIVIA: Who is the creator of the animated series \"Tom and Jerry\"?",
+        "correct": "William Hanna and Joseph Barbera",
+        "wrong": [
+          "Justin Roiland and Dan Harmon",
+          "Warner Bros.",
+          "Stephen Hillenburg"
+        ]
+      },
+      {
+        "id": "f70c9cb6-9531-4584-b1d1-a4efd3ac34d2",
+        "q": "TRIVIA: Who is the creator of the animated series \"Looney Tunes\"?",
+        "correct": "Warner Bros.",
+        "wrong": [
+          "Bruce Timm and Eric Radomski",
+          "Joe Ruby and Ken Spears",
+          "Pendleton Ward"
+        ]
+      },
+      {
+        "id": "86f33a77-dfe0-4eb8-9a1f-7b665cd8a61a",
+        "q": "TRIVIA: Who is the creator of the animated series \"The Flintstones\"?",
+        "correct": "William Hanna and Joseph Barbera",
+        "wrong": [
+          "Pendleton Ward",
+          "Michael Dante DiMartino and Bryan Konietzko",
+          "Joe Ruby and Ken Spears"
+        ]
+      }
+    ],
+    "food": [
+      {
+        "id": "47336f69-a13e-45f7-83ed-9b51c069e522",
+        "q": "Which country is widely known as the origin of Sushi?",
+        "correct": "Japan",
+        "wrong": [
+          "Thailand",
+          "Spain",
+          "USA"
+        ]
+      },
+      {
+        "id": "5c628bbe-09ba-41ab-8114-bebd063a11e3",
+        "q": "Which country is widely known as the origin of Pizza?",
+        "correct": "Italy",
+        "wrong": [
+          "Thailand",
+          "Japan",
+          "Mexico"
+        ]
+      },
+      {
+        "id": "77adc969-10a2-494f-a8f1-ba98f3c1a0dc",
+        "q": "Which country is widely known as the origin of Tacos?",
+        "correct": "Mexico",
+        "wrong": [
+          "Thailand",
+          "Vietnam",
+          "India"
+        ]
+      },
+      {
+        "id": "1e7d0232-fe66-4ab2-8f35-74d92ab1f373",
+        "q": "Which country is widely known as the origin of Croissant?",
+        "correct": "France",
+        "wrong": [
+          "Vietnam",
+          "Mexico",
+          "Japan"
+        ]
+      },
+      {
+        "id": "138c706c-e841-441a-b6d2-0e7256e7f031",
+        "q": "Which country is widely known as the origin of Pad Thai?",
+        "correct": "Thailand",
+        "wrong": [
+          "Spain",
+          "India",
+          "Italy"
+        ]
+      },
+      {
+        "id": "859ab6c4-2e9f-451f-8b5b-d346f2d9cd9d",
+        "q": "Which country is widely known as the origin of Curry?",
+        "correct": "India",
+        "wrong": [
+          "Hungary",
+          "France",
+          "South Korea"
+        ]
+      },
+      {
+        "id": "18a01eac-528f-477b-b1d8-d986145b1a07",
+        "q": "Which country is widely known as the origin of Hamburger?",
+        "correct": "USA",
+        "wrong": [
+          "Mexico",
+          "China",
+          "France"
+        ]
+      },
+      {
+        "id": "774fe304-2c25-4e8a-ac7b-4fc51bde9163",
+        "q": "Which country is widely known as the origin of Dim Sum?",
+        "correct": "China",
+        "wrong": [
+          "Mexico",
+          "India",
+          "Hungary"
+        ]
+      },
+      {
+        "id": "fbea2dd9-9150-48fd-a999-6642b6956b26",
+        "q": "Which country is widely known as the origin of Paella?",
+        "correct": "Spain",
+        "wrong": [
+          "South Korea",
+          "Venezuela/Colombia",
+          "USA"
+        ]
+      },
+      {
+        "id": "ed2909f9-4bab-4649-bcd3-4ecf1a0994e8",
+        "q": "Which country is widely known as the origin of Kimchi?",
+        "correct": "South Korea",
+        "wrong": [
+          "Peru",
+          "Spain",
+          "Japan"
+        ]
+      },
+      {
+        "id": "e91664e5-f5e9-44e6-a468-0149885ba92c",
+        "q": "Which country is widely known as the origin of Pasta?",
+        "correct": "Italy",
+        "wrong": [
+          "Middle East",
+          "China",
+          "Vietnam"
+        ]
+      },
+      {
+        "id": "389092ba-991b-487d-bc8f-c8a358cca420",
+        "q": "Which country is widely known as the origin of Ramen?",
+        "correct": "Japan",
+        "wrong": [
+          "South Korea",
+          "Venezuela/Colombia",
+          "Hungary"
+        ]
+      },
+      {
+        "id": "23fa9454-5373-44c0-b528-db06efc8b202",
+        "q": "Which country is widely known as the origin of Burrito?",
+        "correct": "Mexico",
+        "wrong": [
+          "South Korea",
+          "Italy",
+          "USA"
+        ]
+      },
+      {
+        "id": "76adb27a-f43b-4650-9897-3e6010dac032",
+        "q": "Which country is widely known as the origin of Falafel?",
+        "correct": "Middle East",
+        "wrong": [
+          "Vietnam",
+          "Japan",
+          "France"
+        ]
+      },
+      {
+        "id": "cb1f1841-09aa-4c9c-b5dc-c022729e2087",
+        "q": "Which country is widely known as the origin of Baguette?",
+        "correct": "France",
+        "wrong": [
+          "Hungary",
+          "Mexico",
+          "China"
+        ]
+      },
+      {
+        "id": "0f40303e-6846-41fd-b999-675858ba3721",
+        "q": "Which country is widely known as the origin of Poutine?",
+        "correct": "Canada",
+        "wrong": [
+          "Hungary",
+          "Middle East",
+          "Spain"
+        ]
+      },
+      {
+        "id": "f51983d2-8640-4719-b08b-ec76a4a5768b",
+        "q": "Which country is widely known as the origin of Goulash?",
+        "correct": "Hungary",
+        "wrong": [
+          "Mexico",
+          "Venezuela/Colombia",
+          "Peru"
+        ]
+      },
+      {
+        "id": "d5f575cc-dad4-4440-ba4b-3f2410c13584",
+        "q": "Which country is widely known as the origin of Pho?",
+        "correct": "Vietnam",
+        "wrong": [
+          "Mexico",
+          "Venezuela/Colombia",
+          "South Korea"
+        ]
+      },
+      {
+        "id": "68d3fb73-7ce5-4ef3-9b2d-db6b0d666417",
+        "q": "Which country is widely known as the origin of Arepa?",
+        "correct": "Venezuela/Colombia",
+        "wrong": [
+          "Italy",
+          "Thailand",
+          "Spain"
+        ]
+      },
+      {
+        "id": "59b8d9f1-8cf9-48a0-bc83-29466bef943b",
+        "q": "Which country is widely known as the origin of Ceviche?",
+        "correct": "Peru",
+        "wrong": [
+          "France",
+          "Canada",
+          "USA"
+        ]
+      },
+      {
+        "id": "82e1cd6a-af2b-477c-ace1-2c243f350b31",
+        "q": "What are the primary ingredients or characteristics of Sushi?",
+        "correct": "Rice and Seafood",
+        "wrong": [
+          "Fries, Cheese Curds, Gravy",
+          "Wheat Flour",
+          "Dough, Tomato, Cheese"
+        ]
+      },
+      {
+        "id": "41c06ebc-bb9d-41a5-9822-407c9b1d9c98",
+        "q": "What are the primary ingredients or characteristics of Pizza?",
+        "correct": "Dough, Tomato, Cheese",
+        "wrong": [
+          "Ground Maize Dough",
+          "Wheat Dough",
+          "Fries, Cheese Curds, Gravy"
+        ]
+      },
+      {
+        "id": "9948d9ac-5a91-4d8c-a3f9-23944bec5957",
+        "q": "What are the primary ingredients or characteristics of Tacos?",
+        "correct": "Tortilla, Meat, Salsa",
+        "wrong": [
+          "Wheat Noodles and Broth",
+          "Meat and Paprika",
+          "Rice Noodles and Peanuts"
+        ]
+      },
+      {
+        "id": "b79ba461-aa96-454f-993e-b0e6dcdd118d",
+        "q": "What are the primary ingredients or characteristics of Croissant?",
+        "correct": "Butter and Dough",
+        "wrong": [
+          "Broth, Rice Noodles, Herbs, Meat",
+          "Flour Tortilla and Fillings",
+          "Wheat Dough"
+        ]
+      },
+      {
+        "id": "e4a079e4-3d4c-420b-a087-a571a1305753",
+        "q": "What are the primary ingredients or characteristics of Pad Thai?",
+        "correct": "Rice Noodles and Peanuts",
+        "wrong": [
+          "Chickpeas",
+          "Bite-sized portions",
+          "Beef Patty and Bun"
+        ]
+      },
+      {
+        "id": "d479b8ec-6517-477f-b087-dcc99e5cc2b1",
+        "q": "What are the primary ingredients or characteristics of Curry?",
+        "correct": "Spices and Sauce",
+        "wrong": [
+          "Bite-sized portions",
+          "Rice Noodles and Peanuts",
+          "Raw Fish and Citrus Juice"
+        ]
+      },
+      {
+        "id": "d065eaac-ff07-42ef-857a-efee259bd6f5",
+        "q": "What are the primary ingredients or characteristics of Hamburger?",
+        "correct": "Beef Patty and Bun",
+        "wrong": [
+          "Chickpeas",
+          "Raw Fish and Citrus Juice",
+          "Rice and Seafood/Meat"
+        ]
+      },
+      {
+        "id": "8adc12e1-a906-4f37-9723-4c1f73433e77",
+        "q": "What are the primary ingredients or characteristics of Dim Sum?",
+        "correct": "Bite-sized portions",
+        "wrong": [
+          "Rice and Seafood",
+          "Butter and Dough",
+          "Fermented Vegetables"
+        ]
+      },
+      {
+        "id": "878b95db-05b2-4172-9f66-dcd697de4589",
+        "q": "What are the primary ingredients or characteristics of Paella?",
+        "correct": "Rice and Seafood/Meat",
+        "wrong": [
+          "Fermented Vegetables",
+          "Broth, Rice Noodles, Herbs, Meat",
+          "Chickpeas"
+        ]
+      },
+      {
+        "id": "4771df3d-9b14-44ef-88ee-821523ace20b",
+        "q": "What are the primary ingredients or characteristics of Kimchi?",
+        "correct": "Fermented Vegetables",
+        "wrong": [
+          "Meat and Paprika",
+          "Wheat Noodles and Broth",
+          "Wheat Dough"
+        ]
+      },
+      {
+        "id": "5b5fef29-ad5e-4dde-a425-f49eea2e0679",
+        "q": "What are the primary ingredients or characteristics of Pasta?",
+        "correct": "Wheat Dough",
+        "wrong": [
+          "Spices and Sauce",
+          "Flour Tortilla and Fillings",
+          "Rice and Seafood"
+        ]
+      },
+      {
+        "id": "74760434-6248-4a7c-8af8-9bbdd44d65f0",
+        "q": "What are the primary ingredients or characteristics of Ramen?",
+        "correct": "Wheat Noodles and Broth",
+        "wrong": [
+          "Spices and Sauce",
+          "Raw Fish and Citrus Juice",
+          "Beef Patty and Bun"
+        ]
+      },
+      {
+        "id": "70120dd1-a6aa-494c-97e8-13662c8e5a69",
+        "q": "What are the primary ingredients or characteristics of Burrito?",
+        "correct": "Flour Tortilla and Fillings",
+        "wrong": [
+          "Wheat Flour",
+          "Beef Patty and Bun",
+          "Butter and Dough"
+        ]
+      },
+      {
+        "id": "ae7f7ce5-56c8-457a-90c2-f34a9f9229ff",
+        "q": "What are the primary ingredients or characteristics of Falafel?",
+        "correct": "Chickpeas",
+        "wrong": [
+          "Wheat Noodles and Broth",
+          "Butter and Dough",
+          "Spices and Sauce"
+        ]
+      },
+      {
+        "id": "b6650698-ea72-4fea-9f29-86675092f0ef",
+        "q": "What are the primary ingredients or characteristics of Baguette?",
+        "correct": "Wheat Flour",
+        "wrong": [
+          "Wheat Noodles and Broth",
+          "Meat and Paprika",
+          "Raw Fish and Citrus Juice"
+        ]
+      },
+      {
+        "id": "7d58659c-2644-4753-9c9e-6ce8f2f37bd7",
+        "q": "What are the primary ingredients or characteristics of Poutine?",
+        "correct": "Fries, Cheese Curds, Gravy",
+        "wrong": [
+          "Tortilla, Meat, Salsa",
+          "Bite-sized portions",
+          "Ground Maize Dough"
+        ]
+      },
+      {
+        "id": "7e099435-2ad1-425e-993a-8c6f6e2ebf31",
+        "q": "What are the primary ingredients or characteristics of Goulash?",
+        "correct": "Meat and Paprika",
+        "wrong": [
+          "Butter and Dough",
+          "Beef Patty and Bun",
+          "Wheat Flour"
+        ]
+      },
+      {
+        "id": "f65473b0-00f6-40e7-8617-09b5f64333dc",
+        "q": "What are the primary ingredients or characteristics of Pho?",
+        "correct": "Broth, Rice Noodles, Herbs, Meat",
+        "wrong": [
+          "Rice and Seafood",
+          "Spices and Sauce",
+          "Flour Tortilla and Fillings"
+        ]
+      },
+      {
+        "id": "b03acaa1-c14a-4323-9a74-35b9eec2c8ec",
+        "q": "What are the primary ingredients or characteristics of Arepa?",
+        "correct": "Ground Maize Dough",
+        "wrong": [
+          "Wheat Flour",
+          "Butter and Dough",
+          "Chickpeas"
+        ]
+      },
+      {
+        "id": "fd91984f-ed54-4b18-b304-49f04b541362",
+        "q": "What are the primary ingredients or characteristics of Ceviche?",
+        "correct": "Raw Fish and Citrus Juice",
+        "wrong": [
+          "Wheat Flour",
+          "Rice and Seafood",
+          "Rice Noodles and Peanuts"
+        ]
+      },
+      {
+        "id": "cd1a3bc8-dd10-4c6b-95ba-f7949a13c842",
+        "q": "TRIVIA: Which country is widely known as the origin of Sushi?",
+        "correct": "Japan",
+        "wrong": [
+          "Thailand",
+          "Spain",
+          "USA"
+        ]
+      },
+      {
+        "id": "65e9c028-b1f2-4ed7-bdc8-970497938329",
+        "q": "TRIVIA: Which country is widely known as the origin of Pizza?",
+        "correct": "Italy",
+        "wrong": [
+          "Thailand",
+          "Japan",
+          "Mexico"
+        ]
+      },
+      {
+        "id": "dfb01260-27d8-4dd0-989c-f7279491f381",
+        "q": "TRIVIA: Which country is widely known as the origin of Tacos?",
+        "correct": "Mexico",
+        "wrong": [
+          "Thailand",
+          "Vietnam",
+          "India"
+        ]
+      },
+      {
+        "id": "be738fdf-90b9-4443-8d8c-e92811124f0a",
+        "q": "TRIVIA: Which country is widely known as the origin of Croissant?",
+        "correct": "France",
+        "wrong": [
+          "Vietnam",
+          "Mexico",
+          "Japan"
+        ]
+      },
+      {
+        "id": "45d80871-d737-46af-8e2b-83aea502288a",
+        "q": "TRIVIA: Which country is widely known as the origin of Pad Thai?",
+        "correct": "Thailand",
+        "wrong": [
+          "Spain",
+          "India",
+          "Italy"
+        ]
+      },
+      {
+        "id": "0f9301a7-ac20-418f-8397-304761cb38b9",
+        "q": "TRIVIA: Which country is widely known as the origin of Curry?",
+        "correct": "India",
+        "wrong": [
+          "Hungary",
+          "France",
+          "South Korea"
+        ]
+      },
+      {
+        "id": "d7079552-2fae-4b59-a4d7-6bd036f541e3",
+        "q": "TRIVIA: Which country is widely known as the origin of Hamburger?",
+        "correct": "USA",
+        "wrong": [
+          "Mexico",
+          "China",
+          "France"
+        ]
+      },
+      {
+        "id": "dc89e82d-17c4-4286-b029-70193b35b81d",
+        "q": "TRIVIA: Which country is widely known as the origin of Dim Sum?",
+        "correct": "China",
+        "wrong": [
+          "Mexico",
+          "India",
+          "Hungary"
+        ]
+      },
+      {
+        "id": "b7c052f4-591b-4fba-a6f8-f9a2488cc817",
+        "q": "TRIVIA: Which country is widely known as the origin of Paella?",
+        "correct": "Spain",
+        "wrong": [
+          "South Korea",
+          "Venezuela/Colombia",
+          "USA"
+        ]
+      },
+      {
+        "id": "41b72e4d-5ad7-4aa8-9022-3738b48ecceb",
+        "q": "TRIVIA: Which country is widely known as the origin of Kimchi?",
+        "correct": "South Korea",
+        "wrong": [
+          "Peru",
+          "Spain",
+          "Japan"
+        ]
+      },
+      {
+        "id": "324158dc-de66-4522-9b46-38fce3b632d0",
+        "q": "TRIVIA: Which country is widely known as the origin of Pasta?",
+        "correct": "Italy",
+        "wrong": [
+          "Middle East",
+          "China",
+          "Vietnam"
+        ]
+      },
+      {
+        "id": "e89d37a4-e7fe-431a-9b34-c10b953c81e6",
+        "q": "TRIVIA: Which country is widely known as the origin of Ramen?",
+        "correct": "Japan",
+        "wrong": [
+          "South Korea",
+          "Venezuela/Colombia",
+          "Hungary"
+        ]
+      },
+      {
+        "id": "4b2014f4-bbdf-437b-ad1a-59aa7afb64f4",
+        "q": "TRIVIA: Which country is widely known as the origin of Burrito?",
+        "correct": "Mexico",
+        "wrong": [
+          "South Korea",
+          "Italy",
+          "USA"
+        ]
+      },
+      {
+        "id": "ce93a400-6388-420e-9705-8cfa927c60d8",
+        "q": "TRIVIA: Which country is widely known as the origin of Falafel?",
+        "correct": "Middle East",
+        "wrong": [
+          "Vietnam",
+          "Japan",
+          "France"
+        ]
+      },
+      {
+        "id": "73dc4f73-5922-4f50-ae0e-38edcb654b9e",
+        "q": "TRIVIA: Which country is widely known as the origin of Baguette?",
+        "correct": "France",
+        "wrong": [
+          "Hungary",
+          "Mexico",
+          "China"
+        ]
+      },
+      {
+        "id": "b929bf79-528f-4b7c-a407-e7137928b6c6",
+        "q": "TRIVIA: Which country is widely known as the origin of Poutine?",
+        "correct": "Canada",
+        "wrong": [
+          "Hungary",
+          "Middle East",
+          "Spain"
+        ]
+      },
+      {
+        "id": "be9c0fba-aaec-412f-9718-a1082e509612",
+        "q": "TRIVIA: Which country is widely known as the origin of Goulash?",
+        "correct": "Hungary",
+        "wrong": [
+          "Mexico",
+          "Venezuela/Colombia",
+          "Peru"
+        ]
+      },
+      {
+        "id": "a214db2d-9561-4efe-a83c-fc8870bd341a",
+        "q": "TRIVIA: Which country is widely known as the origin of Pho?",
+        "correct": "Vietnam",
+        "wrong": [
+          "Mexico",
+          "Venezuela/Colombia",
+          "South Korea"
+        ]
+      },
+      {
+        "id": "5f57ee03-412a-4879-acca-e341a1e0b9e1",
+        "q": "TRIVIA: Which country is widely known as the origin of Arepa?",
+        "correct": "Venezuela/Colombia",
+        "wrong": [
+          "Italy",
+          "Thailand",
+          "Spain"
+        ]
+      },
+      {
+        "id": "b009a49e-bb09-4b46-bd3c-0b46a3bddfb3",
+        "q": "TRIVIA: Which country is widely known as the origin of Ceviche?",
+        "correct": "Peru",
+        "wrong": [
+          "France",
+          "Canada",
+          "USA"
+        ]
+      },
+      {
+        "id": "831bead3-e84c-48c7-908c-9f682abded2c",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Sushi?",
+        "correct": "Rice and Seafood",
+        "wrong": [
+          "Fries, Cheese Curds, Gravy",
+          "Wheat Flour",
+          "Dough, Tomato, Cheese"
+        ]
+      },
+      {
+        "id": "d9d4d583-8295-4643-bb40-38a8ea20c964",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Pizza?",
+        "correct": "Dough, Tomato, Cheese",
+        "wrong": [
+          "Ground Maize Dough",
+          "Wheat Dough",
+          "Fries, Cheese Curds, Gravy"
+        ]
+      },
+      {
+        "id": "f5656c2f-dcc7-4e9d-b3e4-1f5e62e623b9",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Tacos?",
+        "correct": "Tortilla, Meat, Salsa",
+        "wrong": [
+          "Wheat Noodles and Broth",
+          "Meat and Paprika",
+          "Rice Noodles and Peanuts"
+        ]
+      },
+      {
+        "id": "0b0a3a99-a3ac-475c-803d-eca41842dffa",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Croissant?",
+        "correct": "Butter and Dough",
+        "wrong": [
+          "Broth, Rice Noodles, Herbs, Meat",
+          "Flour Tortilla and Fillings",
+          "Wheat Dough"
+        ]
+      },
+      {
+        "id": "ad2f8413-fd09-4d5a-bedb-f0765466a83f",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Pad Thai?",
+        "correct": "Rice Noodles and Peanuts",
+        "wrong": [
+          "Chickpeas",
+          "Bite-sized portions",
+          "Beef Patty and Bun"
+        ]
+      },
+      {
+        "id": "fb18ff42-1902-4a08-a562-b27973224339",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Curry?",
+        "correct": "Spices and Sauce",
+        "wrong": [
+          "Bite-sized portions",
+          "Rice Noodles and Peanuts",
+          "Raw Fish and Citrus Juice"
+        ]
+      },
+      {
+        "id": "7b72ca59-6b94-4592-b95c-a267815f6244",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Hamburger?",
+        "correct": "Beef Patty and Bun",
+        "wrong": [
+          "Chickpeas",
+          "Raw Fish and Citrus Juice",
+          "Rice and Seafood/Meat"
+        ]
+      },
+      {
+        "id": "6bb0ccfe-7f4c-46cf-aa96-ea08943e4312",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Dim Sum?",
+        "correct": "Bite-sized portions",
+        "wrong": [
+          "Rice and Seafood",
+          "Butter and Dough",
+          "Fermented Vegetables"
+        ]
+      },
+      {
+        "id": "7482fdc2-1881-48a1-b2ca-4c36bb454424",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Paella?",
+        "correct": "Rice and Seafood/Meat",
+        "wrong": [
+          "Fermented Vegetables",
+          "Broth, Rice Noodles, Herbs, Meat",
+          "Chickpeas"
+        ]
+      },
+      {
+        "id": "125856e5-e44e-45e1-a37b-912fcec8b755",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Kimchi?",
+        "correct": "Fermented Vegetables",
+        "wrong": [
+          "Meat and Paprika",
+          "Wheat Noodles and Broth",
+          "Wheat Dough"
+        ]
+      },
+      {
+        "id": "2a6b6bb9-198c-4082-b5ac-cdffcc66330b",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Pasta?",
+        "correct": "Wheat Dough",
+        "wrong": [
+          "Spices and Sauce",
+          "Flour Tortilla and Fillings",
+          "Rice and Seafood"
+        ]
+      },
+      {
+        "id": "dd9cf307-1e94-47b0-8020-7dc2fc78394d",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Ramen?",
+        "correct": "Wheat Noodles and Broth",
+        "wrong": [
+          "Spices and Sauce",
+          "Raw Fish and Citrus Juice",
+          "Beef Patty and Bun"
+        ]
+      },
+      {
+        "id": "d0d0c095-aa3e-44b4-bf0b-ec6f33bcd154",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Burrito?",
+        "correct": "Flour Tortilla and Fillings",
+        "wrong": [
+          "Wheat Flour",
+          "Beef Patty and Bun",
+          "Butter and Dough"
+        ]
+      },
+      {
+        "id": "38453318-adb3-456d-8cbe-049ad2572b07",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Falafel?",
+        "correct": "Chickpeas",
+        "wrong": [
+          "Wheat Noodles and Broth",
+          "Butter and Dough",
+          "Spices and Sauce"
+        ]
+      },
+      {
+        "id": "21195c9a-facc-4bf3-8614-486913fcd308",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Baguette?",
+        "correct": "Wheat Flour",
+        "wrong": [
+          "Wheat Noodles and Broth",
+          "Meat and Paprika",
+          "Raw Fish and Citrus Juice"
+        ]
+      },
+      {
+        "id": "813992ca-2798-4b90-a9b7-19f77b85216a",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Poutine?",
+        "correct": "Fries, Cheese Curds, Gravy",
+        "wrong": [
+          "Tortilla, Meat, Salsa",
+          "Bite-sized portions",
+          "Ground Maize Dough"
+        ]
+      },
+      {
+        "id": "388539d9-e955-48e4-a089-aaa2300b4c48",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Goulash?",
+        "correct": "Meat and Paprika",
+        "wrong": [
+          "Butter and Dough",
+          "Beef Patty and Bun",
+          "Wheat Flour"
+        ]
+      },
+      {
+        "id": "b0127eda-46ea-4957-8de4-b623c0930cfc",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Pho?",
+        "correct": "Broth, Rice Noodles, Herbs, Meat",
+        "wrong": [
+          "Rice and Seafood",
+          "Spices and Sauce",
+          "Flour Tortilla and Fillings"
+        ]
+      },
+      {
+        "id": "2e314ecf-9a31-40f0-846a-245b5e641363",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Arepa?",
+        "correct": "Ground Maize Dough",
+        "wrong": [
+          "Wheat Flour",
+          "Butter and Dough",
+          "Chickpeas"
+        ]
+      },
+      {
+        "id": "215fc7b3-a38c-4b56-98a9-24bef8b11ea2",
+        "q": "TRIVIA: What are the primary ingredients or characteristics of Ceviche?",
+        "correct": "Raw Fish and Citrus Juice",
+        "wrong": [
+          "Wheat Flour",
+          "Rice and Seafood",
+          "Rice Noodles and Peanuts"
+        ]
+      }
+    ]
+  }
+}

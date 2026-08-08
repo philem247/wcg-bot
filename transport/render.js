@@ -26,7 +26,7 @@ const REJECTION_TEXT = {
 }
 
 const CATEGORY_LABEL = {
-  general: '🧠 GENERAL', football: '⚽ FOOTBALL', fpl: '🦁 FPL', science: '🔬 SCIENCE',
+  general: '🧠 GENERAL', football: '⚽ FOOTBALL', fpl: '🦁 FPL', sports: '🏅 SPORTS', science: '🔬 SCIENCE',
   tech: '💻 TECH', entertainment: '🎬 ENTERTAINMENT', geography: '🌍 GEOGRAPHY',
   history: '📜 HISTORY', mixed: '🎲 MIXED', anime: '🌸 ANIME', animals: '🐾 ANIMALS',
   videogames: '🎮 VIDEO GAMES', cartoons: '📺 CARTOONS', art: '🎨 ART',
