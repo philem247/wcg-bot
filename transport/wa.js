@@ -1,4 +1,4 @@
-import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } from 'baileys';
+import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion } from 'baileys';
 import pino from 'pino';
 import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS } from '../config.js';
 import { useSqliteAuthState, encodeCreds } from '../store/auth.js';
@@ -31,6 +31,18 @@ let summaryTimer = null;
 
 function resetInboundStats() {
   inboundStats = { total: 0, byType: {}, noPayload: 0, echo: 0, dispatched: 0 };
+}
+
+// Bounded message cache for getMessage (retry receipts)
+const MESSAGE_CACHE_CAP = 1000;
+const messageCache = new Map();
+
+function cacheMessage(id, message) {
+  if (!id || !message) return;
+  messageCache.set(id, message);
+  while (messageCache.size > MESSAGE_CACHE_CAP) {
+    messageCache.delete(messageCache.keys().next().value);
+  }
 }
 
 // Stall watchdog: baileys' keepalive only proves the websocket is alive, not
@@ -236,7 +248,11 @@ export async function connect(onMessage, appLogger, onConnected) {
   }
   const { state, saveCreds } = authState;
 
+  const { version, isLatest } = await fetchLatestBaileysVersion();
+  logger.info(`Auth: fetched WhatsApp v${version.join('.')} (isLatest: ${isLatest})`);
+
   sock = makeWASocket({
+    version,
     auth: state,
     browser: Browsers.ubuntu('Chrome'),
     logger: waLogger,
@@ -247,6 +263,7 @@ export async function connect(onMessage, appLogger, onConnected) {
     markOnlineOnConnect: false,
     syncFullHistory: false,
     shouldSyncHistoryMessage: () => false,
+    getMessage: async (key) => messageCache.get(key.id),
   });
 
   sock.ev.on('creds.update', saveCreds);
@@ -337,6 +354,7 @@ export async function connect(onMessage, appLogger, onConnected) {
           `raw jid=${msg.key.remoteJid} fromMe=${msg.key.fromMe} id=${msg.key.id} ` +
           `keys=${Object.keys(msg.message ?? {}).join(',') || 'none'}`
         );
+        if (msg.message) cacheMessage(msg.key.id, msg.message);
         if (shouldSkip(msg.key, sentIds)) { inboundStats.echo++; logger.debug('  skip: own echo'); continue; }
 
         let text;
