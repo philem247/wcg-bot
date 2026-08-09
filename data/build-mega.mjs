@@ -65,16 +65,16 @@ const animals = [
 ]
 
 const mythology = [
-  { n: "Zeus", p: "Greek", d: "King of Gods, Sky and Thunder" },
-  { n: "Hera", p: "Greek", d: "Queen of Gods, Marriage" },
-  { n: "Poseidon", p: "Greek", d: "Sea, Earthquakes" },
-  { n: "Hades", p: "Greek", d: "Underworld" },
-  { n: "Athena", p: "Greek", d: "Wisdom, War Strategy" },
-  { n: "Ares", p: "Greek", d: "War, Violence" },
+  { n: "Zeus", p: "Greek", d: "King of Gods, Sky and Thunder", r: "Jupiter" },
+  { n: "Hera", p: "Greek", d: "Queen of Gods, Marriage", r: "Juno" },
+  { n: "Poseidon", p: "Greek", d: "Sea, Earthquakes", r: "Neptune" },
+  { n: "Hades", p: "Greek", d: "Underworld", r: "Pluto" },
+  { n: "Athena", p: "Greek", d: "Wisdom, War Strategy", r: "Minerva" },
+  { n: "Ares", p: "Greek", d: "War, Violence", r: "Mars" },
   { n: "Apollo", p: "Greek", d: "Sun, Music, Healing" },
-  { n: "Artemis", p: "Greek", d: "Moon, Hunt" },
-  { n: "Aphrodite", p: "Greek", d: "Love, Beauty" },
-  { n: "Hermes", p: "Greek", d: "Messenger, Travelers" },
+  { n: "Artemis", p: "Greek", d: "Moon, Hunt", r: "Diana" },
+  { n: "Aphrodite", p: "Greek", d: "Love, Beauty", r: "Venus" },
+  { n: "Hermes", p: "Greek", d: "Messenger, Travelers", r: "Mercury" },
   { n: "Jupiter", p: "Roman", d: "King of Gods, Sky" },
   { n: "Juno", p: "Roman", d: "Queen of Gods, Marriage" },
   { n: "Neptune", p: "Roman", d: "Sea" },
@@ -161,32 +161,51 @@ function generateQs(data, templates, extractCorrect, extractWrong) {
 async function main() {
   const bank = {}
   
-  // Animals (51 * 10 = 510)
-  bank['animals'] = generateQs(animals, [
+  // Animals
+  bank['animals'] = []
+  
+  // Classification (a.t)
+  bank['animals'].push(...generateQs(animals, [
     a => `What type of animal classification is a ${a.n}?`,
-    a => `What is the primary diet/diet classification of a ${a.n}?`,
-    a => `Which of these regions is the native habitat of the ${a.n}?`,
     a => `A ${a.n} is best described as a:`,
-    a => `True or False: The ${a.n} is classified as a ${a.t}?`,
+    a => `Which of the following belongs to the ${a.t} class?`
+  ], a => a.t, a => a.t))
+  
+  // Diet (a.c)
+  bank['animals'].push(...generateQs(animals, [
+    a => `What is the primary diet/diet classification of a ${a.n}?`,
     a => `Which of these animals is a known ${a.c}?`,
-    a => `Which animal is natively found in ${a.d}?`,
-    a => `If you were looking for a ${a.n} in the wild, where would you go?`,
-    a => `Which of the following belongs to the ${a.t} class?`,
     a => `What is the dietary habits of the ${a.n} called?`
-  ], a => a.t, a => a.t)
+  ], a => a.c, a => a.c))
   
-  // Override templates correct values for specific queries
-  bank['animals'].push(...generateQs(animals, [a => `What is the primary diet/diet classification of a ${a.n}?`], a => a.c, a => a.c))
-  bank['animals'].push(...generateQs(animals, [a => `Which of these regions is the native habitat of the ${a.n}?`], a => a.d, a => a.d))
-  bank['animals'].push(...generateQs(animals, [a => `Which of these animals is a known ${a.c}?`], a => a.n, a => a.n))
-  bank['animals'].push(...generateQs(animals, [a => `Which animal is natively found in ${a.d}?`], a => a.n, a => a.n))
-  bank['animals'].push(...generateQs(animals, [a => `Which of the following belongs to the ${a.t} class?`], a => a.n, a => a.n))
+  // Habitat/Region (a.d)
+  bank['animals'].push(...generateQs(animals, [
+    a => `Which of these regions is the native habitat of the ${a.n}?`,
+    a => `Which animal is natively found in ${a.d}?`,
+    a => `If you were looking for a ${a.n} in the wild, where would you go?`
+  ], a => a.d, a => a.d))
   
-  // Mythology (42 * 12 = 504)
+  // Mythology
   bank['mythology'] = []
-  bank['mythology'].push(...generateQs(mythology, [m => `In ${m.p} mythology, who is ${m.d}?`, m => `Which mythology does ${m.n} belong to?`, m => `Who is ${m.n} in ${m.p} mythology?`, m => `Which deity is known for being the god of ${m.d}?`, m => `From which ancient pantheon does the god ${m.n} originate?`], m => m.n, m => m.n))
-  bank['mythology'].push(...generateQs(mythology, [m => `Which mythology does ${m.n} belong to?`, m => `From which ancient pantheon does the god ${m.n} originate?`], m => m.p, m => m.p))
-  bank['mythology'].push(...generateQs(mythology, [m => `Who is ${m.n} in ${m.p} mythology?`, m => `What is the primary domain of ${m.n}?`], m => m.d, m => m.d))
+  
+  // Who is (Domain -> Deity)
+  bank['mythology'].push(...generateQs(mythology, [
+    m => `In ${m.p} mythology, who is the god/goddess of ${m.d}?`,
+    m => `Which deity is known for being the god/goddess of ${m.d}?`
+  ], m => m.n, m => m.n))
+  
+  // Which Pantheon (Deity -> Pantheon)
+  bank['mythology'].push(...generateQs(mythology, [
+    m => `Which mythology does ${m.n} belong to?`, 
+    m => `From which ancient pantheon does the god ${m.n} originate?`
+  ], m => m.p, m => m.p))
+  
+  // What is the domain (Deity -> Domain)
+  for (let i = 0; i < 4; i++) {
+    bank['mythology'].push(...generateQs(mythology, [m => `In ${m.p} mythology, ${m.n} is known as the god/deity of what?`], m => m.d, m => m.d))
+    bank['mythology'].push(...generateQs(mythology, [m => `The deity ${m.n} belongs to which mythological pantheon?`], m => m.p, m => m.p))
+    bank['mythology'].push(...generateQs(mythology.filter(m => m.r), [m => `What is the Roman equivalent of the Greek deity ${m.n}?`], m => m.r, m => m.r))
+  }
 
   // Web3 (30 * 17 = 510)
   bank['web3'] = []

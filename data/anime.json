@@ -1,0 +1,5008 @@
+{
+  "attribution": "Popular Shonen/Seinen Anime Generator",
+  "generated": "2026-08-09T03:41:53.563Z",
+  "categories": {
+    "anime": [
+      {
+        "id": "fef45774-241d-47da-8d50-1daa1bc98e01",
+        "q": "Which popular anime series features the character Sasuke Uchiha?",
+        "correct": "Naruto",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "213e5a98-4da6-48d8-a4b0-c08c84339021",
+        "q": "Sasuke Uchiha is a prominent character in which anime?",
+        "correct": "Naruto",
+        "wrong": [
+          "Kaiju No. 8",
+          "Attack on Titan",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "7539bff4-dfbd-4f27-83eb-aba04a37eeab",
+        "q": "Which popular anime series features the character Kakashi Hatake?",
+        "correct": "Naruto",
+        "wrong": [
+          "Black Clover",
+          "Solo Leveling",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "18b59c94-b3d3-4910-8fe2-241f97ae08ab",
+        "q": "Kakashi Hatake is a prominent character in which anime?",
+        "correct": "Naruto",
+        "wrong": [
+          "Attack on Titan",
+          "Fullmetal Alchemist: Brotherhood",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "bfc2b317-d6a9-48ed-8791-0e35239976b2",
+        "q": "Which popular anime series features the character Itachi Uchiha?",
+        "correct": "Naruto",
+        "wrong": [
+          "Attack on Titan",
+          "Dragon Ball Z",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "7d4721c5-f398-44a6-ad36-4645cfe33014",
+        "q": "Itachi Uchiha is a prominent character in which anime?",
+        "correct": "Naruto",
+        "wrong": [
+          "One Piece",
+          "My Hero Academia",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "0ebb0c5f-4b83-4f4d-a1db-bdd94c572526",
+        "q": "Which popular anime series features the character Pain (Nagato)?",
+        "correct": "Naruto",
+        "wrong": [
+          "Death Note",
+          "Jujutsu Kaisen",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "00e84eca-e862-45de-97fd-ebf1ab851d94",
+        "q": "Pain (Nagato) is a prominent character in which anime?",
+        "correct": "Naruto",
+        "wrong": [
+          "Death Note",
+          "Solo Leveling",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "38517fc8-c0a1-4548-890b-71a0661c7984",
+        "q": "Which popular anime series features the character Tanjiro Kamado?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Death Note",
+          "Naruto",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "f540337b-1d8b-4f16-8d57-29642a26a035",
+        "q": "Tanjiro Kamado is a prominent character in which anime?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Death Note",
+          "Black Clover",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "b16d0233-aaff-4882-8c03-4fa003b4e691",
+        "q": "Which popular anime series features the character Nezuko Kamado?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "One Piece",
+          "Attack on Titan"
+        ]
+      },
+      {
+        "id": "b3195669-b539-43fa-8047-afe3ef88ce0e",
+        "q": "Nezuko Kamado is a prominent character in which anime?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Solo Leveling",
+          "Naruto",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "3d18b419-a6bf-42b1-ab95-dba98473b410",
+        "q": "Which popular anime series features the character Zenitsu Agatsuma?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "One Piece",
+          "Dragon Ball Z",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "9fd30385-124f-47dc-a6b5-cdb2ce9496c5",
+        "q": "Zenitsu Agatsuma is a prominent character in which anime?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Black Clover",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "dd472a3c-ea27-4668-9804-58e6b9a7c596",
+        "q": "Which popular anime series features the character Kyojuro Rengoku?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Blue Lock",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "36a2edee-2e72-47b5-9e0d-61cd3472e9be",
+        "q": "Kyojuro Rengoku is a prominent character in which anime?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "One Piece",
+          "Kaiju No. 8",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "04428698-0dc9-48f5-a5de-34545d835572",
+        "q": "Which popular anime series features the character Muzan Kibutsuji?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Fairy Tail",
+          "Naruto",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "b585823b-9726-46d5-8793-1d628ac7b88b",
+        "q": "Muzan Kibutsuji is a prominent character in which anime?",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Dragon Ball Z",
+          "Naruto",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "30e2f128-ed95-49bd-9e4d-91acdc1669ec",
+        "q": "Which popular anime series features the character Eren Yeager?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Kaiju No. 8",
+          "Solo Leveling",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "93a05c8b-183b-4967-928a-1b08c29a124d",
+        "q": "Eren Yeager is a prominent character in which anime?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Dragon Ball Z",
+          "Death Note",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "996c365b-0606-4184-88cd-fbbf17e3b0f6",
+        "q": "Which popular anime series features the character Mikasa Ackerman?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Dragon Ball Z",
+          "Blue Lock",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "ef7559c0-5216-46e2-84c4-c713e9bf496f",
+        "q": "Mikasa Ackerman is a prominent character in which anime?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Black Clover",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "3fb161c7-8e3f-452f-9716-e35e1640f18a",
+        "q": "Which popular anime series features the character Levi Ackerman?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "My Hero Academia",
+          "Naruto",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "4f8d0f50-61a0-49eb-8697-a7f4a6c21f67",
+        "q": "Levi Ackerman is a prominent character in which anime?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Bleach",
+          "Kaiju No. 8",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "2e98c290-d323-4a94-9d78-168a018553c8",
+        "q": "Which popular anime series features the character Armin Arlert?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "My Hero Academia",
+          "Naruto",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "77f72546-aa9b-417f-a187-af9b9ec2dc07",
+        "q": "Armin Arlert is a prominent character in which anime?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Hunter x Hunter",
+          "Dragon Ball Z",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "4ad2d65e-f144-4cbf-a874-d198452bf61f",
+        "q": "Which popular anime series features the character Reiner Braun?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "My Hero Academia",
+          "Dragon Ball Z",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "00a7e950-cb6f-4133-9942-91c825a34829",
+        "q": "Reiner Braun is a prominent character in which anime?",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Death Note",
+          "Bleach",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "b30ab1d2-3cef-4f32-bdd5-d385d8a882e4",
+        "q": "Which popular anime series features the character Ichigo Kurosaki?",
+        "correct": "Bleach",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Death Note",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "d68326d0-0e98-404f-87b0-a402862c3a33",
+        "q": "Ichigo Kurosaki is a prominent character in which anime?",
+        "correct": "Bleach",
+        "wrong": [
+          "Dragon Ball Z",
+          "Hunter x Hunter",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "d6987f60-295d-42d7-90c1-fc3317f3d194",
+        "q": "Which popular anime series features the character Rukia Kuchiki?",
+        "correct": "Bleach",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "2c18b30a-2fce-4c59-8f28-a66f18c70646",
+        "q": "Rukia Kuchiki is a prominent character in which anime?",
+        "correct": "Bleach",
+        "wrong": [
+          "Dragon Ball Z",
+          "Blue Lock",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "c9f9c016-dc17-4c0b-997b-899c7d47b904",
+        "q": "Which popular anime series features the character Sosuke Aizen?",
+        "correct": "Bleach",
+        "wrong": [
+          "Fairy Tail",
+          "Dragon Ball Z",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "0241fbae-2f34-420d-a933-61bfa2e0d505",
+        "q": "Sosuke Aizen is a prominent character in which anime?",
+        "correct": "Bleach",
+        "wrong": [
+          "Solo Leveling",
+          "Fairy Tail",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "aa5c12f4-24bd-4bd9-a818-024277e97532",
+        "q": "Which popular anime series features the character Byakuya Kuchiki?",
+        "correct": "Bleach",
+        "wrong": [
+          "Dragon Ball Z",
+          "Demon Slayer",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "471d0df5-5498-4313-a5d9-51a393aa5ae0",
+        "q": "Byakuya Kuchiki is a prominent character in which anime?",
+        "correct": "Bleach",
+        "wrong": [
+          "Solo Leveling",
+          "One Piece",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "a97239d8-19a6-484f-bfe7-dc38a601f5b4",
+        "q": "Which popular anime series features the character Monkey D. Luffy?",
+        "correct": "One Piece",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "d193d400-3e55-47fe-ae82-82e1ea1c5d5e",
+        "q": "Monkey D. Luffy is a prominent character in which anime?",
+        "correct": "One Piece",
+        "wrong": [
+          "Blue Lock",
+          "Fullmetal Alchemist: Brotherhood",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "405d85b7-1c19-4aca-9f9b-bd2569c16d47",
+        "q": "Which popular anime series features the character Roronoa Zoro?",
+        "correct": "One Piece",
+        "wrong": [
+          "Dragon Ball Z",
+          "Fullmetal Alchemist: Brotherhood",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "f855c32d-894b-4472-b670-444aa54d80c6",
+        "q": "Roronoa Zoro is a prominent character in which anime?",
+        "correct": "One Piece",
+        "wrong": [
+          "Bleach",
+          "Hunter x Hunter",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "5fb1fd3d-099b-40be-bed9-94a254f07403",
+        "q": "Which popular anime series features the character Sanji?",
+        "correct": "One Piece",
+        "wrong": [
+          "Solo Leveling",
+          "Death Note",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "37dd3686-05af-49b1-8f76-f182c709b66b",
+        "q": "Sanji is a prominent character in which anime?",
+        "correct": "One Piece",
+        "wrong": [
+          "Naruto",
+          "Fullmetal Alchemist: Brotherhood",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "2ff892f5-0f90-4ff9-bd46-3660e1d664aa",
+        "q": "Which popular anime series features the character Trafalgar Law?",
+        "correct": "One Piece",
+        "wrong": [
+          "Fairy Tail",
+          "Bleach",
+          "Attack on Titan"
+        ]
+      },
+      {
+        "id": "cd8c29dc-5c5c-4773-82b0-ce08e7783281",
+        "q": "Trafalgar Law is a prominent character in which anime?",
+        "correct": "One Piece",
+        "wrong": [
+          "Hunter x Hunter",
+          "Solo Leveling",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "b68388ea-8130-49db-b76a-fb8f313dfde6",
+        "q": "Which popular anime series features the character Kaido?",
+        "correct": "One Piece",
+        "wrong": [
+          "Dragon Ball Z",
+          "Solo Leveling",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "d613a14e-0f9c-4135-b111-36a70775b0ed",
+        "q": "Kaido is a prominent character in which anime?",
+        "correct": "One Piece",
+        "wrong": [
+          "Attack on Titan",
+          "Solo Leveling",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "ad3e7f57-b32c-47b3-9713-9123f1701c9b",
+        "q": "Which popular anime series features the character Yoichi Isagi?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Solo Leveling",
+          "Attack on Titan",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "745ab3d7-4749-4b10-b6d6-3556f774a46c",
+        "q": "Yoichi Isagi is a prominent character in which anime?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Solo Leveling",
+          "One Piece",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "a06ced2c-681b-4ba9-a6af-b961336d7def",
+        "q": "Which popular anime series features the character Meguru Bachira?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Solo Leveling",
+          "My Hero Academia",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "0928bb2e-67b6-42aa-817b-e81676ff8b0d",
+        "q": "Meguru Bachira is a prominent character in which anime?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Hunter x Hunter",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "0fb0f8c7-a7f6-4b6d-a24f-93778cce6255",
+        "q": "Which popular anime series features the character Seishiro Nagi?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Black Clover",
+          "Attack on Titan",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "7a459e12-f12b-499a-9ea0-dd4a1651cabd",
+        "q": "Seishiro Nagi is a prominent character in which anime?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Black Clover",
+          "Dragon Ball Z",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "7433c754-c97f-4d81-8155-70e1ea2bac7e",
+        "q": "Which popular anime series features the character Rin Itoshi?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "One Piece",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "54791742-59c6-40e4-aae7-2576c3456060",
+        "q": "Rin Itoshi is a prominent character in which anime?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Solo Leveling",
+          "One Piece",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "9537e70d-7199-41e5-b2d2-d92c96b639b3",
+        "q": "Which popular anime series features the character Sung Jinwoo?",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Demon Slayer",
+          "Fairy Tail",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "23c78958-7c28-4356-85c1-268991da9faa",
+        "q": "Sung Jinwoo is a prominent character in which anime?",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "One Piece",
+          "Kaiju No. 8",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "98c72cb0-de29-43d7-87b0-02e68730cb6b",
+        "q": "Which popular anime series features the character Cha Hae-In?",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Naruto",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "ab5c3e87-dd79-4bbe-a8e8-c13c0dd9b393",
+        "q": "Cha Hae-In is a prominent character in which anime?",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Demon Slayer",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "b687fe4b-9c34-4be1-9977-1b2e051df065",
+        "q": "Which popular anime series features the character Igris?",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Dragon Ball Z",
+          "Blue Lock",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "a43e1179-881f-4bc3-8393-4202eae26623",
+        "q": "Igris is a prominent character in which anime?",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Bleach",
+          "Hunter x Hunter",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "175318ac-b27c-4588-8846-946c01b3252f",
+        "q": "Which popular anime series features the character Yuji Itadori?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Fairy Tail",
+          "Kaiju No. 8",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "c80d52b3-9119-418c-a29b-15bed6d23603",
+        "q": "Yuji Itadori is a prominent character in which anime?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Black Clover",
+          "One Piece",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "09013305-b5f3-4e6a-b4aa-1f56b015c434",
+        "q": "Which popular anime series features the character Satoru Gojo?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Hunter x Hunter",
+          "Blue Lock",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "9d940a6b-a4ac-4a29-8e18-567ed7de3052",
+        "q": "Satoru Gojo is a prominent character in which anime?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Attack on Titan",
+          "Death Note",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "e868715e-5f9b-48ee-a73b-ccc14b04fdd1",
+        "q": "Which popular anime series features the character Megumi Fushiguro?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Fairy Tail",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "8dc48aa1-87fb-4f05-a9e3-68e77c1696cd",
+        "q": "Megumi Fushiguro is a prominent character in which anime?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Kaiju No. 8",
+          "Hunter x Hunter",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "0d45e2f6-54ce-4f6f-883a-d53a58e0551b",
+        "q": "Which popular anime series features the character Nobara Kugisaki?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "One Piece",
+          "My Hero Academia",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "d98ac876-ccc1-42e7-8548-d8b9e5be976f",
+        "q": "Nobara Kugisaki is a prominent character in which anime?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Demon Slayer",
+          "My Hero Academia",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "2b0618a7-93a6-4d18-8d35-f530d5ffa544",
+        "q": "Which popular anime series features the character Ryomen Sukuna?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Attack on Titan",
+          "Dragon Ball Z",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "38d98fb5-9757-4736-8763-e881045acec1",
+        "q": "Ryomen Sukuna is a prominent character in which anime?",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Hunter x Hunter",
+          "My Hero Academia",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "6ef06931-82f6-4f27-9134-7ac1fa37b60e",
+        "q": "Which popular anime series features the character Izuku Midoriya?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Black Clover",
+          "Solo Leveling",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "f906b886-4a84-4f8e-ba3a-a3439081931f",
+        "q": "Izuku Midoriya is a prominent character in which anime?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Attack on Titan",
+          "Blue Lock",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "b2d3be8b-8f89-4464-a994-c54ed90c0e26",
+        "q": "Which popular anime series features the character Katsuki Bakugo?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Dragon Ball Z",
+          "Death Note",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "086ef470-3bb2-4e4d-a19a-85d934691413",
+        "q": "Katsuki Bakugo is a prominent character in which anime?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "One Piece",
+          "Demon Slayer",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "d95b7a79-7c7b-4145-bc64-fcf1b05c4678",
+        "q": "Which popular anime series features the character Shoto Todoroki?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Dragon Ball Z",
+          "Death Note",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "cb218abb-90e9-460a-b858-c563441c2ade",
+        "q": "Shoto Todoroki is a prominent character in which anime?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Death Note",
+          "Demon Slayer",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "78eee1ba-500f-4605-a67b-f40473c42fb3",
+        "q": "Which popular anime series features the character All Might?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Black Clover",
+          "Fullmetal Alchemist: Brotherhood",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "625e7d5e-f0b2-4bad-a19a-b015a38fdbc5",
+        "q": "All Might is a prominent character in which anime?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Solo Leveling",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "61eeb362-5a52-4a39-85f1-23f8c34ee25c",
+        "q": "Which popular anime series features the character Tomura Shigaraki?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Demon Slayer",
+          "Dragon Ball Z",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "186962f8-98cf-4aaa-b8ad-b9cd04c27971",
+        "q": "Tomura Shigaraki is a prominent character in which anime?",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Solo Leveling",
+          "Naruto",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "bd8def61-8550-4c47-94a4-ac3eb5e5f5c3",
+        "q": "Which popular anime series features the character Edward Elric?",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Hunter x Hunter",
+          "Jujutsu Kaisen",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "959894b9-c833-4c47-8afe-9f771f535fc6",
+        "q": "Edward Elric is a prominent character in which anime?",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Fairy Tail",
+          "One Piece",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "5f43cda6-b79d-44e6-a80c-13e957ad0928",
+        "q": "Which popular anime series features the character Alphonse Elric?",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Black Clover",
+          "Dragon Ball Z",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "77192596-370e-4e34-8fb1-07851523cbc8",
+        "q": "Alphonse Elric is a prominent character in which anime?",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Blue Lock",
+          "My Hero Academia",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "9dc35431-c579-4d41-b448-3d3bf3398904",
+        "q": "Which popular anime series features the character Roy Mustang?",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Kaiju No. 8",
+          "Naruto",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "d93c2280-754b-4205-b37a-f7a5f3379a79",
+        "q": "Roy Mustang is a prominent character in which anime?",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Black Clover",
+          "Attack on Titan",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "4fb896cb-2715-42c8-9c35-d58d733a0741",
+        "q": "Which popular anime series features the character Scar?",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Bleach",
+          "Attack on Titan",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "297dda41-bb8e-4ea2-830d-314d23c87141",
+        "q": "Scar is a prominent character in which anime?",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Black Clover",
+          "Demon Slayer",
+          "Attack on Titan"
+        ]
+      },
+      {
+        "id": "94d8c294-a98e-4d3d-b523-707b0954632b",
+        "q": "Which popular anime series features the character Asta?",
+        "correct": "Black Clover",
+        "wrong": [
+          "Attack on Titan",
+          "Fairy Tail",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "207ee422-9a76-4bd1-86a8-8197aa7c110c",
+        "q": "Asta is a prominent character in which anime?",
+        "correct": "Black Clover",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "One Piece",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "940b0470-977f-4585-89d8-0733684b7370",
+        "q": "Which popular anime series features the character Yuno Grinberryall?",
+        "correct": "Black Clover",
+        "wrong": [
+          "Kaiju No. 8",
+          "Dragon Ball Z",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "e280576c-7a24-4ae4-9029-edde98bd2afc",
+        "q": "Yuno Grinberryall is a prominent character in which anime?",
+        "correct": "Black Clover",
+        "wrong": [
+          "Kaiju No. 8",
+          "Naruto",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "48c01ec2-73b1-4597-8eb6-a4f1dd15df33",
+        "q": "Which popular anime series features the character Yami Sukehiro?",
+        "correct": "Black Clover",
+        "wrong": [
+          "Dragon Ball Z",
+          "One Piece",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "56310b30-fc66-4d1e-a1d8-9e59f4de918a",
+        "q": "Yami Sukehiro is a prominent character in which anime?",
+        "correct": "Black Clover",
+        "wrong": [
+          "Hunter x Hunter",
+          "Fullmetal Alchemist: Brotherhood",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "da5f8ccd-3265-4691-907d-d60f733701d2",
+        "q": "Which popular anime series features the character Natsu Dragneel?",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Kaiju No. 8",
+          "Fullmetal Alchemist: Brotherhood",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "47a93322-4827-44ac-8691-fe68cdd50b7e",
+        "q": "Natsu Dragneel is a prominent character in which anime?",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Black Clover",
+          "Jujutsu Kaisen",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "9feba591-7573-4eee-a2f9-30a4335c0ab9",
+        "q": "Which popular anime series features the character Lucy Heartfilia?",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Kaiju No. 8",
+          "Jujutsu Kaisen",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "dbe6463d-12e9-4cf7-bb34-84113cc6ef03",
+        "q": "Lucy Heartfilia is a prominent character in which anime?",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Solo Leveling",
+          "Blue Lock",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "b659f8b9-a182-4278-b32b-2e27779173a8",
+        "q": "Which popular anime series features the character Erza Scarlet?",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Bleach",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "b851b71a-37c0-4897-a7c1-06fac23db942",
+        "q": "Erza Scarlet is a prominent character in which anime?",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Black Clover",
+          "Bleach",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "ccb9cc36-3ca8-4544-bb95-27994d6aaae6",
+        "q": "Which popular anime series features the character Kafka Hibino?",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Attack on Titan",
+          "One Piece",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "2b2d33a9-1496-4988-9ed3-4a7b6c44f44c",
+        "q": "Kafka Hibino is a prominent character in which anime?",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "One Piece",
+          "Dragon Ball Z",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "98eaf9af-967b-43f2-ba2c-7173c731300f",
+        "q": "Which popular anime series features the character Mina Ashiro?",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Solo Leveling",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "09b0cdff-d5af-4fb1-b392-61a44974719c",
+        "q": "Mina Ashiro is a prominent character in which anime?",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Blue Lock",
+          "Jujutsu Kaisen",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "dfa67603-b183-4d60-8cf2-e6fbc0f26c9b",
+        "q": "Which popular anime series features the character Kikoru Shinomiya?",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Hunter x Hunter",
+          "Black Clover",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "70d97395-2082-494f-9e83-3bc9a9e549c1",
+        "q": "Kikoru Shinomiya is a prominent character in which anime?",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Dragon Ball Z",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "89cc37b6-47a8-4ce5-a484-b039bd9e0255",
+        "q": "Which popular anime series features the character Goku?",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Kaiju No. 8",
+          "Attack on Titan",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "11341878-e813-4b2e-957b-26fb96e3773a",
+        "q": "Goku is a prominent character in which anime?",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Death Note",
+          "Hunter x Hunter",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "6872a650-23f5-4b14-aeec-3559cd59a95d",
+        "q": "Which popular anime series features the character Vegeta?",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Solo Leveling",
+          "Bleach",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "dd18c930-f1ae-49f2-b49b-a387873542d3",
+        "q": "Vegeta is a prominent character in which anime?",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Jujutsu Kaisen",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "7436348c-7051-4b85-ad15-a3ec7eeb62bd",
+        "q": "Which popular anime series features the character Piccolo?",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Solo Leveling",
+          "Kaiju No. 8",
+          "Attack on Titan"
+        ]
+      },
+      {
+        "id": "a0521449-abe8-4d4b-abcb-fd5078e441f0",
+        "q": "Piccolo is a prominent character in which anime?",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "One Piece",
+          "Black Clover",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "409cb263-8802-45df-84c5-6835fdaff600",
+        "q": "Which popular anime series features the character Frieza?",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Death Note",
+          "Naruto",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "7fb5e751-5a8b-4058-8902-173965a8cee8",
+        "q": "Frieza is a prominent character in which anime?",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Hunter x Hunter",
+          "Solo Leveling",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "c682fd4a-c5d1-4bb6-907b-0636298733c6",
+        "q": "Which popular anime series features the character Gon Freecss?",
+        "correct": "Hunter x Hunter",
+        "wrong": [
+          "Attack on Titan",
+          "Dragon Ball Z",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "2331aa91-00b8-4e9f-be9e-f8b8b2cc4ec2",
+        "q": "Gon Freecss is a prominent character in which anime?",
+        "correct": "Hunter x Hunter",
+        "wrong": [
+          "Death Note",
+          "Attack on Titan",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "eb306b53-fb76-457a-b67f-b4579efb6521",
+        "q": "Which popular anime series features the character Killua Zoldyck?",
+        "correct": "Hunter x Hunter",
+        "wrong": [
+          "Kaiju No. 8",
+          "Black Clover",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "36137c04-97de-4342-b564-6025592fa7d8",
+        "q": "Killua Zoldyck is a prominent character in which anime?",
+        "correct": "Hunter x Hunter",
+        "wrong": [
+          "Fairy Tail",
+          "Black Clover",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "9eeea6c8-d51e-40d9-b033-92ef9d82f881",
+        "q": "Which popular anime series features the character Kurapika?",
+        "correct": "Hunter x Hunter",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Fairy Tail",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "8c5e66b1-86fb-466d-96f4-fae78589d5d9",
+        "q": "Kurapika is a prominent character in which anime?",
+        "correct": "Hunter x Hunter",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "643b45db-b112-461d-aa4e-0392646cd9b4",
+        "q": "Which popular anime series features the character Hisoka Morow?",
+        "correct": "Hunter x Hunter",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Naruto",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "b1414c2c-41fd-47aa-a206-b5cc9b89a0d9",
+        "q": "Hisoka Morow is a prominent character in which anime?",
+        "correct": "Hunter x Hunter",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Solo Leveling",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "deadf3b3-02a9-4def-a518-bc9496589068",
+        "q": "Which popular anime series features the character Light Yagami?",
+        "correct": "Death Note",
+        "wrong": [
+          "Kaiju No. 8",
+          "Demon Slayer",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "74f05273-7cea-492a-87db-8565fee1e482",
+        "q": "Light Yagami is a prominent character in which anime?",
+        "correct": "Death Note",
+        "wrong": [
+          "Demon Slayer",
+          "Hunter x Hunter",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "86aa267b-3647-4c54-ba89-1352b9c18042",
+        "q": "Which popular anime series features the character L Lawliet?",
+        "correct": "Death Note",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "06720541-24a9-4529-9d77-efecec6a3476",
+        "q": "L Lawliet is a prominent character in which anime?",
+        "correct": "Death Note",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "643471a5-d0bb-4609-ac13-2637768a8807",
+        "q": "Which popular anime series features the character Ryuk?",
+        "correct": "Death Note",
+        "wrong": [
+          "Hunter x Hunter",
+          "Kaiju No. 8",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "aba0f7e4-993c-43a1-92fb-6e3c9c17ea78",
+        "q": "Ryuk is a prominent character in which anime?",
+        "correct": "Death Note",
+        "wrong": [
+          "Dragon Ball Z",
+          "Hunter x Hunter",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "7992eb54-552e-431f-b13f-1082bd78fc4f",
+        "q": "What is the primary power, weapon, or ability used by Naruto Uzumaki in Naruto?",
+        "correct": "Rasengan / Nine-Tails Chakra",
+        "wrong": [
+          "Ackerman Awakening / ODM Gear Master",
+          "Wind Magic / Star Magic",
+          "Ten Shadows Technique"
+        ]
+      },
+      {
+        "id": "d34e6457-9c7f-40b5-9126-d65a509ca8b5",
+        "q": "In Naruto, Naruto Uzumaki is known for utilizing which distinct ability?",
+        "correct": "Rasengan / Nine-Tails Chakra",
+        "wrong": [
+          "Flame Alchemy",
+          "Black Leg Style / Diable Jambe",
+          "Alchemy / Soul attached to Armor"
+        ]
+      },
+      {
+        "id": "d1ee26dd-1f2d-4554-8c4f-31d8c915901e",
+        "q": "What is the primary power, weapon, or ability used by Sasuke Uchiha in Naruto?",
+        "correct": "Chidori / Sharingan",
+        "wrong": [
+          "Wind Magic / Star Magic",
+          "Fish-Fish Fruit, Model: Azure Dragon",
+          "Sode no Shirayuki (Ice Zanpakuto)"
+        ]
+      },
+      {
+        "id": "8c5f59c3-2831-4f65-b3f3-4f869764e9ab",
+        "q": "In Naruto, Sasuke Uchiha is known for utilizing which distinct ability?",
+        "correct": "Chidori / Sharingan",
+        "wrong": [
+          "Kaiju Transformation (No. 8)",
+          "Alchemy without a Transmutation Circle",
+          "Black Leg Style / Diable Jambe"
+        ]
+      },
+      {
+        "id": "d0323a20-d9fd-4cd3-bac8-df828cece74c",
+        "q": "What is the primary power, weapon, or ability used by Kakashi Hatake in Naruto?",
+        "correct": "Copy Ninja / Sharingan",
+        "wrong": [
+          "Rinnegan / Almighty Push",
+          "Kyoka Suigetsu (Complete Hypnosis)",
+          "Divergent Fist / Black Flash"
+        ]
+      },
+      {
+        "id": "19e5bf1f-f6b2-475e-bab5-a91ca141ae84",
+        "q": "In Naruto, Kakashi Hatake is known for utilizing which distinct ability?",
+        "correct": "Copy Ninja / Sharingan",
+        "wrong": [
+          "Explosion",
+          "Special Beam Cannon",
+          "Wind Magic / Star Magic"
+        ]
+      },
+      {
+        "id": "7af064b2-6ecd-40b1-9f55-56f31293cce6",
+        "q": "What is the primary power, weapon, or ability used by Itachi Uchiha in Naruto?",
+        "correct": "Amaterasu / Tsukuyomi",
+        "wrong": [
+          "Heavy Firearms Mastery / T-51",
+          "Dark Magic",
+          "One For All"
+        ]
+      },
+      {
+        "id": "8c595567-dad3-44b7-beaf-fd3b2e42af7c",
+        "q": "In Naruto, Itachi Uchiha is known for utilizing which distinct ability?",
+        "correct": "Amaterasu / Tsukuyomi",
+        "wrong": [
+          "Kaiju Transformation (No. 8)",
+          "Ackerman Awakening / ODM Gear",
+          "Alchemy / Soul attached to Armor"
+        ]
+      },
+      {
+        "id": "c51303c0-c8d9-4a00-8a8f-60f771fc0c22",
+        "q": "What is the primary power, weapon, or ability used by Pain (Nagato) in Naruto?",
+        "correct": "Rinnegan / Almighty Push",
+        "wrong": [
+          "Decay",
+          "Copy Ninja / Sharingan",
+          "Kaiju Transformation (No. 8)"
+        ]
+      },
+      {
+        "id": "4f9fdb06-c919-4a3e-9471-2a38b7989788",
+        "q": "In Naruto, Pain (Nagato) is known for utilizing which distinct ability?",
+        "correct": "Rinnegan / Almighty Push",
+        "wrong": [
+          "Deconstruction Alchemy (Right Arm)",
+          "Progenitor Demon Abilities",
+          "Alchemy without a Transmutation Circle"
+        ]
+      },
+      {
+        "id": "9b00b40d-8d60-45c0-8628-fdd594e4113d",
+        "q": "What is the primary power, weapon, or ability used by Tanjiro Kamado in Demon Slayer?",
+        "correct": "Water Breathing / Sun Breathing",
+        "wrong": [
+          "Kamehameha / Super Saiyan",
+          "Armored Titan",
+          "Fish-Fish Fruit, Model: Azure Dragon"
+        ]
+      },
+      {
+        "id": "64f001ad-b095-4b3a-a108-41fb5d4aed30",
+        "q": "In Demon Slayer, Tanjiro Kamado is known for utilizing which distinct ability?",
+        "correct": "Water Breathing / Sun Breathing",
+        "wrong": [
+          "Kaiju Transformation (No. 8)",
+          "Puppeteer Soccer / Perfect Accuracy",
+          "Jajanken (Enhancer Nen)"
+        ]
+      },
+      {
+        "id": "1b8bd953-63aa-49d4-a1e1-696a621d7f06",
+        "q": "What is the primary power, weapon, or ability used by Nezuko Kamado in Demon Slayer?",
+        "correct": "Blood Demon Art: Exploding Blood",
+        "wrong": [
+          "Three-Sword Style / Haki",
+          "Shinigami Eyes / Immortality",
+          "Decay"
+        ]
+      },
+      {
+        "id": "b7635723-8649-4484-b74d-d63ceedc158f",
+        "q": "In Demon Slayer, Nezuko Kamado is known for utilizing which distinct ability?",
+        "correct": "Blood Demon Art: Exploding Blood",
+        "wrong": [
+          "Getsuga Tensho / Hollowfication",
+          "Alchemy / Soul attached to Armor",
+          "Celestial Spirit Magic"
+        ]
+      },
+      {
+        "id": "2d633171-a3c7-4370-949d-ddab868ebeee",
+        "q": "What is the primary power, weapon, or ability used by Zenitsu Agatsuma in Demon Slayer?",
+        "correct": "Thunder Breathing (First Form only)",
+        "wrong": [
+          "Shadow Knight Abilities",
+          "Kamehameha / Super Saiyan",
+          "Rinnegan / Almighty Push"
+        ]
+      },
+      {
+        "id": "f811eafc-5521-4773-93e2-1e3b66765f27",
+        "q": "In Demon Slayer, Zenitsu Agatsuma is known for utilizing which distinct ability?",
+        "correct": "Thunder Breathing (First Form only)",
+        "wrong": [
+          "Kaiju Transformation (No. 8)",
+          "Alchemy without a Transmutation Circle",
+          "Attack Titan / Founding Titan"
+        ]
+      },
+      {
+        "id": "8c06b0cf-9920-4aee-8e8c-3d503419e17b",
+        "q": "What is the primary power, weapon, or ability used by Kyojuro Rengoku in Demon Slayer?",
+        "correct": "Flame Breathing",
+        "wrong": [
+          "Kyoka Suigetsu (Complete Hypnosis)",
+          "Death Beam / Golden Form",
+          "Wind Magic / Star Magic"
+        ]
+      },
+      {
+        "id": "a756bb2c-abe7-4c0e-8d31-a8e734d5f074",
+        "q": "In Demon Slayer, Kyojuro Rengoku is known for utilizing which distinct ability?",
+        "correct": "Flame Breathing",
+        "wrong": [
+          "Shadow Extraction / Ruler's Authority",
+          "Copy Ninja / Sharingan",
+          "Ten Shadows Technique"
+        ]
+      },
+      {
+        "id": "d237e6d9-a998-48d1-bb1b-ba6624ebe213",
+        "q": "What is the primary power, weapon, or ability used by Muzan Kibutsuji in Demon Slayer?",
+        "correct": "Progenitor Demon Abilities",
+        "wrong": [
+          "Water Breathing / Sun Breathing",
+          "Monstrous Super Strength / Custom Axe",
+          "Galick Gun / Final Flash"
+        ]
+      },
+      {
+        "id": "80a90eec-3996-4814-aec4-5f634973c344",
+        "q": "In Demon Slayer, Muzan Kibutsuji is known for utilizing which distinct ability?",
+        "correct": "Progenitor Demon Abilities",
+        "wrong": [
+          "Half-Cold Half-Hot",
+          "Celestial Spirit Magic",
+          "Monstrous Super Strength / Custom Axe"
+        ]
+      },
+      {
+        "id": "64db4b64-014c-4b44-abff-22b21cd6dbbe",
+        "q": "What is the primary power, weapon, or ability used by Eren Yeager in Attack on Titan?",
+        "correct": "Attack Titan / Founding Titan",
+        "wrong": [
+          "Alchemy without a Transmutation Circle",
+          "Flame Breathing",
+          "Bungee Gum (Properties of both rubber and gum)"
+        ]
+      },
+      {
+        "id": "f3a52cfc-4834-4618-aae7-37290c72ccd5",
+        "q": "In Attack on Titan, Eren Yeager is known for utilizing which distinct ability?",
+        "correct": "Attack Titan / Founding Titan",
+        "wrong": [
+          "Colossal Titan / Tactical Genius",
+          "Shadow Knight Abilities",
+          "Ackerman Awakening / ODM Gear"
+        ]
+      },
+      {
+        "id": "a758a142-ea81-4bee-b8e2-b5cf175f25ef",
+        "q": "What is the primary power, weapon, or ability used by Mikasa Ackerman in Attack on Titan?",
+        "correct": "Ackerman Awakening / ODM Gear",
+        "wrong": [
+          "Wind Magic / Star Magic",
+          "Amaterasu / Tsukuyomi",
+          "Alchemy / Soul attached to Armor"
+        ]
+      },
+      {
+        "id": "89c147c5-a009-45fd-8045-12a3f9974dfa",
+        "q": "In Attack on Titan, Mikasa Ackerman is known for utilizing which distinct ability?",
+        "correct": "Ackerman Awakening / ODM Gear",
+        "wrong": [
+          "Genius Intellect / The Death Note",
+          "Chidori / Sharingan",
+          "Black Leg Style / Diable Jambe"
+        ]
+      },
+      {
+        "id": "15cade9e-818a-4643-a092-816a9c2cc6d6",
+        "q": "What is the primary power, weapon, or ability used by Levi Ackerman in Attack on Titan?",
+        "correct": "Ackerman Awakening / ODM Gear Master",
+        "wrong": [
+          "Genius Intellect / The Death Note",
+          "Genius Detective Skills",
+          "Special Beam Cannon"
+        ]
+      },
+      {
+        "id": "22a6c827-ab0e-40b1-938c-7ba69712424c",
+        "q": "In Attack on Titan, Levi Ackerman is known for utilizing which distinct ability?",
+        "correct": "Ackerman Awakening / ODM Gear Master",
+        "wrong": [
+          "One For All",
+          "Anti-Magic / Grimoire of the Five-Leaf Clover",
+          "Deconstruction Alchemy (Right Arm)"
+        ]
+      },
+      {
+        "id": "49f289e9-773c-4763-b5bd-023d7af20522",
+        "q": "What is the primary power, weapon, or ability used by Armin Arlert in Attack on Titan?",
+        "correct": "Colossal Titan / Tactical Genius",
+        "wrong": [
+          "Progenitor Demon Abilities",
+          "Flame Alchemy",
+          "Kaiju Transformation (No. 8)"
+        ]
+      },
+      {
+        "id": "86ee5583-6fb1-47e4-9296-88a6cc1fc0ee",
+        "q": "In Attack on Titan, Armin Arlert is known for utilizing which distinct ability?",
+        "correct": "Colossal Titan / Tactical Genius",
+        "wrong": [
+          "Amaterasu / Tsukuyomi",
+          "Black Leg Style / Diable Jambe",
+          "Progenitor Demon Abilities"
+        ]
+      },
+      {
+        "id": "559dc400-5487-47b5-b893-faa68059cdff",
+        "q": "What is the primary power, weapon, or ability used by Reiner Braun in Attack on Titan?",
+        "correct": "Armored Titan",
+        "wrong": [
+          "Jajanken (Enhancer Nen)",
+          "Godspeed / Lightning Transmutation",
+          "Decay"
+        ]
+      },
+      {
+        "id": "79932eb9-5d79-4971-b042-827127a8020f",
+        "q": "In Attack on Titan, Reiner Braun is known for utilizing which distinct ability?",
+        "correct": "Armored Titan",
+        "wrong": [
+          "Colossal Titan / Tactical Genius",
+          "Cleave and Dismantle / Malevolent Shrine",
+          "One For All"
+        ]
+      },
+      {
+        "id": "e68240ef-1545-4adb-b2b8-8aa910b84d83",
+        "q": "What is the primary power, weapon, or ability used by Ichigo Kurosaki in Bleach?",
+        "correct": "Getsuga Tensho / Hollowfication",
+        "wrong": [
+          "Galick Gun / Final Flash",
+          "Limitless / Six Eyes",
+          "Kaiju Transformation (No. 8)"
+        ]
+      },
+      {
+        "id": "91f57b0c-d873-4995-a0fe-eb091d3fd83d",
+        "q": "In Bleach, Ichigo Kurosaki is known for utilizing which distinct ability?",
+        "correct": "Getsuga Tensho / Hollowfication",
+        "wrong": [
+          "Monstrous Super Strength / Custom Axe",
+          "Flame Alchemy",
+          "One For All"
+        ]
+      },
+      {
+        "id": "be854dcc-3569-498e-86ab-392b80cd9c6a",
+        "q": "What is the primary power, weapon, or ability used by Rukia Kuchiki in Bleach?",
+        "correct": "Sode no Shirayuki (Ice Zanpakuto)",
+        "wrong": [
+          "Copy Ninja / Sharingan",
+          "Alchemy without a Transmutation Circle",
+          "Straw Doll Technique / Resonance"
+        ]
+      },
+      {
+        "id": "35d3ee8d-2d91-4a45-a484-1ec20e9f06a6",
+        "q": "In Bleach, Rukia Kuchiki is known for utilizing which distinct ability?",
+        "correct": "Sode no Shirayuki (Ice Zanpakuto)",
+        "wrong": [
+          "Ten Shadows Technique",
+          "Copy Ninja / Sharingan",
+          "Heavy Firearms Mastery / T-51"
+        ]
+      },
+      {
+        "id": "9a149db9-3f6b-440d-b988-1b5773643859",
+        "q": "What is the primary power, weapon, or ability used by Sosuke Aizen in Bleach?",
+        "correct": "Kyoka Suigetsu (Complete Hypnosis)",
+        "wrong": [
+          "Anti-Magic / Grimoire of the Five-Leaf Clover",
+          "Ackerman Awakening / ODM Gear Master",
+          "Shadow Knight Abilities"
+        ]
+      },
+      {
+        "id": "18005504-f83b-4c18-8c8b-1b46c95d2419",
+        "q": "In Bleach, Sosuke Aizen is known for utilizing which distinct ability?",
+        "correct": "Kyoka Suigetsu (Complete Hypnosis)",
+        "wrong": [
+          "Cleave and Dismantle / Malevolent Shrine",
+          "Progenitor Demon Abilities",
+          "Special Beam Cannon"
+        ]
+      },
+      {
+        "id": "c8bbe9c6-08f1-4d5a-8fa0-c15144753494",
+        "q": "What is the primary power, weapon, or ability used by Byakuya Kuchiki in Bleach?",
+        "correct": "Senbonzakura (Cherry Blossom Blades)",
+        "wrong": [
+          "One For All",
+          "Sode no Shirayuki (Ice Zanpakuto)",
+          "Genius Intellect / The Death Note"
+        ]
+      },
+      {
+        "id": "2802a2d4-818b-49c3-8af0-c27e70a2c853",
+        "q": "In Bleach, Byakuya Kuchiki is known for utilizing which distinct ability?",
+        "correct": "Senbonzakura (Cherry Blossom Blades)",
+        "wrong": [
+          "Bungee Gum (Properties of both rubber and gum)",
+          "Black Leg Style / Diable Jambe",
+          "Deconstruction Alchemy (Right Arm)"
+        ]
+      },
+      {
+        "id": "5d74ff8f-b102-4221-b41d-9608d9916928",
+        "q": "What is the primary power, weapon, or ability used by Monkey D. Luffy in One Piece?",
+        "correct": "Gum-Gum Fruit / Haki",
+        "wrong": [
+          "Ten Shadows Technique",
+          "Limitless / Six Eyes",
+          "Emperor Time / Conjured Chains"
+        ]
+      },
+      {
+        "id": "1dcdaab0-fad0-4fb6-9a12-044b865b60af",
+        "q": "In One Piece, Monkey D. Luffy is known for utilizing which distinct ability?",
+        "correct": "Gum-Gum Fruit / Haki",
+        "wrong": [
+          "Heavy Firearms Mastery / T-51",
+          "Spatial Awareness / Direct Shot",
+          "Genius Intellect / The Death Note"
+        ]
+      },
+      {
+        "id": "d969159b-a548-485b-9860-b03a909211ef",
+        "q": "What is the primary power, weapon, or ability used by Roronoa Zoro in One Piece?",
+        "correct": "Three-Sword Style / Haki",
+        "wrong": [
+          "Perfect Ball Control",
+          "Rasengan / Nine-Tails Chakra",
+          "Gum-Gum Fruit / Haki"
+        ]
+      },
+      {
+        "id": "b2ef7c33-4d6e-40ed-b879-2ddda406a92b",
+        "q": "In One Piece, Roronoa Zoro is known for utilizing which distinct ability?",
+        "correct": "Three-Sword Style / Haki",
+        "wrong": [
+          "Limitless / Six Eyes",
+          "Flame Breathing",
+          "Perfect Ball Control"
+        ]
+      },
+      {
+        "id": "86ab313b-fca9-46d3-afd8-0a281b079adf",
+        "q": "What is the primary power, weapon, or ability used by Sanji in One Piece?",
+        "correct": "Black Leg Style / Diable Jambe",
+        "wrong": [
+          "Bungee Gum (Properties of both rubber and gum)",
+          "Alchemy / Soul attached to Armor",
+          "Puppeteer Soccer / Perfect Accuracy"
+        ]
+      },
+      {
+        "id": "da9e4b73-fcf7-4668-9134-c3b813451ffb",
+        "q": "In One Piece, Sanji is known for utilizing which distinct ability?",
+        "correct": "Black Leg Style / Diable Jambe",
+        "wrong": [
+          "Armored Titan",
+          "Monstrous Super Strength / Custom Axe",
+          "Elite Dribbling / Monster Ego"
+        ]
+      },
+      {
+        "id": "5ab0a8a6-a06b-4caa-9f07-9a30ae464638",
+        "q": "What is the primary power, weapon, or ability used by Trafalgar Law in One Piece?",
+        "correct": "Op-Op Fruit (Ope Ope no Mi)",
+        "wrong": [
+          "Armored Titan",
+          "Explosion",
+          "Black Leg Style / Diable Jambe"
+        ]
+      },
+      {
+        "id": "45d77e50-541d-411e-810e-bad3b327ebe8",
+        "q": "In One Piece, Trafalgar Law is known for utilizing which distinct ability?",
+        "correct": "Op-Op Fruit (Ope Ope no Mi)",
+        "wrong": [
+          "Explosion",
+          "Elite Dribbling / Monster Ego",
+          "Shadow Extraction / Ruler's Authority"
+        ]
+      },
+      {
+        "id": "d6678dd0-3047-43cc-bc2b-dd26553a9490",
+        "q": "What is the primary power, weapon, or ability used by Kaido in One Piece?",
+        "correct": "Fish-Fish Fruit, Model: Azure Dragon",
+        "wrong": [
+          "Ackerman Awakening / ODM Gear Master",
+          "Colossal Titan / Tactical Genius",
+          "Divergent Fist / Black Flash"
+        ]
+      },
+      {
+        "id": "5be19aaf-bdb2-4e68-aea2-21c02d740747",
+        "q": "In One Piece, Kaido is known for utilizing which distinct ability?",
+        "correct": "Fish-Fish Fruit, Model: Azure Dragon",
+        "wrong": [
+          "Ackerman Awakening / ODM Gear",
+          "Op-Op Fruit (Ope Ope no Mi)",
+          "Puppeteer Soccer / Perfect Accuracy"
+        ]
+      },
+      {
+        "id": "71744ca8-fa6a-4319-92a5-4ec6897952a0",
+        "q": "What is the primary power, weapon, or ability used by Yoichi Isagi in Blue Lock?",
+        "correct": "Spatial Awareness / Direct Shot",
+        "wrong": [
+          "Kamehameha / Super Saiyan",
+          "Straw Doll Technique / Resonance",
+          "Senbonzakura (Cherry Blossom Blades)"
+        ]
+      },
+      {
+        "id": "c8fda08b-7055-4f25-afec-c6f83140c464",
+        "q": "In Blue Lock, Yoichi Isagi is known for utilizing which distinct ability?",
+        "correct": "Spatial Awareness / Direct Shot",
+        "wrong": [
+          "Alchemy without a Transmutation Circle",
+          "Sode no Shirayuki (Ice Zanpakuto)",
+          "Straw Doll Technique / Resonance"
+        ]
+      },
+      {
+        "id": "7f349a8f-b9f0-46a2-a4e8-6974eef81898",
+        "q": "What is the primary power, weapon, or ability used by Meguru Bachira in Blue Lock?",
+        "correct": "Elite Dribbling / Monster Ego",
+        "wrong": [
+          "Attack Titan / Founding Titan",
+          "Copy Ninja / Sharingan",
+          "Alchemy / Soul attached to Armor"
+        ]
+      },
+      {
+        "id": "89c74310-dcbd-493c-9a93-758164eda0b5",
+        "q": "In Blue Lock, Meguru Bachira is known for utilizing which distinct ability?",
+        "correct": "Elite Dribbling / Monster Ego",
+        "wrong": [
+          "Flame Breathing",
+          "Op-Op Fruit (Ope Ope no Mi)",
+          "Amaterasu / Tsukuyomi"
+        ]
+      },
+      {
+        "id": "a2e92dc5-3cb9-4eea-88cd-855b93cc22b4",
+        "q": "What is the primary power, weapon, or ability used by Seishiro Nagi in Blue Lock?",
+        "correct": "Perfect Ball Control",
+        "wrong": [
+          "Shadow Knight Abilities",
+          "Special Beam Cannon",
+          "Kamehameha / Super Saiyan"
+        ]
+      },
+      {
+        "id": "1a527237-5d1a-45fd-b35a-664abb984152",
+        "q": "In Blue Lock, Seishiro Nagi is known for utilizing which distinct ability?",
+        "correct": "Perfect Ball Control",
+        "wrong": [
+          "Alchemy / Soul attached to Armor",
+          "Armored Titan",
+          "Three-Sword Style / Haki"
+        ]
+      },
+      {
+        "id": "2e0254ce-5efb-452e-ae9e-3c2988e5418f",
+        "q": "What is the primary power, weapon, or ability used by Rin Itoshi in Blue Lock?",
+        "correct": "Puppeteer Soccer / Perfect Accuracy",
+        "wrong": [
+          "Ackerman Awakening / ODM Gear Master",
+          "Genius Detective Skills",
+          "One For All (Former)"
+        ]
+      },
+      {
+        "id": "94c9c016-c614-4de8-a003-6d8a643cb8a9",
+        "q": "In Blue Lock, Rin Itoshi is known for utilizing which distinct ability?",
+        "correct": "Puppeteer Soccer / Perfect Accuracy",
+        "wrong": [
+          "Kamehameha / Super Saiyan",
+          "Armored Titan",
+          "Thunder Breathing (First Form only)"
+        ]
+      },
+      {
+        "id": "62eeaeac-edca-497a-b78e-f036da1a3e3f",
+        "q": "What is the primary power, weapon, or ability used by Sung Jinwoo in Solo Leveling?",
+        "correct": "Shadow Extraction / Ruler's Authority",
+        "wrong": [
+          "Ackerman Awakening / ODM Gear Master",
+          "Water Breathing / Sun Breathing",
+          "Heavy Firearms Mastery / T-51"
+        ]
+      },
+      {
+        "id": "4def48a3-39fa-44a6-9ca4-c8369647e863",
+        "q": "In Solo Leveling, Sung Jinwoo is known for utilizing which distinct ability?",
+        "correct": "Shadow Extraction / Ruler's Authority",
+        "wrong": [
+          "Chidori / Sharingan",
+          "Half-Cold Half-Hot",
+          "Cleave and Dismantle / Malevolent Shrine"
+        ]
+      },
+      {
+        "id": "62863e58-09c6-443f-a73e-c0df200cc4fa",
+        "q": "What is the primary power, weapon, or ability used by Cha Hae-In in Solo Leveling?",
+        "correct": "Sword Dance / Smell of Mana",
+        "wrong": [
+          "One For All (Former)",
+          "Thunder Breathing (First Form only)",
+          "Getsuga Tensho / Hollowfication"
+        ]
+      },
+      {
+        "id": "ae2dac34-c929-4ce1-a4a2-fee2c8820717",
+        "q": "In Solo Leveling, Cha Hae-In is known for utilizing which distinct ability?",
+        "correct": "Sword Dance / Smell of Mana",
+        "wrong": [
+          "Chidori / Sharingan",
+          "Jajanken (Enhancer Nen)",
+          "Decay"
+        ]
+      },
+      {
+        "id": "777214e2-3a33-48d6-99ff-8dc262a79a5c",
+        "q": "What is the primary power, weapon, or ability used by Igris in Solo Leveling?",
+        "correct": "Shadow Knight Abilities",
+        "wrong": [
+          "Alchemy / Soul attached to Armor",
+          "Death Beam / Golden Form",
+          "Three-Sword Style / Haki"
+        ]
+      },
+      {
+        "id": "0961038f-2744-4d50-bd12-9e90dcf342d1",
+        "q": "In Solo Leveling, Igris is known for utilizing which distinct ability?",
+        "correct": "Shadow Knight Abilities",
+        "wrong": [
+          "Water Breathing / Sun Breathing",
+          "Alchemy without a Transmutation Circle",
+          "Genius Detective Skills"
+        ]
+      },
+      {
+        "id": "96be6644-7606-425b-aff4-70f37f77f3cb",
+        "q": "What is the primary power, weapon, or ability used by Yuji Itadori in Jujutsu Kaisen?",
+        "correct": "Divergent Fist / Black Flash",
+        "wrong": [
+          "Special Beam Cannon",
+          "Genius Intellect / The Death Note",
+          "Flame Alchemy"
+        ]
+      },
+      {
+        "id": "787ab6a5-756f-4a5b-872f-795b37e4cc6e",
+        "q": "In Jujutsu Kaisen, Yuji Itadori is known for utilizing which distinct ability?",
+        "correct": "Divergent Fist / Black Flash",
+        "wrong": [
+          "Attack Titan / Founding Titan",
+          "Sword Dance / Smell of Mana",
+          "Jajanken (Enhancer Nen)"
+        ]
+      },
+      {
+        "id": "23a102f7-f82e-41a3-8720-4035c3b548c2",
+        "q": "What is the primary power, weapon, or ability used by Satoru Gojo in Jujutsu Kaisen?",
+        "correct": "Limitless / Six Eyes",
+        "wrong": [
+          "Sode no Shirayuki (Ice Zanpakuto)",
+          "Armored Titan",
+          "Op-Op Fruit (Ope Ope no Mi)"
+        ]
+      },
+      {
+        "id": "c6592f8c-f7a0-402c-9ab7-dc8cbc41f28a",
+        "q": "In Jujutsu Kaisen, Satoru Gojo is known for utilizing which distinct ability?",
+        "correct": "Limitless / Six Eyes",
+        "wrong": [
+          "Flame Alchemy",
+          "Godspeed / Lightning Transmutation",
+          "Getsuga Tensho / Hollowfication"
+        ]
+      },
+      {
+        "id": "62715554-4df4-48e0-bd0f-e62f2f82ad05",
+        "q": "What is the primary power, weapon, or ability used by Megumi Fushiguro in Jujutsu Kaisen?",
+        "correct": "Ten Shadows Technique",
+        "wrong": [
+          "Gum-Gum Fruit / Haki",
+          "Godspeed / Lightning Transmutation",
+          "Half-Cold Half-Hot"
+        ]
+      },
+      {
+        "id": "06922c06-0742-4ffc-9199-e338f3292ec3",
+        "q": "In Jujutsu Kaisen, Megumi Fushiguro is known for utilizing which distinct ability?",
+        "correct": "Ten Shadows Technique",
+        "wrong": [
+          "Elite Dribbling / Monster Ego",
+          "Fire Dragon Slayer Magic",
+          "Flame Breathing"
+        ]
+      },
+      {
+        "id": "9bc88b17-6148-42ad-a342-593eda571e3d",
+        "q": "What is the primary power, weapon, or ability used by Nobara Kugisaki in Jujutsu Kaisen?",
+        "correct": "Straw Doll Technique / Resonance",
+        "wrong": [
+          "Progenitor Demon Abilities",
+          "Amaterasu / Tsukuyomi",
+          "Kaiju Transformation (No. 8)"
+        ]
+      },
+      {
+        "id": "a6f31bde-04e4-4686-9963-3d21d3766d44",
+        "q": "In Jujutsu Kaisen, Nobara Kugisaki is known for utilizing which distinct ability?",
+        "correct": "Straw Doll Technique / Resonance",
+        "wrong": [
+          "Shinigami Eyes / Immortality",
+          "Requip Magic (The Knight)",
+          "Decay"
+        ]
+      },
+      {
+        "id": "e044ade3-f4b7-4206-9490-fc8385adf571",
+        "q": "What is the primary power, weapon, or ability used by Ryomen Sukuna in Jujutsu Kaisen?",
+        "correct": "Cleave and Dismantle / Malevolent Shrine",
+        "wrong": [
+          "Rinnegan / Almighty Push",
+          "Progenitor Demon Abilities",
+          "Dark Magic"
+        ]
+      },
+      {
+        "id": "dfe78c37-6d99-408e-bda3-ea489c19ea23",
+        "q": "In Jujutsu Kaisen, Ryomen Sukuna is known for utilizing which distinct ability?",
+        "correct": "Cleave and Dismantle / Malevolent Shrine",
+        "wrong": [
+          "One For All (Former)",
+          "Kyoka Suigetsu (Complete Hypnosis)",
+          "Ackerman Awakening / ODM Gear Master"
+        ]
+      },
+      {
+        "id": "44d21d17-f6f1-46ca-b7be-02cb608bab08",
+        "q": "What is the primary power, weapon, or ability used by Izuku Midoriya in My Hero Academia?",
+        "correct": "One For All",
+        "wrong": [
+          "Sword Dance / Smell of Mana",
+          "Divergent Fist / Black Flash",
+          "Water Breathing / Sun Breathing"
+        ]
+      },
+      {
+        "id": "7dffa96e-3c67-4acb-8642-37eaff7450a9",
+        "q": "In My Hero Academia, Izuku Midoriya is known for utilizing which distinct ability?",
+        "correct": "One For All",
+        "wrong": [
+          "Celestial Spirit Magic",
+          "Spatial Awareness / Direct Shot",
+          "Op-Op Fruit (Ope Ope no Mi)"
+        ]
+      },
+      {
+        "id": "8869e805-3a51-4e21-a7c8-c2b8f06b1c90",
+        "q": "What is the primary power, weapon, or ability used by Katsuki Bakugo in My Hero Academia?",
+        "correct": "Explosion",
+        "wrong": [
+          "Rasengan / Nine-Tails Chakra",
+          "Progenitor Demon Abilities",
+          "Black Leg Style / Diable Jambe"
+        ]
+      },
+      {
+        "id": "a54b367c-e5f6-4932-9d67-9d8926ccbcc4",
+        "q": "In My Hero Academia, Katsuki Bakugo is known for utilizing which distinct ability?",
+        "correct": "Explosion",
+        "wrong": [
+          "Celestial Spirit Magic",
+          "Monstrous Super Strength / Custom Axe",
+          "Getsuga Tensho / Hollowfication"
+        ]
+      },
+      {
+        "id": "c9a7a3cf-2360-4832-99f9-28881a494ae2",
+        "q": "What is the primary power, weapon, or ability used by Shoto Todoroki in My Hero Academia?",
+        "correct": "Half-Cold Half-Hot",
+        "wrong": [
+          "Shinigami Eyes / Immortality",
+          "Ackerman Awakening / ODM Gear Master",
+          "Limitless / Six Eyes"
+        ]
+      },
+      {
+        "id": "a8aef330-fba1-483b-9b32-fba5e88d7e9a",
+        "q": "In My Hero Academia, Shoto Todoroki is known for utilizing which distinct ability?",
+        "correct": "Half-Cold Half-Hot",
+        "wrong": [
+          "Shadow Extraction / Ruler's Authority",
+          "Kyoka Suigetsu (Complete Hypnosis)",
+          "Galick Gun / Final Flash"
+        ]
+      },
+      {
+        "id": "06a8b229-3b9f-41f7-8913-d0c7692a8345",
+        "q": "What is the primary power, weapon, or ability used by All Might in My Hero Academia?",
+        "correct": "One For All (Former)",
+        "wrong": [
+          "Spatial Awareness / Direct Shot",
+          "Emperor Time / Conjured Chains",
+          "Three-Sword Style / Haki"
+        ]
+      },
+      {
+        "id": "17411731-8cd0-4d29-8f51-c113b02d5d05",
+        "q": "In My Hero Academia, All Might is known for utilizing which distinct ability?",
+        "correct": "One For All (Former)",
+        "wrong": [
+          "Emperor Time / Conjured Chains",
+          "Senbonzakura (Cherry Blossom Blades)",
+          "Kaiju Transformation (No. 8)"
+        ]
+      },
+      {
+        "id": "e8b8347e-c8dd-493b-bcc0-4a5f722f9efa",
+        "q": "What is the primary power, weapon, or ability used by Tomura Shigaraki in My Hero Academia?",
+        "correct": "Decay",
+        "wrong": [
+          "Limitless / Six Eyes",
+          "Water Breathing / Sun Breathing",
+          "Getsuga Tensho / Hollowfication"
+        ]
+      },
+      {
+        "id": "8261f6d5-628b-4b0b-aa84-25d149b64d52",
+        "q": "In My Hero Academia, Tomura Shigaraki is known for utilizing which distinct ability?",
+        "correct": "Decay",
+        "wrong": [
+          "Op-Op Fruit (Ope Ope no Mi)",
+          "Godspeed / Lightning Transmutation",
+          "Monstrous Super Strength / Custom Axe"
+        ]
+      },
+      {
+        "id": "099f0862-562f-4bf9-bb46-eeebbf28fde5",
+        "q": "What is the primary power, weapon, or ability used by Edward Elric in Fullmetal Alchemist: Brotherhood?",
+        "correct": "Alchemy without a Transmutation Circle",
+        "wrong": [
+          "Genius Intellect / The Death Note",
+          "Ten Shadows Technique",
+          "Divergent Fist / Black Flash"
+        ]
+      },
+      {
+        "id": "3a16ce51-c13c-44a7-809d-78776f1f0645",
+        "q": "In Fullmetal Alchemist: Brotherhood, Edward Elric is known for utilizing which distinct ability?",
+        "correct": "Alchemy without a Transmutation Circle",
+        "wrong": [
+          "Jajanken (Enhancer Nen)",
+          "Limitless / Six Eyes",
+          "Progenitor Demon Abilities"
+        ]
+      },
+      {
+        "id": "3b431548-8900-4c2a-8416-65bbb7602b4c",
+        "q": "What is the primary power, weapon, or ability used by Alphonse Elric in Fullmetal Alchemist: Brotherhood?",
+        "correct": "Alchemy / Soul attached to Armor",
+        "wrong": [
+          "Decay",
+          "Op-Op Fruit (Ope Ope no Mi)",
+          "Elite Dribbling / Monster Ego"
+        ]
+      },
+      {
+        "id": "0e5023fd-a115-4c71-a158-488db81052b2",
+        "q": "In Fullmetal Alchemist: Brotherhood, Alphonse Elric is known for utilizing which distinct ability?",
+        "correct": "Alchemy / Soul attached to Armor",
+        "wrong": [
+          "Galick Gun / Final Flash",
+          "Ackerman Awakening / ODM Gear",
+          "Fish-Fish Fruit, Model: Azure Dragon"
+        ]
+      },
+      {
+        "id": "aabb3e99-3c1f-44c1-99c5-668a1bbf8d89",
+        "q": "What is the primary power, weapon, or ability used by Roy Mustang in Fullmetal Alchemist: Brotherhood?",
+        "correct": "Flame Alchemy",
+        "wrong": [
+          "Genius Detective Skills",
+          "Ackerman Awakening / ODM Gear",
+          "Divergent Fist / Black Flash"
+        ]
+      },
+      {
+        "id": "678f734c-3831-4172-9b1e-aa72a2c72ce0",
+        "q": "In Fullmetal Alchemist: Brotherhood, Roy Mustang is known for utilizing which distinct ability?",
+        "correct": "Flame Alchemy",
+        "wrong": [
+          "Genius Detective Skills",
+          "Ackerman Awakening / ODM Gear Master",
+          "Divergent Fist / Black Flash"
+        ]
+      },
+      {
+        "id": "018d8739-42fc-4844-a7cb-576ba40163ae",
+        "q": "What is the primary power, weapon, or ability used by Scar in Fullmetal Alchemist: Brotherhood?",
+        "correct": "Deconstruction Alchemy (Right Arm)",
+        "wrong": [
+          "Perfect Ball Control",
+          "Attack Titan / Founding Titan",
+          "Sode no Shirayuki (Ice Zanpakuto)"
+        ]
+      },
+      {
+        "id": "994ea0e2-9fc1-43dc-996d-2e6d4ccd341d",
+        "q": "In Fullmetal Alchemist: Brotherhood, Scar is known for utilizing which distinct ability?",
+        "correct": "Deconstruction Alchemy (Right Arm)",
+        "wrong": [
+          "Spatial Awareness / Direct Shot",
+          "One For All (Former)",
+          "Water Breathing / Sun Breathing"
+        ]
+      },
+      {
+        "id": "4f97a92c-2a0b-498c-bbda-49e11e6c67e0",
+        "q": "What is the primary power, weapon, or ability used by Asta in Black Clover?",
+        "correct": "Anti-Magic / Grimoire of the Five-Leaf Clover",
+        "wrong": [
+          "Kaiju Transformation (No. 8)",
+          "Black Leg Style / Diable Jambe",
+          "Galick Gun / Final Flash"
+        ]
+      },
+      {
+        "id": "d5e35d8a-1d36-47cc-a68d-6d40c07069d7",
+        "q": "In Black Clover, Asta is known for utilizing which distinct ability?",
+        "correct": "Anti-Magic / Grimoire of the Five-Leaf Clover",
+        "wrong": [
+          "Kaiju Transformation (No. 8)",
+          "Dark Magic",
+          "Gum-Gum Fruit / Haki"
+        ]
+      },
+      {
+        "id": "77b603e4-295d-47df-bb3d-078c478b3209",
+        "q": "What is the primary power, weapon, or ability used by Yuno Grinberryall in Black Clover?",
+        "correct": "Wind Magic / Star Magic",
+        "wrong": [
+          "Straw Doll Technique / Resonance",
+          "Colossal Titan / Tactical Genius",
+          "Deconstruction Alchemy (Right Arm)"
+        ]
+      },
+      {
+        "id": "6c8075f2-dbcb-46e7-af57-ea0ce85a25e5",
+        "q": "In Black Clover, Yuno Grinberryall is known for utilizing which distinct ability?",
+        "correct": "Wind Magic / Star Magic",
+        "wrong": [
+          "Ackerman Awakening / ODM Gear",
+          "Rasengan / Nine-Tails Chakra",
+          "Fire Dragon Slayer Magic"
+        ]
+      },
+      {
+        "id": "14f1d91b-2be4-4e9a-b2db-35fec97c1354",
+        "q": "What is the primary power, weapon, or ability used by Yami Sukehiro in Black Clover?",
+        "correct": "Dark Magic",
+        "wrong": [
+          "Op-Op Fruit (Ope Ope no Mi)",
+          "Getsuga Tensho / Hollowfication",
+          "Armored Titan"
+        ]
+      },
+      {
+        "id": "a3ff35bf-e778-49c7-9499-c89ce504396f",
+        "q": "In Black Clover, Yami Sukehiro is known for utilizing which distinct ability?",
+        "correct": "Dark Magic",
+        "wrong": [
+          "Armored Titan",
+          "Blood Demon Art: Exploding Blood",
+          "Shadow Extraction / Ruler's Authority"
+        ]
+      },
+      {
+        "id": "79d189c8-2a3e-49d7-8d95-69b49204d904",
+        "q": "What is the primary power, weapon, or ability used by Natsu Dragneel in Fairy Tail?",
+        "correct": "Fire Dragon Slayer Magic",
+        "wrong": [
+          "Perfect Ball Control",
+          "Fish-Fish Fruit, Model: Azure Dragon",
+          "Shadow Extraction / Ruler's Authority"
+        ]
+      },
+      {
+        "id": "eea16100-653e-45ac-9b95-a95ba8708a9c",
+        "q": "In Fairy Tail, Natsu Dragneel is known for utilizing which distinct ability?",
+        "correct": "Fire Dragon Slayer Magic",
+        "wrong": [
+          "One For All (Former)",
+          "Kamehameha / Super Saiyan",
+          "Three-Sword Style / Haki"
+        ]
+      },
+      {
+        "id": "6526cc43-3420-4a2a-821f-172b1ae954ab",
+        "q": "What is the primary power, weapon, or ability used by Lucy Heartfilia in Fairy Tail?",
+        "correct": "Celestial Spirit Magic",
+        "wrong": [
+          "Kaiju Transformation (No. 8)",
+          "Alchemy / Soul attached to Armor",
+          "Shinigami Eyes / Immortality"
+        ]
+      },
+      {
+        "id": "85a536bd-087c-4d85-b226-4ddd623308c3",
+        "q": "In Fairy Tail, Lucy Heartfilia is known for utilizing which distinct ability?",
+        "correct": "Celestial Spirit Magic",
+        "wrong": [
+          "Thunder Breathing (First Form only)",
+          "Limitless / Six Eyes",
+          "Cleave and Dismantle / Malevolent Shrine"
+        ]
+      },
+      {
+        "id": "ce208db8-2d24-4d8f-8d9d-f2306c8d7146",
+        "q": "What is the primary power, weapon, or ability used by Erza Scarlet in Fairy Tail?",
+        "correct": "Requip Magic (The Knight)",
+        "wrong": [
+          "Monstrous Super Strength / Custom Axe",
+          "Explosion",
+          "Deconstruction Alchemy (Right Arm)"
+        ]
+      },
+      {
+        "id": "e3b4a7c7-20b0-489a-b662-fccbf9f3f712",
+        "q": "In Fairy Tail, Erza Scarlet is known for utilizing which distinct ability?",
+        "correct": "Requip Magic (The Knight)",
+        "wrong": [
+          "Death Beam / Golden Form",
+          "Colossal Titan / Tactical Genius",
+          "Ackerman Awakening / ODM Gear"
+        ]
+      },
+      {
+        "id": "d0436f8c-b1d8-4173-b35d-da75b238c71f",
+        "q": "What is the primary power, weapon, or ability used by Kafka Hibino in Kaiju No. 8?",
+        "correct": "Kaiju Transformation (No. 8)",
+        "wrong": [
+          "Shadow Extraction / Ruler's Authority",
+          "Limitless / Six Eyes",
+          "Gum-Gum Fruit / Haki"
+        ]
+      },
+      {
+        "id": "de8e0ad6-96a1-43d3-94b6-a04e1db0af36",
+        "q": "In Kaiju No. 8, Kafka Hibino is known for utilizing which distinct ability?",
+        "correct": "Kaiju Transformation (No. 8)",
+        "wrong": [
+          "Progenitor Demon Abilities",
+          "Monstrous Super Strength / Custom Axe",
+          "Shadow Knight Abilities"
+        ]
+      },
+      {
+        "id": "983ba75b-7525-41b7-b13f-c86d64b90aa9",
+        "q": "What is the primary power, weapon, or ability used by Mina Ashiro in Kaiju No. 8?",
+        "correct": "Heavy Firearms Mastery / T-51",
+        "wrong": [
+          "Op-Op Fruit (Ope Ope no Mi)",
+          "Galick Gun / Final Flash",
+          "Senbonzakura (Cherry Blossom Blades)"
+        ]
+      },
+      {
+        "id": "1c93bd47-95cd-4045-bcc2-ecb0f352e095",
+        "q": "In Kaiju No. 8, Mina Ashiro is known for utilizing which distinct ability?",
+        "correct": "Heavy Firearms Mastery / T-51",
+        "wrong": [
+          "Getsuga Tensho / Hollowfication",
+          "Godspeed / Lightning Transmutation",
+          "Jajanken (Enhancer Nen)"
+        ]
+      },
+      {
+        "id": "d9e92e9a-b5fe-4e38-b314-9cd0eb4acb07",
+        "q": "What is the primary power, weapon, or ability used by Kikoru Shinomiya in Kaiju No. 8?",
+        "correct": "Monstrous Super Strength / Custom Axe",
+        "wrong": [
+          "Special Beam Cannon",
+          "Anti-Magic / Grimoire of the Five-Leaf Clover",
+          "Black Leg Style / Diable Jambe"
+        ]
+      },
+      {
+        "id": "63a8bc35-3956-40f9-8bbc-361ee1a7d5f3",
+        "q": "In Kaiju No. 8, Kikoru Shinomiya is known for utilizing which distinct ability?",
+        "correct": "Monstrous Super Strength / Custom Axe",
+        "wrong": [
+          "Death Beam / Golden Form",
+          "Heavy Firearms Mastery / T-51",
+          "Puppeteer Soccer / Perfect Accuracy"
+        ]
+      },
+      {
+        "id": "e16c0f49-50e3-4554-a867-0cc2d848b7ae",
+        "q": "What is the primary power, weapon, or ability used by Goku in Dragon Ball Z?",
+        "correct": "Kamehameha / Super Saiyan",
+        "wrong": [
+          "Shinigami Eyes / Immortality",
+          "Kaiju Transformation (No. 8)",
+          "Ackerman Awakening / ODM Gear"
+        ]
+      },
+      {
+        "id": "f98a9632-ee14-4e71-a4da-feb4b8d63630",
+        "q": "In Dragon Ball Z, Goku is known for utilizing which distinct ability?",
+        "correct": "Kamehameha / Super Saiyan",
+        "wrong": [
+          "Three-Sword Style / Haki",
+          "Alchemy / Soul attached to Armor",
+          "Heavy Firearms Mastery / T-51"
+        ]
+      },
+      {
+        "id": "533ae87a-a324-413c-9fd1-1eb60c9d13d6",
+        "q": "What is the primary power, weapon, or ability used by Vegeta in Dragon Ball Z?",
+        "correct": "Galick Gun / Final Flash",
+        "wrong": [
+          "Godspeed / Lightning Transmutation",
+          "Thunder Breathing (First Form only)",
+          "Deconstruction Alchemy (Right Arm)"
+        ]
+      },
+      {
+        "id": "f9791659-aa4f-41a3-afcf-ace4883f1ff7",
+        "q": "In Dragon Ball Z, Vegeta is known for utilizing which distinct ability?",
+        "correct": "Galick Gun / Final Flash",
+        "wrong": [
+          "Fire Dragon Slayer Magic",
+          "Armored Titan",
+          "Celestial Spirit Magic"
+        ]
+      },
+      {
+        "id": "f1b0ef59-01f0-4728-a84e-830e2919a16c",
+        "q": "What is the primary power, weapon, or ability used by Piccolo in Dragon Ball Z?",
+        "correct": "Special Beam Cannon",
+        "wrong": [
+          "Kyoka Suigetsu (Complete Hypnosis)",
+          "Dark Magic",
+          "Jajanken (Enhancer Nen)"
+        ]
+      },
+      {
+        "id": "be76c9ab-7f37-423c-a21e-260241fd5e0e",
+        "q": "In Dragon Ball Z, Piccolo is known for utilizing which distinct ability?",
+        "correct": "Special Beam Cannon",
+        "wrong": [
+          "Shadow Knight Abilities",
+          "Dark Magic",
+          "Kamehameha / Super Saiyan"
+        ]
+      },
+      {
+        "id": "b4792286-0ab9-4c70-bd12-679f4413cc0a",
+        "q": "What is the primary power, weapon, or ability used by Frieza in Dragon Ball Z?",
+        "correct": "Death Beam / Golden Form",
+        "wrong": [
+          "One For All (Former)",
+          "Ten Shadows Technique",
+          "Explosion"
+        ]
+      },
+      {
+        "id": "3635bd9e-75c7-493e-b9f4-53cc526c397a",
+        "q": "In Dragon Ball Z, Frieza is known for utilizing which distinct ability?",
+        "correct": "Death Beam / Golden Form",
+        "wrong": [
+          "Jajanken (Enhancer Nen)",
+          "Shadow Extraction / Ruler's Authority",
+          "Requip Magic (The Knight)"
+        ]
+      },
+      {
+        "id": "4c3235a0-3a0b-43c9-af23-d20c5c94831e",
+        "q": "What is the primary power, weapon, or ability used by Gon Freecss in Hunter x Hunter?",
+        "correct": "Jajanken (Enhancer Nen)",
+        "wrong": [
+          "Sword Dance / Smell of Mana",
+          "Chidori / Sharingan",
+          "Black Leg Style / Diable Jambe"
+        ]
+      },
+      {
+        "id": "9a2ed5d0-24d0-4e7f-855f-42c2ef2c7391",
+        "q": "In Hunter x Hunter, Gon Freecss is known for utilizing which distinct ability?",
+        "correct": "Jajanken (Enhancer Nen)",
+        "wrong": [
+          "Ackerman Awakening / ODM Gear",
+          "Flame Alchemy",
+          "Heavy Firearms Mastery / T-51"
+        ]
+      },
+      {
+        "id": "f2dcd4d2-35fe-4857-abdf-bd4efd0ce65a",
+        "q": "What is the primary power, weapon, or ability used by Killua Zoldyck in Hunter x Hunter?",
+        "correct": "Godspeed / Lightning Transmutation",
+        "wrong": [
+          "Heavy Firearms Mastery / T-51",
+          "Amaterasu / Tsukuyomi",
+          "Wind Magic / Star Magic"
+        ]
+      },
+      {
+        "id": "80c6e02d-df72-4269-8ad8-bda8f7e61dfe",
+        "q": "In Hunter x Hunter, Killua Zoldyck is known for utilizing which distinct ability?",
+        "correct": "Godspeed / Lightning Transmutation",
+        "wrong": [
+          "Progenitor Demon Abilities",
+          "Alchemy / Soul attached to Armor",
+          "Decay"
+        ]
+      },
+      {
+        "id": "dc723d47-bcaf-4d8b-bf3e-42fb289c2747",
+        "q": "What is the primary power, weapon, or ability used by Kurapika in Hunter x Hunter?",
+        "correct": "Emperor Time / Conjured Chains",
+        "wrong": [
+          "Alchemy without a Transmutation Circle",
+          "Dark Magic",
+          "Progenitor Demon Abilities"
+        ]
+      },
+      {
+        "id": "22b67c28-7c2e-4781-aaa2-157399f0bf5c",
+        "q": "In Hunter x Hunter, Kurapika is known for utilizing which distinct ability?",
+        "correct": "Emperor Time / Conjured Chains",
+        "wrong": [
+          "Limitless / Six Eyes",
+          "Fish-Fish Fruit, Model: Azure Dragon",
+          "Monstrous Super Strength / Custom Axe"
+        ]
+      },
+      {
+        "id": "37982a0a-a079-4ec3-bd6e-f5d36feac7f1",
+        "q": "What is the primary power, weapon, or ability used by Hisoka Morow in Hunter x Hunter?",
+        "correct": "Bungee Gum (Properties of both rubber and gum)",
+        "wrong": [
+          "Ackerman Awakening / ODM Gear",
+          "Anti-Magic / Grimoire of the Five-Leaf Clover",
+          "Divergent Fist / Black Flash"
+        ]
+      },
+      {
+        "id": "5c8805ec-6bd0-4a79-b495-a16c5be58c9c",
+        "q": "In Hunter x Hunter, Hisoka Morow is known for utilizing which distinct ability?",
+        "correct": "Bungee Gum (Properties of both rubber and gum)",
+        "wrong": [
+          "Wind Magic / Star Magic",
+          "Requip Magic (The Knight)",
+          "Black Leg Style / Diable Jambe"
+        ]
+      },
+      {
+        "id": "6fc57549-9f30-4be8-97a7-f848e098d197",
+        "q": "What is the primary power, weapon, or ability used by Light Yagami in Death Note?",
+        "correct": "Genius Intellect / The Death Note",
+        "wrong": [
+          "Flame Alchemy",
+          "Fire Dragon Slayer Magic",
+          "Fish-Fish Fruit, Model: Azure Dragon"
+        ]
+      },
+      {
+        "id": "9bc4926f-8d11-40f4-872d-a7fa21bf85cc",
+        "q": "In Death Note, Light Yagami is known for utilizing which distinct ability?",
+        "correct": "Genius Intellect / The Death Note",
+        "wrong": [
+          "Black Leg Style / Diable Jambe",
+          "Three-Sword Style / Haki",
+          "Kyoka Suigetsu (Complete Hypnosis)"
+        ]
+      },
+      {
+        "id": "324d5f53-8d38-4c9a-a593-8cfb0b8fb303",
+        "q": "What is the primary power, weapon, or ability used by L Lawliet in Death Note?",
+        "correct": "Genius Detective Skills",
+        "wrong": [
+          "Heavy Firearms Mastery / T-51",
+          "Three-Sword Style / Haki",
+          "Decay"
+        ]
+      },
+      {
+        "id": "ae297980-5275-4fe9-8be8-19444f53855f",
+        "q": "In Death Note, L Lawliet is known for utilizing which distinct ability?",
+        "correct": "Genius Detective Skills",
+        "wrong": [
+          "Three-Sword Style / Haki",
+          "Amaterasu / Tsukuyomi",
+          "Godspeed / Lightning Transmutation"
+        ]
+      },
+      {
+        "id": "e8936eff-44b4-4a34-a35b-47f60ccdb7d2",
+        "q": "What is the primary power, weapon, or ability used by Ryuk in Death Note?",
+        "correct": "Shinigami Eyes / Immortality",
+        "wrong": [
+          "Shadow Extraction / Ruler's Authority",
+          "Rinnegan / Almighty Push",
+          "Ackerman Awakening / ODM Gear Master"
+        ]
+      },
+      {
+        "id": "c2191301-dee1-4bb4-924d-6fef1e9be331",
+        "q": "In Death Note, Ryuk is known for utilizing which distinct ability?",
+        "correct": "Shinigami Eyes / Immortality",
+        "wrong": [
+          "Blood Demon Art: Exploding Blood",
+          "Perfect Ball Control",
+          "Puppeteer Soccer / Perfect Accuracy"
+        ]
+      },
+      {
+        "id": "d5294001-9bf7-4ab9-9c66-1d24eb7f9760",
+        "q": "Which organization, faction, or group is Naruto Uzumaki affiliated with in Naruto?",
+        "correct": "Hidden Leaf Village",
+        "wrong": [
+          "Survey Corps",
+          "Heart Pirates",
+          "Hunters Guild"
+        ]
+      },
+      {
+        "id": "6ba5db30-4b86-4619-8032-424f3e5fd714",
+        "q": "In the world of Naruto, Naruto Uzumaki belongs to which group?",
+        "correct": "Hidden Leaf Village",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "Twelve Kizuki",
+          "Ishvalan Refugees"
+        ]
+      },
+      {
+        "id": "45a6479b-dbad-46f6-a8d8-a5a128b016b7",
+        "q": "Which organization, faction, or group is Sasuke Uchiha affiliated with in Naruto?",
+        "correct": "Hidden Leaf Village",
+        "wrong": [
+          "Fairy Tail Guild",
+          "Black Bulls",
+          "Survey Corps / Yeagerists"
+        ]
+      },
+      {
+        "id": "a02edf76-6374-420a-ba78-048eaf011bc7",
+        "q": "In the world of Naruto, Sasuke Uchiha belongs to which group?",
+        "correct": "Hidden Leaf Village",
+        "wrong": [
+          "Golden Dawn",
+          "U.A. High School",
+          "Anti-Kaiju Defense Force"
+        ]
+      },
+      {
+        "id": "9687eeb9-d575-43ba-b13a-970d0dfa1b8c",
+        "q": "Which organization, faction, or group is Kakashi Hatake affiliated with in Naruto?",
+        "correct": "Hidden Leaf Village",
+        "wrong": [
+          "Kira",
+          "Arrancar / Hueco Mundo",
+          "Amestrian State Military"
+        ]
+      },
+      {
+        "id": "792624c3-fa6a-4899-820e-e8f8a1c7d417",
+        "q": "In the world of Naruto, Kakashi Hatake belongs to which group?",
+        "correct": "Hidden Leaf Village",
+        "wrong": [
+          "Fairy Tail Guild",
+          "Japanese Task Force",
+          "Survey Corps"
+        ]
+      },
+      {
+        "id": "b8d03eb2-ed73-4614-beb9-1eaa8ff638b0",
+        "q": "Which organization, faction, or group is Itachi Uchiha affiliated with in Naruto?",
+        "correct": "Akatsuki",
+        "wrong": [
+          "Arrancar / Hueco Mundo",
+          "League of Villains",
+          "Golden Dawn"
+        ]
+      },
+      {
+        "id": "54769e34-a7c8-4fdc-b965-c1a668503504",
+        "q": "In the world of Naruto, Itachi Uchiha belongs to which group?",
+        "correct": "Akatsuki",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "U.A. High School",
+          "Survey Corps"
+        ]
+      },
+      {
+        "id": "9fa5d0d2-0946-4618-ae84-6ffbaab2f76a",
+        "q": "Which organization, faction, or group is Pain (Nagato) affiliated with in Naruto?",
+        "correct": "Akatsuki",
+        "wrong": [
+          "Twelve Kizuki",
+          "Frieza Force",
+          "Pro Heroes"
+        ]
+      },
+      {
+        "id": "53e508a5-5851-43af-900e-85e4cba2e344",
+        "q": "In the world of Naruto, Pain (Nagato) belongs to which group?",
+        "correct": "Akatsuki",
+        "wrong": [
+          "Kira",
+          "Arrancar / Hueco Mundo",
+          "Fairy Tail Guild"
+        ]
+      },
+      {
+        "id": "5b165292-553c-42fd-8843-4b66b3544e4c",
+        "q": "Which organization, faction, or group is Tanjiro Kamado affiliated with in Demon Slayer?",
+        "correct": "Demon Slayer Corps",
+        "wrong": [
+          "Gotei 13",
+          "Fairy Tail Guild",
+          "Twelve Kizuki"
+        ]
+      },
+      {
+        "id": "dbba4834-95fc-4a81-b50e-48da753a95bf",
+        "q": "In the world of Demon Slayer, Tanjiro Kamado belongs to which group?",
+        "correct": "Demon Slayer Corps",
+        "wrong": [
+          "Blue Lock Project",
+          "Phantom Troupe (Former)",
+          "Heart Pirates"
+        ]
+      },
+      {
+        "id": "56fca565-eb74-4aaa-8a55-930d46acacda",
+        "q": "Which organization, faction, or group is Nezuko Kamado affiliated with in Demon Slayer?",
+        "correct": "Demon Slayer Corps",
+        "wrong": [
+          "U.A. High School",
+          "Twelve Kizuki",
+          "Anti-Kaiju Defense Force"
+        ]
+      },
+      {
+        "id": "d7512e12-5df4-4dc6-950b-0794ee2e730a",
+        "q": "In the world of Demon Slayer, Nezuko Kamado belongs to which group?",
+        "correct": "Demon Slayer Corps",
+        "wrong": [
+          "Shinigami Realm",
+          "Hunters Association",
+          "Kira"
+        ]
+      },
+      {
+        "id": "08ff6937-572a-4eea-b905-508afbc7f300",
+        "q": "Which organization, faction, or group is Zenitsu Agatsuma affiliated with in Demon Slayer?",
+        "correct": "Demon Slayer Corps",
+        "wrong": [
+          "Golden Dawn",
+          "Hunters Association",
+          "Anti-Kaiju Defense Force"
+        ]
+      },
+      {
+        "id": "01ad04ef-d0d2-44f4-9de5-332c2d65d109",
+        "q": "In the world of Demon Slayer, Zenitsu Agatsuma belongs to which group?",
+        "correct": "Demon Slayer Corps",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "Hidden Leaf Village",
+          "Arrancar / Hueco Mundo"
+        ]
+      },
+      {
+        "id": "411f7bf3-b5c3-4846-ad34-23925c32137a",
+        "q": "Which organization, faction, or group is Kyojuro Rengoku affiliated with in Demon Slayer?",
+        "correct": "Demon Slayer Corps",
+        "wrong": [
+          "Blue Lock Project",
+          "Amestrian State Military",
+          "Twelve Kizuki"
+        ]
+      },
+      {
+        "id": "936e8862-e048-4cb7-867d-7deb90fe6b19",
+        "q": "In the world of Demon Slayer, Kyojuro Rengoku belongs to which group?",
+        "correct": "Demon Slayer Corps",
+        "wrong": [
+          "Black Bulls",
+          "Pro Heroes",
+          "Arrancar / Hueco Mundo"
+        ]
+      },
+      {
+        "id": "d4111b22-7c3b-4b98-b8b6-70b9956db273",
+        "q": "Which organization, faction, or group is Muzan Kibutsuji affiliated with in Demon Slayer?",
+        "correct": "Twelve Kizuki",
+        "wrong": [
+          "Ishvalan Refugees",
+          "Gotei 13",
+          "Black Bulls"
+        ]
+      },
+      {
+        "id": "6825d594-2111-4b8d-8e5b-44fb319fcd25",
+        "q": "In the world of Demon Slayer, Muzan Kibutsuji belongs to which group?",
+        "correct": "Twelve Kizuki",
+        "wrong": [
+          "Ishvalan Refugees",
+          "Golden Dawn",
+          "Shadow Army"
+        ]
+      },
+      {
+        "id": "35e2b6d5-5d50-4f62-afe1-a00af04d676a",
+        "q": "Which organization, faction, or group is Eren Yeager affiliated with in Attack on Titan?",
+        "correct": "Survey Corps / Yeagerists",
+        "wrong": [
+          "Amestrian State Military",
+          "Shadow Army",
+          "Ahjin Guild"
+        ]
+      },
+      {
+        "id": "d321c73a-9f78-4d2a-b9f0-a41173a53407",
+        "q": "In the world of Attack on Titan, Eren Yeager belongs to which group?",
+        "correct": "Survey Corps / Yeagerists",
+        "wrong": [
+          "U.A. High School",
+          "Substitute Soul Reaper",
+          "Marleyan Warriors"
+        ]
+      },
+      {
+        "id": "b3810a44-4c7f-4da1-aa2a-540dc867cd02",
+        "q": "Which organization, faction, or group is Mikasa Ackerman affiliated with in Attack on Titan?",
+        "correct": "Survey Corps",
+        "wrong": [
+          "Hunters Guild",
+          "Shinigami Realm",
+          "Arrancar / Hueco Mundo"
+        ]
+      },
+      {
+        "id": "1267eb5f-2fad-4e1e-bc26-1f1d5bb1261b",
+        "q": "In the world of Attack on Titan, Mikasa Ackerman belongs to which group?",
+        "correct": "Survey Corps",
+        "wrong": [
+          "Demon Slayer Corps",
+          "Hidden Leaf Village",
+          "Black Bulls"
+        ]
+      },
+      {
+        "id": "6f70d6ac-de40-4fae-bcee-dd12dae4f85f",
+        "q": "Which organization, faction, or group is Levi Ackerman affiliated with in Attack on Titan?",
+        "correct": "Survey Corps",
+        "wrong": [
+          "Beasts Pirates",
+          "Blue Lock Project",
+          "Heart Pirates"
+        ]
+      },
+      {
+        "id": "e2fb5b76-f414-4d0d-8e9d-6a3934449779",
+        "q": "In the world of Attack on Titan, Levi Ackerman belongs to which group?",
+        "correct": "Survey Corps",
+        "wrong": [
+          "Kira",
+          "Tokyo Jujutsu High",
+          "Twelve Kizuki"
+        ]
+      },
+      {
+        "id": "165d7ab9-c8c9-42c4-90cb-0b4c792ecc3a",
+        "q": "Which organization, faction, or group is Armin Arlert affiliated with in Attack on Titan?",
+        "correct": "Survey Corps",
+        "wrong": [
+          "Golden Dawn",
+          "Heart Pirates",
+          "Phantom Troupe (Former)"
+        ]
+      },
+      {
+        "id": "4f062f81-24d8-476e-a676-14d881ffb921",
+        "q": "In the world of Attack on Titan, Armin Arlert belongs to which group?",
+        "correct": "Survey Corps",
+        "wrong": [
+          "Beasts Pirates",
+          "Phantom Troupe (Former)",
+          "Fairy Tail Guild"
+        ]
+      },
+      {
+        "id": "363f082a-ee0a-4ddb-b377-49c1abf50c3a",
+        "q": "Which organization, faction, or group is Reiner Braun affiliated with in Attack on Titan?",
+        "correct": "Marleyan Warriors",
+        "wrong": [
+          "Gotei 13",
+          "Phantom Troupe (Former)",
+          "Z Fighters"
+        ]
+      },
+      {
+        "id": "c110068c-2180-44d4-bf9d-f621cb06a669",
+        "q": "In the world of Attack on Titan, Reiner Braun belongs to which group?",
+        "correct": "Marleyan Warriors",
+        "wrong": [
+          "Anti-Kaiju Defense Force",
+          "Amestrian State Military",
+          "Japanese Task Force"
+        ]
+      },
+      {
+        "id": "9586732f-62c4-4466-b1e4-5a804298c531",
+        "q": "Which organization, faction, or group is Ichigo Kurosaki affiliated with in Bleach?",
+        "correct": "Substitute Soul Reaper",
+        "wrong": [
+          "Arrancar / Hueco Mundo",
+          "Frieza Force",
+          "Beasts Pirates"
+        ]
+      },
+      {
+        "id": "1e090aee-7ed3-455d-a083-d701d77f318b",
+        "q": "In the world of Bleach, Ichigo Kurosaki belongs to which group?",
+        "correct": "Substitute Soul Reaper",
+        "wrong": [
+          "Hunters Guild",
+          "League of Villains",
+          "Survey Corps / Yeagerists"
+        ]
+      },
+      {
+        "id": "2544ba55-f685-4249-b6a1-d700f6ece09b",
+        "q": "Which organization, faction, or group is Rukia Kuchiki affiliated with in Bleach?",
+        "correct": "Gotei 13",
+        "wrong": [
+          "Golden Dawn",
+          "U.A. High School",
+          "Tokyo Jujutsu High"
+        ]
+      },
+      {
+        "id": "f6b8c578-7974-4d81-a7f9-3943fa8b38dd",
+        "q": "In the world of Bleach, Rukia Kuchiki belongs to which group?",
+        "correct": "Gotei 13",
+        "wrong": [
+          "Survey Corps",
+          "Beasts Pirates",
+          "Straw Hat Pirates"
+        ]
+      },
+      {
+        "id": "eac801af-3817-433c-92f3-865e8a1f57c5",
+        "q": "Which organization, faction, or group is Sosuke Aizen affiliated with in Bleach?",
+        "correct": "Arrancar / Hueco Mundo",
+        "wrong": [
+          "Japanese Task Force",
+          "Akatsuki",
+          "Gotei 13"
+        ]
+      },
+      {
+        "id": "d1e4dd89-104f-4eba-aba8-d11ad345b0f2",
+        "q": "In the world of Bleach, Sosuke Aizen belongs to which group?",
+        "correct": "Arrancar / Hueco Mundo",
+        "wrong": [
+          "Straw Hat Pirates",
+          "Black Bulls",
+          "Shadow Army"
+        ]
+      },
+      {
+        "id": "f5cf216d-de13-4555-b83e-eb03b372b340",
+        "q": "Which organization, faction, or group is Byakuya Kuchiki affiliated with in Bleach?",
+        "correct": "Gotei 13",
+        "wrong": [
+          "Hunters Association",
+          "Anti-Kaiju Defense Force",
+          "U.A. High School"
+        ]
+      },
+      {
+        "id": "32e14235-6ed8-4bf1-9039-71f323a751e7",
+        "q": "In the world of Bleach, Byakuya Kuchiki belongs to which group?",
+        "correct": "Gotei 13",
+        "wrong": [
+          "Blue Lock Project",
+          "Japanese Task Force",
+          "Akatsuki"
+        ]
+      },
+      {
+        "id": "14f0bc30-7024-426d-9e1c-32d054ab8782",
+        "q": "Which organization, faction, or group is Monkey D. Luffy affiliated with in One Piece?",
+        "correct": "Straw Hat Pirates",
+        "wrong": [
+          "Arrancar / Hueco Mundo",
+          "Blue Lock Project",
+          "U.A. High School"
+        ]
+      },
+      {
+        "id": "8a27aeb4-4b6f-45fa-83a8-a5c3f194d15f",
+        "q": "In the world of One Piece, Monkey D. Luffy belongs to which group?",
+        "correct": "Straw Hat Pirates",
+        "wrong": [
+          "Z Fighters",
+          "Survey Corps / Yeagerists",
+          "Frieza Force"
+        ]
+      },
+      {
+        "id": "f5ab0b34-93ce-4f3f-9b79-bec732974082",
+        "q": "Which organization, faction, or group is Roronoa Zoro affiliated with in One Piece?",
+        "correct": "Straw Hat Pirates",
+        "wrong": [
+          "Hunters Guild",
+          "Amestrian State Military",
+          "Shinigami Realm"
+        ]
+      },
+      {
+        "id": "2e2ac6bd-c4ad-433c-be84-9b83152ead7e",
+        "q": "In the world of One Piece, Roronoa Zoro belongs to which group?",
+        "correct": "Straw Hat Pirates",
+        "wrong": [
+          "Hidden Leaf Village",
+          "U.A. High School",
+          "Shinigami Realm"
+        ]
+      },
+      {
+        "id": "ae4d8e08-fe3c-419e-a528-d51373190b57",
+        "q": "Which organization, faction, or group is Sanji affiliated with in One Piece?",
+        "correct": "Straw Hat Pirates",
+        "wrong": [
+          "Z Fighters",
+          "Survey Corps",
+          "Hidden Leaf Village"
+        ]
+      },
+      {
+        "id": "84912f3b-96bf-40a5-9b7d-10cd32cfe23c",
+        "q": "In the world of One Piece, Sanji belongs to which group?",
+        "correct": "Straw Hat Pirates",
+        "wrong": [
+          "Hunters Guild",
+          "Black Bulls",
+          "Z Fighters"
+        ]
+      },
+      {
+        "id": "44b39798-70c4-41cf-a431-9c16251e7a0c",
+        "q": "Which organization, faction, or group is Trafalgar Law affiliated with in One Piece?",
+        "correct": "Heart Pirates",
+        "wrong": [
+          "U.A. High School",
+          "Survey Corps / Yeagerists",
+          "Akatsuki"
+        ]
+      },
+      {
+        "id": "fb342d18-ae72-49d4-8b33-50f3898eaa4b",
+        "q": "In the world of One Piece, Trafalgar Law belongs to which group?",
+        "correct": "Heart Pirates",
+        "wrong": [
+          "Tokyo Jujutsu High",
+          "Demon Slayer Corps",
+          "Hunters Guild"
+        ]
+      },
+      {
+        "id": "967f20b4-97c6-4ff3-88c7-000b648cf2b9",
+        "q": "Which organization, faction, or group is Kaido affiliated with in One Piece?",
+        "correct": "Beasts Pirates",
+        "wrong": [
+          "Anti-Kaiju Defense Force",
+          "Fairy Tail Guild",
+          "Phantom Troupe (Former)"
+        ]
+      },
+      {
+        "id": "60cae852-2167-4bc4-afbd-29111f63daf2",
+        "q": "In the world of One Piece, Kaido belongs to which group?",
+        "correct": "Beasts Pirates",
+        "wrong": [
+          "Straw Hat Pirates",
+          "Tokyo Jujutsu High",
+          "Golden Dawn"
+        ]
+      },
+      {
+        "id": "88ab3ed4-55f3-4805-8752-5a288eabde54",
+        "q": "Which organization, faction, or group is Yoichi Isagi affiliated with in Blue Lock?",
+        "correct": "Blue Lock Project",
+        "wrong": [
+          "Ahjin Guild",
+          "Arrancar / Hueco Mundo",
+          "League of Villains"
+        ]
+      },
+      {
+        "id": "14be2072-3b4e-4fad-a808-f23115d8e9e5",
+        "q": "In the world of Blue Lock, Yoichi Isagi belongs to which group?",
+        "correct": "Blue Lock Project",
+        "wrong": [
+          "Marleyan Warriors",
+          "Gotei 13",
+          "League of Villains"
+        ]
+      },
+      {
+        "id": "e1bdffe0-71fa-4634-89ef-fa277fc37889",
+        "q": "Which organization, faction, or group is Meguru Bachira affiliated with in Blue Lock?",
+        "correct": "Blue Lock Project",
+        "wrong": [
+          "Akatsuki",
+          "Marleyan Warriors",
+          "Cursed Spirits"
+        ]
+      },
+      {
+        "id": "ab6580d4-ad38-49a4-8f17-94370fbe6a4b",
+        "q": "In the world of Blue Lock, Meguru Bachira belongs to which group?",
+        "correct": "Blue Lock Project",
+        "wrong": [
+          "Z Fighters",
+          "Ishvalan Refugees",
+          "Marleyan Warriors"
+        ]
+      },
+      {
+        "id": "cc6737c6-96eb-4a2d-9a04-f84e6f44d6ad",
+        "q": "Which organization, faction, or group is Seishiro Nagi affiliated with in Blue Lock?",
+        "correct": "Blue Lock Project",
+        "wrong": [
+          "Demon Slayer Corps",
+          "Pro Heroes",
+          "Black Bulls"
+        ]
+      },
+      {
+        "id": "562b6194-1390-41c2-a4d3-ab315298e214",
+        "q": "In the world of Blue Lock, Seishiro Nagi belongs to which group?",
+        "correct": "Blue Lock Project",
+        "wrong": [
+          "Straw Hat Pirates",
+          "Black Bulls",
+          "Z Fighters"
+        ]
+      },
+      {
+        "id": "1a6354f2-c8c0-47f2-b996-b112e868d922",
+        "q": "Which organization, faction, or group is Rin Itoshi affiliated with in Blue Lock?",
+        "correct": "Blue Lock Project",
+        "wrong": [
+          "Cursed Spirits",
+          "Amestrian State Military",
+          "Marleyan Warriors"
+        ]
+      },
+      {
+        "id": "5a9221d6-6424-4356-984a-6eaf65be3702",
+        "q": "In the world of Blue Lock, Rin Itoshi belongs to which group?",
+        "correct": "Blue Lock Project",
+        "wrong": [
+          "Hunters Association",
+          "Z Fighters",
+          "Heart Pirates"
+        ]
+      },
+      {
+        "id": "9b0e53e9-2a64-4ecc-b294-1a8e1473cb0d",
+        "q": "Which organization, faction, or group is Sung Jinwoo affiliated with in Solo Leveling?",
+        "correct": "Ahjin Guild",
+        "wrong": [
+          "Ishvalan Refugees",
+          "Marleyan Warriors",
+          "Twelve Kizuki"
+        ]
+      },
+      {
+        "id": "ad669e7c-ee3c-4910-9511-fe58cbd3679b",
+        "q": "In the world of Solo Leveling, Sung Jinwoo belongs to which group?",
+        "correct": "Ahjin Guild",
+        "wrong": [
+          "Akatsuki",
+          "Heart Pirates",
+          "Shinigami Realm"
+        ]
+      },
+      {
+        "id": "30f29530-5c16-4c9e-b2d4-03db7342b72c",
+        "q": "Which organization, faction, or group is Cha Hae-In affiliated with in Solo Leveling?",
+        "correct": "Hunters Guild",
+        "wrong": [
+          "Hunters Association",
+          "Ahjin Guild",
+          "U.A. High School"
+        ]
+      },
+      {
+        "id": "876d3b4c-33c5-4b3b-a37d-b30e40d35603",
+        "q": "In the world of Solo Leveling, Cha Hae-In belongs to which group?",
+        "correct": "Hunters Guild",
+        "wrong": [
+          "Frieza Force",
+          "Shadow Army",
+          "Anti-Kaiju Defense Force"
+        ]
+      },
+      {
+        "id": "2061fe86-5ec9-4bb0-ab2c-638106f1ec82",
+        "q": "Which organization, faction, or group is Igris affiliated with in Solo Leveling?",
+        "correct": "Shadow Army",
+        "wrong": [
+          "Phantom Troupe (Former)",
+          "League of Villains",
+          "Ahjin Guild"
+        ]
+      },
+      {
+        "id": "7d7fa2a4-01c4-407f-bf23-0972a0e78c65",
+        "q": "In the world of Solo Leveling, Igris belongs to which group?",
+        "correct": "Shadow Army",
+        "wrong": [
+          "Straw Hat Pirates",
+          "Pro Heroes",
+          "Arrancar / Hueco Mundo"
+        ]
+      },
+      {
+        "id": "b743f2c4-3df9-4657-8427-709c26ec6a9b",
+        "q": "Which organization, faction, or group is Yuji Itadori affiliated with in Jujutsu Kaisen?",
+        "correct": "Tokyo Jujutsu High",
+        "wrong": [
+          "Beasts Pirates",
+          "Demon Slayer Corps",
+          "Twelve Kizuki"
+        ]
+      },
+      {
+        "id": "2d0108c1-af11-4ef9-a876-9a3679d097c2",
+        "q": "In the world of Jujutsu Kaisen, Yuji Itadori belongs to which group?",
+        "correct": "Tokyo Jujutsu High",
+        "wrong": [
+          "Fairy Tail Guild",
+          "Ahjin Guild",
+          "Anti-Kaiju Defense Force"
+        ]
+      },
+      {
+        "id": "c9d0021c-6d26-495e-9410-050062c8d446",
+        "q": "Which organization, faction, or group is Satoru Gojo affiliated with in Jujutsu Kaisen?",
+        "correct": "Tokyo Jujutsu High",
+        "wrong": [
+          "Akatsuki",
+          "Blue Lock Project",
+          "Substitute Soul Reaper"
+        ]
+      },
+      {
+        "id": "cfa6dc9e-3781-4b3c-8a24-7b56c6fbef1c",
+        "q": "In the world of Jujutsu Kaisen, Satoru Gojo belongs to which group?",
+        "correct": "Tokyo Jujutsu High",
+        "wrong": [
+          "League of Villains",
+          "Straw Hat Pirates",
+          "Hunters Association"
+        ]
+      },
+      {
+        "id": "fef96f52-83d7-4c4e-86bf-d60264c8729b",
+        "q": "Which organization, faction, or group is Megumi Fushiguro affiliated with in Jujutsu Kaisen?",
+        "correct": "Tokyo Jujutsu High",
+        "wrong": [
+          "Straw Hat Pirates",
+          "Japanese Task Force",
+          "Ishvalan Refugees"
+        ]
+      },
+      {
+        "id": "375cb005-7f9b-4fed-900f-f6c395e5e217",
+        "q": "In the world of Jujutsu Kaisen, Megumi Fushiguro belongs to which group?",
+        "correct": "Tokyo Jujutsu High",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "Black Bulls",
+          "Demon Slayer Corps"
+        ]
+      },
+      {
+        "id": "b4e54b8c-859c-45da-96cf-8ffcb78936be",
+        "q": "Which organization, faction, or group is Nobara Kugisaki affiliated with in Jujutsu Kaisen?",
+        "correct": "Tokyo Jujutsu High",
+        "wrong": [
+          "Japanese Task Force",
+          "Shinigami Realm",
+          "Beasts Pirates"
+        ]
+      },
+      {
+        "id": "70111564-16ac-461c-83c2-4d4c487bed72",
+        "q": "In the world of Jujutsu Kaisen, Nobara Kugisaki belongs to which group?",
+        "correct": "Tokyo Jujutsu High",
+        "wrong": [
+          "Marleyan Warriors",
+          "Arrancar / Hueco Mundo",
+          "Ahjin Guild"
+        ]
+      },
+      {
+        "id": "2c96f393-cd3b-4d77-81f2-b303261e93d8",
+        "q": "Which organization, faction, or group is Ryomen Sukuna affiliated with in Jujutsu Kaisen?",
+        "correct": "Cursed Spirits",
+        "wrong": [
+          "Gotei 13",
+          "League of Villains",
+          "Frieza Force"
+        ]
+      },
+      {
+        "id": "5cc6489a-9b3a-4f93-9a23-7050df47a9db",
+        "q": "In the world of Jujutsu Kaisen, Ryomen Sukuna belongs to which group?",
+        "correct": "Cursed Spirits",
+        "wrong": [
+          "Kira",
+          "Arrancar / Hueco Mundo",
+          "Anti-Kaiju Defense Force"
+        ]
+      },
+      {
+        "id": "fef35751-439c-42cd-9ccb-04463ed66735",
+        "q": "Which organization, faction, or group is Izuku Midoriya affiliated with in My Hero Academia?",
+        "correct": "U.A. High School",
+        "wrong": [
+          "Hunters Association",
+          "Beasts Pirates",
+          "Tokyo Jujutsu High"
+        ]
+      },
+      {
+        "id": "0750ef0c-9c9e-4015-bb1f-a8b999bb8321",
+        "q": "In the world of My Hero Academia, Izuku Midoriya belongs to which group?",
+        "correct": "U.A. High School",
+        "wrong": [
+          "Hunters Guild",
+          "Phantom Troupe (Former)",
+          "Fairy Tail Guild"
+        ]
+      },
+      {
+        "id": "b890c063-19b9-4dcb-a3e5-533f8cd1d2a9",
+        "q": "Which organization, faction, or group is Katsuki Bakugo affiliated with in My Hero Academia?",
+        "correct": "U.A. High School",
+        "wrong": [
+          "Beasts Pirates",
+          "Black Bulls",
+          "Phantom Troupe (Former)"
+        ]
+      },
+      {
+        "id": "755161e9-26b9-4dd1-bf3e-efc525f35869",
+        "q": "In the world of My Hero Academia, Katsuki Bakugo belongs to which group?",
+        "correct": "U.A. High School",
+        "wrong": [
+          "Fairy Tail Guild",
+          "Shadow Army",
+          "Akatsuki"
+        ]
+      },
+      {
+        "id": "5d9352f6-ad2a-4262-aa0f-c1827d189e7a",
+        "q": "Which organization, faction, or group is Shoto Todoroki affiliated with in My Hero Academia?",
+        "correct": "U.A. High School",
+        "wrong": [
+          "Arrancar / Hueco Mundo",
+          "Frieza Force",
+          "Hidden Leaf Village"
+        ]
+      },
+      {
+        "id": "f0e11c49-6592-4154-bff5-3ceba8feaad9",
+        "q": "In the world of My Hero Academia, Shoto Todoroki belongs to which group?",
+        "correct": "U.A. High School",
+        "wrong": [
+          "Blue Lock Project",
+          "Shinigami Realm",
+          "Straw Hat Pirates"
+        ]
+      },
+      {
+        "id": "2dcb68aa-1941-45b6-b8cc-ef24e0fc18e1",
+        "q": "Which organization, faction, or group is All Might affiliated with in My Hero Academia?",
+        "correct": "Pro Heroes",
+        "wrong": [
+          "Shadow Army",
+          "Marleyan Warriors",
+          "Ishvalan Refugees"
+        ]
+      },
+      {
+        "id": "13b93383-f32f-4240-8c38-8ba27a450e50",
+        "q": "In the world of My Hero Academia, All Might belongs to which group?",
+        "correct": "Pro Heroes",
+        "wrong": [
+          "Black Bulls",
+          "Amestrian State Military",
+          "Survey Corps / Yeagerists"
+        ]
+      },
+      {
+        "id": "c439d732-a849-48c0-99d1-65d207b21515",
+        "q": "Which organization, faction, or group is Tomura Shigaraki affiliated with in My Hero Academia?",
+        "correct": "League of Villains",
+        "wrong": [
+          "Japanese Task Force",
+          "Phantom Troupe (Former)",
+          "Ahjin Guild"
+        ]
+      },
+      {
+        "id": "1979925e-071a-4898-aebf-90a37eb2525e",
+        "q": "In the world of My Hero Academia, Tomura Shigaraki belongs to which group?",
+        "correct": "League of Villains",
+        "wrong": [
+          "Golden Dawn",
+          "Marleyan Warriors",
+          "Ishvalan Refugees"
+        ]
+      },
+      {
+        "id": "c50219ed-564f-427c-a8f5-cfca41d5506b",
+        "q": "Which organization, faction, or group is Edward Elric affiliated with in Fullmetal Alchemist: Brotherhood?",
+        "correct": "Amestrian State Military",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "Hunters Guild",
+          "Marleyan Warriors"
+        ]
+      },
+      {
+        "id": "4c8443d3-bc10-40e7-9f78-4221961ac255",
+        "q": "In the world of Fullmetal Alchemist: Brotherhood, Edward Elric belongs to which group?",
+        "correct": "Amestrian State Military",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "Golden Dawn",
+          "Arrancar / Hueco Mundo"
+        ]
+      },
+      {
+        "id": "e1fb1f53-d3bb-4e26-8b36-17dc3941136b",
+        "q": "Which organization, faction, or group is Alphonse Elric affiliated with in Fullmetal Alchemist: Brotherhood?",
+        "correct": "Amestrian State Military",
+        "wrong": [
+          "Heart Pirates",
+          "Kira",
+          "Marleyan Warriors"
+        ]
+      },
+      {
+        "id": "5fbe2720-318b-42bb-9a0e-e4ce095825cc",
+        "q": "In the world of Fullmetal Alchemist: Brotherhood, Alphonse Elric belongs to which group?",
+        "correct": "Amestrian State Military",
+        "wrong": [
+          "Z Fighters",
+          "Cursed Spirits",
+          "Ahjin Guild"
+        ]
+      },
+      {
+        "id": "40bf090e-4778-4d8d-839e-751291d5eb58",
+        "q": "Which organization, faction, or group is Roy Mustang affiliated with in Fullmetal Alchemist: Brotherhood?",
+        "correct": "Amestrian State Military",
+        "wrong": [
+          "Arrancar / Hueco Mundo",
+          "Demon Slayer Corps",
+          "Ahjin Guild"
+        ]
+      },
+      {
+        "id": "f829a30e-6b92-4ba8-ae1d-97902f1acc1f",
+        "q": "In the world of Fullmetal Alchemist: Brotherhood, Roy Mustang belongs to which group?",
+        "correct": "Amestrian State Military",
+        "wrong": [
+          "Blue Lock Project",
+          "Kira",
+          "Fairy Tail Guild"
+        ]
+      },
+      {
+        "id": "ec88f3fa-97c2-4a48-a374-31b1dba75f8d",
+        "q": "Which organization, faction, or group is Scar affiliated with in Fullmetal Alchemist: Brotherhood?",
+        "correct": "Ishvalan Refugees",
+        "wrong": [
+          "Japanese Task Force",
+          "Ahjin Guild",
+          "Heart Pirates"
+        ]
+      },
+      {
+        "id": "5976cd83-f300-401f-ac64-266ce0b6d31d",
+        "q": "In the world of Fullmetal Alchemist: Brotherhood, Scar belongs to which group?",
+        "correct": "Ishvalan Refugees",
+        "wrong": [
+          "Hunters Association",
+          "Japanese Task Force",
+          "Survey Corps / Yeagerists"
+        ]
+      },
+      {
+        "id": "a680a207-07d9-4a78-b7a0-f04333be19c1",
+        "q": "Which organization, faction, or group is Asta affiliated with in Black Clover?",
+        "correct": "Black Bulls",
+        "wrong": [
+          "Shinigami Realm",
+          "Survey Corps / Yeagerists",
+          "Beasts Pirates"
+        ]
+      },
+      {
+        "id": "b135fe8d-3ac1-4007-a30b-671a6fe14b8e",
+        "q": "In the world of Black Clover, Asta belongs to which group?",
+        "correct": "Black Bulls",
+        "wrong": [
+          "Straw Hat Pirates",
+          "Japanese Task Force",
+          "Marleyan Warriors"
+        ]
+      },
+      {
+        "id": "daf42417-9382-4494-a7c2-7570bb7f1640",
+        "q": "Which organization, faction, or group is Yuno Grinberryall affiliated with in Black Clover?",
+        "correct": "Golden Dawn",
+        "wrong": [
+          "Ahjin Guild",
+          "Pro Heroes",
+          "Kira"
+        ]
+      },
+      {
+        "id": "827da28e-a8f8-444a-82cc-17d3c381962a",
+        "q": "In the world of Black Clover, Yuno Grinberryall belongs to which group?",
+        "correct": "Golden Dawn",
+        "wrong": [
+          "Frieza Force",
+          "Amestrian State Military",
+          "Blue Lock Project"
+        ]
+      },
+      {
+        "id": "c6bc5307-cb85-4424-8236-a351c99bf085",
+        "q": "Which organization, faction, or group is Yami Sukehiro affiliated with in Black Clover?",
+        "correct": "Black Bulls",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "Pro Heroes",
+          "Tokyo Jujutsu High"
+        ]
+      },
+      {
+        "id": "4242382f-13e1-4805-b131-95cb4cc6b51d",
+        "q": "In the world of Black Clover, Yami Sukehiro belongs to which group?",
+        "correct": "Black Bulls",
+        "wrong": [
+          "Pro Heroes",
+          "Shinigami Realm",
+          "Amestrian State Military"
+        ]
+      },
+      {
+        "id": "dd8e7af5-b1d9-4708-9a6e-401b48a2d32b",
+        "q": "Which organization, faction, or group is Natsu Dragneel affiliated with in Fairy Tail?",
+        "correct": "Fairy Tail Guild",
+        "wrong": [
+          "Demon Slayer Corps",
+          "Survey Corps",
+          "Hunters Guild"
+        ]
+      },
+      {
+        "id": "aeb4087d-0181-42c5-acb6-e6d2958bf090",
+        "q": "In the world of Fairy Tail, Natsu Dragneel belongs to which group?",
+        "correct": "Fairy Tail Guild",
+        "wrong": [
+          "Blue Lock Project",
+          "Substitute Soul Reaper",
+          "Straw Hat Pirates"
+        ]
+      },
+      {
+        "id": "8cc34833-654f-4903-a962-bda88726c7e9",
+        "q": "Which organization, faction, or group is Lucy Heartfilia affiliated with in Fairy Tail?",
+        "correct": "Fairy Tail Guild",
+        "wrong": [
+          "Hidden Leaf Village",
+          "Shadow Army",
+          "Beasts Pirates"
+        ]
+      },
+      {
+        "id": "6d18fef3-9a5b-4a48-8e9e-08078afaa8fe",
+        "q": "In the world of Fairy Tail, Lucy Heartfilia belongs to which group?",
+        "correct": "Fairy Tail Guild",
+        "wrong": [
+          "Frieza Force",
+          "Shinigami Realm",
+          "Japanese Task Force"
+        ]
+      },
+      {
+        "id": "97e16cd9-6c12-46af-aa21-4109d416a98d",
+        "q": "Which organization, faction, or group is Erza Scarlet affiliated with in Fairy Tail?",
+        "correct": "Fairy Tail Guild",
+        "wrong": [
+          "Hidden Leaf Village",
+          "Kira",
+          "Pro Heroes"
+        ]
+      },
+      {
+        "id": "85f17c29-39c3-463f-b805-e5154e51c870",
+        "q": "In the world of Fairy Tail, Erza Scarlet belongs to which group?",
+        "correct": "Fairy Tail Guild",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "Beasts Pirates",
+          "Cursed Spirits"
+        ]
+      },
+      {
+        "id": "bc3fecfd-aebb-45a5-96a6-1ffea4e3573c",
+        "q": "Which organization, faction, or group is Kafka Hibino affiliated with in Kaiju No. 8?",
+        "correct": "Anti-Kaiju Defense Force",
+        "wrong": [
+          "Black Bulls",
+          "Hunters Association",
+          "Substitute Soul Reaper"
+        ]
+      },
+      {
+        "id": "080e18da-0ca2-467d-a4ea-b932d90a1a67",
+        "q": "In the world of Kaiju No. 8, Kafka Hibino belongs to which group?",
+        "correct": "Anti-Kaiju Defense Force",
+        "wrong": [
+          "Golden Dawn",
+          "Marleyan Warriors",
+          "Heart Pirates"
+        ]
+      },
+      {
+        "id": "78b951a7-c663-4115-9424-10c9088f8cc6",
+        "q": "Which organization, faction, or group is Mina Ashiro affiliated with in Kaiju No. 8?",
+        "correct": "Anti-Kaiju Defense Force",
+        "wrong": [
+          "Cursed Spirits",
+          "Shadow Army",
+          "Hidden Leaf Village"
+        ]
+      },
+      {
+        "id": "dc64a538-f4a0-4d28-9380-4a6bf7cbd57c",
+        "q": "In the world of Kaiju No. 8, Mina Ashiro belongs to which group?",
+        "correct": "Anti-Kaiju Defense Force",
+        "wrong": [
+          "U.A. High School",
+          "Substitute Soul Reaper",
+          "Straw Hat Pirates"
+        ]
+      },
+      {
+        "id": "8b00b9c9-e56e-47bb-8898-bc7c15275556",
+        "q": "Which organization, faction, or group is Kikoru Shinomiya affiliated with in Kaiju No. 8?",
+        "correct": "Anti-Kaiju Defense Force",
+        "wrong": [
+          "Japanese Task Force",
+          "Substitute Soul Reaper",
+          "Blue Lock Project"
+        ]
+      },
+      {
+        "id": "b04da230-6cc9-4e90-b216-3fef3d249781",
+        "q": "In the world of Kaiju No. 8, Kikoru Shinomiya belongs to which group?",
+        "correct": "Anti-Kaiju Defense Force",
+        "wrong": [
+          "Frieza Force",
+          "Cursed Spirits",
+          "Heart Pirates"
+        ]
+      },
+      {
+        "id": "8ae29c92-27a4-469a-94af-68a11116ddd2",
+        "q": "Which organization, faction, or group is Goku affiliated with in Dragon Ball Z?",
+        "correct": "Z Fighters",
+        "wrong": [
+          "Demon Slayer Corps",
+          "Ahjin Guild",
+          "Amestrian State Military"
+        ]
+      },
+      {
+        "id": "1c010bad-20a1-4d70-a164-0558c10846c1",
+        "q": "In the world of Dragon Ball Z, Goku belongs to which group?",
+        "correct": "Z Fighters",
+        "wrong": [
+          "Pro Heroes",
+          "Golden Dawn",
+          "U.A. High School"
+        ]
+      },
+      {
+        "id": "a94be207-f8ca-4f57-bf28-04877313d095",
+        "q": "Which organization, faction, or group is Vegeta affiliated with in Dragon Ball Z?",
+        "correct": "Z Fighters",
+        "wrong": [
+          "Frieza Force",
+          "Gotei 13",
+          "Demon Slayer Corps"
+        ]
+      },
+      {
+        "id": "dc8adc34-7dae-4b92-81ae-cbe2b7d32e64",
+        "q": "In the world of Dragon Ball Z, Vegeta belongs to which group?",
+        "correct": "Z Fighters",
+        "wrong": [
+          "Beasts Pirates",
+          "Anti-Kaiju Defense Force",
+          "Japanese Task Force"
+        ]
+      },
+      {
+        "id": "596068d0-078c-40bf-8d06-a63ad2b7f0bd",
+        "q": "Which organization, faction, or group is Piccolo affiliated with in Dragon Ball Z?",
+        "correct": "Z Fighters",
+        "wrong": [
+          "Anti-Kaiju Defense Force",
+          "Survey Corps / Yeagerists",
+          "Survey Corps"
+        ]
+      },
+      {
+        "id": "49a67ad2-6459-4747-97a3-56a84dc8c9c9",
+        "q": "In the world of Dragon Ball Z, Piccolo belongs to which group?",
+        "correct": "Z Fighters",
+        "wrong": [
+          "Golden Dawn",
+          "Shadow Army",
+          "Cursed Spirits"
+        ]
+      },
+      {
+        "id": "63882268-9c60-4449-b9a1-1610b0848250",
+        "q": "Which organization, faction, or group is Frieza affiliated with in Dragon Ball Z?",
+        "correct": "Frieza Force",
+        "wrong": [
+          "Z Fighters",
+          "Tokyo Jujutsu High",
+          "Ishvalan Refugees"
+        ]
+      },
+      {
+        "id": "45ea6b23-c21e-455b-978d-b685f76bd542",
+        "q": "In the world of Dragon Ball Z, Frieza belongs to which group?",
+        "correct": "Frieza Force",
+        "wrong": [
+          "Shinigami Realm",
+          "Japanese Task Force",
+          "Black Bulls"
+        ]
+      },
+      {
+        "id": "b2dc961b-f318-4f9d-8bcf-f42c985efb8d",
+        "q": "Which organization, faction, or group is Gon Freecss affiliated with in Hunter x Hunter?",
+        "correct": "Hunters Association",
+        "wrong": [
+          "Anti-Kaiju Defense Force",
+          "U.A. High School",
+          "Marleyan Warriors"
+        ]
+      },
+      {
+        "id": "7140d380-f943-4b34-a298-18e3ebf9de48",
+        "q": "In the world of Hunter x Hunter, Gon Freecss belongs to which group?",
+        "correct": "Hunters Association",
+        "wrong": [
+          "Shinigami Realm",
+          "Fairy Tail Guild",
+          "Amestrian State Military"
+        ]
+      },
+      {
+        "id": "424ec0b8-2cd5-422d-ab5f-fce9d3659769",
+        "q": "Which organization, faction, or group is Killua Zoldyck affiliated with in Hunter x Hunter?",
+        "correct": "Hunters Association",
+        "wrong": [
+          "Z Fighters",
+          "Gotei 13",
+          "Shinigami Realm"
+        ]
+      },
+      {
+        "id": "49bc8e98-3b9a-44f7-8531-34627dfb8af0",
+        "q": "In the world of Hunter x Hunter, Killua Zoldyck belongs to which group?",
+        "correct": "Hunters Association",
+        "wrong": [
+          "Beasts Pirates",
+          "Amestrian State Military",
+          "Hidden Leaf Village"
+        ]
+      },
+      {
+        "id": "62d4b044-a616-437d-afd7-1f52139e6a26",
+        "q": "Which organization, faction, or group is Kurapika affiliated with in Hunter x Hunter?",
+        "correct": "Hunters Association",
+        "wrong": [
+          "Beasts Pirates",
+          "Z Fighters",
+          "Substitute Soul Reaper"
+        ]
+      },
+      {
+        "id": "6c82f1ba-653e-4a6b-b1df-bf84d61aaada",
+        "q": "In the world of Hunter x Hunter, Kurapika belongs to which group?",
+        "correct": "Hunters Association",
+        "wrong": [
+          "Frieza Force",
+          "Beasts Pirates",
+          "Hidden Leaf Village"
+        ]
+      },
+      {
+        "id": "7bc9c52f-cb80-4399-83bc-27c8cb49f56a",
+        "q": "Which organization, faction, or group is Hisoka Morow affiliated with in Hunter x Hunter?",
+        "correct": "Phantom Troupe (Former)",
+        "wrong": [
+          "Shinigami Realm",
+          "Japanese Task Force",
+          "Heart Pirates"
+        ]
+      },
+      {
+        "id": "ab12df61-d71f-4fc7-9ebd-2b6caef86c4c",
+        "q": "In the world of Hunter x Hunter, Hisoka Morow belongs to which group?",
+        "correct": "Phantom Troupe (Former)",
+        "wrong": [
+          "Substitute Soul Reaper",
+          "Akatsuki",
+          "Straw Hat Pirates"
+        ]
+      },
+      {
+        "id": "0afb9da5-380c-4be6-810c-e1fb86e8bf5b",
+        "q": "Which organization, faction, or group is Light Yagami affiliated with in Death Note?",
+        "correct": "Kira",
+        "wrong": [
+          "Blue Lock Project",
+          "Tokyo Jujutsu High",
+          "Arrancar / Hueco Mundo"
+        ]
+      },
+      {
+        "id": "f3af0ff5-a1e1-4886-ba01-20078bf359f2",
+        "q": "In the world of Death Note, Light Yagami belongs to which group?",
+        "correct": "Kira",
+        "wrong": [
+          "Tokyo Jujutsu High",
+          "Ishvalan Refugees",
+          "Survey Corps / Yeagerists"
+        ]
+      },
+      {
+        "id": "5b999404-884d-4e88-9a9b-2c5078954298",
+        "q": "Which organization, faction, or group is L Lawliet affiliated with in Death Note?",
+        "correct": "Japanese Task Force",
+        "wrong": [
+          "Shadow Army",
+          "Anti-Kaiju Defense Force",
+          "Hidden Leaf Village"
+        ]
+      },
+      {
+        "id": "56673eb4-ddd2-48ea-83fe-c8e0266aeb93",
+        "q": "In the world of Death Note, L Lawliet belongs to which group?",
+        "correct": "Japanese Task Force",
+        "wrong": [
+          "Tokyo Jujutsu High",
+          "Hidden Leaf Village",
+          "Hunters Guild"
+        ]
+      },
+      {
+        "id": "e9384d22-c298-43f4-aed7-d2085180276c",
+        "q": "Which organization, faction, or group is Ryuk affiliated with in Death Note?",
+        "correct": "Shinigami Realm",
+        "wrong": [
+          "Arrancar / Hueco Mundo",
+          "Gotei 13",
+          "Substitute Soul Reaper"
+        ]
+      },
+      {
+        "id": "7cbf5633-0893-4658-a0c9-757c43f3bf25",
+        "q": "In the world of Death Note, Ryuk belongs to which group?",
+        "correct": "Shinigami Realm",
+        "wrong": [
+          "Heart Pirates",
+          "Fairy Tail Guild",
+          "Hunters Association"
+        ]
+      },
+      {
+        "id": "a6c3e3c2-a006-43da-ae02-0ff0d52077b2",
+        "q": "TRIVIA: Which popular anime series features the character Sasuke Uchiha? [Bonus 1]",
+        "correct": "Naruto",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "8e6c2a62-f42b-48ed-8112-755eb4f6679e",
+        "q": "TRIVIA: Sasuke Uchiha is a prominent character in which anime? [Bonus 1]",
+        "correct": "Naruto",
+        "wrong": [
+          "Kaiju No. 8",
+          "Attack on Titan",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "3518c6a1-c4b1-4382-9c79-e55e3de51314",
+        "q": "TRIVIA: Which popular anime series features the character Kakashi Hatake? [Bonus 1]",
+        "correct": "Naruto",
+        "wrong": [
+          "Black Clover",
+          "Solo Leveling",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "f2dee6c3-71dc-4380-ab3f-f6071143b56b",
+        "q": "TRIVIA: Kakashi Hatake is a prominent character in which anime? [Bonus 1]",
+        "correct": "Naruto",
+        "wrong": [
+          "Attack on Titan",
+          "Fullmetal Alchemist: Brotherhood",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "9a226a3e-07d4-4f63-b526-c500b708a0cc",
+        "q": "TRIVIA: Which popular anime series features the character Itachi Uchiha? [Bonus 1]",
+        "correct": "Naruto",
+        "wrong": [
+          "Attack on Titan",
+          "Dragon Ball Z",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "fa711a0e-445b-40cd-8bc8-5e28a69fdc09",
+        "q": "TRIVIA: Itachi Uchiha is a prominent character in which anime? [Bonus 1]",
+        "correct": "Naruto",
+        "wrong": [
+          "One Piece",
+          "My Hero Academia",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "ef287fc1-8f14-4062-9f04-0c392b2b3dd7",
+        "q": "TRIVIA: Which popular anime series features the character Pain (Nagato)? [Bonus 1]",
+        "correct": "Naruto",
+        "wrong": [
+          "Death Note",
+          "Jujutsu Kaisen",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "3588232e-4fd9-4fb9-9880-217d29e7d3e2",
+        "q": "TRIVIA: Pain (Nagato) is a prominent character in which anime? [Bonus 1]",
+        "correct": "Naruto",
+        "wrong": [
+          "Death Note",
+          "Solo Leveling",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "6fa3e50c-08d5-48f6-b184-5c22f8ffd105",
+        "q": "TRIVIA: Which popular anime series features the character Tanjiro Kamado? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Death Note",
+          "Naruto",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "0fbbf46f-58b7-4c9d-94ee-9a87bbc23228",
+        "q": "TRIVIA: Tanjiro Kamado is a prominent character in which anime? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Death Note",
+          "Black Clover",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "9532b22f-16b8-4a8d-a6f3-5b9ca09165dc",
+        "q": "TRIVIA: Which popular anime series features the character Nezuko Kamado? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "One Piece",
+          "Attack on Titan"
+        ]
+      },
+      {
+        "id": "70e004cd-64d0-40e1-a180-cac4571fcbc9",
+        "q": "TRIVIA: Nezuko Kamado is a prominent character in which anime? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Solo Leveling",
+          "Naruto",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "dc5b1740-dc3f-448b-b843-a47308b4eda3",
+        "q": "TRIVIA: Which popular anime series features the character Zenitsu Agatsuma? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "One Piece",
+          "Dragon Ball Z",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "21054754-1874-487e-ae90-7facf54552b4",
+        "q": "TRIVIA: Zenitsu Agatsuma is a prominent character in which anime? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Black Clover",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "a416a717-1d81-4fe4-b2bb-5ffcb05136be",
+        "q": "TRIVIA: Which popular anime series features the character Kyojuro Rengoku? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Blue Lock",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "2cea0d64-cf90-4dbb-8dd0-88c3be3c8d00",
+        "q": "TRIVIA: Kyojuro Rengoku is a prominent character in which anime? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "One Piece",
+          "Kaiju No. 8",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "0c60b538-3eb6-4fee-84ff-83c33b98fb38",
+        "q": "TRIVIA: Which popular anime series features the character Muzan Kibutsuji? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Fairy Tail",
+          "Naruto",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "c544bb2a-6ed3-4082-be05-f9a9221b9845",
+        "q": "TRIVIA: Muzan Kibutsuji is a prominent character in which anime? [Bonus 1]",
+        "correct": "Demon Slayer",
+        "wrong": [
+          "Dragon Ball Z",
+          "Naruto",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "251106ae-212a-4352-bee6-ecccbb3d35e5",
+        "q": "TRIVIA: Which popular anime series features the character Eren Yeager? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Kaiju No. 8",
+          "Solo Leveling",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "050582ea-dc16-49c5-addf-2599257918bb",
+        "q": "TRIVIA: Eren Yeager is a prominent character in which anime? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Dragon Ball Z",
+          "Death Note",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "31d12633-d7d3-4c75-949b-fbea307d43bf",
+        "q": "TRIVIA: Which popular anime series features the character Mikasa Ackerman? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Dragon Ball Z",
+          "Blue Lock",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "a89dbcc7-cd38-4b2a-91d0-4fa7e5260675",
+        "q": "TRIVIA: Mikasa Ackerman is a prominent character in which anime? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Black Clover",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "5ef476c3-6047-45fa-88e7-2a40122ad52c",
+        "q": "TRIVIA: Which popular anime series features the character Levi Ackerman? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "My Hero Academia",
+          "Naruto",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "b6af21af-4018-478c-886d-37cef257642b",
+        "q": "TRIVIA: Levi Ackerman is a prominent character in which anime? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Bleach",
+          "Kaiju No. 8",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "8c399706-6a8c-4f8d-b633-79ee4358d1e3",
+        "q": "TRIVIA: Which popular anime series features the character Armin Arlert? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "My Hero Academia",
+          "Naruto",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "b7274931-0fd0-4438-aae2-550e824fa258",
+        "q": "TRIVIA: Armin Arlert is a prominent character in which anime? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Hunter x Hunter",
+          "Dragon Ball Z",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "ae647f69-4d51-4db0-b6eb-cba978ef5985",
+        "q": "TRIVIA: Which popular anime series features the character Reiner Braun? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "My Hero Academia",
+          "Dragon Ball Z",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "9bf4c174-736b-44af-9f80-546464992c5d",
+        "q": "TRIVIA: Reiner Braun is a prominent character in which anime? [Bonus 1]",
+        "correct": "Attack on Titan",
+        "wrong": [
+          "Death Note",
+          "Bleach",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "29d65174-4721-4ef3-ac62-e75a5563bf7b",
+        "q": "TRIVIA: Which popular anime series features the character Ichigo Kurosaki? [Bonus 1]",
+        "correct": "Bleach",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Death Note",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "78bd2a1f-8028-477e-aa0d-8d303c9c6e31",
+        "q": "TRIVIA: Ichigo Kurosaki is a prominent character in which anime? [Bonus 1]",
+        "correct": "Bleach",
+        "wrong": [
+          "Dragon Ball Z",
+          "Hunter x Hunter",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "aa6c5958-4735-4873-a4ed-472acaa90a1f",
+        "q": "TRIVIA: Which popular anime series features the character Rukia Kuchiki? [Bonus 1]",
+        "correct": "Bleach",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "08d13a81-084b-4317-8e09-a1d82de668b4",
+        "q": "TRIVIA: Rukia Kuchiki is a prominent character in which anime? [Bonus 1]",
+        "correct": "Bleach",
+        "wrong": [
+          "Dragon Ball Z",
+          "Blue Lock",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "fe2cc451-7ad9-4236-b82e-c398b3deee59",
+        "q": "TRIVIA: Which popular anime series features the character Sosuke Aizen? [Bonus 1]",
+        "correct": "Bleach",
+        "wrong": [
+          "Fairy Tail",
+          "Dragon Ball Z",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "9b854867-538c-49d0-8481-998d370db7b5",
+        "q": "TRIVIA: Sosuke Aizen is a prominent character in which anime? [Bonus 1]",
+        "correct": "Bleach",
+        "wrong": [
+          "Solo Leveling",
+          "Fairy Tail",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "cc39c18c-be2e-496e-861d-7badbacd6890",
+        "q": "TRIVIA: Which popular anime series features the character Byakuya Kuchiki? [Bonus 1]",
+        "correct": "Bleach",
+        "wrong": [
+          "Dragon Ball Z",
+          "Demon Slayer",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "31227e0e-6940-4778-8225-27009f8eb142",
+        "q": "TRIVIA: Byakuya Kuchiki is a prominent character in which anime? [Bonus 1]",
+        "correct": "Bleach",
+        "wrong": [
+          "Solo Leveling",
+          "One Piece",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "ef32c830-0445-4c64-92e7-9fff23632c3e",
+        "q": "TRIVIA: Which popular anime series features the character Monkey D. Luffy? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Fairy Tail",
+          "Blue Lock",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "0d61fa73-5ba0-4189-a1f4-9737fbf12ac5",
+        "q": "TRIVIA: Monkey D. Luffy is a prominent character in which anime? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Blue Lock",
+          "Fullmetal Alchemist: Brotherhood",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "3599903b-4d17-46e5-8f4c-5df065a6a0e9",
+        "q": "TRIVIA: Which popular anime series features the character Roronoa Zoro? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Dragon Ball Z",
+          "Fullmetal Alchemist: Brotherhood",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "027b084c-4116-4ee9-bd06-65ea656b4199",
+        "q": "TRIVIA: Roronoa Zoro is a prominent character in which anime? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Bleach",
+          "Hunter x Hunter",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "4c2dcba1-7615-4c28-9d97-de5d2194a0a2",
+        "q": "TRIVIA: Which popular anime series features the character Sanji? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Solo Leveling",
+          "Death Note",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "87692600-0d4a-41a8-bd2a-f78d29dd7fde",
+        "q": "TRIVIA: Sanji is a prominent character in which anime? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Naruto",
+          "Fullmetal Alchemist: Brotherhood",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "5847f6ce-3bc7-4d65-9f22-41a8562577df",
+        "q": "TRIVIA: Which popular anime series features the character Trafalgar Law? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Fairy Tail",
+          "Bleach",
+          "Attack on Titan"
+        ]
+      },
+      {
+        "id": "3c8d774d-f50b-4eb5-bda7-da10142fcd95",
+        "q": "TRIVIA: Trafalgar Law is a prominent character in which anime? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Hunter x Hunter",
+          "Solo Leveling",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "936aca76-b119-4bf8-b70a-990a33e4cfcb",
+        "q": "TRIVIA: Which popular anime series features the character Kaido? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Dragon Ball Z",
+          "Solo Leveling",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "a1573618-2bb9-4308-b304-8a08dbf6a1cd",
+        "q": "TRIVIA: Kaido is a prominent character in which anime? [Bonus 1]",
+        "correct": "One Piece",
+        "wrong": [
+          "Attack on Titan",
+          "Solo Leveling",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "6b150a31-96f0-4633-8ca9-726318cc74f6",
+        "q": "TRIVIA: Which popular anime series features the character Yoichi Isagi? [Bonus 1]",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Solo Leveling",
+          "Attack on Titan",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "643652bc-0b01-482e-9c9f-3fec7515f4b7",
+        "q": "TRIVIA: Yoichi Isagi is a prominent character in which anime? [Bonus 1]",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Solo Leveling",
+          "One Piece",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "5ae531cc-c903-4aa0-a3c7-eea3c0b21598",
+        "q": "TRIVIA: Which popular anime series features the character Meguru Bachira? [Bonus 1]",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Solo Leveling",
+          "My Hero Academia",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "1fa797eb-adf5-4869-8882-d8bb03300c76",
+        "q": "TRIVIA: Meguru Bachira is a prominent character in which anime? [Bonus 1]",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Hunter x Hunter",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "9d8e962c-8c62-43ae-b376-21d2765b1e77",
+        "q": "TRIVIA: Which popular anime series features the character Seishiro Nagi? [Bonus 1]",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Black Clover",
+          "Attack on Titan",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "8c206ae1-fa8f-4e54-8b9f-a9eab25d3773",
+        "q": "TRIVIA: Seishiro Nagi is a prominent character in which anime? [Bonus 1]",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Black Clover",
+          "Dragon Ball Z",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "a44ba55e-2e18-4de8-ad61-70d6040c4c03",
+        "q": "TRIVIA: Which popular anime series features the character Rin Itoshi? [Bonus 1]",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "One Piece",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "30ee8822-ceeb-47ae-9620-c3edb1f13609",
+        "q": "TRIVIA: Rin Itoshi is a prominent character in which anime? [Bonus 1]",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Solo Leveling",
+          "One Piece",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "ff57d374-bbcb-41a8-9e9a-8b5c3804e17b",
+        "q": "TRIVIA: Which popular anime series features the character Sung Jinwoo? [Bonus 1]",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Demon Slayer",
+          "Fairy Tail",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "bda75850-904c-41bd-a6ec-f986459a6870",
+        "q": "TRIVIA: Sung Jinwoo is a prominent character in which anime? [Bonus 1]",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "One Piece",
+          "Kaiju No. 8",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "2abe423b-651c-4f1b-b9c6-8fd81b293566",
+        "q": "TRIVIA: Which popular anime series features the character Cha Hae-In? [Bonus 1]",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Naruto",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "e8de0965-a7ba-4b95-a92e-a75bfdc8bb04",
+        "q": "TRIVIA: Cha Hae-In is a prominent character in which anime? [Bonus 1]",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Demon Slayer",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "288a815e-c9f8-47dc-84bc-0b75fb5241c7",
+        "q": "TRIVIA: Which popular anime series features the character Igris? [Bonus 1]",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Dragon Ball Z",
+          "Blue Lock",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "c39d510e-5d83-494c-9337-910a37ddfcf0",
+        "q": "TRIVIA: Igris is a prominent character in which anime? [Bonus 1]",
+        "correct": "Solo Leveling",
+        "wrong": [
+          "Bleach",
+          "Hunter x Hunter",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "25b3f435-0ca5-4b3a-ad64-a4df139d7da3",
+        "q": "TRIVIA: Which popular anime series features the character Yuji Itadori? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Fairy Tail",
+          "Kaiju No. 8",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "1f3e2ec3-a7d1-494c-a4c4-8a6110f0ccce",
+        "q": "TRIVIA: Yuji Itadori is a prominent character in which anime? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Black Clover",
+          "One Piece",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "1b811bf4-9a4d-453f-834d-af50837544dc",
+        "q": "TRIVIA: Which popular anime series features the character Satoru Gojo? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Hunter x Hunter",
+          "Blue Lock",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "4ea2e87e-59ae-4389-868e-2c10a53eeb4b",
+        "q": "TRIVIA: Satoru Gojo is a prominent character in which anime? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Attack on Titan",
+          "Death Note",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "117afbe7-0c2b-4100-b17d-0e84298e78fd",
+        "q": "TRIVIA: Which popular anime series features the character Megumi Fushiguro? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Fairy Tail",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "b9443bcb-740a-47db-a933-fb766f4a60be",
+        "q": "TRIVIA: Megumi Fushiguro is a prominent character in which anime? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Kaiju No. 8",
+          "Hunter x Hunter",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "c144d158-ff87-4677-a02a-ee79c2ae5a56",
+        "q": "TRIVIA: Which popular anime series features the character Nobara Kugisaki? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "One Piece",
+          "My Hero Academia",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "61467a12-0868-4d79-9b19-ae2bc41a41df",
+        "q": "TRIVIA: Nobara Kugisaki is a prominent character in which anime? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Demon Slayer",
+          "My Hero Academia",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "eb069337-448c-4ae8-bd22-7cc60fdddfaf",
+        "q": "TRIVIA: Which popular anime series features the character Ryomen Sukuna? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Attack on Titan",
+          "Dragon Ball Z",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "8c89979a-2660-4b84-a2dd-cfbfde8f92a8",
+        "q": "TRIVIA: Ryomen Sukuna is a prominent character in which anime? [Bonus 1]",
+        "correct": "Jujutsu Kaisen",
+        "wrong": [
+          "Hunter x Hunter",
+          "My Hero Academia",
+          "Fairy Tail"
+        ]
+      },
+      {
+        "id": "5000a072-ff5f-4139-8840-ab4d0dc3d8f4",
+        "q": "TRIVIA: Which popular anime series features the character Izuku Midoriya? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Black Clover",
+          "Solo Leveling",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "08b5b9a0-c579-497a-ba28-5a0a5c1de27f",
+        "q": "TRIVIA: Izuku Midoriya is a prominent character in which anime? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Attack on Titan",
+          "Blue Lock",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "dafeeed6-9643-49e6-9841-8b87da3331ae",
+        "q": "TRIVIA: Which popular anime series features the character Katsuki Bakugo? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Dragon Ball Z",
+          "Death Note",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "ef63e580-64cb-4475-9939-6932e7869f24",
+        "q": "TRIVIA: Katsuki Bakugo is a prominent character in which anime? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "One Piece",
+          "Demon Slayer",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "e42c9a35-b89e-4e81-8688-0d3d1333eb79",
+        "q": "TRIVIA: Which popular anime series features the character Shoto Todoroki? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Dragon Ball Z",
+          "Death Note",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "9fe347f8-1133-4952-907f-b1822458ff09",
+        "q": "TRIVIA: Shoto Todoroki is a prominent character in which anime? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Death Note",
+          "Demon Slayer",
+          "Fullmetal Alchemist: Brotherhood"
+        ]
+      },
+      {
+        "id": "21a4633c-6cde-4c97-80c8-262a35eb0651",
+        "q": "TRIVIA: Which popular anime series features the character All Might? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Black Clover",
+          "Fullmetal Alchemist: Brotherhood",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "832ddd42-51a1-4d51-b911-b457ebf65a1c",
+        "q": "TRIVIA: All Might is a prominent character in which anime? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Solo Leveling",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "2e053495-b078-4f1e-a32f-8425d5ed80d2",
+        "q": "TRIVIA: Which popular anime series features the character Tomura Shigaraki? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Demon Slayer",
+          "Dragon Ball Z",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "80eabbb9-d010-4859-b3ed-e6647b0a34a4",
+        "q": "TRIVIA: Tomura Shigaraki is a prominent character in which anime? [Bonus 1]",
+        "correct": "My Hero Academia",
+        "wrong": [
+          "Solo Leveling",
+          "Naruto",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "1e420229-cbdd-4f46-b4d3-04945e2ea3c3",
+        "q": "TRIVIA: Which popular anime series features the character Edward Elric? [Bonus 1]",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Hunter x Hunter",
+          "Jujutsu Kaisen",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "9c55c39e-e142-4e3b-bbc0-cd52fc74ee93",
+        "q": "TRIVIA: Edward Elric is a prominent character in which anime? [Bonus 1]",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Fairy Tail",
+          "One Piece",
+          "Demon Slayer"
+        ]
+      },
+      {
+        "id": "2d2874bc-4e01-4330-9a24-ccf808866836",
+        "q": "TRIVIA: Which popular anime series features the character Alphonse Elric? [Bonus 1]",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Black Clover",
+          "Dragon Ball Z",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "c088a5f9-8062-48ca-8b21-a5e13cc8fae3",
+        "q": "TRIVIA: Alphonse Elric is a prominent character in which anime? [Bonus 1]",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Blue Lock",
+          "My Hero Academia",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "ec9b768f-c4db-4111-b24f-92d57b2655a6",
+        "q": "TRIVIA: Which popular anime series features the character Roy Mustang? [Bonus 1]",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Kaiju No. 8",
+          "Naruto",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "16b6b92a-8a9a-4810-a0ee-9648cb2a0ddb",
+        "q": "TRIVIA: Roy Mustang is a prominent character in which anime? [Bonus 1]",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Black Clover",
+          "Attack on Titan",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "eac37a94-2cd1-47a2-953f-5a4fa6e5cad8",
+        "q": "TRIVIA: Which popular anime series features the character Scar? [Bonus 1]",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Bleach",
+          "Attack on Titan",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "02061d09-9aa1-4a80-8ebc-25e9117ec6dc",
+        "q": "TRIVIA: Scar is a prominent character in which anime? [Bonus 1]",
+        "correct": "Fullmetal Alchemist: Brotherhood",
+        "wrong": [
+          "Black Clover",
+          "Demon Slayer",
+          "Attack on Titan"
+        ]
+      },
+      {
+        "id": "53cb3e1a-9fc8-4ed0-9b5a-fd7ab840e30d",
+        "q": "TRIVIA: Which popular anime series features the character Asta? [Bonus 1]",
+        "correct": "Black Clover",
+        "wrong": [
+          "Attack on Titan",
+          "Fairy Tail",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "96c747d0-290a-4933-a09a-8f20f8545820",
+        "q": "TRIVIA: Asta is a prominent character in which anime? [Bonus 1]",
+        "correct": "Black Clover",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "One Piece",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "dabd397d-2807-403c-950e-c76ab4adc765",
+        "q": "TRIVIA: Which popular anime series features the character Yuno Grinberryall? [Bonus 1]",
+        "correct": "Black Clover",
+        "wrong": [
+          "Kaiju No. 8",
+          "Dragon Ball Z",
+          "Bleach"
+        ]
+      },
+      {
+        "id": "b10aecd4-ac65-4541-91fc-4a94b67503e4",
+        "q": "TRIVIA: Yuno Grinberryall is a prominent character in which anime? [Bonus 1]",
+        "correct": "Black Clover",
+        "wrong": [
+          "Kaiju No. 8",
+          "Naruto",
+          "My Hero Academia"
+        ]
+      },
+      {
+        "id": "5a7b7cbf-5abb-46f2-91e1-dfc5c70ac795",
+        "q": "TRIVIA: Which popular anime series features the character Yami Sukehiro? [Bonus 1]",
+        "correct": "Black Clover",
+        "wrong": [
+          "Dragon Ball Z",
+          "One Piece",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "d7da6309-05ab-443b-8849-9845e534418f",
+        "q": "TRIVIA: Yami Sukehiro is a prominent character in which anime? [Bonus 1]",
+        "correct": "Black Clover",
+        "wrong": [
+          "Hunter x Hunter",
+          "Fullmetal Alchemist: Brotherhood",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "cebc47b2-7e63-48a5-9542-86804edd9403",
+        "q": "TRIVIA: Which popular anime series features the character Natsu Dragneel? [Bonus 1]",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Kaiju No. 8",
+          "Fullmetal Alchemist: Brotherhood",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "7b08f1bf-60fa-42a7-9fc3-dcdc2d1dbf9d",
+        "q": "TRIVIA: Natsu Dragneel is a prominent character in which anime? [Bonus 1]",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Black Clover",
+          "Jujutsu Kaisen",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "05013efa-16d0-4621-843a-2a0f521fe71c",
+        "q": "TRIVIA: Which popular anime series features the character Lucy Heartfilia? [Bonus 1]",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Kaiju No. 8",
+          "Jujutsu Kaisen",
+          "One Piece"
+        ]
+      },
+      {
+        "id": "b2b6df46-f611-479b-b8e6-cc2434a4e8bb",
+        "q": "TRIVIA: Lucy Heartfilia is a prominent character in which anime? [Bonus 1]",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Solo Leveling",
+          "Blue Lock",
+          "Dragon Ball Z"
+        ]
+      },
+      {
+        "id": "2580d2f7-06f1-4a92-903d-59dc62d6574f",
+        "q": "TRIVIA: Which popular anime series features the character Erza Scarlet? [Bonus 1]",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Jujutsu Kaisen",
+          "Bleach",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "e1dce719-684f-4fb3-8f8d-e44d01f0b056",
+        "q": "TRIVIA: Erza Scarlet is a prominent character in which anime? [Bonus 1]",
+        "correct": "Fairy Tail",
+        "wrong": [
+          "Black Clover",
+          "Bleach",
+          "Hunter x Hunter"
+        ]
+      },
+      {
+        "id": "7ea9bba2-6697-4050-97a5-4d29553d3d40",
+        "q": "TRIVIA: Which popular anime series features the character Kafka Hibino? [Bonus 1]",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Attack on Titan",
+          "One Piece",
+          "Solo Leveling"
+        ]
+      },
+      {
+        "id": "56bae45f-6882-4051-b0bb-14d2e71b3e60",
+        "q": "TRIVIA: Kafka Hibino is a prominent character in which anime? [Bonus 1]",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "One Piece",
+          "Dragon Ball Z",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "a59c73d4-2a42-40e7-9590-4d3c2700eb97",
+        "q": "TRIVIA: Which popular anime series features the character Mina Ashiro? [Bonus 1]",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Solo Leveling",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "5b6258d0-b5a7-49f6-9276-d97bc4afc201",
+        "q": "TRIVIA: Mina Ashiro is a prominent character in which anime? [Bonus 1]",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Blue Lock",
+          "Jujutsu Kaisen",
+          "Black Clover"
+        ]
+      },
+      {
+        "id": "7bc820ba-1725-4e7e-8162-5fc91834a4f5",
+        "q": "TRIVIA: Which popular anime series features the character Kikoru Shinomiya? [Bonus 1]",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Hunter x Hunter",
+          "Black Clover",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "d07c5453-6c5d-46a6-a456-1700b80b43ff",
+        "q": "TRIVIA: Kikoru Shinomiya is a prominent character in which anime? [Bonus 1]",
+        "correct": "Kaiju No. 8",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Dragon Ball Z",
+          "Naruto"
+        ]
+      },
+      {
+        "id": "cdfde843-818c-429a-af1f-62aaf0acca00",
+        "q": "TRIVIA: Which popular anime series features the character Goku? [Bonus 1]",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Kaiju No. 8",
+          "Attack on Titan",
+          "Jujutsu Kaisen"
+        ]
+      },
+      {
+        "id": "97ffdc96-8d61-4277-b9c3-689e7bf3c673",
+        "q": "TRIVIA: Goku is a prominent character in which anime? [Bonus 1]",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Death Note",
+          "Hunter x Hunter",
+          "Blue Lock"
+        ]
+      },
+      {
+        "id": "44de5d11-8641-4767-9495-e03b4fdffbc0",
+        "q": "TRIVIA: Which popular anime series features the character Vegeta? [Bonus 1]",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Solo Leveling",
+          "Bleach",
+          "Death Note"
+        ]
+      },
+      {
+        "id": "296ae384-26c1-4fd7-8c7c-de673c3d957d",
+        "q": "TRIVIA: Vegeta is a prominent character in which anime? [Bonus 1]",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Fullmetal Alchemist: Brotherhood",
+          "Jujutsu Kaisen",
+          "Kaiju No. 8"
+        ]
+      },
+      {
+        "id": "e38c96f0-7832-4951-a3b3-919526cc76bd",
+        "q": "TRIVIA: Which popular anime series features the character Piccolo? [Bonus 1]",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "Solo Leveling",
+          "Kaiju No. 8",
+          "Attack on Titan"
+        ]
+      },
+      {
+        "id": "7ace90fe-6b80-4aad-921b-a328dc915fb8",
+        "q": "TRIVIA: Piccolo is a prominent character in which anime? [Bonus 1]",
+        "correct": "Dragon Ball Z",
+        "wrong": [
+          "One Piece",
+          "Black Clover",
+          "My Hero Academia"
+        ]
+      }
+    ]
+  }
+}

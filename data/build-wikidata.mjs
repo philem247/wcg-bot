@@ -23,20 +23,25 @@ const queries = {
     } LIMIT 1000
   `,
   web3: `
-    SELECT ?cryptoLabel ?inceptionLabel WHERE {
+    SELECT ?cryptoLabel ?inceptionLabel ?founderLabel ?tickerLabel WHERE {
       ?crypto wdt:P31 wd:Q13479982; wdt:P571 ?inception.
+      OPTIONAL { ?crypto wdt:P112 ?founder. }
+      OPTIONAL { ?crypto wdt:P249 ?ticker. }
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
     } LIMIT 500
   `,
   art: `
-    SELECT ?paintingLabel ?creatorLabel WHERE {
+    SELECT ?paintingLabel ?creatorLabel ?movementLabel ?museumLabel WHERE {
       ?painting wdt:P31 wd:Q3305213; wdt:P170 ?creator.
+      OPTIONAL { ?painting wdt:P135 ?movement. }
+      OPTIONAL { ?painting wdt:P276 ?museum. }
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
     } LIMIT 1000
   `,
   vehicles: `
-    SELECT ?carLabel ?manufacturerLabel WHERE {
+    SELECT ?carLabel ?manufacturerLabel ?countryLabel WHERE {
       ?car wdt:P31 wd:Q3231690; wdt:P176 ?manufacturer.
+      OPTIONAL { ?manufacturer wdt:P17 ?country. }
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
     } LIMIT 1000
   `,
@@ -140,9 +145,18 @@ async function main() {
 
   const mArt = await tryQuery('Art', queries.art)
   bank['art'] = buildQuestions(mArt, i => `Who painted the famous artwork "${i.paintingLabel}"?`, 'creatorLabel', 'creatorLabel')
+  bank['art'].push(...buildQuestions(mArt.filter(i => i.movementLabel), i => `Which art movement is "${i.paintingLabel}" commonly associated with?`, 'movementLabel', 'movementLabel'))
+  bank['art'].push(...buildQuestions(mArt.filter(i => i.museumLabel), i => `Which famous museum currently houses "${i.paintingLabel}"?`, 'museumLabel', 'museumLabel'))
   
   const mVehicles = await tryQuery('Vehicles', queries.vehicles)
-  bank['vehicles'] = buildQuestions(mVehicles, i => `Which company manufactured the "${i.carLabel}"?`, 'manufacturerLabel', 'manufacturerLabel')
+  const safeVehicles = mVehicles.map(v => {
+    // Replace manufacturer name in car label with empty string, trim whitespace
+    const cleanLabel = v.carLabel.replace(new RegExp(v.manufacturerLabel, 'gi'), '').trim()
+    return { ...v, safeLabel: cleanLabel }
+  }).filter(v => v.safeLabel.length > 2) // drop if empty or too short (e.g. "BMW" manufactured by "BMW")
+  
+  bank['vehicles'] = buildQuestions(safeVehicles, i => `Which company manufactured the "${i.safeLabel}"?`, 'manufacturerLabel', 'manufacturerLabel')
+  bank['vehicles'].push(...buildQuestions(safeVehicles.filter(i => i.countryLabel), i => `Which country is the automaker ${i.manufacturerLabel} originally from?`, 'countryLabel', 'countryLabel'))
   
   const mMythology = await tryQuery('Mythology', queries.mythology)
   bank['mythology'] = buildQuestions(mMythology, i => `In mythology, ${i.deityLabel} is known as the god/deity of what?`, 'domainLabel', 'domainLabel')
@@ -164,6 +178,8 @@ async function main() {
   
   const mWeb3 = await tryQuery('Web3', queries.web3)
   bank['web3'] = buildQuestions(mWeb3, i => `In what year was the cryptocurrency ${i.cryptoLabel} launched/founded?`, 'inceptionLabel', 'inceptionLabel')
+  bank['web3'].push(...buildQuestions(mWeb3.filter(i => i.founderLabel), i => `Who is the known founder or creator of ${i.cryptoLabel}?`, 'founderLabel', 'founderLabel'))
+  bank['web3'].push(...buildQuestions(mWeb3.filter(i => i.tickerLabel), i => `What is the official ticker symbol for ${i.cryptoLabel}?`, 'tickerLabel', 'tickerLabel'))
 
   const mCartoons = await tryQuery('Cartoons', queries.cartoons)
   bank['cartoons'] = buildQuestions(mCartoons, i => `Who is the creator of the animated series "${i.cartoonLabel}"?`, 'creatorLabel', 'creatorLabel')

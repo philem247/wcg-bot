@@ -734,12 +734,12 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       if (sub === 'categories') {
         const emojis = {
           'general': '🌍', 'football': '⚽', 'fpl': '📈', 'sports': '🏅',
-          'science': '🔬', 'tech': '💻', 'entertainment': '🍿', 'geography': '🗺️',
+          'science': '🔬', 'tech': '💻', 'movies': '🍿', 'tv-shows': '📺', 'geography': '🗺️',
           'history': '🏛️', 'anime': '🍥', 'animals': '🐘', 'videogames': '🎮',
-          'cartoons': '📺', 'art': '🎨', 'mythology': '⚡', 'vehicles': '🚗',
+          'cartoons': '🐭', 'art': '🎨', 'mythology': '⚡', 'vehicles': '🚗',
           'nigerian-music': '🎵', 'nigerian-entertainment': '🎬', 'nigerian-history': '🇳🇬',
           'nigerian-food': '🍲', 'pidgin-english': '🗣️', 'web3': '🪙', 'bible': '📖',
-          'music': '🎧', 'food': '🍔'
+          'music': '🎧', 'food': '🍔', 'got': '🐉'
         }
         const available = bank ? bank.categories() : []
         enqueue(jid, { text: `*Categories*\n${available.map((c) => `▸ ${emojis[c] || '▪️'} ${c}`).join('\n') || 'none'}\n\n${PREFIX}trivia for a mix of all.`, mentions: [], kind: 'misc' })

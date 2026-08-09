@@ -9,8 +9,7 @@ const TTA_MAP = {
   art: 'arts_and_literature',
   food: 'food_and_drink',
   sports: 'sport_and_leisure',
-  music: 'music',
-  entertainment: 'film_and_tv',
+  music: 'music'
 }
 
 const OPENTDB_MAP = {
@@ -19,7 +18,6 @@ const OPENTDB_MAP = {
   tech: 18,
   history: 23,
   geography: 22,
-  anime: 31,
   animals: 27,
   videogames: 15,
   cartoons: 32,
@@ -28,7 +26,8 @@ const OPENTDB_MAP = {
   vehicles: 28,
   sports: 21,
   music: 12,
-  entertainment: 11, // film
+  movies: 11,
+  'tv-shows': 14
 }
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
@@ -123,8 +122,8 @@ async function main() {
   
   const categoriesToFetch = [
     'general', 'science', 'tech', 'history', 'geography', 
-    'anime', 'animals', 'videogames', 'cartoons', 'art', 
-    'mythology', 'vehicles', 'sports', 'music', 'entertainment', 'food'
+    'animals', 'videogames', 'cartoons', 'art', 
+    'mythology', 'vehicles', 'sports', 'music', 'movies', 'tv-shows', 'food'
   ]
   
   for (const cat of categoriesToFetch) {

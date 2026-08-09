@@ -15,7 +15,7 @@ const fixture = {
     general: [q('g1', 1), q('g2', 2), q('g3', 3)],
     science: [q('s1', 4), q('s2', 5)],
     tech: [],
-    entertainment: [q('e1', 6)],
+    movies: [q('m1', 6)],
     geography: [],
     history: [],
     football: [],
@@ -24,9 +24,9 @@ const fixture = {
 
 const tests = [
   {
-    name: 'CATEGORIES lists all twenty-five, with football and fpl included',
+    name: 'CATEGORIES lists all twenty-seven, with football and fpl included',
     fn: () => {
-      assert.equal(CATEGORIES.length, 25)
+      assert.equal(CATEGORIES.length, 27)
       assert.ok(CATEGORIES.includes('football'))
       assert.ok(CATEGORIES.includes('fpl'))
       assert.ok(!CATEGORIES.includes('mixed'), 'mixed is a mode, not a category')
@@ -51,7 +51,7 @@ const tests = [
     name: 'categories(): only non-empty ones are playable',
     fn: () => {
       const bank = loadBank({ data: fixture })
-      assert.deepEqual(bank.categories().sort(), ['entertainment', 'general', 'science'])
+      assert.deepEqual(bank.categories().sort(), ['general', 'movies', 'science'])
     },
   },
   {
@@ -83,7 +83,7 @@ const tests = [
   {
     name: 'pick: mixed draws across categories, not proportional to size',
     fn: () => {
-      // general has 3, science 2, entertainment 1. Proportional drawing would
+      // general has 3, science 2, movies 1. Proportional drawing would
       // give general half of everything; equal weighting must not.
       const bank = loadBank({ data: fixture })
       const got = bank.pick({ category: 'mixed', count: 3, random: seeded() })
@@ -104,7 +104,7 @@ const tests = [
       const mixed = bank.pick({ category: 'mixed', count: 3, random: seeded() })
       assert.equal(mixed.length, 3)
       for (const q of mixed) {
-        // fixture ids are prefixed with their category's first letter (g/s/e)
+        // fixture ids are prefixed with their category's first letter (g/s/m)
         assert.equal(q.category[0], q.id[0], `q ${q.id} must be tagged 'mixed', not its real category (${q.category})`)
       }
     },

@@ -43,6 +43,8 @@ function main() {
   const bible = readBank('./data/bible.json')
   const mega = readBank('./data/mega.json')
   const mega2 = readBank('./data/mega2.json')
+  const got = readBank('./data/got.json')
+  const anime = readBank('./data/anime.json')
   
   // trivia.json contains the results of build:football and build:world
   const intermediateTrivia = readBank('./data/trivia.json')
@@ -53,7 +55,10 @@ function main() {
     staticTrivia = JSON.parse(readFileSync('./data/static-trivia.json', 'utf8'))
   } catch (e) {}
 
-  const merged = mergeBanks([intermediateTrivia, apis, wikidata, pidgin, bible, mega, mega2, staticTrivia])
+  const merged = mergeBanks([intermediateTrivia, apis, wikidata, pidgin, bible, mega, mega2, got, anime, staticTrivia])
+  
+  // Ensure entertainment is completely removed in case it sneaks in from staticTrivia
+  delete merged['entertainment']
   
   // Enforce 500 minimum for every category
   for (const cat of Object.keys(merged)) {

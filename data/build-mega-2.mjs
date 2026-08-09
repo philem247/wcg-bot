@@ -11,34 +11,34 @@ function shuffle(array) {
 }
 
 const tech = [
-  { t: "CPU", m: "The central processing unit, the primary component of a computer that acts as its 'brain'." },
-  { t: "RAM", m: "Random Access Memory, a type of computer memory that can be read and changed in any order." },
-  { t: "GPU", m: "Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images." },
+  { t: "CPU", m: "The primary component of a computer that acts as its 'brain'.", a: "Central Processing Unit" },
+  { t: "RAM", m: "A type of computer memory that can be read and changed in any order.", a: "Random Access Memory" },
+  { t: "GPU", m: "A specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images.", a: "Graphics Processing Unit" },
+  { t: "SSD", m: "A solid-state storage device that uses integrated circuit assemblies to store data persistently.", a: "Solid State Drive" },
+  { t: "HDD", m: "An electro-mechanical data storage device that stores and retrieves digital data using magnetic storage.", a: "Hard Disk Drive" },
+  { t: "OS", m: "System software that manages computer hardware, software resources, and provides common services for computer programs.", a: "Operating System" },
+  { t: "IP Address", m: "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication.", a: "Internet Protocol Address" },
+  { t: "DNS", m: "The hierarchical and decentralized naming system used to identify computers reachable through the Internet.", a: "Domain Name System" },
+  { t: "HTTP", m: "The foundation of data communication for the World Wide Web.", a: "Hypertext Transfer Protocol" },
+  { t: "API", m: "A connection between computers or between computer programs.", a: "Application Programming Interface" },
+  { t: "HTML", m: "The standard markup language for documents designed to be displayed in a web browser.", a: "HyperText Markup Language" },
+  { t: "CSS", m: "A style sheet language used for describing the presentation of a document written in a markup language.", a: "Cascading Style Sheets" },
+  { t: "JavaScript", m: "A programming language that is one of the core technologies of the World Wide Web.", f: "Brendan Eich" },
+  { t: "Python", m: "An interpreted high-level general-purpose programming language.", f: "Guido van Rossum" },
+  { t: "Java", m: "A high-level, class-based, object-oriented programming language.", f: "James Gosling" },
+  { t: "C++", m: "A general-purpose programming language created as an extension of the C programming language.", f: "Bjarne Stroustrup" },
+  { t: "SQL", m: "Used in programming and designed for managing data held in a relational database management system.", a: "Structured Query Language" },
+  { t: "JSON", m: "An open standard file format and data interchange format.", a: "JavaScript Object Notation" },
+  { t: "XML", m: "A markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.", a: "Extensible Markup Language" },
+  { t: "Git", m: "Distributed version control system for tracking changes in source code during software development.", f: "Linus Torvalds" },
+  { t: "Linux", m: "A family of open-source Unix-like operating systems based on the Linux kernel.", f: "Linus Torvalds" },
   { t: "Motherboard", m: "The main printed circuit board found in general purpose computers." },
-  { t: "SSD", m: "Solid State Drive, a solid-state storage device that uses integrated circuit assemblies to store data persistently." },
-  { t: "HDD", m: "Hard Disk Drive, an electro-mechanical data storage device that stores and retrieves digital data using magnetic storage." },
-  { t: "OS", m: "Operating System, system software that manages computer hardware, software resources, and provides common services for computer programs." },
-  { t: "Linux", m: "A family of open-source Unix-like operating systems based on the Linux kernel." },
-  { t: "IP Address", m: "A numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication." },
-  { t: "DNS", m: "Domain Name System, the hierarchical and decentralized naming system used to identify computers reachable through the Internet." },
-  { t: "HTTP", m: "Hypertext Transfer Protocol, the foundation of data communication for the World Wide Web." },
-  { t: "API", m: "Application Programming Interface, a connection between computers or between computer programs." },
-  { t: "HTML", m: "HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser." },
-  { t: "CSS", m: "Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language." },
-  { t: "JavaScript", m: "A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS." },
-  { t: "Python", m: "An interpreted high-level general-purpose programming language." },
-  { t: "Java", m: "A high-level, class-based, object-oriented programming language." },
-  { t: "C++", m: "A general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language." },
-  { t: "SQL", m: "Structured Query Language, used in programming and designed for managing data held in a relational database management system." },
-  { t: "JSON", m: "JavaScript Object Notation, an open standard file format and data interchange format." },
-  { t: "XML", m: "Extensible Markup Language, a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable." },
-  { t: "Git", m: "Distributed version control system for tracking changes in source code during software development." },
   { t: "Docker", m: "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers." },
   { t: "Kubernetes", m: "An open-source container-orchestration system for automating computer application deployment, scaling, and management." },
   { t: "Cloud Computing", m: "The on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user." },
   { t: "Machine Learning", m: "The study of computer algorithms that can improve automatically through experience and by the use of data." },
   { t: "Artificial Intelligence", m: "Intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans." },
-  { t: "IoT", m: "Internet of Things, describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet." },
+  { t: "IoT", m: "Describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet.", a: "Internet of Things" },
   { t: "Cybersecurity", m: "The practice of protecting systems, networks, and programs from digital attacks." },
   { t: "Encryption", m: "The process of encoding information so that only authorized parties can access it." }
 ]
@@ -67,26 +67,26 @@ const anime = [
 ]
 
 const cartoons = [
-  { n: "SpongeBob SquarePants", c: "Stephen Hillenburg" },
-  { n: "The Simpsons", c: "Matt Groening" },
-  { n: "Avatar: The Last Airbender", c: "Michael Dante DiMartino and Bryan Konietzko" },
-  { n: "Rick and Morty", c: "Justin Roiland and Dan Harmon" },
-  { n: "Family Guy", c: "Seth MacFarlane" },
-  { n: "South Park", c: "Trey Parker and Matt Stone" },
-  { n: "Adventure Time", c: "Pendleton Ward" },
-  { n: "Regular Show", c: "J.G. Quintel" },
-  { n: "The Amazing World of Gumball", c: "Ben Bocquelet" },
-  { n: "Steven Universe", c: "Rebecca Sugar" },
-  { n: "Gravity Falls", c: "Alex Hirsch" },
-  { n: "Futurama", c: "Matt Groening" },
-  { n: "Batman: The Animated Series", c: "Bruce Timm and Eric Radomski" },
-  { n: "Teen Titans", c: "Glen Murakami" },
-  { n: "Ben 10", c: "Man of Action" },
-  { n: "Phineas and Ferb", c: "Dan Povenmire and Jeff 'Swampy' Marsh" },
-  { n: "Scooby-Doo, Where Are You!", c: "Joe Ruby and Ken Spears" },
+  { n: "SpongeBob SquarePants", c: "Stephen Hillenburg", l: "Bikini Bottom", p: "Gary the Snail" },
+  { n: "The Simpsons", c: "Matt Groening", l: "Springfield", p: "Santa's Little Helper" },
+  { n: "Avatar: The Last Airbender", c: "Michael Dante DiMartino and Bryan Konietzko", l: "The Four Nations", p: "Appa" },
+  { n: "Rick and Morty", c: "Justin Roiland and Dan Harmon", l: "Earth (Dimension C-137)", p: "Snuffles" },
+  { n: "Family Guy", c: "Seth MacFarlane", l: "Quahog", p: "Brian Griffin" },
+  { n: "South Park", c: "Trey Parker and Matt Stone", l: "South Park", p: "Sparky" },
+  { n: "Adventure Time", c: "Pendleton Ward", l: "The Land of Ooo", p: "Jake the Dog" },
+  { n: "Regular Show", c: "J.G. Quintel", l: "The Park" },
+  { n: "The Amazing World of Gumball", c: "Ben Bocquelet", l: "Elmore", p: "Darwin" },
+  { n: "Steven Universe", c: "Rebecca Sugar", l: "Beach City", p: "Lion" },
+  { n: "Gravity Falls", c: "Alex Hirsch", l: "Gravity Falls", p: "Waddles" },
+  { n: "Futurama", c: "Matt Groening", l: "New New York", p: "Nibbler" },
+  { n: "Batman: The Animated Series", c: "Bruce Timm and Eric Radomski", l: "Gotham City" },
+  { n: "Teen Titans", c: "Glen Murakami", l: "Jump City", p: "Silkie" },
+  { n: "Ben 10", c: "Man of Action", l: "Bellwood" },
+  { n: "Phineas and Ferb", c: "Dan Povenmire and Jeff 'Swampy' Marsh", l: "Danville", p: "Perry the Platypus" },
+  { n: "Scooby-Doo, Where Are You!", c: "Joe Ruby and Ken Spears", l: "Coolsville", p: "Scooby-Doo" },
   { n: "Tom and Jerry", c: "William Hanna and Joseph Barbera" },
   { n: "Looney Tunes", c: "Warner Bros." },
-  { n: "The Flintstones", c: "William Hanna and Joseph Barbera" }
+  { n: "The Flintstones", c: "William Hanna and Joseph Barbera", l: "Bedrock", p: "Dino" }
 ]
 
 const food = [
@@ -133,9 +133,11 @@ async function main() {
   
   // Tech
   bank['tech'] = []
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 8; i++) {
     bank['tech'].push(...generateQs(tech, [w => `What does '${w.t}' mean in technology?`], w => w.m, w => w.m))
     bank['tech'].push(...generateQs(tech, [w => `Which technology concept is defined as: "${w.m}"?`], w => w.t, w => w.t))
+    bank['tech'].push(...generateQs(tech.filter(w => w.a), [w => `What does the tech acronym ${w.t} stand for?`], w => w.a, w => w.a))
+    bank['tech'].push(...generateQs(tech.filter(w => w.f), [w => `Who is recognized as the creator or founder of ${w.t}?`], w => w.f, w => w.f))
   }
 
   // Anime
@@ -147,8 +149,10 @@ async function main() {
   
   // Cartoons
   bank['cartoons'] = []
-  for (let i = 0; i < 22; i++) {
+  for (let i = 0; i < 8; i++) {
     bank['cartoons'].push(...generateQs(cartoons, [c => `Who is the creator of the animated series "${c.n}"?`], c => c.c, c => c.c))
+    bank['cartoons'].push(...generateQs(cartoons.filter(c => c.l), [c => `In which fictional town or setting does "${c.n}" primarily take place?`], c => c.l, c => c.l))
+    bank['cartoons'].push(...generateQs(cartoons.filter(c => c.p), [c => `What is the name of the notable pet or animal companion in "${c.n}"?`], c => c.p, c => c.p))
   }
 
   // Food
