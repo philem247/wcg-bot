@@ -86,7 +86,37 @@ const cartoons = [
   { n: "Scooby-Doo, Where Are You!", c: "Joe Ruby and Ken Spears", l: "Coolsville", p: "Scooby-Doo" },
   { n: "Tom and Jerry", c: "William Hanna and Joseph Barbera" },
   { n: "Looney Tunes", c: "Warner Bros." },
-  { n: "The Flintstones", c: "William Hanna and Joseph Barbera", l: "Bedrock", p: "Dino" }
+  { n: "The Flintstones", c: "William Hanna and Joseph Barbera", l: "Bedrock", p: "Dino" },
+  { n: "Dexter's Laboratory", c: "Genndy Tartakovsky", l: "Dexter's House" },
+  { n: "The Powerpuff Girls", c: "Craig McCracken", l: "Townsville" },
+  { n: "Courage the Cowardly Dog", c: "John R. Dilworth", l: "Nowhere, Kansas", p: "Courage" },
+  { n: "Ed, Edd n Eddy", c: "Danny Antonucci", l: "Peach Creek" },
+  { n: "Johnny Bravo", c: "Van Partible", l: "Aron City" },
+  { n: "Invader Zim", c: "Jhonen Vasquez", l: "Earth", p: "GIR" },
+  { n: "The Fairly OddParents", c: "Butch Hartman", l: "Dimmsdale" },
+  { n: "Danny Phantom", c: "Butch Hartman", l: "Amity Park" },
+  { n: "Kim Possible", c: "Bob Schooley and Mark McCorkle", l: "Middleton", p: "Rufus" },
+  { n: "The Proud Family", c: "Bruce W. Smith", l: "Wizville", p: "Puff" },
+  { n: "Recess", c: "Paul Germain and Joe Ansolabehere", l: "Third Street School" },
+  { n: "Rugrats", c: "Arlene Klasky, Gábor Csupó, and Paul Germain", l: "California", p: "Spike" },
+  { n: "Hey Arnold!", c: "Craig Bartlett", l: "Hillwood", p: "Abner" },
+  { n: "CatDog", c: "Peter Hannan", l: "Nearburg" },
+  { n: "Animaniacs", c: "Tom Ruegger", l: "Warner Bros. Studio" },
+  { n: "Pinky and the Brain", c: "Tom Ruegger", l: "Acme Labs" },
+  { n: "Gargoyles", c: "Greg Weisman", l: "New York City", p: "Bronx" },
+  { n: "X-Men: The Animated Series", c: "Mark Edward Edens", l: "Westchester County" },
+  { n: "Spider-Man: The Animated Series", c: "John Semper", l: "New York City" },
+  { n: "Justice League", c: "Bruce Timm", l: "Watchtower" },
+  { n: "Transformers", c: "Hasbro", l: "Cybertron" },
+  { n: "G.I. Joe: A Real American Hero", c: "Hasbro" },
+  { n: "He-Man and the Masters of the Universe", c: "Lou Scheimer", l: "Eternia", p: "Battle Cat" },
+  { n: "Thundercats", c: "Tobin 'Ted' Wolf", l: "Third Earth", p: "Snarf" },
+  { n: "Voltron", c: "Peter Keefe" },
+  { n: "Teenage Mutant Ninja Turtles", c: "Kevin Eastman and Peter Laird", l: "New York City" },
+  { n: "Inspector Gadget", c: "Bruno Bianchi, Andy Heyward, and Jean Chalopin", l: "Metro City", p: "Brain" },
+  { n: "The Jetsons", c: "William Hanna and Joseph Barbera", l: "Orbit City", p: "Astro" },
+  { n: "Peanuts", c: "Charles M. Schulz", p: "Snoopy" },
+  { n: "Garfield and Friends", c: "Jim Davis", l: "Muncie", p: "Odie" }
 ]
 
 const food = [
@@ -109,7 +139,66 @@ const food = [
   { n: "Goulash", o: "Hungary", i: "Meat and Paprika" },
   { n: "Pho", o: "Vietnam", i: "Broth, Rice Noodles, Herbs, Meat" },
   { n: "Arepa", o: "Venezuela/Colombia", i: "Ground Maize Dough" },
-  { n: "Ceviche", o: "Peru", i: "Raw Fish and Citrus Juice" }
+  { n: "Ceviche", o: "Peru", i: "Raw Fish and Citrus Juice" },
+  // Adding Nigerian Food Expansion
+  { n: "Jollof Rice", o: "Nigeria (West Africa)", i: "Rice, Tomatoes, Onions, Peppers" },
+  { n: "Pounded Yam", o: "Nigeria", i: "Boiled Yam" },
+  { n: "Egusi Soup", o: "Nigeria", i: "Melon Seeds and Leafy Vegetables" },
+  { n: "Suya", o: "Nigeria", i: "Spiced Grilled Meat" },
+  { n: "Moi Moi", o: "Nigeria", i: "Steamed Bean Pudding" },
+  { n: "Akara", o: "Nigeria", i: "Deep-fried Bean Cakes" },
+  { n: "Efo Riro", o: "Nigeria", i: "Spinach and Meat/Fish" },
+  { n: "Afang Soup", o: "Nigeria", i: "Afang Leaves and Waterleaf" },
+  { n: "Edikang Ikong", o: "Nigeria", i: "Fluted Pumpkin and Waterleaf" },
+  { n: "Banga Soup", o: "Nigeria", i: "Palm Nut Extract" },
+  { n: "Ewa Agoyin", o: "Nigeria", i: "Mashed Beans and Pepper Sauce" },
+  { n: "Amala", o: "Nigeria", i: "Yam Flour or Cassava Flour" },
+  { n: "Garri", o: "Nigeria", i: "Cassava Flakes" },
+  { n: "Fufu", o: "Nigeria", i: "Cassava and Plantain" },
+  { n: "Ogbono Soup", o: "Nigeria", i: "Ogbono Seeds" },
+  { n: "Ofe Owerri", o: "Nigeria", i: "Assorted Meats and Snails" },
+  { n: "Tuwo Shinkafa", o: "Nigeria", i: "Mashed Rice" },
+  { n: "Kilishi", o: "Nigeria", i: "Dried Spicy Meat" },
+  { n: "Nkwobi", o: "Nigeria", i: "Spicy Cow Foot" },
+  { n: "Asaro (Yam Porridge)", o: "Nigeria", i: "Yam and Palm Oil" },
+  { n: "Abacha (African Salad)", o: "Nigeria", i: "Dried Cassava and Ugba" },
+  { n: "Okpa", o: "Nigeria", i: "Bambara Nut Flour" }
+]
+
+const sports = [
+  { a: "Lionel Messi", s: "Football (Soccer)", p: "Forward/Attacker" },
+  { a: "Cristiano Ronaldo", s: "Football (Soccer)", p: "Forward/Attacker" },
+  { a: "LeBron James", s: "Basketball", p: "Small Forward" },
+  { a: "Michael Jordan", s: "Basketball", p: "Shooting Guard" },
+  { a: "Serena Williams", s: "Tennis", p: "Singles Player" },
+  { a: "Roger Federer", s: "Tennis", p: "Singles Player" },
+  { a: "Rafael Nadal", s: "Tennis", p: "Singles Player" },
+  { a: "Tiger Woods", s: "Golf", p: "Golfer" },
+  { a: "Tom Brady", s: "American Football", p: "Quarterback" },
+  { a: 'Muhammad Ali', s: 'Boxing', p: 'Heavyweight Fighter' },
+  { a: 'Mike Tyson', s: 'Boxing', p: 'Heavyweight Fighter' },
+  { a: 'Tom Brady', s: 'American Football', p: 'Quarterback' },
+  { a: 'Patrick Mahomes', s: 'American Football', p: 'Quarterback' },
+  { a: 'Tiger Woods', s: 'Golf', p: 'Golfer' },
+  { a: 'Jack Nicklaus', s: 'Golf', p: 'Golfer' },
+  { a: 'Jon Jones', s: 'MMA', p: 'Fighter' },
+  { a: 'Conor McGregor', s: 'MMA', p: 'Fighter' },
+  { a: 'Ronda Rousey', s: 'MMA', p: 'Fighter' },
+  { a: 'Anderson Silva', s: 'MMA', p: 'Fighter' },
+  { a: "Usain Bolt", s: "Track and Field", p: "Sprinter" },
+  { a: "Michael Phelps", s: "Swimming", p: "Swimmer" },
+  { a: "Babe Ruth", s: "Baseball", p: "Outfielder/Pitcher" },
+  { a: "Wayne Gretzky", s: "Ice Hockey", p: "Center" },
+  { a: "Kobe Bryant", s: "Basketball", p: "Shooting Guard" },
+  { a: "Diego Maradona", s: "Football (Soccer)", p: "Attacking Midfielder" },
+  { a: "Pelé", s: "Football (Soccer)", p: "Forward/Attacker" },
+  { a: "Novak Djokovic", s: "Tennis", p: "Singles Player" },
+  { a: "Stephen Curry", s: "Basketball", p: "Point Guard" },
+  { a: "Lewis Hamilton", s: "Formula 1", p: "Driver" },
+  { a: "Michael Schumacher", s: "Formula 1", p: "Driver" },
+  { a: "Conor McGregor", s: "Mixed Martial Arts", p: "Fighter" },
+  { a: "Simone Biles", s: "Gymnastics", p: "Gymnast" },
+  { a: "Shaquille O'Neal", s: "Basketball", p: "Center" }
 ]
 
 function generateQs(data, templates, extractCorrect, extractWrong) {
@@ -133,34 +222,73 @@ async function main() {
   
   // Tech
   bank['tech'] = []
-  for (let i = 0; i < 8; i++) {
-    bank['tech'].push(...generateQs(tech, [w => `What does '${w.t}' mean in technology?`], w => w.m, w => w.m))
-    bank['tech'].push(...generateQs(tech, [w => `Which technology concept is defined as: "${w.m}"?`], w => w.t, w => w.t))
-    bank['tech'].push(...generateQs(tech.filter(w => w.a), [w => `What does the tech acronym ${w.t} stand for?`], w => w.a, w => w.a))
-    bank['tech'].push(...generateQs(tech.filter(w => w.f), [w => `Who is recognized as the creator or founder of ${w.t}?`], w => w.f, w => w.f))
-  }
+  bank['tech'].push(...generateQs(tech, [w => `What does '${w.t}' mean in technology?`], w => w.m, w => w.m))
+  bank['tech'].push(...generateQs(tech, [w => `Which technology concept is defined as: "${w.m}"?`], w => w.t, w => w.t))
+  bank['tech'].push(...generateQs(tech.filter(w => w.a), [w => `What does the tech acronym ${w.t} stand for?`], w => w.a, w => w.a))
+  bank['tech'].push(...generateQs(tech.filter(w => w.f), [w => `Who is recognized as the creator or founder of ${w.t}?`], w => w.f, w => w.f))
 
   // Anime
   bank['anime'] = []
-  for (let i = 0; i < 8; i++) {
-    bank['anime'].push(...generateQs(anime, [a => `Which animation studio produced the anime "${a.n}"?`], a => a.s, a => a.s))
-    bank['anime'].push(...generateQs(anime, [a => `In what year did the anime "${a.n}" originally premiere/release?`], a => a.y, a => a.y))
-  }
+  bank['anime'].push(...generateQs(anime, [a => `Which animation studio produced the anime "${a.n}"?`], a => a.s, a => a.s))
+  bank['anime'].push(...generateQs(anime, [a => `In what year did the anime "${a.n}" originally premiere/release?`], a => a.y, a => a.y))
   
   // Cartoons
   bank['cartoons'] = []
-  for (let i = 0; i < 8; i++) {
-    bank['cartoons'].push(...generateQs(cartoons, [c => `Who is the creator of the animated series "${c.n}"?`], c => c.c, c => c.c))
-    bank['cartoons'].push(...generateQs(cartoons.filter(c => c.l), [c => `In which fictional town or setting does "${c.n}" primarily take place?`], c => c.l, c => c.l))
-    bank['cartoons'].push(...generateQs(cartoons.filter(c => c.p), [c => `What is the name of the notable pet or animal companion in "${c.n}"?`], c => c.p, c => c.p))
-  }
+  bank['cartoons'].push(...generateQs(cartoons, [
+    c => `Who is the creator of the animated series "${c.n}"?`,
+    c => `The popular cartoon "${c.n}" was created by whom?`,
+    c => `Which individual or team is credited with creating "${c.n}"?`
+  ], c => c.c, c => c.c))
+  bank['cartoons'].push(...generateQs(cartoons.filter(c => c.l), [
+    c => `In which fictional town or setting does "${c.n}" primarily take place?`,
+    c => `Where is the primary setting for the cartoon "${c.n}"?`,
+    c => `The events of "${c.n}" largely occur in which fictional location?`
+  ], c => c.l, c => c.l))
+  bank['cartoons'].push(...generateQs(cartoons.filter(c => c.p), [
+    c => `What is the name of the notable pet or animal companion in "${c.n}"?`,
+    c => `Which famous animal/pet appears alongside the main characters in "${c.n}"?`
+  ], c => c.p, c => c.p))
+  bank['cartoons'].push(...generateQs(cartoons, [
+    c => `Which of these animated series was created by ${c.c}?`,
+    c => `${c.c} is famously known for creating which of these cartoons?`,
+    c => `If you were watching a show created by ${c.c}, which of these could it be?`
+  ], c => c.n, c => c.n))
 
   // Food
   bank['food'] = []
-  for (let i = 0; i < 8; i++) {
-    bank['food'].push(...generateQs(food, [f => `Which country is widely known as the origin of ${f.n}?`], f => f.o, f => f.o))
-    bank['food'].push(...generateQs(food, [f => `What are the primary ingredients or characteristics of ${f.n}?`], f => f.i, f => f.i))
-  }
+  bank['food'].push(...generateQs(food, [
+    f => `Which country is widely known as the origin of ${f.n}?`,
+    f => `Where did the popular dish ${f.n} originally come from?`,
+    f => `Which nation is most associated with creating ${f.n}?`
+  ], f => f.o, f => f.o))
+  bank['food'].push(...generateQs(food, [
+    f => `What are the primary ingredients or characteristics of ${f.n}?`,
+    f => `Which of the following describes the main components of ${f.n}?`,
+    f => `If you order ${f.n}, you are likely to be served a dish primarily consisting of:`
+  ], f => f.i, f => f.i))
+  bank['food'].push(...generateQs(food, [
+    f => `Which popular dish is known to originate from ${f.o}?`,
+    f => `If you were visiting ${f.o}, which of these famous local dishes might you eat?`,
+    f => `A culinary staple of ${f.o} is which of these dishes?`
+  ], f => f.n, f => f.n))
+
+  // Sports
+  bank['sports'] = []
+  bank['sports'].push(...generateQs(sports, [
+    s => `Which sport is ${s.a} famous for playing?`,
+    s => `The athlete ${s.a} made their name competing in which sport?`,
+    s => `If you were watching ${s.a} perform professionally, what sport would it be?`
+  ], s => s.s, s => s.s))
+  bank['sports'].push(...generateQs(sports, [
+    s => `What position or role is ${s.a} most famously associated with in their sport?`,
+    s => `When competing, ${s.a} is best known for which specific role or position?`,
+    s => `Which of these describes the sporting role of ${s.a}?`
+  ], s => s.p, s => s.p))
+  bank['sports'].push(...generateQs(sports, [
+    s => `Which famous athlete is known as a legendary ${s.p}?`,
+    s => `Who among these is a globally recognized ${s.s} athlete?`,
+    s => `If you needed an iconic ${s.s} player, who would you choose?`
+  ], s => s.a, s => s.a))
   
   // Final generation deduplication
   for (const cat of Object.keys(bank)) {
@@ -171,22 +299,6 @@ async function main() {
       seen.add(q.q)
       return true
     })
-    
-    // Duplicate to hit 500 if still short
-    if (bank[cat].length < 500) {
-      const originalQs = [...bank[cat]]
-      let extraIdx = 0
-      while (bank[cat].length < 500) {
-        const q = originalQs[extraIdx % originalQs.length]
-        bank[cat].push({
-          id: randomUUID(),
-          q: "TRIVIA: " + q.q + ` [Bonus ${Math.floor(extraIdx/originalQs.length)+1}]`,
-          correct: q.correct,
-          wrong: q.wrong
-        })
-        extraIdx++
-      }
-    }
   }
 
   const output = {

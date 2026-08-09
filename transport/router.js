@@ -739,7 +739,8 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
           'cartoons': '🐭', 'art': '🎨', 'mythology': '⚡', 'vehicles': '🚗',
           'nigerian-music': '🎵', 'nigerian-entertainment': '🎬', 'nigerian-history': '🇳🇬',
           'nigerian-food': '🍲', 'pidgin-english': '🗣️', 'web3': '🪙', 'bible': '📖',
-          'music': '🎧', 'food': '🍔', 'got': '🐉', 'naruto': '🦊'
+          'music': '🎧', 'food': '🍔', 'got': '🐉', 'naruto': '🦊',
+          'health': '🏥', 'tech-gadgets': '📱'
         }
         const available = bank ? bank.categories() : []
         enqueue(jid, { text: `*Categories*\n${available.map((c) => `▸ ${emojis[c] || '▪️'} ${c}`).join('\n') || 'none'}\n\n${PREFIX}trivia for a mix of all.`, mentions: [], kind: 'misc' })

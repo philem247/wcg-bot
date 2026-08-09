@@ -33,7 +33,7 @@ const CATEGORY_LABEL = {
   mythology: '🐉 MYTHOLOGY', vehicles: '🚗 VEHICLES', 'nigerian-music': '🎵 NIGERIAN MUSIC',
   'nigerian-entertainment': '🎥 NIGERIAN ENTERTAINMENT', 'nigerian-history': '🇳🇬 NIGERIAN HISTORY',
   'nigerian-food': '🍛 NIGERIAN FOOD', 'pidgin-english': '🗣️ PIDGIN ENGLISH',
-  web3: '⛓️ WEB3 & CRYPTO', bible: '📖 BIBLE',
+  web3: '⛓️ WEB3 & CRYPTO', bible: '📖 BIBLE', health: '🏥 HEALTH', 'tech-gadgets': '📱 TECH GADGETS',
 }
 const MEDALS = ['🥇', '🥈', '🥉']
 

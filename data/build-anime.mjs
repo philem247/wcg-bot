@@ -134,19 +134,22 @@ async function main() {
   const safeAnimeCharacters = characters.filter(c => !c.n.toLowerCase().includes(c.a.toLowerCase()))
   bank['anime'].push(...generateQs(safeAnimeCharacters, [
     c => `Which popular anime series features the character ${c.n}?`,
-    c => `${c.n} is a prominent character in which anime?`
+    c => `${c.n} is a prominent character in which anime?`,
+    c => `If you were watching ${c.n}, which anime would you be viewing?`
   ], c => c.a, c => c.a))
   
   // 2. Power Systems
   bank['anime'].push(...generateQs(characters, [
     c => `What is the primary power, weapon, or ability used by ${c.n} in ${c.a}?`,
-    c => `In ${c.a}, ${c.n} is known for utilizing which distinct ability?`
+    c => `In ${c.a}, ${c.n} is known for utilizing which distinct ability?`,
+    c => `Which technique or power is heavily associated with ${c.n}?`
   ], c => c.p, c => c.p))
 
   // 3. Factions
   bank['anime'].push(...generateQs(characters, [
     c => `Which organization, faction, or group is ${c.n} affiliated with in ${c.a}?`,
-    c => `In the world of ${c.a}, ${c.n} belongs to which group?`
+    c => `In the world of ${c.a}, ${c.n} belongs to which group?`,
+    c => `What is the name of the main group/faction that ${c.n} is a member of?`
   ], c => c.f, c => c.f))
   
   // Final deduplication & massive scale
@@ -157,22 +160,6 @@ async function main() {
     seen.add(q.q)
     return true
   })
-  
-  // Enforce massive limit
-  if (bank['anime'].length < 500) {
-    const originalQs = [...bank['anime']]
-    let extraIdx = 0
-    while (bank['anime'].length < 500) {
-      const q = originalQs[extraIdx % originalQs.length]
-      bank['anime'].push({
-        id: randomUUID(),
-        q: "TRIVIA: " + q.q + ` [Bonus ${Math.floor(extraIdx/originalQs.length)+1}]`,
-        correct: q.correct,
-        wrong: q.wrong
-      })
-      extraIdx++
-    }
-  }
 
   const output = {
     attribution: "Popular Shonen/Seinen Anime Generator",
