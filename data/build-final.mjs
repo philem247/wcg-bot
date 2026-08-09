@@ -54,6 +54,7 @@ function main() {
   // Clear out generators we just rebuilt so we don't merge old junk versions
   if (intermediateTrivia.categories) {
     delete intermediateTrivia.categories['naruto']
+    delete intermediateTrivia.categories['got']
   }
   
   // Existing static trivia (for old tech, old general, old pidgin, etc)
