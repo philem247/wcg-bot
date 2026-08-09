@@ -262,10 +262,10 @@ async function main() {
 
   // 10. Swords
   bank['got'].push(...generateQs(swords, [
-    s => `What is the name of the ancestral Valyrian steel sword belonging to ${s.h}?`,
-    s => `Which character is famously known to wield the sword '${s.s}'?`
+    s => `What is the name of the ancestral Valyrian steel sword belonging to ${s.h}?`
   ], s => s.s, s => s.s))
   bank['got'].push(...generateQs(swords, [
+    s => `Which character is famously known to wield the sword '${s.s}'?`,
     s => `Who is the famous owner or wielder of the sword named ${s.s}?`,
     s => `'${s.s}' is a legendary sword wielded by whom?`
   ], s => s.o, s => s.o))

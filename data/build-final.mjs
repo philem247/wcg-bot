@@ -43,11 +43,18 @@ function main() {
   const bible = readBank('./data/bible.json')
   const mega = readBank('./data/mega.json')
   const mega2 = readBank('./data/mega2.json')
+  const mega3 = readBank('./data/mega3.json')
   const got = readBank('./data/got.json')
   const anime = readBank('./data/anime.json')
+  const naruto = readBank('./data/naruto.json')
   
   // trivia.json contains the results of build:football and build:world
   const intermediateTrivia = readBank('./data/trivia.json')
+  
+  // Clear out generators we just rebuilt so we don't merge old junk versions
+  if (intermediateTrivia.categories) {
+    delete intermediateTrivia.categories['naruto']
+  }
   
   // Existing static trivia (for old tech, old general, old pidgin, etc)
   let staticTrivia = { categories: {} }
@@ -55,7 +62,7 @@ function main() {
     staticTrivia = JSON.parse(readFileSync('./data/static-trivia.json', 'utf8'))
   } catch (e) {}
 
-  const merged = mergeBanks([intermediateTrivia, apis, wikidata, pidgin, bible, mega, mega2, got, anime, staticTrivia])
+  const merged = mergeBanks([intermediateTrivia, apis, wikidata, pidgin, bible, mega, mega2, mega3, got, anime, naruto, staticTrivia])
   
   // Ensure entertainment is completely removed in case it sneaks in from staticTrivia
   delete merged['entertainment']

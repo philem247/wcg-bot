@@ -167,23 +167,29 @@ async function main() {
   // Classification (a.t)
   bank['animals'].push(...generateQs(animals, [
     a => `What type of animal classification is a ${a.n}?`,
-    a => `A ${a.n} is best described as a:`,
-    a => `Which of the following belongs to the ${a.t} class?`
+    a => `A ${a.n} is best described as a:`
   ], a => a.t, a => a.t))
+  bank['animals'].push(...generateQs(animals, [
+    a => `Which of the following belongs to the ${a.t} class?`
+  ], a => a.n, a => a.n))
   
   // Diet (a.c)
   bank['animals'].push(...generateQs(animals, [
     a => `What is the primary diet/diet classification of a ${a.n}?`,
-    a => `Which of these animals is a known ${a.c}?`,
     a => `What is the dietary habits of the ${a.n} called?`
   ], a => a.c, a => a.c))
+  bank['animals'].push(...generateQs(animals, [
+    a => `Which of these animals is a known ${a.c}?`
+  ], a => a.n, a => a.n))
   
   // Habitat/Region (a.d)
   bank['animals'].push(...generateQs(animals, [
     a => `Which of these regions is the native habitat of the ${a.n}?`,
-    a => `Which animal is natively found in ${a.d}?`,
     a => `If you were looking for a ${a.n} in the wild, where would you go?`
   ], a => a.d, a => a.d))
+  bank['animals'].push(...generateQs(animals, [
+    a => `Which animal is natively found in ${a.d}?`
+  ], a => a.n, a => a.n))
   
   // Mythology
   bank['mythology'] = []
