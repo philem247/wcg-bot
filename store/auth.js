@@ -60,12 +60,6 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
   db.exec('PRAGMA journal_mode = WAL');
   ensureTable(db);
 
-  // ── Creds ──
-  // If a SESSION_ID was provided, decode it. Otherwise generate fresh creds.
-  // creds is mutated in-place by baileys (it does Object.assign onto it), so
-  // this single object must survive the process lifetime.
-  const creds = sessionId ? decodeCreds(sessionId) : initAuthCreds();
-
   // Prepared statements — created once, reused for every get/set.
   const stmtGet = db.prepare('SELECT value FROM wa_keys WHERE category = ? AND id = ?');
   const stmtSet = db.prepare(
@@ -95,6 +89,17 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
     }
   }
 
+  // ── Creds ──
+  // Check if creds are already in the DB from a previous run.
+  // If not, bootstrap from the SESSION_ID env var or generate fresh.
+  let creds = readKey('creds', 'default');
+  if (!creds) {
+    creds = sessionId ? decodeCreds(sessionId) : initAuthCreds();
+    writeKey('creds', 'default', creds);
+  }
+
+
+
   return {
     state: {
       creds,
@@ -117,11 +122,10 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
       },
     },
     saveCreds: async () => {
-      // creds live in the SESSION_ID env var, not in the DB. On first pair
-      // (no SESSION_ID yet), we print the new SESSION_ID to the console.
-      // saveCreds is a no-op in normal operation — the creds object in memory
-      // is the source of truth, and it's already the same object baileys mutates.
-      // Nothing to persist to disk; the SESSION_ID is write-once at pair time.
+      // Baileys mutates the creds object in-place (e.g. rotating nextPreKeyId).
+      // We MUST save it back to the database on every change, otherwise we will
+      // reuse old keys on restart and cause Signal decryption failures.
+      writeKey('creds', 'default', creds);
     },
 
     // Expose for the bot to call after a successful first-time pair.
