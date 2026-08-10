@@ -284,8 +284,8 @@ const tests = [
         games: new Map(),
         enqueue,
         logger: undefined,
-        getGroupAdmins: async () => ['444444444@s.whatsapp.net'],
-        db: {},
+        getGroupAdmins: async () => ['444444444@s.whatsapp.net', '999999999@s.whatsapp.net'],
+        db: { botAdmins: () => [] },
       })
 
       await router.handleMessage(
@@ -668,7 +668,7 @@ const tests = [
     },
   },
   {
-    name: '/help hides admin and owner blocks from a normal player',
+    name: '/help is refused for a normal player',
     fn: async () => {
       const sent = []
       const db = openDb(':memory:')
@@ -679,11 +679,7 @@ const tests = [
       })
       await router.handleMessage({ jid: 'g@g.us', sender: '99999@s.whatsapp.net', senderPn: '99999@s.whatsapp.net', text: '/help', isGroup: true }, 0)
       const text = sent[0]
-      assert.ok(text.includes('WORD CHAIN'))
-      assert.ok(text.includes('TRIVIA'))
-      assert.ok(!text.includes('ADMIN'), 'a player cannot use these')
-      assert.ok(!text.includes('OWNER'))
-      assert.ok(!text.includes('/promote'))
+      assert.ok(text.includes('Only admins'))
       db.close()
     },
   },
@@ -838,7 +834,7 @@ const tests = [
       await router.handleMessage({ jid: 'g-start-1@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/trivia', isGroup: true }, 0)
       assert.equal(games.size, 0, 'no game created for a non-admin')
       assert.equal(sent.length, 1)
-      assert.ok(sent[0].includes('group admin'), 'refusal names the requirement')
+      assert.ok(sent[0].includes('Only admins'), 'refusal names the requirement')
     },
   },
   {
@@ -864,7 +860,7 @@ const tests = [
     },
   },
   {
-    name: '/trivia stats and /trivia categories still work for a non-admin',
+    name: '/trivia stats and /trivia categories are refused for a non-admin',
     fn: async () => {
       const sent = []
       const db = openDb(':memory:')
@@ -876,9 +872,9 @@ const tests = [
       })
       await router.handleMessage({ jid: 'g-stats@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/trivia categories', isGroup: true }, 0)
       await router.handleMessage({ jid: 'g-stats@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/trivia stats', isGroup: true }, 0)
-      assert.equal(sent.length, 2, 'both subcommands replied, neither gated by the start-game admin check')
-      assert.ok(sent[0].toLowerCase().includes('general'), 'categories listed')
-      assert.ok(sent[1].includes('Trivia'), 'stats leaderboard heading shown')
+      assert.equal(sent.length, 2, 'both subcommands replied')
+      assert.ok(sent[0].includes('Only admins'), 'refused')
+      assert.ok(sent[1].includes('Only admins'), 'refused')
       db.close()
     },
   },
@@ -918,10 +914,11 @@ const tests = [
       const letter = ['A', 'B', 'C', 'D'].find((l) => posted.includes(`*${l})*  right`))
 
       // A different player (not the starter) burns through their own command budget.
+      // (Since they are not an admin, they get the admin refusal message, but they still consume quota).
       for (let i = 0; i < 6; i++) {
         await router.handleMessage({ jid, sender: 'player@s.whatsapp.net', senderPn: undefined, text: '/ping', isGroup: true }, 1000 + i)
       }
-      assert.equal(sent.filter((t) => t === 'pong').length, 5, 'only 5 of the 6 pings replied')
+      assert.equal(sent.filter((t) => t && t.includes('Only admins')).length, 5, 'only 5 of the 6 pings replied')
 
       const before = sent.length
       await router.handleMessage({ jid, sender: 'player@s.whatsapp.net', senderPn: 'player@s.whatsapp.net', text: letter, isGroup: true }, 2000)
@@ -1202,7 +1199,7 @@ const tests = [
       db.recordTournamentWin('g-tny-5@g.us', '11111111', 1000)
       const router = createRouter({
         dict: {}, games: new Map(), enqueue: (j, m) => sent.push(m.text),
-        logger: undefined, getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+        logger: undefined, getGroupAdmins: async () => ['x@s.whatsapp.net'], db, resolvePn: () => undefined,
       })
       await router.handleMessage({ jid: 'g-tny-5@g.us', sender: 'x@s.whatsapp.net', senderPn: undefined, text: '/tourney stats', isGroup: true }, 2000)
       assert.ok(sent[0].includes('11111111'))
@@ -1220,7 +1217,7 @@ const tests = [
       db.recordTournamentWin('g-tny-mentions@g.us', '2349137123224@s.whatsapp.net', 1000)
       const router = createRouter({
         dict: {}, games: new Map(), enqueue: (j, m) => sentMsgs.push(m),
-        logger: undefined, getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+        logger: undefined, getGroupAdmins: async () => ['x@s.whatsapp.net'], db, resolvePn: () => undefined,
       })
       await router.handleMessage({ jid: 'g-tny-mentions@g.us', sender: 'x@s.whatsapp.net', senderPn: undefined, text: '/tourney stats', isGroup: true }, 2000)
       assert.equal(sentMsgs.length, 1)
@@ -1260,7 +1257,7 @@ const tests = [
     },
   },
   {
-    name: '/help lists /tourney status and stats to everyone, but start|next|end only to an admin',
+    name: '/help is refused for non-admins for tourney too',
     fn: async () => {
       const sentPlayer = []
       const dbA = openDb(':memory:')
@@ -1271,12 +1268,7 @@ const tests = [
       })
       await routerPlayer.handleMessage({ jid: 'g@g.us', sender: '99999@s.whatsapp.net', senderPn: '99999@s.whatsapp.net', text: '/help', isGroup: true }, 0)
       const playerText = sentPlayer[0]
-      assert.ok(playerText.includes('TOURNAMENT'))
-      assert.ok(playerText.includes(`${PREFIX}tourney status`))
-      assert.ok(playerText.includes(`${PREFIX}tourney stats`))
-      assert.ok(!playerText.includes(`${PREFIX}tourney start`), 'a non-admin must not see the admin-gated tourney commands')
-      assert.ok(!playerText.includes(`${PREFIX}tourney next`))
-      assert.ok(!playerText.includes(`${PREFIX}tourney end`))
+      assert.ok(playerText.includes('Only admins'))
       dbA.close()
 
       const sentAdmin = []

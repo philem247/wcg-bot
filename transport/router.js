@@ -862,6 +862,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       const parsed = parseCommand(text, PREFIX)
       if (parsed) {
         if (overCommandLimit(sender, now)) return // silent by design, see overCommandLimit
+        const groupAdmins = await groupAdminsFor(jid, isGroup)
+        if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid) && !isOwnerOrGlobalAdmin(sender, senderPn)) {
+          enqueue(jid, { text: `Only admins and owners can use bot commands.`, mentions: [], kind: 'misc' })
+          return
+        }
         await handleCommand(jid, sender, senderPn, isGroup, parsed.cmd, parsed.args, now, raw)
         return
       }

@@ -228,22 +228,20 @@ function disconnectReasonName(code) {
   return Object.keys(DisconnectReason).find((k) => DisconnectReason[k] === code) || 'unknown';
 }
 
-export async function connect(onMessage, appLogger, onConnected) {
+export async function connect(onMessage, appLogger, onConnected, existingDb) {
   logger = appLogger;
   onMessageHandler = onMessage;
   onConnectedHandler = onConnected;
   startSummaryTimer();
   startWatchdogTimer();
 
-  // Auth state: prefer SQLite (SESSION_ID set) over file-based (legacy/first-time).
-  // SQLite gives atomic writes, no per-file races, no session folder to corrupt.
+  // Auth state: always use SQLite. No per-file races, no session folder to corrupt.
   if (!authState) {
+    authState = useSqliteAuthState({ sessionId: SESSION_ID, existingDb });
     if (SESSION_ID) {
-      authState = useSqliteAuthState({ sessionId: SESSION_ID });
       logger.info('Auth: using SQLite-backed session (SESSION_ID set)');
     } else {
-      authState = await useMultiFileAuthState(SESSION_DIR);
-      logger.info(`Auth: using file-based session in ${SESSION_DIR}/ (set SESSION_ID to switch to SQLite)`);
+      logger.info('Auth: using SQLite-backed session (generating new credentials)');
     }
   }
   const { state, saveCreds } = authState;

@@ -164,6 +164,8 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   )
 
   return {
+    sqlite: db,
+
     recordGame({ jid, mode, type, startedAt, endedAt, words, results }) {
       db.exec('BEGIN')
       try {

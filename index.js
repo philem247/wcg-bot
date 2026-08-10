@@ -187,7 +187,7 @@ function onConnected() {
 }
 
 try {
-  const { pairingCodeRequested } = await connect(handleMessage, logger, onConnected);
+  const { pairingCodeRequested } = await connect(handleMessage, logger, onConnected, db.sqlite);
   // Safe ordering: on a fresh pair connect() resolves right after it prints the
   // pairing code, long before the user finishes pairing and 'open' fires.
   freshPair = pairingCodeRequested;
