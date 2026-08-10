@@ -58,7 +58,7 @@ export function createScrambleGame({ words, clockSeconds = CLOCK_SECONDS, gapSec
     index++
     if (index >= words.length) return finish()
     
-    currentWord = words[index].answer
+    currentWord = words[index].correct
     currentScrambled = scrambleString(currentWord)
     deadline = at + clockMs
     phase = 'asking'

@@ -75,7 +75,7 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
       
       const validScrambleQuestions = allQuestions.filter(q => {
         // Must be exactly one word, only a-z letters, length 4 to 10
-        return /^[A-Za-z]{4,10}$/.test(q.answer);
+        return /^[A-Za-z]{4,10}$/.test(q.correct);
       });
 
       return shuffle(validScrambleQuestions, random).slice(0, count);
