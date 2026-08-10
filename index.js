@@ -10,7 +10,7 @@ import { openDb } from './store/db.js';
 import { loadDictionary } from './engine/dictionary.js';
 import { loadBank } from './engine/bank.js';
 import { createScheduler } from './engine/tick.js';
-import { PHONE_NUMBER, OWNER, LOG_LEVEL, SESSION_DIR, QUIET_SIGNAL_NOISE } from './config.js';
+import { PHONE_NUMBER, OWNER, LOG_LEVEL, SESSION_DIR, QUIET_SIGNAL_NOISE, AUTO_RESTART_HOURS } from './config.js';
 
 const bootStart = Date.now();
 
@@ -198,4 +198,12 @@ try {
 } catch (e) {
   logger.fatal(`Failed to connect: ${e.message}`);
   process.exit(1);
+}
+
+if (AUTO_RESTART_HOURS > 0) {
+  logger.info(`Auto-restart scheduled in ${AUTO_RESTART_HOURS} hours`);
+  setTimeout(() => {
+    logger.warn(`Auto-restart triggered after ${AUTO_RESTART_HOURS} hours to keep connection fresh`);
+    process.exit(0); // Pterodactyl/PM2 will instantly revive it
+  }, AUTO_RESTART_HOURS * 60 * 60 * 1000).unref();
 }

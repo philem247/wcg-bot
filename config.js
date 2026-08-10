@@ -19,6 +19,7 @@ export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
 // Force a reconnect when a game is running but no message has dispatched for
 // this long — see transport/wa.js's watchdog. 0 disables it.
 export const STALL_TIMEOUT_MS = Number(process.env.STALL_TIMEOUT_MS ?? 3 * 60 * 1000);
+export const AUTO_RESTART_HOURS = Number(process.env.AUTO_RESTART_HOURS ?? 6);
 export const ADMINS = (process.env.ADMINS || '')
   .split(',')
   .map(s => s.trim())

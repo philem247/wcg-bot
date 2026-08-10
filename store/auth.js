@@ -91,8 +91,23 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
 
   // ── Creds ──
   // Check if creds are already in the DB from a previous run.
-  // If not, bootstrap from the SESSION_ID env var or generate fresh.
   let creds = readKey('creds', 'default');
+
+  if (creds && sessionId) {
+    // If the user explicitly provided a SESSION_ID in .env, check if it's a NEW session
+    // (meaning they want to override the database and re-pair from scratch).
+    try {
+      const envCreds = decodeCreds(sessionId);
+      if (Buffer.compare(envCreds.noiseKey.public, creds.noiseKey.public) !== 0) {
+        db.exec('DELETE FROM wa_keys;');
+        creds = null; // force it to load the new creds below
+      }
+    } catch (e) {
+      // ignore invalid SESSION_ID strings
+    }
+  }
+
+  // If no creds in DB (or if they were just wiped above), bootstrap from env or generate fresh.
   if (!creds) {
     creds = sessionId ? decodeCreds(sessionId) : initAuthCreds();
     writeKey('creds', 'default', creds);
