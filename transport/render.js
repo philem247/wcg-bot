@@ -140,6 +140,43 @@ export function render(event) {
     case 'trivia_terminated':
       return { text: `Trivia stopped.`, mentions: [] }
 
+    case 'scramble_word': {
+      return {
+        text: `🔀 *Scramble (${event.index}/${event.total})*\nUnscramble this word: \`${event.scrambled}\` (${event.clockSeconds}s)`,
+        mentions: []
+      }
+    }
+
+    case 'scramble_answer': {
+      const mentions = []
+      let text
+      if (event.winner) {
+        text = `✅ ${mention(event.winner)} got it! — *${event.correct}*`
+        mentions.push(event.winner)
+      } else {
+        text = `❌ Time's up! — *${event.correct}*`
+      }
+      return { text, mentions }
+    }
+
+    case 'scramble_over': {
+      const lines = []
+      const mentions = []
+      if (event.standings.length === 0) {
+        lines.push('🏁 *SCRAMBLE OVER*', '━━━━━━━━━━━━━━━━', '', 'Nobody scored.')
+        return { text: lines.join('\n'), mentions }
+      }
+      lines.push('🏁 *SCRAMBLE OVER*', '━━━━━━━━━━━━━━━━', '')
+      event.standings.forEach((s, i) => {
+        lines.push(`${MEDALS[i] ?? '　'} ${mention(s.player)} — *${s.score}*`)
+        mentions.push(s.player)
+      })
+      return { text: lines.join('\n'), mentions }
+    }
+
+    case 'scramble_terminated':
+      return { text: `Scramble stopped.`, mentions: [] }
+
     case 'tournament_registration_open':
       return {
         text: `🏆 *TOURNAMENT*\n━━━━━━━━━━━━━━━━\n${CATEGORY_LABEL[event.category] ?? event.category}\nType *join* — registration closes in ${event.seconds}s.`,

@@ -4,6 +4,7 @@ import { render } from './render.js'
 import { isAdmin, isAdminEither, toNumber } from './admin.js'
 import { createGame } from '../engine/game.js'
 import { createTriviaGame, QUESTION_COUNT, parseAnswer } from '../engine/trivia.js'
+import { createScrambleGame, SCRAMBLE_COUNT } from '../engine/scramble.js'
 import { createTournament } from '../engine/tournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
@@ -55,6 +56,9 @@ const KIND_BY_EVENT = {
   eliminated: 'result',
   terminated: 'result',
   ended: 'result',
+  scramble_word: 'turn',
+  scramble_answer: 'result',
+  scramble_over: 'result',
 }
 
 // Ordering (ramp->turn, accepted->turn, eliminated->winner, ...) carries meaning,
@@ -152,6 +156,36 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'trivia_terminated') {
       lastTriviaEnd.set(jid, now)
+      gameMeta.delete(jid)
+    } else if (event.type === 'scramble_word') {
+      if (event.index === 1) {
+        gameMeta.set(jid, { mode: 'mixed', type: 'scramble', startedAt: now, eliminated: [], pnMap: new Map() })
+      }
+    } else if (event.type === 'scramble_answer') {
+      const meta = gameMeta.get(jid)
+      if (meta && event.winner) {
+         if (!meta.pnMap) meta.pnMap = new Map()
+         meta.pnMap.set(event.winner, event.winner_pn)
+      }
+    } else if (event.type === 'scramble_over') {
+      const meta = gameMeta.get(jid)
+      const pnMap = meta?.pnMap || new Map()
+      const results = event.standings.map((s, i) => ({
+        player: s.player, placement: i + 1, player_pn: pnMap.get(s.player),
+      }))
+      if (results.length > 0) {
+        try {
+          db?.recordGame({
+            jid, mode: 'mixed', type: 'scramble',
+            startedAt: meta?.startedAt ?? now, endedAt: now,
+            words: event.total, results,
+          })
+        } catch (e) {
+          // store failure must never break gameplay
+        }
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'scramble_terminated') {
       gameMeta.delete(jid)
     } else if (event.type === 'tournament_champion') {
       // Tournament wins are a SEPARATE table from trivia/chain results — never
@@ -323,8 +357,43 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     starters.set(jid, sender)
     gameTypes.set(jid, 'wcg')
     try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
-    sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
+    sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
     // Record starter's phone-form JID for leaderboard aggregation
+    if (senderPn) {
+      const meta = gameMeta.get(jid)
+      if (meta?.pnMap) meta.pnMap.set(sender, senderPn)
+    }
+  }
+
+  async function startScramble(jid, sender, senderPn, args, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. Use ${PREFIX}scramble end to stop it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (!bank) {
+      enqueue(jid, { text: `Scramble is unavailable — no question bank loaded.`, mentions: [], kind: 'misc' })
+      return
+    }
+    const words = bank.pickScrambleWords({ count: SCRAMBLE_COUNT, random: Math.random })
+    if (words.length < SCRAMBLE_COUNT) {
+      enqueue(jid, { text: `Not enough valid words in the database to start a Scramble game.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    enqueue(jid, { text: `🔠 *Scramble Game started!*\n${SCRAMBLE_COUNT} words. You have 15 seconds per word. Get ready...`, mentions: [], kind: 'misc' })
+    
+    const game = createScrambleGame({ words, now, random: Math.random })
+    games.set(jid, game)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'scramble')
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+    
+    // We send join() immediately but the engine drops the first word immediately since phase is idle.
+    sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
     if (senderPn) {
       const meta = gameMeta.get(jid)
       if (meta?.pnMap) meta.pnMap.set(sender, senderPn)
@@ -534,6 +603,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}trivia categories`,
         `▸ ${PREFIX}trivia end`,
         ``,
+        `*🔀 SCRAMBLE* _(start: admins only)_`,
+        `▸ ${PREFIX}scramble start`,
+        `▸ ${PREFIX}scramble end`,
+        ``,
         `*🏆 TOURNAMENT* _(start/next/end: admins only)_`,
         `▸ ${PREFIX}tourney status`,
         `▸ ${PREFIX}tourney stats`,
@@ -541,6 +614,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `*📊 SCORES*`,
         `▸ ${PREFIX}stats [all]`,
         `▸ ${PREFIX}trivia stats [all]`,
+        `▸ ${PREFIX}scramble stats [all]`,
       ]
 
       // Hidden from players who cannot use them: no point listing a command
@@ -766,6 +840,31 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
 
       await startTrivia(jid, sender, senderPn, args, now, isGroup)
+      return
+    }
+
+    if (cmd === 'scramble') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'stats') {
+        const all = args[1] === 'all'
+        const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'scramble' })
+        const { text, mentions } = formatLeaderboard(board, all ? '🏆 Scramble — all-time' : '🏆 Scramble — this week')
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end') {
+        await endGame(jid, sender, senderPn, isGroup, now, 'scramble')
+        return
+      }
+
+      await startScramble(jid, sender, senderPn, args, now, isGroup)
       return
     }
 

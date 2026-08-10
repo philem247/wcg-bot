@@ -173,6 +173,8 @@ function onConnected() {
     `▸ */help* — all commands`,
     `▸ */wcg start* — word chain`,
     `▸ */trivia* — quiz race`,
+    `▸ */scramble start* — anagram race`,
+    `▸ */tourney start* — tournament`,
     ``,
     `🔗 Chain. Survive. Win.`,
   ].join('\n');
