@@ -316,24 +316,7 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
         sock.ev.removeAllListeners();
         connect(onMessage, logger, onConnected);
-      } else if (reason === DisconnectReason.badSession) {
-        // badSession (500): the server decided our Signal ratchets are out of
-        // sync. Purge the corrupted session/sender-key entries and reconnect.
-        // With SQLite this is a single DELETE; with file-based it's impossible
-        // to reach here if SESSION_ID is set, but we guard both paths.
-        logger.warn(`Bad session (${reason} ${reasonName}) after ${upSec}s connected — purging Signal sessions and reconnecting...`);
-        sock.ev.removeAllListeners();
-        if (authState.purgeSignalSessions) {
-          // SQLite path: synchronous, atomic, instant.
-          const n = authState.purgeSignalSessions();
-          logger.info(`Purged ${n} stale Signal session row(s) from SQLite`);
-          setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
-        } else {
-          // Legacy file-based path: shouldn't happen if SESSION_ID is set,
-          // but keep for backward compatibility.
-          authState = null;
-          setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
-        }
+
       } else {
         logger.info(`Disconnected (${reason} ${reasonName}) after ${upSec}s connected, reconnecting in ${RECONNECT_DELAY}ms...`);
         sock.ev.removeAllListeners();
