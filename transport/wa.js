@@ -252,8 +252,9 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
   sock = makeWASocket({
     version,
     auth: state,
-    browser: Browsers.ubuntu('Chrome'),
+    browser: Browsers.macOS('Safari'),
     logger: waLogger,
+    keepAliveIntervalMs: 15000,
     // Phone-lag fix: markOnlineOnConnect defaults true, which makes this linked
     // device announce itself as the active client and pulls presence/notification
     // routing onto it, degrading the phone. syncFullHistory/shouldSyncHistoryMessage
