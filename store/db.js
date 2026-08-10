@@ -104,7 +104,13 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const stmtSelectResultsChain = db.prepare(`
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
-    WHERE r.jid = ? AND r.ended_at >= ? AND g.type IS NOT 'trivia'
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'chain'
+    ORDER BY player
+  `)
+  const stmtSelectResultsScramble = db.prepare(`
+    SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
+    FROM results r JOIN games g ON g.id = r.game_id
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'scramble'
     ORDER BY player
   `)
   const stmtMarkAsked = db.prepare(
@@ -208,7 +214,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     },
 
     leaderboard({ jid, since = 0, limit = 10, type = 'chain' }) {
-      const stmt = type === 'trivia' ? stmtSelectResultsTrivia : stmtSelectResultsChain
+      let stmt;
+      if (type === 'trivia') stmt = stmtSelectResultsTrivia;
+      else if (type === 'scramble') stmt = stmtSelectResultsScramble;
+      else stmt = stmtSelectResultsChain;
       const rows = stmt.all(jid, since)
 
       const agg = new Map()
