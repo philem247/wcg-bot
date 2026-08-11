@@ -790,7 +790,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     if (cmd === 'stats') {
       const all = args[0] === 'all'
       const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'chain' })
-      const { text, mentions } = formatLeaderboard(board, all ? '🏆 All-time' : '🏆 This week')
+      const { text, mentions } = formatLeaderboard(board, all ? '🏆 WCG — all-time' : '🏆 WCG — this week')
       enqueue(jid, { text, mentions, kind: 'misc' })
       return
     }

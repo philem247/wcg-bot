@@ -7,6 +7,7 @@ import { createOutbox } from './transport/outbox.js';
 import { acquireLock, releaseLock } from './transport/lock.js';
 import { installQuietSignalNoise } from './transport/quiet.js';
 import { openDb } from './store/db.js';
+import { startLagMonitor } from './lag-monitor.js';
 import { loadDictionary } from './engine/dictionary.js';
 import { loadBank } from './engine/bank.js';
 import { createScheduler } from './engine/tick.js';
@@ -22,6 +23,10 @@ const logger = pino(
 // Before anything touches the socket: libsignal's decrypt-noise console spam can
 // start as soon as messages.upsert fires. See transport/quiet.js.
 installQuietSignalNoise(logger, { enabled: QUIET_SIGNAL_NOISE });
+
+// Diagnostics only (see HANDOVER.md phase 7): proves whether the event loop
+// itself stalls (blocked by a long sync call) during a silent freeze.
+startLagMonitor(logger);
 
 logger.info(`Starting WCG bot. Phone: ${PHONE_NUMBER}, Owner: ${OWNER}`);
 

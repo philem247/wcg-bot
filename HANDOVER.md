@@ -40,7 +40,48 @@ session/creds.json     ★ single-file auth state (replaces 45+ individual files
 
 ---
 
-## Changes Made (5 Bug Fixes + 1 Feature)
+## 2026-08-11 Session: Logo Quiz & Architecture Fixes
+
+### 1. New Feature: Logo Quiz Game
+Designed and fully integrated a new visual trivia game mode.
+
+#### Architecture & Engine (`engine/logo.js`)
+- Implemented a state machine (`idle`, `asking`, `gap`, `over`).
+- **Rules**: 10 rounds per game, 20 seconds to guess each logo, unlimited attempts per round.
+- **Forgiving Validation**: Instead of strict case-matching, guesses are aggressively sanitized. A custom comparison function (`fold(s).replace(/[^a-z0-9]/g, '')`) strips all spaces, hyphens, periods, and special symbols (e.g., `&`) from both the user's guess and the correct answer.
+
+#### Asset Management (`data/logos/`)
+- Expanded the domain mapping dictionary to include 1,000+ top global brands across 7 categories.
+- Executed `scripts/build-logos.mjs` to fetch and locally cache over 1,000 high-quality `.jpg` images from the `logo.dev` API.
+- Implemented an MD5-hashing deduplication script to mathematically detect and purge identical blank/fallback images.
+- Images are stored directly in the `data/logos/` directory (approx 36MB) to ensure instant rendering without API latency.
+
+#### Integration & Rendering (`transport/router.js` & `transport/render.js`)
+- **Commands**: Registered `/logo start`, `/logo end`, and `/logo stats [all]`.
+- **Routing**: `startLogoGame()` randomly shuffles the `data/logos/` directory and selects 10 `.jpg` files for the match.
+- **Rendering**: Added event renderers for `logo_word`, `logo_answer`, `logo_over`, and `logo_terminated` in `transport/render.js`.
+- **Boot Message**: Appended `/logo start` to the global welcome message in `index.js`.
+
+### 2. Bug Fixes & Transport Layer Patches
+
+#### A. Image Attachment Delivery
+- **The Issue**: The logo images were failing to send to WhatsApp.
+- **The Fix**: 
+  1. The pipeline in `transport/router.js` (`sendEvents`) was unintentionally dropping the `imagePath` property when mapping the event to the `outbox` queue envelope. Updated the envelope mapper to pass `imagePath` through.
+  2. The `baileys` WhatsApp engine failed to correctly resolve local absolute file paths on Windows when passed via the `url` property. Updated the core `send()` function in `transport/wa.js` to synchronously load the image via `fs.readFileSync(imagePath)` and pass the raw `Buffer` directly to Baileys.
+
+#### B. Multi-Word Answer Rejection
+- **The Issue**: Any logo guess containing a space (e.g. "Capital One") was being completely ignored by the bot.
+- **The Fix**: The router enforces a global `!/\s/.test(trimmed)` regex rule to drop multi-word messages to prevent the bot from spamming "Not a word" during casual group conversation when Word Chain or Scramble is active. Updated `transport/router.js` to conditionally exempt Logo Quiz and Trivia games from this regex rule.
+
+#### C. WhatsApp Session Corruption on Manual Stop
+- **The Issue**: When the user manually "stopped" the Node process (SIGINT/SIGTERM), the bot would permanently refuse to accept commands upon restarting until the `wa_keys` database table was purged.
+- **The Fix**: The `baileys` engine batches and writes its Signal ratchet session keys to the SQLite database asynchronously. In `index.js`, the `shutdown()` handler was calling `waShutdown()` and instantly executing `db.close()` and `process.exit(0)`. This forcibly locked the database before Baileys could flush its final batch of keys, permanently corrupting the session. 
+- **Solution**: Injected `await new Promise((resolve) => setTimeout(resolve, 1500))` into the shutdown sequence in `index.js` immediately before closing the database to allow Baileys adequate time to securely flush all pending keys.
+
+---
+
+## 2026-08-04 Session: 5 Bug Fixes + 1 Feature
 
 ### Bug 1: Duplicate Users in Leaderboard
 

@@ -67,8 +67,18 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
   );
   const stmtDel = db.prepare('DELETE FROM wa_keys WHERE category = ? AND id = ?');
 
+  // Diagnostics only (see HANDOVER.md phase 7): this pair runs synchronously
+  // on literally every inbound decrypt / outbound encrypt via baileys'
+  // keys.get/keys.set. node:sqlite is fully synchronous, so a slow call here
+  // blocks the whole event loop for its duration. Threshold generous — normal
+  // local SQLite ops are sub-millisecond.
+  const SLOW_MS = 100;
+
   function readKey(category, id) {
+    const start = performance.now();
     const row = stmtGet.get(category, id);
+    const ms = performance.now() - start;
+    if (ms > SLOW_MS) console.warn(`SLOW: auth.readKey(${category}) took ${ms.toFixed(1)}ms`);
     if (!row) return null;
     try {
       let value = JSON.parse(row.value, BufferJSON.reviver);
@@ -82,11 +92,14 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
   }
 
   function writeKey(category, id, value) {
+    const start = performance.now();
     if (value === null || value === undefined) {
       stmtDel.run(category, id);
     } else {
       stmtSet.run(category, id, JSON.stringify(value, BufferJSON.replacer));
     }
+    const ms = performance.now() - start;
+    if (ms > SLOW_MS) console.warn(`SLOW: auth.writeKey(${category}) took ${ms.toFixed(1)}ms`);
   }
 
   // ── Creds ──

@@ -1,6 +1,21 @@
 import { DatabaseSync } from 'node:sqlite'
 import { fold, isWord } from '../engine/normalize.js'
 
+// Diagnostics only (see HANDOVER.md phase 7): logs when a gameplay-hot SQLite
+// call blocks the (single-threaded, fully-sync) event loop for longer than
+// expected. node:sqlite is synchronous — a slow call here freezes everything,
+// timers included, for exactly as long as it takes. Threshold is generous
+// (normal local SQLite ops are sub-millisecond) so this stays silent in the
+// common case.
+const SLOW_MS = 100
+function timed(label, fn) {
+  const start = performance.now()
+  const result = fn()
+  const ms = performance.now() - start
+  if (ms > SLOW_MS) console.warn(`SLOW: db.${label} took ${ms.toFixed(1)}ms`)
+  return result
+}
+
 export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const db = new DatabaseSync(path)
   db.exec('PRAGMA journal_mode = WAL')
@@ -104,7 +119,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const stmtSelectResultsChain = db.prepare(`
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
-    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'chain'
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo')
     ORDER BY player
   `)
   const stmtSelectResultsScramble = db.prepare(`
@@ -179,26 +194,28 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     sqlite: db,
 
     recordGame({ jid, mode, type, startedAt, endedAt, words, results }) {
-      db.exec('BEGIN')
-      try {
-        const info = stmtInsertGame.run(jid, mode, type, startedAt, endedAt, words)
-        const gameId = info.lastInsertRowid
+      return timed('recordGame', () => {
+        db.exec('BEGIN')
+        try {
+          const info = stmtInsertGame.run(jid, mode, type, startedAt, endedAt, words)
+          const gameId = info.lastInsertRowid
 
-        for (const { player, placement, player_pn } of results) {
-          stmtInsertResult.run(gameId, jid, player, player_pn ?? null, placement, results.length, endedAt)
+          for (const { player, placement, player_pn } of results) {
+            stmtInsertResult.run(gameId, jid, player, player_pn ?? null, placement, results.length, endedAt)
+          }
+
+          db.exec('COMMIT')
+          return gameId
+        } catch (e) {
+          db.exec('ROLLBACK')
+          throw e
         }
-
-        db.exec('COMMIT')
-        return gameId
-      } catch (e) {
-        db.exec('ROLLBACK')
-        throw e
-      }
+      })
     },
 
     recordRejection({ jid, word, player, ts }) {
       if (!isWord(word)) return // junk (punctuation/digits/too-short) never enters pending/addword-all
-      stmtInsertRejection.run(jid, fold(word), player, ts)
+      timed('recordRejection', () => stmtInsertRejection.run(jid, fold(word), player, ts))
     },
 
     pending(jid, limit = 10) {
@@ -258,7 +275,9 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     // what lets askedIds(jid) enforce "never repeat" across modes while
     // clearAsked(jid, category) still recycles one category at a time.
     markAsked(jid, questions, ts) {
-      for (const q of questions) stmtMarkAsked.run(jid, q.category, q.id, ts)
+      timed('markAsked', () => {
+        for (const q of questions) stmtMarkAsked.run(jid, q.category, q.id, ts)
+      })
     },
 
     // No category filter: a question already seen via ANY mode must not be
@@ -323,7 +342,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     // fixtures, whose turn it is) so a tournament survives a restart. See
     // engine/tournament.js's serialize()/restore.
     saveTournament(jid, data, ts) {
-      stmtSaveTournament.run(jid, JSON.stringify(data), ts)
+      timed('saveTournament', () => stmtSaveTournament.run(jid, JSON.stringify(data), ts))
     },
 
     loadTournament(jid) {
@@ -344,7 +363,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     // Gates the "bot restarted" orphan notice so it only fires in a chat that
     // was actually mid-game, not every group the bot happens to sit in.
     recordGameActivity(jid, ts) {
-      stmtUpsertActivity.run(jid, ts)
+      timed('recordGameActivity', () => stmtUpsertActivity.run(jid, ts))
     },
 
     lastGameActivity(jid) {
