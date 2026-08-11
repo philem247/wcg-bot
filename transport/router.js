@@ -620,6 +620,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       games.delete(jid)
       starters.delete(jid)
       gameTypes.delete(jid)
+    }
   }
 
   async function startLogoGame(jid, sender, senderPn, now, isGroup) {
