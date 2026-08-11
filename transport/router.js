@@ -12,11 +12,12 @@ import { PREFIX, OWNER, ADMINS } from '../config.js'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-// Cache 4-7 letter English dictionary words exclusively for Scramble games.
-// This avoids foreign languages or proper nouns from the trivia bank.
+// Cache 4-7 letter English common words exclusively for Scramble games.
+// This avoids foreign languages, proper nouns from the trivia bank, and
+// obscure words from the massive scrabble dictionary.
 let scramblePool = null
 try {
-  scramblePool = readFileSync(join('data', 'words.txt'), 'utf8')
+  scramblePool = readFileSync(join('data', 'common.txt'), 'utf8')
     .split('\n')
     .map(w => w.trim())
     .filter(w => /^[a-z]{4,7}$/.test(w))
