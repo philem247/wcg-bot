@@ -101,7 +101,8 @@ async function shutdown(signal) {
   shuttingDown = true;
   logger.info(`Received ${signal}, shutting down...`);
 
-  const forceExit = setTimeout(() => process.exit(0), 3000);
+  const exitCode = signal === 'AUTO-RESTART' ? 1 : 0;
+  const forceExit = setTimeout(() => process.exit(exitCode), 3000);
   forceExit.unref?.();
 
   try {
@@ -115,7 +116,7 @@ async function shutdown(signal) {
   db.close();
   releaseLock();
   clearTimeout(forceExit);
-  process.exit(0);
+  process.exit(exitCode);
 }
 
 // Registered before connect() so Ctrl+C during pairing/connect is graceful too.
@@ -206,6 +207,6 @@ if (AUTO_RESTART_HOURS > 0) {
   logger.info(`Auto-restart scheduled in ${AUTO_RESTART_HOURS} hours`);
   setTimeout(() => {
     logger.warn(`Auto-restart triggered after ${AUTO_RESTART_HOURS} hours to keep connection fresh`);
-    process.exit(0); // Pterodactyl/PM2 will instantly revive it
+    shutdown('AUTO-RESTART');
   }, AUTO_RESTART_HOURS * 60 * 60 * 1000).unref();
 }
