@@ -1127,11 +1127,18 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         if (game.state === 'match' && trimmed.length > 0 && !/\s/.test(trimmed)) {
           events = game.submit(sender, trimmed, now)
         }
-      } else if (game.state === 'playing' && trimmed.length > 0 && !/\s/.test(trimmed)) {
-        // A trivia-banned player's answer is dropped silently — replying would
-        // just give a spammer a second target to flood. Word chain is unaffected.
-        const banned = gameTypes.get(jid) === 'trivia' && isTriviaBanned(jid, sender, senderPn)
-        if (!banned) events = game.submit(sender, trimmed, now)
+      } else if (game.state === 'playing' && trimmed.length > 0) {
+        const type = gameTypes.get(jid)
+        
+        // Single-word games (Word Chain and Scramble) drop multi-word messages entirely.
+        // This prevents the bot from spamming "Not a word" in response to normal group
+        // conversation while a game is running. Logo Quiz and Trivia answers can contain spaces.
+        if (/\s/.test(trimmed) && (type === 'wcg' || type === 'scramble')) {
+          // ignore silently
+        } else {
+          const banned = type === 'trivia' && isTriviaBanned(jid, sender, senderPn)
+          if (!banned) events = game.submit(sender, trimmed, now)
+        }
       }
 
       // Record sender's phone-form JID for leaderboard aggregation.

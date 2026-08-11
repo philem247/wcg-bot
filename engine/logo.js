@@ -72,8 +72,10 @@ export function createLogoGame({ logos, clockSeconds = CLOCK_SECONDS, gapSeconds
       if (at > deadline) return [] // should have been caught by tick(), but safe
 
       const guess = String(text || '').trim()
-      // Only exact matches are accepted (ignoring case)
-      if (fold(guess) === fold(currentLogo.answer)) {
+      // Strip spaces and punctuation for comparison so "Coca-Cola" matches "Coca Cola"
+      const sanitize = (s) => fold(s).replace(/[^a-z0-9]/g, '')
+      
+      if (sanitize(guess) === sanitize(currentLogo.answer)) {
         scores.set(player, (scores.get(player) ?? 0) + 1)
         if (!scoredAt.has(player)) scoredAt.set(player, at)
         
