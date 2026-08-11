@@ -9,6 +9,20 @@ import { createTournament } from '../engine/tournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
 import { PREFIX, OWNER, ADMINS } from '../config.js'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
+
+// Cache 4-7 letter English dictionary words exclusively for Scramble games.
+// This avoids foreign languages or proper nouns from the trivia bank.
+let scramblePool = null
+try {
+  scramblePool = readFileSync(join('data', 'words.txt'), 'utf8')
+    .split('\n')
+    .map(w => w.trim())
+    .filter(w => /^[a-z]{4,7}$/.test(w))
+} catch (e) {
+  // If words.txt doesn't exist or fails, it will remain null
+}
 
 const MODE_NAMES = new Set(['easy', 'medium', 'hard'])
 
@@ -370,14 +384,20 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       enqueue(jid, { text: `A game is already running here. Use ${PREFIX}scramble end to stop it first.`, mentions: [], kind: 'misc' })
       return
     }
-    if (!bank) {
-      enqueue(jid, { text: `Scramble is unavailable — no question bank loaded.`, mentions: [], kind: 'misc' })
+    if (!scramblePool || scramblePool.length < SCRAMBLE_COUNT) {
+      enqueue(jid, { text: `Scramble is unavailable — valid dictionary not loaded.`, mentions: [], kind: 'misc' })
       return
     }
-    const words = bank.pickScrambleWords({ count: SCRAMBLE_COUNT, random: Math.random, isValidWord: (w) => dict.has(fold(w)) })
-    if (words.length < SCRAMBLE_COUNT) {
-      enqueue(jid, { text: `Not enough valid words in the database to start a Scramble game.`, mentions: [], kind: 'misc' })
-      return
+
+    // Pick random unique words from the pure English dictionary pool
+    const selectedIndexes = new Set()
+    const words = []
+    while (selectedIndexes.size < SCRAMBLE_COUNT) {
+      const idx = Math.floor(Math.random() * scramblePool.length)
+      if (!selectedIndexes.has(idx)) {
+        selectedIndexes.add(idx)
+        words.push({ correct: scramblePool[idx] })
+      }
     }
 
     enqueue(jid, { text: `🔠 *Scramble Game started!*\n${SCRAMBLE_COUNT} words. You have 15 seconds per word. Get ready...`, mentions: [], kind: 'misc' })

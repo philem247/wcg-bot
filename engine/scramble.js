@@ -6,7 +6,7 @@
 import { shuffle } from './bank.js'
 import { fold } from './normalize.js'
 
-export const SCRAMBLE_COUNT = 5
+export const SCRAMBLE_COUNT = 10
 export const CLOCK_SECONDS = 15
 export const GAP_SECONDS = 10
 
