@@ -124,7 +124,7 @@ export function createScrambleGame({ words, clockSeconds = CLOCK_SECONDS, gapSec
       return []
     },
 
-    terminate(at = now) {
+    end(at = now) {
       state = 'over'
       return [{ type: 'scramble_terminated' }]
     }
