@@ -155,5 +155,12 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
       ).run();
       return result.changes;
     },
+
+    // Completely wipe all credentials and signal keys. Used when the session
+    // is permanently dead (401 loggedOut) to force a fresh pair on next boot.
+    wipeAll: () => {
+      const result = db.prepare("DELETE FROM wa_keys").run();
+      return result.changes;
+    },
   };
 }

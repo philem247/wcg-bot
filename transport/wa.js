@@ -310,7 +310,8 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
       const reason = lastDisconnect?.error?.output?.statusCode;
       const reasonName = disconnectReasonName(reason);
       if (reason === DisconnectReason.loggedOut) {
-        logger.error(`Logged out (${reason} ${reasonName}). Session is dead: clear your SESSION_ID env var and re-pair from scratch, then restart the bot.`);
+        authState.wipeAll();
+        logger.error(`Logged out (${reason} ${reasonName}). Session is dead and has been wiped from the database. Clear your SESSION_ID env var and restart the bot to re-pair.`);
         process.exit(1);
       } else if (reason === DisconnectReason.restartRequired) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
