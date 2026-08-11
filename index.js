@@ -108,10 +108,17 @@ async function shutdown(signal) {
   try {
     scheduler.stop();
     outbox.stop();
-    waShutdown(); // also calls authFlush() internally
+    waShutdown(); // gracefully close the websocket
   } catch (e) {
     logger.error({ err: e }, 'Error during shutdown');
   }
+
+  // Baileys batches and writes session keys asynchronously. Since we
+  // intercept SIGTERM/SIGINT, if we exit() immediately we will kill the
+  // event loop before the final keys are flushed to SQLite, permanently
+  // corrupting the Signal ratchet session. This 1.5s delay gives Baileys
+  // enough time to safely flush all pending keys to the database.
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   db.close();
   releaseLock();
