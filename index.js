@@ -182,6 +182,7 @@ function onConnected() {
     `▸ */wcg start* — word chain`,
     `▸ */trivia* — quiz race`,
     `▸ */scramble start* — anagram race`,
+    `▸ */logo start* — logo quiz`,
     `▸ */tourney start* — tournament`,
     ``,
     `🔗 Chain. Survive. Win.`,

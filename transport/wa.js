@@ -394,7 +394,8 @@ export async function send(jid, payload) {
     if (react) {
       content = { react };
     } else if (imagePath) {
-      content = { image: { url: imagePath }, caption: text };
+      const { readFileSync } = await import('node:fs');
+      content = { image: readFileSync(imagePath), caption: text };
       if (Array.isArray(mentions) && mentions.length > 0) content.mentions = mentions;
     } else {
       content = Array.isArray(mentions) && mentions.length > 0 ? { text, mentions } : { text };
