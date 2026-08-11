@@ -266,6 +266,7 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       enqueue(jid, {
         text: rendered.text,
         mentions: rendered.mentions,
+        imagePath: rendered.imagePath,
         quoted: rendered.quote ? quoted : undefined,
         kind: KIND_BY_EVENT[event.type] || 'misc',
       })
