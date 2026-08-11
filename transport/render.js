@@ -177,6 +177,43 @@ export function render(event) {
     case 'scramble_terminated':
       return { text: `Scramble stopped.`, mentions: [] }
 
+    case 'logo_word':
+      return {
+        text: `🖼️ Logo ${event.index}/${event.total}\n⏳ You have ${event.clockSeconds} seconds.`,
+        mentions: [],
+        imagePath: event.imagePath,
+      }
+
+    case 'logo_answer': {
+      const mentions = []
+      let text
+      if (event.winner) {
+        text = `✅ ${mention(event.winner)} got it! — *${event.correct}*`
+        mentions.push(event.winner)
+      } else {
+        text = `❌ Time's up! — *${event.correct}*`
+      }
+      return { text, mentions }
+    }
+
+    case 'logo_over': {
+      const lines = []
+      const mentions = []
+      if (event.standings.length === 0) {
+        lines.push('🏁 *LOGO QUIZ OVER*', '━━━━━━━━━━━━━━━━', '', 'Nobody scored.')
+        return { text: lines.join('\n'), mentions }
+      }
+      lines.push('🏁 *LOGO QUIZ OVER*', '━━━━━━━━━━━━━━━━', '')
+      event.standings.forEach((s, i) => {
+        lines.push(`${MEDALS[i] ?? '　'} ${mention(s.player)} — *${s.score}*`)
+        mentions.push(s.player)
+      })
+      return { text: lines.join('\n'), mentions }
+    }
+
+    case 'logo_terminated':
+      return { text: `Logo Quiz stopped.`, mentions: [] }
+
     case 'tournament_registration_open':
       return {
         text: `🏆 *TOURNAMENT*\n━━━━━━━━━━━━━━━━\n${CATEGORY_LABEL[event.category] ?? event.category}\nType *join* — registration closes in ${event.seconds}s.`,

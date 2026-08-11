@@ -388,11 +388,14 @@ export async function send(jid, payload) {
     logger?.error('Socket not connected');
     return;
   }
-  const { text, mentions, quoted, react } = payload;
+  const { text, mentions, quoted, react, imagePath } = payload;
   try {
     let content;
     if (react) {
       content = { react };
+    } else if (imagePath) {
+      content = { image: { url: imagePath }, caption: text };
+      if (Array.isArray(mentions) && mentions.length > 0) content.mentions = mentions;
     } else {
       content = Array.isArray(mentions) && mentions.length > 0 ? { text, mentions } : { text };
     }

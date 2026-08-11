@@ -22,7 +22,7 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
   let lastRefill = null // null = unset; first pump(now) seeds it without granting a backlog burst
   let droppedCosmetic = 0 // count of 'cosmetic' entries shed at enqueue time, see enqueue()
 
-  function enqueue(jid, { text, mentions, quoted, react, kind, notBefore }) {
+  function enqueue(jid, { text, mentions, quoted, react, imagePath, kind, notBefore }) {
     let q = queues.get(jid)
     if (!q) { q = []; queues.set(jid, q) }
     if (kind === 'cosmetic' && q.length > COSMETIC_QUEUE_THRESHOLD) {
@@ -37,7 +37,7 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
         if (q[i].kind === 'turn') q.splice(i, 1)
       }
     }
-    q.push({ text, mentions, quoted, react, kind, notBefore, attempts: 0 })
+    q.push({ text, mentions, quoted, react, imagePath, kind, notBefore, attempts: 0 })
     while (q.length > QUEUE_CAP) {
       // Prefer dropping cosmetics over other non-turn kinds when shedding load.
       let idx = q.findIndex((m) => m.kind === 'cosmetic')
@@ -86,7 +86,7 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
     )
 
     Promise.race([
-      sendFn(jid, { text: msg.text, mentions: msg.mentions, quoted: msg.quoted, react: msg.react }),
+      sendFn(jid, { text: msg.text, mentions: msg.mentions, quoted: msg.quoted, react: msg.react, imagePath: msg.imagePath }),
       timeout,
     ])
       .then(() => {

@@ -113,6 +113,12 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'scramble'
     ORDER BY player
   `)
+  const stmtSelectResultsLogo = db.prepare(`
+    SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
+    FROM results r JOIN games g ON g.id = r.game_id
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'logo'
+    ORDER BY player
+  `)
   const stmtMarkAsked = db.prepare(
     'INSERT OR IGNORE INTO asked_questions (jid, category, qid, ts) VALUES (?, ?, ?, ?)'
   )
@@ -217,6 +223,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       let stmt;
       if (type === 'trivia') stmt = stmtSelectResultsTrivia;
       else if (type === 'scramble') stmt = stmtSelectResultsScramble;
+      else if (type === 'logo') stmt = stmtSelectResultsLogo;
       else stmt = stmtSelectResultsChain;
       const rows = stmt.all(jid, since)
 

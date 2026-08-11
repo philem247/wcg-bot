@@ -5,11 +5,12 @@ import { isAdmin, isAdminEither, toNumber } from './admin.js'
 import { createGame } from '../engine/game.js'
 import { createTriviaGame, QUESTION_COUNT, parseAnswer } from '../engine/trivia.js'
 import { createScrambleGame, SCRAMBLE_COUNT } from '../engine/scramble.js'
+import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
 import { createTournament } from '../engine/tournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
 import { PREFIX, OWNER, ADMINS } from '../config.js'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
 // Cache 4-7 letter English common words exclusively for Scramble games.
@@ -74,6 +75,9 @@ const KIND_BY_EVENT = {
   scramble_word: 'turn',
   scramble_answer: 'result',
   scramble_over: 'result',
+  logo_word: 'turn',
+  logo_answer: 'result',
+  logo_over: 'result',
 }
 
 // Ordering (ramp->turn, accepted->turn, eliminated->winner, ...) carries meaning,
@@ -197,6 +201,32 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       }
       gameMeta.delete(jid)
     } else if (event.type === 'scramble_terminated') {
+      gameMeta.delete(jid)
+    } else if (event.type === 'logo_word') {
+      if (event.index === 1) {
+        gameMeta.set(jid, { mode: 'mixed', type: 'logo', startedAt: now, eliminated: [], pnMap: new Map() })
+      }
+    } else if (event.type === 'logo_answer') {
+      // Intentionally empty
+    } else if (event.type === 'logo_over') {
+      const meta = gameMeta.get(jid)
+      const pnMap = meta?.pnMap || new Map()
+      const results = event.standings.map((s, i) => ({
+        player: s.player, placement: i + 1, player_pn: pnMap.get(s.player),
+      }))
+      if (results.length > 0) {
+        try {
+          db?.recordGame({
+            jid, mode: 'mixed', type: 'logo',
+            startedAt: meta?.startedAt ?? now, endedAt: now,
+            words: event.total, results,
+          })
+        } catch (e) {
+          // store failure must never break gameplay
+        }
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'logo_terminated') {
       gameMeta.delete(jid)
     } else if (event.type === 'tournament_champion') {
       // Tournament wins are a SEPARATE table from trivia/chain results — never
@@ -590,7 +620,49 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       games.delete(jid)
       starters.delete(jid)
       gameTypes.delete(jid)
+  }
+
+  async function startLogoGame(jid, sender, senderPn, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
+      return
     }
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. End it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+    
+    let pool = [];
+    try {
+      const files = readdirSync(join('data', 'logos')).filter(f => f.endsWith('.jpg'))
+      pool = files.map(f => ({
+        answer: f.replace('.jpg', ''),
+        path: join(process.cwd(), 'data', 'logos', f)
+      }))
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed to read data/logos')
+    }
+
+    if (pool.length === 0) {
+      enqueue(jid, { text: `The logo quiz is currently unavailable — no images found.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    // Shuffle the pool and pick LOGO_COUNT logos
+    pool.sort(() => Math.random() - 0.5)
+    const gameLogos = pool.slice(0, LOGO_COUNT)
+
+    const game = createLogoGame({ logos: gameLogos, now, random: Math.random })
+    games.set(jid, game)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'logo')
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+
+    enqueue(jid, {
+      text: `🖼️ *LOGO QUIZ* starting!\nGet ready to guess the brand. ${LOGO_COUNT} rounds.`,
+      mentions: [], kind: 'misc',
+    })
+    sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
   }
 
   async function handleCommand(jid, sender, senderPn, isGroup, cmd, args, now, raw) {
@@ -624,6 +696,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}scramble start`,
         `▸ ${PREFIX}scramble end`,
         ``,
+        `*🖼️ LOGO QUIZ* _(start: admins only)_`,
+        `▸ ${PREFIX}logo start`,
+        `▸ ${PREFIX}logo end`,
+        ``,
         `*🏆 TOURNAMENT* _(start/next/end: admins only)_`,
         `▸ ${PREFIX}tourney status`,
         `▸ ${PREFIX}tourney stats`,
@@ -632,6 +708,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}stats [all]`,
         `▸ ${PREFIX}trivia stats [all]`,
         `▸ ${PREFIX}scramble stats [all]`,
+        `▸ ${PREFIX}logo stats [all]`,
       ]
 
       // Hidden from players who cannot use them: no point listing a command
@@ -882,6 +959,31 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
 
       await startScramble(jid, sender, senderPn, args, now, isGroup)
+      return
+    }
+
+    if (cmd === 'logo') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'stats') {
+        const all = args[1] === 'all'
+        const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'logo' })
+        const { text, mentions } = formatLeaderboard(board, all ? '🏆 Logo Quiz — all-time' : '🏆 Logo Quiz — this week')
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end') {
+        await endGame(jid, sender, senderPn, isGroup, now, 'logo')
+        return
+      }
+
+      await startLogoGame(jid, sender, senderPn, now, isGroup)
       return
     }
 
