@@ -162,11 +162,7 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
         gameMeta.set(jid, { mode: 'mixed', type: 'scramble', startedAt: now, eliminated: [], pnMap: new Map() })
       }
     } else if (event.type === 'scramble_answer') {
-      const meta = gameMeta.get(jid)
-      if (meta && event.winner) {
-         if (!meta.pnMap) meta.pnMap = new Map()
-         meta.pnMap.set(event.winner, event.winner_pn)
-      }
+      // Intentionally empty: handleMessage already handles pnMap updates for Scramble
     } else if (event.type === 'scramble_over') {
       const meta = gameMeta.get(jid)
       const pnMap = meta?.pnMap || new Map()
@@ -378,7 +374,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       enqueue(jid, { text: `Scramble is unavailable — no question bank loaded.`, mentions: [], kind: 'misc' })
       return
     }
-    const words = bank.pickScrambleWords({ count: SCRAMBLE_COUNT, random: Math.random })
+    const words = bank.pickScrambleWords({ count: SCRAMBLE_COUNT, random: Math.random, isValidWord: (w) => dict.has(fold(w)) })
     if (words.length < SCRAMBLE_COUNT) {
       enqueue(jid, { text: `Not enough valid words in the database to start a Scramble game.`, mentions: [], kind: 'misc' })
       return

@@ -65,17 +65,17 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
       return out
     },
 
-    pickScrambleWords({ count, random }) {
+    pickScrambleWords({ count, random, isValidWord = () => true }) {
       // Scramble words don't care about categories or asked history, they just
-      // need to be single words of 4-10 letters (letters only, no symbols).
+      // need to be single words of 4-7 letters (letters only, no symbols).
       const allQuestions = [];
       for (const c of this.categories()) {
         allQuestions.push(...(byCategory[c] ?? []));
       }
       
       const validScrambleQuestions = allQuestions.filter(q => {
-        // Must be exactly one word, only a-z letters, length 4 to 10
-        return /^[A-Za-z]{4,10}$/.test(q.correct);
+        // Must be exactly one word, only a-z letters, length 4 to 7
+        return /^[A-Za-z]{4,7}$/.test(q.correct) && isValidWord(q.correct);
       });
 
       return shuffle(validScrambleQuestions, random).slice(0, count);
