@@ -138,7 +138,13 @@ process.on('SIGTERM', () => shutdown('SIGTERM'));
 async function handleMessage(msg) {
   const { text, sender, senderPn, isGroup, jid, raw } = msg;
   logger.debug(`${isGroup ? `[Group ${jid}]` : '[DM]'} ${sender}: ${text}`);
-  await router.handleMessage({ jid, sender, senderPn, text, isGroup, raw }, Date.now());
+  logger.info(`TRACE: msg jid=${jid} sender=${sender} pn=${senderPn} group=${isGroup} text=${String(text ?? '').slice(0, 40)}`);
+  try {
+    await router.handleMessage({ jid, sender, senderPn, text, isGroup, raw }, Date.now());
+  } catch (e) {
+    logger.info(`TRACE: router threw: ${e?.message}`);
+    throw e;
+  }
 }
 
 // Welcome message — sent to the OWNER once, on the first successful connect only.

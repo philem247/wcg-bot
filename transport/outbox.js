@@ -21,6 +21,7 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
   let tokens = globalPerSecond
   let lastRefill = null // null = unset; first pump(now) seeds it without granting a backlog burst
   let droppedCosmetic = 0 // count of 'cosmetic' entries shed at enqueue time, see enqueue()
+  let lastNotReadyLog = null // TRACE rate-limit: at most one "pump not-ready" line per 10s
 
   function enqueue(jid, { text, mentions, quoted, react, imagePath, kind, notBefore }) {
     let q = queues.get(jid)
@@ -38,6 +39,7 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
       }
     }
     q.push({ text, mentions, quoted, react, imagePath, kind, notBefore, attempts: 0 })
+    logger?.info?.(`TRACE: enqueue jid=${jid} kind=${kind} qlen=${q.length}`)
     while (q.length > QUEUE_CAP) {
       // Prefer dropping cosmetics over other non-turn kinds when shedding load.
       let idx = q.findIndex((m) => m.kind === 'cosmetic')
@@ -85,11 +87,13 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
       setTimeout(() => reject(new Error('send timed out after 30s')), SEND_TIMEOUT_MS)
     )
 
+    logger?.info?.(`TRACE: dispatch jid=${jid}`)
     Promise.race([
       sendFn(jid, { text: msg.text, mentions: msg.mentions, quoted: msg.quoted, react: msg.react, imagePath: msg.imagePath }),
       timeout,
     ])
       .then(() => {
+        logger?.info?.(`TRACE: sent jid=${jid}`)
         inFlightChats.delete(jid)
         inFlightCount--
       })
@@ -122,7 +126,13 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
     // into a dead socket. A failed send burns both retry attempts and drops the
     // message for good, so a 3s reconnect would silently eat a live question.
     // Tokens keep refilling above, so the backlog drains promptly on reconnect.
-    if (!isReady()) return
+    if (!isReady()) {
+      if (lastNotReadyLog === null || now - lastNotReadyLog >= 10_000) {
+        lastNotReadyLog = now
+        logger?.info?.('TRACE: pump not-ready')
+      }
+      return
+    }
     while (inFlightCount < maxConcurrent && tokens >= 1) {
       const jid = pickNext(now)
       if (!jid) break

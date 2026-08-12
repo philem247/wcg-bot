@@ -1081,15 +1081,24 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     async handleMessage({ jid, sender, senderPn, text, isGroup, raw }, now) {
       const parsed = parseCommand(text, PREFIX)
       if (parsed) {
-        if (overCommandLimit(sender, now)) return // silent by design, see overCommandLimit
+        logger?.info(`TRACE: cmd=${parsed.cmd} args=${parsed.args.join(' ')}`)
+        if (overCommandLimit(sender, now)) {
+          logger?.info(`TRACE: DROP rate-limit sender=${sender}`)
+          return // silent by design, see overCommandLimit
+        }
         const groupAdmins = await groupAdminsFor(jid, isGroup)
+        logger?.info(`TRACE: groupAdmins n=${groupAdmins?.length ?? 0}`)
         if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid) && !isOwnerOrGlobalAdmin(sender, senderPn)) {
+          logger?.info(`TRACE: DENY not-admin sender=${sender} pn=${senderPn} owner=${OWNER}`)
           enqueue(jid, { text: `Only admins and owners can use bot commands.`, mentions: [], kind: 'misc' })
           return
         }
+        logger?.info(`TRACE: dispatching ${parsed.cmd}`)
         await handleCommand(jid, sender, senderPn, isGroup, parsed.cmd, parsed.args, now, raw)
+        logger?.info(`TRACE: handled ${parsed.cmd}`)
         return
       }
+      logger?.info('TRACE: not-a-command')
 
       const game = games.get(jid)
       if (!game) {
