@@ -57,7 +57,7 @@ let lastDispatchAt = 0;
 let lastNotifyAt = 0; // ms of the last live ('notify'-type) messages.upsert, regardless of dispatch outcome
 let watchdogTimer = null;
 let trafficProbe = () => false;
-let lastPurgeAt = 0; // ms of the last watchdog-triggered purgeSignalSessions(), 0 = never
+let lastPurgeAt = 0; // ms of the last watchdog-triggered purgePairwiseSessions(), 0 = never
 
 // Lets the app say "traffic is expected right now" (e.g. a game is running),
 // so a quiet group at 3am never trips the watchdog.
@@ -170,8 +170,8 @@ function startWatchdogTimer() {
     logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s, ${cause}) — forcing reconnect`);
     if (shouldPurgeOnStall({ msSinceLastNotify: notifyMs, timeoutMs: STALL_TIMEOUT_MS, msSinceLastPurge: Date.now() - lastPurgeAt })) {
       lastPurgeAt = Date.now();
-      const purged = authState.purgeSignalSessions();
-      logger.warn(`Stall watchdog: inbound traffic is arriving but nothing decodes — purged ${purged} Signal ratchet row(s) before reconnecting`);
+      const purged = authState.purgePairwiseSessions();
+      logger.warn(`Stall watchdog: inbound traffic is arriving but nothing decodes — purged ${purged} pairwise session row(s) before reconnecting`);
     }
     lastDispatchAt = Date.now(); // don't refire against the same stall while the new socket comes up
     sock?.end(undefined);
@@ -277,8 +277,9 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
   }
   if (PURGE_SIGNAL_ON_BOOT && !bootPurgeDone) {
     bootPurgeDone = true;
-    const purged = authState.purgeSignalSessions();
-    logger.warn(`PURGE_SIGNAL_ON_BOOT: purged ${purged} Signal ratchet row(s) on boot. UNSET PURGE_SIGNAL_ON_BOOT now so it does not purge again on every restart.`);
+    logger.warn('PURGE_SIGNAL_ON_BOOT: this deletes sender-key rows too — every group stays undecryptable until this device is re-paired. Try a pairwise-only purge (unset this flag, let the watchdog/badSession path self-heal) before reaching for this.');
+    const purged = authState.purgeAllSignalSessions();
+    logger.warn(`PURGE_SIGNAL_ON_BOOT: purged ${purged} Signal ratchet row(s) (session + sender-key) on boot. UNSET PURGE_SIGNAL_ON_BOOT now so it does not purge again on every restart.`);
   }
   const { state, saveCreds } = authState;
 
@@ -350,8 +351,8 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
         logger.error(`Logged out (${reason} ${reasonName}). Session is dead and has been wiped from the database. Clear your SESSION_ID env var and restart the bot to re-pair.`);
         process.exit(1);
       } else if (reason === DisconnectReason.badSession) {
-        const purged = authState.purgeSignalSessions();
-        logger.warn(`Bad session (${reason} ${reasonName}) after ${upSec}s connected — purged ${purged} Signal ratchet row(s), reconnecting in ${RECONNECT_DELAY}ms...`);
+        const purged = authState.purgePairwiseSessions();
+        logger.warn(`Bad session (${reason} ${reasonName}) after ${upSec}s connected — purged ${purged} pairwise session row(s), reconnecting in ${RECONNECT_DELAY}ms...`);
         sock.ev.removeAllListeners();
         setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
       } else if (reason === DisconnectReason.restartRequired) {

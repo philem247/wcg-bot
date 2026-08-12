@@ -59,7 +59,7 @@ Environment variables (defined in `.env` and read from `config.js`):
 | `SESSION_DIR` | `session` | Directory holding the single-instance `.lock` file (back this up before reinstalling is no longer required — credentials live in `wcg.db`) |
 | `STALL_TIMEOUT_MS` | `180000` (3 min) | Force a reconnect if a game is running and nothing has dispatched for this long. `0` disables the watchdog — see Reliability below |
 | `AUTO_RESTART_HOURS` | `0` | Periodically restart the whole process (clean reconnect) after this many hours. `0` disables it. Only enable on a host with a process supervisor (pm2/systemd) — on a bare panel host, exiting means the bot stays down until a human restarts it |
-| `PURGE_SIGNAL_ON_BOOT` | `false` | One-time manual recovery: purge `session`/`sender-key` rows once on the next boot. See Reliability below. **Unset it after one restart** or it purges on every boot |
+| `PURGE_SIGNAL_ON_BOOT` | `false` | One-time manual recovery: purge `session`/`sender-key` rows once on the next boot. **Destructive** — breaks group decryption until re-pair, see Reliability below. **Unset it after one restart** or it purges on every boot |
 
 ## Game modes
 
@@ -215,11 +215,17 @@ Watch for `Stall watchdog: no message dispatched in ...` in the log. Set `STALL_
 
 `AUTO_RESTART_HOURS` (default `0`, disabled) periodically restarts the whole process on a clean shutdown/reconnect cycle to keep the connection fresh, independent of the watchdog. Leave it `0` unless the host runs the bot under a process supervisor (pm2/systemd) that restarts on exit — on a bare panel host, `shutdown()` ends in `process.exit()` and nothing brings the process back up.
 
-**Deaf bot with a healthy-looking console.** Symptom: the bot connects fine, logs "Connected to WhatsApp", the socket never drops — but it never responds to anything. This means the WhatsApp connection is fine but the Signal ratchet (session/sender-key rows) desynced, so inbound messages fail to decrypt and are silently dropped. Re-pairing is **not** required — credentials (`creds`) are unaffected; only the ratchet rows need clearing. Two recovery paths, both delete only `session`/`sender-key` rows:
-- **No shell access** (e.g. bot-hosting.net/pterodactyl): set `PURGE_SIGNAL_ON_BOOT=true` in the panel's env vars and press Restart. The bot purges once on the next `connect()` and logs how many rows it dropped — then unset the variable so it doesn't purge on every future boot.
-- **Shell access**: stop the bot and run `node scripts/purge-sessions.mjs` (respects `DB_PATH`, same default as the app).
+**Deaf bot with a healthy-looking console.** Symptom: the bot connects fine, logs "Connected to WhatsApp", the socket never drops — but it never responds to anything. This means the WhatsApp connection is fine but the Signal ratchet desynced, so inbound messages fail to decrypt and are silently dropped.
 
-As of this fix the watchdog also self-heals: if it trips because messages are visibly arriving but nothing decodes, it purges the ratchet rows itself (once per 10-minute cooldown) before reconnecting, so this can no longer strand the bot silently for hours.
+There are two kinds of ratchet row, and they behave very differently when purged:
+- **`session` rows** (pairwise 1:1 chats) are **self-healing**: baileys' own retry receipts re-derive them automatically. Safe to purge, including unattended.
+- **`sender-key` rows** (group chats) are **not self-healing**: a participant's client only redistributes its sender key when it believes the recipient device changed. Deleting the row locally does not change this device's identity, so peers keep encrypting with a key the bot no longer holds — every group stays permanently undecryptable until the device is **re-paired** (a new device identity forces redistribution). Do not purge sender keys unattended.
+
+For that reason all *automatic* recovery paths — the stall watchdog and the `badSession` disconnect handler — only ever purge `session` rows, via `purgePairwiseSessions()`. The watchdog self-heals: if it trips because messages are visibly arriving but nothing decodes, it purges pairwise sessions itself (once per 10-minute cooldown) before reconnecting.
+
+A full purge including `sender-key` rows (`purgeAllSignalSessions()`) is available but **manual only**, and breaks group decryption until you re-pair the device:
+- **No shell access** (e.g. bot-hosting.net/pterodactyl): set `PURGE_SIGNAL_ON_BOOT=true` in the panel's env vars and press Restart. The bot warns in the log, then purges once on the next `connect()` — unset the variable afterward so it doesn't purge on every future boot. Try leaving it unset first and letting the watchdog/badSession path self-heal — that alone fixes most cases without touching groups at all.
+- **Shell access**: stop the bot and run `node scripts/purge-sessions.mjs` (pairwise-only by default, respects `DB_PATH`). Pass `--all` for the destructive full purge — it prints the same warning first.
 
 ## Tests
 

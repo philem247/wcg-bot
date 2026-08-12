@@ -17,9 +17,9 @@ const tests = [
     },
   },
   {
-    name: 'purgeSignalSessions deletes session/sender-key rows but leaves creds intact',
+    name: 'purgePairwiseSessions deletes only session rows, leaving sender-key/creds/pre-key/app-state-sync-key intact',
     fn: async () => {
-      const { state, purgeSignalSessions, getSessionId } = useSqliteAuthState({ dbPath: ':memory:' })
+      const { state, purgePairwiseSessions, getSessionId } = useSqliteAuthState({ dbPath: ':memory:' })
       const sidBefore = getSessionId()
       await state.keys.set({
         session: { 's-1': { x: 1 } },
@@ -27,7 +27,29 @@ const tests = [
         'pre-key': { 'pk-1': { z: 1 } }, // untouched category, sanity check
         'app-state-sync-key': { 'ak-1': { keyData: Buffer.from('k') } }, // untouched category, sanity check
       })
-      const changes = purgeSignalSessions()
+      const changes = purgePairwiseSessions()
+      assert.equal(changes, 1, 'deletes exactly the session row')
+      assert.deepEqual(await state.keys.get('session', ['s-1']), {})
+      const senderKey = await state.keys.get('sender-key', ['sk-1'])
+      assert.ok(senderKey['sk-1'], 'sender-key untouched — self-heal never removes it')
+      assert.deepEqual(await state.keys.get('pre-key', ['pk-1']), { 'pk-1': { z: 1 } }, 'other categories untouched')
+      const asyncKey = await state.keys.get('app-state-sync-key', ['ak-1'])
+      assert.ok(asyncKey['ak-1'], 'app-state-sync-key untouched')
+      assert.equal(getSessionId(), sidBefore, 'creds untouched — no forced re-pair')
+    },
+  },
+  {
+    name: 'purgeAllSignalSessions deletes session/sender-key rows but leaves creds intact',
+    fn: async () => {
+      const { state, purgeAllSignalSessions, getSessionId } = useSqliteAuthState({ dbPath: ':memory:' })
+      const sidBefore = getSessionId()
+      await state.keys.set({
+        session: { 's-1': { x: 1 } },
+        'sender-key': { 'sk-1': { y: 1 } },
+        'pre-key': { 'pk-1': { z: 1 } }, // untouched category, sanity check
+        'app-state-sync-key': { 'ak-1': { keyData: Buffer.from('k') } }, // untouched category, sanity check
+      })
+      const changes = purgeAllSignalSessions()
       assert.equal(changes, 2, 'deletes exactly the session + sender-key rows')
       assert.deepEqual(await state.keys.get('session', ['s-1']), {})
       assert.deepEqual(await state.keys.get('sender-key', ['sk-1']), {})

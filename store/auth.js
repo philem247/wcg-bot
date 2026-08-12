@@ -179,10 +179,24 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
     // Returns the base64 string the user needs to save as SESSION_ID.
     getSessionId: () => encodeCreds(creds),
 
-    // Purge all Signal ratchet sessions from the DB. Same purpose as the old
-    // purgeSignalSessions() but atomic and instant — no file I/O.
-    // Keep this DELETE in sync with scripts/purge-sessions.mjs.
-    purgeSignalSessions: () => {
+    // Purge only pairwise (1:1) session rows. SELF-HEALING: baileys re-derives
+    // these automatically via retry receipts after a peer's next send. Safe to
+    // call unattended (watchdog, badSession branch).
+    purgePairwiseSessions: () => {
+      const result = db.prepare("DELETE FROM wa_keys WHERE category = 'session'").run();
+      return result.changes;
+    },
+
+    // Purge pairwise sessions AND sender-key rows (group decryption). NOT
+    // SELF-HEALING: a sender-key is redistributed by a participant's client
+    // only when it believes the recipient device changed — deleting it locally
+    // does not change this device's identity, so peers keep encrypting with a
+    // key we no longer hold and every group stays permanently undecryptable
+    // until this device is re-paired (new identity forces redistribution).
+    // Manual/operator use only (PURGE_SIGNAL_ON_BOOT, scripts/purge-sessions.mjs)
+    // — never call this from an unattended path. Keep this DELETE in sync with
+    // scripts/purge-sessions.mjs.
+    purgeAllSignalSessions: () => {
       const result = db.prepare(
         "DELETE FROM wa_keys WHERE category IN ('session', 'sender-key')"
       ).run();
