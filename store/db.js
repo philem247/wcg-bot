@@ -19,6 +19,14 @@ function timed(label, fn) {
 export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const db = new DatabaseSync(path)
   db.exec('PRAGMA journal_mode = WAL')
+  // synchronous=FULL (SQLite's default) fsyncs on every commit; on a contended
+  // container disk that costs 100-300ms per write and node:sqlite is fully
+  // synchronous, so it freezes the whole event loop mid-game. NORMAL is WAL
+  // mode's own officially-recommended setting: still crash-safe, only the very
+  // last transaction is at risk on an OS-level crash/power loss. Do not set
+  // this back to FULL.
+  db.exec('PRAGMA synchronous = NORMAL')
+  db.exec('PRAGMA busy_timeout = 5000')
 
   // Create schema if not exists
   db.exec(`

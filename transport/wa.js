@@ -313,6 +313,11 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
         authState.wipeAll();
         logger.error(`Logged out (${reason} ${reasonName}). Session is dead and has been wiped from the database. Clear your SESSION_ID env var and restart the bot to re-pair.`);
         process.exit(1);
+      } else if (reason === DisconnectReason.badSession) {
+        const purged = authState.purgeSignalSessions();
+        logger.warn(`Bad session (${reason} ${reasonName}) after ${upSec}s connected — purged ${purged} Signal ratchet row(s), reconnecting in ${RECONNECT_DELAY}ms...`);
+        sock.ev.removeAllListeners();
+        setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
       } else if (reason === DisconnectReason.restartRequired) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
         sock.ev.removeAllListeners();

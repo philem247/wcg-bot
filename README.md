@@ -58,7 +58,7 @@ Environment variables (defined in `.env` and read from `config.js`):
 | `SESSION_ID` | empty | Base64 credentials string printed after first connect; set it to move a paired session to a new host (see Auth above) |
 | `SESSION_DIR` | `session` | Directory holding the single-instance `.lock` file (back this up before reinstalling is no longer required — credentials live in `wcg.db`) |
 | `STALL_TIMEOUT_MS` | `180000` (3 min) | Force a reconnect if a game is running and nothing has dispatched for this long. `0` disables the watchdog — see Reliability below |
-| `AUTO_RESTART_HOURS` | `6` | Periodically restart the whole process (clean reconnect) after this many hours. `0` disables it |
+| `AUTO_RESTART_HOURS` | `0` | Periodically restart the whole process (clean reconnect) after this many hours. `0` disables it. Only enable on a host with a process supervisor (pm2/systemd) — on a bare panel host, exiting means the bot stays down until a human restarts it |
 
 ## Game modes
 
@@ -212,7 +212,7 @@ Watch for `Stall watchdog: no message dispatched in ...` in the log. Set `STALL_
 - `SLOW: db.<label> took <ms>ms` (from `store/db.js`) and `SLOW: auth.readKey/writeKey(<category>) took <ms>ms` (from `store/auth.js`) — a single SQLite call took over 100ms. `node:sqlite` is fully synchronous, so a slow call here blocks the whole process for its duration; these calls run on every game action and every inbound/outbound message respectively.
 - `inbound 5m: total=... byType=... noPayload=... echo=... dispatched=... connected=... upSec=...` (every 5 minutes, only while traffic is arriving) — a summary of inbound WhatsApp traffic. A run of `noPayload` is the signature of a Signal ratchet problem; `byType` separates live traffic (`notify`) from backfill (`append`).
 
-`AUTO_RESTART_HOURS` (default 6, `0` disables) periodically restarts the whole process on a clean shutdown/reconnect cycle to keep the connection fresh, independent of the watchdog.
+`AUTO_RESTART_HOURS` (default `0`, disabled) periodically restarts the whole process on a clean shutdown/reconnect cycle to keep the connection fresh, independent of the watchdog. Leave it `0` unless the host runs the bot under a process supervisor (pm2/systemd) that restarts on exit — on a bare panel host, `shutdown()` ends in `process.exit()` and nothing brings the process back up.
 
 ## Tests
 

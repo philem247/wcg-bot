@@ -58,6 +58,14 @@ function ensureTable(db) {
 export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
   const db = existingDb ?? new DatabaseSync(dbPath ?? process.env.DB_PATH ?? 'wcg.db');
   db.exec('PRAGMA journal_mode = WAL');
+  // synchronous=FULL (SQLite's default) fsyncs on every commit; on a contended
+  // container disk that costs 100-300ms per write and node:sqlite is fully
+  // synchronous, so it freezes the whole event loop mid-game. NORMAL is WAL
+  // mode's own officially-recommended setting: still crash-safe, only the very
+  // last transaction is at risk on an OS-level crash/power loss (baileys
+  // re-derives Signal keys anyway). Do not set this back to FULL.
+  db.exec('PRAGMA synchronous = NORMAL');
+  db.exec('PRAGMA busy_timeout = 5000');
   ensureTable(db);
 
   // Prepared statements — created once, reused for every get/set.
@@ -141,10 +149,21 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
           return data;
         },
         set: async (data) => {
-          for (const category in data) {
-            for (const id in data[category]) {
-              writeKey(category, id, data[category][id]);
+          // One transaction for the whole batch: baileys calls set() with
+          // multiple keys at once, and without this each key was its own
+          // implicit commit (N fsyncs instead of 1). Also makes the batch
+          // atomic, which is strictly safer for Signal ratchet consistency.
+          db.exec('BEGIN');
+          try {
+            for (const category in data) {
+              for (const id in data[category]) {
+                writeKey(category, id, data[category][id]);
+              }
             }
+            db.exec('COMMIT');
+          } catch (e) {
+            db.exec('ROLLBACK');
+            throw e;
           }
         },
       },

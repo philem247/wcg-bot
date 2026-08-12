@@ -19,7 +19,11 @@ export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
 // Force a reconnect when a game is running but no message has dispatched for
 // this long — see transport/wa.js's watchdog. 0 disables it.
 export const STALL_TIMEOUT_MS = Number(process.env.STALL_TIMEOUT_MS ?? 3 * 60 * 1000);
-export const AUTO_RESTART_HOURS = Number(process.env.AUTO_RESTART_HOURS ?? 6);
+// Default 0 (disabled): shutdown() ends in process.exit(), and on a bare
+// panel host (e.g. pterodactyl) with no process supervisor, exiting means the
+// bot stays dead until a human presses Start. Only set this >0 if the host
+// runs the bot under pm2/systemd/a supervisor that restarts on exit.
+export const AUTO_RESTART_HOURS = Number(process.env.AUTO_RESTART_HOURS ?? 0);
 export const ADMINS = (process.env.ADMINS || '')
   .split(',')
   .map(s => s.trim())
