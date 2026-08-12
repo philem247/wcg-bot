@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 
-const { shouldForceReconnect, shouldPurgeOnStall, armGraceFallback } = await import('./wa.js')
+const { shouldForceReconnect, shouldPurgeOnStall, armGraceFallback, withTimeout } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -134,6 +134,23 @@ const tests = [
       armGraceFallback(10, () => { forced = true })
       await sleep(30)
       assert.equal(forced, true)
+    },
+  },
+  // getGroupAdmins hang guard: withTimeout must resolve to the fallback when
+  // the raced promise never settles, and pass through a normal resolution.
+  {
+    name: 'withTimeout: promise never settles -> resolves to fallback within timeout',
+    fn: async () => {
+      const hung = new Promise(() => {})
+      const result = await withTimeout(hung, 10, [])
+      assert.deepEqual(result, [])
+    },
+  },
+  {
+    name: 'withTimeout: promise resolves normally -> unaffected',
+    fn: async () => {
+      const result = await withTimeout(Promise.resolve(['ok']), 10, [])
+      assert.deepEqual(result, ['ok'])
     },
   },
 ]

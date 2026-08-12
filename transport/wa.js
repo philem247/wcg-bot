@@ -22,6 +22,27 @@ let authState = null;
 let bootPurgeDone = false;
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
+// sock.groupMetadata() has no built-in timeout (baileys blocks up to its own
+// 60s query timeout - see the DM note below at resolveSender). Unbounded, a
+// stalled IQ query here hangs handleMessage forever and silently swallows
+// every group command with no log line. 8s is well under baileys' 60s and
+// well above a normal round trip.
+const GROUP_METADATA_TIMEOUT_MS = 8000;
+
+// Races `promise` against a timeout; resolves to `fallback` (never rejects)
+// if the timeout wins. Pure/testable in isolation from any socket.
+export function withTimeout(promise, timeoutMs, fallback) {
+  let timer;
+  const timeout = new Promise((resolve) => {
+    timer = setTimeout(() => resolve({ timedOut: true }), timeoutMs);
+  });
+  return Promise.race([promise.then((value) => ({ timedOut: false, value })), timeout]).then(
+    (result) => {
+      clearTimeout(timer);
+      return result.timedOut ? fallback : result.value;
+    }
+  );
+}
 
 // Inbound-path instrumentation only: no effect on parsing/dispatch/reconnect.
 // The deployed bot runs without debug logging, so this is the only record of
@@ -484,7 +505,11 @@ export async function getGroupAdmins(jid) {
 
   if (!sock) return [];
   try {
-    const metadata = await sock.groupMetadata(jid);
+    const metadata = await withTimeout(sock.groupMetadata(jid), GROUP_METADATA_TIMEOUT_MS, null);
+    if (metadata === null) {
+      logger?.warn(`Group admins query timed out for ${jid}`);
+      return [];
+    }
     const admins = [];
     for (const p of metadata.participants || []) {
       if (p.lid && p.jid) rememberLidPhone(p.lid, p.jid);
