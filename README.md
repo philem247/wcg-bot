@@ -59,6 +59,7 @@ Environment variables (defined in `.env` and read from `config.js`):
 | `SESSION_DIR` | `session` | Directory holding the single-instance `.lock` file (back this up before reinstalling is no longer required — credentials live in `wcg.db`) |
 | `STALL_TIMEOUT_MS` | `180000` (3 min) | Force a reconnect if a game is running and nothing has dispatched for this long. `0` disables the watchdog — see Reliability below |
 | `AUTO_RESTART_HOURS` | `0` | Periodically restart the whole process (clean reconnect) after this many hours. `0` disables it. Only enable on a host with a process supervisor (pm2/systemd) — on a bare panel host, exiting means the bot stays down until a human restarts it |
+| `PURGE_SIGNAL_ON_BOOT` | `false` | One-time manual recovery: purge `session`/`sender-key` rows once on the next boot. See Reliability below. **Unset it after one restart** or it purges on every boot |
 
 ## Game modes
 
@@ -213,6 +214,12 @@ Watch for `Stall watchdog: no message dispatched in ...` in the log. Set `STALL_
 - `inbound 5m: total=... byType=... noPayload=... echo=... dispatched=... connected=... upSec=...` (every 5 minutes, only while traffic is arriving) — a summary of inbound WhatsApp traffic. A run of `noPayload` is the signature of a Signal ratchet problem; `byType` separates live traffic (`notify`) from backfill (`append`).
 
 `AUTO_RESTART_HOURS` (default `0`, disabled) periodically restarts the whole process on a clean shutdown/reconnect cycle to keep the connection fresh, independent of the watchdog. Leave it `0` unless the host runs the bot under a process supervisor (pm2/systemd) that restarts on exit — on a bare panel host, `shutdown()` ends in `process.exit()` and nothing brings the process back up.
+
+**Deaf bot with a healthy-looking console.** Symptom: the bot connects fine, logs "Connected to WhatsApp", the socket never drops — but it never responds to anything. This means the WhatsApp connection is fine but the Signal ratchet (session/sender-key rows) desynced, so inbound messages fail to decrypt and are silently dropped. Re-pairing is **not** required — credentials (`creds`) are unaffected; only the ratchet rows need clearing. Two recovery paths, both delete only `session`/`sender-key` rows:
+- **No shell access** (e.g. bot-hosting.net/pterodactyl): set `PURGE_SIGNAL_ON_BOOT=true` in the panel's env vars and press Restart. The bot purges once on the next `connect()` and logs how many rows it dropped — then unset the variable so it doesn't purge on every future boot.
+- **Shell access**: stop the bot and run `node scripts/purge-sessions.mjs` (respects `DB_PATH`, same default as the app).
+
+As of this fix the watchdog also self-heals: if it trips because messages are visibly arriving but nothing decodes, it purges the ratchet rows itself (once per 10-minute cooldown) before reconnecting, so this can no longer strand the bot silently for hours.
 
 ## Tests
 

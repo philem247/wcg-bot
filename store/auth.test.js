@@ -25,12 +25,15 @@ const tests = [
         session: { 's-1': { x: 1 } },
         'sender-key': { 'sk-1': { y: 1 } },
         'pre-key': { 'pk-1': { z: 1 } }, // untouched category, sanity check
+        'app-state-sync-key': { 'ak-1': { keyData: Buffer.from('k') } }, // untouched category, sanity check
       })
       const changes = purgeSignalSessions()
       assert.equal(changes, 2, 'deletes exactly the session + sender-key rows')
       assert.deepEqual(await state.keys.get('session', ['s-1']), {})
       assert.deepEqual(await state.keys.get('sender-key', ['sk-1']), {})
       assert.deepEqual(await state.keys.get('pre-key', ['pk-1']), { 'pk-1': { z: 1 } }, 'other categories untouched')
+      const asyncKey = await state.keys.get('app-state-sync-key', ['ak-1'])
+      assert.ok(asyncKey['ak-1'], 'app-state-sync-key untouched')
       assert.equal(getSessionId(), sidBefore, 'creds untouched — no forced re-pair')
     },
   },

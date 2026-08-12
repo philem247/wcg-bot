@@ -181,6 +181,7 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
 
     // Purge all Signal ratchet sessions from the DB. Same purpose as the old
     // purgeSignalSessions() but atomic and instant — no file I/O.
+    // Keep this DELETE in sync with scripts/purge-sessions.mjs.
     purgeSignalSessions: () => {
       const result = db.prepare(
         "DELETE FROM wa_keys WHERE category IN ('session', 'sender-key')"

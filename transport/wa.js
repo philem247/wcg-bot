@@ -1,6 +1,6 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion } from 'baileys';
 import pino from 'pino';
-import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS } from '../config.js';
+import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT } from '../config.js';
 import { useSqliteAuthState, encodeCreds } from '../store/auth.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
@@ -17,6 +17,9 @@ let connectedAt = 0; // ms of the last 'open'; 0 while disconnected
 // is empty (first run or backward compat), falls back to baileys' own
 // useMultiFileAuthState which writes one file per key.
 let authState = null;
+// Guards PURGE_SIGNAL_ON_BOOT to the process's first connect() only — never
+// on the reconnect calls that re-enter connect() after that.
+let bootPurgeDone = false;
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
 
@@ -54,6 +57,7 @@ let lastDispatchAt = 0;
 let lastNotifyAt = 0; // ms of the last live ('notify'-type) messages.upsert, regardless of dispatch outcome
 let watchdogTimer = null;
 let trafficProbe = () => false;
+let lastPurgeAt = 0; // ms of the last watchdog-triggered purgeSignalSessions(), 0 = never
 
 // Lets the app say "traffic is expected right now" (e.g. a game is running),
 // so a quiet group at 3am never trips the watchdog.
@@ -72,6 +76,28 @@ export function shouldForceReconnect({ connected, trafficExpected, msSinceLastDi
   if (!timeoutMs) return false; // 0 disables the watchdog
   if (!connected || msSinceLastDispatch <= timeoutMs) return false;
   return trafficExpected || msSinceLastNotify < timeoutMs;
+}
+
+// A reconnect alone never repairs a desynced Signal ratchet (the exact bug
+// that left the bot deaf for hours pre-phase-9) - only purging session/
+// sender-key rows does. Purge only when traffic is demonstrably ARRIVING but
+// not dispatching (msSinceLastNotify < timeoutMs): that is the ratchet-desync
+// signature. A trip caused only by trafficExpected with no arriving notify
+// traffic is a different failure (no inbound at all) and purging there would
+// throw away good session state for nothing.
+//
+// Cooldown: 10 minutes. A purge is cheap but not free - sessions rebuild via
+// retry receipts, which itself takes a few seconds of decrypt noise per
+// sender, so re-purging every watchdog tick (30s) would keep every ratchet
+// perpetually rebuilding instead of settling. 10 minutes is comfortably
+// longer than that settle time while still being far shorter than an
+// operator would ever wait before noticing the bot is still deaf.
+export const PURGE_COOLDOWN_MS = 10 * 60 * 1000;
+
+// Pure decision, exported so it's testable without a socket/DB.
+export function shouldPurgeOnStall({ msSinceLastNotify, timeoutMs, msSinceLastPurge }) {
+  if (!(msSinceLastNotify < timeoutMs)) return false; // not the ratchet-desync signature
+  return msSinceLastPurge >= PURGE_COOLDOWN_MS;
 }
 
 // Bounded fallback for sock.end()'s close event, which the watchdog's whole
@@ -142,6 +168,11 @@ function startWatchdogTimer() {
     const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
     const cause = trafficExpected ? 'game traffic expected' : 'messages arriving but not dispatching';
     logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s, ${cause}) — forcing reconnect`);
+    if (shouldPurgeOnStall({ msSinceLastNotify: notifyMs, timeoutMs: STALL_TIMEOUT_MS, msSinceLastPurge: Date.now() - lastPurgeAt })) {
+      lastPurgeAt = Date.now();
+      const purged = authState.purgeSignalSessions();
+      logger.warn(`Stall watchdog: inbound traffic is arriving but nothing decodes — purged ${purged} Signal ratchet row(s) before reconnecting`);
+    }
     lastDispatchAt = Date.now(); // don't refire against the same stall while the new socket comes up
     sock?.end(undefined);
     armGraceFallbackForStalledEnd();
@@ -243,6 +274,11 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
     } else {
       logger.info('Auth: using SQLite-backed session (generating new credentials)');
     }
+  }
+  if (PURGE_SIGNAL_ON_BOOT && !bootPurgeDone) {
+    bootPurgeDone = true;
+    const purged = authState.purgeSignalSessions();
+    logger.warn(`PURGE_SIGNAL_ON_BOOT: purged ${purged} Signal ratchet row(s) on boot. UNSET PURGE_SIGNAL_ON_BOOT now so it does not purge again on every restart.`);
   }
   const { state, saveCreds } = authState;
 

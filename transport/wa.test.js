@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 
-const { shouldForceReconnect, armGraceFallback } = await import('./wa.js')
+const { shouldForceReconnect, shouldPurgeOnStall, armGraceFallback } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -87,6 +87,32 @@ const tests = [
         connected: true, trafficExpected: false,
         msSinceLastDispatch: 999_999_999, msSinceLastNotify: 0, timeoutMs: 0,
       }), false)
+    },
+  },
+  // Self-heal purge (Change: watchdog trips + traffic is arriving but not
+  // dispatching -> ratchet-desync signature -> purge before reconnecting).
+  {
+    name: 'purge: traffic arriving, no prior purge -> purge',
+    fn: () => {
+      assert.equal(shouldPurgeOnStall({ msSinceLastNotify: 5_000, timeoutMs: 180_000, msSinceLastPurge: 999_999_999 }), true)
+    },
+  },
+  {
+    name: 'purge: no traffic arriving (trafficExpected-only trip) -> do NOT purge',
+    fn: () => {
+      assert.equal(shouldPurgeOnStall({ msSinceLastNotify: 200_000, timeoutMs: 180_000, msSinceLastPurge: 999_999_999 }), false)
+    },
+  },
+  {
+    name: 'purge: traffic arriving but within cooldown of last purge -> do NOT purge (no purge loop)',
+    fn: () => {
+      assert.equal(shouldPurgeOnStall({ msSinceLastNotify: 5_000, timeoutMs: 180_000, msSinceLastPurge: 60_000 }), false)
+    },
+  },
+  {
+    name: 'purge: traffic arriving, exactly at cooldown boundary -> purge',
+    fn: () => {
+      assert.equal(shouldPurgeOnStall({ msSinceLastNotify: 5_000, timeoutMs: 180_000, msSinceLastPurge: 10 * 60 * 1000 }), true)
     },
   },
   // Grace-timer fallback (sock.end() -> close may never arrive): armGraceFallback

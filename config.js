@@ -14,6 +14,10 @@ export const OWNER = process.env.OWNER;
 export const LOG_LEVEL = process.env.LOG_LEVEL ?? 'info';
 export const WA_LOG_LEVEL = process.env.WA_LOG_LEVEL ?? 'silent';
 export const QUIET_SIGNAL_NOISE = (process.env.QUIET_SIGNAL_NOISE ?? 'true') !== 'false';
+// Default OFF: one-time manual recovery for ratchet rows already corrupted
+// before the phase-8/9 fixes existed. Purges session/sender-key rows once on
+// boot, then UNSET this — see README Reliability section.
+export const PURGE_SIGNAL_ON_BOOT = process.env.PURGE_SIGNAL_ON_BOOT === 'true';
 export const SESSION_ID = process.env.SESSION_ID ?? '';
 export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
 // Force a reconnect when a game is running but no message has dispatched for
