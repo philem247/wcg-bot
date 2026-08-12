@@ -60,6 +60,7 @@ Environment variables (defined in `.env` and read from `config.js`):
 | `STALL_TIMEOUT_MS` | `180000` (3 min) | Force a reconnect if a game is running and nothing has dispatched for this long. `0` disables the watchdog — see Reliability below |
 | `AUTO_RESTART_HOURS` | `0` | Periodically restart the whole process (clean reconnect) after this many hours. `0` disables it. Only enable on a host with a process supervisor (pm2/systemd) — on a bare panel host, exiting means the bot stays down until a human restarts it |
 | `PURGE_SIGNAL_ON_BOOT` | `false` | One-time manual recovery: purge `session`/`sender-key` rows once on the next boot. **Destructive** — breaks group decryption until re-pair, see Reliability below. **Unset it after one restart** or it purges on every boot |
+| `RESET_SESSION` | `false` | Force a genuine re-pair: wipes ALL `wa_keys` rows (including `creds`) before the next boot, so the bot generates fresh credentials and prints a new pairing code. **Destructive** — destroys this device's identity. **Unset it after one restart** or it re-pairs on every boot. See Reliability below for why clearing `SESSION_ID` alone does not do this |
 
 ## Game modes
 
@@ -218,14 +219,16 @@ Watch for `Stall watchdog: no message dispatched in ...` in the log. Set `STALL_
 **Deaf bot with a healthy-looking console.** Symptom: the bot connects fine, logs "Connected to WhatsApp", the socket never drops — but it never responds to anything. This means the WhatsApp connection is fine but the Signal ratchet desynced, so inbound messages fail to decrypt and are silently dropped.
 
 There are two kinds of ratchet row, and they behave very differently when purged:
-- **`session` rows** (pairwise 1:1 chats) are **self-healing**: baileys' own retry receipts re-derive them automatically. Safe to purge, including unattended.
-- **`sender-key` rows** (group chats) are **not self-healing**: a participant's client only redistributes its sender key when it believes the recipient device changed. Deleting the row locally does not change this device's identity, so peers keep encrypting with a key the bot no longer holds — every group stays permanently undecryptable until the device is **re-paired** (a new device identity forces redistribution). Do not purge sender keys unattended.
+- **`session` rows** (pairwise 1:1 chats) are **self-healing**: baileys' own retry receipts re-derive them automatically.
+- **`sender-key` rows** (group chats) are **not self-healing**: a participant's client only redistributes its sender key when it believes the recipient device changed. Deleting the row locally does not change this device's identity, so peers keep encrypting with a key the bot no longer holds — every group stays permanently undecryptable until the device is **re-paired** (a new device identity forces redistribution).
 
-For that reason all *automatic* recovery paths — the stall watchdog and the `badSession` disconnect handler — only ever purge `session` rows, via `purgePairwiseSessions()`. The watchdog self-heals: if it trips because messages are visibly arriving but nothing decodes, it purges pairwise sessions itself (once per 10-minute cooldown) before reconnecting.
+**Purging is manual-recovery only — nothing purges automatically.** `500 badSession` disconnects are routine WhatsApp connection rotation on real deployments (observed roughly every ~50 minutes) and the bot recovers fully on the normal reconnect with no purge needed. An earlier version of this bot purged `session` rows automatically on `badSession` and from the stall watchdog; in production this deleted working session keys on a timer and silently deafened the bot (every inbound message failed to decrypt). The stall watchdog now only logs, resets its dispatch clock, and force-reconnects — it never purges.
 
-A full purge including `sender-key` rows (`purgeAllSignalSessions()`) is available but **manual only**, and breaks group decryption until you re-pair the device:
-- **No shell access** (e.g. bot-hosting.net/pterodactyl): set `PURGE_SIGNAL_ON_BOOT=true` in the panel's env vars and press Restart. The bot warns in the log, then purges once on the next `connect()` — unset the variable afterward so it doesn't purge on every future boot. Try leaving it unset first and letting the watchdog/badSession path self-heal — that alone fixes most cases without touching groups at all.
+Both `purgePairwiseSessions()` and the full `purgeAllSignalSessions()` (which also drops `sender-key` rows and breaks group decryption until re-pair) remain available for **manual, operator-initiated** recovery only:
+- **No shell access** (e.g. bot-hosting.net/pterodactyl): set `PURGE_SIGNAL_ON_BOOT=true` in the panel's env vars and press Restart. The bot warns in the log, then purges once on the next `connect()` — unset the variable afterward so it doesn't purge on every future boot.
 - **Shell access**: stop the bot and run `node scripts/purge-sessions.mjs` (pairwise-only by default, respects `DB_PATH`). Pass `--all` for the destructive full purge — it prints the same warning first.
+
+**Forcing a genuine re-pair on a no-shell host.** Clearing `SESSION_ID` in the panel is *not* enough to force a re-pair: `useSqliteAuthState()` checks `wcg.db` for existing `creds` first, and if it finds any (from a previous pairing), it reuses that identity regardless of what `SESSION_ID` says — an empty `SESSION_ID` just means "don't override the DB." The bot silently comes back up on the same dead device identity, prints no pairing code, and stays broken. Use `RESET_SESSION=true` instead: it wipes `creds` out of the DB itself, before the auth state is even constructed, so the next boot has nothing to reuse and generates a fresh identity. Set it in the panel's env vars, press Restart, watch the log for the pairing code, then unset it.
 
 ## Tests
 

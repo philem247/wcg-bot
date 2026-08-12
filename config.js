@@ -18,6 +18,11 @@ export const QUIET_SIGNAL_NOISE = (process.env.QUIET_SIGNAL_NOISE ?? 'true') !==
 // before the phase-8/9 fixes existed. Purges session/sender-key rows once on
 // boot, then UNSET this — see README Reliability section.
 export const PURGE_SIGNAL_ON_BOOT = process.env.PURGE_SIGNAL_ON_BOOT === 'true';
+// Default OFF: wipes ALL wa_keys rows (including creds) before the auth state
+// is constructed, forcing fresh credential generation and a pairing code on
+// next boot. Use when clearing SESSION_ID alone did not force a re-pair (the
+// DB still has old creds) — see README Reliability section. UNSET after use.
+export const RESET_SESSION = process.env.RESET_SESSION === 'true';
 export const SESSION_ID = process.env.SESSION_ID ?? '';
 export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
 // Force a reconnect when a game is running but no message has dispatched for

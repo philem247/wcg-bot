@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
+import { DatabaseSync } from 'node:sqlite'
+import { useSqliteAuthState } from '../store/auth.js'
 
-const { shouldForceReconnect, shouldPurgeOnStall, armGraceFallback, withTimeout } = await import('./wa.js')
+const { shouldForceReconnect, armGraceFallback, withTimeout, wipeAllForReset } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -89,32 +91,6 @@ const tests = [
       }), false)
     },
   },
-  // Self-heal purge (Change: watchdog trips + traffic is arriving but not
-  // dispatching -> ratchet-desync signature -> purge before reconnecting).
-  {
-    name: 'purge: traffic arriving, no prior purge -> purge',
-    fn: () => {
-      assert.equal(shouldPurgeOnStall({ msSinceLastNotify: 5_000, timeoutMs: 180_000, msSinceLastPurge: 999_999_999 }), true)
-    },
-  },
-  {
-    name: 'purge: no traffic arriving (trafficExpected-only trip) -> do NOT purge',
-    fn: () => {
-      assert.equal(shouldPurgeOnStall({ msSinceLastNotify: 200_000, timeoutMs: 180_000, msSinceLastPurge: 999_999_999 }), false)
-    },
-  },
-  {
-    name: 'purge: traffic arriving but within cooldown of last purge -> do NOT purge (no purge loop)',
-    fn: () => {
-      assert.equal(shouldPurgeOnStall({ msSinceLastNotify: 5_000, timeoutMs: 180_000, msSinceLastPurge: 60_000 }), false)
-    },
-  },
-  {
-    name: 'purge: traffic arriving, exactly at cooldown boundary -> purge',
-    fn: () => {
-      assert.equal(shouldPurgeOnStall({ msSinceLastNotify: 5_000, timeoutMs: 180_000, msSinceLastPurge: 10 * 60 * 1000 }), true)
-    },
-  },
   // Grace-timer fallback (sock.end() -> close may never arrive): armGraceFallback
   // schedules onForce() unless cancelled first.
   {
@@ -151,6 +127,27 @@ const tests = [
     fn: async () => {
       const result = await withTimeout(Promise.resolve(['ok']), 10, [])
       assert.deepEqual(result, ['ok'])
+    },
+  },
+  {
+    name: 'wipeAllForReset removes the creds row so the next useSqliteAuthState() generates a fresh identity',
+    fn: () => {
+      const db = new DatabaseSync(':memory:')
+      const before = useSqliteAuthState({ existingDb: db })
+      const oldSessionId = before.getSessionId()
+
+      wipeAllForReset(db) // must run before any new auth state is constructed on this db
+
+      const after = useSqliteAuthState({ existingDb: db })
+      const newSessionId = after.getSessionId()
+      assert.notEqual(newSessionId, oldSessionId, 'fresh creds generated, not the old identity reused')
+    },
+  },
+  {
+    name: 'wipeAllForReset does not throw when wa_keys does not exist yet (fresh DB, no table)',
+    fn: () => {
+      const db = new DatabaseSync(':memory:')
+      assert.doesNotThrow(() => wipeAllForReset(db))
     },
   },
 ]

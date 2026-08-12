@@ -180,8 +180,13 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
     getSessionId: () => encodeCreds(creds),
 
     // Purge only pairwise (1:1) session rows. SELF-HEALING: baileys re-derives
-    // these automatically via retry receipts after a peer's next send. Safe to
-    // call unattended (watchdog, badSession branch).
+    // these automatically via retry receipts after a peer's next send.
+    // MANUAL RECOVERY ONLY — never call this from an unattended path. On real
+    // deployments, 500 badSession is routine WhatsApp connection rotation
+    // (fires roughly every ~50 min) and the bot recovers fully on the normal
+    // reconnect with no purge needed. Calling this automatically on badSession
+    // or from the stall watchdog deletes working session keys on a timer and
+    // silently deafens the bot (every future message fails to decrypt).
     purgePairwiseSessions: () => {
       const result = db.prepare("DELETE FROM wa_keys WHERE category = 'session'").run();
       return result.changes;

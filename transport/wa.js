@@ -1,6 +1,7 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion } from 'baileys';
 import pino from 'pino';
-import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT } from '../config.js';
+import { DatabaseSync } from 'node:sqlite';
+import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION } from '../config.js';
 import { useSqliteAuthState, encodeCreds } from '../store/auth.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
@@ -20,6 +21,21 @@ let authState = null;
 // Guards PURGE_SIGNAL_ON_BOOT to the process's first connect() only — never
 // on the reconnect calls that re-enter connect() after that.
 let bootPurgeDone = false;
+// Guards RESET_SESSION the same way — first connect() only.
+let resetDone = false;
+
+// Wipes every wa_keys row, including creds. Must run BEFORE useSqliteAuthState()
+// is called, since that function reads/creates creds on construction — wiping
+// after it returns would leave the stale creds live in memory. Opens the DB
+// directly (no auth state exists yet). try/catch: a missing table on a
+// first-ever boot must not crash startup.
+export function wipeAllForReset(db) {
+  try {
+    db.exec('DELETE FROM wa_keys');
+  } catch (e) {
+    logger?.warn?.({ err: e }, 'RESET_SESSION: wipe failed (likely no wa_keys table yet, harmless)');
+  }
+}
 const RECONNECT_DELAY = 3000;
 const GROUP_ADMIN_CACHE_MS = 60_000;
 // sock.groupMetadata() has no built-in timeout (baileys blocks up to its own
@@ -78,7 +94,6 @@ let lastDispatchAt = 0;
 let lastNotifyAt = 0; // ms of the last live ('notify'-type) messages.upsert, regardless of dispatch outcome
 let watchdogTimer = null;
 let trafficProbe = () => false;
-let lastPurgeAt = 0; // ms of the last watchdog-triggered purgePairwiseSessions(), 0 = never
 
 // Lets the app say "traffic is expected right now" (e.g. a game is running),
 // so a quiet group at 3am never trips the watchdog.
@@ -97,28 +112,6 @@ export function shouldForceReconnect({ connected, trafficExpected, msSinceLastDi
   if (!timeoutMs) return false; // 0 disables the watchdog
   if (!connected || msSinceLastDispatch <= timeoutMs) return false;
   return trafficExpected || msSinceLastNotify < timeoutMs;
-}
-
-// A reconnect alone never repairs a desynced Signal ratchet (the exact bug
-// that left the bot deaf for hours pre-phase-9) - only purging session/
-// sender-key rows does. Purge only when traffic is demonstrably ARRIVING but
-// not dispatching (msSinceLastNotify < timeoutMs): that is the ratchet-desync
-// signature. A trip caused only by trafficExpected with no arriving notify
-// traffic is a different failure (no inbound at all) and purging there would
-// throw away good session state for nothing.
-//
-// Cooldown: 10 minutes. A purge is cheap but not free - sessions rebuild via
-// retry receipts, which itself takes a few seconds of decrypt noise per
-// sender, so re-purging every watchdog tick (30s) would keep every ratchet
-// perpetually rebuilding instead of settling. 10 minutes is comfortably
-// longer than that settle time while still being far shorter than an
-// operator would ever wait before noticing the bot is still deaf.
-export const PURGE_COOLDOWN_MS = 10 * 60 * 1000;
-
-// Pure decision, exported so it's testable without a socket/DB.
-export function shouldPurgeOnStall({ msSinceLastNotify, timeoutMs, msSinceLastPurge }) {
-  if (!(msSinceLastNotify < timeoutMs)) return false; // not the ratchet-desync signature
-  return msSinceLastPurge >= PURGE_COOLDOWN_MS;
 }
 
 // Bounded fallback for sock.end()'s close event, which the watchdog's whole
@@ -189,11 +182,6 @@ function startWatchdogTimer() {
     const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
     const cause = trafficExpected ? 'game traffic expected' : 'messages arriving but not dispatching';
     logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s, ${cause}) — forcing reconnect`);
-    if (shouldPurgeOnStall({ msSinceLastNotify: notifyMs, timeoutMs: STALL_TIMEOUT_MS, msSinceLastPurge: Date.now() - lastPurgeAt })) {
-      lastPurgeAt = Date.now();
-      const purged = authState.purgePairwiseSessions();
-      logger.warn(`Stall watchdog: inbound traffic is arriving but nothing decodes — purged ${purged} pairwise session row(s) before reconnecting`);
-    }
     lastDispatchAt = Date.now(); // don't refire against the same stall while the new socket comes up
     sock?.end(undefined);
     armGraceFallbackForStalledEnd();
@@ -287,6 +275,14 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
   startSummaryTimer();
   startWatchdogTimer();
 
+  if (RESET_SESSION && !resetDone) {
+    resetDone = true;
+    logger.warn('RESET_SESSION: wiping ALL credentials and Signal keys — this device\'s identity is destroyed, a fresh pairing code will follow. UNSET RESET_SESSION now or it re-pairs (and breaks the previous link) on every boot.');
+    const db = existingDb ?? new DatabaseSync(process.env.DB_PATH ?? 'wcg.db');
+    wipeAllForReset(db);
+    if (!existingDb) db.close();
+  }
+
   // Auth state: always use SQLite. No per-file races, no session folder to corrupt.
   if (!authState) {
     authState = useSqliteAuthState({ sessionId: SESSION_ID, existingDb });
@@ -298,7 +294,7 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
   }
   if (PURGE_SIGNAL_ON_BOOT && !bootPurgeDone) {
     bootPurgeDone = true;
-    logger.warn('PURGE_SIGNAL_ON_BOOT: this deletes sender-key rows too — every group stays undecryptable until this device is re-paired. Try a pairwise-only purge (unset this flag, let the watchdog/badSession path self-heal) before reaching for this.');
+    logger.warn('PURGE_SIGNAL_ON_BOOT: this deletes sender-key rows too — every group stays undecryptable until this device is re-paired. Nothing purges automatically (500 badSession is routine connection rotation and self-heals on reconnect); try scripts/purge-sessions.mjs without --all first.');
     const purged = authState.purgeAllSignalSessions();
     logger.warn(`PURGE_SIGNAL_ON_BOOT: purged ${purged} Signal ratchet row(s) (session + sender-key) on boot. UNSET PURGE_SIGNAL_ON_BOOT now so it does not purge again on every restart.`);
   }
@@ -371,11 +367,6 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
         authState.wipeAll();
         logger.error(`Logged out (${reason} ${reasonName}). Session is dead and has been wiped from the database. Clear your SESSION_ID env var and restart the bot to re-pair.`);
         process.exit(1);
-      } else if (reason === DisconnectReason.badSession) {
-        const purged = authState.purgePairwiseSessions();
-        logger.warn(`Bad session (${reason} ${reasonName}) after ${upSec}s connected — purged ${purged} pairwise session row(s), reconnecting in ${RECONNECT_DELAY}ms...`);
-        sock.ev.removeAllListeners();
-        setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
       } else if (reason === DisconnectReason.restartRequired) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
         sock.ev.removeAllListeners();
