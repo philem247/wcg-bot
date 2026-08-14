@@ -1,7 +1,7 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion } from 'baileys';
 import pino from 'pino';
 import { DatabaseSync } from 'node:sqlite';
-import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, SILENCE_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION } from '../config.js';
+import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, SILENCE_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION, MARK_ONLINE } from '../config.js';
 import { useSqliteAuthState, encodeCreds } from '../store/auth.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
@@ -371,8 +371,9 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
     // Phone-lag fix: markOnlineOnConnect defaults true, which makes this linked
     // device announce itself as the active client and pulls presence/notification
     // routing onto it, degrading the phone. syncFullHistory/shouldSyncHistoryMessage
-    // stop it pulling the account's full history on connect.
-    markOnlineOnConnect: false,
+    // stop it pulling the account's full history on connect. Now env-controlled via
+    // MARK_ONLINE; set true to diagnose if WhatsApp queues messages instead of streaming live.
+    markOnlineOnConnect: MARK_ONLINE,
     syncFullHistory: false,
     shouldSyncHistoryMessage: () => false,
     getMessage: async (key) => messageCache.get(key.id),

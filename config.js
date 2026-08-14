@@ -23,6 +23,9 @@ export const PURGE_SIGNAL_ON_BOOT = process.env.PURGE_SIGNAL_ON_BOOT === 'true';
 // next boot. Use when clearing SESSION_ID alone did not force a re-pair (the
 // DB still has old creds) — see README Reliability section. UNSET after use.
 export const RESET_SESSION = process.env.RESET_SESSION === 'true';
+// Default OFF: when enabled, announces this linked device as the active client
+// on connect, which is diagnostic for WhatsApp queueing vs. streaming behavior.
+export const MARK_ONLINE = process.env.MARK_ONLINE === 'true';
 export const SESSION_ID = process.env.SESSION_ID ?? '';
 export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
 // Force a reconnect when a game is running but no message has dispatched for
