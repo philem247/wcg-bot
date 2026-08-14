@@ -28,6 +28,11 @@ export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
 // Force a reconnect when a game is running but no message has dispatched for
 // this long — see transport/wa.js's watchdog. 0 disables it.
 export const STALL_TIMEOUT_MS = Number(process.env.STALL_TIMEOUT_MS ?? 3 * 60 * 1000);
+// Deaf-socket detector (transport/wa.js shouldRepairPreKeys): connected, but no
+// notify traffic for this long AND libsignal has logged decrypt failures -> a
+// peer's pre-key is missing from our wa_keys store, silently NACKing every
+// message before it reaches messages.upsert. 0 disables it.
+export const SILENCE_TIMEOUT_MS = Number(process.env.SILENCE_TIMEOUT_MS ?? 15 * 60 * 1000);
 // Default 0 (disabled): shutdown() ends in process.exit(), and on a bare
 // panel host (e.g. pterodactyl) with no process supervisor, exiting means the
 // bot stays dead until a human presses Start. Only set this >0 if the host

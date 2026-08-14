@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { DatabaseSync } from 'node:sqlite'
 import { useSqliteAuthState } from '../store/auth.js'
 
-const { shouldForceReconnect, armGraceFallback, withTimeout, wipeAllForReset } = await import('./wa.js')
+const { shouldForceReconnect, shouldRepairPreKeys, armGraceFallback, withTimeout, wipeAllForReset } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -148,6 +148,39 @@ const tests = [
     fn: () => {
       const db = new DatabaseSync(':memory:')
       assert.doesNotThrow(() => wipeAllForReset(db))
+    },
+  },
+  // Deaf-socket detector (Change 3): connected + silent past timeout + at
+  // least one libsignal decrypt failure -> repair. Any one condition missing
+  // -> false.
+  {
+    name: 'shouldRepairPreKeys: not connected -> false',
+    fn: () => {
+      assert.equal(shouldRepairPreKeys({ connected: false, msSinceLastNotify: 999_999, decryptFails: 1, timeoutMs: 900_000 }), false)
+    },
+  },
+  {
+    name: 'shouldRepairPreKeys: timeoutMs 0 -> false (disabled)',
+    fn: () => {
+      assert.equal(shouldRepairPreKeys({ connected: true, msSinceLastNotify: 999_999_999, decryptFails: 1, timeoutMs: 0 }), false)
+    },
+  },
+  {
+    name: 'shouldRepairPreKeys: no decrypt failures -> false',
+    fn: () => {
+      assert.equal(shouldRepairPreKeys({ connected: true, msSinceLastNotify: 999_999, decryptFails: 0, timeoutMs: 900_000 }), false)
+    },
+  },
+  {
+    name: 'shouldRepairPreKeys: silence still under timeout -> false',
+    fn: () => {
+      assert.equal(shouldRepairPreKeys({ connected: true, msSinceLastNotify: 100_000, decryptFails: 1, timeoutMs: 900_000 }), false)
+    },
+  },
+  {
+    name: 'shouldRepairPreKeys: connected, past timeout, decrypt failures present -> true',
+    fn: () => {
+      assert.equal(shouldRepairPreKeys({ connected: true, msSinceLastNotify: 900_001, decryptFails: 3, timeoutMs: 900_000 }), true)
     },
   },
 ]

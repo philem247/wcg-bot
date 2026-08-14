@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { isSignalNoise } from './quiet.js'
+import { isSignalNoise, installQuietSignalNoise, getDecryptFailCount } from './quiet.js'
 
 const tests = [
   {
@@ -45,6 +45,22 @@ const tests = [
       assert.equal(isSignalNoise([undefined]), false)
       assert.equal(isSignalNoise([42]), false)
       assert.equal(isSignalNoise([]), false)
+    },
+  },
+  {
+    name: 'getDecryptFailCount: counts only genuine decrypt-fail patterns, not other suppressed noise',
+    fn: () => {
+      const fakeLogger = { info: () => {} }
+      const uninstall = installQuietSignalNoise(fakeLogger, { enabled: true, intervalMs: 1_000_000 })
+      try {
+        const before = getDecryptFailCount()
+        console.error('Failed to decrypt message with any known session...')
+        console.error('Session error:Error: Bad MAC', 'fake stack')
+        console.warn('Closing open session in favor of incoming prekey bundle') // suppressed, but not a decrypt fail
+        assert.equal(getDecryptFailCount(), before + 2)
+      } finally {
+        uninstall()
+      }
     },
   },
 ]

@@ -31,6 +31,20 @@ export function isSignalNoise(args) {
 
 let suppressedCount = 0
 
+// Monotonic, never reset by the interval logger below — only the two patterns
+// that mean a genuine decrypt failure (not routine ratchet-rotation noise).
+// transport/wa.js reads this to tell "deaf socket" apart from a quiet group.
+let decryptFailCount = 0
+
+function isDecryptFail(first) {
+  return first === 'Failed to decrypt message with any known session...' ||
+    first.startsWith('Session error:')
+}
+
+export function getDecryptFailCount() {
+  return decryptFailCount
+}
+
 // libsignal calls console.info for the "Closing session:" dump, not just
 // error/warn/log, so all four are wrapped - anything not matching a pattern
 // passes straight through to the real console, untouched.
@@ -44,7 +58,11 @@ export function installQuietSignalNoise(logger, { enabled = true, intervalMs = 5
 
   for (const method of METHODS) {
     console[method] = (...args) => {
-      if (isSignalNoise(args)) { suppressedCount++; return }
+      if (isSignalNoise(args)) {
+        suppressedCount++
+        if (typeof args[0] === 'string' && isDecryptFail(args[0])) decryptFailCount++
+        return
+      }
       real[method](...args)
     }
   }

@@ -1,10 +1,11 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion } from 'baileys';
 import pino from 'pino';
 import { DatabaseSync } from 'node:sqlite';
-import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION } from '../config.js';
+import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, SILENCE_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION } from '../config.js';
 import { useSqliteAuthState, encodeCreds } from '../store/auth.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
+import { getDecryptFailCount } from './quiet.js';
 
 let sock;
 let onMessageHandler;
@@ -94,6 +95,14 @@ let lastDispatchAt = 0;
 let lastNotifyAt = 0; // ms of the last live ('notify'-type) messages.upsert, regardless of dispatch outcome
 let watchdogTimer = null;
 let trafficProbe = () => false;
+// Guards shouldRepairPreKeys so the first trip repairs (non-destructive), and
+// only a SECOND trip with still no traffic escalates to reconnect.
+let preKeyRepairAttempted = false;
+// ms of the last repair/escalate action taken by the deaf-socket watchdog.
+// Used (not lastNotifyAt itself, which shouldForceReconnect also reads) to
+// suppress re-firing immediately after an action, the same way lastDispatchAt
+// = Date.now() suppresses the stall watchdog re-firing on the same stall.
+let lastPreKeyActionAt = 0;
 
 // Lets the app say "traffic is expected right now" (e.g. a game is running),
 // so a quiet group at 3am never trips the watchdog.
@@ -112,6 +121,17 @@ export function shouldForceReconnect({ connected, trafficExpected, msSinceLastDi
   if (!timeoutMs) return false; // 0 disables the watchdog
   if (!connected || msSinceLastDispatch <= timeoutMs) return false;
   return trafficExpected || msSinceLastNotify < timeoutMs;
+}
+
+// Deaf-socket detector: connected, silent for SILENCE_TIMEOUT_MS, AND libsignal
+// has logged at least one genuine decrypt failure — the signature of a missing
+// pre-key (see quiet.js getDecryptFailCount). Separate trip condition from
+// shouldForceReconnect: that one catches a stalled/hung socket; this one catches
+// a socket that's alive and receiving NACKs, which reconnecting alone can't fix
+// because the bad state is persistent SQLite rows, not connection state.
+export function shouldRepairPreKeys({ connected, msSinceLastNotify, decryptFails, timeoutMs }) {
+  if (!connected || !timeoutMs) return false;
+  return msSinceLastNotify > timeoutMs && decryptFails > 0;
 }
 
 // Bounded fallback for sock.end()'s close event, which the watchdog's whole
@@ -167,24 +187,54 @@ function armGraceFallbackForStalledEnd() {
 
 function startWatchdogTimer() {
   if (watchdogTimer) return; // connect() re-runs on every reconnect; only one timer ever
-  watchdogTimer = setInterval(() => {
+  watchdogTimer = setInterval(async () => {
     if (shuttingDown) return;
     const silentMs = Date.now() - lastDispatchAt;
     const notifyMs = Date.now() - lastNotifyAt;
     const trafficExpected = trafficProbe();
-    if (!shouldForceReconnect({
+    if (shouldForceReconnect({
       connected: isConnected(),
       trafficExpected,
       msSinceLastDispatch: silentMs,
       msSinceLastNotify: notifyMs,
       timeoutMs: STALL_TIMEOUT_MS,
-    })) return;
-    const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
-    const cause = trafficExpected ? 'game traffic expected' : 'messages arriving but not dispatching';
-    logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s, ${cause}) — forcing reconnect`);
-    lastDispatchAt = Date.now(); // don't refire against the same stall while the new socket comes up
-    sock?.end(undefined);
-    armGraceFallbackForStalledEnd();
+    })) {
+      const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
+      const cause = trafficExpected ? 'game traffic expected' : 'messages arriving but not dispatching';
+      logger.warn(`Stall watchdog: no message dispatched in ${(silentMs / 1000).toFixed(0)}s (connected ${upSec}s, ${cause}) — forcing reconnect`);
+      lastDispatchAt = Date.now(); // don't refire against the same stall while the new socket comes up
+      sock?.end(undefined);
+      armGraceFallbackForStalledEnd();
+      return;
+    }
+
+    // Guard against re-firing immediately after our own action: once an action
+    // has been taken, treat "silence" as measured from that action, not from
+    // the real (stale) lastNotifyAt, until a fresh SILENCE_TIMEOUT_MS elapses.
+    const notifyMsForRepair = lastPreKeyActionAt ? Math.min(notifyMs, Date.now() - lastPreKeyActionAt) : notifyMs;
+    if (shouldRepairPreKeys({
+      connected: isConnected(),
+      msSinceLastNotify: notifyMsForRepair,
+      decryptFails: getDecryptFailCount(),
+      timeoutMs: SILENCE_TIMEOUT_MS,
+    })) {
+      lastPreKeyActionAt = Date.now();
+      if (!preKeyRepairAttempted) {
+        preKeyRepairAttempted = true;
+        logger.warn(`Deaf-socket watchdog: no notify traffic in ${(notifyMs / 1000).toFixed(0)}s with libsignal decrypt failures observed — a peer's pre-key is likely missing from our store; uploading a fresh pre-key batch (non-destructive, no session/key rows deleted)`);
+        try {
+          await sock?.uploadPreKeys();
+          logger.info('Deaf-socket watchdog: uploadPreKeys() completed');
+        } catch (e) {
+          logger.error({ err: e }, 'Deaf-socket watchdog: uploadPreKeys() failed');
+        }
+      } else {
+        logger.warn('Deaf-socket watchdog: pre-key repair already attempted and traffic still has not resumed — escalating to reconnect');
+        preKeyRepairAttempted = false;
+        sock?.end(undefined);
+        armGraceFallbackForStalledEnd();
+      }
+    }
   }, WATCHDOG_INTERVAL_MS);
   watchdogTimer.unref?.();
 }
@@ -192,12 +242,21 @@ function startWatchdogTimer() {
 function startSummaryTimer() {
   if (summaryTimer) return; // connect() re-runs on every reconnect; only one timer ever
   summaryTimer = setInterval(() => {
-    if (inboundStats.total === 0) return; // idle bot: say nothing
-    const byType = Object.entries(inboundStats.byType).map(([k, v]) => `${k}=${v}`).join(',') || 'none';
     const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
+    if (inboundStats.total === 0) {
+      // A quiet console used to mean "healthy"; it also means "deaf" (see the
+      // watchdog above). Only stay fully silent when not connected at all —
+      // when connected, silence is worth a line so an operator watching logs
+      // can tell "nothing happening" apart from "nothing arriving".
+      if (isConnected()) {
+        logger.warn(`SILENT 5m: no inbound messages while connected (upSec=${upSec}, decryptFails=${getDecryptFailCount()})`);
+      }
+      return;
+    }
+    const byType = Object.entries(inboundStats.byType).map(([k, v]) => `${k}=${v}`).join(',') || 'none';
     logger.info(
       `inbound 5m: total=${inboundStats.total} byType=${byType} noPayload=${inboundStats.noPayload} ` +
-      `echo=${inboundStats.echo} dispatched=${inboundStats.dispatched} connected=${isConnected()} upSec=${upSec}`
+      `echo=${inboundStats.echo} dispatched=${inboundStats.dispatched} connected=${isConnected()} upSec=${upSec} decryptFails=${getDecryptFailCount()}`
     );
     resetInboundStats();
   }, SUMMARY_INTERVAL_MS);
@@ -383,7 +442,13 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
   sock.ev.on('messages.upsert', async ({ messages, type }) => {
     try {
       logger.debug(`upsert type=${type} count=${messages.length}`);
-      if (type === 'notify') lastNotifyAt = Date.now(); // live traffic, regardless of payload/dispatch outcome
+      if (type === 'notify') {
+        lastNotifyAt = Date.now(); // live traffic, regardless of payload/dispatch outcome
+        // Traffic is flowing again: clear the deaf-socket guards so a future
+        // silence gets the cheap non-destructive repair first, not a reconnect.
+        preKeyRepairAttempted = false;
+        lastPreKeyActionAt = 0;
+      }
       inboundStats.total += messages.length;
       inboundStats.byType[type] = (inboundStats.byType[type] ?? 0) + messages.length;
       for (const msg of messages) {
