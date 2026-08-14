@@ -400,6 +400,13 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
     } else if (connection === 'open') {
       connectedAt = Date.now();
       lastDispatchAt = Date.now();
+      // Must be seeded too, not left at 0: the deaf-socket detector measures
+      // Date.now() - lastNotifyAt, so an unseeded 0 reads as "silent since the
+      // Unix epoch" and trips the detector 30s into every boot.
+      lastNotifyAt = Date.now();
+      // A fresh socket has not been given a chance to deliver anything yet.
+      preKeyRepairAttempted = false;
+      lastPreKeyActionAt = 0;
       logger.info(`Connected to WhatsApp as ${sock.user?.id ?? 'unknown'}`);
 
       // If the user hasn't set a SESSION_ID in their env yet, it means they just
