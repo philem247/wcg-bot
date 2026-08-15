@@ -62,6 +62,12 @@ export const SILENCE_TIMEOUT_MS = envNum('SILENCE_TIMEOUT_MS', 15 * 60 * 1000);
 // bot stays dead until a human presses Start. Only set this >0 if the host
 // runs the bot under pm2/systemd/a supervisor that restarts on exit.
 export const AUTO_RESTART_HOURS = envNum('AUTO_RESTART_HOURS', 0);
+// Guards the initial post-connect event buffer (baileys withholds ALL events,
+// including messages.upsert, until WhatsApp's "offline queue drained" node
+// arrives — see transport/wa.js shouldForceFlush). If that node never comes,
+// this force-flushes sock.ev after the timeout so the bot doesn't sit deaf
+// forever. 0 disables it.
+export const BUFFER_FLUSH_TIMEOUT_MS = envNum('BUFFER_FLUSH_TIMEOUT_MS', 60_000);
 export const ADMINS = (process.env.ADMINS || '')
   .split(',')
   .map(s => s.trim())

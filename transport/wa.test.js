@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { DatabaseSync } from 'node:sqlite'
 import { useSqliteAuthState } from '../store/auth.js'
 
-const { shouldForceReconnect, shouldRepairPreKeys, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid } = await import('./wa.js')
+const { shouldForceReconnect, shouldRepairPreKeys, shouldForceFlush, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -181,6 +181,30 @@ const tests = [
     name: 'shouldRepairPreKeys: connected, past timeout, decrypt failures present -> true',
     fn: () => {
       assert.equal(shouldRepairPreKeys({ connected: true, msSinceLastNotify: 900_001, decryptFails: 3, timeoutMs: 900_000 }), true)
+    },
+  },
+  {
+    name: 'shouldForceFlush: timeoutMs 0 -> false (disabled)',
+    fn: () => {
+      assert.equal(shouldForceFlush({ isBuffering: true, notifiedSinceConnect: false, timeoutMs: 0 }), false)
+    },
+  },
+  {
+    name: 'shouldForceFlush: not buffering -> false',
+    fn: () => {
+      assert.equal(shouldForceFlush({ isBuffering: false, notifiedSinceConnect: false, timeoutMs: 60_000 }), false)
+    },
+  },
+  {
+    name: 'shouldForceFlush: buffering but traffic already arrived -> false',
+    fn: () => {
+      assert.equal(shouldForceFlush({ isBuffering: true, notifiedSinceConnect: true, timeoutMs: 60_000 }), false)
+    },
+  },
+  {
+    name: 'shouldForceFlush: buffering and no traffic since connect -> true',
+    fn: () => {
+      assert.equal(shouldForceFlush({ isBuffering: true, notifiedSinceConnect: false, timeoutMs: 60_000 }), true)
     },
   },
   // shouldIgnoreJid: skip decrypt for jids the bot has no sender-key for and

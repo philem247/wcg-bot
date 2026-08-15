@@ -1,7 +1,7 @@
 import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion, isJidBroadcast, isJidNewsletter } from 'baileys';
 import pino from 'pino';
 import { DatabaseSync } from 'node:sqlite';
-import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, SILENCE_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION, MARK_ONLINE } from '../config.js';
+import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, SILENCE_TIMEOUT_MS, BUFFER_FLUSH_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION, MARK_ONLINE } from '../config.js';
 import { useSqliteAuthState, encodeCreds } from '../store/auth.js';
 import { parseCommand } from './commands.js';
 import { toNumber } from './admin.js';
@@ -170,6 +170,48 @@ export function armGraceFallback(delayMs, onForce) {
 function cancelGraceFallback() {
   cancelGrace?.();
   cancelGrace = null;
+}
+
+// One-shot post-connect guard for baileys' initial event buffer: on login,
+// baileys calls ev.buffer() and withholds ALL events, including
+// messages.upsert, until WhatsApp sends its "offline queue drained" node.
+// That node is not guaranteed to arrive promptly, so this forces a flush if
+// nothing has come through by the time the timer fires. Note isBuffering()
+// is also transiently true during normal per-node processing (messages-recv.js
+// processNodeWithBuffer) — notifiedSinceConnect is what tells the two apart:
+// if real traffic already flowed, the transient case, never the stuck initial
+// buffer. Pure/testable in isolation from any socket.
+export function shouldForceFlush({ isBuffering, notifiedSinceConnect, timeoutMs }) {
+  return Boolean(timeoutMs > 0 && isBuffering && !notifiedSinceConnect);
+}
+
+let bufferFlushTimer = null;
+
+function cancelBufferFlushTimer() {
+  clearTimeout(bufferFlushTimer);
+  bufferFlushTimer = null;
+}
+
+function armBufferFlushTimer(startedSock) {
+  cancelBufferFlushTimer();
+  if (!BUFFER_FLUSH_TIMEOUT_MS) return;
+  bufferFlushTimer = setTimeout(() => {
+    bufferFlushTimer = null;
+    if (sock !== startedSock) return; // a reconnect already happened
+    if (shouldForceFlush({
+      isBuffering: !!startedSock?.ev?.isBuffering?.(),
+      notifiedSinceConnect: lastNotifyAt > connectedAt,
+      timeoutMs: BUFFER_FLUSH_TIMEOUT_MS,
+    })) {
+      logger.warn(`Buffer-flush watchdog: initial event buffer still held and no traffic delivered ${(BUFFER_FLUSH_TIMEOUT_MS / 1000).toFixed(0)}s after connect — forcing flush`);
+      try {
+        startedSock?.ev?.flush?.();
+      } catch (e) {
+        logger?.error({ err: e }, 'Buffer-flush watchdog: flush() failed');
+      }
+    }
+  }, BUFFER_FLUSH_TIMEOUT_MS);
+  bufferFlushTimer.unref?.();
 }
 
 // Call right after sock.end() where a close event is expected to drive
@@ -411,12 +453,19 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
     if (connection === 'connecting') {
       logger.info('Connecting to WhatsApp...');
     } else if (connection === 'open') {
-      connectedAt = Date.now();
-      lastDispatchAt = Date.now();
+      cancelBufferFlushTimer(); // re-connects must never leave two armed
+      // ONE timestamp for all three, not three Date.now() calls: the
+      // buffer-flush watchdog tests `lastNotifyAt > connectedAt` to mean "real
+      // traffic arrived since connect". Separate calls can straddle a
+      // millisecond tick, making that true at connect time and silently
+      // disabling the watchdog for the whole session.
+      const openedAt = Date.now();
+      connectedAt = openedAt;
+      lastDispatchAt = openedAt;
       // Must be seeded too, not left at 0: the deaf-socket detector measures
       // Date.now() - lastNotifyAt, so an unseeded 0 reads as "silent since the
       // Unix epoch" and trips the detector 30s into every boot.
-      lastNotifyAt = Date.now();
+      lastNotifyAt = openedAt;
       // A fresh socket has not been given a chance to deliver anything yet.
       preKeyRepairAttempted = false;
       lastPreKeyActionAt = 0;
@@ -435,9 +484,11 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
         logger.info('SESSION_ID printed above — add it to your .env or hosting panel, then restart. The session/ folder is no longer needed.');
       }
 
+      armBufferFlushTimer(sock);
       if (onConnected) onConnected();
     } else if (connection === 'close') {
       cancelGraceFallback(); // a real close arrived - the fallback must not also fire
+      cancelBufferFlushTimer();
       const upSec = connectedAt ? ((Date.now() - connectedAt) / 1000).toFixed(0) : '0';
       connectedAt = 0;
       if (shuttingDown) return; // shutdown() closed this on purpose - do not reconnect
@@ -560,6 +611,7 @@ export function shutdown() {
   clearInterval(watchdogTimer);
   watchdogTimer = null;
   cancelGraceFallback();
+  cancelBufferFlushTimer();
   if (!sock) return;
   sock.end(undefined);
 }
