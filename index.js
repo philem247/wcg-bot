@@ -11,7 +11,7 @@ import { startLagMonitor } from './lag-monitor.js';
 import { loadDictionary } from './engine/dictionary.js';
 import { loadBank } from './engine/bank.js';
 import { createScheduler } from './engine/tick.js';
-import { PHONE_NUMBER, OWNER, LOG_LEVEL, SESSION_DIR, QUIET_SIGNAL_NOISE, AUTO_RESTART_HOURS } from './config.js';
+import { PHONE_NUMBER, OWNER, LOG_LEVEL, SESSION_DIR, QUIET_SIGNAL_NOISE, AUTO_RESTART_HOURS, TRACE_LOG } from './config.js';
 
 const bootStart = Date.now();
 
@@ -138,11 +138,11 @@ process.on('SIGTERM', () => shutdown('SIGTERM'));
 async function handleMessage(msg) {
   const { text, sender, senderPn, isGroup, jid, raw } = msg;
   logger.debug(`${isGroup ? `[Group ${jid}]` : '[DM]'} ${sender}: ${text}`);
-  logger.info(`TRACE: msg jid=${jid} sender=${sender} pn=${senderPn} group=${isGroup} text=${String(text ?? '').slice(0, 40)}`);
+  if (TRACE_LOG) logger.info(`TRACE: msg jid=${jid} sender=${sender} pn=${senderPn} group=${isGroup} text=${String(text ?? '').slice(0, 40)}`);
   try {
     await router.handleMessage({ jid, sender, senderPn, text, isGroup, raw }, Date.now());
   } catch (e) {
-    logger.info(`TRACE: router threw: ${e?.message}`);
+    if (TRACE_LOG) logger.info(`TRACE: router threw: ${e?.message}`);
     throw e;
   }
 }

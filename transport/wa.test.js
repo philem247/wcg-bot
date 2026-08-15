@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { DatabaseSync } from 'node:sqlite'
 import { useSqliteAuthState } from '../store/auth.js'
 
-const { shouldForceReconnect, shouldRepairPreKeys, armGraceFallback, withTimeout, wipeAllForReset } = await import('./wa.js')
+const { shouldForceReconnect, shouldRepairPreKeys, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -181,6 +181,46 @@ const tests = [
     name: 'shouldRepairPreKeys: connected, past timeout, decrypt failures present -> true',
     fn: () => {
       assert.equal(shouldRepairPreKeys({ connected: true, msSinceLastNotify: 900_001, decryptFails: 3, timeoutMs: 900_000 }), true)
+    },
+  },
+  // shouldIgnoreJid: skip decrypt for jids the bot has no sender-key for and
+  // never will (status broadcasts, newsletters). Must stay false for real
+  // traffic: groups, users, LIDs.
+  {
+    name: 'shouldIgnoreJid: status@broadcast -> true',
+    fn: () => {
+      assert.equal(shouldIgnoreJid('status@broadcast'), true)
+    },
+  },
+  {
+    name: 'shouldIgnoreJid: newsletter jid -> true',
+    fn: () => {
+      assert.equal(shouldIgnoreJid('120363012345678901@newsletter'), true)
+    },
+  },
+  {
+    name: 'shouldIgnoreJid: group jid -> false',
+    fn: () => {
+      assert.equal(shouldIgnoreJid('120363012345678901@g.us'), false)
+    },
+  },
+  {
+    name: 'shouldIgnoreJid: user jid -> false',
+    fn: () => {
+      assert.equal(shouldIgnoreJid('2348012345678@s.whatsapp.net'), false)
+    },
+  },
+  {
+    name: 'shouldIgnoreJid: lid jid -> false',
+    fn: () => {
+      assert.equal(shouldIgnoreJid('2348012345678@lid'), false)
+    },
+  },
+  {
+    name: 'shouldIgnoreJid: undefined/empty -> false, does not throw',
+    fn: () => {
+      assert.equal(shouldIgnoreJid(undefined), false)
+      assert.equal(shouldIgnoreJid(''), false)
     },
   },
 ]

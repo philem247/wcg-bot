@@ -1,4 +1,4 @@
-import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion } from 'baileys';
+import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion, isJidBroadcast, isJidNewsletter } from 'baileys';
 import pino from 'pino';
 import { DatabaseSync } from 'node:sqlite';
 import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, SILENCE_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION, MARK_ONLINE } from '../config.js';
@@ -38,6 +38,18 @@ export function wipeAllForReset(db) {
   }
 }
 const RECONNECT_DELAY = 3000;
+
+// status@broadcast and @newsletter jids: the bot holds no sender-key for either
+// and never will (nothing to decrypt, nothing to act on). Baileys still tries
+// to decrypt every one it receives, and every failed decrypt fires a retry
+// request to WhatsApp — those accumulate until WhatsApp stops delivering to
+// the device (seen in prod: decryptFails=1622 vs ~137 real messages/5min).
+// shouldIgnoreJid short-circuits before decrypt (see baileys
+// Socket/messages-recv.js handleMessage). Must stay false for groups
+// (@g.us), users (@s.whatsapp.net) and LIDs (@lid) — those are real traffic.
+export function shouldIgnoreJid(jid) {
+  return Boolean(isJidBroadcast(jid) || isJidNewsletter(jid));
+}
 const GROUP_ADMIN_CACHE_MS = 60_000;
 // sock.groupMetadata() has no built-in timeout (baileys blocks up to its own
 // 60s query timeout - see the DM note below at resolveSender). Unbounded, a
@@ -374,6 +386,7 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
     // stop it pulling the account's full history on connect. Now env-controlled via
     // MARK_ONLINE; set true to diagnose if WhatsApp queues messages instead of streaming live.
     markOnlineOnConnect: MARK_ONLINE,
+    shouldIgnoreJid,
     syncFullHistory: false,
     shouldSyncHistoryMessage: () => false,
     getMessage: async (key) => messageCache.get(key.id),

@@ -9,7 +9,7 @@ import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
 import { createTournament } from '../engine/tournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
-import { PREFIX, OWNER, ADMINS } from '../config.js'
+import { PREFIX, OWNER, ADMINS, TRACE_LOG } from '../config.js'
 import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -1081,24 +1081,24 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     async handleMessage({ jid, sender, senderPn, text, isGroup, raw }, now) {
       const parsed = parseCommand(text, PREFIX)
       if (parsed) {
-        logger?.info(`TRACE: cmd=${parsed.cmd} args=${parsed.args.join(' ')}`)
+        if (TRACE_LOG) logger?.info(`TRACE: cmd=${parsed.cmd} args=${parsed.args.join(' ')}`)
         if (overCommandLimit(sender, now)) {
-          logger?.info(`TRACE: DROP rate-limit sender=${sender}`)
+          if (TRACE_LOG) logger?.info(`TRACE: DROP rate-limit sender=${sender}`)
           return // silent by design, see overCommandLimit
         }
         const groupAdmins = await groupAdminsFor(jid, isGroup)
-        logger?.info(`TRACE: groupAdmins n=${groupAdmins?.length ?? 0}`)
+        if (TRACE_LOG) logger?.info(`TRACE: groupAdmins n=${groupAdmins?.length ?? 0}`)
         if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid) && !isOwnerOrGlobalAdmin(sender, senderPn)) {
-          logger?.info(`TRACE: DENY not-admin sender=${sender} pn=${senderPn} owner=${OWNER}`)
+          if (TRACE_LOG) logger?.info(`TRACE: DENY not-admin sender=${sender} pn=${senderPn} owner=${OWNER}`)
           enqueue(jid, { text: `Only admins and owners can use bot commands.`, mentions: [], kind: 'misc' })
           return
         }
-        logger?.info(`TRACE: dispatching ${parsed.cmd}`)
+        if (TRACE_LOG) logger?.info(`TRACE: dispatching ${parsed.cmd}`)
         await handleCommand(jid, sender, senderPn, isGroup, parsed.cmd, parsed.args, now, raw)
-        logger?.info(`TRACE: handled ${parsed.cmd}`)
+        if (TRACE_LOG) logger?.info(`TRACE: handled ${parsed.cmd}`)
         return
       }
-      logger?.info('TRACE: not-a-command')
+      if (TRACE_LOG) logger?.info('TRACE: not-a-command')
 
       const game = games.get(jid)
       if (!game) {

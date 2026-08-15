@@ -26,6 +26,11 @@ export const RESET_SESSION = process.env.RESET_SESSION === 'true';
 // Default OFF: when enabled, announces this linked device as the active client
 // on connect, which is diagnostic for WhatsApp queueing vs. streaming behavior.
 export const MARK_ONLINE = process.env.MARK_ONLINE === 'true';
+// Default OFF: gates the 13 TRACE: log calls (index.js, transport/outbox.js,
+// transport/router.js) that fire on every inbound message. They're the
+// primary diagnostic for a recurring production hang — enable to diagnose,
+// leave off to avoid flooding logs.
+export const TRACE_LOG = process.env.TRACE_LOG === 'true';
 export const SESSION_ID = process.env.SESSION_ID ?? '';
 export const SESSION_DIR = process.env.SESSION_DIR ?? 'session';
 // Force a reconnect when a game is running but no message has dispatched for

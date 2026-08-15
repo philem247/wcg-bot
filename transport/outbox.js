@@ -3,6 +3,8 @@
 // event used to go out with an immediate `await send(...)`; this replaces that
 // with a per-chat FIFO queue drained under a global rate limit.
 
+import { TRACE_LOG } from '../config.js'
+
 // ponytail: fixed cap, not a constructor param — a chat this far behind has
 // already lost the plot, no need to make the number tunable.
 const QUEUE_CAP = 50
@@ -39,7 +41,7 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
       }
     }
     q.push({ text, mentions, quoted, react, imagePath, kind, notBefore, attempts: 0 })
-    logger?.info?.(`TRACE: enqueue jid=${jid} kind=${kind} qlen=${q.length}`)
+    if (TRACE_LOG) logger?.info?.(`TRACE: enqueue jid=${jid} kind=${kind} qlen=${q.length}`)
     while (q.length > QUEUE_CAP) {
       // Prefer dropping cosmetics over other non-turn kinds when shedding load.
       let idx = q.findIndex((m) => m.kind === 'cosmetic')
@@ -87,13 +89,13 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
       setTimeout(() => reject(new Error('send timed out after 30s')), SEND_TIMEOUT_MS)
     )
 
-    logger?.info?.(`TRACE: dispatch jid=${jid}`)
+    if (TRACE_LOG) logger?.info?.(`TRACE: dispatch jid=${jid}`)
     Promise.race([
       sendFn(jid, { text: msg.text, mentions: msg.mentions, quoted: msg.quoted, react: msg.react, imagePath: msg.imagePath }),
       timeout,
     ])
       .then(() => {
-        logger?.info?.(`TRACE: sent jid=${jid}`)
+        if (TRACE_LOG) logger?.info?.(`TRACE: sent jid=${jid}`)
         inFlightChats.delete(jid)
         inFlightCount--
       })
@@ -129,7 +131,7 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
     if (!isReady()) {
       if (lastNotReadyLog === null || now - lastNotReadyLog >= 10_000) {
         lastNotReadyLog = now
-        logger?.info?.('TRACE: pump not-ready')
+        if (TRACE_LOG) logger?.info?.('TRACE: pump not-ready')
       }
       return
     }
