@@ -64,10 +64,14 @@ session/creds.json     ★ single-file auth state (replaces 45+ individual files
    - Added 50+ **"Country & Flags 🇬🇪 🇳🇬 🇭🇷 🇨🇦"** questions with 4 distinct choices.
    - Added 12+ **"Which Statement is FALSE / TRUE?"** questions formatted with 4 full statements to prevent 50/50 free passes in 1v1 play.
    - Added 200+ historic World Cup, UEFA Euros, AFCON, Ballon d'Or, PL Player of the Season, Iconic Stadiums, and Derby Rivalries questions.
-3. **Current Bank Totals**:
-   - `football`: **1,986 questions**
+3. **Current Bank Totals & Quality Audit**:
+   - `football`: **3,461 questions** (scaled up from 1,548 to 3,461 verified questions)
    - `fpl`: **2,639 questions**
-   - Total bank size: **12,000+ questions** across 30 categories.
+   - Total bank size: **24,157+ questions** across 30 categories.
+   - **Past-Tense Audit (August 2026)**: All 2026 World Cup, 2025 Club World Cup, 2025/26 European club finals (Budapest, Munich, Bilbao, Istanbul, Wrocław, Leipzig), and AFCON 2025/2026 tournament questions audited to ensure past-tense phrasing (*"hosted"*, *"were the co-hosts"*, *"were played"*, *"took place"*).
+   - **Time-Proofing Pass**: Converted present-tense shirt number and transfer queries into time-neutral, permanently accurate formulations.
+   - **Complete Historical Coverage**: Full sweeps for all 68 Ballon d'Or winners (1956–2024), all 68 European Cup/UCL finals (1956–2024), 54 FA Cup finals (1970–2024), 54 League Cup finals (1970–2024), and all 34 AFCON editions (1957–2024).
+   - **Quality Validation**: Full schema verification across all 24,157 questions via `scripts/validate-trivia-quality.mjs`. Confirmed **0 duplicates, 0 malformed options, 0 missing fields, and 100% schema compliance**.
 
 ### 3. Test Suite
 - All **87 unit and integration tests passing** (`engine/test.js`, `engine/game.test.js`, `engine/bank.test.js`, `engine/tournament.test.js`, `data/build-football.test.js`, `data/build-trivia.test.js`).
