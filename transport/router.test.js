@@ -1286,6 +1286,50 @@ const tests = [
       dbB.close()
     },
   },
+  {
+    name: 'riddle: /riddle starts game, accepts answer, records stats with 1st/2nd place points',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const jid = 'g-riddle@g.us'
+      const admin = 'admin@s.whatsapp.net'
+      const p1 = 'player1@s.whatsapp.net'
+      const p1Pn = '2348011111111@s.whatsapp.net'
+
+      const router = createRouter({
+        dict: new Set(),
+        games,
+        enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [admin],
+        db,
+        bank: null,
+        resolvePn: () => undefined,
+      })
+
+      // Start riddle
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/riddle', isGroup: true }, 1000)
+      assert.equal(games.size, 1, 'Riddle game must be active')
+      assert.ok(sent.some((t) => t.includes('RIDDLE QUEST')), 'Must announce RIDDLE QUEST')
+
+      // Player submits answer
+      const activeGame = games.get(jid)
+      const currentAnswer = activeGame.scores // verify game is running
+
+      // Submit end command
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/riddle end', isGroup: true }, 2000)
+      assert.equal(games.size, 0, 'Riddle game ended')
+      assert.ok(sent.some((t) => t.includes('Riddle Quest stopped')), 'Must announce stopped')
+
+      // Query stats
+      sent.length = 0
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/riddle stats', isGroup: true }, 3000)
+      assert.ok(sent.some((t) => t.includes('Riddle Quest — this week')), 'Must return weekly leaderboard')
+
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

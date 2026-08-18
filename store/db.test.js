@@ -590,6 +590,45 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'asked_riddles & riddle leaderboard: round-trip and isolation',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.markAskedRiddles('jid-a', [{ id: 'r1' }, { id: 'r2' }], 1000)
+      const asked = db.askedRiddleIds('jid-a')
+      assert.ok(asked.has('r1'))
+      assert.ok(asked.has('r2'))
+      assert.equal(asked.size, 2)
+
+      db.clearAskedRiddles('jid-a')
+      assert.equal(db.askedRiddleIds('jid-a').size, 0)
+
+      // Record a riddle game
+      db.recordGame({
+        jid: 'jid-a',
+        mode: 'mixed',
+        type: 'riddle',
+        startedAt: 1000,
+        endedAt: 2000,
+        words: 5,
+        results: [
+          { player: 'player-1', placement: 1, player_pn: 'pn-1' },
+          { player: 'player-2', placement: 2, player_pn: 'pn-2' },
+        ],
+      })
+
+      const board = db.leaderboard({ jid: 'jid-a', type: 'riddle' })
+      assert.equal(board.length, 2)
+      assert.equal(board[0].player, 'pn-1')
+      assert.equal(board[0].score, 3)
+      assert.equal(board[1].player, 'pn-2')
+      assert.equal(board[1].score, 1)
+
+      // Trivia board remains isolated
+      assert.equal(db.leaderboard({ jid: 'jid-a', type: 'trivia' }).length, 0)
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

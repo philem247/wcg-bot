@@ -194,6 +194,7 @@ function onConnected() {
     `▸ */trivia* — quiz race`,
     `▸ */scramble start* — anagram race`,
     `▸ */logo start* — logo quiz`,
+    `▸ */riddle* — riddle quest`,
     `▸ */tourney start* — tournament`,
     ``,
     `🔗 Chain. Survive. Win.`,

@@ -89,8 +89,15 @@ session/creds.json     ★ single-file auth state (replaces 45+ individual files
    - **Zero Answer Leak Guarantee**: Database-wide audit ensuring zero question prompts leak the answer.
    - **Quality Validation**: Full schema verification across all 31,449 questions via `scripts/validate-trivia-quality.mjs`. Confirmed **0 duplicates, 0 malformed options, 0 missing fields, and 100% schema compliance**.
 
+4. **🧩 Riddle Quest Game Mode (`/riddle`)**:
+   - **Engine**: `engine/riddle.js` pure state machine with 20s countdown per riddle, 10s progressive hint reveal (`E _ _ _`), and 3s intermission.
+   - **Dataset**: `data/riddles.json` containing **2,100 curated, non-duplicate riddles** across "What am I?", Wordplay, Logic, African Folklore in English, and Math.
+   - **Store & Dedup**: SQLite `asked_riddles` table guarantees 0 repeated riddles per group. `riddle_results` uses `pnMap` and `COALESCE` to prevent user duplicates on leaderboards.
+   - **Scoring**: 3 points for 1st place, 1 point for 2nd place in game final standings.
+   - **Commands**: `/riddle` (start 5-riddle game), `/riddle stats` (weekly group leaderboard), `/riddle stats all` (all-time group leaderboard), `/riddle end`. Included in `/help` and connect welcome message.
+
 ### 3. Test Suite
-- All **87 unit and integration tests passing** (`engine/test.js`, `engine/game.test.js`, `engine/bank.test.js`, `engine/tournament.test.js`, `data/build-football.test.js`, `data/build-trivia.test.js`).
+- All **186 unit and integration tests passing** across 9 test files (100% pass rate).
 
 ---
 

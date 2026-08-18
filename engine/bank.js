@@ -109,3 +109,19 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
     },
   }
 }
+
+export function loadRiddleBank({ path = 'data/riddles.json', data = null } = {}) {
+  const riddles = data ?? JSON.parse(readFileSync(path, 'utf8'))
+
+  return {
+    size() {
+      return riddles.length
+    },
+
+    pickRiddles({ count = 5, exclude = new Set(), random = Math.random } = {}) {
+      const available = riddles.filter(r => !exclude.has(r.id))
+      return shuffle(available, random).slice(0, count)
+    },
+  }
+}
+

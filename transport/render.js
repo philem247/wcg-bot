@@ -214,6 +214,55 @@ export function render(event) {
     case 'logo_terminated':
       return { text: `Logo Quiz stopped.`, mentions: [] }
 
+    case 'riddle_start': {
+      return {
+        text: `🧩 *RIDDLE QUEST* (Round ${event.round}/${event.totalRounds})\n───────────────────\n❓ _"${event.riddle}"_\n\n💡 *Hint:* ${event.hint}\n⏳ *Time:* 20s`,
+        mentions: [],
+      }
+    }
+
+    case 'riddle_hint': {
+      return {
+        text: `⏳ *10s remaining!*\n💡 *Hint:* \`${event.hint}\``,
+        mentions: [],
+      }
+    }
+
+    case 'riddle_solved': {
+      return {
+        text: `🎯 ${mention(event.player)} solved it!\n💡 *Answer:* ${event.answer}`,
+        mentions: [event.player],
+      }
+    }
+
+    case 'riddle_timeout': {
+      return {
+        text: `⏰ *Time's up! Nobody solved it.*\n💡 *Answer:* ${event.answer}`,
+        mentions: [],
+      }
+    }
+
+    case 'riddle_game_over': {
+      const lines = [`🏆 *RIDDLE QUEST RESULTS*`, `───────────────────`]
+      const mentions = []
+      if (!event.scores || event.scores.length === 0) {
+        lines.push(`Nobody solved any riddles this round.`)
+        return { text: lines.join('\n'), mentions }
+      }
+      const medals = ['🥇', '🥈', '🥉']
+      event.scores.forEach((s, idx) => {
+        const medal = medals[idx] ?? '▫️'
+        const ptsBonus = idx === 0 ? ' (+3 pts)' : idx === 1 ? ' (+1 pt)' : ''
+        lines.push(`${medal} ${idx + 1}${idx === 0 ? 'st' : idx === 1 ? 'nd' : idx === 2 ? 'rd' : 'th'}: ${mention(s.player)} — ${s.score} riddle${s.score === 1 ? '' : 's'}${ptsBonus}`)
+        mentions.push(s.player)
+      })
+      return { text: lines.join('\n'), mentions }
+    }
+
+    case 'riddle_terminated':
+      return { text: `Riddle Quest stopped.`, mentions: [] }
+
+
     case 'tournament_registration_open':
       return {
         text: `🏆 *TOURNAMENT*\n━━━━━━━━━━━━━━━━\n${CATEGORY_LABEL[event.category] ?? event.category}\nType *join* — registration closes in ${event.seconds}s.`,

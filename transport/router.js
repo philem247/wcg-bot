@@ -6,6 +6,8 @@ import { createGame } from '../engine/game.js'
 import { createTriviaGame, QUESTION_COUNT, parseAnswer } from '../engine/trivia.js'
 import { createScrambleGame, SCRAMBLE_COUNT } from '../engine/scramble.js'
 import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
+import { createRiddleGame, RIDDLE_COUNT } from '../engine/riddle.js'
+import { loadRiddleBank } from '../engine/bank.js'
 import { createTournament } from '../engine/tournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
@@ -78,6 +80,12 @@ const KIND_BY_EVENT = {
   logo_word: 'turn',
   logo_answer: 'result',
   logo_over: 'result',
+  riddle_start: 'turn',
+  riddle_hint: 'turn',
+  riddle_solved: 'result',
+  riddle_timeout: 'result',
+  riddle_game_over: 'result',
+  riddle_terminated: 'result',
 }
 
 // Ordering (ramp->turn, accepted->turn, eliminated->winner, ...) carries meaning,
@@ -228,6 +236,32 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'logo_terminated') {
       gameMeta.delete(jid)
+    } else if (event.type === 'riddle_start') {
+      if (event.round === 1) {
+        gameMeta.set(jid, { mode: 'mixed', type: 'riddle', startedAt: now, eliminated: [], pnMap: new Map() })
+      }
+    } else if (event.type === 'riddle_solved') {
+      // Intentionally empty
+    } else if (event.type === 'riddle_game_over') {
+      const meta = gameMeta.get(jid)
+      const pnMap = meta?.pnMap || new Map()
+      const results = (event.scores || []).map((s, i) => ({
+        player: s.player, placement: i + 1, player_pn: pnMap.get(s.player),
+      }))
+      if (results.length > 0) {
+        try {
+          db?.recordGame({
+            jid, mode: 'mixed', type: 'riddle',
+            startedAt: meta?.startedAt ?? now, endedAt: now,
+            words: event.scores.length, results,
+          })
+        } catch (e) {
+          // store failure must never break gameplay
+        }
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'riddle_terminated') {
+      gameMeta.delete(jid)
     } else if (event.type === 'tournament_champion') {
       // Tournament wins are a SEPARATE table from trivia/chain results — never
       // touches `results`/leaderboard(). Keyed on the winner's FULL JID (via
@@ -295,6 +329,7 @@ function formatPending(rows) {
 }
 
 export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db, bank = null, resolvePn = () => undefined }) {
+  const riddleBank = loadRiddleBank()
   // Engine games don't expose who started them; track it here, mirroring `games`.
   // ponytail: scheduler-driven deletions (timeout/lobby-fail) don't clean this map,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
@@ -684,6 +719,54 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
   }
 
+  async function startRiddleGame(jid, sender, senderPn, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. Use ${PREFIX}riddle end to stop it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    let exclude
+    try {
+      exclude = db?.askedRiddleIds(jid) ?? new Set()
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed loading asked riddles')
+      exclude = new Set()
+    }
+
+    let picked = riddleBank.pickRiddles({ count: RIDDLE_COUNT, exclude, random: Math.random })
+    if (picked.length === 0) {
+      try {
+        db?.clearAskedRiddles(jid)
+      } catch (e) {
+        logger?.error({ err: e }, 'Failed clearing asked riddles')
+      }
+      picked = riddleBank.pickRiddles({ count: RIDDLE_COUNT, exclude: new Set(), random: Math.random })
+    }
+
+    if (picked.length === 0) {
+      enqueue(jid, { text: `Riddles are currently unavailable.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    const game = createRiddleGame({ riddles: picked, now, random: Math.random })
+    games.set(jid, game)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'riddle')
+    gameMeta.set(jid, { mode: 'mixed', type: 'riddle', startedAt: now, players: [], eliminated: [], pnMap: new Map() })
+    if (senderPn) gameMeta.get(jid).pnMap.set(sender, senderPn)
+    try {
+      db?.markAskedRiddles(jid, picked, now)
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed recording asked riddles')
+    }
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+    sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
+  }
+
   async function handleCommand(jid, sender, senderPn, isGroup, cmd, args, now, raw) {
     if (cmd === 'ping') {
       enqueue(jid, { text: 'pong', mentions: [], kind: 'misc' })
@@ -719,6 +802,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}logo start`,
         `▸ ${PREFIX}logo end`,
         ``,
+        `*🧩 RIDDLE QUEST* _(start: admins only)_`,
+        `▸ ${PREFIX}riddle`,
+        `▸ ${PREFIX}riddle end`,
+        ``,
         `*🏆 TOURNAMENT* _(start/next/end: admins only)_`,
         `▸ ${PREFIX}tourney status`,
         `▸ ${PREFIX}tourney stats`,
@@ -728,6 +815,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}trivia stats [all]`,
         `▸ ${PREFIX}scramble stats [all]`,
         `▸ ${PREFIX}logo stats [all]`,
+        `▸ ${PREFIX}riddle stats [all]`,
       ]
 
       // Hidden from players who cannot use them: no point listing a command
@@ -1006,6 +1094,31 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
+    if (cmd === 'riddle') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'stats') {
+        const all = args[1] === 'all'
+        const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'riddle' })
+        const { text, mentions } = formatLeaderboard(board, all ? '🏆 Riddle Quest — all-time' : '🏆 Riddle Quest — this week')
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end' || sub === 'stop') {
+        await endGame(jid, sender, senderPn, isGroup, now, 'riddle')
+        return
+      }
+
+      await startRiddleGame(jid, sender, senderPn, now, isGroup)
+      return
+    }
+
     if (cmd === 'tourney') {
       const sub = (args[0] ?? '').toLowerCase()
 
@@ -1153,7 +1266,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         if (game.state === 'match' && trimmed.length > 0 && !/\s/.test(trimmed)) {
           events = game.submit(sender, trimmed, now)
         }
-      } else if (game.state === 'playing' && trimmed.length > 0) {
+      } else if ((game.state === 'playing' || (gameTypes.get(jid) === 'riddle' && game.state === 'active')) && trimmed.length > 0) {
         const type = gameTypes.get(jid)
         
         // Single-word games (Word Chain and Scramble) drop multi-word messages entirely.

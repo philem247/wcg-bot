@@ -63,6 +63,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       jid TEXT NOT NULL, category TEXT NOT NULL, qid TEXT NOT NULL, ts INTEGER NOT NULL,
       PRIMARY KEY (jid, qid)
     );
+    CREATE TABLE IF NOT EXISTS asked_riddles (
+      jid TEXT NOT NULL, rid TEXT NOT NULL, ts INTEGER NOT NULL,
+      PRIMARY KEY (jid, rid)
+    );
     CREATE TABLE IF NOT EXISTS trivia_bans (
       jid TEXT NOT NULL, number TEXT NOT NULL,
       PRIMARY KEY (jid, number)
@@ -127,7 +131,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const stmtSelectResultsChain = db.prepare(`
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
-    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo')
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo', 'riddle')
     ORDER BY player
   `)
   const stmtSelectResultsScramble = db.prepare(`
@@ -142,6 +146,12 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'logo'
     ORDER BY player
   `)
+  const stmtSelectResultsRiddle = db.prepare(`
+    SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
+    FROM results r JOIN games g ON g.id = r.game_id
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'riddle'
+    ORDER BY player
+  `)
   const stmtMarkAsked = db.prepare(
     'INSERT OR IGNORE INTO asked_questions (jid, category, qid, ts) VALUES (?, ?, ?, ?)'
   )
@@ -150,6 +160,15 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   )
   const stmtClearAsked = db.prepare(
     'DELETE FROM asked_questions WHERE jid = ? AND category = ?'
+  )
+  const stmtMarkAskedRiddles = db.prepare(
+    'INSERT OR IGNORE INTO asked_riddles (jid, rid, ts) VALUES (?, ?, ?)'
+  )
+  const stmtAskedRiddleIds = db.prepare(
+    'SELECT rid FROM asked_riddles WHERE jid = ?'
+  )
+  const stmtClearAskedRiddles = db.prepare(
+    'DELETE FROM asked_riddles WHERE jid = ?'
   )
   const stmtGetSetting = db.prepare(
     'SELECT value FROM settings WHERE jid = ? AND key = ?'
@@ -249,6 +268,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       if (type === 'trivia') stmt = stmtSelectResultsTrivia;
       else if (type === 'scramble') stmt = stmtSelectResultsScramble;
       else if (type === 'logo') stmt = stmtSelectResultsLogo;
+      else if (type === 'riddle') stmt = stmtSelectResultsRiddle;
       else stmt = stmtSelectResultsChain;
       const rows = stmt.all(jid, since)
 
@@ -296,6 +316,20 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
 
     clearAsked(jid, category) {
       stmtClearAsked.run(jid, category)
+    },
+
+    markAskedRiddles(jid, riddles, ts) {
+      timed('markAskedRiddles', () => {
+        for (const r of riddles) stmtMarkAskedRiddles.run(jid, r.id, ts)
+      })
+    },
+
+    askedRiddleIds(jid) {
+      return new Set(stmtAskedRiddleIds.all(jid).map((r) => r.rid))
+    },
+
+    clearAskedRiddles(jid) {
+      stmtClearAskedRiddles.run(jid)
     },
 
     getSetting(jid, key, fallback = null) {
