@@ -57,7 +57,7 @@ test('riddle engine: fires hint at 10s remaining', () => {
   const hintEvents = game.tick(11000) // 10s remaining
   assert.equal(hintEvents.length, 1)
   assert.equal(hintEvents[0].type, 'riddle_hint')
-  assert.equal(hintEvents[0].hint, 'E _ _ _ (Sound reflection)')
+  assert.equal(hintEvents[0].round, 1)
 
   // Hint does not fire twice
   const again = game.tick(12000)

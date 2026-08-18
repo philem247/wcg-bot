@@ -15,7 +15,7 @@ let answerLeaks = 0;
 
 for (let i = 0; i < riddles.length; i++) {
   const r = riddles[i];
-  if (!r.id || !r.riddle || !r.answer || !r.hint || !Array.isArray(r.aliases) || r.aliases.length === 0) {
+  if (!r.id || !r.riddle || !r.answer || !Array.isArray(r.aliases) || r.aliases.length === 0) {
     console.error(`Row ${i} missing required fields:`, r);
     missingFields++;
   }
@@ -25,11 +25,6 @@ for (let i = 0; i < riddles.length; i++) {
     duplicates++;
   }
   ids.add(r.id);
-
-  if (!r.hint || r.hint.trim().length < 3) {
-    console.error(`Invalid hint on riddle: ${r.riddle}`);
-    invalidHints++;
-  }
 
   // Answer leak check: does the riddle text contain the exact answer as a standalone word?
   const cleanAns = r.answer.toLowerCase().replace(/^(a|an|the)\s+/i, '').trim();

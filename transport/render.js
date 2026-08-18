@@ -223,7 +223,7 @@ export function render(event) {
 
     case 'riddle_hint': {
       return {
-        text: `⏳ *10s remaining!*\n💡 *Hint:* \`${event.hint}\``,
+        text: `⏳ *10 seconds remaining!*`,
         mentions: [],
       }
     }
