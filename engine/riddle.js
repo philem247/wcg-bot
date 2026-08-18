@@ -3,8 +3,7 @@
 
 export const RIDDLE_COUNT = 5
 export const RIDDLE_CLOCK_SECONDS = 20
-export const RIDDLE_HINT_SECONDS = 10
-export const RIDDLE_INTERMISSION_SECONDS = 3
+export const RIDDLE_INTERMISSION_SECONDS = 10
 
 function normalizeGuess(text) {
   if (typeof text !== 'string') return ''
@@ -45,7 +44,6 @@ export function createRiddleGame({
   riddles = [],
   count = RIDDLE_COUNT,
   clockSeconds = RIDDLE_CLOCK_SECONDS,
-  hintSeconds = RIDDLE_HINT_SECONDS,
   intermissionSeconds = RIDDLE_INTERMISSION_SECONDS,
   now,
   random = Math.random,
@@ -58,7 +56,6 @@ export function createRiddleGame({
   let currentIndex = 0
   let state = 'active' // 'active', 'intermission', 'over'
   let roundDeadline = now + clockSeconds * 1000
-  let hintFired = false
   let nextRoundAt = null
 
   // Map of player -> score (riddles solved in this game)
@@ -106,7 +103,7 @@ export function createRiddleGame({
       const events = []
 
       // Initial start on round 0
-      if (currentIndex === 0 && !hintFired && now === (roundDeadline - clockSeconds * 1000)) {
+      if (currentIndex === 0 && now === (roundDeadline - clockSeconds * 1000)) {
         events.push({
           type: 'riddle_start',
           round: currentIndex + 1,
@@ -130,7 +127,6 @@ export function createRiddleGame({
           }
           state = 'active'
           roundDeadline = now + clockSeconds * 1000
-          hintFired = false
           nextRoundAt = null
           return [{
             type: 'riddle_start',
@@ -144,21 +140,7 @@ export function createRiddleGame({
         return []
       }
 
-      // Active state checks
-      // 1. Check hint trigger at 10s remaining
-      const timeRemaining = Math.max(0, Math.ceil((roundDeadline - now) / 1000))
-      if (!hintFired && timeRemaining <= hintSeconds && timeRemaining > 0) {
-        hintFired = true
-        events.push({
-          type: 'riddle_hint',
-          round: currentIndex + 1,
-          totalRounds: selectedRiddles.length,
-          hint: currentRiddle().hint,
-          deadline: roundDeadline,
-        })
-      }
-
-      // 2. Check timeout at 0s remaining
+      // Check timeout at 0s remaining
       if (now >= roundDeadline) {
         state = 'intermission'
         nextRoundAt = now + intermissionSeconds * 1000

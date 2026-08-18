@@ -81,7 +81,6 @@ const KIND_BY_EVENT = {
   logo_answer: 'result',
   logo_over: 'result',
   riddle_start: 'turn',
-  riddle_hint: 'turn',
   riddle_solved: 'result',
   riddle_timeout: 'result',
   riddle_game_over: 'result',

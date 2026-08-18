@@ -221,13 +221,6 @@ export function render(event) {
       }
     }
 
-    case 'riddle_hint': {
-      return {
-        text: `⏳ *10 seconds remaining!*`,
-        mentions: [],
-      }
-    }
-
     case 'riddle_solved': {
       return {
         text: `🎯 ${mention(event.player)} solved it!\n💡 *Answer:* ${event.answer}`,

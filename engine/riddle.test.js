@@ -24,8 +24,7 @@ test('riddle engine: initialization and first tick', () => {
     riddles: testRiddles,
     count: 2,
     clockSeconds: 20,
-    hintSeconds: 10,
-    intermissionSeconds: 3,
+    intermissionSeconds: 10,
     now: 1000,
   })
 
@@ -40,37 +39,12 @@ test('riddle engine: initialization and first tick', () => {
   assert.equal(events[0].deadline, 21000)
 })
 
-test('riddle engine: fires hint at 10s remaining', () => {
-  const game = createRiddleGame({
-    riddles: testRiddles,
-    count: 2,
-    clockSeconds: 20,
-    hintSeconds: 10,
-    intermissionSeconds: 3,
-    now: 1000,
-  })
-
-  game.tick(1000) // start
-  const noHint = game.tick(5000) // 16s remaining
-  assert.equal(noHint.length, 0)
-
-  const hintEvents = game.tick(11000) // 10s remaining
-  assert.equal(hintEvents.length, 1)
-  assert.equal(hintEvents[0].type, 'riddle_hint')
-  assert.equal(hintEvents[0].round, 1)
-
-  // Hint does not fire twice
-  const again = game.tick(12000)
-  assert.equal(again.length, 0)
-})
-
 test('riddle engine: correct submission and progression to next round', () => {
   const game = createRiddleGame({
     riddles: testRiddles,
     count: 2,
     clockSeconds: 20,
-    hintSeconds: 10,
-    intermissionSeconds: 3,
+    intermissionSeconds: 10,
     now: 1000,
   })
 
@@ -92,8 +66,8 @@ test('riddle engine: correct submission and progression to next round', () => {
   const interEvents = game.tick(4000)
   assert.equal(interEvents.length, 0)
 
-  // Advance after intermission (3000 + 3000 = 6000)
-  const round2Events = game.tick(6000)
+  // Advance after intermission (3000 + 10000 = 13000)
+  const round2Events = game.tick(13000)
   assert.equal(round2Events.length, 1)
   assert.equal(round2Events[0].type, 'riddle_start')
   assert.equal(round2Events[0].round, 2)
@@ -105,8 +79,7 @@ test('riddle engine: timeout on unanswered riddle and game over', () => {
     riddles: testRiddles,
     count: 1,
     clockSeconds: 20,
-    hintSeconds: 10,
-    intermissionSeconds: 3,
+    intermissionSeconds: 10,
     now: 1000,
   })
 
@@ -119,8 +92,8 @@ test('riddle engine: timeout on unanswered riddle and game over', () => {
   assert.equal(timeoutEvents[0].answer, 'An Echo')
   assert.equal(game.state, 'intermission')
 
-  // Intermission ends (21000 + 3000 = 24000) -> Game Over
-  const overEvents = game.tick(24000)
+  // Intermission ends (21000 + 10000 = 31000) -> Game Over
+  const overEvents = game.tick(31000)
   assert.equal(overEvents.length, 1)
   assert.equal(overEvents[0].type, 'riddle_game_over')
   assert.equal(game.state, 'over')
@@ -139,8 +112,7 @@ test('riddle engine: whitespace and article flexibility', () => {
     ],
     count: 1,
     clockSeconds: 20,
-    hintSeconds: 10,
-    intermissionSeconds: 3,
+    intermissionSeconds: 10,
     now: 1000,
   })
 
