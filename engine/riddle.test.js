@@ -126,3 +126,31 @@ test('riddle engine: timeout on unanswered riddle and game over', () => {
   assert.equal(game.state, 'over')
 })
 
+test('riddle engine: whitespace and article flexibility', () => {
+  const game = createRiddleGame({
+    riddles: [
+      {
+        id: 'r3',
+        riddle: 'Where do you buy stamps?',
+        answer: 'Post Office',
+        aliases: ['post office', 'postoffice', 'the post office'],
+        hint: 'P _ _ _   _ _ _ _ _ _',
+      },
+    ],
+    count: 1,
+    clockSeconds: 20,
+    hintSeconds: 10,
+    intermissionSeconds: 3,
+    now: 1000,
+  })
+
+  game.tick(1000)
+
+  // Accepts with multiple spaces, articles, or without spaces
+  const res1 = game.submit('p1', '   the    post    office   ', 2000)
+  assert.equal(res1.length, 1)
+  assert.equal(res1[0].type, 'riddle_solved')
+  assert.equal(res1[0].player, 'p1')
+})
+
+

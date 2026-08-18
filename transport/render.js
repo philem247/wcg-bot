@@ -216,7 +216,7 @@ export function render(event) {
 
     case 'riddle_start': {
       return {
-        text: `🧩 *RIDDLE QUEST* (Round ${event.round}/${event.totalRounds})\n───────────────────\n❓ _"${event.riddle}"_\n\n💡 *Hint:* ${event.hint}\n⏳ *Time:* 20s`,
+        text: `🧩 *RIDDLE QUEST* (Round ${event.round}/${event.totalRounds})\n───────────────────\n❓ _"${event.riddle}"_\n\n⏳ *Time:* 20s`,
         mentions: [],
       }
     }

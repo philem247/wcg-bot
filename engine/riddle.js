@@ -19,13 +19,22 @@ function matchesAnswer(guess, target, aliases = []) {
   const normGuess = normalizeGuess(guess)
   if (!normGuess) return false
 
-  const candidates = [target, ...(aliases || [])].map(normalizeGuess)
-  // Also strip leading 'a', 'an', 'the' from guess and candidates
+  const candidates = [target, ...(aliases || [])].map(normalizeGuess).filter(Boolean)
   const stripArticles = (s) => s.replace(/^(a|an|the)\s+/i, '').trim()
+  const noSpaces = (s) => s.replace(/\s+/g, '')
+
   const cleanGuess = stripArticles(normGuess)
+  const spaceFreeGuess = noSpaces(cleanGuess)
 
   for (const cand of candidates) {
-    if (normGuess === cand || cleanGuess === stripArticles(cand)) {
+    const cleanCand = stripArticles(cand)
+    const spaceFreeCand = noSpaces(cleanCand)
+
+    if (
+      normGuess === cand ||
+      cleanGuess === cleanCand ||
+      (spaceFreeGuess.length >= 3 && spaceFreeGuess === spaceFreeCand)
+    ) {
       return true
     }
   }
