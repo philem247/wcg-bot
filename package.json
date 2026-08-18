@@ -7,12 +7,9 @@
   },
   "scripts": {
     "start": "node index.js",
-    "build:trivia": "node data/build-trivia.mjs",
     "build:football": "node data/build-football.mjs",
-    "build:world": "node data/build-world.mjs",
-    "build:static": "node data/build-static.mjs",
-    "build": "node data/build-apis.mjs && node data/build-wikidata.mjs && node data/build-pidgin.mjs && node data/build-bible.mjs && node data/build-mega.mjs && node data/build-mega-2.mjs && node data/build-mega-3.mjs && node data/build-got.mjs && node data/build-anime.mjs && node data/build-naruto.mjs && node data/build-final.mjs",
-    "test": "node lag-monitor.test.js && node transport/test.js && node transport/render.test.js && node transport/router.test.js && node engine/test.js && node engine/game.test.js && node transport/outbox.test.js && node transport/lock.test.js && node transport/quiet.test.js && node transport/wa.test.js && node store/db.test.js && node store/auth.test.js && node data/build-trivia.test.js && node engine/bank.test.js && node engine/trivia.test.js && node engine/tournament.test.js && node data/football/templates.test.js && node data/football/fpl.test.js && node data/build-football.test.js"
+    "build": "node data/build-pidgin.mjs && node data/build-bible.mjs && node data/build-mega.mjs && node data/build-mega-2.mjs && node data/build-mega-3.mjs && node data/build-got.mjs && node data/build-anime.mjs && node data/build-naruto.mjs && node data/build-final.mjs",
+    "test": "node lag-monitor.test.js && node transport/test.js && node transport/render.test.js && node transport/router.test.js && node engine/test.js && node engine/game.test.js && node engine/riddle.test.js && node transport/outbox.test.js && node transport/lock.test.js && node transport/quiet.test.js && node transport/wa.test.js && node store/db.test.js && node store/auth.test.js && node data/build-trivia.test.js && node engine/bank.test.js && node engine/trivia.test.js && node engine/tournament.test.js && node data/football/templates.test.js && node data/football/fpl.test.js && node data/build-football.test.js"
   },
   "dependencies": {
     "baileys": "~6.7.24",

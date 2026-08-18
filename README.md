@@ -1,6 +1,6 @@
 # WCG Bot — WhatsApp Multiplayer Game Bot
 
-A self-hosted WhatsApp bot for group game nights: Word Chain, Trivia, Word Scramble, Logo Quiz, and head-to-head Trivia Tournaments, all running out of one Node process against a single group chat's messages. No database server, no native build step — everything lives in one SQLite file.
+A self-hosted WhatsApp bot for group game nights: Word Chain, Trivia, Word Scramble, Logo Quiz, Riddle Quest, and head-to-head Trivia Tournaments, all running out of one Node process against a single group chat's messages. No database server, no native build step — everything lives in one SQLite file.
 
 ## Requirements
 
@@ -58,6 +58,10 @@ Environment variables (defined in `.env` and read from `config.js`):
 | `SESSION_ID` | empty | Base64 credentials string printed after first connect; set it to move a paired session to a new host (see Auth above) |
 | `SESSION_DIR` | `session` | Directory holding the single-instance `.lock` file (back this up before reinstalling is no longer required — credentials live in `wcg.db`) |
 | `STALL_TIMEOUT_MS` | `180000` (3 min) | Force a reconnect if a game is running and nothing has dispatched for this long. `0` disables the watchdog — see Reliability below |
+| `SILENCE_TIMEOUT_MS` | `900000` (15 min) | Connected but zero notify traffic for this long, plus at least one Signal decrypt failure observed → treat as a deaf socket and attempt a non-destructive `uploadPreKeys()` repair. `0` disables it — see Reliability below |
+| `BUFFER_FLUSH_TIMEOUT_MS` | `60000` (1 min) | Force-flush baileys' initial post-connect event buffer if it's still held and no traffic has arrived by this long after connect. `0` disables it — see Reliability below |
+| `MARK_ONLINE` | `false` | Announce this linked device as the active client on connect (`markOnlineOnConnect`). Left off by default — it makes the owner's phone lag by pulling presence/notification routing onto the bot's device |
+| `TRACE_LOG` | `false` | Verbose per-message diagnostic logging (inbound message, command parse, dispatch, send) — floods the console, only for actively diagnosing a routing problem |
 | `AUTO_RESTART_HOURS` | `0` | Periodically restart the whole process (clean reconnect) after this many hours. `0` disables it. Only enable on a host with a process supervisor (pm2/systemd) — on a bare panel host, exiting means the bot stays down until a human restarts it |
 | `PURGE_SIGNAL_ON_BOOT` | `false` | One-time manual recovery: purge `session`/`sender-key` rows once on the next boot. **Destructive** — breaks group decryption until re-pair, see Reliability below. **Unset it after one restart** or it purges on every boot |
 | `RESET_SESSION` | `false` | Force a genuine re-pair: wipes ALL `wa_keys` rows (including `creds`) before the next boot, so the bot generates fresh credentials and prints a new pairing code. **Destructive** — destroys this device's identity. **Unset it after one restart** or it re-pairs on every boot. See Reliability below for why clearing `SESSION_ID` alone does not do this |
@@ -70,9 +74,10 @@ Environment variables (defined in `.env` and read from `config.js`):
 | **Trivia** | Multiple-choice questions drawn from `data/trivia.json`, mixed or single-category, no lobby (answering is joining). | Points per correct answer, weekly and all-time leaderboards |
 | **Scramble** | 10 rounds, 15s clock per word, 10s gap between rounds. The bot scrambles a dictionary word (4–7 letters); players race to unscramble it. | Race — first correct answer per round wins the point |
 | **Logo Quiz** | 10 rounds, 20s clock, 10s gap. The bot posts a brand-logo image from `data/logos/`; players race to name the brand. Answer matching strips spaces/punctuation to be forgiving. | Race — first correct answer per round wins the point |
+| **Riddle Quest** | 5 riddles per game, 20s clock per riddle, a hint marker at the 10s mark, 3s gap between riddles. Drawn from `data/riddles.json`; answers match against a curated alias list, not just the literal answer string. | 3 points for 1st correct, 1 point for 2nd, weekly and all-time leaderboards |
 | **Tournament** | Head-to-head single-elimination trivia bracket, byes for non-power-of-two entrant counts. `TOURNAMENT_CLOCK_SECONDS = 10` per question (tighter than group trivia's 30s clock, to discourage searching an answer up mid-match), `MATCH_START_DELAY_MS = 4000` pause before each match's first question, `REGISTRATION_MS = 120000` (2 min) open registration window. An admin drives every round with `/tourney next`. | Race scoring within each match (first correct answer wins the question); a tied match goes to sudden death |
 
-Starting any game (Word Chain, Trivia, Scramble, Logo Quiz, or a Tournament) requires a bot admin, group admin, owner, or global admin — this is enforced the same way for every mode.
+Starting any game (Word Chain, Trivia, Scramble, Logo Quiz, Riddle Quest, or a Tournament) requires a bot admin, group admin, owner, or global admin — this is enforced the same way for every mode.
 
 ## Commands
 
@@ -110,6 +115,13 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | `/logo start` | start a logo quiz |
 | `/logo end` | stop the current logo quiz |
 
+### Riddle Quest (start: admins only)
+
+| Command | Does |
+|---------|------|
+| `/riddle` | start a 5-riddle game |
+| `/riddle end` | stop the current riddle game (starter or admin) |
+
 ### Tournament (start/next/end: admins only)
 
 | Command | Does |
@@ -128,6 +140,7 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | `/trivia stats [all]` | trivia weekly (or all-time) leaderboard |
 | `/scramble stats [all]` | scramble weekly (or all-time) leaderboard |
 | `/logo stats [all]` | logo quiz weekly (or all-time) leaderboard |
+| `/riddle stats [all]` | riddle quest weekly (or all-time) leaderboard |
 
 ### Admin
 
@@ -168,32 +181,31 @@ Only the OWNER and global ADMINS can run `/promote`, `/demote`, `/ban`, `/unban`
 
 ## Trivia categories
 
-Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 23,860 questions total** (from `engine/bank.js`'s `CATEGORIES`, counts via `node data/check_sizes.mjs`):
+Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 31,449 questions total** (counts via `node data/check_sizes.mjs`):
 
 | Category | Questions | Category | Questions |
 |----------|-----------|----------|-----------|
-| general | 618 | web3 | 400 |
-| football | 1,548 | bible | 624 |
-| fpl | 4,255 | music | 769 |
-| sports | 523 | food | 630 |
-| science | 744 | got | 1,195 |
-| tech | 682 | naruto | 1,039 |
-| movies | 730 | health | 550 |
-| tv-shows | 537 | tech-gadgets | 570 |
-| geography | 821 | nigerian-music | 506 |
-| history | 808 | nigerian-entertainment | 502 |
-| anime | 622 | nigerian-history | 532 |
-| animals | 524 | nigerian-food | 539 |
-| videogames | 580 | pidgin-english | 768 |
-| cartoons | 523 | | |
-| art | 661 | | |
-| mythology | 560 | | |
-| vehicles | 500 | | |
+| football | 3,480 | web3 | 834 |
+| fpl | 2,644 | bible | 1,030 |
+| got | 1,195 | music | 1,039 |
+| sports | 1,040 | food | 830 |
+| science | 1,030 | general | 830 |
+| tech | 1,035 | animals | 830 |
+| movies | 1,030 | videogames | 830 |
+| tv-shows | 1,030 | mythology | 830 |
+| geography | 1,030 | vehicles | 830 |
+| history | 1,030 | pidgin-english | 830 |
+| anime | 830 | health | 830 |
+| naruto | 1,039 | nigerian-music | 830 |
+| cartoons | 1,030 | nigerian-entertainment | 839 |
+| tech-gadgets | 834 | nigerian-history | 830 |
+| art | 300 | nigerian-food | 830 |
 
-Regenerate the full bank with `npm run build`, a multi-stage pipeline (`build-apis` → `build-wikidata` → `build-pidgin` → `build-bible` → `build-mega` → `build-mega-2` → `build-mega-3` → `build-got` → `build-anime` → `build-naruto` → `build-final`). Two targeted rebuild scripts also exist for refreshing a slice of the bank without re-running the whole pipeline:
+`football` and `fpl` cover 2024–2026, including the 2026 World Cup and 2025/26 season — see `data/football/` for the generation pipeline.
+
+Regenerate the full bank with `npm run build`, a multi-stage pipeline (`build-pidgin` → `build-bible` → `build-mega` → `build-mega-2` → `build-mega-3` → `build-got` → `build-anime` → `build-naruto` → `build-final`). A targeted rebuild script also exists for refreshing football/FPL without re-running the whole pipeline:
 
     npm run build:football   # rewrites categories.football and categories.fpl only
-    npm run build:world      # rewrites a broader set of world/general categories
 
 Questions are CC BY-SA 4.0 — see `LICENSES.md` for attribution.
 
@@ -209,12 +221,23 @@ Watch for `Stall watchdog: no message dispatched in ...` in the log. Set `STALL_
 
 **Grace-timer hard fallback** (`GRACE_TIMEOUT_MS = 10_000`, not configurable): when the watchdog calls `sock.end()`, it expects baileys to emit a `close` event that drives the reconnect. That event is not guaranteed to fire on a zombied/already-half-closed websocket. If no new connect cycle has started within 10 seconds, the bot forcefully terminates the raw websocket itself and reconnects directly rather than waiting on an event that may never come. Watch for `Stall watchdog: no close event within grace window — forcing hard socket teardown and reconnect`.
 
-**Diagnostic logging** (always on, no config): these lines exist purely to help track down event-loop-blocking freezes and are safe to ignore in normal operation.
+**Status-broadcast decrypt storm (root cause of a multi-hour "connected but not responding" outage, fixed 2026-08-18).** The bot used to attempt Signal decryption on every `status@broadcast` and `@newsletter` message it saw — traffic it holds no sender-key for and has no use for. Every failed decrypt fired a retry request to WhatsApp; in production this reached 1,622 failures in 5 minutes against ~137 real messages, and WhatsApp eventually stopped delivering to the device entirely. `transport/wa.js`'s `shouldIgnoreJid()` now short-circuits both before decryption is ever attempted (wired into baileys' `shouldIgnoreJid` socket option) — it returns `true` only for `@broadcast`/`@newsletter` JIDs; groups, DMs, and LID senders are untouched. Watch `decryptFails` on the `inbound 5m:` line (below) — it should stay near zero. If it climbs into the hundreds/thousands again, something new is triggering mass decrypt failures.
+
+**Stuck initial event buffer.** On every connect, baileys withholds *all* app-visible events — including `messages.upsert` — until WhatsApp sends its "offline queue drained" node. If that node is slow or never arrives (which is what the status-broadcast storm above caused), the bot sits fully connected, decrypting and acking normally, while the app receives nothing — with no error logged anywhere. `BUFFER_FLUSH_TIMEOUT_MS` (default 1 minute) guards this: if the buffer is still held and no traffic has arrived by the time it fires, the bot force-flushes it itself. Watch for `Buffer-flush watchdog: initial event buffer still held and no traffic delivered ...s after connect — forcing flush`. Seeing this line means the guard caught a real stuck buffer — worth a closer look at what's generating decrypt failures around that time.
+
+**Deaf-socket detector** (`SILENCE_TIMEOUT_MS`, default 15 minutes): connected, zero notify traffic for the timeout, *and* at least one genuine Signal decrypt failure observed (as opposed to the buffer case above, which has none) → the bot's pre-key pool is the suspected cause. It calls baileys' own `uploadPreKeys()` — non-destructive, generates and uploads a fresh pre-key batch, deletes nothing. If traffic still hasn't resumed on a second trip, it escalates to a reconnect. Watch for `Deaf-socket watchdog: ... uploading a fresh pre-key batch`.
+
+**Diagnostic logging** (always on, no config): these lines exist purely to help track down event-loop-blocking freezes and connection problems, and are safe to ignore in normal operation.
 - `EVENT LOOP LAG: <ms>` (from `lag-monitor.js`) — a scheduled timer fired late by more than 500ms, proving something blocked the event loop synchronously for that long.
 - `SLOW: db.<label> took <ms>ms` (from `store/db.js`) and `SLOW: auth.readKey/writeKey(<category>) took <ms>ms` (from `store/auth.js`) — a single SQLite call took over 100ms. `node:sqlite` is fully synchronous, so a slow call here blocks the whole process for its duration; these calls run on every game action and every inbound/outbound message respectively.
-- `inbound 5m: total=... byType=... noPayload=... echo=... dispatched=... connected=... upSec=...` (every 5 minutes, only while traffic is arriving) — a summary of inbound WhatsApp traffic. A run of `noPayload` is the signature of a Signal ratchet problem; `byType` separates live traffic (`notify`) from backfill (`append`).
+- `inbound 5m: total=... byType=... noPayload=... echo=... dispatched=... connected=... upSec=... decryptFails=...` (every 5 minutes, only while traffic is arriving) — a summary of inbound WhatsApp traffic. A run of `noPayload` is the signature of a Signal ratchet problem; `byType` separates live traffic (`notify`) from backfill (`append`); `decryptFails` is the running count of genuine Signal decrypt failures (see the status-broadcast note above) and should stay near zero.
+- `SILENT 5m: no inbound messages while connected (upSec=... decryptFails=...)` — printed instead of the line above when the bot is connected but nothing arrived for 5 minutes straight. A quiet console used to look identical to a healthy one; this makes the difference visible.
+
+`TRACE_LOG=true` turns on a much more verbose per-message trace (`TRACE: msg ...`, `TRACE: cmd=...`, `TRACE: dispatching ...`, `TRACE: sent ...`) covering the full inbound-to-outbound path. Off by default — floods the log — but it's the fastest way to see exactly where a specific message got stuck (never arrived, arrived but didn't parse as a command, or parsed but never dispatched).
 
 `AUTO_RESTART_HOURS` (default `0`, disabled) periodically restarts the whole process on a clean shutdown/reconnect cycle to keep the connection fresh, independent of the watchdog. Leave it `0` unless the host runs the bot under a process supervisor (pm2/systemd) that restarts on exit — on a bare panel host, `shutdown()` ends in `process.exit()` and nothing brings the process back up.
+
+**Blank env vars on a hosting panel are safe.** Panels have no way to "unset" a variable — you blank the field, which the process sees as an empty string, not as absent. Every numeric/string config value in `config.js` treats a blank or whitespace-only value as if the variable were never set at all and falls back to its default. (This wasn't always true: a blank `WA_LOG_LEVEL` used to crash the process at boot, and a blank `STALL_TIMEOUT_MS`/`SILENCE_TIMEOUT_MS` used to silently evaluate to `0` and disable the watchdog with no warning — both fixed 2026-08-18.)
 
 **Deaf bot with a healthy-looking console.** Symptom: the bot connects fine, logs "Connected to WhatsApp", the socket never drops — but it never responds to anything. This means the WhatsApp connection is fine but the Signal ratchet desynced, so inbound messages fail to decrypt and are silently dropped.
 
@@ -236,7 +259,7 @@ Both `purgePairwiseSessions()` and the full `purgeAllSignalSessions()` (which al
 npm test
 ```
 
-364 assert-based/`node:test` checks, no external framework, no WhatsApp connection needed. Runs the following files in order (the authoritative list is `scripts.test` in `package.json`):
+Assert-based/`node:test` checks (mostly the former, a couple of files use node's built-in test runner directly), no external framework, no WhatsApp connection needed. Runs the following files in order (the authoritative list is `scripts.test` in `package.json`):
 
 - `lag-monitor.test.js` — event loop lag detection math
 - `transport/test.js` — command parsing, admin layers, message filtering
@@ -244,15 +267,17 @@ npm test
 - `transport/router.test.js` — command routing and game lifecycle
 - `engine/test.js` — validation and rejection logic
 - `engine/game.test.js` — word chain game state machine
+- `engine/riddle.test.js` — riddle quest state machine (timer, hint, intermission)
 - `transport/outbox.test.js` — send queue and rate limiting
 - `transport/lock.test.js` — single-instance guard
-- `transport/quiet.test.js` — signal-noise suppression
-- `transport/wa.test.js` — watchdog decision logic, grace fallback, sender/echo resolution
+- `transport/quiet.test.js` — signal-noise suppression, genuine-decrypt-failure counting
+- `transport/wa.test.js` — watchdog decision logic, grace fallback, buffer-flush guard, sender/echo resolution, `shouldIgnoreJid`
 - `store/db.test.js` — sqlite schema and queries
+- `store/auth.test.js` — sqlite-backed auth state, pairwise/sender-key purge helpers
 - `data/build-trivia.test.js` — trivia data normalization and build
-- `engine/bank.test.js` — trivia question bank selection
+- `engine/bank.test.js` — trivia question bank selection, mixed-mode animation cap
 - `engine/trivia.test.js` — trivia game state machine
-- `engine/tournament.test.js` — tournament bracket state machine
+- `engine/tournament.test.js` — tournament bracket state machine, asked-question exclusion
 - `data/football/templates.test.js` — football question template generation
 - `data/football/fpl.test.js` — Fantasy Premier League data parsing and question generation
 - `data/build-football.test.js` — football category rebuild pipeline
@@ -277,7 +302,8 @@ Everything except the dictionary and trivia bank lives in one SQLite file, `wcg.
 - `custom_words` — words approved live via `/addword`
 - `settings` — per-group key/value settings
 - `bot_admins` — promoted bot admins, per group, survives restarts
-- `asked_questions` — tracks which trivia question ids a group has already seen, so a category recycles only once exhausted
+- `asked_questions` — tracks which trivia question ids a group has already seen, so a category recycles only once exhausted (also feeds tournament match questions, so a tournament never repeats a group's recent trivia)
+- `asked_riddles` — tracks which riddle ids a group has already seen, per-group dedup for `/riddle`
 - `trivia_bans` — per-group trivia bans set via `/ban`
 - `tournament_wins` — tournament win history, feeds `/tourney stats`
 - `tournaments` — persisted bracket state, so an in-progress tournament survives a restart
