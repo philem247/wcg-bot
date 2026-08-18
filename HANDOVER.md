@@ -40,6 +40,41 @@ session/creds.json     ★ single-file auth state (replaces 45+ individual files
 
 ---
 
+## 2026-08-18 Session: Full 16-Batch Logo Audit & Corrections
+
+### 1. Logo Audit Across 1,009 Logos (Batches 00–15)
+Completed the full systematic audit of all 1,009 logo images in `data/logos/` across all 16 batches.
+
+### 2. Confirmed-Wrong & Fallback Logos Fixed (22 Logos Replaced)
+1. **Fitbit**: Replaced Google "G" logo with official Fitbit teal diamond mark + wordmark.
+2. **Dacia**: Updated domain to `dacia.ro` and replaced Renault "RG" with modern Dacia DC emblem.
+3. **Evening Standard**: Replaced Eros sketch with official Evening Standard newspaper masthead.
+4. **Genuine Parts**: Updated domain to `genpt.com` and replaced blurry GRP with official GPC hexagonal logo.
+5. **Flour Mills of Nigeria**: Updated domain to `fmnplc.com` and replaced fallback "F" with green/yellow FMN logo.
+6. **Degree**: Updated domain to `degreedeodorant.com` and replaced fallback "D" with Degree checkmark logo.
+7. **Seven-Up Bottling**: Updated domain to `7up.com` and replaced fallback digit "7" with green 7Up logo.
+8. **La Casera**: Updated domain to `thelacaseracompany.com` (official La Casera apple drink logo).
+9. **ADM**: Updated domain to `adm.com` (official Archer-Daniels-Midland leaf logo).
+10. **Bayer Aspirin**: Updated domain to `bayer.com` (official Bayer cross emblem).
+11. **Chivita**: Updated domain to `chivitajuices.com` (official Chi/Chivita red brand logo).
+12. **Estee Lauder**: Updated domain to `esteelauder.com` (official Estée Lauder luxury emblem).
+13. **Geely**: Replaced fallback with official Geely Auto blue emblem from Wikimedia Commons.
+14. **Heritage Bank**: Updated domain to `hbng.com` (official Heritage Bank green HB logo).
+15. **Kinder Morgan**: Updated domain to `kindermorgan.com` (official Kinder Morgan logo).
+16. **Lindt**: Updated domain to `lindt.co.uk` (official Lindt Swiss Maître Chocolatier crest).
+17. **Northern Trust**: Updated domain to `northerntrust.com` (official Northern Trust anchor logo).
+18. **Otis Worldwide**: Updated domain to `otis.com` (official Otis elevator corporate logo).
+19. **PNC Financial Services**: Updated domain to `pnc.com` (official PNC orange triangle logo).
+20. **Rosetta Stone**: Fixed domain typo (`rosettoastone.com` -> `rosettastone.com`) and updated to official logo.
+21. **Seiko**: Updated domain to `seikowatches.com` (official Seiko blue logo).
+22. **ValueJet**: Updated domain to `flyvaluejet.com` (official ValueJet aircraft logo).
+
+### 3. Verification & Test Results
+- `node scripts/full-batch-audit.mjs`: All 16 batches (00 to 15) pass with **0 unresolved issues**.
+- Unit & integration test suites: **64/64 tests passing** with 0 errors.
+
+---
+
 ## 2026-08-11 Session: Logo Quiz & Architecture Fixes
 
 ### 1. New Feature: Logo Quiz Game
