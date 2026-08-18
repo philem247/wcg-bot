@@ -43,25 +43,52 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
         return shuffle(poolOf(category, exclude), random).slice(0, count).map((q) => ({ ...q, category }))
       }
 
+      const ANIMATION_CATEGORIES = new Set(['anime', 'naruto', 'cartoons'])
+
       // Mixed: round-robin one question from each non-empty category in turn.
       // Drawing uniformly from a pooled list would let the largest category
       // supply a third of every game purely for being large.
-      // Each question is tagged with its real source category (not 'mixed') so
-      // markAsked/askedIds can enforce repeat-avoidance across modes — see store/db.js.
-      const pools = this.categories().map((c) => shuffle(poolOf(c, exclude), random).map((q) => ({ ...q, category: c })))
+      // Animation/anime is capped to at most 1 question per mixed game/match
+      // so it never over-saturates mixed mode.
+      const pools = this.categories()
+        .map((c) => ({
+          category: c,
+          items: shuffle(poolOf(c, exclude), random).map((q) => ({ ...q, category: c })),
+        }))
+        .filter((p) => p.items.length > 0)
+
       const order = shuffle(pools, random)
       const out = []
+      let animationCount = 0
+
       for (let round = 0; out.length < count; round++) {
         let addedThisRound = 0
         for (const pool of order) {
           if (out.length >= count) break
-          if (round < pool.length) {
-            out.push(pool[round])
+          if (round < pool.items.length) {
+            const isAnim = ANIMATION_CATEGORIES.has(pool.category)
+            if (isAnim && animationCount >= 1 && order.some((p) => !ANIMATION_CATEGORIES.has(p.category) && p.items.length > round)) {
+              continue
+            }
+            out.push(pool.items[round])
+            if (isAnim) animationCount++
             addedThisRound++
           }
         }
-        if (addedThisRound === 0) break // every pool exhausted
+        if (addedThisRound === 0) break
       }
+
+      if (out.length < count) {
+        for (const pool of order) {
+          for (const item of pool.items) {
+            if (out.length >= count) break
+            if (!out.some((q) => q.id === item.id)) {
+              out.push(item)
+            }
+          }
+        }
+      }
+
       return out
     },
 

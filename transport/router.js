@@ -256,6 +256,9 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       try {
         if (event.snapshot.state === 'over') db?.deleteTournament(jid)
         else db?.saveTournament(jid, event.snapshot, now)
+        if (Array.isArray(event.snapshot.usedQids) && event.snapshot.usedQids.length > 0) {
+          db?.markAsked(jid, event.snapshot.usedQids.map((id) => ({ id, category: event.snapshot.category || 'mixed' })), now)
+        }
       } catch (e) {
         // store failure must never break gameplay
       }
@@ -556,7 +559,15 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
-    const tourney = createTournament({ now, random: Math.random, bank, category })
+    let exclude
+    try {
+      exclude = db?.askedIds(jid) ?? new Set()
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed loading asked questions')
+      exclude = new Set()
+    }
+
+    const tourney = createTournament({ now, random: Math.random, bank, category, exclude })
     games.set(jid, tourney)
     starters.set(jid, sender)
     gameTypes.set(jid, 'tournament')
@@ -581,7 +592,13 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     }
     if (!persisted) return false
     try {
-      const tourney = createTournament({ now, random: Math.random, bank, restore: persisted })
+      let exclude
+      try {
+        exclude = db?.askedIds(jid) ?? new Set()
+      } catch (e) {
+        exclude = new Set()
+      }
+      const tourney = createTournament({ now, random: Math.random, bank, restore: persisted, exclude })
       if (tourney.state === 'over') {
         try { db.deleteTournament?.(jid) } catch (e) { /* best effort cleanup */ }
         return false

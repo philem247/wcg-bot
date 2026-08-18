@@ -40,6 +40,40 @@ session/creds.json     ★ single-file auth state (replaces 45+ individual files
 
 ---
 
+## 2026-08-18 Session: Football & FPL Trivia Expansion, Balanced Mixed Mode, and Repeat-Avoidance Fixes
+
+### 1. Root Cause Analysis & Fixes for Question Repetition
+1. **Tournament Mode Never Tracked History**:
+   - `createTournament` previously took no `exclude` set and never recorded used question IDs to `db.markAsked()`. Every tournament drew from the full bank without checking group history.
+   - **Fix**: `createTournament` now accepts `exclude = new Set()` (passed from `db.askedIds(jid)` in `startTournament` and `resumeTournament`). In `sendEvents`, tournament snapshots with `usedQids` are recorded to `db.markAsked()`.
+2. **Mixed Mode Premature Reset**:
+   - In `/trivia` for mixed mode, if any single category was exhausted, a blanket clear wiped the asked history of all 30 categories for that group.
+   - **Fix**: Isolated category recycling in `transport/router.js` and `engine/tournament.js`.
+3. **Balanced Mixed Domain Selection & Anime Capping**:
+   - In `engine/bank.js`, `pick()` for mixed mode was updated to round-robin across balanced domain pools and enforce a cap of at most 1 question from animation categories (`anime`, `naruto`, `cartoons`) per 10-question mixed game/match.
+   - Verified via simulation (`scratch/test-mixed-balance.mjs`): Across 100 mixed games (1,000 questions), exactly 0 games had >1 anime question, with even distribution across all 30 categories.
+
+### 2. Trivia Bank Audit & Expansion (Football & FPL)
+1. **Pruned Flawed FPL Templates**:
+   - Removed 1,438 nonsensical auto-generated clean-sheet questions for attacking midfielders/wingers.
+   - Removed unguessable single-digit goal stats for obscure defenders.
+2. **Curated & Injected Rich Question Sets**:
+   - Added iconic screenshot & match decider questions (Suárez 20/21 final day, Leeds 21/22 Brentford escape, Liverpool 92 pts, Zidane knockout loss vs City, Firmino sole goal vs City, Ed Sheeran Ipswich, etc.).
+   - Added FPL lore & culture questions (Grealish 24 pts in 7-2 vs Liverpool, Salah 29 pts vs Watford, Lundstram £4.0m mid-as-def, Haaland £15.0m price, Sané/Mané Triple Captain fails, scoring rules).
+   - Added 80+ **"Complete the Name"** questions with 4 distinct choices.
+   - Added 50+ **"Country & Flags 🇬🇪 🇳🇬 🇭🇷 🇨🇦"** questions with 4 distinct choices.
+   - Added 12+ **"Which Statement is FALSE / TRUE?"** questions formatted with 4 full statements to prevent 50/50 free passes in 1v1 play.
+   - Added 200+ historic World Cup, UEFA Euros, AFCON, Ballon d'Or, PL Player of the Season, Iconic Stadiums, and Derby Rivalries questions.
+3. **Current Bank Totals**:
+   - `football`: **1,986 questions**
+   - `fpl`: **2,639 questions**
+   - Total bank size: **12,000+ questions** across 30 categories.
+
+### 3. Test Suite
+- All **87 unit and integration tests passing** (`engine/test.js`, `engine/game.test.js`, `engine/bank.test.js`, `engine/tournament.test.js`, `data/build-football.test.js`, `data/build-trivia.test.js`).
+
+---
+
 ## 2026-08-18 Session: Full 16-Batch Logo Audit & Corrections
 
 ### 1. Logo Audit Across 1,009 Logos (Batches 00–15)

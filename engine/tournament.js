@@ -37,7 +37,7 @@ function pairConsecutive(list) {
   return fixtures
 }
 
-export function createTournament({ bank, category = 'mixed', now = 0, random = () => 0.5, registrationMs = REGISTRATION_MS, restore = null }) {
+export function createTournament({ bank, category = 'mixed', now = 0, random = () => 0.5, registrationMs = REGISTRATION_MS, restore = null, exclude = new Set() }) {
   let state, players, registrationDeadline, rounds, roundIndex, fixtureIndex, usedQids, champion, totalRounds, opened
   let inner = null   // live trivia game for the match/sudden-death round in progress; transient, never persisted
   let sd = false      // in sudden death for the current match
@@ -52,7 +52,7 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
     rounds = restore.rounds.map((r) => ({ fixtures: r.fixtures.map((f) => ({ ...f })) }))
     roundIndex = restore.roundIndex
     fixtureIndex = restore.fixtureIndex
-    usedQids = new Set(restore.usedQids)
+    usedQids = new Set([...(restore.usedQids ?? []), ...(exclude ?? [])])
     champion = restore.champion
     totalRounds = restore.totalRounds
     // ponytail: a persisted 'match' means the process died mid-question-flow — the
@@ -68,7 +68,7 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
     rounds = []
     roundIndex = 0
     fixtureIndex = 0
-    usedQids = new Set()
+    usedQids = new Set(exclude ?? [])
     champion = null
     totalRounds = 0
     opened = false
@@ -138,7 +138,10 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
 
   function pickQuestions(count) {
     if (!bank) return []
-    const picked = bank.pick({ category, count, exclude: usedQids, random })
+    let picked = bank.pick({ category, count, exclude: usedQids, random })
+    if (picked.length === 0) {
+      picked = bank.pick({ category, count, exclude: new Set(), random })
+    }
     for (const q of picked) usedQids.add(q.id)
     return picked
   }
