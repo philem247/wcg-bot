@@ -18,15 +18,24 @@ WCG Bot is a standalone WhatsApp Word Chain Game bot built on Node 22+ with `bai
 index.js               boot: lock → dict → socket → tick → outbox; crash handlers; welcome message
 config.js              env only (PREFIX, PHONE_NUMBER, OWNER, ADMINS, SESSION_DIR, SESSION_FILE)
 engine/game.js         lobby → turns → win state machine (no I/O)
+engine/trivia.js       multiple choice trivia state machine
+engine/scramble.js     word scramble state machine
+engine/logo.js         logo quiz state machine
+engine/riddle.js       ★ NEW — riddle quest pure state machine (20s timer, 10s hint)
+engine/tournament.js   bracket tournament state machine
+engine/bank.js         loads trivia.json & riddles.json, fair pickers & Fisher-Yates shuffle
 engine/validate.js     chain / length / used / dictionary checks
 engine/modes.js        shared ramp steps + per-mode entry points, as data
 engine/dictionary.js   Set + per-letter index for random prompts
 engine/normalize.js    fold diacritics, strip invisible unicode, lowercase
 engine/tick.js         one global scheduler over Map<jid, Game>
 engine/test.js         assert-based engine self-check (29 tests)
-engine/game.test.js    game state machine tests (16 tests)
+engine/game.test.js    game state machine tests (15 tests)
+engine/bank.test.js    bank picking and categories tests (10 tests)
+engine/riddle.test.js  ★ NEW — riddle engine unit tests (5 tests)
+engine/tournament.test.js tournament bracket tests (18 tests)
 transport/wa.js        baileys socket, pairing code, inbound handler, safe shutdown
-transport/auth.js      ★ NEW — single-file auth state (replaces useMultiFileAuthState)
+transport/auth.js      single-file auth state (replaces useMultiFileAuthState)
 transport/outbox.js    send queue, per-chat pacing, global rate limit, send timeout
 transport/router.js    command dispatch, game event → outbox, leaderboard, pnMap tracking
 transport/render.js    pure event → WhatsApp text renderer
@@ -34,8 +43,10 @@ transport/commands.js   prefix-based command parser
 transport/admin.js     three-layer admin resolution (OWNER, ADMINS, group admins)
 transport/lock.js      single-instance guard over session/
 transport/quiet.js     suppresses libsignal decrypt noise in logs
-store/db.js            node:sqlite schema + queries + player_pn migration
-session/creds.json     ★ single-file auth state (replaces 45+ individual files)
+store/db.js            node:sqlite schema + queries + asked_riddles + player_pn migration
+data/trivia.json       31,449 verified trivia questions across 30 categories
+data/riddles.json      ★ NEW — 2,100 verified riddles with hints and aliases
+session/creds.json     single-file auth state (replaces 45+ individual files)
 ```
 
 ---
@@ -97,7 +108,7 @@ session/creds.json     ★ single-file auth state (replaces 45+ individual files
    - **Commands**: `/riddle` (start 5-riddle game), `/riddle stats` (weekly group leaderboard), `/riddle stats all` (all-time group leaderboard), `/riddle end`. Included in `/help` and connect welcome message.
 
 ### 3. Test Suite
-- All **186 unit and integration tests passing** across 9 test files (100% pass rate).
+- All **187 unit and integration tests passing** across 9 test files (100% pass rate).
 
 ---
 
