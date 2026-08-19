@@ -3,7 +3,7 @@ import path from 'node:path'
 
 async function main() {
   const files = await readdir('./data')
-  const jsonFiles = files.filter(f => f.endsWith('.json') && !f.includes('trivia') && f !== 'apis.json' && f !== 'wikidata.json' && f !== 'pidgin-words.json' && f !== 'static-trivia.json')
+  const jsonFiles = files.filter(f => f.endsWith('.json') && !f.includes('trivia') && f !== 'apis.json' && f !== 'pidgin-words.json')
   
   // also read trivia.json to see the final merged counts
   const finalTrivia = JSON.parse(await readFile('./data/trivia.json', 'utf8'))

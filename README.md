@@ -181,16 +181,16 @@ Only the OWNER and global ADMINS can run `/promote`, `/demote`, `/ban`, `/unban`
 
 ## Trivia categories
 
-Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 31,449 questions total** (counts via `node data/check_sizes.mjs`):
+Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 30,814 questions total** (counts via `node data/check_sizes.mjs`):
 
 | Category | Questions | Category | Questions |
 |----------|-----------|----------|-----------|
-| football | 3,480 | web3 | 834 |
+| football | 3,480 | web3 | 252 |
 | fpl | 2,644 | bible | 1,030 |
 | got | 1,195 | music | 1,039 |
 | sports | 1,040 | food | 830 |
 | science | 1,030 | general | 830 |
-| tech | 1,035 | animals | 830 |
+| tech | 982 | animals | 830 |
 | movies | 1,030 | videogames | 830 |
 | tv-shows | 1,030 | mythology | 830 |
 | geography | 1,030 | vehicles | 830 |
