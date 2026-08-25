@@ -629,6 +629,50 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'asked_flags & flag leaderboard: round-trip and isolation',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.markAskedFlags('jid-a', [{ code: 'NG' }, { code: 'US' }], 1000)
+      const asked = db.askedFlagCodes('jid-a')
+      assert.ok(asked.has('NG'))
+      assert.ok(asked.has('US'))
+      assert.equal(asked.size, 2)
+
+      db.clearAskedFlags('jid-a')
+      assert.equal(db.askedFlagCodes('jid-a').size, 0)
+
+      // Another jid's asked flags stay isolated
+      db.markAskedFlags('jid-b', [{ code: 'NG' }], 2000)
+      assert.equal(db.askedFlagCodes('jid-a').size, 0)
+      assert.equal(db.askedFlagCodes('jid-b').size, 1)
+
+      // Record a flag game
+      db.recordGame({
+        jid: 'jid-a',
+        mode: 'mixed',
+        type: 'flag',
+        startedAt: 1000,
+        endedAt: 2000,
+        words: 5,
+        results: [
+          { player: 'player-1', placement: 1, player_pn: 'pn-1' },
+          { player: 'player-2', placement: 2, player_pn: 'pn-2' },
+        ],
+      })
+
+      const board = db.leaderboard({ jid: 'jid-a', type: 'flag' })
+      assert.equal(board.length, 2)
+      assert.equal(board[0].player, 'pn-1')
+      assert.equal(board[0].score, 3)
+      assert.equal(board[1].player, 'pn-2')
+      assert.equal(board[1].score, 1)
+
+      // Word-chain board remains isolated from flag games
+      assert.equal(db.leaderboard({ jid: 'jid-a', type: 'chain' }).length, 0)
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

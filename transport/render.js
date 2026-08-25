@@ -214,6 +214,42 @@ export function render(event) {
     case 'logo_terminated':
       return { text: `Logo Quiz stopped.`, mentions: [] }
 
+    case 'flag_word':
+      return {
+        text: `🏳️ *GUESS THE FLAG* (${event.index}/${event.total})\n───────────────────\n\n${event.emoji}\n\n⏳ *Time:* ${event.clockSeconds}s`,
+        mentions: [],
+      }
+
+    case 'flag_answer': {
+      const mentions = []
+      let text
+      if (event.winner) {
+        text = `✅ ${mention(event.winner)} got it! — *${event.correct}*`
+        mentions.push(event.winner)
+      } else {
+        text = `❌ Time's up! — *${event.correct}*`
+      }
+      return { text, mentions }
+    }
+
+    case 'flag_over': {
+      const lines = []
+      const mentions = []
+      if (event.standings.length === 0) {
+        lines.push('🏁 *GUESS THE FLAG OVER*', '━━━━━━━━━━━━━━━━', '', 'Nobody scored.')
+        return { text: lines.join('\n'), mentions }
+      }
+      lines.push('🏁 *GUESS THE FLAG OVER*', '━━━━━━━━━━━━━━━━', '')
+      event.standings.forEach((s, i) => {
+        lines.push(`${MEDALS[i] ?? '　'} ${mention(s.player)} — *${s.score}*`)
+        mentions.push(s.player)
+      })
+      return { text: lines.join('\n'), mentions }
+    }
+
+    case 'flag_terminated':
+      return { text: `Guess the Flag stopped.`, mentions: [] }
+
     case 'riddle_start': {
       return {
         text: `🧩 *RIDDLE QUEST* (Round ${event.round}/${event.totalRounds})\n───────────────────\n❓ _"${event.riddle}"_\n\n⏳ *Time:* 20s`,

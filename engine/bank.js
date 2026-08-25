@@ -125,3 +125,19 @@ export function loadRiddleBank({ path = 'data/riddles.json', data = null } = {})
   }
 }
 
+export function loadFlagBank({ path = 'data/flags.json', data = null } = {}) {
+  const parsed = data ?? JSON.parse(readFileSync(path, 'utf8'))
+  const flags = parsed.flags ?? []
+
+  return {
+    size() {
+      return flags.length
+    },
+
+    pickFlags({ count = 5, exclude = new Set(), random = Math.random } = {}) {
+      const available = flags.filter(f => !exclude.has(f.code))
+      return shuffle(available, random).slice(0, count)
+    },
+  }
+}
+

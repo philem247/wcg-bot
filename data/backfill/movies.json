@@ -1,0 +1,2522 @@
+[
+  {
+    "q": "Who directed the 1975 film Jaws?",
+    "correct": "Steven Spielberg",
+    "wrong": [
+      "Martin Scorsese",
+      "Francis Ford Coppola",
+      "George Lucas"
+    ]
+  },
+  {
+    "q": "Who directed Pulp Fiction?",
+    "correct": "Quentin Tarantino",
+    "wrong": [
+      "Robert Rodriguez",
+      "David Fincher",
+      "Guy Ritchie"
+    ]
+  },
+  {
+    "q": "Who directed The Godfather?",
+    "correct": "Francis Ford Coppola",
+    "wrong": [
+      "Martin Scorsese",
+      "Sidney Lumet",
+      "William Friedkin"
+    ]
+  },
+  {
+    "q": "Who directed Titanic (1997)?",
+    "correct": "James Cameron",
+    "wrong": [
+      "Ridley Scott",
+      "Michael Bay",
+      "Peter Jackson"
+    ]
+  },
+  {
+    "q": "Who directed Schindler's List?",
+    "correct": "Steven Spielberg",
+    "wrong": [
+      "Oliver Stone",
+      "Roman Polanski",
+      "Ron Howard"
+    ]
+  },
+  {
+    "q": "Who directed Inception?",
+    "correct": "Christopher Nolan",
+    "wrong": [
+      "Denis Villeneuve",
+      "Ridley Scott",
+      "David Fincher"
+    ]
+  },
+  {
+    "q": "Who directed Psycho (1960)?",
+    "correct": "Alfred Hitchcock",
+    "wrong": [
+      "Billy Wilder",
+      "John Huston",
+      "Orson Welles"
+    ]
+  },
+  {
+    "q": "Who directed The Shining (1980)?",
+    "correct": "Stanley Kubrick",
+    "wrong": [
+      "William Friedkin",
+      "Wes Craven",
+      "John Carpenter"
+    ]
+  },
+  {
+    "q": "Who directed Get Out (2017)?",
+    "correct": "Jordan Peele",
+    "wrong": [
+      "Spike Lee",
+      "Ryan Coogler",
+      "Barry Jenkins"
+    ]
+  },
+  {
+    "q": "Who directed Parasite (2019)?",
+    "correct": "Bong Joon-ho",
+    "wrong": [
+      "Park Chan-wook",
+      "Kim Jee-woon",
+      "Lee Chang-dong"
+    ]
+  },
+  {
+    "q": "Who directed Amelie (2001)?",
+    "correct": "Jean-Pierre Jeunet",
+    "wrong": [
+      "Luc Besson",
+      "Jean-Luc Godard",
+      "Francois Truffaut"
+    ]
+  },
+  {
+    "q": "Who directed City of God (2002)?",
+    "correct": "Fernando Meirelles",
+    "wrong": [
+      "Alfonso Cuaron",
+      "Guillermo del Toro",
+      "Alejandro G. Inarritu"
+    ]
+  },
+  {
+    "q": "Who directed Roma (2018)?",
+    "correct": "Alfonso Cuaron",
+    "wrong": [
+      "Guillermo del Toro",
+      "Alejandro G. Inarritu",
+      "Carlos Reygadas"
+    ]
+  },
+  {
+    "q": "Who directed Casablanca (1942)?",
+    "correct": "Michael Curtiz",
+    "wrong": [
+      "John Ford",
+      "Howard Hawks",
+      "William Wyler"
+    ]
+  },
+  {
+    "q": "Who directed Apocalypse Now?",
+    "correct": "Francis Ford Coppola",
+    "wrong": [
+      "Oliver Stone",
+      "Michael Cimino",
+      "Stanley Kubrick"
+    ]
+  },
+  {
+    "q": "Who directed Goodfellas?",
+    "correct": "Martin Scorsese",
+    "wrong": [
+      "Brian De Palma",
+      "Sidney Lumet",
+      "Michael Mann"
+    ]
+  },
+  {
+    "q": "Who directed Jurassic Park (1993)?",
+    "correct": "Steven Spielberg",
+    "wrong": [
+      "James Cameron",
+      "Joe Johnston",
+      "Ivan Reitman"
+    ]
+  },
+  {
+    "q": "Who directed The Dark Knight (2008)?",
+    "correct": "Christopher Nolan",
+    "wrong": [
+      "Zack Snyder",
+      "Tim Burton",
+      "Sam Raimi"
+    ]
+  },
+  {
+    "q": "Who directed Mad Max: Fury Road?",
+    "correct": "George Miller",
+    "wrong": [
+      "James Wan",
+      "Peter Jackson",
+      "Baz Luhrmann"
+    ]
+  },
+  {
+    "q": "Who directed La La Land (2016)?",
+    "correct": "Damien Chazelle",
+    "wrong": [
+      "Barry Jenkins",
+      "Greta Gerwig",
+      "Tom Ford"
+    ]
+  },
+  {
+    "q": "Who directed Whiplash (2014)?",
+    "correct": "Damien Chazelle",
+    "wrong": [
+      "David O. Russell",
+      "Alexander Payne",
+      "Tom McCarthy"
+    ]
+  },
+  {
+    "q": "Who directed Black Panther (2018)?",
+    "correct": "Ryan Coogler",
+    "wrong": [
+      "Taika Waititi",
+      "Jon Watts",
+      "James Gunn"
+    ]
+  },
+  {
+    "q": "Who directed Moonlight (2016)?",
+    "correct": "Barry Jenkins",
+    "wrong": [
+      "Steve McQueen",
+      "Jordan Peele",
+      "Ava DuVernay"
+    ]
+  },
+  {
+    "q": "Who directed 12 Years a Slave?",
+    "correct": "Steve McQueen",
+    "wrong": [
+      "Ryan Coogler",
+      "Spike Lee",
+      "Ava DuVernay"
+    ]
+  },
+  {
+    "q": "Who directed Gravity (2013)?",
+    "correct": "Alfonso Cuaron",
+    "wrong": [
+      "Christopher Nolan",
+      "Ridley Scott",
+      "Denis Villeneuve"
+    ]
+  },
+  {
+    "q": "Who directed The Revenant (2015)?",
+    "correct": "Alejandro G. Inarritu",
+    "wrong": [
+      "Alfonso Cuaron",
+      "Guillermo del Toro",
+      "Denis Villeneuve"
+    ]
+  },
+  {
+    "q": "Who directed Birdman (2014)?",
+    "correct": "Alejandro G. Inarritu",
+    "wrong": [
+      "Wes Anderson",
+      "Darren Aronofsky",
+      "Paul Thomas Anderson"
+    ]
+  },
+  {
+    "q": "Who directed There Will Be Blood?",
+    "correct": "Paul Thomas Anderson",
+    "wrong": [
+      "Wes Anderson",
+      "Terrence Malick",
+      "David Fincher"
+    ]
+  },
+  {
+    "q": "Who directed Fight Club (1999)?",
+    "correct": "David Fincher",
+    "wrong": [
+      "Darren Aronofsky",
+      "Danny Boyle",
+      "Christopher Nolan"
+    ]
+  },
+  {
+    "q": "Who directed Trainspotting (1996)?",
+    "correct": "Danny Boyle",
+    "wrong": [
+      "Guy Ritchie",
+      "Edgar Wright",
+      "Ken Loach"
+    ]
+  },
+  {
+    "q": "Who directed The Grand Budapest Hotel?",
+    "correct": "Wes Anderson",
+    "wrong": [
+      "Tim Burton",
+      "Michel Gondry",
+      "Spike Jonze"
+    ]
+  },
+  {
+    "q": "Who directed Star Wars: A New Hope?",
+    "correct": "George Lucas",
+    "wrong": [
+      "Steven Spielberg",
+      "Ridley Scott",
+      "James Cameron"
+    ]
+  },
+  {
+    "q": "Who directed Blade Runner (1982)?",
+    "correct": "Ridley Scott",
+    "wrong": [
+      "James Cameron",
+      "Paul Verhoeven",
+      "David Cronenberg"
+    ]
+  },
+  {
+    "q": "Who directed Alien (1979)?",
+    "correct": "Ridley Scott",
+    "wrong": [
+      "James Cameron",
+      "John Carpenter",
+      "David Fincher"
+    ]
+  },
+  {
+    "q": "Who directed Vertigo (1958)?",
+    "correct": "Alfred Hitchcock",
+    "wrong": [
+      "Otto Preminger",
+      "Nicholas Ray",
+      "Billy Wilder"
+    ]
+  },
+  {
+    "q": "Who directed Chinatown (1974)?",
+    "correct": "Roman Polanski",
+    "wrong": [
+      "Sidney Lumet",
+      "Alan J. Pakula",
+      "Peter Bogdanovich"
+    ]
+  },
+  {
+    "q": "Who directed Taxi Driver (1976)?",
+    "correct": "Martin Scorsese",
+    "wrong": [
+      "William Friedkin",
+      "Michael Cimino",
+      "Sidney Lumet"
+    ]
+  },
+  {
+    "q": "Who directed Oldboy (2003)?",
+    "correct": "Park Chan-wook",
+    "wrong": [
+      "Bong Joon-ho",
+      "Kim Jee-woon",
+      "Lee Chang-dong"
+    ]
+  },
+  {
+    "q": "Who directed Pan's Labyrinth?",
+    "correct": "Guillermo del Toro",
+    "wrong": [
+      "Alfonso Cuaron",
+      "Alejandro G. Inarritu",
+      "Juan Antonio Bayona"
+    ]
+  },
+  {
+    "q": "Who directed Life Is Beautiful (1997)?",
+    "correct": "Roberto Benigni",
+    "wrong": [
+      "Federico Fellini",
+      "Bernardo Bertolucci",
+      "Giuseppe Tornatore"
+    ]
+  },
+  {
+    "q": "Which actor played the Joker in The Dark Knight?",
+    "correct": "Heath Ledger",
+    "wrong": [
+      "Jared Leto",
+      "Joaquin Phoenix",
+      "Jack Nicholson"
+    ]
+  },
+  {
+    "q": "Which actress won Best Actress for her role in La La Land?",
+    "correct": "Emma Stone",
+    "wrong": [
+      "Natalie Portman",
+      "Jennifer Lawrence",
+      "Amy Adams"
+    ]
+  },
+  {
+    "q": "Which actor played the title role in Forrest Gump?",
+    "correct": "Tom Hanks",
+    "wrong": [
+      "Kevin Costner",
+      "Bill Murray",
+      "Robin Williams"
+    ]
+  },
+  {
+    "q": "Which actor played Tony Stark in the Marvel Cinematic Universe?",
+    "correct": "Robert Downey Jr.",
+    "wrong": [
+      "Chris Evans",
+      "Chris Hemsworth",
+      "Mark Ruffalo"
+    ]
+  },
+  {
+    "q": "Which actress played Katniss Everdeen in The Hunger Games films?",
+    "correct": "Jennifer Lawrence",
+    "wrong": [
+      "Kristen Stewart",
+      "Shailene Woodley",
+      "Emma Watson"
+    ]
+  },
+  {
+    "q": "Which actor played Jack Dawson in Titanic?",
+    "correct": "Leonardo DiCaprio",
+    "wrong": [
+      "Matt Damon",
+      "Brad Pitt",
+      "Johnny Depp"
+    ]
+  },
+  {
+    "q": "Which actor played Hannibal Lecter in The Silence of the Lambs?",
+    "correct": "Anthony Hopkins",
+    "wrong": [
+      "Michael Caine",
+      "Ian McKellen",
+      "Alan Rickman"
+    ]
+  },
+  {
+    "q": "Which actress played Dorothy in The Wizard of Oz?",
+    "correct": "Judy Garland",
+    "wrong": [
+      "Shirley Temple",
+      "Doris Day",
+      "Deanna Durbin"
+    ]
+  },
+  {
+    "q": "Which actor played Han Solo in the original Star Wars trilogy?",
+    "correct": "Harrison Ford",
+    "wrong": [
+      "Mark Hamill",
+      "Kurt Russell",
+      "Mel Gibson"
+    ]
+  },
+  {
+    "q": "Which actor played Michael Corleone in The Godfather?",
+    "correct": "Al Pacino",
+    "wrong": [
+      "Robert De Niro",
+      "James Caan",
+      "John Cazale"
+    ]
+  },
+  {
+    "q": "Which actress played Sarah Connor in The Terminator?",
+    "correct": "Linda Hamilton",
+    "wrong": [
+      "Sigourney Weaver",
+      "Geena Davis",
+      "Demi Moore"
+    ]
+  },
+  {
+    "q": "Which actor played Neo in The Matrix?",
+    "correct": "Keanu Reeves",
+    "wrong": [
+      "Will Smith",
+      "Brad Pitt",
+      "Nicolas Cage"
+    ]
+  },
+  {
+    "q": "Which actor won an Oscar for playing Ray Charles in Ray?",
+    "correct": "Jamie Foxx",
+    "wrong": [
+      "Denzel Washington",
+      "Don Cheadle",
+      "Terrence Howard"
+    ]
+  },
+  {
+    "q": "Which actor played Wolverine in the X-Men film series?",
+    "correct": "Hugh Jackman",
+    "wrong": [
+      "Patrick Stewart",
+      "Ian McKellen",
+      "James McAvoy"
+    ]
+  },
+  {
+    "q": "Which actress played Elle Woods in Legally Blonde?",
+    "correct": "Reese Witherspoon",
+    "wrong": [
+      "Cameron Diaz",
+      "Kate Hudson",
+      "Amanda Bynes"
+    ]
+  },
+  {
+    "q": "Which actor played the title role in Gladiator (2000)?",
+    "correct": "Russell Crowe",
+    "wrong": [
+      "Joaquin Phoenix",
+      "Colin Farrell",
+      "Eric Bana"
+    ]
+  },
+  {
+    "q": "Which actress played Clarice Starling in The Silence of the Lambs?",
+    "correct": "Jodie Foster",
+    "wrong": [
+      "Julia Roberts",
+      "Meg Ryan",
+      "Michelle Pfeiffer"
+    ]
+  },
+  {
+    "q": "Which actor played Captain Jack Sparrow in the Pirates of the Caribbean films?",
+    "correct": "Johnny Depp",
+    "wrong": [
+      "Orlando Bloom",
+      "Geoffrey Rush",
+      "Colin Farrell"
+    ]
+  },
+  {
+    "q": "Which actress played Princess Leia in the original Star Wars trilogy?",
+    "correct": "Carrie Fisher",
+    "wrong": [
+      "Sigourney Weaver",
+      "Sissy Spacek",
+      "Jamie Lee Curtis"
+    ]
+  },
+  {
+    "q": "Which actor played Rocky Balboa?",
+    "correct": "Sylvester Stallone",
+    "wrong": [
+      "Arnold Schwarzenegger",
+      "Bruce Willis",
+      "Chuck Norris"
+    ]
+  },
+  {
+    "q": "Which actor starred as a cab driver in Taxi Driver?",
+    "correct": "Robert De Niro",
+    "wrong": [
+      "Al Pacino",
+      "Dustin Hoffman",
+      "Gene Hackman"
+    ]
+  },
+  {
+    "q": "Which actress played the title role in Erin Brockovich?",
+    "correct": "Julia Roberts",
+    "wrong": [
+      "Sandra Bullock",
+      "Meryl Streep",
+      "Susan Sarandon"
+    ]
+  },
+  {
+    "q": "Which actor played James Bond in GoldenEye (1995)?",
+    "correct": "Pierce Brosnan",
+    "wrong": [
+      "Timothy Dalton",
+      "Roger Moore",
+      "Sean Connery"
+    ]
+  },
+  {
+    "q": "Which actor played the Terminator?",
+    "correct": "Arnold Schwarzenegger",
+    "wrong": [
+      "Sylvester Stallone",
+      "Jean-Claude Van Damme",
+      "Dolph Lundgren"
+    ]
+  },
+  {
+    "q": "Which actress played Black Widow in the Marvel Cinematic Universe?",
+    "correct": "Scarlett Johansson",
+    "wrong": [
+      "Elizabeth Olsen",
+      "Brie Larson",
+      "Zoe Saldana"
+    ]
+  },
+  {
+    "q": "Which actor played Atticus Finch in To Kill a Mockingbird?",
+    "correct": "Gregory Peck",
+    "wrong": [
+      "Henry Fonda",
+      "James Stewart",
+      "Spencer Tracy"
+    ]
+  },
+  {
+    "q": "Which actress won an Oscar for playing a serial killer in Monster (2003)?",
+    "correct": "Charlize Theron",
+    "wrong": [
+      "Nicole Kidman",
+      "Halle Berry",
+      "Reese Witherspoon"
+    ]
+  },
+  {
+    "q": "Which actor played the Wall Street investment banker in American Psycho?",
+    "correct": "Christian Bale",
+    "wrong": [
+      "Edward Norton",
+      "Jake Gyllenhaal",
+      "Ryan Gosling"
+    ]
+  },
+  {
+    "q": "Which actress played the lead role of Amelie Poulain?",
+    "correct": "Audrey Tautou",
+    "wrong": [
+      "Marion Cotillard",
+      "Juliette Binoche",
+      "Sophie Marceau"
+    ]
+  },
+  {
+    "q": "Which actor played King T'Challa in Black Panther?",
+    "correct": "Chadwick Boseman",
+    "wrong": [
+      "Michael B. Jordan",
+      "Winston Duke",
+      "Sterling K. Brown"
+    ]
+  },
+  {
+    "q": "Which actor played the title bounty hunter in Django Unchained?",
+    "correct": "Jamie Foxx",
+    "wrong": [
+      "Samuel L. Jackson",
+      "Christoph Waltz",
+      "Leonardo DiCaprio"
+    ]
+  },
+  {
+    "q": "Which actor played a jazz drumming student in Whiplash?",
+    "correct": "Miles Teller",
+    "wrong": [
+      "Andrew Garfield",
+      "Logan Lerman",
+      "Ansel Elgort"
+    ]
+  },
+  {
+    "q": "Which actor played Vito Corleone in The Godfather?",
+    "correct": "Marlon Brando",
+    "wrong": [
+      "Robert De Niro",
+      "Al Pacino",
+      "James Caan"
+    ]
+  },
+  {
+    "q": "Which actor played an oil prospector in There Will Be Blood?",
+    "correct": "Daniel Day-Lewis",
+    "wrong": [
+      "Paul Dano",
+      "Joaquin Phoenix",
+      "Philip Seymour Hoffman"
+    ]
+  },
+  {
+    "q": "Which actress played Furiosa in Mad Max: Fury Road?",
+    "correct": "Charlize Theron",
+    "wrong": [
+      "Rosamund Pike",
+      "Rebecca Ferguson",
+      "Naomi Watts"
+    ]
+  },
+  {
+    "q": "Which actor played the lead astronaut stranded on Mars in The Martian?",
+    "correct": "Matt Damon",
+    "wrong": [
+      "Ryan Gosling",
+      "Chris Pratt",
+      "Jake Gyllenhaal"
+    ]
+  },
+  {
+    "q": "Which actress played Miranda Priestly in The Devil Wears Prada?",
+    "correct": "Meryl Streep",
+    "wrong": [
+      "Glenn Close",
+      "Sigourney Weaver",
+      "Diane Keaton"
+    ]
+  },
+  {
+    "q": "Which actor played the lead role of a stockbroker in The Wolf of Wall Street?",
+    "correct": "Leonardo DiCaprio",
+    "wrong": [
+      "Jonah Hill",
+      "Matthew McConaughey",
+      "Christian Bale"
+    ]
+  },
+  {
+    "q": "Which actor played Maximus in Gladiator (2000)?",
+    "correct": "Russell Crowe",
+    "wrong": [
+      "Joaquin Phoenix",
+      "Oliver Reed",
+      "Djimon Hounsou"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture in 1997?",
+    "correct": "Titanic",
+    "wrong": [
+      "L.A. Confidential",
+      "Good Will Hunting",
+      "As Good as It Gets"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 1994?",
+    "correct": "Forrest Gump",
+    "wrong": [
+      "Pulp Fiction",
+      "The Shawshank Redemption",
+      "Quiz Show"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 2019?",
+    "correct": "Parasite",
+    "wrong": [
+      "1917",
+      "Joker",
+      "Once Upon a Time in Hollywood"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 1990?",
+    "correct": "Dances with Wolves",
+    "wrong": [
+      "Goodfellas",
+      "Ghost",
+      "Awakenings"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 1972?",
+    "correct": "The Godfather",
+    "wrong": [
+      "Cabaret",
+      "Deliverance",
+      "The Poseidon Adventure"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 1976?",
+    "correct": "Rocky",
+    "wrong": [
+      "Taxi Driver",
+      "Network",
+      "All the President's Men"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 1991?",
+    "correct": "The Silence of the Lambs",
+    "wrong": [
+      "JFK",
+      "Beauty and the Beast",
+      "Bugsy"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 2008?",
+    "correct": "Slumdog Millionaire",
+    "wrong": [
+      "The Curious Case of Benjamin Button",
+      "Milk",
+      "Frost/Nixon"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 2016?",
+    "correct": "Moonlight",
+    "wrong": [
+      "La La Land",
+      "Hidden Figures",
+      "Arrival"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 1999?",
+    "correct": "American Beauty",
+    "wrong": [
+      "The Sixth Sense",
+      "The Green Mile",
+      "The Insider"
+    ]
+  },
+  {
+    "q": "Which actor won the Academy Award for Best Actor for The Revenant?",
+    "correct": "Leonardo DiCaprio",
+    "wrong": [
+      "Matt Damon",
+      "Michael Fassbender",
+      "Eddie Redmayne"
+    ]
+  },
+  {
+    "q": "Which actress won the Academy Award for Best Actress for Black Swan?",
+    "correct": "Natalie Portman",
+    "wrong": [
+      "Annette Bening",
+      "Nicole Kidman",
+      "Michelle Williams"
+    ]
+  },
+  {
+    "q": "Which actor won the Academy Award for Best Actor for The King's Speech?",
+    "correct": "Colin Firth",
+    "wrong": [
+      "James Franco",
+      "Jesse Eisenberg",
+      "Javier Bardem"
+    ]
+  },
+  {
+    "q": "Which actress won the Academy Award for Best Actress for The Iron Lady?",
+    "correct": "Meryl Streep",
+    "wrong": [
+      "Viola Davis",
+      "Glenn Close",
+      "Michelle Williams"
+    ]
+  },
+  {
+    "q": "Which actor won the Academy Award for Best Actor for Joker (2019)?",
+    "correct": "Joaquin Phoenix",
+    "wrong": [
+      "Adam Driver",
+      "Antonio Banderas",
+      "Leonardo DiCaprio"
+    ]
+  },
+  {
+    "q": "Which actress won the Academy Award for Best Actress for Room (2015)?",
+    "correct": "Brie Larson",
+    "wrong": [
+      "Cate Blanchett",
+      "Saoirse Ronan",
+      "Charlotte Rampling"
+    ]
+  },
+  {
+    "q": "Which director won the Academy Award for Best Director for La La Land?",
+    "correct": "Damien Chazelle",
+    "wrong": [
+      "Denis Villeneuve",
+      "Barry Jenkins",
+      "Kenneth Lonergan"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Animated Feature for 2013?",
+    "correct": "Frozen",
+    "wrong": [
+      "The Wind Rises",
+      "Despicable Me 2",
+      "Ernest & Celestine"
+    ]
+  },
+  {
+    "q": "Which actor holds the record for most competitive Oscars for Best Actor, with three wins?",
+    "correct": "Daniel Day-Lewis",
+    "wrong": [
+      "Jack Nicholson",
+      "Marlon Brando",
+      "Spencer Tracy"
+    ]
+  },
+  {
+    "q": "Which actress has won the most competitive Academy Awards for Best Actress, with four wins?",
+    "correct": "Katharine Hepburn",
+    "wrong": [
+      "Meryl Streep",
+      "Bette Davis",
+      "Ingrid Bergman"
+    ]
+  },
+  {
+    "q": "Which 2003 film won 11 Academy Awards, tying the record for most wins?",
+    "correct": "The Lord of the Rings: The Return of the King",
+    "wrong": [
+      "The Lord of the Rings: The Two Towers",
+      "The Fellowship of the Ring",
+      "The Hobbit"
+    ]
+  },
+  {
+    "q": "Which actor won Best Supporting Actor for his role as a hitman in No Country for Old Men?",
+    "correct": "Javier Bardem",
+    "wrong": [
+      "Tommy Lee Jones",
+      "Josh Brolin",
+      "Woody Harrelson"
+    ]
+  },
+  {
+    "q": "Which actress won Best Supporting Actress for The Fighter (2010)?",
+    "correct": "Melissa Leo",
+    "wrong": [
+      "Amy Adams",
+      "Hailee Steinfeld",
+      "Helena Bonham Carter"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 1995?",
+    "correct": "Braveheart",
+    "wrong": [
+      "Apollo 13",
+      "Sense and Sensibility",
+      "Babe"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 2000?",
+    "correct": "Gladiator",
+    "wrong": [
+      "Traffic",
+      "Erin Brockovich",
+      "Chocolat"
+    ]
+  },
+  {
+    "q": "Which film won the Academy Award for Best Picture for 2002?",
+    "correct": "Chicago",
+    "wrong": [
+      "Gangs of New York",
+      "The Hours",
+      "The Pianist"
+    ]
+  },
+  {
+    "q": "Which actor won Best Actor for playing Stephen Hawking in The Theory of Everything?",
+    "correct": "Eddie Redmayne",
+    "wrong": [
+      "Benedict Cumberbatch",
+      "Tom Hiddleston",
+      "Domhnall Gleeson"
+    ]
+  },
+  {
+    "q": "Which actress won Best Actress for playing a country singer in Coal Miner's Daughter?",
+    "correct": "Sissy Spacek",
+    "wrong": [
+      "Sally Field",
+      "Diane Keaton",
+      "Jane Fonda"
+    ]
+  },
+  {
+    "q": "Which 2009 film became the highest-grossing movie of all time upon release?",
+    "correct": "Avatar",
+    "wrong": [
+      "Titanic",
+      "The Dark Knight",
+      "Transformers: Revenge of the Fallen"
+    ]
+  },
+  {
+    "q": "Which 1997 film held the record for highest-grossing movie before Avatar surpassed it?",
+    "correct": "Titanic",
+    "wrong": [
+      "Star Wars",
+      "E.T. the Extra-Terrestrial",
+      "Jurassic Park"
+    ]
+  },
+  {
+    "q": "Which 2019 film overtook Avatar as the highest-grossing film ever at the time?",
+    "correct": "Avengers: Endgame",
+    "wrong": [
+      "Avengers: Infinity War",
+      "Star Wars: The Force Awakens",
+      "The Lion King"
+    ]
+  },
+  {
+    "q": "Which film became the first to gross over $1 billion worldwide at the box office?",
+    "correct": "Titanic",
+    "wrong": [
+      "Jurassic Park",
+      "Star Wars",
+      "Independence Day"
+    ]
+  },
+  {
+    "q": "Which 2013 animated film became the first Disney animated feature to gross over $1 billion?",
+    "correct": "Frozen",
+    "wrong": [
+      "Toy Story 3",
+      "Shrek 2",
+      "The Lion King"
+    ]
+  },
+  {
+    "q": "Which 2018 Marvel film about a fictional African nation grossed over $1.3 billion worldwide?",
+    "correct": "Black Panther",
+    "wrong": [
+      "Ant-Man and the Wasp",
+      "Captain Marvel",
+      "Doctor Strange"
+    ]
+  },
+  {
+    "q": "Which 1975 film is widely credited with creating the modern summer blockbuster?",
+    "correct": "Jaws",
+    "wrong": [
+      "Star Wars",
+      "Close Encounters of the Third Kind",
+      "Rocky"
+    ]
+  },
+  {
+    "q": "Which studio distributed the original Star Wars trilogy?",
+    "correct": "20th Century Fox",
+    "wrong": [
+      "Warner Bros.",
+      "Universal Pictures",
+      "Paramount Pictures"
+    ]
+  },
+  {
+    "q": "Which 2015 Star Wars film became the highest-grossing film in North American box office history?",
+    "correct": "Star Wars: The Force Awakens",
+    "wrong": [
+      "Avatar",
+      "Avengers: Endgame",
+      "Rogue One"
+    ]
+  },
+  {
+    "q": "Which low-budget 1999 horror film grossed nearly $250 million on a budget under $60,000?",
+    "correct": "The Blair Witch Project",
+    "wrong": [
+      "Paranormal Activity",
+      "Saw",
+      "The Texas Chainsaw Massacre"
+    ]
+  },
+  {
+    "q": "Which 2017 horror film based on a Stephen King novel became the highest-grossing horror film ever at release?",
+    "correct": "It",
+    "wrong": [
+      "The Conjuring",
+      "Get Out",
+      "A Quiet Place"
+    ]
+  },
+  {
+    "q": "Which 2023 fashion-doll comedy starring Margot Robbie became Warner Bros.' highest-grossing film ever?",
+    "correct": "Barbie",
+    "wrong": [
+      "Wonder Woman",
+      "Aquaman",
+      "The Dark Knight"
+    ]
+  },
+  {
+    "q": "Which animated film about an ogre became the top-grossing film of 2001?",
+    "correct": "Shrek",
+    "wrong": [
+      "Monsters, Inc.",
+      "Ice Age",
+      "Atlantis: The Lost Empire"
+    ]
+  },
+  {
+    "q": "Which 1982 Spielberg film about a stranded alien became the highest-grossing film of its year?",
+    "correct": "E.T. the Extra-Terrestrial",
+    "wrong": [
+      "Poltergeist",
+      "Tron",
+      "Blade Runner"
+    ]
+  },
+  {
+    "q": "Which 1997 Best Picture winner was directed by James Cameron?",
+    "correct": "Titanic",
+    "wrong": [
+      "Braveheart",
+      "The English Patient",
+      "Forrest Gump"
+    ]
+  },
+  {
+    "q": "What is the name of the wizarding school attended by Harry Potter?",
+    "correct": "Hogwarts",
+    "wrong": [
+      "Beauxbatons",
+      "Durmstrang",
+      "Ilvermorny"
+    ]
+  },
+  {
+    "q": "What is the surname of the family at the center of The Godfather trilogy?",
+    "correct": "Corleone",
+    "wrong": [
+      "Barzini",
+      "Tattaglia",
+      "Cuneo"
+    ]
+  },
+  {
+    "q": "What is the name of the fictional African nation ruled by T'Challa?",
+    "correct": "Wakanda",
+    "wrong": [
+      "Genosha",
+      "Sokovia",
+      "Latveria"
+    ]
+  },
+  {
+    "q": "What is the name of the shire-dwelling hero who carries the One Ring in The Lord of the Rings?",
+    "correct": "Frodo Baggins",
+    "wrong": [
+      "Samwise Gamgee",
+      "Bilbo Baggins",
+      "Peregrin Took"
+    ]
+  },
+  {
+    "q": "What is the name of the starship captained by Han Solo in Star Wars?",
+    "correct": "Millennium Falcon",
+    "wrong": [
+      "Star Destroyer",
+      "X-wing",
+      "Slave I"
+    ]
+  },
+  {
+    "q": "What is the codename of the secret agent played by Daniel Craig from 2006 onward?",
+    "correct": "James Bond",
+    "wrong": [
+      "Jason Bourne",
+      "Ethan Hunt",
+      "Napoleon Solo"
+    ]
+  },
+  {
+    "q": "What is the surname of the archaeologist adventurer played by Harrison Ford in a long-running franchise?",
+    "correct": "Jones",
+    "wrong": [
+      "Ryan",
+      "Kirk",
+      "Malone"
+    ]
+  },
+  {
+    "q": "What object must be found and destroyed in Mount Doom in The Lord of the Rings?",
+    "correct": "the One Ring",
+    "wrong": [
+      "the Palantir",
+      "the Silmaril",
+      "the Elfstone"
+    ]
+  },
+  {
+    "q": "On which fictional island off Costa Rica is the original dinosaur theme park located?",
+    "correct": "Isla Nublar",
+    "wrong": [
+      "Isla Sorna",
+      "Isla de Muerta",
+      "Skull Island"
+    ]
+  },
+  {
+    "q": "What is the name of the street racer and family-crew leader played by Vin Diesel in the Fast & Furious films?",
+    "correct": "Dominic Toretto",
+    "wrong": [
+      "Brian O'Conner",
+      "Luke Hobbs",
+      "Han Seoul-Oh"
+    ]
+  },
+  {
+    "q": "What condition causes the title character played by Matt Damon to keep forgetting his identity as a trained assassin?",
+    "correct": "amnesia",
+    "wrong": [
+      "a coma",
+      "schizophrenia",
+      "dementia"
+    ]
+  },
+  {
+    "q": "What color lightsaber does Darth Vader wield?",
+    "correct": "red",
+    "wrong": [
+      "blue",
+      "green",
+      "purple"
+    ]
+  },
+  {
+    "q": "What is the name of Iron Man's artificial intelligence assistant in the Marvel films?",
+    "correct": "J.A.R.V.I.S.",
+    "wrong": [
+      "FRIDAY",
+      "ULTRON",
+      "EDITH"
+    ]
+  },
+  {
+    "q": "What is the name of the boy wizard's pet owl in the Harry Potter films?",
+    "correct": "Hedwig",
+    "wrong": [
+      "Errol",
+      "Pigwidgeon",
+      "Fawkes"
+    ]
+  },
+  {
+    "q": "What metal is used to make Wolverine's claws in the X-Men franchise?",
+    "correct": "adamantium",
+    "wrong": [
+      "vibranium",
+      "titanium",
+      "carbonadium"
+    ]
+  },
+  {
+    "q": "What is the name of the crime-fighting alter ego of billionaire Bruce Wayne?",
+    "correct": "Batman",
+    "wrong": [
+      "Nightwing",
+      "Green Arrow",
+      "Iron Man"
+    ]
+  },
+  {
+    "q": "What is the fictional city protected by Batman?",
+    "correct": "Gotham City",
+    "wrong": [
+      "Metropolis",
+      "Central City",
+      "Star City"
+    ]
+  },
+  {
+    "q": "What is the name of the villain organization that Ethan Hunt battles in the Mission: Impossible franchise?",
+    "correct": "the Syndicate",
+    "wrong": [
+      "Hydra",
+      "Spectre",
+      "Cobra"
+    ]
+  },
+  {
+    "q": "What toy comes to life alongside a cowboy doll named Woody in the Toy Story films?",
+    "correct": "Buzz Lightyear",
+    "wrong": [
+      "Mr. Potato Head",
+      "Rex",
+      "Slinky Dog"
+    ]
+  },
+  {
+    "q": "What form of currency do assassins use to pay for services at the Continental Hotel in the John Wick films?",
+    "correct": "gold coins",
+    "wrong": [
+      "diamonds",
+      "silver bars",
+      "cryptocurrency"
+    ]
+  },
+  {
+    "q": "What is the surname of the family of superheroes in the Pixar film The Incredibles?",
+    "correct": "Parr",
+    "wrong": [
+      "Stark",
+      "Grant",
+      "Wayne"
+    ]
+  },
+  {
+    "q": "Which film features the line \"I'm gonna make him an offer he can't refuse\"?",
+    "correct": "The Godfather",
+    "wrong": [
+      "Goodfellas",
+      "Scarface",
+      "Casino"
+    ]
+  },
+  {
+    "q": "Which film features the line \"May the Force be with you\"?",
+    "correct": "Star Wars",
+    "wrong": [
+      "Star Trek",
+      "Dune",
+      "Guardians of the Galaxy"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Here's looking at you, kid\"?",
+    "correct": "Casablanca",
+    "wrong": [
+      "Gone with the Wind",
+      "Roman Holiday",
+      "An Affair to Remember"
+    ]
+  },
+  {
+    "q": "Which film features the line \"I'll be back\"?",
+    "correct": "The Terminator",
+    "wrong": [
+      "RoboCop",
+      "Predator",
+      "Total Recall"
+    ]
+  },
+  {
+    "q": "Which film features the line \"You can't handle the truth!\"?",
+    "correct": "A Few Good Men",
+    "wrong": [
+      "The Firm",
+      "Primal Fear",
+      "Presumed Innocent"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Life is like a box of chocolates\"?",
+    "correct": "Forrest Gump",
+    "wrong": [
+      "Big",
+      "Cast Away",
+      "Philadelphia"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Houston, we have a problem\"?",
+    "correct": "Apollo 13",
+    "wrong": [
+      "Gravity",
+      "The Martian",
+      "Interstellar"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Why so serious?\"?",
+    "correct": "The Dark Knight",
+    "wrong": [
+      "Joker",
+      "Batman Begins",
+      "Suicide Squad"
+    ]
+  },
+  {
+    "q": "Which film features the line \"There's no place like home\"?",
+    "correct": "The Wizard of Oz",
+    "wrong": [
+      "Peter Pan",
+      "Alice in Wonderland",
+      "Mary Poppins"
+    ]
+  },
+  {
+    "q": "Which film features the line \"I see dead people\"?",
+    "correct": "The Sixth Sense",
+    "wrong": [
+      "The Others",
+      "Poltergeist",
+      "The Ring"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Say hello to my little friend!\"?",
+    "correct": "Scarface",
+    "wrong": [
+      "The Godfather",
+      "Carlito's Way",
+      "Goodfellas"
+    ]
+  },
+  {
+    "q": "Which film features the line \"You talking to me?\"?",
+    "correct": "Taxi Driver",
+    "wrong": [
+      "Raging Bull",
+      "Mean Streets",
+      "Goodfellas"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Frankly, my dear, I don't give a damn\"?",
+    "correct": "Gone with the Wind",
+    "wrong": [
+      "Casablanca",
+      "Rebecca",
+      "Jezebel"
+    ]
+  },
+  {
+    "q": "Which film features the line \"I feel the need — the need for speed\"?",
+    "correct": "Top Gun",
+    "wrong": [
+      "Days of Thunder",
+      "The Fast and the Furious",
+      "Speed"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Hasta la vista, baby\"?",
+    "correct": "Terminator 2: Judgment Day",
+    "wrong": [
+      "The Terminator",
+      "Predator",
+      "True Lies"
+    ]
+  },
+  {
+    "q": "Which film features the line \"My precious\"?",
+    "correct": "The Lord of the Rings: The Two Towers",
+    "wrong": [
+      "The Hobbit: An Unexpected Journey",
+      "The Fellowship of the Ring",
+      "The Return of the King"
+    ]
+  },
+  {
+    "q": "Which film features the line \"To infinity and beyond!\"?",
+    "correct": "Toy Story",
+    "wrong": [
+      "A Bug's Life",
+      "Monsters, Inc.",
+      "Cars"
+    ]
+  },
+  {
+    "q": "Which film features the line \"E.T. phone home\"?",
+    "correct": "E.T. the Extra-Terrestrial",
+    "wrong": [
+      "Close Encounters of the Third Kind",
+      "Cocoon",
+      "Contact"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Bond. James Bond\"?",
+    "correct": "Dr. No",
+    "wrong": [
+      "Goldfinger",
+      "From Russia with Love",
+      "Thunderball"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Just keep swimming\"?",
+    "correct": "Finding Nemo",
+    "wrong": [
+      "Finding Dory",
+      "The Little Mermaid",
+      "Shark Tale"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Every man dies, not every man really lives\"?",
+    "correct": "Braveheart",
+    "wrong": [
+      "Gladiator",
+      "300",
+      "Kingdom of Heaven"
+    ]
+  },
+  {
+    "q": "Which film features the line \"I am your father\"?",
+    "correct": "The Empire Strikes Back",
+    "wrong": [
+      "A New Hope",
+      "Return of the Jedi",
+      "Revenge of the Sith"
+    ]
+  },
+  {
+    "q": "In which year was the original Star Wars film released?",
+    "correct": "1977",
+    "wrong": [
+      "1975",
+      "1979",
+      "1980"
+    ]
+  },
+  {
+    "q": "In which year was Jaws released?",
+    "correct": "1975",
+    "wrong": [
+      "1973",
+      "1977",
+      "1978"
+    ]
+  },
+  {
+    "q": "In which year was The Godfather released?",
+    "correct": "1972",
+    "wrong": [
+      "1969",
+      "1974",
+      "1976"
+    ]
+  },
+  {
+    "q": "In which year was Titanic released?",
+    "correct": "1997",
+    "wrong": [
+      "1995",
+      "1998",
+      "1999"
+    ]
+  },
+  {
+    "q": "In which year was Jurassic Park released?",
+    "correct": "1993",
+    "wrong": [
+      "1991",
+      "1995",
+      "1997"
+    ]
+  },
+  {
+    "q": "In which year was Pulp Fiction released?",
+    "correct": "1994",
+    "wrong": [
+      "1992",
+      "1996",
+      "1997"
+    ]
+  },
+  {
+    "q": "In which year was The Matrix released?",
+    "correct": "1999",
+    "wrong": [
+      "1997",
+      "2000",
+      "2001"
+    ]
+  },
+  {
+    "q": "In which year was Gladiator released?",
+    "correct": "2000",
+    "wrong": [
+      "1998",
+      "2001",
+      "2002"
+    ]
+  },
+  {
+    "q": "In which year was Avatar first released?",
+    "correct": "2009",
+    "wrong": [
+      "2007",
+      "2010",
+      "2012"
+    ]
+  },
+  {
+    "q": "In which year was the first Toy Story film released?",
+    "correct": "1995",
+    "wrong": [
+      "1993",
+      "1996",
+      "1998"
+    ]
+  },
+  {
+    "q": "In which year was Casablanca released?",
+    "correct": "1942",
+    "wrong": [
+      "1939",
+      "1944",
+      "1946"
+    ]
+  },
+  {
+    "q": "In which year was Psycho released?",
+    "correct": "1960",
+    "wrong": [
+      "1958",
+      "1962",
+      "1963"
+    ]
+  },
+  {
+    "q": "In which year was The Wizard of Oz released?",
+    "correct": "1939",
+    "wrong": [
+      "1937",
+      "1941",
+      "1935"
+    ]
+  },
+  {
+    "q": "In which year was Forrest Gump released?",
+    "correct": "1994",
+    "wrong": [
+      "1992",
+      "1996",
+      "1993"
+    ]
+  },
+  {
+    "q": "In which year was The Dark Knight released?",
+    "correct": "2008",
+    "wrong": [
+      "2005",
+      "2010",
+      "2012"
+    ]
+  },
+  {
+    "q": "In which year did the first Harry Potter film premiere?",
+    "correct": "2001",
+    "wrong": [
+      "1999",
+      "2003",
+      "2004"
+    ]
+  },
+  {
+    "q": "In which year was Parasite released?",
+    "correct": "2019",
+    "wrong": [
+      "2017",
+      "2020",
+      "2018"
+    ]
+  },
+  {
+    "q": "In which year was Frozen first released?",
+    "correct": "2013",
+    "wrong": [
+      "2011",
+      "2014",
+      "2015"
+    ]
+  },
+  {
+    "q": "In which year was Inception released?",
+    "correct": "2010",
+    "wrong": [
+      "2008",
+      "2012",
+      "2013"
+    ]
+  },
+  {
+    "q": "In which year was the original Alien film released?",
+    "correct": "1979",
+    "wrong": [
+      "1977",
+      "1981",
+      "1982"
+    ]
+  },
+  {
+    "q": "Which cinematographer shot Blade Runner 2049, winning an Oscar for his work?",
+    "correct": "Roger Deakins",
+    "wrong": [
+      "Emmanuel Lubezki",
+      "Robert Richardson",
+      "Janusz Kaminski"
+    ]
+  },
+  {
+    "q": "Which cinematographer won three consecutive Oscars for Gravity, Birdman and The Revenant?",
+    "correct": "Emmanuel Lubezki",
+    "wrong": [
+      "Roger Deakins",
+      "Rachel Morrison",
+      "Hoyte van Hoytema"
+    ]
+  },
+  {
+    "q": "Which film pioneered the extensive use of bullet-time slow-motion camera effects?",
+    "correct": "The Matrix",
+    "wrong": [
+      "Inception",
+      "The Terminator",
+      "Face/Off"
+    ]
+  },
+  {
+    "q": "Which director is known for frequently using symmetrical, centered camera compositions in films like The Grand Budapest Hotel?",
+    "correct": "Wes Anderson",
+    "wrong": [
+      "Stanley Kubrick",
+      "Alfred Hitchcock",
+      "Terrence Malick"
+    ]
+  },
+  {
+    "q": "Which black-and-white 1993 Holocaust drama used a girl in a red coat as its only color element?",
+    "correct": "Schindler's List",
+    "wrong": [
+      "The Pianist",
+      "Life Is Beautiful",
+      "Sophie's Choice"
+    ]
+  },
+  {
+    "q": "Which film noir classic is known for its extensive use of Dutch angles and deep shadow lighting?",
+    "correct": "The Third Man",
+    "wrong": [
+      "Double Indemnity",
+      "Sunset Boulevard",
+      "Laura"
+    ]
+  },
+  {
+    "q": "Which 1958 Hitchcock thriller starring James Stewart pioneered the dolly zoom camera effect?",
+    "correct": "Vertigo",
+    "wrong": [
+      "Rear Window",
+      "North by Northwest",
+      "Rope"
+    ]
+  },
+  {
+    "q": "Which 2014 Best Picture winner was edited to appear as though filmed in a single continuous shot?",
+    "correct": "Birdman",
+    "wrong": [
+      "Whiplash",
+      "Boyhood",
+      "The Grand Budapest Hotel"
+    ]
+  },
+  {
+    "q": "Which cinematographer regularly collaborates with director Christopher Nolan, shooting Interstellar and Dunkirk?",
+    "correct": "Hoyte van Hoytema",
+    "wrong": [
+      "Wally Pfister",
+      "Roger Deakins",
+      "Linus Sandgren"
+    ]
+  },
+  {
+    "q": "Which 2015 war epic film was shot to simulate the appearance of a single unbroken take?",
+    "correct": "1917",
+    "wrong": [
+      "Dunkirk",
+      "Fury",
+      "Hacksaw Ridge"
+    ]
+  },
+  {
+    "q": "Which studio produced the Shrek film franchise?",
+    "correct": "DreamWorks Animation",
+    "wrong": [
+      "Pixar",
+      "Walt Disney Animation Studios",
+      "Illumination"
+    ]
+  },
+  {
+    "q": "Which studio produced Toy Story, the first entirely computer-animated feature film?",
+    "correct": "Pixar",
+    "wrong": [
+      "DreamWorks Animation",
+      "Blue Sky Studios",
+      "Walt Disney Animation Studios"
+    ]
+  },
+  {
+    "q": "Which Studio Ghibli film follows a girl named Chihiro trapped in a spirit world?",
+    "correct": "Spirited Away",
+    "wrong": [
+      "My Neighbor Totoro",
+      "Princess Mononoke",
+      "Howl's Moving Castle"
+    ]
+  },
+  {
+    "q": "Who co-founded Studio Ghibli and directed Spirited Away?",
+    "correct": "Hayao Miyazaki",
+    "wrong": [
+      "Isao Takahata",
+      "Mamoru Hosoda",
+      "Makoto Shinkai"
+    ]
+  },
+  {
+    "q": "Which 1994 Disney animated film is set on the African savanna and centers on a young lion cub?",
+    "correct": "The Lion King",
+    "wrong": [
+      "Tarzan",
+      "Dinosaur",
+      "Brother Bear"
+    ]
+  },
+  {
+    "q": "Which Pixar film centers on an elderly widower who ties balloons to his house?",
+    "correct": "Up",
+    "wrong": [
+      "Up in the Air",
+      "Cars",
+      "WALL-E"
+    ]
+  },
+  {
+    "q": "Which Pixar film features a lonely trash-compacting robot left on a deserted Earth?",
+    "correct": "WALL-E",
+    "wrong": [
+      "Big Hero 6",
+      "The Iron Giant",
+      "Robots"
+    ]
+  },
+  {
+    "q": "Which 2016 Disney film follows a Polynesian girl who sets sail to save her island?",
+    "correct": "Moana",
+    "wrong": [
+      "Encanto",
+      "Frozen",
+      "Raya and the Last Dragon"
+    ]
+  },
+  {
+    "q": "Which stop-motion film directed by Henry Selick features Jack Skellington?",
+    "correct": "The Nightmare Before Christmas",
+    "wrong": [
+      "Coraline",
+      "Corpse Bride",
+      "ParaNorman"
+    ]
+  },
+  {
+    "q": "Which animated film features two princesses named Elsa and Anna?",
+    "correct": "Frozen",
+    "wrong": [
+      "Tangled",
+      "Brave",
+      "Moana"
+    ]
+  },
+  {
+    "q": "Which 2018 animated film introduced Miles Morales as a version of Spider-Man?",
+    "correct": "Spider-Man: Into the Spider-Verse",
+    "wrong": [
+      "Big Hero 6",
+      "The Incredibles 2",
+      "Teen Titans Go! To the Movies"
+    ]
+  },
+  {
+    "q": "Which Pixar film is set inside the mind of a young girl named Riley?",
+    "correct": "Inside Out",
+    "wrong": [
+      "Soul",
+      "Coco",
+      "Onward"
+    ]
+  },
+  {
+    "q": "Which animated film centers on a Mexican boy named Miguel who travels to the Land of the Dead?",
+    "correct": "Coco",
+    "wrong": [
+      "The Book of Life",
+      "Inside Out",
+      "Encanto"
+    ]
+  },
+  {
+    "q": "Which studio created the Ice Age film franchise?",
+    "correct": "Blue Sky Studios",
+    "wrong": [
+      "DreamWorks Animation",
+      "Illumination",
+      "Sony Pictures Animation"
+    ]
+  },
+  {
+    "q": "Which animated film franchise centers on a yellow ogre and his donkey sidekick?",
+    "correct": "Shrek",
+    "wrong": [
+      "Madagascar",
+      "Kung Fu Panda",
+      "How to Train Your Dragon"
+    ]
+  },
+  {
+    "q": "Which studio produced the Despicable Me and Minions franchise?",
+    "correct": "Illumination",
+    "wrong": [
+      "DreamWorks Animation",
+      "Pixar",
+      "Blue Sky Studios"
+    ]
+  },
+  {
+    "q": "Which 1995 film was the first feature to be produced entirely with computer animation?",
+    "correct": "Toy Story",
+    "wrong": [
+      "Antz",
+      "A Bug's Life",
+      "Shrek"
+    ]
+  },
+  {
+    "q": "Which Studio Ghibli film follows two sisters who befriend a giant forest spirit?",
+    "correct": "My Neighbor Totoro",
+    "wrong": [
+      "Spirited Away",
+      "Ponyo",
+      "Kiki's Delivery Service"
+    ]
+  },
+  {
+    "q": "Which animated film centers on a young Viking who befriends a dragon named Toothless?",
+    "correct": "How to Train Your Dragon",
+    "wrong": [
+      "Mulan",
+      "Brave",
+      "The Prince of Egypt"
+    ]
+  },
+  {
+    "q": "Which 1937 film was Walt Disney's first full-length animated feature?",
+    "correct": "Snow White and the Seven Dwarfs",
+    "wrong": [
+      "Pinocchio",
+      "Fantasia",
+      "Bambi"
+    ]
+  },
+  {
+    "q": "Which South Korean film became the first non-English-language film to win the Best Picture Oscar?",
+    "correct": "Parasite",
+    "wrong": [
+      "Oldboy",
+      "The Handmaiden",
+      "Train to Busan"
+    ]
+  },
+  {
+    "q": "Which 2000 Taiwanese-directed martial arts film won the Oscar for Best Foreign Language Film?",
+    "correct": "Crouching Tiger, Hidden Dragon",
+    "wrong": [
+      "Hero",
+      "House of Flying Daggers",
+      "The Grandmaster"
+    ]
+  },
+  {
+    "q": "Which Italian film follows a father protecting his son inside a Nazi concentration camp with humor?",
+    "correct": "Life Is Beautiful",
+    "wrong": [
+      "Cinema Paradiso",
+      "The Great Beauty",
+      "Il Postino"
+    ]
+  },
+  {
+    "q": "Which Brazilian film depicts gang violence in the favelas of Rio de Janeiro in the 1970s and '80s?",
+    "correct": "City of God",
+    "wrong": [
+      "Elite Squad",
+      "Central Station",
+      "Pixote"
+    ]
+  },
+  {
+    "q": "Which Swedish-language trilogy of thrillers is based on novels by Stieg Larsson?",
+    "correct": "The Girl with the Dragon Tattoo trilogy",
+    "wrong": [
+      "The Millennium Trilogy adaptation by Fincher",
+      "The Bridge series",
+      "Wallander series"
+    ]
+  },
+  {
+    "q": "Which French film follows a young waitress in Montmartre who secretly helps those around her?",
+    "correct": "Amelie",
+    "wrong": [
+      "La Vie en Rose",
+      "The Intouchables",
+      "Amour"
+    ]
+  },
+  {
+    "q": "Which Indian film industry, based in Mumbai, is the largest producer of films by volume worldwide?",
+    "correct": "Bollywood",
+    "wrong": [
+      "Tollywood",
+      "Nollywood",
+      "Lollywood"
+    ]
+  },
+  {
+    "q": "Which Mexican director helmed both Roma and Gravity?",
+    "correct": "Alfonso Cuaron",
+    "wrong": [
+      "Guillermo del Toro",
+      "Alejandro G. Inarritu",
+      "Carlos Reygadas"
+    ]
+  },
+  {
+    "q": "Which Japanese director made Seven Samurai and Rashomon?",
+    "correct": "Akira Kurosawa",
+    "wrong": [
+      "Yasujiro Ozu",
+      "Kenji Mizoguchi",
+      "Hayao Miyazaki"
+    ]
+  },
+  {
+    "q": "Which Iranian director won an Oscar for A Separation and The Salesman?",
+    "correct": "Asghar Farhadi",
+    "wrong": [
+      "Abbas Kiarostami",
+      "Jafar Panahi",
+      "Majid Majidi"
+    ]
+  },
+  {
+    "q": "Which German film follows a Stasi agent surveilling a playwright in East Berlin?",
+    "correct": "The Lives of Others",
+    "wrong": [
+      "Downfall",
+      "Run Lola Run",
+      "Good Bye Lenin!"
+    ]
+  },
+  {
+    "q": "Which Spanish director made Pan's Labyrinth and Pacific Rim?",
+    "correct": "Guillermo del Toro",
+    "wrong": [
+      "Pedro Almodovar",
+      "Alejandro Amenabar",
+      "Alex de la Iglesia"
+    ]
+  },
+  {
+    "q": "Which Italian filmmaker directed 8 1/2 and La Dolce Vita?",
+    "correct": "Federico Fellini",
+    "wrong": [
+      "Michelangelo Antonioni",
+      "Bernardo Bertolucci",
+      "Pier Paolo Pasolini"
+    ]
+  },
+  {
+    "q": "Which Danish filmmaker co-founded the Dogme 95 movement and directed Dancer in the Dark?",
+    "correct": "Lars von Trier",
+    "wrong": [
+      "Thomas Vinterberg",
+      "Susanne Bier",
+      "Nicolas Winding Refn"
+    ]
+  },
+  {
+    "q": "Which Nigerian film industry is one of the largest film producers in the world by output?",
+    "correct": "Nollywood",
+    "wrong": [
+      "Bollywood",
+      "Ghallywood",
+      "Kannywood"
+    ]
+  },
+  {
+    "q": "Which 1939 epic set during the American Civil War starred Vivien Leigh as Scarlett O'Hara?",
+    "correct": "Gone with the Wind",
+    "wrong": [
+      "Jezebel",
+      "The Little Foxes",
+      "Now, Voyager"
+    ]
+  },
+  {
+    "q": "Which classic Hollywood actress starred alongside Humphrey Bogart in Casablanca?",
+    "correct": "Ingrid Bergman",
+    "wrong": [
+      "Lauren Bacall",
+      "Katharine Hepburn",
+      "Rita Hayworth"
+    ]
+  },
+  {
+    "q": "Which actor played the lead cowboy in the classic Western Shane?",
+    "correct": "Alan Ladd",
+    "wrong": [
+      "Gary Cooper",
+      "John Wayne",
+      "James Stewart"
+    ]
+  },
+  {
+    "q": "Which 1950 film noir stars Gloria Swanson as a faded silent film star?",
+    "correct": "Sunset Boulevard",
+    "wrong": [
+      "All About Eve",
+      "Mildred Pierce",
+      "Double Indemnity"
+    ]
+  },
+  {
+    "q": "Which actress played Holly Golightly in Breakfast at Tiffany's?",
+    "correct": "Audrey Hepburn",
+    "wrong": [
+      "Grace Kelly",
+      "Doris Day",
+      "Natalie Wood"
+    ]
+  },
+  {
+    "q": "Which 1941 film directed by and starring Orson Welles is widely cited as one of the greatest films ever made?",
+    "correct": "Citizen Kane",
+    "wrong": [
+      "The Magnificent Ambersons",
+      "Touch of Evil",
+      "The Third Man"
+    ]
+  },
+  {
+    "q": "Which actor was known as the King of Hollywood and starred in Gone with the Wind?",
+    "correct": "Clark Gable",
+    "wrong": [
+      "Errol Flynn",
+      "Cary Grant",
+      "Spencer Tracy"
+    ]
+  },
+  {
+    "q": "Which 1952 musical film starring Gene Kelly features him dancing joyfully in a rainstorm?",
+    "correct": "Singin' in the Rain",
+    "wrong": [
+      "An American in Paris",
+      "On the Town",
+      "Meet Me in St. Louis"
+    ]
+  },
+  {
+    "q": "Which classic Hollywood actress was famously married to Arthur Miller and starred in Some Like It Hot?",
+    "correct": "Marilyn Monroe",
+    "wrong": [
+      "Jayne Mansfield",
+      "Kim Novak",
+      "Jane Russell"
+    ]
+  },
+  {
+    "q": "Which 1962 courtroom drama stars Gregory Peck as a lawyer defending a wrongly accused Black man?",
+    "correct": "To Kill a Mockingbird",
+    "wrong": [
+      "12 Angry Men",
+      "Inherit the Wind",
+      "Judgment at Nuremberg"
+    ]
+  },
+  {
+    "q": "Which actor starred as a suave cat burglar opposite Grace Kelly in To Catch a Thief?",
+    "correct": "Cary Grant",
+    "wrong": [
+      "Gregory Peck",
+      "William Holden",
+      "James Stewart"
+    ]
+  },
+  {
+    "q": "Which 1946 film follows an angel showing a suicidal man what life would be like had he never been born?",
+    "correct": "It's a Wonderful Life",
+    "wrong": [
+      "Miracle on 34th Street",
+      "A Christmas Carol",
+      "The Bishop's Wife"
+    ]
+  },
+  {
+    "q": "Which classic film pairs Fred Astaire with Ginger Rogers in a series of elaborate dance numbers?",
+    "correct": "Top Hat",
+    "wrong": [
+      "Swing Time",
+      "Shall We Dance",
+      "Flying Down to Rio"
+    ]
+  },
+  {
+    "q": "Which 1959 comedy stars Marilyn Monroe alongside two musicians disguised as women fleeing gangsters?",
+    "correct": "Some Like It Hot",
+    "wrong": [
+      "The Seven Year Itch",
+      "Gentlemen Prefer Blondes",
+      "How to Marry a Millionaire"
+    ]
+  },
+  {
+    "q": "Which 2018 Marvel film introduced Thanos as the central antagonist gathering the Infinity Stones?",
+    "correct": "Avengers: Infinity War",
+    "wrong": [
+      "Avengers: Age of Ultron",
+      "Guardians of the Galaxy Vol. 2",
+      "Black Panther"
+    ]
+  },
+  {
+    "q": "Which 2015 sci-fi film sees an astronaut stranded alone on Mars growing potatoes to survive?",
+    "correct": "The Martian",
+    "wrong": [
+      "Gravity",
+      "Interstellar",
+      "Ad Astra"
+    ]
+  },
+  {
+    "q": "Which 2013 sci-fi film features Sandra Bullock as an astronaut adrift after her shuttle is destroyed?",
+    "correct": "Gravity",
+    "wrong": [
+      "The Martian",
+      "Interstellar",
+      "Life"
+    ]
+  },
+  {
+    "q": "Which 2014 Christopher Nolan film follows astronauts searching for a new home for humanity through a wormhole?",
+    "correct": "Interstellar",
+    "wrong": [
+      "The Martian",
+      "Gravity",
+      "Ad Astra"
+    ]
+  },
+  {
+    "q": "Which 2019 sequel became the highest-grossing animated film at the time of its release?",
+    "correct": "Frozen II",
+    "wrong": [
+      "Toy Story 4",
+      "The Lion King (2019)",
+      "Incredibles 2"
+    ]
+  },
+  {
+    "q": "Which 2021 sci-fi epic adapted from a Frank Herbert novel follows Paul Atreides on the desert planet Arrakis?",
+    "correct": "Dune",
+    "wrong": [
+      "Foundation",
+      "John Carter",
+      "Prometheus"
+    ]
+  },
+  {
+    "q": "Which 2022 sequel returned audiences to the underwater world of Pandora?",
+    "correct": "Avatar: The Way of Water",
+    "wrong": [
+      "Avatar",
+      "Aquaman",
+      "Waterworld"
+    ]
+  },
+  {
+    "q": "Which 2023 film about the creator of the atomic bomb won the Academy Award for Best Picture?",
+    "correct": "Oppenheimer",
+    "wrong": [
+      "Barbie",
+      "Killers of the Flower Moon",
+      "Poor Things"
+    ]
+  },
+  {
+    "q": "Which 2018 film reunited the Avengers to battle a villain seeking to wipe out half of all life?",
+    "correct": "Avengers: Infinity War",
+    "wrong": [
+      "Avengers: Endgame",
+      "Captain America: Civil War",
+      "Black Panther"
+    ]
+  },
+  {
+    "q": "Which 2015 film revived the Jurassic Park franchise with a fully operational theme park?",
+    "correct": "Jurassic World",
+    "wrong": [
+      "Jurassic Park III",
+      "Jurassic World: Fallen Kingdom",
+      "Jurassic Park: The Lost World"
+    ]
+  },
+  {
+    "q": "Who directed Requiem for a Dream (2000)?",
+    "correct": "Darren Aronofsky",
+    "wrong": [
+      "David Fincher",
+      "Danny Boyle",
+      "Paul Thomas Anderson"
+    ]
+  },
+  {
+    "q": "Who directed No Country for Old Men?",
+    "correct": "Joel and Ethan Coen",
+    "wrong": [
+      "David Fincher",
+      "Sam Raimi",
+      "Terrence Malick"
+    ]
+  },
+  {
+    "q": "Who directed Se7en (1995)?",
+    "correct": "David Fincher",
+    "wrong": [
+      "Christopher Nolan",
+      "Michael Mann",
+      "Ridley Scott"
+    ]
+  },
+  {
+    "q": "Who directed The Silence of the Lambs?",
+    "correct": "Jonathan Demme",
+    "wrong": [
+      "David Fincher",
+      "Ridley Scott",
+      "Michael Mann"
+    ]
+  },
+  {
+    "q": "Who directed Do the Right Thing (1989)?",
+    "correct": "Spike Lee",
+    "wrong": [
+      "John Singleton",
+      "Barry Jenkins",
+      "Ryan Coogler"
+    ]
+  },
+  {
+    "q": "Which actress played the lead governess in The Sound of Music?",
+    "correct": "Julie Andrews",
+    "wrong": [
+      "Audrey Hepburn",
+      "Shirley Jones",
+      "Doris Day"
+    ]
+  },
+  {
+    "q": "Which actor played the villain Hans Gruber in Die Hard?",
+    "correct": "Alan Rickman",
+    "wrong": [
+      "Jeremy Irons",
+      "Gary Oldman",
+      "Tim Roth"
+    ]
+  },
+  {
+    "q": "Which actress played Queen Elizabeth I in Elizabeth (1998)?",
+    "correct": "Cate Blanchett",
+    "wrong": [
+      "Judi Dench",
+      "Helen Mirren",
+      "Emily Blunt"
+    ]
+  },
+  {
+    "q": "Which actor played the corrupt cop in Training Day, winning a Best Actor Oscar?",
+    "correct": "Denzel Washington",
+    "wrong": [
+      "Samuel L. Jackson",
+      "Morgan Freeman",
+      "Will Smith"
+    ]
+  },
+  {
+    "q": "What is the name of the fictional West African wonder metal in the Black Panther films?",
+    "correct": "vibranium",
+    "wrong": [
+      "adamantium",
+      "kryptonite",
+      "mithril"
+    ]
+  },
+  {
+    "q": "What creature does Harry Potter face in the Triwizard Tournament's first task?",
+    "correct": "a dragon",
+    "wrong": [
+      "a hippogriff",
+      "a basilisk",
+      "a merman"
+    ]
+  },
+  {
+    "q": "What is the name of Batman's loyal butler in the Batman franchise?",
+    "correct": "Alfred Pennyworth",
+    "wrong": [
+      "Lucius Fox",
+      "James Gordon",
+      "Robin"
+    ]
+  },
+  {
+    "q": "What is the name of the fictional volcanic wasteland where Frodo must destroy the Ring?",
+    "correct": "Mount Doom",
+    "wrong": [
+      "Mordor Peak",
+      "the Black Gate",
+      "Orodruin Ridge"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Roads? Where we're going, we don't need roads\"?",
+    "correct": "Back to the Future",
+    "wrong": [
+      "Back to the Future Part II",
+      "Ghostbusters",
+      "The Goonies"
+    ]
+  },
+  {
+    "q": "Which film features the line \"I'm king of the world!\"?",
+    "correct": "Titanic",
+    "wrong": [
+      "The Aviator",
+      "Catch Me If You Can",
+      "Inception"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Wilson!\"?",
+    "correct": "Cast Away",
+    "wrong": [
+      "Forrest Gump",
+      "Apollo 13",
+      "The Terminal"
+    ]
+  },
+  {
+    "q": "Which film features the line \"Keep your friends close, but your enemies closer\"?",
+    "correct": "The Godfather Part II",
+    "wrong": [
+      "The Godfather",
+      "Scarface",
+      "Goodfellas"
+    ]
+  },
+  {
+    "q": "Which French New Wave director made Breathless in 1960?",
+    "correct": "Jean-Luc Godard",
+    "wrong": [
+      "Francois Truffaut",
+      "Eric Rohmer",
+      "Claude Chabrol"
+    ]
+  },
+  {
+    "q": "Which Hong Kong director is known for stylized action films like Hard Boiled?",
+    "correct": "John Woo",
+    "wrong": [
+      "Wong Kar-wai",
+      "Tsui Hark",
+      "Johnnie To"
+    ]
+  },
+  {
+    "q": "Which Hong Kong martial artist starred in Enter the Dragon?",
+    "correct": "Bruce Lee",
+    "wrong": [
+      "Jackie Chan",
+      "Jet Li",
+      "Sammo Hung"
+    ]
+  },
+  {
+    "q": "Which 2019 legacy sequel brought Han Solo's original crew back for one last mission in the Star Wars saga?",
+    "correct": "Star Wars: The Rise of Skywalker",
+    "wrong": [
+      "Star Wars: The Last Jedi",
+      "Rogue One",
+      "Solo: A Star Wars Story"
+    ]
+  },
+  {
+    "q": "Which 2017 Pixar film centers on a boy who travels to the Land of the Dead on Dia de los Muertos?",
+    "correct": "Coco",
+    "wrong": [
+      "The Book of Life",
+      "Inside Out",
+      "Onward"
+    ]
+  },
+  {
+    "q": "Which 2021 Marvel film introduced a martial-arts hero trained by his crime-lord father?",
+    "correct": "Shang-Chi and the Legend of the Ten Rings",
+    "wrong": [
+      "Eternals",
+      "Black Widow",
+      "Doctor Strange in the Multiverse of Madness"
+    ]
+  },
+  {
+    "q": "Which 2022 sequel to a 1986 fighter-pilot film reunited audiences with Tom Cruise as a Navy aviator?",
+    "correct": "Top Gun: Maverick",
+    "wrong": [
+      "Top Gun",
+      "Days of Thunder",
+      "American Made"
+    ]
+  },
+  {
+    "q": "Which 1954 film stars Marlon Brando as a former boxer turned longshoreman confronting union corruption?",
+    "correct": "On the Waterfront",
+    "wrong": [
+      "A Streetcar Named Desire",
+      "The Wild One",
+      "Julius Caesar"
+    ]
+  },
+  {
+    "q": "Which classic Western starring John Wayne follows a search for a kidnapped niece?",
+    "correct": "The Searchers",
+    "wrong": [
+      "Stagecoach",
+      "Red River",
+      "Rio Bravo"
+    ]
+  }
+]

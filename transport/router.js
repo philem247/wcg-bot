@@ -6,8 +6,9 @@ import { createGame } from '../engine/game.js'
 import { createTriviaGame, QUESTION_COUNT, parseAnswer } from '../engine/trivia.js'
 import { createScrambleGame, SCRAMBLE_COUNT } from '../engine/scramble.js'
 import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
+import { createFlagGame, FLAG_COUNT, CLOCK_SECONDS as FLAG_CLOCK_SECONDS } from '../engine/flag.js'
 import { createRiddleGame, RIDDLE_COUNT } from '../engine/riddle.js'
-import { loadRiddleBank } from '../engine/bank.js'
+import { loadRiddleBank, loadFlagBank } from '../engine/bank.js'
 import { createTournament } from '../engine/tournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
@@ -80,6 +81,9 @@ const KIND_BY_EVENT = {
   logo_word: 'turn',
   logo_answer: 'result',
   logo_over: 'result',
+  flag_word: 'turn',
+  flag_answer: 'result',
+  flag_over: 'result',
   riddle_start: 'turn',
   riddle_solved: 'result',
   riddle_timeout: 'result',
@@ -235,6 +239,32 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'logo_terminated') {
       gameMeta.delete(jid)
+    } else if (event.type === 'flag_word') {
+      if (event.index === 1) {
+        gameMeta.set(jid, { mode: 'mixed', type: 'flag', startedAt: now, eliminated: [], pnMap: new Map() })
+      }
+    } else if (event.type === 'flag_answer') {
+      // Intentionally empty
+    } else if (event.type === 'flag_over') {
+      const meta = gameMeta.get(jid)
+      const pnMap = meta?.pnMap || new Map()
+      const results = event.standings.map((s, i) => ({
+        player: s.player, placement: i + 1, player_pn: pnMap.get(s.player),
+      }))
+      if (results.length > 0) {
+        try {
+          db?.recordGame({
+            jid, mode: 'mixed', type: 'flag',
+            startedAt: meta?.startedAt ?? now, endedAt: now,
+            words: event.total, results,
+          })
+        } catch (e) {
+          // store failure must never break gameplay
+        }
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'flag_terminated') {
+      gameMeta.delete(jid)
     } else if (event.type === 'riddle_start') {
       if (event.round === 1) {
         gameMeta.set(jid, { mode: 'mixed', type: 'riddle', startedAt: now, eliminated: [], pnMap: new Map() })
@@ -329,6 +359,7 @@ function formatPending(rows) {
 
 export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db, bank = null, resolvePn = () => undefined }) {
   const riddleBank = loadRiddleBank()
+  const flagBank = loadFlagBank()
   // Engine games don't expose who started them; track it here, mirroring `games`.
   // ponytail: scheduler-driven deletions (timeout/lobby-fail) don't clean this map,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
@@ -718,6 +749,57 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
   }
 
+  async function startFlagGame(jid, sender, senderPn, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. Use ${PREFIX}flag end to stop it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    let exclude
+    try {
+      exclude = db?.askedFlagCodes(jid) ?? new Set()
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed loading asked flags')
+      exclude = new Set()
+    }
+
+    let gameFlags = flagBank.pickFlags({ count: FLAG_COUNT, exclude, random: Math.random })
+    if (gameFlags.length === 0) {
+      try {
+        db?.clearAskedFlags(jid)
+      } catch (e) {
+        logger?.error({ err: e }, 'Failed clearing asked flags')
+      }
+      gameFlags = flagBank.pickFlags({ count: FLAG_COUNT, exclude: new Set(), random: Math.random })
+    }
+
+    if (gameFlags.length === 0) {
+      enqueue(jid, { text: `Guess the Flag is currently unavailable — no flag data found.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    const game = createFlagGame({ flags: gameFlags, now, random: Math.random })
+    games.set(jid, game)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'flag')
+    try {
+      db?.markAskedFlags(jid, gameFlags, now)
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed recording asked flags')
+    }
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+
+    enqueue(jid, {
+      text: `🏳️ *GUESS THE FLAG* starting!\nName the country. ${FLAG_COUNT} flags, ${FLAG_CLOCK_SECONDS}s each.`,
+      mentions: [], kind: 'misc',
+    })
+    sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
+  }
+
   async function startRiddleGame(jid, sender, senderPn, now, isGroup) {
     if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
       enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
@@ -801,6 +883,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}logo start`,
         `▸ ${PREFIX}logo end`,
         ``,
+        `*🏳️ GUESS THE FLAG* _(start: admins only)_`,
+        `▸ ${PREFIX}flag start`,
+        `▸ ${PREFIX}flag end`,
+        ``,
         `*🧩 RIDDLE QUEST* _(start: admins only)_`,
         `▸ ${PREFIX}riddle`,
         `▸ ${PREFIX}riddle end`,
@@ -814,6 +900,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}trivia stats [all]`,
         `▸ ${PREFIX}scramble stats [all]`,
         `▸ ${PREFIX}logo stats [all]`,
+        `▸ ${PREFIX}flag stats [all]`,
         `▸ ${PREFIX}riddle stats [all]`,
       ]
 
@@ -1090,6 +1177,31 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
 
       await startLogoGame(jid, sender, senderPn, now, isGroup)
+      return
+    }
+
+    if (cmd === 'flag') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'stats') {
+        const all = args[1] === 'all'
+        const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'flag' })
+        const { text, mentions } = formatLeaderboard(board, all ? '🏆 Guess the Flag — all-time' : '🏆 Guess the Flag — this week')
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end') {
+        await endGame(jid, sender, senderPn, isGroup, now, 'flag')
+        return
+      }
+
+      await startFlagGame(jid, sender, senderPn, now, isGroup)
       return
     }
 

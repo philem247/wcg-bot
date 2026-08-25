@@ -74,10 +74,11 @@ Environment variables (defined in `.env` and read from `config.js`):
 | **Trivia** | Multiple-choice questions drawn from `data/trivia.json`, mixed or single-category, no lobby (answering is joining). | Points per correct answer, weekly and all-time leaderboards |
 | **Scramble** | 10 rounds, 15s clock per word, 10s gap between rounds. The bot scrambles a dictionary word (4–7 letters); players race to unscramble it. | Race — first correct answer per round wins the point |
 | **Logo Quiz** | 10 rounds, 20s clock, 10s gap. The bot posts a brand-logo image from `data/logos/`; players race to name the brand. Answer matching strips spaces/punctuation to be forgiving. | Race — first correct answer per round wins the point |
-| **Riddle Quest** | 5 riddles per game, 20s clock per riddle, a hint marker at the 10s mark, 3s gap between riddles. Drawn from `data/riddles.json`; answers match against a curated alias list, not just the literal answer string. | 3 points for 1st correct, 1 point for 2nd, weekly and all-time leaderboards |
+| **Riddle Quest** | 5 riddles per game, 20s clock per riddle, 10s gap between riddles. Drawn from `data/riddles.json`; answers match against a curated alias list, not just the literal answer string. | 1 point per solve, weekly and all-time leaderboards |
+| **Guess the Flag** | 5 rounds, 15s clock, 10s gap. The bot posts a country's flag emoji (derived from its ISO code, not hand-typed); players race to name the country. Answer matching accepts common aliases (e.g. "USA", "UK", "Holland") and ignores accents/punctuation. | Race — first correct answer per round wins the point |
 | **Tournament** | Head-to-head single-elimination trivia bracket, byes for non-power-of-two entrant counts. `TOURNAMENT_CLOCK_SECONDS = 10` per question (tighter than group trivia's 30s clock, to discourage searching an answer up mid-match), `MATCH_START_DELAY_MS = 4000` pause before each match's first question, `REGISTRATION_MS = 120000` (2 min) open registration window. An admin drives every round with `/tourney next`. | Race scoring within each match (first correct answer wins the question); a tied match goes to sudden death |
 
-Starting any game (Word Chain, Trivia, Scramble, Logo Quiz, Riddle Quest, or a Tournament) requires a bot admin, group admin, owner, or global admin — this is enforced the same way for every mode.
+Starting any game (Word Chain, Trivia, Scramble, Logo Quiz, Riddle Quest, Guess the Flag, or a Tournament) requires a bot admin, group admin, owner, or global admin — this is enforced the same way for every mode.
 
 ## Commands
 
@@ -122,6 +123,13 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | `/riddle` | start a 5-riddle game |
 | `/riddle end` | stop the current riddle game (starter or admin) |
 
+### Guess the Flag (start: admins only)
+
+| Command | Does |
+|---------|------|
+| `/flag start` | start a 5-flag game |
+| `/flag end` | stop the current flag game (starter or admin) |
+
 ### Tournament (start/next/end: admins only)
 
 | Command | Does |
@@ -141,6 +149,7 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | `/scramble stats [all]` | scramble weekly (or all-time) leaderboard |
 | `/logo stats [all]` | logo quiz weekly (or all-time) leaderboard |
 | `/riddle stats [all]` | riddle quest weekly (or all-time) leaderboard |
+| `/flag stats [all]` | guess the flag weekly (or all-time) leaderboard |
 
 ### Admin
 
@@ -181,25 +190,25 @@ Only the OWNER and global ADMINS can run `/promote`, `/demote`, `/ban`, `/unban`
 
 ## Trivia categories
 
-Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 30,814 questions total** (counts via `node data/check_sizes.mjs`):
+Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 29,557 questions total** (counts via `node data/check_sizes.mjs`):
 
 | Category | Questions | Category | Questions |
 |----------|-----------|----------|-----------|
-| football | 3,480 | web3 | 252 |
-| fpl | 2,644 | bible | 1,030 |
-| got | 1,195 | music | 1,039 |
-| sports | 1,040 | food | 830 |
-| science | 1,030 | general | 830 |
-| tech | 982 | animals | 830 |
-| movies | 1,030 | videogames | 830 |
-| tv-shows | 1,030 | mythology | 830 |
-| geography | 1,030 | vehicles | 830 |
-| history | 1,030 | pidgin-english | 830 |
-| anime | 830 | health | 830 |
-| naruto | 1,039 | nigerian-music | 830 |
-| cartoons | 1,030 | nigerian-entertainment | 839 |
-| tech-gadgets | 834 | nigerian-history | 830 |
-| art | 300 | nigerian-food | 830 |
+| football | 3,480 | animals | 845 |
+| fpl | 2,644 | mythology | 842 |
+| got | 1,195 | videogames | 837 |
+| sports | 1,053 | general | 836 |
+| music | 1,053 | food | 835 |
+| history | 1,042 | health | 834 |
+| movies | 1,041 | pidgin-english | 833 |
+| science | 1,039 | vehicles | 832 |
+| naruto | 1,039 | anime | 832 |
+| geography | 1,031 | nigerian-entertainment | 615 |
+| bible | 1,030 | tv-shows | 613 |
+| cartoons | 1,028 | nigerian-history | 593 |
+| tech | 982 | art | 300 |
+| nigerian-music | 858 | nigerian-food | 292 |
+| tech-gadgets | 851 | web3 | 252 |
 
 `football` and `fpl` cover 2024–2026, including the 2026 World Cup and 2025/26 season — see `data/football/` for the generation pipeline.
 
@@ -304,6 +313,7 @@ Everything except the dictionary and trivia bank lives in one SQLite file, `wcg.
 - `bot_admins` — promoted bot admins, per group, survives restarts
 - `asked_questions` — tracks which trivia question ids a group has already seen, so a category recycles only once exhausted (also feeds tournament match questions, so a tournament never repeats a group's recent trivia)
 - `asked_riddles` — tracks which riddle ids a group has already seen, per-group dedup for `/riddle`
+- `asked_flags` — tracks which country codes a group has already seen, per-group dedup for `/flag`
 - `trivia_bans` — per-group trivia bans set via `/ban`
 - `tournament_wins` — tournament win history, feeds `/tourney stats`
 - `tournaments` — persisted bracket state, so an in-progress tournament survives a restart
