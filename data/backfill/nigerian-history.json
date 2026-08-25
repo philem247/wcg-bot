@@ -1,0 +1,2207 @@
+[
+ {
+  "q": "Which pre-colonial Yoruba kingdom, centered in present-day Oyo State, became one of West Africa's most powerful empires by the 17th century?",
+  "correct": "Oyo Empire",
+  "wrong": [
+   "Benin Empire",
+   "Kanem-Bornu Empire",
+   "Sokoto Caliphate"
+  ]
+ },
+ {
+  "q": "Which title was given to the supreme ruler of the Oyo Empire?",
+  "correct": "Alaafin",
+  "wrong": [
+   "Oba",
+   "Emir",
+   "Sultan"
+  ]
+ },
+ {
+  "q": "Which council of chiefs in the Oyo Empire had the power to check the Alaafin's authority, including forcing his abdication?",
+  "correct": "Oyo Mesi",
+  "wrong": [
+   "Ogboni Fraternity",
+   "Egbe Omo Oduduwa",
+   "Aare Ona Kakanfo"
+  ]
+ },
+ {
+  "q": "Which title was given to the supreme military commander of the Oyo Empire?",
+  "correct": "Aare Ona Kakanfo",
+  "wrong": [
+   "Alaafin",
+   "Basorun",
+   "Balogun"
+  ]
+ },
+ {
+  "q": "Which secret society of elders and titleholders exercised judicial and political influence in Oyo and other Yoruba states?",
+  "correct": "Ogboni",
+  "wrong": [
+   "Oyo Mesi",
+   "Aare Ona Kakanfo",
+   "Egungun"
+  ]
+ },
+ {
+  "q": "In which century did the Oyo Empire reach the height of its power and territorial expansion?",
+  "correct": "18th century",
+  "wrong": [
+   "14th century",
+   "16th century",
+   "19th century"
+  ]
+ },
+ {
+  "q": "What was the capital city of the Oyo Empire before its fall in the early 19th century?",
+  "correct": "Oyo-Ile",
+  "wrong": [
+   "Ibadan",
+   "Ile-Ife",
+   "Abeokuta"
+  ]
+ },
+ {
+  "q": "Which 19th-century conflict, driven by succession disputes and Fulani jihad pressure, led to the collapse of the Oyo Empire?",
+  "correct": "Yoruba civil wars",
+  "wrong": [
+   "Kiriji War only",
+   "Benin Expedition",
+   "Egba wars"
+  ]
+ },
+ {
+  "q": "Which Yoruba city-state emerged as a powerful military power out of the wars that followed the Oyo Empire's collapse?",
+  "correct": "Ibadan",
+  "wrong": [
+   "Ijebu-Ode",
+   "Abeokuta",
+   "Ife"
+  ]
+ },
+ {
+  "q": "Which legendary figure is traditionally regarded as the progenitor of the Yoruba people and founder of Ile-Ife?",
+  "correct": "Oduduwa",
+  "wrong": [
+   "Oranmiyan",
+   "Sango",
+   "Obatala"
+  ]
+ },
+ {
+  "q": "Which Ife artistic tradition, dated to around the 12th-15th centuries, is famous for its naturalistic bronze and terracotta royal heads?",
+  "correct": "Ife bronze heads",
+  "wrong": [
+   "Benin bronzes",
+   "Nok terracottas",
+   "Igbo-Ukwu bronzes"
+  ]
+ },
+ {
+  "q": "Around which material is the Nok culture's terracotta sculpture most famously associated?",
+  "correct": "Fired clay",
+  "wrong": [
+   "Bronze",
+   "Iron",
+   "Stone"
+  ]
+ },
+ {
+  "q": "Which archaeological site in present-day Anambra State revealed sophisticated 9th-century bronze artifacts of an early Igbo civilization?",
+  "correct": "Igbo-Ukwu",
+  "wrong": [
+   "Nri",
+   "Arochukwu",
+   "Awka"
+  ]
+ },
+ {
+  "q": "What title was held by the priest-king of the Nri Kingdom?",
+  "correct": "Eze Nri",
+  "wrong": [
+   "Obi",
+   "Eze Aro",
+   "Igwe"
+  ]
+ },
+ {
+  "q": "Which powerful oracle, controlled by the Aro people, was used to enforce judicial rulings and enslave debtors across southeastern Nigeria?",
+  "correct": "Ibini Ukpabi (Long Juju)",
+  "wrong": [
+   "Osun Osogbo",
+   "Olokun Shrine",
+   "Chukwu Abiama"
+  ]
+ },
+ {
+  "q": "Which ruling dynasty governed the Kanem-Bornu Empire for much of its history, tracing descent to a legendary founder named Sayf?",
+  "correct": "Sayfawa dynasty",
+  "wrong": [
+   "Fulani dynasty",
+   "Hausa dynasty",
+   "Kanuri dynasty"
+  ]
+ },
+ {
+  "q": "Which title was used for the ruler of the Bornu Empire after it relocated west of Lake Chad?",
+  "correct": "Mai",
+  "wrong": [
+   "Emir",
+   "Sarki",
+   "Sultan"
+  ]
+ },
+ {
+  "q": "Which Kanem-Bornu ruler, reigning in the late 16th century, is celebrated for military reforms and expanding the empire using firearms?",
+  "correct": "Mai Idris Alooma",
+  "wrong": [
+   "Mai Ali Ghaji",
+   "Mai Dunama Dibalemi",
+   "Usman dan Fodio"
+  ]
+ },
+ {
+  "q": "Which title was traditionally used for the rulers of the Hausa city-states such as Kano and Katsina?",
+  "correct": "Sarki",
+  "wrong": [
+   "Emir only",
+   "Alaafin",
+   "Oba"
+  ]
+ },
+ {
+  "q": "Which legendary figure is said to have founded the seven original Hausa states, known as the Hausa Bakwai?",
+  "correct": "Bayajidda",
+  "wrong": [
+   "Usman dan Fodio",
+   "Kanta of Kebbi",
+   "Queen Amina"
+  ]
+ },
+ {
+  "q": "Which Hausa city-state was renowned as a center of Islamic scholarship and trade, often called the leading Hausa state before the jihad?",
+  "correct": "Kano",
+  "wrong": [
+   "Zaria",
+   "Katsina",
+   "Gobir"
+  ]
+ },
+ {
+  "q": "Which legendary Hausa warrior queen of Zazzau is credited with expanding the city's territory and building fortified walls?",
+  "correct": "Amina",
+  "wrong": [
+   "Bayajidda",
+   "Daura",
+   "Kambasa"
+  ]
+ },
+ {
+  "q": "Who led the jihad of 1804 that established the Sokoto Caliphate?",
+  "correct": "Usman dan Fodio",
+  "wrong": [
+   "Muhammadu Bello",
+   "Ahmadu Bello",
+   "Modibo Adama"
+  ]
+ },
+ {
+  "q": "Which relation of Usman dan Fodio became the first Sultan of Sokoto after the jihad and the caliphate's consolidation?",
+  "correct": "Muhammadu Bello",
+  "wrong": [
+   "Abdullahi dan Fodio",
+   "Ahmadu Bello",
+   "Attahiru I"
+  ]
+ },
+ {
+  "q": "What title is given to the supreme ruler of the Sokoto Caliphate?",
+  "correct": "Sultan of Sokoto",
+  "wrong": [
+   "Emir of Kano",
+   "Sarkin Musulmi's deputy",
+   "Waziri"
+  ]
+ },
+ {
+  "q": "Which administrative structure did the Sokoto Caliphate use, dividing territory among semi-autonomous rulers loyal to the Sultan?",
+  "correct": "Emirate system",
+  "wrong": [
+   "Provincial governorship",
+   "Direct rule",
+   "City-state confederation"
+  ]
+ },
+ {
+  "q": "Which Sokoto Caliphate ruler was killed resisting the British conquest at the Battle of Sokoto in 1903?",
+  "correct": "Attahiru I",
+  "wrong": [
+   "Muhammadu Bello",
+   "Usman dan Fodio",
+   "Ahmadu Bello"
+  ]
+ },
+ {
+  "q": "Which West African forest kingdom, centered in present-day Edo State, was renowned for its walls, bronze casting, and powerful obas?",
+  "correct": "Benin Empire",
+  "wrong": [
+   "Oyo Empire",
+   "Nri Kingdom",
+   "Itsekiri Kingdom"
+  ]
+ },
+ {
+  "q": "What title is used for the traditional ruler of the Benin Kingdom?",
+  "correct": "Oba",
+  "wrong": [
+   "Alaafin",
+   "Emir",
+   "Obi"
+  ]
+ },
+ {
+  "q": "Which Benin Oba, reigning in the late 15th century, is credited with major military expansion and diplomatic contact with Portugal?",
+  "correct": "Oba Ewuare",
+  "wrong": [
+   "Oba Ovonramwen",
+   "Oba Esigie",
+   "Oba Ozolua"
+  ]
+ },
+ {
+  "q": "Which European nation was the first to establish direct trade contact with the Benin Kingdom, in the late 15th century?",
+  "correct": "Portugal",
+  "wrong": [
+   "Britain",
+   "France",
+   "Netherlands"
+  ]
+ },
+ {
+  "q": "Which massive earthwork system, encircling Benin City, is considered one of the largest man-made structures built before the mechanical age?",
+  "correct": "Benin Moat (Iya)",
+  "wrong": [
+   "Sungbo's Eredo",
+   "Kano city walls",
+   "Old Oyo ramparts"
+  ]
+ },
+ {
+  "q": "Which earthwork system in Ijebu territory, associated with a legendary noblewoman, is one of Africa's largest pre-colonial monuments?",
+  "correct": "Sungbo's Eredo",
+  "wrong": [
+   "Benin Moat",
+   "Kano city walls",
+   "Old Oyo ramparts"
+  ]
+ },
+ {
+  "q": "In what year did British forces invade and destroy Benin City, looting thousands of artworks in what became known as the Benin Expedition?",
+  "correct": "1897",
+  "wrong": [
+   "1885",
+   "1903",
+   "1914"
+  ]
+ },
+ {
+  "q": "Which Oba of Benin was exiled to Calabar by the British following the 1897 Benin Expedition?",
+  "correct": "Oba Ovonramwen",
+  "wrong": [
+   "Oba Ewuare",
+   "Oba Esigie",
+   "Oba Akenzua II"
+  ]
+ },
+ {
+  "q": "What collective name is given to the thousands of brass, bronze, and ivory artworks looted from Benin City by the British in 1897?",
+  "correct": "Benin Bronzes",
+  "wrong": [
+   "Ife Heads",
+   "Nok Terracottas",
+   "Igbo-Ukwu Bronzes"
+  ]
+ },
+ {
+  "q": "Which title is given to the traditional ruler of the Itsekiri people of Warri?",
+  "correct": "Olu of Warri",
+  "wrong": [
+   "Obi of Warri",
+   "Amanyanabo",
+   "Obong of Warri"
+  ]
+ },
+ {
+  "q": "Which Niger Delta trading state, based in Calabar, was governed by Efik chiefs and became a major center of the transatlantic slave trade?",
+  "correct": "Old Calabar",
+  "wrong": [
+   "Bonny",
+   "Opobo",
+   "Warri"
+  ]
+ },
+ {
+  "q": "Which title was used by rulers of the Niger Delta trading city-states such as Bonny and Opobo?",
+  "correct": "Amanyanabo",
+  "wrong": [
+   "Obong",
+   "Olu",
+   "Eze"
+  ]
+ },
+ {
+  "q": "Which powerful 19th-century Niger Delta trading city-state was founded by former Bonny chief Jaja after a succession dispute?",
+  "correct": "Opobo",
+  "wrong": [
+   "Bonny",
+   "Nembe",
+   "Brass"
+  ]
+ },
+ {
+  "q": "Which Niger Delta ruler, King Jaja of Opobo, was exiled by the British in 1887 for resisting their control of the palm oil trade?",
+  "correct": "King Jaja",
+  "wrong": [
+   "Oba Ovonramwen",
+   "Nana Olomu",
+   "Chief Dappa-Biriye"
+  ]
+ },
+ {
+  "q": "Which Itsekiri chief and trader, Nana Olomu, was exiled by the British in 1894 after resisting their trade monopoly on the Benin River?",
+  "correct": "Nana Olomu",
+  "wrong": [
+   "King Jaja",
+   "Oba Ovonramwen",
+   "Herbert Macaulay"
+  ]
+ },
+ {
+  "q": "Which Efik title refers to the traditional ruler of Old Calabar, comparable to a paramount chief?",
+  "correct": "Obong of Calabar",
+  "wrong": [
+   "Olu of Warri",
+   "Amanyanabo of Bonny",
+   "Eze Nri"
+  ]
+ },
+ {
+  "q": "Which trading company received a British royal charter in 1886 to administer the Niger Delta and surrounding territories?",
+  "correct": "Royal Niger Company",
+  "wrong": [
+   "East India Company",
+   "Niger Coast Protectorate",
+   "United Africa Company"
+  ]
+ },
+ {
+  "q": "Who was the head of the Royal Niger Company, later playing a major role in shaping colonial Nigeria?",
+  "correct": "George Goldie",
+  "wrong": [
+   "Frederick Lugard",
+   "Hugh Clifford",
+   "John Glover"
+  ]
+ },
+ {
+  "q": "In what year did the British government revoke the Royal Niger Company's charter and take direct control of its territories?",
+  "correct": "1900",
+  "wrong": [
+   "1885",
+   "1914",
+   "1906"
+  ]
+ },
+ {
+  "q": "Which British protectorate, established in 1900, covered the area south of the Niger and Benue rivers before 1914 amalgamation?",
+  "correct": "Southern Nigeria Protectorate",
+  "wrong": [
+   "Northern Nigeria Protectorate",
+   "Niger Coast Protectorate",
+   "Lagos Colony"
+  ]
+ },
+ {
+  "q": "Which British protectorate, established in 1900, covered the northern territories under Frederick Lugard's administration?",
+  "correct": "Northern Nigeria Protectorate",
+  "wrong": [
+   "Southern Nigeria Protectorate",
+   "Niger Coast Protectorate",
+   "Oil Rivers Protectorate"
+  ]
+ },
+ {
+  "q": "In what year did Britain formally annex Lagos as a crown colony?",
+  "correct": "1861",
+  "wrong": [
+   "1851",
+   "1885",
+   "1900"
+  ]
+ },
+ {
+  "q": "Which 1851 British naval action forced the removal of Lagos ruler Oba Kosoko, paving the way for later British annexation?",
+  "correct": "Bombardment of Lagos",
+  "wrong": [
+   "Benin Expedition",
+   "Battle of Sokoto",
+   "Aro Expedition"
+  ]
+ },
+ {
+  "q": "Which colonial administrator, later Baron Lugard, governed both the Northern and Southern Nigeria protectorates before unifying them?",
+  "correct": "Frederick Lugard",
+  "wrong": [
+   "Hugh Clifford",
+   "George Goldie",
+   "Donald Cameron"
+  ]
+ },
+ {
+  "q": "In what year did Britain formally amalgamate the Northern and Southern Nigeria protectorates into a single colony?",
+  "correct": "1914",
+  "wrong": [
+   "1900",
+   "1922",
+   "1946"
+  ]
+ },
+ {
+  "q": "Who became the first Governor-General of the amalgamated colony of Nigeria in 1914?",
+  "correct": "Frederick Lugard",
+  "wrong": [
+   "Hugh Clifford",
+   "Bernard Bourdillon",
+   "Arthur Richards"
+  ]
+ },
+ {
+  "q": "Which system of colonial governance, associated with Lugard, ruled through existing traditional rulers rather than direct British administrators?",
+  "correct": "Indirect rule",
+  "wrong": [
+   "Direct rule",
+   "Assimilation policy",
+   "Federalism"
+  ]
+ },
+ {
+  "q": "Which 1929 uprising, led primarily by Igbo women in southeastern Nigeria, protested colonial taxation and the warrant chief system?",
+  "correct": "Aba Women's Riot",
+  "wrong": [
+   "Egba Women's Revolt",
+   "Iva Valley Strike",
+   "Kano Riots"
+  ]
+ },
+ {
+  "q": "Which 1945 general strike, involving over 40,000 Nigerian workers, was one of the largest labor actions in colonial Nigeria's history?",
+  "correct": "The 1945 general strike",
+  "wrong": [
+   "The Aba Women's Riot",
+   "The Iva Valley strike",
+   "The Kano riots"
+  ]
+ },
+ {
+  "q": "Which newspaper, founded by Nnamdi Azikiwe in 1937, became a major platform for Nigerian nationalist journalism?",
+  "correct": "West African Pilot",
+  "wrong": [
+   "Daily Times",
+   "Nigerian Tribune",
+   "The Guardian"
+  ]
+ },
+ {
+  "q": "Which political party, founded in 1951 and led by Obafemi Awolowo, drew its main support from the Western Region?",
+  "correct": "Action Group",
+  "wrong": [
+   "NCNC",
+   "Northern Peoples Congress",
+   "NEPU"
+  ]
+ },
+ {
+  "q": "Which political party, founded in 1951, represented the interests of the Northern Region and was led by Ahmadu Bello?",
+  "correct": "Northern Peoples Congress",
+  "wrong": [
+   "Action Group",
+   "NCNC",
+   "NEPU"
+  ]
+ },
+ {
+  "q": "Which reformist northern political party, founded by Aminu Kano in 1950, opposed the conservative Northern Peoples Congress?",
+  "correct": "Northern Elements Progressive Union",
+  "wrong": [
+   "Northern Peoples Congress",
+   "Action Group",
+   "United Middle Belt Congress"
+  ]
+ },
+ {
+  "q": "Which series of constitutional conferences in London during the 1950s progressively expanded Nigerian self-government ahead of independence?",
+  "correct": "Nigerian constitutional conferences",
+  "wrong": [
+   "Berlin Conference",
+   "Lancaster House talks",
+   "Aburi Accord"
+  ]
+ },
+ {
+  "q": "Which 1954 constitution, drafted under Governor-General Oliver Lyttelton, established Nigeria as a federation of three regions?",
+  "correct": "Lyttelton Constitution",
+  "wrong": [
+   "Richards Constitution",
+   "Macpherson Constitution",
+   "Clifford Constitution"
+  ]
+ },
+ {
+  "q": "Which 1946 constitution, introduced by Governor Arthur Richards, first divided Nigeria into three regions for administrative purposes?",
+  "correct": "Richards Constitution",
+  "wrong": [
+   "Clifford Constitution",
+   "Lyttelton Constitution",
+   "Macpherson Constitution"
+  ]
+ },
+ {
+  "q": "Which 1922 constitution, introduced by Governor Hugh Clifford, created the first elected legislative council in Nigeria?",
+  "correct": "Clifford Constitution",
+  "wrong": [
+   "Richards Constitution",
+   "Lyttelton Constitution",
+   "Macpherson Constitution"
+  ]
+ },
+ {
+  "q": "Which 1951 constitution, introduced by Governor John Macpherson, expanded regional representation ahead of self-government?",
+  "correct": "Macpherson Constitution",
+  "wrong": [
+   "Richards Constitution",
+   "Clifford Constitution",
+   "Lyttelton Constitution"
+  ]
+ },
+ {
+  "q": "In what year did the Western Region become the first in Nigeria to attain full internal self-government?",
+  "correct": "1957",
+  "wrong": [
+   "1954",
+   "1959",
+   "1960"
+  ]
+ },
+ {
+  "q": "In what year did the Eastern Region attain full internal self-government?",
+  "correct": "1957",
+  "wrong": [
+   "1954",
+   "1959",
+   "1960"
+  ]
+ },
+ {
+  "q": "In what year did the Northern Region attain full internal self-government, later than the other two regions?",
+  "correct": "1959",
+  "wrong": [
+   "1957",
+   "1954",
+   "1960"
+  ]
+ },
+ {
+  "q": "On what date did Nigeria gain independence from British colonial rule?",
+  "correct": "1 October 1960",
+  "wrong": [
+   "1 October 1963",
+   "6 October 1960",
+   "12 June 1960"
+  ]
+ },
+ {
+  "q": "Who became Nigeria's first Prime Minister at independence in 1960?",
+  "correct": "Abubakar Tafawa Balewa",
+  "wrong": [
+   "Nnamdi Azikiwe",
+   "Obafemi Awolowo",
+   "Ahmadu Bello"
+  ]
+ },
+ {
+  "q": "Who became Nigeria's first indigenous Governor-General at independence in 1960?",
+  "correct": "Nnamdi Azikiwe",
+  "wrong": [
+   "Abubakar Tafawa Balewa",
+   "Obafemi Awolowo",
+   "James Robertson"
+  ]
+ },
+ {
+  "q": "Which British royal figure attended Nigeria's independence celebrations in October 1960 representing the Queen?",
+  "correct": "Princess Alexandra",
+  "wrong": [
+   "Queen Elizabeth II",
+   "Prince Philip",
+   "Princess Margaret"
+  ]
+ },
+ {
+  "q": "In what year did Nigeria become a republic, with Nnamdi Azikiwe becoming its first President?",
+  "correct": "1963",
+  "wrong": [
+   "1960",
+   "1966",
+   "1970"
+  ]
+ },
+ {
+  "q": "What was the name of Nigeria's constitution adopted in 1963 when it became a republic?",
+  "correct": "1963 Republican Constitution",
+  "wrong": [
+   "Independence Constitution of 1960",
+   "1979 Constitution",
+   "1999 Constitution"
+  ]
+ },
+ {
+  "q": "Which of Nigeria's three original regions at independence was led by Premier Obafemi Awolowo?",
+  "correct": "Western Region",
+  "wrong": [
+   "Eastern Region",
+   "Northern Region",
+   "Mid-Western Region"
+  ]
+ },
+ {
+  "q": "Which of Nigeria's three original regions at independence was led by Premier Ahmadu Bello, the Sardauna of Sokoto?",
+  "correct": "Northern Region",
+  "wrong": [
+   "Western Region",
+   "Eastern Region",
+   "Mid-Western Region"
+  ]
+ },
+ {
+  "q": "Which of Nigeria's three original regions at independence was led by Premier Michael Okpara after Azikiwe moved to the federal level?",
+  "correct": "Eastern Region",
+  "wrong": [
+   "Western Region",
+   "Northern Region",
+   "Mid-Western Region"
+  ]
+ },
+ {
+  "q": "In what year was the Mid-Western Region created, becoming Nigeria's fourth region by splitting from the Western Region?",
+  "correct": "1963",
+  "wrong": [
+   "1960",
+   "1967",
+   "1954"
+  ]
+ },
+ {
+  "q": "Which crisis in the Western Region in 1962, triggered by a leadership split in the Action Group, led to a controversial state of emergency?",
+  "correct": "Western Region crisis",
+  "wrong": [
+   "Tiv riots",
+   "Kano riots",
+   "Aba riots"
+  ]
+ },
+ {
+  "q": "Who was tried and imprisoned for treasonable felony following the 1962 Western Region political crisis?",
+  "correct": "Obafemi Awolowo",
+  "wrong": [
+   "Ahmadu Bello",
+   "Samuel Akintola",
+   "Nnamdi Azikiwe"
+  ]
+ },
+ {
+  "q": "Who became Premier of the Western Region after Obafemi Awolowo, a rival whose disputed 1965 election victory sparked unrest?",
+  "correct": "Samuel Akintola",
+  "wrong": [
+   "Michael Okpara",
+   "Dennis Osadebay",
+   "Joseph Tarka"
+  ]
+ },
+ {
+  "q": "On what date did Nigeria's first military coup take place, ending the First Republic?",
+  "correct": "15 January 1966",
+  "wrong": [
+   "29 July 1966",
+   "1 October 1960",
+   "30 May 1967"
+  ]
+ },
+ {
+  "q": "Which Nigerian army major is widely credited with leading the planning of the 15 January 1966 coup?",
+  "correct": "Kaduna Nzeogwu",
+  "wrong": [
+   "Johnson Aguiyi-Ironsi",
+   "Yakubu Gowon",
+   "Emmanuel Ifeajuna"
+  ]
+ },
+ {
+  "q": "Who became Nigeria's first military head of state following the January 1966 coup?",
+  "correct": "Johnson Aguiyi-Ironsi",
+  "wrong": [
+   "Yakubu Gowon",
+   "Kaduna Nzeogwu",
+   "Murtala Mohammed"
+  ]
+ },
+ {
+  "q": "Which Prime Minister was assassinated during the January 1966 coup?",
+  "correct": "Abubakar Tafawa Balewa",
+  "wrong": [
+   "Nnamdi Azikiwe",
+   "Obafemi Awolowo",
+   "Ahmadu Bello"
+  ]
+ },
+ {
+  "q": "Which Northern Region Premier was assassinated during the January 1966 coup?",
+  "correct": "Ahmadu Bello",
+  "wrong": [
+   "Samuel Akintola",
+   "Michael Okpara",
+   "Dennis Osadebay"
+  ]
+ },
+ {
+  "q": "On what date did a counter-coup remove and kill Head of State Johnson Aguiyi-Ironsi?",
+  "correct": "29 July 1966",
+  "wrong": [
+   "15 January 1966",
+   "30 May 1967",
+   "13 January 1970"
+  ]
+ },
+ {
+  "q": "Who emerged as Nigeria's military head of state following the July 1966 counter-coup?",
+  "correct": "Yakubu Gowon",
+  "wrong": [
+   "Johnson Aguiyi-Ironsi",
+   "Murtala Mohammed",
+   "Olusegun Obasanjo"
+  ]
+ },
+ {
+  "q": "Which violent 1966 events targeting Igbo residents living in Northern Nigeria contributed to rising tensions before the civil war?",
+  "correct": "The 1966 anti-Igbo pogroms",
+  "wrong": [
+   "The Kano riots of 1953",
+   "The Tiv riots",
+   "The Aba riots"
+  ]
+ },
+ {
+  "q": "Which January 1967 meeting in Ghana attempted to resolve the crisis between the federal government and the Eastern Region before the civil war?",
+  "correct": "Aburi Accord",
+  "wrong": [
+   "Lancaster House talks",
+   "Berlin Conference",
+   "OAU Summit"
+  ]
+ },
+ {
+  "q": "Who was the military governor of the Eastern Region who declared the Republic of Biafra?",
+  "correct": "Chukwuemeka Odumegwu Ojukwu",
+  "wrong": [
+   "Yakubu Gowon",
+   "Philip Effiong",
+   "Emeka Ojukwu's rival"
+  ]
+ },
+ {
+  "q": "On what date did the Eastern Region formally secede and declare itself the Republic of Biafra?",
+  "correct": "30 May 1967",
+  "wrong": [
+   "15 January 1966",
+   "13 January 1970",
+   "6 July 1967"
+  ]
+ },
+ {
+  "q": "On what date did the Nigerian federal government launch military action against Biafra, formally beginning the civil war?",
+  "correct": "6 July 1967",
+  "wrong": [
+   "30 May 1967",
+   "15 January 1966",
+   "13 January 1970"
+  ]
+ },
+ {
+  "q": "On what date did the Nigerian Civil War officially end with Biafra's surrender?",
+  "correct": "15 January 1970",
+  "wrong": [
+   "6 July 1967",
+   "30 May 1967",
+   "29 July 1966"
+  ]
+ },
+ {
+  "q": "Who formally surrendered on behalf of Biafra to end the civil war after Ojukwu fled into exile?",
+  "correct": "Philip Effiong",
+  "wrong": [
+   "Chukwuemeka Odumegwu Ojukwu",
+   "Yakubu Gowon",
+   "Alexander Madiebo"
+  ]
+ },
+ {
+  "q": "Which slogan, associated with Yakubu Gowon's post-war reconciliation policy, promoted national unity after the civil war?",
+  "correct": "No victor, no vanquished",
+  "wrong": [
+   "Unity in diversity",
+   "One nation, one destiny",
+   "Never again"
+  ]
+ },
+ {
+  "q": "Which post-war reintegration program launched by the federal government focused on rebuilding Biafran-affected areas?",
+  "correct": "Reconstruction, Rehabilitation and Reconciliation (3Rs)",
+  "wrong": [
+   "National Youth Service Corps",
+   "Operation Feed the Nation",
+   "Green Revolution"
+  ]
+ },
+ {
+  "q": "Which mandatory service program for Nigerian graduates was created in 1973, partly to foster national unity after the civil war?",
+  "correct": "National Youth Service Corps",
+  "wrong": [
+   "3Rs Programme",
+   "Operation Feed the Nation",
+   "War Against Indiscipline"
+  ]
+ },
+ {
+  "q": "Approximately how many Nigerian states existed at the outbreak of the civil war in 1967, following Gowon's restructuring just before secession?",
+  "correct": "12",
+  "wrong": [
+   "3",
+   "19",
+   "36"
+  ]
+ },
+ {
+  "q": "Which 1967 decree by Yakubu Gowon split Nigeria's four regions into twelve states, undermining the basis for Eastern Region secession?",
+  "correct": "State Creation Decree of 1967",
+  "wrong": [
+   "Unification Decree",
+   "Land Use Decree",
+   "Indigenization Decree"
+  ]
+ },
+ {
+  "q": "On what date was Yakubu Gowon overthrown in a bloodless coup while attending an OAU summit abroad?",
+  "correct": "29 July 1975",
+  "wrong": [
+   "30 May 1967",
+   "13 February 1976",
+   "31 December 1983"
+  ]
+ },
+ {
+  "q": "Who succeeded Yakubu Gowon as Nigeria's military head of state in 1975?",
+  "correct": "Murtala Mohammed",
+  "wrong": [
+   "Olusegun Obasanjo",
+   "Theophilus Danjuma",
+   "Ibrahim Babangida"
+  ]
+ },
+ {
+  "q": "On what date was Murtala Mohammed assassinated in an attempted coup led by Bukar Suka Dimka?",
+  "correct": "13 February 1976",
+  "wrong": [
+   "29 July 1975",
+   "1 October 1979",
+   "31 December 1983"
+  ]
+ },
+ {
+  "q": "Who became Nigeria's military head of state immediately after Murtala Mohammed's assassination in 1976?",
+  "correct": "Olusegun Obasanjo",
+  "wrong": [
+   "Theophilus Danjuma",
+   "Shehu Musa Yar'Adua",
+   "Ibrahim Babangida"
+  ]
+ },
+ {
+  "q": "Which political party, led by Shehu Shagari, won Nigeria's 1979 presidential election that launched the Second Republic?",
+  "correct": "National Party of Nigeria",
+  "wrong": [
+   "Unity Party of Nigeria",
+   "Nigerian Peoples Party",
+   "Great Nigeria Peoples Party"
+  ]
+ },
+ {
+  "q": "Who became Nigeria's first executive President under the 1979 constitution?",
+  "correct": "Shehu Shagari",
+  "wrong": [
+   "Olusegun Obasanjo",
+   "Obafemi Awolowo",
+   "Nnamdi Azikiwe"
+  ]
+ },
+ {
+  "q": "Which 1979 constitution introduced the presidential system of government, replacing the parliamentary system used in the First Republic?",
+  "correct": "1979 Constitution",
+  "wrong": [
+   "1963 Constitution",
+   "1960 Constitution",
+   "1999 Constitution"
+  ]
+ },
+ {
+  "q": "Which political party, led by Obafemi Awolowo, was the main opposition during the Second Republic?",
+  "correct": "Unity Party of Nigeria",
+  "wrong": [
+   "National Party of Nigeria",
+   "Nigerian Peoples Party",
+   "Peoples Redemption Party"
+  ]
+ },
+ {
+  "q": "In what year was Shehu Shagari re-elected president in a vote later widely criticized as heavily rigged?",
+  "correct": "1983",
+  "wrong": [
+   "1979",
+   "1985",
+   "1987"
+  ]
+ },
+ {
+  "q": "On what date did a military coup led by Muhammadu Buhari overthrow the Second Republic government of Shehu Shagari?",
+  "correct": "31 December 1983",
+  "wrong": [
+   "13 February 1976",
+   "27 August 1985",
+   "17 November 1993"
+  ]
+ },
+ {
+  "q": "Which anti-corruption and discipline campaign did Muhammadu Buhari's military government launch in 1984?",
+  "correct": "War Against Indiscipline",
+  "wrong": [
+   "Operation Feed the Nation",
+   "Structural Adjustment Programme",
+   "MAMSER"
+  ]
+ },
+ {
+  "q": "On what date was Muhammadu Buhari overthrown in a palace coup led by Ibrahim Babangida?",
+  "correct": "27 August 1985",
+  "wrong": [
+   "31 December 1983",
+   "17 November 1993",
+   "13 February 1976"
+  ]
+ },
+ {
+  "q": "Which economic reform program did Ibrahim Babangida's government adopt in 1986 under pressure from international lenders?",
+  "correct": "Structural Adjustment Programme",
+  "wrong": [
+   "War Against Indiscipline",
+   "Operation Feed the Nation",
+   "Vision 2010"
+  ]
+ },
+ {
+  "q": "Which agency, established by Ibrahim Babangida's government, was tasked with mobilizing public support for social and economic reform?",
+  "correct": "MAMSER",
+  "wrong": [
+   "National Orientation Agency",
+   "War Against Indiscipline Brigade",
+   "Directorate of Food, Roads and Rural Infrastructure"
+  ]
+ },
+ {
+  "q": "On what date was Nigeria's most controversial presidential election, later annulled by the military government, held?",
+  "correct": "12 June 1993",
+  "wrong": [
+   "31 December 1983",
+   "27 August 1985",
+   "17 November 1993"
+  ]
+ },
+ {
+  "q": "Who was widely believed to have won the annulled 12 June 1993 presidential election?",
+  "correct": "Moshood Abiola",
+  "wrong": [
+   "Bashir Tofa",
+   "Olu Falae",
+   "Ernest Shonekan"
+  ]
+ },
+ {
+  "q": "Which political party did Moshood Abiola represent in the annulled 1993 presidential election?",
+  "correct": "Social Democratic Party",
+  "wrong": [
+   "National Republican Convention",
+   "National Party of Nigeria",
+   "All Peoples Party"
+  ]
+ },
+ {
+  "q": "Who annulled the 12 June 1993 presidential election as Nigeria's military head of state?",
+  "correct": "Ibrahim Babangida",
+  "wrong": [
+   "Sani Abacha",
+   "Ernest Shonekan",
+   "Abdulsalami Abubakar"
+  ]
+ },
+ {
+  "q": "Who led the short-lived Interim National Government established after Babangida stepped aside in August 1993?",
+  "correct": "Ernest Shonekan",
+  "wrong": [
+   "Sani Abacha",
+   "Abdulsalami Abubakar",
+   "Moshood Abiola"
+  ]
+ },
+ {
+  "q": "On what date did General Sani Abacha seize power, dissolving the Interim National Government?",
+  "correct": "17 November 1993",
+  "wrong": [
+   "27 August 1985",
+   "12 June 1993",
+   "8 June 1998"
+  ]
+ },
+ {
+  "q": "Which Nigerian environmental and political activist was executed by the Abacha regime in November 1995, drawing international condemnation?",
+  "correct": "Ken Saro-Wiwa",
+  "wrong": [
+   "Moshood Abiola",
+   "Gani Fawehinmi",
+   "Bola Ige"
+  ]
+ },
+ {
+  "q": "Which ethnic minority rights movement in the Niger Delta did Ken Saro-Wiwa lead before his execution?",
+  "correct": "Movement for the Survival of the Ogoni People",
+  "wrong": [
+   "Niger Delta Volunteer Force",
+   "Ijaw Youth Council",
+   "Movement for the Emancipation of the Niger Delta"
+  ]
+ },
+ {
+  "q": "In protest of Ken Saro-Wiwa's execution, which international organization suspended Nigeria's membership in 1995?",
+  "correct": "Commonwealth of Nations",
+  "wrong": [
+   "United Nations",
+   "African Union",
+   "ECOWAS"
+  ]
+ },
+ {
+  "q": "On what date did Sani Abacha die suddenly in office, ending his authoritarian military rule?",
+  "correct": "8 June 1998",
+  "wrong": [
+   "17 November 1993",
+   "29 May 1999",
+   "1 October 1998"
+  ]
+ },
+ {
+  "q": "Who succeeded Sani Abacha as head of state following his death in June 1998?",
+  "correct": "Abdulsalami Abubakar",
+  "wrong": [
+   "Olusegun Obasanjo",
+   "Ibrahim Babangida",
+   "Ernest Shonekan"
+  ]
+ },
+ {
+  "q": "In what year did Moshood Abiola die in detention, shortly before he was expected to be released?",
+  "correct": "1998",
+  "wrong": [
+   "1993",
+   "1995",
+   "1999"
+  ]
+ },
+ {
+  "q": "Which military head of state oversaw the transition that ended military rule and ushered in the Fourth Republic in 1999?",
+  "correct": "Abdulsalami Abubakar",
+  "wrong": [
+   "Sani Abacha",
+   "Ibrahim Babangida",
+   "Ernest Shonekan"
+  ]
+ },
+ {
+  "q": "On what date did Nigeria transition to civilian rule, beginning the Fourth Republic?",
+  "correct": "29 May 1999",
+  "wrong": [
+   "1 October 1999",
+   "17 November 1993",
+   "12 June 1999"
+  ]
+ },
+ {
+  "q": "Who was elected president in 1999, becoming the first civilian president of Nigeria's Fourth Republic?",
+  "correct": "Olusegun Obasanjo",
+  "wrong": [
+   "Muhammadu Buhari",
+   "Umaru Musa Yar'Adua",
+   "Atiku Abubakar"
+  ]
+ },
+ {
+  "q": "Which constitution, still in use as of the 2020s, was adopted at the start of Nigeria's Fourth Republic in 1999?",
+  "correct": "1999 Constitution",
+  "wrong": [
+   "1979 Constitution",
+   "1963 Constitution",
+   "1960 Constitution"
+  ]
+ },
+ {
+  "q": "Which date is now officially observed as Nigeria's Democracy Day, commemorating the annulled 1993 election, changed from a previous date in 2018?",
+  "correct": "12 June",
+  "wrong": [
+   "29 May",
+   "1 October",
+   "27 August"
+  ]
+ },
+ {
+  "q": "Before 2018, which date had been observed as Nigeria's Democracy Day, marking the start of the Fourth Republic?",
+  "correct": "29 May",
+  "wrong": [
+   "12 June",
+   "1 October",
+   "27 August"
+  ]
+ },
+ {
+  "q": "Who succeeded Olusegun Obasanjo as president in 2007, becoming Nigeria's third civilian president of the Fourth Republic?",
+  "correct": "Umaru Musa Yar'Adua",
+  "wrong": [
+   "Goodluck Jonathan",
+   "Muhammadu Buhari",
+   "Atiku Abubakar"
+  ]
+ },
+ {
+  "q": "Who became president in 2010 after Umaru Musa Yar'Adua died in office, becoming Nigeria's first president from the Niger Delta?",
+  "correct": "Goodluck Jonathan",
+  "wrong": [
+   "Muhammadu Buhari",
+   "Atiku Abubakar",
+   "Bola Tinubu"
+  ]
+ },
+ {
+  "q": "In the 2015 general election, which opposition candidate defeated an incumbent Nigerian president for the first time in the country's history?",
+  "correct": "Muhammadu Buhari",
+  "wrong": [
+   "Goodluck Jonathan",
+   "Atiku Abubakar",
+   "Bola Tinubu"
+  ]
+ },
+ {
+  "q": "Which political party did Muhammadu Buhari lead to victory in the historic 2015 presidential election?",
+  "correct": "All Progressives Congress",
+  "wrong": [
+   "Peoples Democratic Party",
+   "All Nigeria Peoples Party",
+   "Labour Party"
+  ]
+ },
+ {
+  "q": "Which party governed Nigeria continuously from 1999 until its defeat in the 2015 general election?",
+  "correct": "Peoples Democratic Party",
+  "wrong": [
+   "All Progressives Congress",
+   "Action Congress of Nigeria",
+   "All Nigeria Peoples Party"
+  ]
+ },
+ {
+  "q": "Who won the 2023 Nigerian presidential election, extending the All Progressives Congress's hold on the presidency?",
+  "correct": "Bola Tinubu",
+  "wrong": [
+   "Atiku Abubakar",
+   "Peter Obi",
+   "Rabiu Kwankwaso"
+  ]
+ },
+ {
+  "q": "Which Nigerian nationalist leader is often called the 'Zik of Africa' and served as the country's first President?",
+  "correct": "Nnamdi Azikiwe",
+  "wrong": [
+   "Obafemi Awolowo",
+   "Ahmadu Bello",
+   "Herbert Macaulay"
+  ]
+ },
+ {
+  "q": "Which Yoruba nationalist leader, Premier of the Western Region, is remembered for pioneering free primary education in Nigeria in the 1950s?",
+  "correct": "Obafemi Awolowo",
+  "wrong": [
+   "Nnamdi Azikiwe",
+   "Ahmadu Bello",
+   "Samuel Akintola"
+  ]
+ },
+ {
+  "q": "Which Northern leader held the title Sardauna of Sokoto and served as Premier of the Northern Region until his assassination in 1966?",
+  "correct": "Ahmadu Bello",
+  "wrong": [
+   "Abubakar Tafawa Balewa",
+   "Aminu Kano",
+   "Tafawa Balewa"
+  ]
+ },
+ {
+  "q": "Which Nigerian human rights lawyer and activist, known as 'Senior Advocate of the Masses', was a leading critic of military rule?",
+  "correct": "Gani Fawehinmi",
+  "wrong": [
+   "Ken Saro-Wiwa",
+   "Femi Falana",
+   "Beko Ransome-Kuti"
+  ]
+ },
+ {
+  "q": "Which historic 1977 raid by soldiers on Fela Kuti's commune in Lagos resulted in the death of his mother, Funmilayo Ransome-Kuti?",
+  "correct": "Kalakuta Republic raid",
+  "wrong": [
+   "Iva Valley massacre",
+   "Aba Women's Riot",
+   "Kano riots"
+  ]
+ },
+ {
+  "q": "Which pioneering Nigerian women's rights activist and mother of Fela Kuti led the Abeokuta Women's Union in the 1940s?",
+  "correct": "Funmilayo Ransome-Kuti",
+  "wrong": [
+   "Margaret Ekpo",
+   "Gambo Sawaba",
+   "Hajia Gambo Sawaba"
+  ]
+ },
+ {
+  "q": "Which prominent northern Nigerian women's rights and political activist campaigned against child marriage and for women's suffrage in the 1950s?",
+  "correct": "Gambo Sawaba",
+  "wrong": [
+   "Funmilayo Ransome-Kuti",
+   "Margaret Ekpo",
+   "Amina of Zazzau"
+  ]
+ },
+ {
+  "q": "Which Eastern Region politician and women's rights activist became one of the few female members of the House of Representatives in the 1950s?",
+  "correct": "Margaret Ekpo",
+  "wrong": [
+   "Funmilayo Ransome-Kuti",
+   "Gambo Sawaba",
+   "Janet Mokelu"
+  ]
+ },
+ {
+  "q": "Which Nigerian pediatrician and human rights activist, brother of Fela Kuti, was repeatedly arrested for opposing military rule?",
+  "correct": "Beko Ransome-Kuti",
+  "wrong": [
+   "Femi Falana",
+   "Gani Fawehinmi",
+   "Olikoye Ransome-Kuti"
+  ]
+ },
+ {
+  "q": "Which Nigerian doctor and public health reformer, another brother of Fela Kuti, served as federal Minister of Health in the 1980s?",
+  "correct": "Olikoye Ransome-Kuti",
+  "wrong": [
+   "Beko Ransome-Kuti",
+   "Femi Falana",
+   "Tam David-West"
+  ]
+ },
+ {
+  "q": "Which Nigerian state was the first to be created after the original regions, when Gowon split the country into 12 states in 1967?",
+  "correct": "There were 12 new states created simultaneously",
+  "wrong": [
+   "Lagos State alone",
+   "Only Rivers State",
+   "Only the Mid-West"
+  ]
+ },
+ {
+  "q": "In what year did Murtala Mohammed's government expand Nigeria from 12 to 19 states?",
+  "correct": "1976",
+  "wrong": [
+   "1967",
+   "1987",
+   "1991"
+  ]
+ },
+ {
+  "q": "In what year did Ibrahim Babangida's government create two additional states, bringing the total to 21?",
+  "correct": "1987",
+  "wrong": [
+   "1976",
+   "1991",
+   "1996"
+  ]
+ },
+ {
+  "q": "In what year did Ibrahim Babangida's government further expand Nigeria to 30 states?",
+  "correct": "1991",
+  "wrong": [
+   "1987",
+   "1996",
+   "1976"
+  ]
+ },
+ {
+  "q": "In what year did Sani Abacha's government create six more states, bringing Nigeria to its current total of 36 states?",
+  "correct": "1996",
+  "wrong": [
+   "1991",
+   "1999",
+   "1987"
+  ]
+ },
+ {
+  "q": "How many states does Nigeria currently have, following the last round of state creation under Sani Abacha in 1996?",
+  "correct": "36",
+  "wrong": [
+   "30",
+   "21",
+   "19"
+  ]
+ },
+ {
+  "q": "Which Nigerian territory, distinct from the 36 states, houses the country's capital city and is governed directly under federal administration?",
+  "correct": "Federal Capital Territory",
+  "wrong": [
+   "Lagos State",
+   "Abuja State",
+   "Federal District"
+  ]
+ },
+ {
+  "q": "In what year did Nigeria's federal capital officially move from Lagos to the newly built city of Abuja?",
+  "correct": "1991",
+  "wrong": [
+   "1976",
+   "1987",
+   "1999"
+  ]
+ },
+ {
+  "q": "Which architect and urban planner led the master plan design for the new capital city of Abuja in the 1970s?",
+  "correct": "International Planning Associates",
+  "wrong": [
+   "Kenzo Tange",
+   "Le Corbusier",
+   "Oscar Niemeyer"
+  ]
+ },
+ {
+  "q": "Which Nigerian city served as the national capital from the colonial era until the move to Abuja in 1991?",
+  "correct": "Lagos",
+  "wrong": [
+   "Ibadan",
+   "Kaduna",
+   "Enugu"
+  ]
+ },
+ {
+  "q": "Which body, established after the return to civilian rule, is responsible for organizing and supervising elections in Nigeria?",
+  "correct": "Independent National Electoral Commission",
+  "wrong": [
+   "Federal Electoral Commission",
+   "National Electoral Commission of Nigeria",
+   "Electoral Reform Committee"
+  ]
+ },
+ {
+  "q": "Which anti-corruption agency was established in Nigeria in 2003 to combat financial crimes such as advance-fee fraud?",
+  "correct": "Economic and Financial Crimes Commission",
+  "wrong": [
+   "Independent Corrupt Practices Commission",
+   "Code of Conduct Bureau",
+   "National Drug Law Enforcement Agency"
+  ]
+ },
+ {
+  "q": "Which anti-corruption commission, established in Nigeria in 2000, focuses specifically on bribery and corrupt practices among public officials?",
+  "correct": "Independent Corrupt Practices Commission",
+  "wrong": [
+   "Economic and Financial Crimes Commission",
+   "National Drug Law Enforcement Agency",
+   "Code of Conduct Bureau"
+  ]
+ },
+ {
+  "q": "Which post-independence economic boom, driven by rising crude oil prices in the 1970s, dramatically increased Nigeria's federal revenue?",
+  "correct": "The 1970s oil boom",
+  "wrong": [
+   "The Structural Adjustment Programme",
+   "Vision 2020",
+   "The green revolution"
+  ]
+ },
+ {
+  "q": "In which Nigerian village was the country's first commercially viable oil well discovered in 1956 by Shell-BP?",
+  "correct": "Oloibiri",
+  "wrong": [
+   "Bonny",
+   "Port Harcourt",
+   "Warri"
+  ]
+ },
+ {
+  "q": "Which armed militant group, active in the Niger Delta in the 2000s, targeted oil infrastructure while demanding greater resource control?",
+  "correct": "Movement for the Emancipation of the Niger Delta",
+  "wrong": [
+   "Boko Haram",
+   "Movement for the Survival of the Ogoni People",
+   "Niger Delta Congress"
+  ]
+ },
+ {
+  "q": "Which 2009 federal government program offered unconditional pardon and monetary support to Niger Delta militants who surrendered their weapons?",
+  "correct": "Presidential Amnesty Programme",
+  "wrong": [
+   "Operation Feed the Nation",
+   "War Against Indiscipline",
+   "National Rebirth"
+  ]
+ },
+ {
+  "q": "Which Islamist insurgent group, founded around 2002 in Maiduguri, launched a violent uprising in northeastern Nigeria from 2009 onward?",
+  "correct": "Boko Haram",
+  "wrong": [
+   "Movement for the Emancipation of the Niger Delta",
+   "Ansaru",
+   "Islamic Movement of Nigeria"
+  ]
+ },
+ {
+  "q": "Which founder of Boko Haram was killed in police custody in 2009, an event that intensified the group's insurgency?",
+  "correct": "Mohammed Yusuf",
+  "wrong": [
+   "Abubakar Shekau",
+   "Ibrahim Bashir",
+   "Mamman Nur"
+  ]
+ },
+ {
+  "q": "In 2018, Boko Haram's splinter faction abducted over 100 schoolgirls from a town in Yobe State; which town was this?",
+  "correct": "Dapchi",
+  "wrong": [
+   "Chibok",
+   "Damaturu",
+   "Gwoza"
+  ]
+ },
+ {
+  "q": "Which international campaign, using a hashtag, drew global attention to the 2014 Chibok schoolgirls' kidnapping?",
+  "correct": "#BringBackOurGirls",
+  "wrong": [
+   "#EndSARS",
+   "#SaveOurGirls",
+   "#FreeChibok"
+  ]
+ },
+ {
+  "q": "In which year did the widespread #EndSARS protests erupt across Nigeria against police brutality?",
+  "correct": "2020",
+  "wrong": [
+   "2018",
+   "2015",
+   "2012"
+  ]
+ },
+ {
+  "q": "What does the acronym SARS, the disbanded police unit at the center of the 2020 #EndSARS protests, stand for?",
+  "correct": "Special Anti-Robbery Squad",
+  "wrong": [
+   "Special Armed Response Squad",
+   "Security and Riot Suppression",
+   "State Anti-Robbery Service"
+  ]
+ },
+ {
+  "q": "At which Lagos location did soldiers open fire on #EndSARS protesters on 20 October 2020, an event that became a defining moment of the protests?",
+  "correct": "Lekki Toll Gate",
+  "wrong": [
+   "Alausa Secretariat",
+   "Third Mainland Bridge",
+   "Tafawa Balewa Square"
+  ]
+ },
+ {
+  "q": "Which agency, formed to replace the disbanded SARS unit, was announced by the Nigerian police in the wake of the 2020 protests?",
+  "correct": "Special Weapons and Tactics team (SWAT)",
+  "wrong": [
+   "Rapid Response Squad",
+   "Federal Special Anti-Robbery Squad",
+   "Counter Terrorism Unit"
+  ]
+ },
+ {
+  "q": "Which currency did Nigeria adopt in 1973, replacing the Nigerian pound as the country's official currency?",
+  "correct": "Naira",
+  "wrong": [
+   "Nigerian dollar",
+   "Kobo",
+   "Nigerian franc"
+  ]
+ },
+ {
+  "q": "Which economic policy, introduced by Ibrahim Babangida's regime, floated the naira and liberalized the Nigerian economy under IMF pressure?",
+  "correct": "Structural Adjustment Programme",
+  "wrong": [
+   "War Against Indiscipline",
+   "Operation Feed the Nation",
+   "Vision 2010"
+  ]
+ },
+ {
+  "q": "Which agricultural self-sufficiency campaign was launched by Olusegun Obasanjo's military government in 1976?",
+  "correct": "Operation Feed the Nation",
+  "wrong": [
+   "Green Revolution",
+   "War Against Indiscipline",
+   "Directorate of Food, Roads and Rural Infrastructure"
+  ]
+ },
+ {
+  "q": "Which rural development agency, created under Ibrahim Babangida, focused on building roads and infrastructure in the countryside?",
+  "correct": "Directorate of Food, Roads and Rural Infrastructure",
+  "wrong": [
+   "Operation Feed the Nation",
+   "National Directorate of Employment",
+   "MAMSER"
+  ]
+ },
+ {
+  "q": "In which Nigerian city was FESTAC '77 primarily held?",
+  "correct": "Lagos",
+  "wrong": [
+   "Abuja",
+   "Ibadan",
+   "Kaduna"
+  ]
+ },
+ {
+  "q": "Which Nigerian city hosted the 2003 Commonwealth Heads of Government Meeting, a major diplomatic gathering?",
+  "correct": "Abuja",
+  "wrong": [
+   "Lagos",
+   "Port Harcourt",
+   "Kano"
+  ]
+ },
+ {
+  "q": "Which regional peacekeeping force, largely led by Nigeria, intervened in Liberia's civil war starting in 1990?",
+  "correct": "ECOMOG",
+  "wrong": [
+   "African Union Mission",
+   "United Nations Peacekeeping Force",
+   "West African Standby Force"
+  ]
+ },
+ {
+  "q": "Which regional organization, founded in 1975 and headquartered in Abuja, promotes economic integration among West African states?",
+  "correct": "Economic Community of West African States (ECOWAS)",
+  "wrong": [
+   "African Union",
+   "Organisation of African Unity",
+   "West African Monetary Zone"
+  ]
+ },
+ {
+  "q": "In what year was Nigeria one of the founding members of the Organisation of African Unity, the forerunner of the African Union?",
+  "correct": "1963",
+  "wrong": [
+   "1960",
+   "1975",
+   "1999"
+  ]
+ },
+ {
+  "q": "Which Nigerian city hosted the first All-Africa Games in 1973?",
+  "correct": "Lagos",
+  "wrong": [
+   "Abuja",
+   "Ibadan",
+   "Enugu"
+  ]
+ },
+ {
+  "q": "Which historic 1914 speech-related event marked the formal ceremony amalgamating Northern and Southern Nigeria under Lord Lugard?",
+  "correct": "The Amalgamation ceremony in Lagos",
+  "wrong": [
+   "The Berlin Conference",
+   "The Aburi Accord",
+   "The Lyttelton Conference"
+  ]
+ },
+ {
+  "q": "Which British colonial figure's wife is credited with coining the name 'Nigeria' in an 1897 newspaper article?",
+  "correct": "Flora Shaw",
+  "wrong": [
+   "Mary Kingsley",
+   "Margery Perham",
+   "Constance Larymore"
+  ]
+ },
+ {
+  "q": "Which river gave rise to the name 'Nigeria', referencing the major waterway running through the country?",
+  "correct": "River Niger",
+  "wrong": [
+   "River Benue",
+   "River Cross",
+   "River Kaduna"
+  ]
+ },
+ {
+  "q": "Which major Nigerian river joins the Niger at Lokoja, a confluence historically significant to trade and colonial administration?",
+  "correct": "River Benue",
+  "wrong": [
+   "River Cross",
+   "River Osun",
+   "River Kaduna"
+  ]
+ },
+ {
+  "q": "Which Nigerian town, situated at the confluence of the Niger and Benue rivers, served as an early colonial administrative center?",
+  "correct": "Lokoja",
+  "wrong": [
+   "Onitsha",
+   "Yola",
+   "Jebba"
+  ]
+ },
+ {
+  "q": "Which British explorer is credited with being among the first Europeans to trace the course of the lower Niger River in the 1830s?",
+  "correct": "Richard Lander",
+  "wrong": [
+   "Mungo Park",
+   "Hugh Clapperton",
+   "Heinrich Barth"
+  ]
+ },
+ {
+  "q": "Which Scottish explorer died near Bussa on the Niger River in 1806 while attempting to trace its course?",
+  "correct": "Mungo Park",
+  "wrong": [
+   "Richard Lander",
+   "Hugh Clapperton",
+   "Heinrich Barth"
+  ]
+ },
+ {
+  "q": "Which title was given to the traditional ruler of the Igbo town of Onitsha, distinct from other Igbo leadership titles?",
+  "correct": "Obi of Onitsha",
+  "wrong": [
+   "Eze Nri",
+   "Igwe of Nri",
+   "Amanyanabo"
+  ]
+ },
+ {
+  "q": "Which Christian missionary group established one of the earliest mission stations in Abeokuta in the 1840s, aiding literacy and education?",
+  "correct": "Church Missionary Society",
+  "wrong": [
+   "Roman Catholic Mission",
+   "Methodist Missionary Society",
+   "Baptist Mission Board"
+  ]
+ },
+ {
+  "q": "Which Nigerian town was the birthplace of Samuel Ajayi Crowther, who was captured and sold into slavery before later becoming a bishop?",
+  "correct": "Osogun",
+  "wrong": [
+   "Abeokuta",
+   "Ibadan",
+   "Badagry"
+  ]
+ },
+ {
+  "q": "Which Nigerian coastal town is historically significant as a major point of departure for enslaved Africans during the transatlantic slave trade?",
+  "correct": "Badagry",
+  "wrong": [
+   "Bonny",
+   "Calabar",
+   "Warri"
+  ]
+ },
+ {
+  "q": "In what year did Britain formally abolish the transatlantic slave trade within its empire, leading to naval patrols off the West African coast?",
+  "correct": "1807",
+  "wrong": [
+   "1833",
+   "1861",
+   "1885"
+  ]
+ },
+ {
+  "q": "Which 1885 international conference formalized the European partition of Africa, setting the stage for Britain's claims over Nigerian territory?",
+  "correct": "Berlin Conference",
+  "wrong": [
+   "Lancaster House Conference",
+   "Congress of Vienna",
+   "Treaty of Versailles"
+  ]
+ },
+ {
+  "q": "Which Nigerian region did Ahmadu Bello's Sardauna title traditionally belong to, denoting a senior Fulani chieftaincy role?",
+  "correct": "Sokoto",
+  "wrong": [
+   "Kano",
+   "Katsina",
+   "Zaria"
+  ]
+ },
+ {
+  "q": "Which prominent Nigerian civil servant became the country's first indigenous head of the federal civil service in the 1960s?",
+  "correct": "Simeon Adebo",
+  "wrong": [
+   "Allison Ayida",
+   "Philip Asiodu",
+   "Ahmed Joda"
+  ]
+ },
+ {
+  "q": "Which document, adopted in 1914, formally established the amalgamated Colony and Protectorate of Nigeria under a single administration?",
+  "correct": "Amalgamation of 1914",
+  "wrong": [
+   "Richards Constitution",
+   "Berlin Act",
+   "Anglo-French Convention"
+  ]
+ },
+ {
+  "q": "Which Nigerian region's traditional aristocracy, the emirate system, was largely preserved intact under British indirect rule?",
+  "correct": "Northern Nigeria",
+  "wrong": [
+   "Eastern Nigeria",
+   "Western Nigeria",
+   "Mid-Western Nigeria"
+  ]
+ },
+ {
+  "q": "Which northern-based political party, led by Aminu Kano, championed a socialist and populist platform during the Second Republic?",
+  "correct": "Peoples Redemption Party",
+  "wrong": [
+   "National Party of Nigeria",
+   "Nigerian Peoples Party",
+   "Unity Party of Nigeria"
+  ]
+ },
+ {
+  "q": "Which political party, led by Nnamdi Azikiwe, contested the 1979 and 1983 elections during the Second Republic?",
+  "correct": "Nigerian Peoples Party",
+  "wrong": [
+   "National Party of Nigeria",
+   "Unity Party of Nigeria",
+   "Peoples Redemption Party"
+  ]
+ },
+ {
+  "q": "Which Nigerian military officer led the failed coup attempt against Ibrahim Babangida in April 1990?",
+  "correct": "Gideon Orkar",
+  "wrong": [
+   "Mamman Vatsa",
+   "Sani Abacha",
+   "Domkat Bali"
+  ]
+ },
+ {
+  "q": "Which Nigerian army general and poet was executed in 1986 after being convicted of plotting a coup against Ibrahim Babangida?",
+  "correct": "Mamman Vatsa",
+  "wrong": [
+   "Gideon Orkar",
+   "Domkat Bali",
+   "Aliyu Mohammed Gusau"
+  ]
+ },
+ {
+  "q": "Which former Nigerian head of state, Ibrahim Babangida, is popularly nicknamed 'IBB' or the 'Evil Genius' for his political maneuvering?",
+  "correct": "Ibrahim Babangida",
+  "wrong": [
+   "Sani Abacha",
+   "Muhammadu Buhari",
+   "Yakubu Gowon"
+  ]
+ },
+ {
+  "q": "Which historic June 12, 1993 election is widely regarded by many Nigerians as the country's freest and fairest presidential vote?",
+  "correct": "The 1993 presidential election",
+  "wrong": [
+   "The 1979 presidential election",
+   "The 1983 presidential election",
+   "The 1999 presidential election"
+  ]
+ },
+ {
+  "q": "In 2018, President Muhammadu Buhari conferred a posthumous national honor on Moshood Abiola; which title was it?",
+  "correct": "Grand Commander of the Federal Republic (GCFR)",
+  "wrong": [
+   "Grand Commander of the Order of the Niger",
+   "Commander of the Federal Republic",
+   "Officer of the Federal Republic"
+  ]
+ },
+ {
+  "q": "Which historic 1999 truth-seeking body, chaired by Justice Chukwudifu Oputa, investigated human rights abuses under past military governments?",
+  "correct": "Oputa Panel",
+  "wrong": [
+   "Justice Reform Commission",
+   "National Judicial Council",
+   "Human Rights Violations Panel"
+  ]
+ },
+ {
+  "q": "Which Nigerian Chief Justice, in office during the early 2000s, is remembered for judicial reforms in the Fourth Republic?",
+  "correct": "Mohammed Uwais",
+  "wrong": [
+   "Idris Kutigi",
+   "Aloysius Katsina-Alu",
+   "Dahiru Musdapher"
+  ]
+ },
+ {
+  "q": "Which Nigerian state governor was impeached and removed in 2006 amid allegations of corruption during Olusegun Obasanjo's presidency?",
+  "correct": "Diepreye Alamieyeseigha",
+  "wrong": [
+   "James Ibori",
+   "Chimaroke Nnamani",
+   "Orji Uzor Kalu"
+  ]
+ },
+ {
+  "q": "Which Nigerian activist and writer, executed alongside Ken Saro-Wiwa in 1995, was among the 'Ogoni Nine'?",
+  "correct": "John Kpuinen",
+  "wrong": [
+   "Beko Ransome-Kuti",
+   "Gani Fawehinmi",
+   "Isaac Boro"
+  ]
+ },
+ {
+  "q": "Which twelve-day 1966 revolt, led by Isaac Boro in the Niger Delta, sought greater autonomy for the region before the civil war began?",
+  "correct": "Niger Delta Peoples Volunteer Force uprising",
+  "wrong": [
+   "Aba Women's Riot",
+   "Tiv riots",
+   "Kano riots"
+  ]
+ },
+ {
+  "q": "Which prominent Fulani politician and Middle Belt leader, Joseph Tarka, championed the creation of the Benue-Plateau State in the 1960s?",
+  "correct": "Joseph Tarka",
+  "wrong": [
+   "Ahmadu Bello",
+   "Aminu Kano",
+   "J.S. Tarka's rival"
+  ]
+ },
+ {
+  "q": "Which Middle Belt political movement, active in the 1950s, campaigned for a separate region distinct from the dominant Northern Region?",
+  "correct": "United Middle Belt Congress",
+  "wrong": [
+   "Northern Elements Progressive Union",
+   "Northern Peoples Congress",
+   "Middle Belt Peoples Party"
+  ]
+ },
+ {
+  "q": "Which daughter of Usman dan Fodio became a noted Islamic scholar and poet, contributing to the intellectual legacy of the Sokoto Caliphate?",
+  "correct": "Nana Asma'u",
+  "wrong": [
+   "Amina of Zazzau",
+   "Gambo Sawaba",
+   "Hauwa Ibrahim"
+  ]
+ },
+ {
+  "q": "Which system of women's education, founded by Nana Asma'u in the 19th-century Sokoto Caliphate, trained female teachers to spread literacy?",
+  "correct": "Yan Taru movement",
+  "wrong": [
+   "Qadiriyya school system",
+   "Tijaniyya brotherhood",
+   "Ilmi network"
+  ]
+ },
+ {
+  "q": "Which rival Sufi brotherhood gained increasing influence in Northern Nigeria during the 19th and 20th centuries, competing with the Qadiriyya?",
+  "correct": "Tijaniyya",
+  "wrong": [
+   "Qadiriyya",
+   "Mouridiyya",
+   "Sanusiyya"
+  ]
+ },
+ {
+  "q": "Which emirate, part of the Sokoto Caliphate, was historically one of the largest and most populous, centered in present-day Kano State?",
+  "correct": "Kano Emirate",
+  "wrong": [
+   "Zaria Emirate",
+   "Katsina Emirate",
+   "Gwandu Emirate"
+  ]
+ },
+ {
+  "q": "Which twin emirate, established alongside Sokoto after the jihad, governed the western territories of the caliphate under a separate Emir?",
+  "correct": "Gwandu Emirate",
+  "wrong": [
+   "Kano Emirate",
+   "Zaria Emirate",
+   "Bauchi Emirate"
+  ]
+ },
+ {
+  "q": "Which relative of Usman dan Fodio was appointed Emir of Gwandu to oversee the western half of the Sokoto Caliphate?",
+  "correct": "Abdullahi dan Fodio",
+  "wrong": [
+   "Muhammadu Bello",
+   "Ahmadu Bello",
+   "Attahiru I"
+  ]
+ },
+ {
+  "q": "Which historic battle in 1903 marked the final British conquest of the Sokoto Caliphate?",
+  "correct": "Battle of Sokoto",
+  "wrong": [
+   "Battle of Bida",
+   "Battle of Kano",
+   "Battle of Burmi"
+  ]
+ },
+ {
+  "q": "Which decisive 1903 battle saw Sultan Attahiru I killed while fleeing British forces after the fall of Sokoto?",
+  "correct": "Battle of Burmi",
+  "wrong": [
+   "Battle of Sokoto",
+   "Battle of Kano",
+   "Battle of Bida"
+  ]
+ },
+ {
+  "q": "Which Fulani-ruled kingdom in the Niger-Benue confluence area put up notable resistance before falling to British forces in 1901?",
+  "correct": "Nupe Kingdom (Bida)",
+  "wrong": [
+   "Kano Emirate",
+   "Ilorin Emirate",
+   "Adamawa Emirate"
+  ]
+ },
+ {
+  "q": "Which Yoruba-speaking emirate, unusually part of the Sokoto Caliphate despite its Yoruba population, was based in present-day Kwara State?",
+  "correct": "Ilorin Emirate",
+  "wrong": [
+   "Oyo Kingdom",
+   "Nupe Kingdom",
+   "Borgu Kingdom"
+  ]
+ },
+ {
+  "q": "Which emirate in the eastern Sokoto Caliphate, centered in present-day Adamawa State, was ruled by the Lamido title?",
+  "correct": "Adamawa Emirate",
+  "wrong": [
+   "Kano Emirate",
+   "Bauchi Emirate",
+   "Gombe Emirate"
+  ]
+ },
+ {
+  "q": "Which title, distinct from Emir, was used for the traditional ruler of the Adamawa Emirate?",
+  "correct": "Lamido",
+  "wrong": [
+   "Sarki",
+   "Sultan",
+   "Shehu"
+  ]
+ },
+ {
+  "q": "Which title is used for the traditional ruler of Bornu, distinct from the older 'Mai' title once the dynasty changed in the 19th century?",
+  "correct": "Shehu of Borno",
+  "wrong": [
+   "Mai of Borno",
+   "Lamido of Borno",
+   "Emir of Borno"
+  ]
+ },
+ {
+  "q": "Which 19th-century Kanembu scholar and warlord, Muhammad al-Kanemi, effectively took power in Bornu and founded a new ruling dynasty?",
+  "correct": "Muhammad al-Kanemi",
+  "wrong": [
+   "Mai Idris Alooma",
+   "Rabih az-Zubayr",
+   "Usman dan Fodio"
+  ]
+ },
+ {
+  "q": "Which Sudanese warlord invaded and briefly conquered the Bornu Empire in the 1890s before being defeated by French forces?",
+  "correct": "Rabih az-Zubayr",
+  "wrong": [
+   "Muhammad al-Kanemi",
+   "Samori Toure",
+   "Usman dan Fodio"
+  ]
+ },
+ {
+  "q": "Which title is used for the traditional ruler of the Ijebu Kingdom?",
+  "correct": "Awujale",
+  "wrong": [
+   "Alaafin",
+   "Oba of Egbaland",
+   "Owa of Ijesa"
+  ]
+ },
+ {
+  "q": "Which confederation of Yoruba communities, centered in Abeokuta, formed in the 19th century as a defensive alliance during the Yoruba civil wars?",
+  "correct": "Egba United Government",
+  "wrong": [
+   "Ibadan Confederacy",
+   "Ijebu Kingdom",
+   "Ekitiparapo Confederacy"
+  ]
+ },
+ {
+  "q": "Which 1878-1893 Yoruba conflict, also called the Ekitiparapo War, pitted an alliance of Ekiti and Ijesa forces against Ibadan's expansion?",
+  "correct": "Kiriji War",
+  "wrong": [
+   "Egba wars",
+   "Owu War",
+   "Jalumi War"
+  ]
+ },
+ {
+  "q": "Which early 19th-century Yoruba war led to the destruction of the once-powerful town of Owu, contributing to the wider Yoruba civil wars?",
+  "correct": "Owu War",
+  "wrong": [
+   "Kiriji War",
+   "Jalumi War",
+   "Egba wars"
+  ]
+ },
+ {
+  "q": "Which title is held by the traditional ruler of the Benin Kingdom's chief hereditary chiefs council, second in seniority to the Oba?",
+  "correct": "Iyase",
+  "wrong": [
+   "Uzama",
+   "Ezomo",
+   "Oliha"
+  ]
+ },
+ {
+  "q": "Which hereditary council of kingmakers in the Benin Kingdom has historically played a central role in selecting and installing a new Oba?",
+  "correct": "Uzama Nihinron",
+  "wrong": [
+   "Ogboni",
+   "Oyo Mesi",
+   "Iyase Council"
+  ]
+ },
+ {
+  "q": "Which guild in Benin City was historically responsible for producing the kingdom's famous bronze plaques and sculptures under royal patronage?",
+  "correct": "Igun Eronmwon (bronze casters' guild)",
+  "wrong": [
+   "Ogboni society",
+   "Iyase council",
+   "Owina n'Ido guild"
+  ]
+ },
+ {
+  "q": "Which Nigerian historian and scholar is well known for extensive research and writing on the pre-colonial history of the Sokoto Caliphate?",
+  "correct": "Murray Last",
+  "wrong": [
+   "Toyin Falola",
+   "J.F. Ade Ajayi",
+   "Bolanle Awe"
+  ]
+ },
+ {
+  "q": "Which prominent Nigerian historian, a professor at Ibadan, wrote extensively on 19th-century Yoruba history and missionary activity?",
+  "correct": "J.F. Ade Ajayi",
+  "wrong": [
+   "Toyin Falola",
+   "Murray Last",
+   "Obaro Ikime"
+  ]
+ },
+ {
+  "q": "Which prolific Nigerian-born historian, based for decades at American universities, has authored dozens of books on Nigerian and African history?",
+  "correct": "Toyin Falola",
+  "wrong": [
+   "J.F. Ade Ajayi",
+   "Obaro Ikime",
+   "Murray Last"
+  ]
+ },
+ {
+  "q": "Which acclaimed Nigerian novel, published in 1958 by Chinua Achebe, depicts the impact of colonialism on a fictional Igbo village leader?",
+  "correct": "Things Fall Apart",
+  "wrong": [
+   "Arrow of God",
+   "No Longer at Ease",
+   "A Man of the People"
+  ]
+ },
+ {
+  "q": "Which Chinua Achebe novel, a sequel of sorts to Things Fall Apart, follows a colonial-era Igbo village priest resisting British administration?",
+  "correct": "Arrow of God",
+  "wrong": [
+   "Things Fall Apart",
+   "No Longer at Ease",
+   "Anthills of the Savannah"
+  ]
+ },
+ {
+  "q": "Which memoir, published by Chinua Achebe shortly before his death in 2012, gives his personal account of the Nigerian Civil War?",
+  "correct": "There Was a Country",
+  "wrong": [
+   "Things Fall Apart",
+   "Arrow of God",
+   "A Man of the People"
+  ]
+ },
+ {
+  "q": "Which acclaimed Nigerian poet was killed in 1967 while fighting for Biafra during the civil war?",
+  "correct": "Christopher Okigbo",
+  "wrong": [
+   "Wole Soyinka",
+   "J.P. Clark",
+   "Gabriel Okara"
+  ]
+ },
+ {
+  "q": "In what year did Wole Soyinka become the first African writer to win the Nobel Prize in Literature?",
+  "correct": "1986",
+  "wrong": [
+   "1976",
+   "1991",
+   "1960"
+  ]
+ },
+ {
+  "q": "Which historic 1960 play by Wole Soyinka was performed to mark Nigeria's independence celebrations?",
+  "correct": "A Dance of the Forests",
+  "wrong": [
+   "Death and the King's Horseman",
+   "The Lion and the Jewel",
+   "Kongi's Harvest"
+  ]
+ }
+]

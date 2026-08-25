@@ -190,25 +190,25 @@ Only the OWNER and global ADMINS can run `/promote`, `/demote`, `/ban`, `/unban`
 
 ## Trivia categories
 
-Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 29,557 questions total** (counts via `node data/check_sizes.mjs`):
+Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 30,977 questions total** (counts via `node data/check_sizes.mjs`):
 
 | Category | Questions | Category | Questions |
 |----------|-----------|----------|-----------|
-| football | 3,480 | animals | 845 |
-| fpl | 2,644 | mythology | 842 |
-| got | 1,195 | videogames | 837 |
-| sports | 1,053 | general | 836 |
-| music | 1,053 | food | 835 |
-| history | 1,042 | health | 834 |
-| movies | 1,041 | pidgin-english | 833 |
-| science | 1,039 | vehicles | 832 |
-| naruto | 1,039 | anime | 832 |
-| geography | 1,031 | nigerian-entertainment | 615 |
-| bible | 1,030 | tv-shows | 613 |
-| cartoons | 1,028 | nigerian-history | 593 |
+| football | 3,480 | tech-gadgets | 851 |
+| fpl | 2,644 | animals | 845 |
+| got | 1,195 | mythology | 842 |
+| sports | 1,053 | videogames | 837 |
+| music | 1,053 | general | 836 |
+| history | 1,042 | nigerian-entertainment | 836 |
+| movies | 1,041 | food | 835 |
+| science | 1,039 | health | 834 |
+| naruto | 1,039 | pidgin-english | 833 |
+| tv-shows | 1,033 | vehicles | 832 |
+| geography | 1,031 | anime | 832 |
+| bible | 1,030 | nigerian-history | 832 |
+| cartoons | 1,028 | nigerian-food | 832 |
 | tech | 982 | art | 300 |
-| nigerian-music | 858 | nigerian-food | 292 |
-| tech-gadgets | 851 | web3 | 252 |
+| nigerian-music | 858 | web3 | 252 |
 
 `football` and `fpl` cover 2024–2026, including the 2026 World Cup and 2025/26 season — see `data/football/` for the generation pipeline.
 
