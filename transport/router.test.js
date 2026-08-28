@@ -1037,7 +1037,7 @@ const tests = [
     },
   },
   {
-    name: 'a trivia-banned user can still play word chain: their word still reaches the wcg game',
+    name: 'a ban covers every mode: a banned user cannot join or submit to word chain',
     fn: async () => {
       const sent = []
       const games = new Map()
@@ -1063,7 +1063,93 @@ const tests = [
       game.submit = (...args) => { submitCalls++; return originalSubmit(...args) }
 
       await router.handleMessage({ jid, sender: `${banned}@s.whatsapp.net`, senderPn: `${banned}@s.whatsapp.net`, text: 'apple', isGroup: true }, 60_100)
-      assert.equal(submitCalls, 1, 'a trivia ban must not block a word-chain submission from reaching the game')
+      assert.equal(submitCalls, 0, 'a ban must block submissions in every mode, not just trivia')
+      db.close()
+    },
+  },
+  {
+    // The original hole: the tournament's submit() ignores non-contestants, but
+    // `join` had no ban check, so a banned player became a contestant and then
+    // legitimately played. Guarding submit alone would not have caught this.
+    name: 'a ban covers tournaments: a banned user cannot join the bracket',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const bank = {
+        categories: () => ['general'],
+        pick: () => [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }],
+      }
+      const router = createRouter({
+        dict: { has: () => true, randomLetter: () => 'a' }, games, enqueue: (j, m) => sent.push(m),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, bank, resolvePn: () => undefined,
+      })
+      const jid = 'g-ban-tourney@g.us'
+      const banned = '2223334444'
+      db.addBan(jid, banned)
+
+      await router.handleMessage({ jid, sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: `${OWNER_NUMBER}@s.whatsapp.net`, text: '/tourney start', isGroup: true }, 0)
+
+      const game = games.get(jid)
+      assert.ok(game, 'tournament should have started')
+
+      let joinCalls = 0
+      const originalJoin = game.join.bind(game)
+      game.join = (...args) => { joinCalls++; return originalJoin(...args) }
+
+      await router.handleMessage({ jid, sender: `${banned}@s.whatsapp.net`, senderPn: `${banned}@s.whatsapp.net`, text: 'join', isGroup: true }, 100)
+      assert.equal(joinCalls, 0, 'a banned player must not reach the tournament lobby')
+      db.close()
+    },
+  },
+  {
+    // The banned player is a GROUP ADMIN here on purpose: admins are the only
+    // ones who can start games at all, so this is the case that proves a ban
+    // outranks admin rights rather than being masked by the admin gate.
+    name: 'a banned group admin cannot start any mode, and gets told why',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const banned = '2223334444'
+      const router = createRouter({
+        dict: { has: () => true, randomLetter: () => 'a' }, games, enqueue: (j, m) => sent.push(m),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [`${banned}@s.whatsapp.net`], db, resolvePn: () => undefined,
+      })
+      const jid = 'g-ban-start@g.us'
+      db.addBan(jid, banned)
+
+      // Each command is spaced past CMD_WINDOW_MS (30s): the per-sender command
+      // rate limiter drops silently after 5 in a window, which would otherwise
+      // look exactly like the ban check failing to fire.
+      const cmds = ['/wcg', '/scramble start', '/logo start', '/flag start', '/riddle', '/tourney start']
+      for (const [i, cmd] of cmds.entries()) {
+        sent.length = 0
+        await router.handleMessage({ jid, sender: `${banned}@s.whatsapp.net`, senderPn: `${banned}@s.whatsapp.net`, text: cmd, isGroup: true }, i * 60_000)
+        assert.equal(games.has(jid), false, `${cmd} must not start a game for a banned player`)
+        assert.match(sent[0]?.text ?? '', /banned from games/i, `${cmd} should explain the ban`)
+      }
+      db.close()
+    },
+  },
+  {
+    name: 'a ban does not block reading stats',
+    fn: async () => {
+      const sent = []
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: { has: () => true, randomLetter: () => 'a' }, games: new Map(), enqueue: (j, m) => sent.push(m),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      const jid = 'g-ban-stats@g.us'
+      const banned = '2223334444'
+      db.addBan(jid, banned)
+
+      await router.handleMessage({ jid, sender: `${banned}@s.whatsapp.net`, senderPn: `${banned}@s.whatsapp.net`, text: '/trivia stats', isGroup: true }, 0)
+      assert.doesNotMatch(sent[0]?.text ?? '', /banned from games/i, 'a leaderboard is read-only — a ban should not hide it')
       db.close()
     },
   },

@@ -31,6 +31,12 @@ try {
 
 const MODE_NAMES = new Set(['easy', 'medium', 'hard'])
 
+// Commands a banned player cannot use. Keep every playable mode listed here —
+// a mode missing from this set is a mode a banned player can still start.
+const GAME_COMMANDS = new Set([
+  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney',
+])
+
 // rejected events (engine/game.js) don't carry the required letter/minLength, only
 // the most recent `turn` event does. sendEvents is the single funnel both router.js
 // (submit) and index.js's scheduler (timeouts) push turn events through, so caching
@@ -423,16 +429,25 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     return isAdmin({ sender: pn, isGroup: false, groupAdmins: [] }) || isAdmin({ sender, isGroup: false, groupAdmins: [] })
   }
 
+  // A ban covers every mode, not just trivia — the table is still named
+  // trivia_bans for backwards compatibility with existing rows.
+  //
   // Bans are stored as bare phone numbers; sender may arrive as an @lid JID,
   // so resolve to phone-form the same way isBotAdminEither does.
-  function isTriviaBanned(jid, sender, senderPn) {
+  function isBanned(jid, sender, senderPn) {
     const num = toNumber(senderPn ?? resolvePn(sender))
     return (db.bans?.(jid) ?? []).includes(num)
   }
 
   // Starting a game is now admin-only: group admins, /promote'd bot admins, the
   // OWNER, or a global ADMIN. Everyone can still play, answer and read stats.
+  //
+  // The ban check lives here rather than in each start* function because every
+  // mode funnels through this one call — a new mode is banned-proof by default
+  // instead of needing to remember its own check, which is how the tournament
+  // hole appeared in the first place.
   async function mayStartGame(jid, sender, senderPn, isGroup) {
+    if (isBanned(jid, sender, senderPn)) return false
     const groupAdmins = await groupAdminsFor(jid, isGroup)
     return isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid) || isOwnerOrGlobalAdmin(sender, senderPn)
   }
@@ -530,10 +545,9 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       enqueue(jid, { text: `Trivia is unavailable — no question bank loaded.`, mentions: [], kind: 'misc' })
       return
     }
-    if (isTriviaBanned(jid, sender, senderPn)) {
-      enqueue(jid, { text: `You're banned from trivia here.`, mentions: [], kind: 'misc' })
-      return
-    }
+    // Bans are enforced for every mode at the handleCommand entry point and
+    // again in mayStartGame, so there is no trivia-specific check here.
+    //
     // Group admins are subject to this too — otherwise, with starts already
     // restricted to admins, the cooldown would never apply to anyone.
     const endedAt = lastTriviaEnd.get(jid)
@@ -854,6 +868,13 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
+    // A ban blocks every game command, not just /trivia. Reading a leaderboard
+    // is harmless, so `<mode> stats` stays open — the ban is about playing.
+    if (GAME_COMMANDS.has(cmd) && (args[0] ?? '').toLowerCase() !== 'stats' && isBanned(jid, sender, senderPn)) {
+      enqueue(jid, { text: `You're banned from games here.`, mentions: [], kind: 'misc' })
+      return
+    }
+
     if (cmd === 'help') {
       const groupAdmins = await groupAdminsFor(jid, isGroup)
       const isAdmin = isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)
@@ -1068,9 +1089,9 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       if (cmd === 'bans') {
         const list = db.bans(jid)
         if (list.length === 0) {
-          enqueue(jid, { text: `No one is banned from trivia here.`, mentions: [], kind: 'misc' })
+          enqueue(jid, { text: `No one is banned here.`, mentions: [], kind: 'misc' })
         } else {
-          enqueue(jid, { text: `*Banned from trivia:*\n${list.map((n) => `@${n}`).join('\n')}`, mentions: list.map((n) => `${n}@s.whatsapp.net`), kind: 'misc' })
+          enqueue(jid, { text: `*Banned from games:*\n${list.map((n) => `@${n}`).join('\n')}`, mentions: list.map((n) => `${n}@s.whatsapp.net`), kind: 'misc' })
         }
         return
       }
@@ -1081,7 +1102,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
       if (cmd === 'ban') {
         const added = db.addBan(jid, target)
-        enqueue(jid, { text: added ? `Banned @${target} from trivia.` : `@${target} is already banned.`, mentions: [`${target}@s.whatsapp.net`], kind: 'misc' })
+        enqueue(jid, { text: added ? `Banned @${target} from games.` : `@${target} is already banned.`, mentions: [`${target}@s.whatsapp.net`], kind: 'misc' })
       } else {
         const removed = db.delBan(jid, target)
         enqueue(jid, { text: removed ? `Unbanned @${target}.` : `@${target} is not banned.`, mentions: [`${target}@s.whatsapp.net`], kind: 'misc' })
@@ -1368,26 +1389,32 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
 
       const trimmed = text.trim()
       let events = []
-      if (trimmed.toLowerCase() === 'join') {
+      // One ban check for every path below. A banned player must not be able to
+      // join a lobby either: the tournament's own submit() ignores
+      // non-contestants, but joining is exactly what made them a contestant,
+      // so gating submit alone left the hole open.
+      const banned = isBanned(jid, sender, senderPn)
+
+      if (banned) {
+        // Silently ignored rather than answered — a ban that argues back every
+        // time the player types gives them a way to spam the group.
+      } else if (trimmed.toLowerCase() === 'join') {
         events = game.join(sender, now)
       } else if (gameTypes.get(jid) === 'tournament') {
-        // Tournament states are registering/awaiting/match/over, not 'playing' —
-        // its own submit() already ignores non-contestants and phases outside
-        // 'match' silently, so no banned-player check is needed here.
+        // Tournament states are registering/awaiting/match/over, not 'playing'.
         if (game.state === 'match' && trimmed.length > 0 && !/\s/.test(trimmed)) {
           events = game.submit(sender, trimmed, now)
         }
       } else if ((game.state === 'playing' || (gameTypes.get(jid) === 'riddle' && game.state === 'active')) && trimmed.length > 0) {
         const type = gameTypes.get(jid)
-        
+
         // Single-word games (Word Chain and Scramble) drop multi-word messages entirely.
         // This prevents the bot from spamming "Not a word" in response to normal group
         // conversation while a game is running. Logo Quiz and Trivia answers can contain spaces.
         if (/\s/.test(trimmed) && (type === 'wcg' || type === 'scramble')) {
           // ignore silently
         } else {
-          const banned = type === 'trivia' && isTriviaBanned(jid, sender, senderPn)
-          if (!banned) events = game.submit(sender, trimmed, now)
+          events = game.submit(sender, trimmed, now)
         }
       }
 
