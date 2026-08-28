@@ -460,7 +460,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       stmtInsertTournamentWin.run(jid, player, ts, type)
     },
 
-    tournamentStats(jid, limit = 10, type = 'trivia') {
+    // Titles are rare events (not a recurring weekly board like the other
+    // leaderboards), so unlike leaderboard() this shows every title holder
+    // by default (limit -1 = unlimited in SQLite), not just a top 10.
+    tournamentStats(jid, limit = -1, type = 'trivia') {
       return stmtSelectTournamentWins.all(jid, type, limit)
     },
 

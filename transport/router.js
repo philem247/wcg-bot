@@ -1377,7 +1377,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       const sub = (args[0] ?? '').toLowerCase()
 
       if (sub === 'stats') {
-        const board = db.tournamentStats?.(jid, 10) ?? []
+        const board = db.tournamentStats?.(jid) ?? []
         const { text, mentions } = formatTournamentStats(board)
         enqueue(jid, { text, mentions, kind: 'misc' })
         return
@@ -1448,7 +1448,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       const sub = (args[0] ?? '').toLowerCase()
 
       if (sub === 'stats') {
-        const board = db.tournamentStats?.(jid, 10, 'wordle') ?? []
+        const board = db.tournamentStats?.(jid, -1, 'wordle') ?? []
         const { text, mentions } = formatTournamentStats(board, 'Wordle')
         enqueue(jid, { text, mentions, kind: 'misc' })
         return
