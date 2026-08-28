@@ -250,42 +250,6 @@ export function render(event) {
     case 'flag_terminated':
       return { text: `Guess the Flag stopped.`, mentions: [] }
 
-    case 'emoji_word':
-      return {
-        text: `🎭 *EMOJI PUZZLE* (${event.index}/${event.total})\n───────────────────\n\n${event.emoji}\n\n⏳ *Time:* ${event.clockSeconds}s`,
-        mentions: [],
-      }
-
-    case 'emoji_answer': {
-      const mentions = []
-      let text
-      if (event.winner) {
-        text = `✅ ${mention(event.winner)} got it! — *${event.correct}*`
-        mentions.push(event.winner)
-      } else {
-        text = `❌ Time's up! — *${event.correct}*`
-      }
-      return { text, mentions }
-    }
-
-    case 'emoji_over': {
-      const lines = []
-      const mentions = []
-      if (event.standings.length === 0) {
-        lines.push('🏁 *EMOJI PUZZLE OVER*', '━━━━━━━━━━━━━━━━', '', 'Nobody scored.')
-        return { text: lines.join('\n'), mentions }
-      }
-      lines.push('🏁 *EMOJI PUZZLE OVER*', '━━━━━━━━━━━━━━━━', '')
-      event.standings.forEach((s, i) => {
-        lines.push(`${MEDALS[i] ?? '　'} ${mention(s.player)} — *${s.score}*`)
-        mentions.push(s.player)
-      })
-      return { text: lines.join('\n'), mentions }
-    }
-
-    case 'emoji_terminated':
-      return { text: `Emoji Puzzle stopped.`, mentions: [] }
-
     case 'riddle_start': {
       return {
         text: `🧩 *RIDDLE QUEST* (Round ${event.round}/${event.totalRounds})\n───────────────────\n❓ _"${event.riddle}"_\n\n⏳ *Time:* 20s`,

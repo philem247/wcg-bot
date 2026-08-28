@@ -711,49 +711,6 @@ const tests = [
       db.close()
     },
   },
-  {
-    name: 'asked_emoji & emoji leaderboard: round-trip and isolation',
-    fn: () => {
-      const db = openDb(':memory:')
-      db.markAskedEmoji('jid-a', [{ id: 'e001' }, { id: 'e002' }], 1000)
-      const asked = db.askedEmojiIds('jid-a')
-      assert.ok(asked.has('e001'))
-      assert.ok(asked.has('e002'))
-      assert.equal(asked.size, 2)
-
-      db.clearAskedEmoji('jid-a')
-      assert.equal(db.askedEmojiIds('jid-a').size, 0)
-
-      // Another jid's asked puzzles stay isolated
-      db.markAskedEmoji('jid-b', [{ id: 'e001' }], 2000)
-      assert.equal(db.askedEmojiIds('jid-a').size, 0)
-      assert.equal(db.askedEmojiIds('jid-b').size, 1)
-
-      db.recordGame({
-        jid: 'jid-a',
-        mode: 'mixed',
-        type: 'emoji',
-        startedAt: 1000,
-        endedAt: 2000,
-        words: 10,
-        results: [
-          { player: 'player-1', placement: 1, player_pn: 'pn-1' },
-          { player: 'player-2', placement: 2, player_pn: 'pn-2' },
-        ],
-      })
-
-      const board = db.leaderboard({ jid: 'jid-a', type: 'emoji' })
-      assert.equal(board.length, 2)
-      assert.equal(board[0].player, 'pn-1')
-      assert.equal(board[0].score, 3)
-      assert.equal(board[1].player, 'pn-2')
-      assert.equal(board[1].score, 1)
-
-      // Word-chain board remains isolated from emoji games
-      assert.equal(db.leaderboard({ jid: 'jid-a', type: 'chain' }).length, 0)
-      db.close()
-    },
-  },
 ]
 
 let passed = 0

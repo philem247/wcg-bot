@@ -8,8 +8,7 @@ import { createScrambleGame, SCRAMBLE_COUNT } from '../engine/scramble.js'
 import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
 import { createFlagGame, FLAG_COUNT, CLOCK_SECONDS as FLAG_CLOCK_SECONDS } from '../engine/flag.js'
 import { createRiddleGame, RIDDLE_COUNT } from '../engine/riddle.js'
-import { loadRiddleBank, loadFlagBank, loadWordleBank, loadEmojiBank } from '../engine/bank.js'
-import { createEmojiGame, EMOJI_COUNT } from '../engine/emoji.js'
+import { loadRiddleBank, loadFlagBank, loadWordleBank } from '../engine/bank.js'
 import { createTournament } from '../engine/tournament.js'
 import { createWordleTournament } from '../engine/wordleTournament.js'
 import { fold, isWord } from '../engine/normalize.js'
@@ -36,7 +35,7 @@ const MODE_NAMES = new Set(['easy', 'medium', 'hard'])
 // Commands a banned player cannot use. Keep every playable mode listed here —
 // a mode missing from this set is a mode a banned player can still start.
 const GAME_COMMANDS = new Set([
-  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney', 'wordle', 'emoji',
+  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney', 'wordle',
 ])
 
 // rejected events (engine/game.js) don't carry the required letter/minLength, only
@@ -92,9 +91,6 @@ const KIND_BY_EVENT = {
   flag_word: 'turn',
   flag_answer: 'result',
   flag_over: 'result',
-  emoji_word: 'turn',
-  emoji_answer: 'result',
-  emoji_over: 'result',
   riddle_start: 'turn',
   riddle_solved: 'result',
   riddle_timeout: 'result',
@@ -276,32 +272,6 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'flag_terminated') {
       gameMeta.delete(jid)
-    } else if (event.type === 'emoji_word') {
-      if (event.index === 1) {
-        gameMeta.set(jid, { mode: 'mixed', type: 'emoji', startedAt: now, eliminated: [], pnMap: new Map() })
-      }
-    } else if (event.type === 'emoji_answer') {
-      // Intentionally empty
-    } else if (event.type === 'emoji_over') {
-      const meta = gameMeta.get(jid)
-      const pnMap = meta?.pnMap || new Map()
-      const results = event.standings.map((s, i) => ({
-        player: s.player, placement: i + 1, player_pn: pnMap.get(s.player),
-      }))
-      if (results.length > 0) {
-        try {
-          db?.recordGame({
-            jid, mode: 'mixed', type: 'emoji',
-            startedAt: meta?.startedAt ?? now, endedAt: now,
-            words: event.total, results,
-          })
-        } catch (e) {
-          // store failure must never break gameplay
-        }
-      }
-      gameMeta.delete(jid)
-    } else if (event.type === 'emoji_terminated') {
-      gameMeta.delete(jid)
     } else if (event.type === 'riddle_start') {
       if (event.round === 1) {
         gameMeta.set(jid, { mode: 'mixed', type: 'riddle', startedAt: now, eliminated: [], pnMap: new Map() })
@@ -424,7 +394,6 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   const riddleBank = loadRiddleBank()
   const flagBank = loadFlagBank()
   const wordleBank = loadWordleBank()
-  const emojiBank = loadEmojiBank()
   // Engine games don't expose who started them; track it here, mirroring `games`.
   // ponytail: scheduler-driven deletions (timeout/lobby-fail) don't clean this map,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
@@ -961,56 +930,6 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
   }
 
-  async function startEmojiGame(jid, sender, senderPn, now, isGroup) {
-    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
-      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
-      return
-    }
-    if (games.has(jid)) {
-      enqueue(jid, { text: `A game is already running here. Use ${PREFIX}emoji end to stop it first.`, mentions: [], kind: 'misc' })
-      return
-    }
-
-    let exclude
-    try {
-      exclude = db?.askedEmojiIds(jid) ?? new Set()
-    } catch (e) {
-      logger?.error({ err: e }, 'Failed loading asked emoji puzzles')
-      exclude = new Set()
-    }
-
-    let gamePuzzles = emojiBank.pickPuzzles({ count: EMOJI_COUNT, exclude, random: Math.random })
-    if (gamePuzzles.length === 0) {
-      try {
-        db?.clearAskedEmoji(jid)
-      } catch (e) {
-        logger?.error({ err: e }, 'Failed clearing asked emoji puzzles')
-      }
-      gamePuzzles = emojiBank.pickPuzzles({ count: EMOJI_COUNT, exclude: new Set(), random: Math.random })
-    }
-
-    if (gamePuzzles.length === 0) {
-      enqueue(jid, { text: `Emoji Puzzle is currently unavailable — no puzzle data found.`, mentions: [], kind: 'misc' })
-      return
-    }
-
-    const game = createEmojiGame({ puzzles: gamePuzzles, now, random: Math.random })
-    games.set(jid, game)
-    starters.set(jid, sender)
-    gameTypes.set(jid, 'emoji')
-    try {
-      db?.markAskedEmoji(jid, gamePuzzles, now)
-    } catch (e) {
-      logger?.error({ err: e }, 'Failed recording asked emoji puzzles')
-    }
-    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
-
-    enqueue(jid, {
-      text: `🎭 *EMOJI PUZZLE* starting!\nGuess what the emoji mean. ${EMOJI_COUNT} rounds.`,
-      mentions: [], kind: 'misc',
-    })
-    sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
-  }
 
   async function startRiddleGame(jid, sender, senderPn, now, isGroup) {
     if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
@@ -1106,10 +1025,6 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}flag start`,
         `▸ ${PREFIX}flag end`,
         ``,
-        `*🎭 EMOJI PUZZLE* _(start: admins only)_`,
-        `▸ ${PREFIX}emoji start`,
-        `▸ ${PREFIX}emoji end`,
-        ``,
         `*🧩 RIDDLE QUEST* _(start: admins only)_`,
         `▸ ${PREFIX}riddle`,
         `▸ ${PREFIX}riddle end`,
@@ -1129,7 +1044,6 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}scramble stats [all]`,
         `▸ ${PREFIX}logo stats [all]`,
         `▸ ${PREFIX}flag stats [all]`,
-        `▸ ${PREFIX}emoji stats [all]`,
         `▸ ${PREFIX}riddle stats [all]`,
       ]
 
@@ -1431,31 +1345,6 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
 
       await startFlagGame(jid, sender, senderPn, now, isGroup)
-      return
-    }
-
-    if (cmd === 'emoji') {
-      const sub = (args[0] ?? '').toLowerCase()
-
-      if (sub === 'stats') {
-        const all = args[1] === 'all'
-        const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'emoji' })
-        const { text, mentions } = formatLeaderboard(board, all ? '🏆 Emoji Puzzle — all-time' : '🏆 Emoji Puzzle — this week')
-        enqueue(jid, { text, mentions, kind: 'misc' })
-        return
-      }
-
-      if (!isGroup) {
-        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
-        return
-      }
-
-      if (sub === 'end') {
-        await endGame(jid, sender, senderPn, isGroup, now, 'emoji')
-        return
-      }
-
-      await startEmojiGame(jid, sender, senderPn, now, isGroup)
       return
     }
 
