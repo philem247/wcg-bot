@@ -1,0 +1,8 @@
+[
+  {"q": "Which programming language was created by Guido van Rossum?", "correct": "Python", "wrong": ["Ruby", "Perl", "Java"]},
+  {"q": "Which company developed the Windows operating system?", "correct": "Microsoft", "wrong": ["Apple", "IBM", "Google"]},
+  {"q": "What programming paradigm does Haskell primarily use?", "correct": "Functional", "wrong": ["Object-oriented", "Procedural", "Logic"]},
+  {"q": "Which company originally created the JavaScript scripting language?", "correct": "Netscape", "wrong": ["Microsoft", "Sun Microsystems", "IBM"]},
+  {"q": "Which internet protocol encrypts data sent between a browser and a website?", "correct": "HTTPS", "wrong": ["FTP", "SMTP", "DNS"]},
+  {"q": "Which kernel did Linus Torvalds first release in 1991?", "correct": "Linux", "wrong": ["Unix", "BSD", "Minix"]}
+]

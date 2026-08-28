@@ -6,9 +6,19 @@
 // that duplicates a groupmate's correct answer.
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs'
 import crypto from 'node:crypto'
+import { leaksAnswer } from './find-answer-leaks.mjs'
 
 const NUMBERED = /\(#\d+\)/
 const LEAK = /this subject|this notable entity|\bthis entity\b/i
+
+// Explanatory detail on the correct answer that the distractors lack lets a
+// player pick the right option on formatting alone, without knowing the
+// subject. Parens are fine when every option carries them.
+function hasFormattingTell(q) {
+  const hasParen = (s) => /\(/.test(String(s))
+  const count = (hasParen(q.correct) ? 1 : 0) + q.wrong.filter(hasParen).length
+  return count !== 0 && count !== 4
+}
 
 // A short common word/number ("O", "Ten", "20") legitimately recurring inside
 // unrelated question text is not an answer leak; only flag names/titles long
@@ -24,6 +34,8 @@ function validQuestion(q) {
   if (NUMBERED.test(q.q)) return false
   if (LEAK.test(q.q)) return false
   if (isSelfAnswer(q.q, q.correct)) return false
+  if (leaksAnswer(q)) return false // answer appears as a whole word in the question
+  if (hasFormattingTell(q)) return false
   if (q.wrong.some((w) => typeof w !== 'string' || !w.trim())) return false
   const wrongLower = q.wrong.map((w) => w.toLowerCase().trim())
   if (new Set(wrongLower).size !== 3) return false // distractors must differ from each other

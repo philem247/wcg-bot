@@ -1,0 +1,5 @@
+[
+  {"q": "Which ninja clan does Sasuke belong to?", "correct": "Uchiha", "wrong": ["Hyuga", "Senju", "Nara"]},
+  {"q": "Which hidden village is the ninja Naruto from?", "correct": "Leaf Village", "wrong": ["Sand Village", "Mist Village", "Cloud Village"]},
+  {"q": "What is the name of the Nine-Tailed Fox sealed inside Naruto?", "correct": "Kurama", "wrong": ["Shukaku", "Gyuki", "Matatabi"]}
+]
