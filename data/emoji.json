@@ -1,0 +1,2713 @@
+[
+  {
+    "id": "e001",
+    "emoji": "🚢🧊💔",
+    "answer": "Titanic",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e002",
+    "emoji": "🦁👑",
+    "answer": "The Lion King",
+    "aliases": [
+      "lion king"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e003",
+    "emoji": "🦈",
+    "answer": "Jaws",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e004",
+    "emoji": "❄️👸",
+    "answer": "Frozen",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e005",
+    "emoji": "🐠🔍",
+    "answer": "Finding Nemo",
+    "aliases": [
+      "findingnemo"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e006",
+    "emoji": "🧜🐚",
+    "answer": "The Little Mermaid",
+    "aliases": [
+      "little mermaid",
+      "littlemermaid"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e007",
+    "emoji": "🦖🏝️",
+    "answer": "Jurassic Park",
+    "aliases": [
+      "jurassicpark"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e008",
+    "emoji": "⭐⚔️",
+    "answer": "Star Wars",
+    "aliases": [
+      "starwars"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e009",
+    "emoji": "💊🕶️",
+    "answer": "The Matrix",
+    "aliases": [
+      "matrix"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e010",
+    "emoji": "🤠🚀",
+    "answer": "Toy Story",
+    "aliases": [
+      "toystory"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e011",
+    "emoji": "🟢👹",
+    "answer": "Shrek",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e012",
+    "emoji": "🚗🏁",
+    "answer": "Cars",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e013",
+    "emoji": "🎈🏠",
+    "answer": "Up",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e014",
+    "emoji": "🌊👸",
+    "answer": "Moana",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e015",
+    "emoji": "🧞🪔",
+    "answer": "Aladdin",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e016",
+    "emoji": "🌹🏰",
+    "answer": "Beauty and the Beast",
+    "aliases": [
+      "beauty and the beast",
+      "beautyandthebeast"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e017",
+    "emoji": "🏠👦🧳",
+    "answer": "Home Alone",
+    "aliases": [
+      "homealone"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e018",
+    "emoji": "💚😈🎄",
+    "answer": "The Grinch",
+    "aliases": [
+      "grinch"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e019",
+    "emoji": "🧛🦇",
+    "answer": "Dracula",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e020",
+    "emoji": "⚡🧟",
+    "answer": "Frankenstein",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e021",
+    "emoji": "🌪️👠",
+    "answer": "The Wizard of Oz",
+    "aliases": [
+      "wizard of oz",
+      "wizardofoz"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e022",
+    "emoji": "🍎👸",
+    "answer": "Snow White",
+    "aliases": [
+      "snowwhite"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e023",
+    "emoji": "👠🎃🕛",
+    "answer": "Cinderella",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e024",
+    "emoji": "👸😴🌹",
+    "answer": "Sleeping Beauty",
+    "aliases": [
+      "sleepingbeauty"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e025",
+    "emoji": "🧚🐊⏰",
+    "answer": "Peter Pan",
+    "aliases": [
+      "peterpan"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e026",
+    "emoji": "🤥👃🪵",
+    "answer": "Pinocchio",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e027",
+    "emoji": "🐴🔫",
+    "answer": "The Godfather",
+    "aliases": [
+      "godfather"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e028",
+    "emoji": "🥊",
+    "answer": "Rocky",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e029",
+    "emoji": "👽🚲🌕",
+    "answer": "E.T.",
+    "aliases": [
+      "et",
+      "e.t."
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e030",
+    "emoji": "👻🚫🎒",
+    "answer": "Ghostbusters",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e031",
+    "emoji": "⏰🚗⚡",
+    "answer": "Back to the Future",
+    "aliases": [
+      "back to the future",
+      "backtothefuture"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e032",
+    "emoji": "🕷️🕸️🏙️",
+    "answer": "Spider-Man",
+    "aliases": [
+      "spiderman",
+      "spider man"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e033",
+    "emoji": "🦇🕵️🌃",
+    "answer": "Batman",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e034",
+    "emoji": "🦾🤖❤️",
+    "answer": "Iron Man",
+    "aliases": [
+      "ironman"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e035",
+    "emoji": "🐆👑🌍",
+    "answer": "Black Panther",
+    "aliases": [
+      "blackpanther"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e036",
+    "emoji": "🦸🦸🦸🌍",
+    "answer": "The Avengers",
+    "aliases": [
+      "avengers"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e037",
+    "emoji": "🔴🗡️😂",
+    "answer": "Deadpool",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e038",
+    "emoji": "🤡🃏",
+    "answer": "Joker",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e039",
+    "emoji": "⚡🧙🦉",
+    "answer": "Harry Potter",
+    "aliases": [
+      "harrypotter"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e040",
+    "emoji": "💍🌋👁️",
+    "answer": "The Lord of the Rings",
+    "aliases": [
+      "lord of the rings",
+      "lordoftherings"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e041",
+    "emoji": "🏔️💍🐉",
+    "answer": "The Hobbit",
+    "aliases": [
+      "hobbit"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e042",
+    "emoji": "🧛❤️🐺",
+    "answer": "Twilight",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e043",
+    "emoji": "🏹🔥🎯",
+    "answer": "The Hunger Games",
+    "aliases": [
+      "hunger games",
+      "hungergames"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e044",
+    "emoji": "⚓🦜💰",
+    "answer": "Pirates of the Caribbean",
+    "aliases": [
+      "pirates of the caribbean",
+      "piratesofthecaribbean"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e045",
+    "emoji": "🏝️🏐",
+    "answer": "Cast Away",
+    "aliases": [
+      "castaway"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e046",
+    "emoji": "🐺💰📈",
+    "answer": "The Wolf of Wall Street",
+    "aliases": [
+      "wolf of wall street",
+      "wolfofwallstreet"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e047",
+    "emoji": "🏃🍫🦐",
+    "answer": "Forrest Gump",
+    "aliases": [
+      "forrestgump"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e048",
+    "emoji": "👻🧒💬",
+    "answer": "The Sixth Sense",
+    "aliases": [
+      "sixth sense",
+      "sixthsense"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e049",
+    "emoji": "🔪🚿🏨",
+    "answer": "Psycho",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e050",
+    "emoji": "🔪😱☎️",
+    "answer": "Scream",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e051",
+    "emoji": "👽🚀🥚",
+    "answer": "Alien",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e052",
+    "emoji": "🦍🏙️🗽",
+    "answer": "King Kong",
+    "aliases": [
+      "kingkong"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e053",
+    "emoji": "🦖🌆🔥",
+    "answer": "Godzilla",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e054",
+    "emoji": "🚗🏜️🔥⛽",
+    "answer": "Mad Max",
+    "aliases": [
+      "madmax"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e055",
+    "emoji": "🏎️💨🔧",
+    "answer": "Fast & Furious",
+    "aliases": [
+      "fast and furious",
+      "fastandfurious",
+      "fast & furious"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e056",
+    "emoji": "💣🕶️🎧",
+    "answer": "Mission Impossible",
+    "aliases": [
+      "mission impossible",
+      "missionimpossible"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e057",
+    "emoji": "🍸🔫🕴️",
+    "answer": "James Bond",
+    "aliases": [
+      "jamesbond"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e058",
+    "emoji": "🎨🔐⛪",
+    "answer": "The Da Vinci Code",
+    "aliases": [
+      "da vinci code",
+      "davincicode"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e059",
+    "emoji": "🌀🛌💭",
+    "answer": "Inception",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e060",
+    "emoji": "🚀🕳️⏳",
+    "answer": "Interstellar",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e061",
+    "emoji": "🛰️🌍💥",
+    "answer": "Gravity",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e062",
+    "emoji": "🥔🚀🔴",
+    "answer": "The Martian",
+    "aliases": [
+      "martian"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e063",
+    "emoji": "🐯🚣🌊",
+    "answer": "Life of Pi",
+    "aliases": [
+      "lifeofpi"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e064",
+    "emoji": "🐻🌲🔫",
+    "answer": "The Revenant",
+    "aliases": [
+      "revenant"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e065",
+    "emoji": "🐕🐕🖤🤍",
+    "answer": "101 Dalmatians",
+    "aliases": [
+      "dalmatians",
+      "101 dalmatians"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e066",
+    "emoji": "🦌🌲👑",
+    "answer": "Bambi",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e067",
+    "emoji": "🐍🐒🌴",
+    "answer": "The Jungle Book",
+    "aliases": [
+      "jungle book",
+      "junglebook"
+    ],
+    "category": "movies"
+  },
+  {
+    "id": "e068",
+    "emoji": "💀🎸🌼",
+    "answer": "Coco",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e069",
+    "emoji": "🕯️🏠✨👵",
+    "answer": "Encanto",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e070",
+    "emoji": "🌳💙👽",
+    "answer": "Avatar",
+    "aliases": [],
+    "category": "movies"
+  },
+  {
+    "id": "e071",
+    "emoji": "⛓️🏠🩸",
+    "answer": "Living in Bondage",
+    "aliases": [
+      "living in bondage",
+      "livinginbondage"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e072",
+    "emoji": "💄👗💃",
+    "answer": "Glamour Girls",
+    "aliases": [
+      "glamourgirls"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e073",
+    "emoji": "🌍🎩😂",
+    "answer": "Osuofia in London",
+    "aliases": [
+      "osuofia in london",
+      "osuofiainlondon"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e074",
+    "emoji": "👑🕴️🎬",
+    "answer": "King of Boys",
+    "aliases": [
+      "king of boys",
+      "kingofboys"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e075",
+    "emoji": "💍🎉🥂",
+    "answer": "The Wedding Party",
+    "aliases": [
+      "wedding party",
+      "weddingparty"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e076",
+    "emoji": "👴💰🏠",
+    "answer": "Chief Daddy",
+    "aliases": [
+      "chiefdaddy"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e077",
+    "emoji": "🦁❤️👑",
+    "answer": "Lionheart",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e078",
+    "emoji": "📅🔫🎖️",
+    "answer": "October 1",
+    "aliases": [
+      "october1",
+      "october one"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e079",
+    "emoji": "🕴️🕴️🕴️💰",
+    "answer": "Merry Men",
+    "aliases": [
+      "merrymen"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e080",
+    "emoji": "🍬💰🏃",
+    "answer": "Sugar Rush",
+    "aliases": [
+      "sugarrush"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e081",
+    "emoji": "👗📔😂",
+    "answer": "Jenifa's Diary",
+    "aliases": [
+      "jenifas diary",
+      "jenifa diary",
+      "jenifasdiary"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e082",
+    "emoji": "🩸👭",
+    "answer": "Blood Sisters",
+    "aliases": [
+      "bloodsisters"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e083",
+    "emoji": "🔫🏙️🕴️",
+    "answer": "Gangs of Lagos",
+    "aliases": [
+      "gangs of lagos",
+      "gangsoflagos"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e084",
+    "emoji": "🦋⚰️👑",
+    "answer": "Anikulapo",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e085",
+    "emoji": "👑🪑⚔️",
+    "answer": "Elesin Oba",
+    "aliases": [
+      "elesinoba"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e086",
+    "emoji": "🤝🔪",
+    "answer": "Brotherhood",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e087",
+    "emoji": "💃🕴️❤️",
+    "answer": "La Femme Anjola",
+    "aliases": [
+      "lafemmeanjola"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e088",
+    "emoji": "🏙️✈️😂",
+    "answer": "30 Days in Atlanta",
+    "aliases": [
+      "30 days in atlanta",
+      "thirty days in atlanta"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e089",
+    "emoji": "🎭🪞",
+    "answer": "Alter Ego",
+    "aliases": [
+      "alterego"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e090",
+    "emoji": "🏝️💰🔫",
+    "answer": "Kajola",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e091",
+    "emoji": "💔👶",
+    "answer": "Isoken",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e092",
+    "emoji": "🐐🥛👧",
+    "answer": "The Milkmaid",
+    "aliases": [
+      "milkmaid"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e093",
+    "emoji": "👸🕌",
+    "answer": "Amina",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e094",
+    "emoji": "📷💭",
+    "answer": "Eyimofe",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e095",
+    "emoji": "📰🔍⚖️",
+    "answer": "Citation",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e096",
+    "emoji": "💃🕵️🚔",
+    "answer": "Oloture",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e097",
+    "emoji": "🎭😢",
+    "answer": "Sylvia",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e098",
+    "emoji": "💰📱🕵️",
+    "answer": "Quam's Money",
+    "aliases": [
+      "quams money",
+      "quam money"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e099",
+    "emoji": "✂️👔🏢",
+    "answer": "Progressive Tailors Club",
+    "aliases": [
+      "progressive tailors club"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e100",
+    "emoji": "🐍👩",
+    "answer": "Nneka the Pretty Serpent",
+    "aliases": [
+      "nneka the pretty serpent",
+      "nneka"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e101",
+    "emoji": "🐍💍",
+    "answer": "Rattlesnake",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e102",
+    "emoji": "🤐😢",
+    "answer": "Voiceless",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e103",
+    "emoji": "⛰️🌾🔫",
+    "answer": "Up North",
+    "aliases": [
+      "upnorth"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e104",
+    "emoji": "🙅💒",
+    "answer": "Namaste Wahala",
+    "aliases": [
+      "namastewahala"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e105",
+    "emoji": "👮⚖️🚔",
+    "answer": "Charge and Bail",
+    "aliases": [
+      "charge and bail",
+      "chargeandbail"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e106",
+    "emoji": "🚌👗😂",
+    "answer": "Omo Ghetto",
+    "aliases": [
+      "omoghetto"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e107",
+    "emoji": "👗😂💃",
+    "answer": "Alakada",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e108",
+    "emoji": "🧙🥁🎭",
+    "answer": "Ijele",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e109",
+    "emoji": "👦👦😂",
+    "answer": "Aki and Pawpaw",
+    "aliases": [
+      "aki and pawpaw",
+      "akiandpawpaw"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e110",
+    "emoji": "💵🍽️😂",
+    "answer": "I Go Chop Your Dollar",
+    "aliases": [
+      "i go chop your dollar"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e111",
+    "emoji": "🍚🥣💧",
+    "answer": "Water and Garri",
+    "aliases": [
+      "water and garri",
+      "waterandgarri"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e112",
+    "emoji": "🍞😂",
+    "answer": "Breaded Life",
+    "aliases": [
+      "bredalife",
+      "breadedlife"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e113",
+    "emoji": "⛪🔮😂",
+    "answer": "Prophetess",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e114",
+    "emoji": "👪💍",
+    "answer": "Introducing The Kujus",
+    "aliases": [
+      "introducing the kujus",
+      "the kujus"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e115",
+    "emoji": "🛗👶",
+    "answer": "Elevator Baby",
+    "aliases": [
+      "elevatorbaby"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e116",
+    "emoji": "🎄🎁🍲",
+    "answer": "A Naija Christmas",
+    "aliases": [
+      "a naija christmas",
+      "naija christmas"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e117",
+    "emoji": "💎⛰️",
+    "answer": "Diamond Hill",
+    "aliases": [
+      "diamondhill"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e118",
+    "emoji": "💰🏠🔑",
+    "answer": "Ile Owo",
+    "aliases": [
+      "ileowo"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e119",
+    "emoji": "🥘🥊🍢",
+    "answer": "Battle on Buka Street",
+    "aliases": [
+      "battle on buka street"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e120",
+    "emoji": "🚗💥🕵️",
+    "answer": "Collision Course",
+    "aliases": [
+      "collisioncourse"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e121",
+    "emoji": "🏚️🔫",
+    "answer": "Shanty Town",
+    "aliases": [
+      "shantytown"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e122",
+    "emoji": "⛪🕴️",
+    "answer": "Man of God",
+    "aliases": [
+      "manofgod"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e123",
+    "emoji": "👑🗡️🏹",
+    "answer": "King of Thieves",
+    "aliases": [
+      "king of thieves",
+      "kingofthieves",
+      "ageshinkole"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e124",
+    "emoji": "⚔️🏇🛡️",
+    "answer": "Jagun Jagun",
+    "aliases": [
+      "jagunjagun"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e125",
+    "emoji": "🎓👗😂",
+    "answer": "Aki na Ukwa",
+    "aliases": [
+      "aki na ukwa",
+      "akinaukwa"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e126",
+    "emoji": "🥁🎤😢",
+    "answer": "Ayinla",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e127",
+    "emoji": "💃🎤👑",
+    "answer": "Fela",
+    "aliases": [
+      "fela kuti",
+      "felakuti"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e128",
+    "emoji": "🕴️💰📉",
+    "answer": "A Trip to Jamaica",
+    "aliases": [
+      "a trip to jamaica",
+      "trip to jamaica"
+    ],
+    "category": "nollywood"
+  },
+  {
+    "id": "e129",
+    "emoji": "👰😱🏃",
+    "answer": "Wedding Rush",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e130",
+    "emoji": "👑🐘⚔️",
+    "answer": "Saworoide",
+    "aliases": [],
+    "category": "nollywood"
+  },
+  {
+    "id": "e131",
+    "emoji": "💔🌧️",
+    "answer": "Someone Like You",
+    "aliases": [
+      "someonelikeyou"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e132",
+    "emoji": "👁️🐯",
+    "answer": "Eye of the Tiger",
+    "aliases": [
+      "eyeofthetiger"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e133",
+    "emoji": "🌈☁️😊",
+    "answer": "Somewhere Over the Rainbow",
+    "aliases": [
+      "somewhere over the rainbow"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e134",
+    "emoji": "🎂🎉🎈",
+    "answer": "Happy Birthday",
+    "aliases": [
+      "happybirthday"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e135",
+    "emoji": "🚗🎶🛣️",
+    "answer": "Life is a Highway",
+    "aliases": [
+      "life is a highway"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e136",
+    "emoji": "⚡🕺👑",
+    "answer": "Thriller",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e137",
+    "emoji": "💜🌧️",
+    "answer": "Purple Rain",
+    "aliases": [
+      "purplerain"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e138",
+    "emoji": "🎆🎉✨",
+    "answer": "Firework",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e139",
+    "emoji": "👸🧊",
+    "answer": "Let It Go",
+    "aliases": [
+      "letitgo"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e140",
+    "emoji": "🌹🔫",
+    "answer": "Sweet Child O' Mine",
+    "aliases": [
+      "sweet child of mine",
+      "sweet child o mine"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e141",
+    "emoji": "🌉🎶",
+    "answer": "Bridge Over Troubled Water",
+    "aliases": [
+      "bridge over troubled water"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e142",
+    "emoji": "🎇💃🌃",
+    "answer": "Uptown Funk",
+    "aliases": [
+      "uptownfunk"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e143",
+    "emoji": "👑🎤💃",
+    "answer": "Halo",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e144",
+    "emoji": "🍃🌊😌",
+    "answer": "Ocean Eyes",
+    "aliases": [
+      "oceaneyes"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e145",
+    "emoji": "💃🕺🌴",
+    "answer": "Despacito",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e146",
+    "emoji": "🚪🔑💔",
+    "answer": "Locked Out of Heaven",
+    "aliases": [
+      "locked out of heaven"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e147",
+    "emoji": "🌻☀️🎶",
+    "answer": "Here Comes the Sun",
+    "aliases": [
+      "here comes the sun"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e148",
+    "emoji": "🌧️☔💧",
+    "answer": "Umbrella",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e149",
+    "emoji": "🌌🎶✨",
+    "answer": "Bohemian Rhapsody",
+    "aliases": [
+      "bohemian rhapsody",
+      "bohemianrhapsody"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e150",
+    "emoji": "🎸🔥🕺",
+    "answer": "Highway to Hell",
+    "aliases": [
+      "highway to hell"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e151",
+    "emoji": "🌍🎶🤝",
+    "answer": "We Are the World",
+    "aliases": [
+      "we are the world",
+      "wearetheworld"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e152",
+    "emoji": "🍷🎤😢",
+    "answer": "Rehab",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e153",
+    "emoji": "🚣🌊",
+    "answer": "Rock the Boat",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e154",
+    "emoji": "🐕🎤",
+    "answer": "Hound Dog",
+    "aliases": [
+      "hounddog"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e155",
+    "emoji": "🕺🌙👠",
+    "answer": "Billie Jean",
+    "aliases": [
+      "billiejean"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e156",
+    "emoji": "👯🎤",
+    "answer": "Wannabe",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e157",
+    "emoji": "❤️🔷🎤",
+    "answer": "Shape of You",
+    "aliases": [
+      "shapeofyou"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e158",
+    "emoji": "🌊🕳️🎤",
+    "answer": "Rolling in the Deep",
+    "aliases": [
+      "rolling in the deep"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e159",
+    "emoji": "🦁🎤",
+    "answer": "Roar",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e160",
+    "emoji": "💥🕺",
+    "answer": "Dynamite",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e161",
+    "emoji": "🃏😐",
+    "answer": "Poker Face",
+    "aliases": [
+      "pokerface"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e162",
+    "emoji": "💍✋",
+    "answer": "Single Ladies",
+    "aliases": [
+      "singleladies"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e163",
+    "emoji": "🛡️🎤",
+    "answer": "Titanium",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e164",
+    "emoji": "☢️🎤",
+    "answer": "Radioactive",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e165",
+    "emoji": "⭐🌌🎤",
+    "answer": "Counting Stars",
+    "aliases": [
+      "countingstars"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e166",
+    "emoji": "💡🕺",
+    "answer": "Chandelier",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e167",
+    "emoji": "🌸🎤💫",
+    "answer": "Essence",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e168",
+    "emoji": "🚦🎤🏙️",
+    "answer": "Ojuelegba",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e169",
+    "emoji": "💧🕺",
+    "answer": "Soco",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e170",
+    "emoji": "🏙️🎤💿",
+    "answer": "Made in Lagos",
+    "aliases": [
+      "made in lagos",
+      "madeinlagos"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e171",
+    "emoji": "🩹❤️🎤",
+    "answer": "Last Last",
+    "aliases": [
+      "lastlast"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e172",
+    "emoji": "🔥🕺💦",
+    "answer": "Buga",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e173",
+    "emoji": "🧘🎤",
+    "answer": "Calm Down",
+    "aliases": [
+      "calmdown"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e174",
+    "emoji": "🦵🕺",
+    "answer": "Zanku",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e175",
+    "emoji": "🙅🎤",
+    "answer": "Nobody",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e176",
+    "emoji": "🍂🎤",
+    "answer": "Fall",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e177",
+    "emoji": "🏔️🎤",
+    "answer": "Peru",
+    "aliases": [],
+    "category": "songs"
+  },
+  {
+    "id": "e178",
+    "emoji": "📏🎤",
+    "answer": "Kilometre",
+    "aliases": [
+      "kilometer",
+      "kilometre"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e179",
+    "emoji": "🌍🦣🎤",
+    "answer": "African Giant",
+    "aliases": [
+      "african giant",
+      "africangiant"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e180",
+    "emoji": "👑🎤🌍",
+    "answer": "African Queen",
+    "aliases": [
+      "african queen",
+      "africanqueen"
+    ],
+    "category": "songs"
+  },
+  {
+    "id": "e181",
+    "emoji": "🐒🌳🚫",
+    "answer": "Monkey no fine but im mama like am",
+    "aliases": [],
+    "category": "proverbs"
+  },
+  {
+    "id": "e182",
+    "emoji": "🐜🐘💪",
+    "answer": "Unity is Strength",
+    "aliases": [
+      "unity is strength"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e183",
+    "emoji": "🐓🥚🏠",
+    "answer": "Charity Begins at Home",
+    "aliases": [
+      "charity begins at home"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e184",
+    "emoji": "🌧️☀️",
+    "answer": "Every Cloud Has a Silver Lining",
+    "aliases": [
+      "every cloud has a silver lining"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e185",
+    "emoji": "🐍🏠⚠️",
+    "answer": "A Snake in the Grass",
+    "aliases": [
+      "snake in the grass"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e186",
+    "emoji": "🍲🍳🐣",
+    "answer": "You Cannot Make an Omelette Without Breaking Eggs",
+    "aliases": [
+      "you cannot make an omelette without breaking eggs",
+      "cannot make omelette without breaking eggs"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e187",
+    "emoji": "🌳🪓🕰️",
+    "answer": "A Tree Does Not Make a Forest",
+    "aliases": [
+      "a tree does not make a forest"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e188",
+    "emoji": "👴🧠📚",
+    "answer": "Wisdom Comes with Age",
+    "aliases": [
+      "wisdom comes with age"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e189",
+    "emoji": "🐐🌿🚫",
+    "answer": "You Cannot Send a Goat to Guard Yams",
+    "aliases": [
+      "cannot send a goat to guard yams"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e190",
+    "emoji": "🤲✋🤝",
+    "answer": "Many Hands Make Light Work",
+    "aliases": [
+      "many hands make light work"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e191",
+    "emoji": "🐦🌅🪱",
+    "answer": "The Early Bird Catches the Worm",
+    "aliases": [
+      "the early bird catches the worm",
+      "early bird catches the worm"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e192",
+    "emoji": "🚶🚫",
+    "answer": "A Journey of a Thousand Miles Begins with a Single Step",
+    "aliases": [
+      "journey of a thousand miles"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e193",
+    "emoji": "🐟🌊🎣",
+    "answer": "Give a Man a Fish",
+    "aliases": [
+      "give a man a fish"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e194",
+    "emoji": "🏠🧱🚫",
+    "answer": "People in Glass Houses Should Not Throw Stones",
+    "aliases": [
+      "people in glass houses"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e195",
+    "emoji": "🐕🌳🐕",
+    "answer": "Every Dog Has Its Day",
+    "aliases": [
+      "every dog has its day"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e196",
+    "emoji": "🌾☀️🌧️",
+    "answer": "Make Hay While the Sun Shines",
+    "aliases": [
+      "make hay while the sun shines"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e197",
+    "emoji": "🐘🏠🚫",
+    "answer": "An Elephant Never Forgets",
+    "aliases": [
+      "elephant never forgets"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e198",
+    "emoji": "🚪🔒🪟",
+    "answer": "When One Door Closes, Another Opens",
+    "aliases": [
+      "when one door closes another opens"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e199",
+    "emoji": "🐢🐇🏁",
+    "answer": "Slow and Steady Wins the Race",
+    "aliases": [
+      "slow and steady wins the race"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e200",
+    "emoji": "👑🏘️🚫",
+    "answer": "It Takes a Village to Raise a Child",
+    "aliases": [
+      "it takes a village to raise a child"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e201",
+    "emoji": "🪵🔥🚫",
+    "answer": "Where There is Smoke, There is Fire",
+    "aliases": [
+      "where there is smoke there is fire"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e202",
+    "emoji": "🐺👘🐑",
+    "answer": "A Wolf in Sheep's Clothing",
+    "aliases": [
+      "wolf in sheeps clothing",
+      "a wolf in sheeps clothing"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e203",
+    "emoji": "🌰🌳🌳",
+    "answer": "From Little Acorns Mighty Oaks Grow",
+    "aliases": [
+      "little acorns mighty oaks"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e204",
+    "emoji": "👥🚶🐢",
+    "answer": "If You Want to Go Fast, Go Alone",
+    "aliases": [
+      "if you want to go fast go alone"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e205",
+    "emoji": "🐊😢🚫",
+    "answer": "Crocodile Tears",
+    "aliases": [
+      "crocodiletears"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e206",
+    "emoji": "🦶👞🚶",
+    "answer": "Walk a Mile in My Shoes",
+    "aliases": [
+      "walk a mile in my shoes"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e207",
+    "emoji": "🍯🪰🚫",
+    "answer": "You Catch More Flies with Honey",
+    "aliases": [
+      "you catch more flies with honey"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e208",
+    "emoji": "🐑🐺👀",
+    "answer": "A Wolf Guarding the Sheep",
+    "aliases": [
+      "a wolf guarding the sheep"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e209",
+    "emoji": "🚫🔥🚫💨",
+    "answer": "No Smoke Without Fire",
+    "aliases": [
+      "no smoke without fire"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e210",
+    "emoji": "🐔🥚🐣",
+    "answer": "Do Not Count Your Chickens Before They Hatch",
+    "aliases": [
+      "do not count your chickens before they hatch",
+      "dont count your chickens"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e211",
+    "emoji": "🌊🚣🏝️",
+    "answer": "Every Storm Runs Out of Rain",
+    "aliases": [
+      "every storm runs out of rain"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e212",
+    "emoji": "🍎🌳🚫",
+    "answer": "The Apple Does Not Fall Far from the Tree",
+    "aliases": [
+      "the apple does not fall far from the tree"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e213",
+    "emoji": "🐘🐜🚫",
+    "answer": "It Takes Small Ants to Bring Down an Elephant",
+    "aliases": [
+      "small ants bring down an elephant"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e214",
+    "emoji": "🔥🍲🧑",
+    "answer": "Too Many Cooks Spoil the Broth",
+    "aliases": [
+      "too many cooks spoil the broth"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e215",
+    "emoji": "👵🌾🌾",
+    "answer": "Old is Gold",
+    "aliases": [
+      "oldisgold"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e216",
+    "emoji": "🕰️🧵🚫",
+    "answer": "A Stitch in Time Saves Nine",
+    "aliases": [
+      "a stitch in time saves nine"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e217",
+    "emoji": "🐾🦁🚫",
+    "answer": "You Do Not Poke a Sleeping Lion",
+    "aliases": [
+      "do not poke a sleeping lion"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e218",
+    "emoji": "🌳🪓👶",
+    "answer": "Train Up a Child in the Way He Should Go",
+    "aliases": [
+      "train up a child"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e219",
+    "emoji": "🤲🌾🌾",
+    "answer": "If You Give, You Shall Receive",
+    "aliases": [
+      "if you give you shall receive"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e220",
+    "emoji": "🐓🌅🚫",
+    "answer": "You Cannot Stop a Rooster from Crowing",
+    "aliases": [
+      "cannot stop a rooster from crowing"
+    ],
+    "category": "proverbs"
+  },
+  {
+    "id": "e221",
+    "emoji": "🍚🍲🌶️",
+    "answer": "Jollof Rice",
+    "aliases": [
+      "jollof rice",
+      "jollof"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e222",
+    "emoji": "🍲🥬🌶️",
+    "answer": "Egusi Soup",
+    "aliases": [
+      "egusi soup",
+      "egusi"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e223",
+    "emoji": "🍢🥩🔥",
+    "answer": "Suya",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e224",
+    "emoji": "🍞🥩🍅",
+    "answer": "Meat Pie",
+    "aliases": [
+      "meatpie"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e225",
+    "emoji": "🍚🫘🌰",
+    "answer": "Rice and Beans",
+    "aliases": [
+      "rice and beans",
+      "riceandbeans"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e226",
+    "emoji": "🍠🍲🥬",
+    "answer": "Pounded Yam and Egusi",
+    "aliases": [
+      "pounded yam and egusi"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e227",
+    "emoji": "🍲🐟🌶️",
+    "answer": "Pepper Soup",
+    "aliases": [
+      "peppersoup"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e228",
+    "emoji": "🍚🥩🍅",
+    "answer": "Fried Rice",
+    "aliases": [
+      "friedrice"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e229",
+    "emoji": "🥟🌶️",
+    "answer": "Puff Puff",
+    "aliases": [
+      "puffpuff"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e230",
+    "emoji": "🌽🍚",
+    "answer": "Tuwo Shinkafa",
+    "aliases": [
+      "tuwo shinkafa"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e231",
+    "emoji": "🍚🥥",
+    "answer": "Coconut Rice",
+    "aliases": [
+      "coconutrice"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e232",
+    "emoji": "🍲🥬🐟",
+    "answer": "Vegetable Soup",
+    "aliases": [
+      "vegetablesoup"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e233",
+    "emoji": "🍢🌶️🥩",
+    "answer": "Kilishi",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e234",
+    "emoji": "🍚🍫🌶️",
+    "answer": "Ofada Rice",
+    "aliases": [
+      "ofada rice",
+      "ofada"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e235",
+    "emoji": "🍲🥜",
+    "answer": "Groundnut Soup",
+    "aliases": [
+      "groundnutsoup"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e236",
+    "emoji": "🌾🥣",
+    "answer": "Semovita",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e237",
+    "emoji": "🍠🥣",
+    "answer": "Amala",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e238",
+    "emoji": "🥣🍲🌿",
+    "answer": "Ogbono Soup",
+    "aliases": [
+      "ogbono soup",
+      "ogbono"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e239",
+    "emoji": "🍗🍟🥤",
+    "answer": "Fried Chicken and Chips",
+    "aliases": [
+      "fried chicken and chips"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e240",
+    "emoji": "🍕🧀",
+    "answer": "Pizza",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e241",
+    "emoji": "🍔🥓🧀",
+    "answer": "Burger",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e242",
+    "emoji": "🌮🌶️",
+    "answer": "Taco",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e243",
+    "emoji": "🍣🐟",
+    "answer": "Sushi",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e244",
+    "emoji": "🍝🍅",
+    "answer": "Spaghetti",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e245",
+    "emoji": "🥘🍚🌶️",
+    "answer": "Paella",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e246",
+    "emoji": "🍛🍛",
+    "answer": "Curry",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e247",
+    "emoji": "🥐☕",
+    "answer": "Croissant",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e248",
+    "emoji": "🥖🧈",
+    "answer": "Baguette",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e249",
+    "emoji": "🍜🥢",
+    "answer": "Ramen",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e250",
+    "emoji": "🥙🧆",
+    "answer": "Shawarma",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e251",
+    "emoji": "🍫🍰",
+    "answer": "Chocolate Cake",
+    "aliases": [
+      "chocolatecake"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e252",
+    "emoji": "🍩☕",
+    "answer": "Doughnut",
+    "aliases": [
+      "donut"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e253",
+    "emoji": "🥞🍯",
+    "answer": "Pancakes",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e254",
+    "emoji": "🍿🎬",
+    "answer": "Popcorn",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e255",
+    "emoji": "🍡🥢",
+    "answer": "Dumplings",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e256",
+    "emoji": "🧀🍇",
+    "answer": "Cheese and Grapes",
+    "aliases": [
+      "cheese and grapes"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e257",
+    "emoji": "🍤🍚",
+    "answer": "Shrimp Fried Rice",
+    "aliases": [
+      "shrimp fried rice"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e258",
+    "emoji": "🍫🥜",
+    "answer": "Peanut Brittle",
+    "aliases": [
+      "peanutbrittle"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e259",
+    "emoji": "🍲🐐",
+    "answer": "Nkwobi",
+    "aliases": [],
+    "category": "food"
+  },
+  {
+    "id": "e260",
+    "emoji": "🥘🍅🌶️",
+    "answer": "Ata Din Din",
+    "aliases": [
+      "ata din din"
+    ],
+    "category": "food"
+  },
+  {
+    "id": "e261",
+    "emoji": "🗽🌆",
+    "answer": "Statue of Liberty",
+    "aliases": [
+      "statue of liberty"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e262",
+    "emoji": "🗼🥐",
+    "answer": "Eiffel Tower",
+    "aliases": [
+      "eiffel tower"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e263",
+    "emoji": "🏛️🦉",
+    "answer": "Athens",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e264",
+    "emoji": "🕌🐪",
+    "answer": "Dubai",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e265",
+    "emoji": "⛰️👑",
+    "answer": "Mount Everest",
+    "aliases": [
+      "mount everest",
+      "everest"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e266",
+    "emoji": "🌋🏝️",
+    "answer": "Hawaii",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e267",
+    "emoji": "🏯🌸",
+    "answer": "Tokyo",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e268",
+    "emoji": "🐻❄️🏔️",
+    "answer": "Alaska",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e269",
+    "emoji": "🦘🏝️",
+    "answer": "Australia",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e270",
+    "emoji": "🏜️🐫",
+    "answer": "Sahara Desert",
+    "aliases": [
+      "sahara desert",
+      "sahara"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e271",
+    "emoji": "🗿🌴",
+    "answer": "Easter Island",
+    "aliases": [
+      "easter island"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e272",
+    "emoji": "🕍🏜️",
+    "answer": "Jerusalem",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e273",
+    "emoji": "🏰🌫️",
+    "answer": "Edinburgh",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e274",
+    "emoji": "🌉🌫️🚋",
+    "answer": "San Francisco",
+    "aliases": [
+      "san francisco"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e275",
+    "emoji": "🎰🎲🌵",
+    "answer": "Las Vegas",
+    "aliases": [
+      "las vegas"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e276",
+    "emoji": "🏙️🚕",
+    "answer": "New York City",
+    "aliases": [
+      "new york city",
+      "new york",
+      "nyc"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e277",
+    "emoji": "🛕🐘",
+    "answer": "Bangkok",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e278",
+    "emoji": "🏝️🥥🦩",
+    "answer": "Bahamas",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e279",
+    "emoji": "🧊🐧",
+    "answer": "Antarctica",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e280",
+    "emoji": "🏔️🐆",
+    "answer": "Kilimanjaro",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e281",
+    "emoji": "🏛️🍝",
+    "answer": "Rome",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e282",
+    "emoji": "🌆🎭",
+    "answer": "Venice",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e283",
+    "emoji": "🕋🐪",
+    "answer": "Mecca",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e284",
+    "emoji": "🏞️🦁🌍",
+    "answer": "Serengeti",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e285",
+    "emoji": "🏙️🌇🏝️",
+    "answer": "Lagos",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e286",
+    "emoji": "🏔️❄️🐆",
+    "answer": "Jos Plateau",
+    "aliases": [
+      "jos plateau",
+      "jos"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e287",
+    "emoji": "🌊🏝️🐢",
+    "answer": "Zanzibar",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e288",
+    "emoji": "🏙️🛢️",
+    "answer": "Port Harcourt",
+    "aliases": [
+      "port harcourt"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e289",
+    "emoji": "🏰⛩️",
+    "answer": "Kyoto",
+    "aliases": [],
+    "category": "places"
+  },
+  {
+    "id": "e290",
+    "emoji": "🌊🧜⚡",
+    "answer": "Niagara Falls",
+    "aliases": [
+      "niagara falls"
+    ],
+    "category": "places"
+  },
+  {
+    "id": "e291",
+    "emoji": "🧠💡",
+    "answer": "Bright Idea",
+    "aliases": [
+      "brightidea"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e292",
+    "emoji": "🥶😨",
+    "answer": "Cold Feet",
+    "aliases": [
+      "coldfeet"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e293",
+    "emoji": "🐍👅",
+    "answer": "Forked Tongue",
+    "aliases": [
+      "forkedtongue"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e294",
+    "emoji": "💔🩹",
+    "answer": "Heartbreak",
+    "aliases": [],
+    "category": "general"
+  },
+  {
+    "id": "e295",
+    "emoji": "🤞🍀",
+    "answer": "Good Luck",
+    "aliases": [
+      "goodluck"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e296",
+    "emoji": "⏳💰",
+    "answer": "Time is Money",
+    "aliases": [
+      "time is money"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e297",
+    "emoji": "👀🍎",
+    "answer": "Apple of My Eye",
+    "aliases": [
+      "apple of my eye"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e298",
+    "emoji": "🌧️🐱🐶",
+    "answer": "Raining Cats and Dogs",
+    "aliases": [
+      "raining cats and dogs"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e299",
+    "emoji": "🍰🎂🍽️",
+    "answer": "Piece of Cake",
+    "aliases": [
+      "piece of cake"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e300",
+    "emoji": "💸🔥",
+    "answer": "Burning Money",
+    "aliases": [
+      "burningmoney"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e301",
+    "emoji": "🧊❄️😐",
+    "answer": "Cold Shoulder",
+    "aliases": [
+      "coldshoulder"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e302",
+    "emoji": "🐘🏠🙈",
+    "answer": "Elephant in the Room",
+    "aliases": [
+      "elephant in the room"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e303",
+    "emoji": "🧊🔨",
+    "answer": "Break the Ice",
+    "aliases": [
+      "break the ice"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e304",
+    "emoji": "🦵🪑",
+    "answer": "Break a Leg",
+    "aliases": [
+      "break a leg"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e305",
+    "emoji": "☕🗣️",
+    "answer": "Spill the Tea",
+    "aliases": [
+      "spill the tea"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e306",
+    "emoji": "🔑💡",
+    "answer": "Key to Success",
+    "aliases": [
+      "key to success"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e307",
+    "emoji": "🧠🌪️",
+    "answer": "Brain Storm",
+    "aliases": [
+      "brainstorm"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e308",
+    "emoji": "👂🧱",
+    "answer": "In One Ear Out the Other",
+    "aliases": [
+      "in one ear out the other"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e309",
+    "emoji": "👍🤝",
+    "answer": "Deal",
+    "aliases": [],
+    "category": "general"
+  },
+  {
+    "id": "e310",
+    "emoji": "🐸🎤",
+    "answer": "Frog in the Throat",
+    "aliases": [
+      "frog in the throat"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e311",
+    "emoji": "🎯💯",
+    "answer": "Bullseye",
+    "aliases": [],
+    "category": "general"
+  },
+  {
+    "id": "e312",
+    "emoji": "🧩🧠",
+    "answer": "Mind Puzzle",
+    "aliases": [],
+    "category": "general"
+  },
+  {
+    "id": "e313",
+    "emoji": "🔥🧯",
+    "answer": "Firefighter",
+    "aliases": [],
+    "category": "general"
+  },
+  {
+    "id": "e314",
+    "emoji": "🌪️🧠",
+    "answer": "Whirlwind Thoughts",
+    "aliases": [],
+    "category": "general"
+  },
+  {
+    "id": "e315",
+    "emoji": "🐦🦅",
+    "answer": "Early Bird",
+    "aliases": [
+      "earlybird"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e316",
+    "emoji": "🎭😢😂",
+    "answer": "Drama",
+    "aliases": [],
+    "category": "general"
+  },
+  {
+    "id": "e317",
+    "emoji": "🐢📶",
+    "answer": "Slow Internet",
+    "aliases": [
+      "slowinternet"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e318",
+    "emoji": "🔋🪫",
+    "answer": "Battery Low",
+    "aliases": [
+      "low battery",
+      "batterylow"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e319",
+    "emoji": "🧮💭",
+    "answer": "Mental Math",
+    "aliases": [
+      "mentalmath"
+    ],
+    "category": "general"
+  },
+  {
+    "id": "e320",
+    "emoji": "🎣😂",
+    "answer": "Prank",
+    "aliases": [],
+    "category": "general"
+  }
+]

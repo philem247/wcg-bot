@@ -159,6 +159,22 @@ export function loadWordleBank({ path = 'data/wordle-words.json', data = null } 
   }
 }
 
+export function loadEmojiBank({ path = 'data/emoji.json', data = null } = {}) {
+  const parsed = data ?? JSON.parse(readFileSync(path, 'utf8'))
+  const puzzles = Array.isArray(parsed) ? parsed : (parsed.puzzles ?? [])
+
+  return {
+    size() {
+      return puzzles.length
+    },
+
+    pickPuzzles({ count = 10, exclude = new Set(), random = Math.random } = {}) {
+      const available = puzzles.filter((p) => !exclude.has(p.id))
+      return shuffle(available, random).slice(0, count)
+    },
+  }
+}
+
 export function loadFlagBank({ path = 'data/flags.json', data = null } = {}) {
   const parsed = data ?? JSON.parse(readFileSync(path, 'utf8'))
   const flags = parsed.flags ?? []

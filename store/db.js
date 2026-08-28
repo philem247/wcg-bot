@@ -71,6 +71,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       jid TEXT NOT NULL, code TEXT NOT NULL, ts INTEGER NOT NULL,
       PRIMARY KEY (jid, code)
     );
+    CREATE TABLE IF NOT EXISTS asked_emoji (
+      jid TEXT NOT NULL, pid TEXT NOT NULL, ts INTEGER NOT NULL,
+      PRIMARY KEY (jid, pid)
+    );
     CREATE TABLE IF NOT EXISTS asked_wordle (
       jid TEXT NOT NULL, word TEXT NOT NULL, ts INTEGER NOT NULL,
       PRIMARY KEY (jid, word)
@@ -149,7 +153,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const stmtSelectResultsChain = db.prepare(`
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
-    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo', 'riddle', 'flag')
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo', 'riddle', 'flag', 'emoji')
     ORDER BY player
   `)
   const stmtSelectResultsScramble = db.prepare(`
@@ -168,6 +172,12 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
     WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'flag'
+    ORDER BY player
+  `)
+  const stmtSelectResultsEmoji = db.prepare(`
+    SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
+    FROM results r JOIN games g ON g.id = r.game_id
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'emoji'
     ORDER BY player
   `)
   const stmtSelectResultsRiddle = db.prepare(`
@@ -202,6 +212,15 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   )
   const stmtClearAskedFlags = db.prepare(
     'DELETE FROM asked_flags WHERE jid = ?'
+  )
+  const stmtMarkAskedEmoji = db.prepare(
+    'INSERT OR IGNORE INTO asked_emoji (jid, pid, ts) VALUES (?, ?, ?)'
+  )
+  const stmtAskedEmojiIds = db.prepare(
+    'SELECT pid FROM asked_emoji WHERE jid = ?'
+  )
+  const stmtClearAskedEmoji = db.prepare(
+    'DELETE FROM asked_emoji WHERE jid = ?'
   )
   const stmtMarkAskedWordle = db.prepare(
     'INSERT OR IGNORE INTO asked_wordle (jid, word, ts) VALUES (?, ?, ?)'
@@ -311,6 +330,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       else if (type === 'scramble') stmt = stmtSelectResultsScramble;
       else if (type === 'logo') stmt = stmtSelectResultsLogo;
       else if (type === 'flag') stmt = stmtSelectResultsFlag;
+      else if (type === 'emoji') stmt = stmtSelectResultsEmoji;
       else if (type === 'riddle') stmt = stmtSelectResultsRiddle;
       else stmt = stmtSelectResultsChain;
       const rows = stmt.all(jid, since)
@@ -387,6 +407,20 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
 
     clearAskedFlags(jid) {
       stmtClearAskedFlags.run(jid)
+    },
+
+    markAskedEmoji(jid, puzzles, ts) {
+      timed('markAskedEmoji', () => {
+        for (const p of puzzles) stmtMarkAskedEmoji.run(jid, p.id, ts)
+      })
+    },
+
+    askedEmojiIds(jid) {
+      return new Set(stmtAskedEmojiIds.all(jid).map((r) => r.pid))
+    },
+
+    clearAskedEmoji(jid) {
+      stmtClearAskedEmoji.run(jid)
     },
 
     // Cross-tournament repeat-avoidance for Wordle Tournament — separate from
