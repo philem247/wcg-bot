@@ -1,0 +1,204 @@
+[
+  {
+    "id": "premier-league-clubs",
+    "category": "Football clubs in England (Premier League)",
+    "items": ["Arsenal", "Chelsea", "Liverpool", "Manchester United", "Manchester City", "Tottenham Hotspur", "Everton", "Newcastle United", "Aston Villa", "West Ham United", "Brighton", "Wolverhampton Wanderers", "Crystal Palace", "Fulham", "Brentford", "Bournemouth", "Nottingham Forest", "Leicester City"],
+    "aliases": {
+      "Manchester United": ["man united", "man utd", "manu"],
+      "Manchester City": ["man city", "mcfc"],
+      "Tottenham Hotspur": ["tottenham", "spurs"],
+      "Wolverhampton Wanderers": ["wolves"],
+      "Newcastle United": ["newcastle"],
+      "West Ham United": ["west ham"],
+      "Nottingham Forest": ["forest"],
+      "Brighton": ["brighton and hove albion", "brighton & hove albion"]
+    }
+  },
+  {
+    "id": "bundesliga-clubs",
+    "category": "Football clubs in Germany (Bundesliga)",
+    "items": ["Bayern Munich", "Borussia Dortmund", "RB Leipzig", "Bayer Leverkusen", "Eintracht Frankfurt", "VfL Wolfsburg", "Borussia Monchengladbach", "Union Berlin", "SC Freiburg", "VfB Stuttgart", "Werder Bremen", "FC Koln", "Mainz 05", "Hoffenheim", "Augsburg", "Hertha Berlin", "Schalke 04", "Hamburger SV"],
+    "aliases": {
+      "Bayern Munich": ["bayern"],
+      "Borussia Dortmund": ["dortmund", "bvb"],
+      "RB Leipzig": ["leipzig"],
+      "Bayer Leverkusen": ["leverkusen"],
+      "Borussia Monchengladbach": ["monchengladbach", "gladbach", "borussia mönchengladbach"],
+      "FC Koln": ["koln", "cologne", "fc köln"],
+      "Hertha Berlin": ["hertha bsc"]
+    }
+  },
+  {
+    "id": "laliga-clubs",
+    "category": "Football clubs in Spain (La Liga)",
+    "items": ["Real Madrid", "Barcelona", "Atletico Madrid", "Sevilla", "Real Sociedad", "Villarreal", "Real Betis", "Athletic Bilbao", "Valencia", "Celta Vigo", "Osasuna", "Girona", "Getafe", "Mallorca", "Rayo Vallecano", "Alaves", "Espanyol", "Las Palmas"],
+    "aliases": {
+      "Atletico Madrid": ["atletico", "atleti"],
+      "Athletic Bilbao": ["athletic club"],
+      "Barcelona": ["fc barcelona", "barca"]
+    }
+  },
+  {
+    "id": "npfl-clubs",
+    "category": "Football clubs in Nigeria (NPFL)",
+    "items": ["Enyimba", "Rangers International", "Kano Pillars", "Rivers United", "Remo Stars", "Plateau United", "Lobi Stars", "Sunshine Stars", "Shooting Stars", "Heartland", "Akwa United", "Bendel Insurance", "Katsina United", "Bayelsa United", "Niger Tornadoes", "Abia Warriors", "El-Kanemi Warriors", "Kwara United"],
+    "aliases": {
+      "Rangers International": ["rangers", "enugu rangers"],
+      "Shooting Stars": ["3sc", "shooting stars sc"]
+    }
+  },
+  {
+    "id": "countries-africa",
+    "category": "Countries in Africa",
+    "items": ["Nigeria", "Ghana", "Kenya", "Egypt", "South Africa", "Morocco", "Algeria", "Ethiopia", "Senegal", "Cameroon", "Tanzania", "Uganda", "Zimbabwe", "Zambia", "Angola", "Tunisia", "Ivory Coast", "Mali", "Rwanda", "Namibia"],
+    "aliases": {
+      "Ivory Coast": ["cote d'ivoire", "cote divoire"]
+    }
+  },
+  {
+    "id": "countries-europe",
+    "category": "Countries in Europe",
+    "items": ["France", "Germany", "Italy", "Spain", "Portugal", "Netherlands", "Belgium", "Switzerland", "Sweden", "Norway", "Denmark", "Poland", "Austria", "Greece", "Ireland", "Finland", "Hungary", "Croatia", "Romania", "Ukraine"],
+    "aliases": {}
+  },
+  {
+    "id": "countries-asia",
+    "category": "Countries in Asia",
+    "items": ["China", "Japan", "India", "South Korea", "Indonesia", "Thailand", "Vietnam", "Philippines", "Malaysia", "Pakistan", "Bangladesh", "Saudi Arabia", "United Arab Emirates", "Israel", "Turkey", "Iraq", "Iran", "Singapore", "Sri Lanka", "Nepal"],
+    "aliases": {
+      "South Korea": ["korea"],
+      "United Arab Emirates": ["uae"]
+    }
+  },
+  {
+    "id": "nigerian-foods",
+    "category": "Nigerian foods",
+    "items": ["Jollof Rice", "Egusi Soup", "Pounded Yam", "Amala", "Suya", "Moi Moi", "Akara", "Pepper Soup", "Ofada Rice", "Fufu", "Eba", "Okra Soup", "Ogbono Soup", "Banga Soup", "Nkwobi", "Chin Chin", "Puff Puff", "Fried Rice", "Ewedu", "Asun"],
+    "aliases": {
+      "Pounded Yam": ["iyan"],
+      "Okra Soup": ["okro soup"]
+    }
+  },
+  {
+    "id": "nigerian-musicians",
+    "category": "Nigerian musicians and artists",
+    "items": ["Burna Boy", "Wizkid", "Davido", "Tiwa Savage", "Rema", "Asake", "Fireboy DML", "Omah Lay", "Ayra Starr", "Olamide", "Flavour", "Tems", "Ckay", "Yemi Alade", "Phyno", "2Baba", "Kizz Daniel", "Simi", "Adekunle Gold", "Falz"],
+    "aliases": {
+      "2Baba": ["2face", "tuface", "2face idibia"],
+      "Ckay": ["ckay"]
+    }
+  },
+  {
+    "id": "nigerian-states",
+    "category": "Nigerian states",
+    "items": ["Lagos", "Kano", "Rivers", "Oyo", "Kaduna", "Enugu", "Delta", "Ogun", "Anambra", "Imo", "Edo", "Plateau", "Cross River", "Akwa Ibom", "Borno", "Katsina", "Sokoto", "Osun", "Ondo", "Benue", "Abia", "Ekiti"],
+    "aliases": {}
+  },
+  {
+    "id": "mammals",
+    "category": "Mammals",
+    "items": ["Lion", "Elephant", "Giraffe", "Zebra", "Tiger", "Leopard", "Cheetah", "Hippopotamus", "Rhinoceros", "Gorilla", "Chimpanzee", "Kangaroo", "Wolf", "Fox", "Bear", "Deer", "Camel", "Buffalo", "Hyena", "Antelope"],
+    "aliases": {
+      "Hippopotamus": ["hippo"],
+      "Rhinoceros": ["rhino"]
+    }
+  },
+  {
+    "id": "birds",
+    "category": "Birds",
+    "items": ["Eagle", "Ostrich", "Parrot", "Owl", "Peacock", "Flamingo", "Penguin", "Sparrow", "Vulture", "Hawk", "Crane", "Swan", "Woodpecker", "Falcon", "Pigeon", "Crow", "Kingfisher", "Hummingbird", "Stork", "Pelican"],
+    "aliases": {}
+  },
+  {
+    "id": "movies",
+    "category": "Movies",
+    "items": ["Titanic", "Avatar", "The Godfather", "Inception", "Jaws", "The Lion King", "Frozen", "Gladiator", "Avengers Endgame", "Black Panther", "The Matrix", "Jurassic Park", "Forrest Gump", "The Dark Knight", "Star Wars", "Toy Story", "Shrek", "Home Alone", "The Shawshank Redemption", "Casablanca"],
+    "aliases": {}
+  },
+  {
+    "id": "hollywood-actors",
+    "category": "Hollywood actors",
+    "items": ["Tom Hanks", "Leonardo DiCaprio", "Brad Pitt", "Denzel Washington", "Will Smith", "Robert De Niro", "Morgan Freeman", "Johnny Depp", "Tom Cruise", "Meryl Streep", "Scarlett Johansson", "Angelina Jolie", "Samuel L Jackson", "Dwayne Johnson", "Chris Hemsworth", "Robert Downey Jr", "Al Pacino", "Keanu Reeves", "Jennifer Lawrence", "Matt Damon"],
+    "aliases": {
+      "Samuel L Jackson": ["samuel l. jackson", "samuel jackson"],
+      "Robert Downey Jr": ["robert downey jr.", "rdj"]
+    }
+  },
+  {
+    "id": "nollywood-actors",
+    "category": "Nollywood actors",
+    "items": ["Genevieve Nnaji", "Ramsey Nouah", "Funke Akindele", "Mercy Johnson", "Jim Iyke", "Omotola Jalade Ekeinde", "Rita Dominic", "Nkem Owoh", "Pete Edochie", "Kanayo O Kanayo", "Chioma Akpotha", "Odunlade Adekola", "Sola Sobowale", "Ini Edo", "Patience Ozokwor", "Zubby Michael", "Yul Edochie", "Toyin Abraham", "Desmond Elliot", "Kate Henshaw"],
+    "aliases": {
+      "Omotola Jalade Ekeinde": ["omotola"],
+      "Kanayo O Kanayo": ["kanayo o. kanayo", "kok"],
+      "Patience Ozokwor": ["mama g"]
+    }
+  },
+  {
+    "id": "capital-cities",
+    "category": "Capital cities",
+    "items": ["Abuja", "Accra", "Nairobi", "Cairo", "Pretoria", "Paris", "London", "Berlin", "Madrid", "Rome", "Tokyo", "Beijing", "New Delhi", "Washington", "Ottawa", "Canberra", "Moscow", "Lisbon", "Athens", "Dublin"],
+    "aliases": {
+      "Washington": ["washington dc", "washington d.c."]
+    }
+  },
+  {
+    "id": "fruits",
+    "category": "Fruits",
+    "items": ["Mango", "Banana", "Pineapple", "Watermelon", "Orange", "Apple", "Pawpaw", "Grape", "Strawberry", "Coconut", "Guava", "Pear", "Cherry", "Lemon", "Avocado", "Kiwi", "Plum", "Pomegranate", "Tangerine", "Peach"],
+    "aliases": {
+      "Pawpaw": ["papaya"]
+    }
+  },
+  {
+    "id": "vegetables",
+    "category": "Vegetables",
+    "items": ["Tomato", "Onion", "Carrot", "Cabbage", "Spinach", "Cucumber", "Potato", "Pumpkin", "Garlic", "Ginger", "Cauliflower", "Broccoli", "Lettuce", "Pepper", "Okra", "Eggplant", "Beetroot", "Sweet Potato", "Green Beans", "Corn"],
+    "aliases": {
+      "Eggplant": ["aubergine"],
+      "Corn": ["maize"]
+    }
+  },
+  {
+    "id": "sports",
+    "category": "Sports",
+    "items": ["Football", "Basketball", "Tennis", "Boxing", "Athletics", "Swimming", "Cricket", "Rugby", "Volleyball", "Golf", "Table Tennis", "Badminton", "Wrestling", "Cycling", "Handball", "Chess", "Snooker", "Hockey", "Baseball", "Judo"],
+    "aliases": {
+      "Table Tennis": ["ping pong"]
+    }
+  },
+  {
+    "id": "us-states",
+    "category": "US states",
+    "items": ["California", "Texas", "Florida", "New York", "Georgia", "Ohio", "Michigan", "Illinois", "Arizona", "Nevada", "Colorado", "Washington", "Oregon", "Virginia", "Massachusetts", "Tennessee", "Alabama", "Louisiana", "Indiana", "Missouri"],
+    "aliases": {}
+  },
+  {
+    "id": "world-currencies",
+    "category": "World currencies",
+    "items": ["Naira", "Dollar", "Euro", "Pound Sterling", "Yen", "Yuan", "Rand", "Cedi", "Rupee", "Dirham", "Franc", "Peso", "Real", "Rupiah", "Ringgit", "Won", "Shekel", "Krona", "Lira", "Riyal"],
+    "aliases": {
+      "Pound Sterling": ["pound", "gbp", "british pound"]
+    }
+  },
+  {
+    "id": "board-games",
+    "category": "Board games",
+    "items": ["Chess", "Scrabble", "Monopoly", "Ludo", "Checkers", "Backgammon", "Whot", "Snakes and Ladders", "Cluedo", "Risk", "Connect Four", "Battleship", "Jenga", "Dominoes", "Uno", "Pictionary", "Trivial Pursuit", "Sudoku"],
+    "aliases": {
+      "Snakes and Ladders": ["snakes & ladders"]
+    }
+  },
+  {
+    "id": "musical-instruments",
+    "category": "Musical instruments",
+    "items": ["Guitar", "Piano", "Drums", "Violin", "Saxophone", "Trumpet", "Flute", "Bass Guitar", "Clarinet", "Cello", "Harmonica", "Trombone", "Xylophone", "Accordion", "Djembe", "Talking Drum", "Keyboard", "Bongo", "Harp", "Ukulele"],
+    "aliases": {}
+  },
+  {
+    "id": "smartphone-brands",
+    "category": "Smartphone brands",
+    "items": ["Apple", "Samsung", "Tecno", "Infinix", "Huawei", "Xiaomi", "Nokia", "Sony", "Google", "Oppo", "Vivo", "Motorola", "LG", "OnePlus", "Itel", "Realme", "Blackberry", "HTC"],
+    "aliases": {}
+  }
+]

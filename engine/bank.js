@@ -159,6 +159,22 @@ export function loadWordleBank({ path = 'data/wordle-words.json', data = null } 
   }
 }
 
+export function loadCategoryBank({ path = 'data/categories.json', data = null } = {}) {
+  const categories = data ?? JSON.parse(readFileSync(path, 'utf8'))
+
+  return {
+    size() {
+      return categories.length
+    },
+
+    pickCategory({ exclude = new Set(), random = Math.random } = {}) {
+      const available = categories.filter((c) => !exclude.has(c.id))
+      if (available.length === 0) return null
+      return shuffle(available, random)[0]
+    },
+  }
+}
+
 export function loadFlagBank({ path = 'data/flags.json', data = null } = {}) {
   const parsed = data ?? JSON.parse(readFileSync(path, 'utf8'))
   const flags = parsed.flags ?? []

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { loadBank, shuffle, CATEGORIES } from './bank.js'
+import { loadBank, shuffle, CATEGORIES, loadCategoryBank } from './bank.js'
 
 // Deterministic stand-in for Math.random: cycles a fixed sequence.
 function seeded(seq = [0.1, 0.7, 0.3, 0.9, 0.5]) {
@@ -115,6 +115,28 @@ const tests = [
       const bank = loadBank({ data: fixture })
       assert.deepEqual(bank.pick({ category: 'football', count: 5, random: seeded() }), [])
       assert.deepEqual(bank.pick({ category: 'nonsense', count: 5, random: seeded() }), [])
+    },
+  },
+  {
+    name: 'loadCategoryBank: size() reports the category count',
+    fn: () => {
+      const bank = loadCategoryBank({ data: [
+        { id: 'cat-a', category: 'Primary colors', items: ['Red', 'Blue', 'Yellow'] },
+        { id: 'cat-b', category: 'Football clubs in Germany', items: ['Bayern Munich', 'Borussia Dortmund'] },
+      ] })
+      assert.equal(bank.size(), 2)
+    },
+  },
+  {
+    name: 'loadCategoryBank: pickCategory excludes ids already used, returns null once exhausted',
+    fn: () => {
+      const bank = loadCategoryBank({ data: [
+        { id: 'cat-a', category: 'Primary colors', items: ['Red', 'Blue', 'Yellow'] },
+        { id: 'cat-b', category: 'Football clubs in Germany', items: ['Bayern Munich', 'Borussia Dortmund'] },
+      ] })
+      const picked = bank.pickCategory({ exclude: new Set(['cat-a']), random: () => 0 })
+      assert.equal(picked.id, 'cat-b')
+      assert.equal(bank.pickCategory({ exclude: new Set(['cat-a', 'cat-b']), random: () => 0 }), null)
     },
   },
 ]
