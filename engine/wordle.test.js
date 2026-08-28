@@ -1,6 +1,11 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { createWordleMatch, scoreGuess, bestProgress, MAX_GUESSES, GUESS_COOLDOWN_MS, MATCH_CLOCK_MS } from './wordle.js'
+import { createWordleMatch, scoreGuess, bestProgress, MAX_GUESSES, GUESS_COOLDOWN_MS, MATCH_CLOCK_MS, SUDDEN_DEATH_CLOCK_MS } from './wordle.js'
+
+test('wordle: the regular match clock is 3 minutes, sudden death is a separate 2-minute clock', () => {
+  assert.equal(MATCH_CLOCK_MS, 3 * 60 * 1000)
+  assert.equal(SUDDEN_DEATH_CLOCK_MS, 2 * 60 * 1000)
+})
 
 test('scoreGuess: exact match is all green', () => {
   assert.deepEqual(scoreGuess('crane', 'crane'), ['green', 'green', 'green', 'green', 'green'])
@@ -59,6 +64,15 @@ test('wordle match: a correct guess ends the match immediately in the solver\'s 
   assert.equal(events[1].winner, 'alice')
   assert.equal(events[1].reason, 'solved')
   assert.equal(m.state, 'over')
+})
+
+test('wordle match: the result always names both secret words, win or lose, so nobody is left wondering', () => {
+  const m = newMatch()
+  const events = m.submit('alice', 'crane', 100)
+  const over = events[events.length - 1]
+  assert.equal(over.p1Word, 'crane')
+  assert.equal(over.p2Word, 'plumb')
+  assert.deepEqual(m.result(), { winner: 'alice', s1: 10, s2: 0, reason: 'solved', p1Word: 'crane', p2Word: 'plumb' })
 })
 
 test('wordle match: the opponent cannot guess once the match is over', () => {

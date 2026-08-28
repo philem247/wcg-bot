@@ -10,7 +10,8 @@
 export const MAX_GUESSES = 6
 export const SUDDEN_DEATH_MAX_GUESSES = 4
 export const GUESS_COOLDOWN_MS = 20_000
-export const MATCH_CLOCK_MS = 4 * 60 * 1000
+export const MATCH_CLOCK_MS = 3 * 60 * 1000
+export const SUDDEN_DEATH_CLOCK_MS = 2 * 60 * 1000
 
 // Real Wordle only marks a letter yellow if the answer has an unmatched
 // occurrence of it left over after every green has claimed its letter first.
@@ -95,8 +96,14 @@ export function createWordleMatch({
     const s1 = bestProgress(b1.guesses.map((g) => g.feedback))
     const s2 = bestProgress(b2.guesses.map((g) => g.feedback))
     state = 'over'
-    result = { winner: winner ?? null, s1, s2, reason }
-    return { type: 'wordle_match_over', p1, p2, winner: result.winner, s1, s2, reason }
+    result = { winner: winner ?? null, s1, s2, reason, p1Word: b1.word, p2Word: b2.word }
+    return {
+      type: 'wordle_match_over', p1, p2, winner: result.winner, s1, s2, reason,
+      // The secret words themselves — a player who lost or timed out never
+      // got told what they were chasing otherwise, which is the whole reason
+      // to keep watching the result.
+      p1Word: b1.word, p2Word: b2.word,
+    }
   }
 
   return {

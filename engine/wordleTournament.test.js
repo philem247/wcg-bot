@@ -161,6 +161,68 @@ const tests = [
     },
   },
   {
+    name: 'wordle_tournament_match_start carries the tier, word length, guess count and clock so the round announces its own rules',
+    fn: () => {
+      const bank = { pickPair: ({ tier }) => ({ tier, word1: 'planet', word2: 'ballot' }) } // 6-letter pair
+      const t = createWordleTournament({ wordBank: bank, tier: 'medium', now: 0, random: fixed(0.5) })
+      t.tick(0)
+      t.join('p1', 0)
+      t.join('p2', 0)
+      t.tick(999_999)
+      const { events } = startMatch(t, 1_000_000)
+      const start = events.find((e) => e.type === 'wordle_tournament_match_start')
+      assert.equal(start.tier, 'medium')
+      assert.equal(start.wordLength, 6)
+      assert.equal(start.maxGuesses, MAX_GUESSES)
+      assert.equal(start.clockSeconds, 180) // 3 minutes
+    },
+  },
+  {
+    name: 'sudden death runs its own shorter clock and smaller guess count, not the regular match values',
+    fn: () => {
+      const bank = { pickPair: () => ({ tier: 'easy', word1: 'crane', word2: 'crane' }) }
+      const t = createWordleTournament({ wordBank: bank, now: 0, random: fixed(0.5) })
+      t.tick(0)
+      t.join('alice', 0)
+      t.join('bob', 0)
+      t.tick(999_999)
+      const { now } = startMatch(t, 1_000_000)
+      const fixture = t.status().fixtures[0]
+
+      let at = now + 100
+      let events
+      for (let i = 0; i < MAX_GUESSES; i++) { events = t.submit(fixture.p1, 'react', at); at += 20_000 }
+      at = now + 150
+      for (let i = 0; i < MAX_GUESSES; i++) { events = t.submit(fixture.p2, 'react', at); at += 20_000 }
+      const sd = events.find((e) => e.type === 'wordle_tournament_sudden_death')
+      assert.equal(sd.maxGuesses, SUDDEN_DEATH_MAX_GUESSES)
+      assert.equal(sd.clockSeconds, 120) // 2 minutes, not the 3-minute regular match clock
+    },
+  },
+  {
+    name: 'a match result always names both secret words, even when nobody solves',
+    fn: () => {
+      const bank = { pickPair: () => ({ tier: 'easy', word1: 'crane', word2: 'plumb' }) }
+      const t = createWordleTournament({ wordBank: bank, now: 0, random: fixed(0.1) })
+      t.tick(0)
+      t.join('alice', 0)
+      t.join('bob', 0)
+      t.tick(999_999)
+      const { now } = startMatch(t, 1_000_000)
+      const fixture = t.status().fixtures[0]
+
+      // Give p1 unambiguously better (but incomplete) progress against CRANE
+      // so the clock resolves the match outright by progress rather than
+      // landing on an exact 0-0 tie, which would go to sudden death instead.
+      t.submit(fixture.p1, 'react', now + 100)
+      const events = t.tick(now + 3 * 60 * 1000)
+      const over = events.find((e) => e.type === 'wordle_tournament_match_over')
+      assert.ok(over, 'the match clock should resolve this')
+      const words = [over.p1Word, over.p2Word]
+      assert.ok(words.includes('crane') && words.includes('plumb'), `expected both words revealed, got ${JSON.stringify(words)}`)
+    },
+  },
+  {
     name: 'a champion is crowned when one player solves their word outright',
     fn: () => {
       const bank = { pickPair: () => ({ tier: 'easy', word1: 'crane', word2: 'plumb' }) }

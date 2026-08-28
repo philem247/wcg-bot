@@ -1,6 +1,6 @@
 # WCG Bot — WhatsApp Multiplayer Game Bot
 
-A self-hosted WhatsApp bot for group game nights: Word Chain, Trivia, Word Scramble, Logo Quiz, Riddle Quest, and head-to-head Trivia Tournaments, all running out of one Node process against a single group chat's messages. No database server, no native build step — everything lives in one SQLite file.
+A self-hosted WhatsApp bot for group game nights: Word Chain, Trivia, Word Scramble, Logo Quiz, Riddle Quest, Guess the Flag, and head-to-head Trivia and Wordle Tournaments, all running out of one Node process against a single group chat's messages. No database server, no native build step — everything lives in one SQLite file.
 
 ## Requirements
 
@@ -77,8 +77,9 @@ Environment variables (defined in `.env` and read from `config.js`):
 | **Riddle Quest** | 5 riddles per game, 20s clock per riddle, 10s gap between riddles. Drawn from `data/riddles.json`; answers match against a curated alias list, not just the literal answer string. | 1 point per solve, weekly and all-time leaderboards |
 | **Guess the Flag** | 5 rounds, 15s clock, 10s gap. The bot posts a country's flag emoji (derived from its ISO code, not hand-typed); players race to name the country. Answer matching accepts common aliases (e.g. "USA", "UK", "Holland") and ignores accents/punctuation. | Race — first correct answer per round wins the point |
 | **Tournament** | Head-to-head single-elimination trivia bracket, byes for non-power-of-two entrant counts. `TOURNAMENT_CLOCK_SECONDS = 10` per question (tighter than group trivia's 30s clock, to discourage searching an answer up mid-match), `MATCH_START_DELAY_MS = 4000` pause before each match's first question, `REGISTRATION_MS = 120000` (2 min) open registration window. An admin drives every round with `/tourney next`. | Race scoring within each match (first correct answer wins the question); a tied match goes to sudden death |
+| **Wordle Tournament** | Head-to-head single-elimination bracket, same byes/registration shape as Tournament above, but each player gets their **own** secret word rather than sharing one — a shared word in a public group leaks every guess to the opponent for free (see the design spec). 6 guesses, 20s cooldown between a player's own guesses, 3-minute match clock. `/wordle start [easy\|medium\|hard]` picks the tier for the whole bracket: easy = 5-letter words, medium = 6, hard = 7 (mirrors Word Chain's easy/medium/hard naming). Guess by typing the word directly, no command prefix. An unresolved match (nobody solves, or the clock expires) goes to a single sudden-death round (4 guesses, 2-minute clock) decided by progress if still level, then a coin flip as the last resort. | First to solve wins the match outright; **titles recorded, not points** — same shape as Tournament's `tournament_wins`, kept as a separate count via a `type` column so the two boards never merge |
 
-Starting any game (Word Chain, Trivia, Scramble, Logo Quiz, Riddle Quest, Guess the Flag, or a Tournament) requires a bot admin, group admin, owner, or global admin — this is enforced the same way for every mode.
+Starting any game (Word Chain, Trivia, Scramble, Logo Quiz, Riddle Quest, Guess the Flag, Wordle Tournament, or a Tournament) requires a bot admin, group admin, owner, or global admin — this is enforced the same way for every mode.
 
 ## Commands
 
@@ -139,6 +140,16 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | `/tourney end` | end the tournament (admin) |
 | `/tourney status` | show the current bracket state (anyone) |
 | `/tourney stats` | tournament win leaderboard (anyone) |
+
+### Wordle Tournament (start/next/end: admins only)
+
+| Command | Does |
+|---------|------|
+| `/wordle start [easy\|medium\|hard]` | open registration for a head-to-head bracket; tier defaults to easy (admin) |
+| `/wordle next` | advance to/through the next round (admin) |
+| `/wordle end` | end the tournament (admin) |
+| `/wordle status` | show the current bracket state (anyone) |
+| `/wordle stats` | Wordle title leaderboard — separate from `/tourney stats` (anyone) |
 
 ### Scores (anyone)
 
@@ -218,6 +229,8 @@ Regenerate the full bank with `npm run build`, a multi-stage pipeline (`build-pi
 
 Questions are CC BY-SA 4.0 — see `LICENSES.md` for attribution.
 
+Guess the Flag's `data/flags.json` (180 countries) and Wordle Tournament's `data/wordle-words.json` (3,577 words across easy/medium/hard) are separate, smaller banks with their own build scripts: `node data/build-flags.mjs` and `node data/build-wordle-words.mjs`. The Wordle word lists are hand-curated from `data/common.txt` to strip proper nouns unfit as a secret answer (first names, brands, place names) before `build-wordle-words.mjs` tags them into tiers by length — see `data/backfill/wordle-answers.json` / `wordle-6.json` / `wordle-7.json` for the curated source and `docs/superpowers/specs/2026-08-26-wordle-tourney-and-emoji-design.md` for why.
+
 ## Reliability / connection handling
 
 Long-running self-hosted WhatsApp bots occasionally hit a connection that looks alive but has silently stopped delivering messages, or a full event-loop freeze. `transport/wa.js` and the diagnostics below exist to detect and recover from both without operator intervention — but if you're debugging a freeze, here's what to grep your console log for.
@@ -276,7 +289,10 @@ Assert-based/`node:test` checks (mostly the former, a couple of files use node's
 - `transport/router.test.js` — command routing and game lifecycle
 - `engine/test.js` — validation and rejection logic
 - `engine/game.test.js` — word chain game state machine
-- `engine/riddle.test.js` — riddle quest state machine (timer, hint, intermission)
+- `engine/riddle.test.js` — riddle quest state machine (timer, intermission)
+- `engine/flag.test.js` — guess-the-flag state machine, alias/accent-insensitive matching, real `data/flags.json` integrity
+- `engine/wordle.test.js` — Wordle match engine: duplicate-letter colour scoring, per-player boards, cooldown, invalid-guess handling, timeout
+- `engine/wordleTournament.test.js` — Wordle Tournament bracket: byes, sudden death, tier restriction, coin-flip fallback, word-bank selection
 - `transport/outbox.test.js` — send queue and rate limiting
 - `transport/lock.test.js` — single-instance guard
 - `transport/quiet.test.js` — signal-noise suppression, genuine-decrypt-failure counting
@@ -314,9 +330,10 @@ Everything except the dictionary and trivia bank lives in one SQLite file, `wcg.
 - `asked_questions` — tracks which trivia question ids a group has already seen, so a category recycles only once exhausted (also feeds tournament match questions, so a tournament never repeats a group's recent trivia)
 - `asked_riddles` — tracks which riddle ids a group has already seen, per-group dedup for `/riddle`
 - `asked_flags` — tracks which country codes a group has already seen, per-group dedup for `/flag`
-- `trivia_bans` — per-group trivia bans set via `/ban`
-- `tournament_wins` — tournament win history, feeds `/tourney stats`
-- `tournaments` — persisted bracket state, so an in-progress tournament survives a restart
+- `asked_wordle` — tracks which Wordle answer words a group has already seen, per-group dedup for `/wordle`, separate from the in-bracket exclusion a single tournament tracks in memory
+- `trivia_bans` — per-group ban list (the name predates it covering every mode — a `/ban` now blocks starting or playing anything, not just trivia)
+- `tournament_wins` — tournament title history, feeds both `/tourney stats` and `/wordle stats`; a `type` column (`'trivia'` or `'wordle'`, default `'trivia'` for pre-migration rows) keeps the two boards from merging into one count
+- `tournaments` — persisted bracket state for either tournament type, so an in-progress bracket survives a restart (a live match mid-question/mid-guess cannot be resumed and collapses to `awaiting` at the same fixture; the admin's next `next` restarts that match fresh)
 - `game_activity` — last-activity timestamp per group
 - `wa_keys` — WhatsApp/Signal auth credentials and ratchet keys (see Auth above)
 

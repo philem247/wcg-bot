@@ -10,7 +10,7 @@
 //
 // No Date.now(), no Math.random(). Time arrives via `now`, randomness via
 // `random`. Same contract as the rest of engine/.
-import { createWordleMatch, MAX_GUESSES, SUDDEN_DEATH_MAX_GUESSES } from './wordle.js'
+import { createWordleMatch, MAX_GUESSES, SUDDEN_DEATH_MAX_GUESSES, MATCH_CLOCK_MS, SUDDEN_DEATH_CLOCK_MS } from './wordle.js'
 import { shuffle } from './bank.js'
 
 export const REGISTRATION_MS = 120_000
@@ -156,11 +156,14 @@ export function createWordleTournament({
     usedWords.add(pair.word2)
     inner = createWordleMatch({
       p1: fixture.p1, p2: fixture.p2, word1: pair.word1, word2: pair.word2,
-      maxGuesses: MAX_GUESSES, now: startNow, isValidWord,
+      maxGuesses: MAX_GUESSES, matchClockMs: MATCH_CLOCK_MS, now: startNow, isValidWord,
     })
     state = 'match_starting'
     matchStartDeadline = startNow + MATCH_START_DELAY_MS
-    return [{ type: 'wordle_tournament_match_start', p1: fixture.p1, p2: fixture.p2, round: roundIndex + 1, totalRounds }]
+    return [{
+      type: 'wordle_tournament_match_start', p1: fixture.p1, p2: fixture.p2, round: roundIndex + 1, totalRounds,
+      tier: pair.tier, wordLength: pair.word1.length, maxGuesses: MAX_GUESSES, clockSeconds: MATCH_CLOCK_MS / 1000,
+    }]
   }
 
   function startSuddenDeath(startNow) {
@@ -171,13 +174,18 @@ export function createWordleTournament({
     if (!pair) return coinFlipFinish(fixture, startNow)
     usedWords.add(pair.word1)
     usedWords.add(pair.word2)
+    // A dedicated, shorter clock — sudden death must not drag on as long as a
+    // full match once it's already down to settling a tie.
     inner = createWordleMatch({
       p1: fixture.p1, p2: fixture.p2, word1: pair.word1, word2: pair.word2,
-      maxGuesses: SUDDEN_DEATH_MAX_GUESSES, now: startNow, isValidWord,
+      maxGuesses: SUDDEN_DEATH_MAX_GUESSES, matchClockMs: SUDDEN_DEATH_CLOCK_MS, now: startNow, isValidWord,
     })
     state = 'match_starting'
     matchStartDeadline = startNow + MATCH_START_DELAY_MS
-    return [{ type: 'wordle_tournament_sudden_death', p1: fixture.p1, p2: fixture.p2 }]
+    return [{
+      type: 'wordle_tournament_sudden_death', p1: fixture.p1, p2: fixture.p2,
+      wordLength: pair.word1.length, maxGuesses: SUDDEN_DEATH_MAX_GUESSES, clockSeconds: SUDDEN_DEATH_CLOCK_MS / 1000,
+    }]
   }
 
   // Resolution order, matching the design spec exactly: an outright solve
@@ -201,13 +209,18 @@ export function createWordleTournament({
     fixture.winner = winner
     fixture.scoreP1 = s1 ?? 0
     fixture.scoreP2 = s2 ?? 0
+    // Read the words off matchResult before clearing it — a coin flip
+    // (word bank exhausted) never played a match, so both are undefined
+    // there, and the result just won't name a word rather than show a wrong one.
+    const p1Word = matchResult?.p1Word
+    const p2Word = matchResult?.p2Word
     inner = null
     sd = false
     matchResult = null
     const matchOverEvent = {
       type: 'wordle_tournament_match_over', p1: fixture.p1, p2: fixture.p2,
       scoreP1: fixture.scoreP1, scoreP2: fixture.scoreP2, winner, suddenDeath,
-      round: roundIndex + 1,
+      round: roundIndex + 1, p1Word, p2Word,
     }
 
     if (!roundResolved(roundIndex)) {
@@ -255,7 +268,7 @@ export function createWordleTournament({
           opened = true
           return [{
             type: 'wordle_tournament_registration_open',
-            seconds: Math.round(registrationMs / 1000), deadline: registrationDeadline,
+            seconds: Math.round(registrationMs / 1000), deadline: registrationDeadline, tier,
           }]
         }
         if (tickNow < registrationDeadline) return []

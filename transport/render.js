@@ -409,7 +409,7 @@ export function render(event) {
 
     case 'wordle_tournament_registration_open':
       return {
-        text: `🔤 *WORDLE TOURNAMENT*\n━━━━━━━━━━━━━━━━\nType *join* — registration closes in ${event.seconds}s.`,
+        text: `🔤 *WORDLE TOURNAMENT*\n━━━━━━━━━━━━━━━━\nMode: *${event.tier ?? 'easy'}*\nType *join* — registration closes in ${event.seconds}s.`,
         mentions: [],
       }
 
@@ -439,13 +439,15 @@ export function render(event) {
 
     case 'wordle_tournament_match_start':
       return {
-        text: `🔤 *ROUND ${event.round}/${event.totalRounds}*\n${mention(event.p1)} 🆚 ${mention(event.p2)}\n\nDifferent word each, 6 guesses, first to solve wins.\nGuess by typing the word — no command needed.`,
+        text: `🔤 *ROUND ${event.round}/${event.totalRounds}*\n${mention(event.p1)} 🆚 ${mention(event.p2)}\n\n` +
+          `Mode: *${event.tier}* — ${event.wordLength}-letter word, ${event.maxGuesses} guesses, ${event.clockSeconds / 60}min clock.\n` +
+          `Different word each, first to solve wins.\nGuess by typing the word — no command needed.`,
         mentions: [event.p1, event.p2],
       }
 
     case 'wordle_tournament_sudden_death':
       return {
-        text: `⚔️ *Tied!* Sudden death — new word each, 4 guesses this time.\n${mention(event.p1)} 🆚 ${mention(event.p2)}`,
+        text: `⚔️ *Tied!* Sudden death — new ${event.wordLength}-letter word each, ${event.maxGuesses} guesses, ${event.clockSeconds / 60}min clock.\n${mention(event.p1)} 🆚 ${mention(event.p2)}`,
         mentions: [event.p1, event.p2],
       }
 
@@ -476,11 +478,21 @@ export function render(event) {
         event.winner
           ? `Winner: ${mention(event.winner)} 🏆`
           : `Resolved by progress: ${mention(event.p1)} — ${mention(event.p2)}`,
+      ]
+      // Always name the words — a player who lost, ran out of guesses, or
+      // watched the clock expire never otherwise finds out what they missed.
+      if (event.p1Word || event.p2Word) {
+        lines.push(
+          '',
+          `💡 Words: ${mention(event.p1)} — *${(event.p1Word ?? '?').toUpperCase()}*  ·  ${mention(event.p2)} — *${(event.p2Word ?? '?').toUpperCase()}*`,
+        )
+      }
+      lines.push(
         '',
         event.roundComplete
           ? `Round ${event.round} complete! Admin: run ${PREFIX}wordle next for round ${event.round + 1}.`
           : `Admin: run ${PREFIX}wordle next for the next match.`,
-      ]
+      )
       const mentions = [event.p1, event.p2]
       if (event.winner) mentions.push(event.winner)
       return { text: lines.join('\n'), mentions }
