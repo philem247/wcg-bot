@@ -8,8 +8,9 @@ import { createScrambleGame, SCRAMBLE_COUNT } from '../engine/scramble.js'
 import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
 import { createFlagGame, FLAG_COUNT, CLOCK_SECONDS as FLAG_CLOCK_SECONDS } from '../engine/flag.js'
 import { createRiddleGame, RIDDLE_COUNT } from '../engine/riddle.js'
-import { loadRiddleBank, loadFlagBank } from '../engine/bank.js'
+import { loadRiddleBank, loadFlagBank, loadWordleBank } from '../engine/bank.js'
 import { createTournament } from '../engine/tournament.js'
+import { createWordleTournament } from '../engine/wordleTournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
 import { PREFIX, OWNER, ADMINS, TRACE_LOG } from '../config.js'
@@ -34,7 +35,7 @@ const MODE_NAMES = new Set(['easy', 'medium', 'hard'])
 // Commands a banned player cannot use. Keep every playable mode listed here —
 // a mode missing from this set is a mode a banned player can still start.
 const GAME_COMMANDS = new Set([
-  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney',
+  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney', 'wordle',
 ])
 
 // rejected events (engine/game.js) don't carry the required letter/minLength, only
@@ -314,19 +315,37 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'tournament_cancelled' || event.type === 'tournament_ended') {
       gameMeta.delete(jid)
+    } else if (event.type === 'wordle_tournament_champion') {
+      // Same shape as tournament_champion above, but recorded with type
+      // 'wordle' so /tourney stats and /wordle stats stay two separate
+      // counts sharing one table — see the store's tournament_wins migration.
+      const meta = gameMeta.get(jid)
+      const pn = meta?.pnMap?.get(event.player)
+      try {
+        db?.recordTournamentWin(jid, pn ?? event.player, now, 'wordle')
+      } catch (e) {
+        // store failure must never break gameplay
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'wordle_tournament_cancelled' || event.type === 'wordle_tournament_ended') {
+      gameMeta.delete(jid)
     }
 
     // Tournament state transitions carry a full bracket snapshot to persist —
-    // see engine/tournament.js's serialize(). Mid-match ticks (trivia_question/
-    // trivia_answer pass-through) carry none and are deliberately not persisted:
-    // a restart mid-match collapses back to 'awaiting' on the next /tourney next
-    // rather than trying to resume a live trivia clock.
+    // see engine/tournament.js's serialize() and engine/wordleTournament.js's.
+    // Mid-match ticks (question/guess pass-through events) carry none and are
+    // deliberately not persisted: a restart mid-match collapses back to
+    // 'awaiting' on the next next()/`/wordle next` rather than trying to
+    // resume a live clock or in-progress boards.
     if (event.snapshot) {
       try {
         if (event.snapshot.state === 'over') db?.deleteTournament(jid)
         else db?.saveTournament(jid, event.snapshot, now)
         if (Array.isArray(event.snapshot.usedQids) && event.snapshot.usedQids.length > 0) {
           db?.markAsked(jid, event.snapshot.usedQids.map((id) => ({ id, category: event.snapshot.category || 'mixed' })), now)
+        }
+        if (Array.isArray(event.snapshot.usedWords) && event.snapshot.usedWords.length > 0) {
+          db?.markAskedWordle(jid, event.snapshot.usedWords, now)
         }
       } catch (e) {
         // store failure must never break gameplay
@@ -352,7 +371,15 @@ function formatLeaderboard(board, heading) {
   return { text: `${heading}\n${lines.join('\n')}`, mentions: board.map((r) => r.player) }
 }
 
-function formatTournamentStats(board) {
+// `label` distinguishes /tourney stats from /wordle stats — same table
+// (tournament_wins), different `type` column, so the two boards must never
+// read as the same thing even though the format is identical.
+function formatTournamentStats(board, label = null) {
+  if (label) {
+    if (board.length === 0) return { text: `🏆 No ${label} titles won yet.`, mentions: [] }
+    const lines = board.map((r, i) => `${i + 1}. @${toNumber(r.player)} - ${r.wins} ${r.wins === 1 ? 'title' : 'titles'}`)
+    return { text: `🏆 ${label} titles\n${lines.join('\n')}`, mentions: board.map((r) => r.player) }
+  }
   if (board.length === 0) return { text: `🏆 No tournaments won yet.`, mentions: [] }
   const lines = board.map((r, i) => `${i + 1}. @${toNumber(r.player)} - ${r.wins} ${r.wins === 1 ? 'title' : 'titles'}`)
   return { text: `🏆 Tournament wins\n${lines.join('\n')}`, mentions: board.map((r) => r.player) }
@@ -366,6 +393,7 @@ function formatPending(rows) {
 export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db, bank = null, resolvePn = () => undefined }) {
   const riddleBank = loadRiddleBank()
   const flagBank = loadFlagBank()
+  const wordleBank = loadWordleBank()
   // Engine games don't expose who started them; track it here, mirroring `games`.
   // ponytail: scheduler-driven deletions (timeout/lobby-fail) don't clean this map,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
@@ -670,6 +698,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       logger?.error({ err: e }, 'Failed loading persisted tournament')
     }
     if (!persisted) return false
+    // Both tournament types persist to the same `tournaments` table (only one
+    // game runs per jid at a time). A blob with no `type` predates this check
+    // and was always trivia; an explicit non-trivia type means /wordle's
+    // resume owns it instead, not this function.
+    if (persisted.type && persisted.type !== 'trivia') return false
     try {
       let exclude
       try {
@@ -693,6 +726,89 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       try { db.deleteTournament?.(jid) } catch (e2) { /* best effort cleanup */ }
       enqueue(jid, {
         text: `Couldn't resume the tournament here — its saved state was unreadable. An admin needs to run ${PREFIX}tourney start again.`,
+        mentions: [], kind: 'misc',
+      })
+      return false
+    }
+  }
+
+  async function startWordleTournament(jid, sender, senderPn, args, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a tournament.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. End it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    const requestedTier = (args[0] ?? '').toLowerCase()
+    const tier = MODE_NAMES.has(requestedTier) ? requestedTier : 'easy'
+
+    let exclude
+    try {
+      exclude = db?.askedWordleWords(jid) ?? new Set()
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed loading asked wordle words')
+      exclude = new Set()
+    }
+
+    // If this tier's history has used up nearly everything, a fresh tournament
+    // would spend the whole bracket coin-flipping instead of actually playing.
+    // Same "probe, then clear and retry" shape as /riddle's asked-riddle reset.
+    if (!wordleBank.pickPair({ tier, exclude, random: Math.random })) {
+      try { db?.clearAskedWordle(jid) } catch (e) { /* best effort */ }
+      exclude = new Set()
+    }
+
+    const wt = createWordleTournament({
+      wordBank: wordleBank, tier, isValidWord: (w) => dict.has(w),
+      now, random: Math.random, exclude,
+    })
+    games.set(jid, wt)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'wordle_tournament')
+    gameMeta.set(jid, { type: 'wordle_tournament', startedAt: now, pnMap: new Map() })
+    if (senderPn) gameMeta.get(jid).pnMap.set(sender, senderPn)
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+    sendEvents(enqueue, jid, wt.tick(now), undefined, now, db)
+  }
+
+  function resumeWordleTournament(jid, sender, now) {
+    let persisted
+    try {
+      persisted = db.loadTournament?.(jid)
+    } catch (e) {
+      persisted = undefined
+      logger?.error({ err: e }, 'Failed loading persisted wordle tournament')
+    }
+    if (!persisted || persisted.type !== 'wordle') return false
+    try {
+      let exclude
+      try {
+        exclude = db?.askedWordleWords(jid) ?? new Set()
+      } catch (e) {
+        exclude = new Set()
+      }
+      const wt = createWordleTournament({
+        wordBank: wordleBank, isValidWord: (w) => dict.has(w),
+        now, random: Math.random, restore: persisted, exclude,
+      })
+      if (wt.state === 'over') {
+        try { db.deleteTournament?.(jid) } catch (e) { /* best effort cleanup */ }
+        return false
+      }
+      games.set(jid, wt)
+      gameTypes.set(jid, 'wordle_tournament')
+      if (!starters.has(jid)) starters.set(jid, sender)
+      if (!gameMeta.has(jid)) gameMeta.set(jid, { type: 'wordle_tournament', startedAt: now, pnMap: new Map() })
+      enqueue(jid, { text: `🏳️ Wordle Tournament resumed after a restart.`, mentions: [], kind: 'misc' })
+      return true
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed to resume wordle tournament')
+      try { db.deleteTournament?.(jid) } catch (e2) { /* best effort cleanup */ }
+      enqueue(jid, {
+        text: `Couldn't resume the Wordle Tournament here — its saved state was unreadable. An admin needs to run ${PREFIX}wordle start again.`,
         mentions: [], kind: 'misc',
       })
       return false
@@ -915,6 +1031,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `*🏆 TOURNAMENT* _(start/next/end: admins only)_`,
         `▸ ${PREFIX}tourney status`,
         `▸ ${PREFIX}tourney stats`,
+        ``,
+        `*🔤 WORDLE TOURNAMENT* _(start/next/end: admins only)_`,
+        `▸ ${PREFIX}wordle start [easy|medium|hard]`,
+        `▸ ${PREFIX}wordle status`,
+        `▸ ${PREFIX}wordle stats`,
         ``,
         `*📊 SCORES*`,
         `▸ ${PREFIX}stats [all]`,
@@ -1322,6 +1443,76 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
+    if (cmd === 'wordle') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'stats') {
+        const board = db.tournamentStats?.(jid, 10, 'wordle') ?? []
+        const { text, mentions } = formatTournamentStats(board, 'Wordle')
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (!games.has(jid)) resumeWordleTournament(jid, sender, now)
+
+      if (sub === 'status') {
+        const wt = games.get(jid)
+        if (!wt || gameTypes.get(jid) !== 'wordle_tournament') {
+          enqueue(jid, { text: `No Wordle Tournament running here.`, mentions: [], kind: 'misc' })
+          return
+        }
+        const { text, mentions } = render({ type: 'wordle_tournament_status', ...wt.status() })
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end') {
+        if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+          enqueue(jid, { text: `Only a group admin can end the tournament.`, mentions: [], kind: 'misc' })
+          return
+        }
+        const wt = games.get(jid)
+        if (!wt || gameTypes.get(jid) !== 'wordle_tournament') {
+          enqueue(jid, { text: `No Wordle Tournament running here.`, mentions: [], kind: 'misc' })
+          return
+        }
+        sendEvents(enqueue, jid, wt.end(now), undefined, now, db)
+        if (wt.state === 'over') { games.delete(jid); starters.delete(jid); gameTypes.delete(jid) }
+        return
+      }
+
+      if (sub === 'next') {
+        if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+          enqueue(jid, { text: `Only a group admin can advance the tournament.`, mentions: [], kind: 'misc' })
+          return
+        }
+        const wt = games.get(jid)
+        if (!wt || gameTypes.get(jid) !== 'wordle_tournament') {
+          enqueue(jid, { text: `No Wordle Tournament running here. ${PREFIX}wordle start to begin one.`, mentions: [], kind: 'misc' })
+          return
+        }
+        try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+        sendEvents(enqueue, jid, wt.next(now), undefined, now, db)
+        if (wt.state === 'over') { games.delete(jid); starters.delete(jid); gameTypes.delete(jid) }
+        return
+      }
+
+      if (sub === 'start' || MODE_NAMES.has(sub) || sub === '') {
+        // /wordle start [tier], or bare /wordle [tier] as a shortcut.
+        const tierArgs = sub === 'start' ? args.slice(1) : args
+        await startWordleTournament(jid, sender, senderPn, tierArgs, now, isGroup)
+        return
+      }
+
+      enqueue(jid, { text: `Unknown ${PREFIX}wordle command. Try start, next, status, end or stats.`, mentions: [], kind: 'misc' })
+      return
+    }
+
     if (cmd === 'wcg' || cmd === 'wrg') {
       if (!isGroup) {
         enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
@@ -1402,6 +1593,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         events = game.join(sender, now)
       } else if (gameTypes.get(jid) === 'tournament') {
         // Tournament states are registering/awaiting/match/over, not 'playing'.
+        if (game.state === 'match' && trimmed.length > 0 && !/\s/.test(trimmed)) {
+          events = game.submit(sender, trimmed, now)
+        }
+      } else if (gameTypes.get(jid) === 'wordle_tournament') {
+        // Same registering/awaiting/match/over shape; a guess is a bare word.
         if (game.state === 'match' && trimmed.length > 0 && !/\s/.test(trimmed)) {
           events = game.submit(sender, trimmed, now)
         }

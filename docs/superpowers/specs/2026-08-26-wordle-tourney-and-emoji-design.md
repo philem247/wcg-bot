@@ -83,14 +83,30 @@ with how the bot already behaves rather than a new idea.
 
 ### Word selection
 
-- **Answers** come from the 1,317 five-letter words in `data/common.txt`.
-- **Valid guesses** are checked against the full dictionary (703k words), so
-  players can guess any real word even if it would never be an answer.
-- **Difficulty tiers:** score each candidate answer by summed letter frequency,
-  penalising repeated letters (repeats make a word notably harder). Bucket into
-  three tiers. Both words in a match are drawn from the same tier.
+- **Difficulty tiers are word length**, matching Word Chain's existing
+  easy/medium/hard convention (`engine/modes.js`) where "harder" already
+  means "longer word" to these players. Not letter-frequency scoring within a
+  fixed length — that was the original plan and was replaced.
+  - **easy** = 5 letters
+  - **medium** = 6 letters
+  - **hard** = 7 letters
+- An admin picks the tier for the whole bracket: `/wordle start [easy|medium|hard]`,
+  default `easy`. Every match and every sudden-death round in that tournament
+  draws from the same tier — nobody faces a longer word than their opponent.
+- **Valid guesses** are checked against the full dictionary (703k words) at
+  the player's own word length, so players can guess any real word of the
+  right length even if it would never be an answer.
+- **Source data:** `data/common.txt`'s 5/6/7-letter words, hand-curated to
+  remove proper nouns/brands/places unfit as a secret answer (confirmed
+  present in the raw list: Aaron, Adams, Cisco, China, Bruce, and many more —
+  same class of problem as the trivia bank's data-quality issues). Curated
+  files land in `data/backfill/`, built into `data/wordle-words.json` by
+  `data/build-wordle-words.mjs`.
 - **No repeats per group:** an `asked_wordle` table, same pattern as
-  `asked_flags` / `asked_riddles`. Auto-clears and reshuffles when exhausted.
+  `asked_flags` / `asked_riddles`, tracking words used across tournaments
+  over time. Separate from the in-bracket `exclude` set, which only prevents
+  the same word appearing twice *within* one tournament. Auto-clears and
+  reshuffles when a tier is exhausted.
 
 ### Bracket
 

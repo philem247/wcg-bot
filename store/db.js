@@ -71,6 +71,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       jid TEXT NOT NULL, code TEXT NOT NULL, ts INTEGER NOT NULL,
       PRIMARY KEY (jid, code)
     );
+    CREATE TABLE IF NOT EXISTS asked_wordle (
+      jid TEXT NOT NULL, word TEXT NOT NULL, ts INTEGER NOT NULL,
+      PRIMARY KEY (jid, word)
+    );
     CREATE TABLE IF NOT EXISTS trivia_bans (
       jid TEXT NOT NULL, number TEXT NOT NULL,
       PRIMARY KEY (jid, number)
@@ -94,6 +98,16 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   // player_pn stores the phone-form JID so leaderboard groups correctly.
   try {
     db.exec('ALTER TABLE results ADD COLUMN player_pn TEXT')
+  } catch {
+    // Column already exists — expected on every run after the first migration.
+  }
+
+  // Migration: type-tag tournament_wins so Wordle Tournament titles and
+  // trivia tournament titles are two separate counts, not one merged number.
+  // DEFAULT 'trivia' backfills every existing row correctly, not just
+  // conveniently — every row written before this migration IS a trivia title.
+  try {
+    db.exec("ALTER TABLE tournament_wins ADD COLUMN type TEXT NOT NULL DEFAULT 'trivia'")
   } catch {
     // Column already exists — expected on every run after the first migration.
   }
@@ -189,6 +203,15 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const stmtClearAskedFlags = db.prepare(
     'DELETE FROM asked_flags WHERE jid = ?'
   )
+  const stmtMarkAskedWordle = db.prepare(
+    'INSERT OR IGNORE INTO asked_wordle (jid, word, ts) VALUES (?, ?, ?)'
+  )
+  const stmtAskedWordleWords = db.prepare(
+    'SELECT word FROM asked_wordle WHERE jid = ?'
+  )
+  const stmtClearAskedWordle = db.prepare(
+    'DELETE FROM asked_wordle WHERE jid = ?'
+  )
   const stmtGetSetting = db.prepare(
     'SELECT value FROM settings WHERE jid = ? AND key = ?'
   )
@@ -214,11 +237,11 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     'SELECT number FROM trivia_bans WHERE jid = ? ORDER BY number'
   )
   const stmtInsertTournamentWin = db.prepare(
-    'INSERT INTO tournament_wins (jid, player, won_at) VALUES (?, ?, ?)'
+    'INSERT INTO tournament_wins (jid, player, won_at, type) VALUES (?, ?, ?, ?)'
   )
   const stmtSelectTournamentWins = db.prepare(`
     SELECT player, COUNT(*) as wins FROM tournament_wins
-    WHERE jid = ? GROUP BY player ORDER BY wins DESC, player ASC LIMIT ?
+    WHERE jid = ? AND type = ? GROUP BY player ORDER BY wins DESC, player ASC LIMIT ?
   `)
   const stmtSaveTournament = db.prepare(
     'INSERT INTO tournaments (jid, data, updated_at) VALUES (?, ?, ?) ON CONFLICT(jid) DO UPDATE SET data = excluded.data, updated_at = excluded.updated_at'
@@ -366,6 +389,23 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       stmtClearAskedFlags.run(jid)
     },
 
+    // Cross-tournament repeat-avoidance for Wordle Tournament — separate from
+    // the in-bracket `exclude` set the tournament itself tracks, which only
+    // stops the same word appearing twice within one bracket.
+    markAskedWordle(jid, words, ts) {
+      timed('markAskedWordle', () => {
+        for (const w of words) stmtMarkAskedWordle.run(jid, w, ts)
+      })
+    },
+
+    askedWordleWords(jid) {
+      return new Set(stmtAskedWordleWords.all(jid).map((r) => r.word))
+    },
+
+    clearAskedWordle(jid) {
+      stmtClearAskedWordle.run(jid)
+    },
+
     getSetting(jid, key, fallback = null) {
       const row = stmtGetSetting.get(jid, key)
       return row ? row.value : fallback
@@ -405,13 +445,15 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
 
     // Tournament wins only — one row per championship. Never reads/writes
     // `results` (trivia/chain leaderboard), so /tourney stats can never leak or
-    // be leaked into by the other game modes.
-    recordTournamentWin(jid, player, ts) {
-      stmtInsertTournamentWin.run(jid, player, ts)
+    // be leaked into by the other game modes. `type` keeps trivia tournament
+    // titles and Wordle Tournament titles as two separate counts under one
+    // table — see the migration above for why the default is 'trivia'.
+    recordTournamentWin(jid, player, ts, type = 'trivia') {
+      stmtInsertTournamentWin.run(jid, player, ts, type)
     },
 
-    tournamentStats(jid, limit = 10) {
-      return stmtSelectTournamentWins.all(jid, limit)
+    tournamentStats(jid, limit = 10, type = 'trivia') {
+      return stmtSelectTournamentWins.all(jid, type, limit)
     },
 
     // Single-row-per-group JSON blob: the whole bracket (entrants, rounds,

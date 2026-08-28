@@ -125,6 +125,40 @@ export function loadRiddleBank({ path = 'data/riddles.json', data = null } = {})
   }
 }
 
+export function loadWordleBank({ path = 'data/wordle-words.json', data = null } = {}) {
+  const parsed = data ?? JSON.parse(readFileSync(path, 'utf8'))
+  const words = parsed.words ?? [] // [{ word, tier }]
+
+  const byTier = new Map()
+  for (const w of words) {
+    if (!byTier.has(w.tier)) byTier.set(w.tier, [])
+    byTier.get(w.tier).push(w.word)
+  }
+
+  return {
+    size() {
+      return words.length
+    },
+
+    // Both words in a match are drawn from the same difficulty tier — see
+    // design spec for why. With `tier` given, restricts to that tier only
+    // (an admin's explicit /wordle start easy|medium|hard); otherwise picks a
+    // tier at random from those with at least two unused words left.
+    pickPair({ tier = null, exclude = new Set(), random = Math.random } = {}) {
+      const candidateTiers = tier !== null ? [[tier, byTier.get(tier) ?? []]] : [...byTier.entries()]
+      const eligibleTiers = candidateTiers
+        .map(([t, list]) => [t, list.filter((w) => !exclude.has(w))])
+        .filter(([, list]) => list.length >= 2)
+
+      if (eligibleTiers.length === 0) return null
+
+      const [pickedTier, list] = shuffle(eligibleTiers, random)[0]
+      const picked = shuffle(list, random)
+      return { tier: pickedTier, word1: picked[0], word2: picked[1] }
+    },
+  }
+}
+
 export function loadFlagBank({ path = 'data/flags.json', data = null } = {}) {
   const parsed = data ?? JSON.parse(readFileSync(path, 'utf8'))
   const flags = parsed.flags ?? []

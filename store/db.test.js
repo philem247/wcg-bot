@@ -540,6 +540,44 @@ const tests = [
     },
   },
   {
+    name: 'tournament_wins: trivia and wordle titles are two separate counts, not merged',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.recordTournamentWin('jid-a', '1111111111', 1000) // default type: 'trivia'
+      db.recordTournamentWin('jid-a', '1111111111', 2000, 'wordle')
+      db.recordTournamentWin('jid-a', '1111111111', 3000, 'wordle')
+
+      const trivia = db.tournamentStats('jid-a')
+      assert.equal(trivia.length, 1)
+      assert.equal(trivia[0].wins, 1, 'the wordle rows must not count toward the trivia total')
+
+      const wordle = db.tournamentStats('jid-a', 10, 'wordle')
+      assert.equal(wordle.length, 1)
+      assert.equal(wordle[0].wins, 2)
+      db.close()
+    },
+  },
+  {
+    name: 'asked_wordle & wordle leaderboard: round-trip and isolation',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.markAskedWordle('jid-a', ['crane', 'plumb'], 1000)
+      const asked = db.askedWordleWords('jid-a')
+      assert.ok(asked.has('crane'))
+      assert.ok(asked.has('plumb'))
+      assert.equal(asked.size, 2)
+
+      db.clearAskedWordle('jid-a')
+      assert.equal(db.askedWordleWords('jid-a').size, 0)
+
+      // Another jid's asked words stay isolated
+      db.markAskedWordle('jid-b', ['crane'], 2000)
+      assert.equal(db.askedWordleWords('jid-a').size, 0)
+      assert.equal(db.askedWordleWords('jid-b').size, 1)
+      db.close()
+    },
+  },
+  {
     name: 'Fix 3: tournamentStats() returns a mentionable (full-JID, non-bare-digit) identifier when recorded via a resolved pnMap entry',
     fn: () => {
       const db = openDb(':memory:')

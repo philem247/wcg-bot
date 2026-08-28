@@ -196,6 +196,7 @@ function onConnected() {
     `▸ */logo start* — logo quiz`,
     `▸ */flag start* — guess the flag`,
     `▸ */riddle* — riddle quest`,
+    `▸ */wordle* — wordle tournament`,
     `▸ */tourney start* — tournament`,
     ``,
     `🔗 Chain. Survive. Win.`,

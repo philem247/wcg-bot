@@ -76,7 +76,10 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
 
   function serialize() {
     return {
-      v: 1, state, category, players: [...players], registrationDeadline,
+      // `type` lets router.js's resume path tell a persisted trivia-tournament
+      // blob apart from a Wordle Tournament one before picking which engine
+      // to restore with — both share the same `tournaments` store table.
+      v: 1, type: 'trivia', state, category, players: [...players], registrationDeadline,
       rounds: rounds.map((r) => ({ fixtures: r.fixtures.map((f) => ({ ...f })) })),
       roundIndex, fixtureIndex, usedQids: [...usedQids], champion, totalRounds,
     }

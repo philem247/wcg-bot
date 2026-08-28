@@ -1,0 +1,14314 @@
+{
+ "attribution": "curated from data/common.txt, hand-filtered for proper nouns",
+ "generated": "2026-08-28T17:06:06.087Z",
+ "words": [
+  {
+   "word": "about",
+   "tier": "easy"
+  },
+  {
+   "word": "above",
+   "tier": "easy"
+  },
+  {
+   "word": "abuse",
+   "tier": "easy"
+  },
+  {
+   "word": "acids",
+   "tier": "easy"
+  },
+  {
+   "word": "acres",
+   "tier": "easy"
+  },
+  {
+   "word": "actor",
+   "tier": "easy"
+  },
+  {
+   "word": "acute",
+   "tier": "easy"
+  },
+  {
+   "word": "added",
+   "tier": "easy"
+  },
+  {
+   "word": "admin",
+   "tier": "easy"
+  },
+  {
+   "word": "admit",
+   "tier": "easy"
+  },
+  {
+   "word": "adopt",
+   "tier": "easy"
+  },
+  {
+   "word": "adult",
+   "tier": "easy"
+  },
+  {
+   "word": "after",
+   "tier": "easy"
+  },
+  {
+   "word": "again",
+   "tier": "easy"
+  },
+  {
+   "word": "agent",
+   "tier": "easy"
+  },
+  {
+   "word": "aging",
+   "tier": "easy"
+  },
+  {
+   "word": "agree",
+   "tier": "easy"
+  },
+  {
+   "word": "ahead",
+   "tier": "easy"
+  },
+  {
+   "word": "aimed",
+   "tier": "easy"
+  },
+  {
+   "word": "alarm",
+   "tier": "easy"
+  },
+  {
+   "word": "album",
+   "tier": "easy"
+  },
+  {
+   "word": "alert",
+   "tier": "easy"
+  },
+  {
+   "word": "alias",
+   "tier": "easy"
+  },
+  {
+   "word": "alien",
+   "tier": "easy"
+  },
+  {
+   "word": "align",
+   "tier": "easy"
+  },
+  {
+   "word": "alike",
+   "tier": "easy"
+  },
+  {
+   "word": "alive",
+   "tier": "easy"
+  },
+  {
+   "word": "allow",
+   "tier": "easy"
+  },
+  {
+   "word": "alloy",
+   "tier": "easy"
+  },
+  {
+   "word": "alone",
+   "tier": "easy"
+  },
+  {
+   "word": "along",
+   "tier": "easy"
+  },
+  {
+   "word": "alpha",
+   "tier": "easy"
+  },
+  {
+   "word": "alter",
+   "tier": "easy"
+  },
+  {
+   "word": "amber",
+   "tier": "easy"
+  },
+  {
+   "word": "amend",
+   "tier": "easy"
+  },
+  {
+   "word": "amino",
+   "tier": "easy"
+  },
+  {
+   "word": "among",
+   "tier": "easy"
+  },
+  {
+   "word": "angel",
+   "tier": "easy"
+  },
+  {
+   "word": "anger",
+   "tier": "easy"
+  },
+  {
+   "word": "angle",
+   "tier": "easy"
+  },
+  {
+   "word": "angry",
+   "tier": "easy"
+  },
+  {
+   "word": "anime",
+   "tier": "easy"
+  },
+  {
+   "word": "annex",
+   "tier": "easy"
+  },
+  {
+   "word": "apart",
+   "tier": "easy"
+  },
+  {
+   "word": "apple",
+   "tier": "easy"
+  },
+  {
+   "word": "apply",
+   "tier": "easy"
+  },
+  {
+   "word": "arbor",
+   "tier": "easy"
+  },
+  {
+   "word": "areas",
+   "tier": "easy"
+  },
+  {
+   "word": "arena",
+   "tier": "easy"
+  },
+  {
+   "word": "argue",
+   "tier": "easy"
+  },
+  {
+   "word": "arise",
+   "tier": "easy"
+  },
+  {
+   "word": "armed",
+   "tier": "easy"
+  },
+  {
+   "word": "armor",
+   "tier": "easy"
+  },
+  {
+   "word": "array",
+   "tier": "easy"
+  },
+  {
+   "word": "arrow",
+   "tier": "easy"
+  },
+  {
+   "word": "aside",
+   "tier": "easy"
+  },
+  {
+   "word": "asked",
+   "tier": "easy"
+  },
+  {
+   "word": "asset",
+   "tier": "easy"
+  },
+  {
+   "word": "audio",
+   "tier": "easy"
+  },
+  {
+   "word": "audit",
+   "tier": "easy"
+  },
+  {
+   "word": "autos",
+   "tier": "easy"
+  },
+  {
+   "word": "avoid",
+   "tier": "easy"
+  },
+  {
+   "word": "award",
+   "tier": "easy"
+  },
+  {
+   "word": "aware",
+   "tier": "easy"
+  },
+  {
+   "word": "awful",
+   "tier": "easy"
+  },
+  {
+   "word": "babes",
+   "tier": "easy"
+  },
+  {
+   "word": "bacon",
+   "tier": "easy"
+  },
+  {
+   "word": "badge",
+   "tier": "easy"
+  },
+  {
+   "word": "badly",
+   "tier": "easy"
+  },
+  {
+   "word": "baker",
+   "tier": "easy"
+  },
+  {
+   "word": "bands",
+   "tier": "easy"
+  },
+  {
+   "word": "banks",
+   "tier": "easy"
+  },
+  {
+   "word": "based",
+   "tier": "easy"
+  },
+  {
+   "word": "bases",
+   "tier": "easy"
+  },
+  {
+   "word": "basic",
+   "tier": "easy"
+  },
+  {
+   "word": "basin",
+   "tier": "easy"
+  },
+  {
+   "word": "basis",
+   "tier": "easy"
+  },
+  {
+   "word": "batch",
+   "tier": "easy"
+  },
+  {
+   "word": "baths",
+   "tier": "easy"
+  },
+  {
+   "word": "beach",
+   "tier": "easy"
+  },
+  {
+   "word": "beads",
+   "tier": "easy"
+  },
+  {
+   "word": "beans",
+   "tier": "easy"
+  },
+  {
+   "word": "bears",
+   "tier": "easy"
+  },
+  {
+   "word": "beast",
+   "tier": "easy"
+  },
+  {
+   "word": "beats",
+   "tier": "easy"
+  },
+  {
+   "word": "began",
+   "tier": "easy"
+  },
+  {
+   "word": "begin",
+   "tier": "easy"
+  },
+  {
+   "word": "begun",
+   "tier": "easy"
+  },
+  {
+   "word": "being",
+   "tier": "easy"
+  },
+  {
+   "word": "belly",
+   "tier": "easy"
+  },
+  {
+   "word": "below",
+   "tier": "easy"
+  },
+  {
+   "word": "belts",
+   "tier": "easy"
+  },
+  {
+   "word": "bench",
+   "tier": "easy"
+  },
+  {
+   "word": "berry",
+   "tier": "easy"
+  },
+  {
+   "word": "bikes",
+   "tier": "easy"
+  },
+  {
+   "word": "bills",
+   "tier": "easy"
+  },
+  {
+   "word": "bingo",
+   "tier": "easy"
+  },
+  {
+   "word": "birds",
+   "tier": "easy"
+  },
+  {
+   "word": "birth",
+   "tier": "easy"
+  },
+  {
+   "word": "black",
+   "tier": "easy"
+  },
+  {
+   "word": "blade",
+   "tier": "easy"
+  },
+  {
+   "word": "blame",
+   "tier": "easy"
+  },
+  {
+   "word": "blank",
+   "tier": "easy"
+  },
+  {
+   "word": "blast",
+   "tier": "easy"
+  },
+  {
+   "word": "blend",
+   "tier": "easy"
+  },
+  {
+   "word": "bless",
+   "tier": "easy"
+  },
+  {
+   "word": "blind",
+   "tier": "easy"
+  },
+  {
+   "word": "blink",
+   "tier": "easy"
+  },
+  {
+   "word": "block",
+   "tier": "easy"
+  },
+  {
+   "word": "blond",
+   "tier": "easy"
+  },
+  {
+   "word": "blood",
+   "tier": "easy"
+  },
+  {
+   "word": "bloom",
+   "tier": "easy"
+  },
+  {
+   "word": "blues",
+   "tier": "easy"
+  },
+  {
+   "word": "board",
+   "tier": "easy"
+  },
+  {
+   "word": "boats",
+   "tier": "easy"
+  },
+  {
+   "word": "bonds",
+   "tier": "easy"
+  },
+  {
+   "word": "bones",
+   "tier": "easy"
+  },
+  {
+   "word": "bonus",
+   "tier": "easy"
+  },
+  {
+   "word": "books",
+   "tier": "easy"
+  },
+  {
+   "word": "boost",
+   "tier": "easy"
+  },
+  {
+   "word": "booth",
+   "tier": "easy"
+  },
+  {
+   "word": "boots",
+   "tier": "easy"
+  },
+  {
+   "word": "booty",
+   "tier": "easy"
+  },
+  {
+   "word": "bored",
+   "tier": "easy"
+  },
+  {
+   "word": "bound",
+   "tier": "easy"
+  },
+  {
+   "word": "boxed",
+   "tier": "easy"
+  },
+  {
+   "word": "boxes",
+   "tier": "easy"
+  },
+  {
+   "word": "brain",
+   "tier": "easy"
+  },
+  {
+   "word": "brake",
+   "tier": "easy"
+  },
+  {
+   "word": "brand",
+   "tier": "easy"
+  },
+  {
+   "word": "brass",
+   "tier": "easy"
+  },
+  {
+   "word": "brave",
+   "tier": "easy"
+  },
+  {
+   "word": "bread",
+   "tier": "easy"
+  },
+  {
+   "word": "break",
+   "tier": "easy"
+  },
+  {
+   "word": "breed",
+   "tier": "easy"
+  },
+  {
+   "word": "brick",
+   "tier": "easy"
+  },
+  {
+   "word": "bride",
+   "tier": "easy"
+  },
+  {
+   "word": "brief",
+   "tier": "easy"
+  },
+  {
+   "word": "bring",
+   "tier": "easy"
+  },
+  {
+   "word": "broad",
+   "tier": "easy"
+  },
+  {
+   "word": "broke",
+   "tier": "easy"
+  },
+  {
+   "word": "brook",
+   "tier": "easy"
+  },
+  {
+   "word": "brown",
+   "tier": "easy"
+  },
+  {
+   "word": "brush",
+   "tier": "easy"
+  },
+  {
+   "word": "bucks",
+   "tier": "easy"
+  },
+  {
+   "word": "buddy",
+   "tier": "easy"
+  },
+  {
+   "word": "build",
+   "tier": "easy"
+  },
+  {
+   "word": "built",
+   "tier": "easy"
+  },
+  {
+   "word": "bunch",
+   "tier": "easy"
+  },
+  {
+   "word": "bunny",
+   "tier": "easy"
+  },
+  {
+   "word": "burns",
+   "tier": "easy"
+  },
+  {
+   "word": "burst",
+   "tier": "easy"
+  },
+  {
+   "word": "buses",
+   "tier": "easy"
+  },
+  {
+   "word": "butts",
+   "tier": "easy"
+  },
+  {
+   "word": "buyer",
+   "tier": "easy"
+  },
+  {
+   "word": "bytes",
+   "tier": "easy"
+  },
+  {
+   "word": "cabin",
+   "tier": "easy"
+  },
+  {
+   "word": "cable",
+   "tier": "easy"
+  },
+  {
+   "word": "cache",
+   "tier": "easy"
+  },
+  {
+   "word": "cakes",
+   "tier": "easy"
+  },
+  {
+   "word": "calls",
+   "tier": "easy"
+  },
+  {
+   "word": "camel",
+   "tier": "easy"
+  },
+  {
+   "word": "camps",
+   "tier": "easy"
+  },
+  {
+   "word": "canal",
+   "tier": "easy"
+  },
+  {
+   "word": "candy",
+   "tier": "easy"
+  },
+  {
+   "word": "cards",
+   "tier": "easy"
+  },
+  {
+   "word": "cargo",
+   "tier": "easy"
+  },
+  {
+   "word": "carry",
+   "tier": "easy"
+  },
+  {
+   "word": "cases",
+   "tier": "easy"
+  },
+  {
+   "word": "catch",
+   "tier": "easy"
+  },
+  {
+   "word": "cause",
+   "tier": "easy"
+  },
+  {
+   "word": "cedar",
+   "tier": "easy"
+  },
+  {
+   "word": "cells",
+   "tier": "easy"
+  },
+  {
+   "word": "cents",
+   "tier": "easy"
+  },
+  {
+   "word": "chain",
+   "tier": "easy"
+  },
+  {
+   "word": "chair",
+   "tier": "easy"
+  },
+  {
+   "word": "chaos",
+   "tier": "easy"
+  },
+  {
+   "word": "charm",
+   "tier": "easy"
+  },
+  {
+   "word": "chart",
+   "tier": "easy"
+  },
+  {
+   "word": "chase",
+   "tier": "easy"
+  },
+  {
+   "word": "cheap",
+   "tier": "easy"
+  },
+  {
+   "word": "cheat",
+   "tier": "easy"
+  },
+  {
+   "word": "check",
+   "tier": "easy"
+  },
+  {
+   "word": "chess",
+   "tier": "easy"
+  },
+  {
+   "word": "chest",
+   "tier": "easy"
+  },
+  {
+   "word": "chick",
+   "tier": "easy"
+  },
+  {
+   "word": "chief",
+   "tier": "easy"
+  },
+  {
+   "word": "child",
+   "tier": "easy"
+  },
+  {
+   "word": "chips",
+   "tier": "easy"
+  },
+  {
+   "word": "choir",
+   "tier": "easy"
+  },
+  {
+   "word": "chose",
+   "tier": "easy"
+  },
+  {
+   "word": "chuck",
+   "tier": "easy"
+  },
+  {
+   "word": "cited",
+   "tier": "easy"
+  },
+  {
+   "word": "civic",
+   "tier": "easy"
+  },
+  {
+   "word": "civil",
+   "tier": "easy"
+  },
+  {
+   "word": "claim",
+   "tier": "easy"
+  },
+  {
+   "word": "class",
+   "tier": "easy"
+  },
+  {
+   "word": "clean",
+   "tier": "easy"
+  },
+  {
+   "word": "clear",
+   "tier": "easy"
+  },
+  {
+   "word": "clerk",
+   "tier": "easy"
+  },
+  {
+   "word": "click",
+   "tier": "easy"
+  },
+  {
+   "word": "cliff",
+   "tier": "easy"
+  },
+  {
+   "word": "climb",
+   "tier": "easy"
+  },
+  {
+   "word": "clips",
+   "tier": "easy"
+  },
+  {
+   "word": "clock",
+   "tier": "easy"
+  },
+  {
+   "word": "clone",
+   "tier": "easy"
+  },
+  {
+   "word": "close",
+   "tier": "easy"
+  },
+  {
+   "word": "cloth",
+   "tier": "easy"
+  },
+  {
+   "word": "cloud",
+   "tier": "easy"
+  },
+  {
+   "word": "clubs",
+   "tier": "easy"
+  },
+  {
+   "word": "coach",
+   "tier": "easy"
+  },
+  {
+   "word": "coast",
+   "tier": "easy"
+  },
+  {
+   "word": "codes",
+   "tier": "easy"
+  },
+  {
+   "word": "coins",
+   "tier": "easy"
+  },
+  {
+   "word": "colon",
+   "tier": "easy"
+  },
+  {
+   "word": "color",
+   "tier": "easy"
+  },
+  {
+   "word": "combo",
+   "tier": "easy"
+  },
+  {
+   "word": "comes",
+   "tier": "easy"
+  },
+  {
+   "word": "comic",
+   "tier": "easy"
+  },
+  {
+   "word": "condo",
+   "tier": "easy"
+  },
+  {
+   "word": "coral",
+   "tier": "easy"
+  },
+  {
+   "word": "corps",
+   "tier": "easy"
+  },
+  {
+   "word": "costs",
+   "tier": "easy"
+  },
+  {
+   "word": "could",
+   "tier": "easy"
+  },
+  {
+   "word": "count",
+   "tier": "easy"
+  },
+  {
+   "word": "court",
+   "tier": "easy"
+  },
+  {
+   "word": "cover",
+   "tier": "easy"
+  },
+  {
+   "word": "crack",
+   "tier": "easy"
+  },
+  {
+   "word": "craft",
+   "tier": "easy"
+  },
+  {
+   "word": "craps",
+   "tier": "easy"
+  },
+  {
+   "word": "crash",
+   "tier": "easy"
+  },
+  {
+   "word": "crazy",
+   "tier": "easy"
+  },
+  {
+   "word": "cream",
+   "tier": "easy"
+  },
+  {
+   "word": "creek",
+   "tier": "easy"
+  },
+  {
+   "word": "crest",
+   "tier": "easy"
+  },
+  {
+   "word": "crime",
+   "tier": "easy"
+  },
+  {
+   "word": "crops",
+   "tier": "easy"
+  },
+  {
+   "word": "cross",
+   "tier": "easy"
+  },
+  {
+   "word": "crowd",
+   "tier": "easy"
+  },
+  {
+   "word": "crown",
+   "tier": "easy"
+  },
+  {
+   "word": "crude",
+   "tier": "easy"
+  },
+  {
+   "word": "cubic",
+   "tier": "easy"
+  },
+  {
+   "word": "curve",
+   "tier": "easy"
+  },
+  {
+   "word": "cyber",
+   "tier": "easy"
+  },
+  {
+   "word": "cycle",
+   "tier": "easy"
+  },
+  {
+   "word": "daddy",
+   "tier": "easy"
+  },
+  {
+   "word": "daily",
+   "tier": "easy"
+  },
+  {
+   "word": "dairy",
+   "tier": "easy"
+  },
+  {
+   "word": "daisy",
+   "tier": "easy"
+  },
+  {
+   "word": "dance",
+   "tier": "easy"
+  },
+  {
+   "word": "dated",
+   "tier": "easy"
+  },
+  {
+   "word": "dates",
+   "tier": "easy"
+  },
+  {
+   "word": "deals",
+   "tier": "easy"
+  },
+  {
+   "word": "dealt",
+   "tier": "easy"
+  },
+  {
+   "word": "death",
+   "tier": "easy"
+  },
+  {
+   "word": "debug",
+   "tier": "easy"
+  },
+  {
+   "word": "debut",
+   "tier": "easy"
+  },
+  {
+   "word": "decor",
+   "tier": "easy"
+  },
+  {
+   "word": "delay",
+   "tier": "easy"
+  },
+  {
+   "word": "delta",
+   "tier": "easy"
+  },
+  {
+   "word": "dense",
+   "tier": "easy"
+  },
+  {
+   "word": "depot",
+   "tier": "easy"
+  },
+  {
+   "word": "depth",
+   "tier": "easy"
+  },
+  {
+   "word": "derby",
+   "tier": "easy"
+  },
+  {
+   "word": "devil",
+   "tier": "easy"
+  },
+  {
+   "word": "diary",
+   "tier": "easy"
+  },
+  {
+   "word": "digit",
+   "tier": "easy"
+  },
+  {
+   "word": "dirty",
+   "tier": "easy"
+  },
+  {
+   "word": "disco",
+   "tier": "easy"
+  },
+  {
+   "word": "discs",
+   "tier": "easy"
+  },
+  {
+   "word": "disks",
+   "tier": "easy"
+  },
+  {
+   "word": "doing",
+   "tier": "easy"
+  },
+  {
+   "word": "dolls",
+   "tier": "easy"
+  },
+  {
+   "word": "donor",
+   "tier": "easy"
+  },
+  {
+   "word": "doors",
+   "tier": "easy"
+  },
+  {
+   "word": "doubt",
+   "tier": "easy"
+  },
+  {
+   "word": "dozen",
+   "tier": "easy"
+  },
+  {
+   "word": "draft",
+   "tier": "easy"
+  },
+  {
+   "word": "drain",
+   "tier": "easy"
+  },
+  {
+   "word": "drama",
+   "tier": "easy"
+  },
+  {
+   "word": "drawn",
+   "tier": "easy"
+  },
+  {
+   "word": "draws",
+   "tier": "easy"
+  },
+  {
+   "word": "dream",
+   "tier": "easy"
+  },
+  {
+   "word": "dress",
+   "tier": "easy"
+  },
+  {
+   "word": "dried",
+   "tier": "easy"
+  },
+  {
+   "word": "drill",
+   "tier": "easy"
+  },
+  {
+   "word": "drink",
+   "tier": "easy"
+  },
+  {
+   "word": "drive",
+   "tier": "easy"
+  },
+  {
+   "word": "drops",
+   "tier": "easy"
+  },
+  {
+   "word": "drove",
+   "tier": "easy"
+  },
+  {
+   "word": "drugs",
+   "tier": "easy"
+  },
+  {
+   "word": "drums",
+   "tier": "easy"
+  },
+  {
+   "word": "drunk",
+   "tier": "easy"
+  },
+  {
+   "word": "dryer",
+   "tier": "easy"
+  },
+  {
+   "word": "dying",
+   "tier": "easy"
+  },
+  {
+   "word": "eagle",
+   "tier": "easy"
+  },
+  {
+   "word": "early",
+   "tier": "easy"
+  },
+  {
+   "word": "earth",
+   "tier": "easy"
+  },
+  {
+   "word": "ebony",
+   "tier": "easy"
+  },
+  {
+   "word": "edges",
+   "tier": "easy"
+  },
+  {
+   "word": "eight",
+   "tier": "easy"
+  },
+  {
+   "word": "elder",
+   "tier": "easy"
+  },
+  {
+   "word": "elect",
+   "tier": "easy"
+  },
+  {
+   "word": "elite",
+   "tier": "easy"
+  },
+  {
+   "word": "email",
+   "tier": "easy"
+  },
+  {
+   "word": "empty",
+   "tier": "easy"
+  },
+  {
+   "word": "ended",
+   "tier": "easy"
+  },
+  {
+   "word": "enemy",
+   "tier": "easy"
+  },
+  {
+   "word": "enjoy",
+   "tier": "easy"
+  },
+  {
+   "word": "enter",
+   "tier": "easy"
+  },
+  {
+   "word": "entry",
+   "tier": "easy"
+  },
+  {
+   "word": "equal",
+   "tier": "easy"
+  },
+  {
+   "word": "error",
+   "tier": "easy"
+  },
+  {
+   "word": "essay",
+   "tier": "easy"
+  },
+  {
+   "word": "euros",
+   "tier": "easy"
+  },
+  {
+   "word": "event",
+   "tier": "easy"
+  },
+  {
+   "word": "every",
+   "tier": "easy"
+  },
+  {
+   "word": "exact",
+   "tier": "easy"
+  },
+  {
+   "word": "exams",
+   "tier": "easy"
+  },
+  {
+   "word": "excel",
+   "tier": "easy"
+  },
+  {
+   "word": "exist",
+   "tier": "easy"
+  },
+  {
+   "word": "extra",
+   "tier": "easy"
+  },
+  {
+   "word": "faced",
+   "tier": "easy"
+  },
+  {
+   "word": "faces",
+   "tier": "easy"
+  },
+  {
+   "word": "facts",
+   "tier": "easy"
+  },
+  {
+   "word": "fails",
+   "tier": "easy"
+  },
+  {
+   "word": "fairy",
+   "tier": "easy"
+  },
+  {
+   "word": "faith",
+   "tier": "easy"
+  },
+  {
+   "word": "falls",
+   "tier": "easy"
+  },
+  {
+   "word": "false",
+   "tier": "easy"
+  },
+  {
+   "word": "fancy",
+   "tier": "easy"
+  },
+  {
+   "word": "fares",
+   "tier": "easy"
+  },
+  {
+   "word": "farms",
+   "tier": "easy"
+  },
+  {
+   "word": "fatal",
+   "tier": "easy"
+  },
+  {
+   "word": "fatty",
+   "tier": "easy"
+  },
+  {
+   "word": "fault",
+   "tier": "easy"
+  },
+  {
+   "word": "favor",
+   "tier": "easy"
+  },
+  {
+   "word": "fears",
+   "tier": "easy"
+  },
+  {
+   "word": "feeds",
+   "tier": "easy"
+  },
+  {
+   "word": "feels",
+   "tier": "easy"
+  },
+  {
+   "word": "fence",
+   "tier": "easy"
+  },
+  {
+   "word": "ferry",
+   "tier": "easy"
+  },
+  {
+   "word": "fever",
+   "tier": "easy"
+  },
+  {
+   "word": "fewer",
+   "tier": "easy"
+  },
+  {
+   "word": "fiber",
+   "tier": "easy"
+  },
+  {
+   "word": "fibre",
+   "tier": "easy"
+  },
+  {
+   "word": "field",
+   "tier": "easy"
+  },
+  {
+   "word": "fifth",
+   "tier": "easy"
+  },
+  {
+   "word": "fifty",
+   "tier": "easy"
+  },
+  {
+   "word": "fight",
+   "tier": "easy"
+  },
+  {
+   "word": "filed",
+   "tier": "easy"
+  },
+  {
+   "word": "files",
+   "tier": "easy"
+  },
+  {
+   "word": "films",
+   "tier": "easy"
+  },
+  {
+   "word": "final",
+   "tier": "easy"
+  },
+  {
+   "word": "finds",
+   "tier": "easy"
+  },
+  {
+   "word": "fired",
+   "tier": "easy"
+  },
+  {
+   "word": "fires",
+   "tier": "easy"
+  },
+  {
+   "word": "firms",
+   "tier": "easy"
+  },
+  {
+   "word": "first",
+   "tier": "easy"
+  },
+  {
+   "word": "fixed",
+   "tier": "easy"
+  },
+  {
+   "word": "fixes",
+   "tier": "easy"
+  },
+  {
+   "word": "flags",
+   "tier": "easy"
+  },
+  {
+   "word": "flame",
+   "tier": "easy"
+  },
+  {
+   "word": "flash",
+   "tier": "easy"
+  },
+  {
+   "word": "fleet",
+   "tier": "easy"
+  },
+  {
+   "word": "flesh",
+   "tier": "easy"
+  },
+  {
+   "word": "float",
+   "tier": "easy"
+  },
+  {
+   "word": "flood",
+   "tier": "easy"
+  },
+  {
+   "word": "floor",
+   "tier": "easy"
+  },
+  {
+   "word": "flour",
+   "tier": "easy"
+  },
+  {
+   "word": "flows",
+   "tier": "easy"
+  },
+  {
+   "word": "fluid",
+   "tier": "easy"
+  },
+  {
+   "word": "flush",
+   "tier": "easy"
+  },
+  {
+   "word": "flyer",
+   "tier": "easy"
+  },
+  {
+   "word": "focal",
+   "tier": "easy"
+  },
+  {
+   "word": "focus",
+   "tier": "easy"
+  },
+  {
+   "word": "folks",
+   "tier": "easy"
+  },
+  {
+   "word": "fonts",
+   "tier": "easy"
+  },
+  {
+   "word": "foods",
+   "tier": "easy"
+  },
+  {
+   "word": "force",
+   "tier": "easy"
+  },
+  {
+   "word": "forge",
+   "tier": "easy"
+  },
+  {
+   "word": "forms",
+   "tier": "easy"
+  },
+  {
+   "word": "forth",
+   "tier": "easy"
+  },
+  {
+   "word": "forty",
+   "tier": "easy"
+  },
+  {
+   "word": "forum",
+   "tier": "easy"
+  },
+  {
+   "word": "found",
+   "tier": "easy"
+  },
+  {
+   "word": "frame",
+   "tier": "easy"
+  },
+  {
+   "word": "frank",
+   "tier": "easy"
+  },
+  {
+   "word": "fraud",
+   "tier": "easy"
+  },
+  {
+   "word": "fresh",
+   "tier": "easy"
+  },
+  {
+   "word": "front",
+   "tier": "easy"
+  },
+  {
+   "word": "frost",
+   "tier": "easy"
+  },
+  {
+   "word": "fruit",
+   "tier": "easy"
+  },
+  {
+   "word": "fully",
+   "tier": "easy"
+  },
+  {
+   "word": "funds",
+   "tier": "easy"
+  },
+  {
+   "word": "funky",
+   "tier": "easy"
+  },
+  {
+   "word": "funny",
+   "tier": "easy"
+  },
+  {
+   "word": "fuzzy",
+   "tier": "easy"
+  },
+  {
+   "word": "gains",
+   "tier": "easy"
+  },
+  {
+   "word": "games",
+   "tier": "easy"
+  },
+  {
+   "word": "gamma",
+   "tier": "easy"
+  },
+  {
+   "word": "gates",
+   "tier": "easy"
+  },
+  {
+   "word": "gauge",
+   "tier": "easy"
+  },
+  {
+   "word": "genes",
+   "tier": "easy"
+  },
+  {
+   "word": "genre",
+   "tier": "easy"
+  },
+  {
+   "word": "ghost",
+   "tier": "easy"
+  },
+  {
+   "word": "giant",
+   "tier": "easy"
+  },
+  {
+   "word": "gifts",
+   "tier": "easy"
+  },
+  {
+   "word": "girls",
+   "tier": "easy"
+  },
+  {
+   "word": "given",
+   "tier": "easy"
+  },
+  {
+   "word": "gives",
+   "tier": "easy"
+  },
+  {
+   "word": "glass",
+   "tier": "easy"
+  },
+  {
+   "word": "globe",
+   "tier": "easy"
+  },
+  {
+   "word": "glory",
+   "tier": "easy"
+  },
+  {
+   "word": "gnome",
+   "tier": "easy"
+  },
+  {
+   "word": "goals",
+   "tier": "easy"
+  },
+  {
+   "word": "going",
+   "tier": "easy"
+  },
+  {
+   "word": "gonna",
+   "tier": "easy"
+  },
+  {
+   "word": "goods",
+   "tier": "easy"
+  },
+  {
+   "word": "gotta",
+   "tier": "easy"
+  },
+  {
+   "word": "grace",
+   "tier": "easy"
+  },
+  {
+   "word": "grade",
+   "tier": "easy"
+  },
+  {
+   "word": "grain",
+   "tier": "easy"
+  },
+  {
+   "word": "grams",
+   "tier": "easy"
+  },
+  {
+   "word": "grand",
+   "tier": "easy"
+  },
+  {
+   "word": "grant",
+   "tier": "easy"
+  },
+  {
+   "word": "graph",
+   "tier": "easy"
+  },
+  {
+   "word": "grass",
+   "tier": "easy"
+  },
+  {
+   "word": "grave",
+   "tier": "easy"
+  },
+  {
+   "word": "great",
+   "tier": "easy"
+  },
+  {
+   "word": "green",
+   "tier": "easy"
+  },
+  {
+   "word": "grill",
+   "tier": "easy"
+  },
+  {
+   "word": "gross",
+   "tier": "easy"
+  },
+  {
+   "word": "group",
+   "tier": "easy"
+  },
+  {
+   "word": "grove",
+   "tier": "easy"
+  },
+  {
+   "word": "grown",
+   "tier": "easy"
+  },
+  {
+   "word": "grows",
+   "tier": "easy"
+  },
+  {
+   "word": "guard",
+   "tier": "easy"
+  },
+  {
+   "word": "guess",
+   "tier": "easy"
+  },
+  {
+   "word": "guest",
+   "tier": "easy"
+  },
+  {
+   "word": "guide",
+   "tier": "easy"
+  },
+  {
+   "word": "guild",
+   "tier": "easy"
+  },
+  {
+   "word": "hairy",
+   "tier": "easy"
+  },
+  {
+   "word": "hands",
+   "tier": "easy"
+  },
+  {
+   "word": "handy",
+   "tier": "easy"
+  },
+  {
+   "word": "happy",
+   "tier": "easy"
+  },
+  {
+   "word": "haven",
+   "tier": "easy"
+  },
+  {
+   "word": "heads",
+   "tier": "easy"
+  },
+  {
+   "word": "heard",
+   "tier": "easy"
+  },
+  {
+   "word": "heart",
+   "tier": "easy"
+  },
+  {
+   "word": "heavy",
+   "tier": "easy"
+  },
+  {
+   "word": "hello",
+   "tier": "easy"
+  },
+  {
+   "word": "helps",
+   "tier": "easy"
+  },
+  {
+   "word": "hence",
+   "tier": "easy"
+  },
+  {
+   "word": "herbs",
+   "tier": "easy"
+  },
+  {
+   "word": "highs",
+   "tier": "easy"
+  },
+  {
+   "word": "hills",
+   "tier": "easy"
+  },
+  {
+   "word": "hints",
+   "tier": "easy"
+  },
+  {
+   "word": "hired",
+   "tier": "easy"
+  },
+  {
+   "word": "hobby",
+   "tier": "easy"
+  },
+  {
+   "word": "holds",
+   "tier": "easy"
+  },
+  {
+   "word": "holes",
+   "tier": "easy"
+  },
+  {
+   "word": "holly",
+   "tier": "easy"
+  },
+  {
+   "word": "homes",
+   "tier": "easy"
+  },
+  {
+   "word": "honey",
+   "tier": "easy"
+  },
+  {
+   "word": "honor",
+   "tier": "easy"
+  },
+  {
+   "word": "hoped",
+   "tier": "easy"
+  },
+  {
+   "word": "hopes",
+   "tier": "easy"
+  },
+  {
+   "word": "horse",
+   "tier": "easy"
+  },
+  {
+   "word": "hosts",
+   "tier": "easy"
+  },
+  {
+   "word": "hotel",
+   "tier": "easy"
+  },
+  {
+   "word": "hours",
+   "tier": "easy"
+  },
+  {
+   "word": "house",
+   "tier": "easy"
+  },
+  {
+   "word": "human",
+   "tier": "easy"
+  },
+  {
+   "word": "humor",
+   "tier": "easy"
+  },
+  {
+   "word": "icons",
+   "tier": "easy"
+  },
+  {
+   "word": "ideal",
+   "tier": "easy"
+  },
+  {
+   "word": "ideas",
+   "tier": "easy"
+  },
+  {
+   "word": "image",
+   "tier": "easy"
+  },
+  {
+   "word": "index",
+   "tier": "easy"
+  },
+  {
+   "word": "indie",
+   "tier": "easy"
+  },
+  {
+   "word": "inner",
+   "tier": "easy"
+  },
+  {
+   "word": "input",
+   "tier": "easy"
+  },
+  {
+   "word": "inter",
+   "tier": "easy"
+  },
+  {
+   "word": "intro",
+   "tier": "easy"
+  },
+  {
+   "word": "issue",
+   "tier": "easy"
+  },
+  {
+   "word": "items",
+   "tier": "easy"
+  },
+  {
+   "word": "ivory",
+   "tier": "easy"
+  },
+  {
+   "word": "jeans",
+   "tier": "easy"
+  },
+  {
+   "word": "jewel",
+   "tier": "easy"
+  },
+  {
+   "word": "joins",
+   "tier": "easy"
+  },
+  {
+   "word": "joint",
+   "tier": "easy"
+  },
+  {
+   "word": "jokes",
+   "tier": "easy"
+  },
+  {
+   "word": "judge",
+   "tier": "easy"
+  },
+  {
+   "word": "juice",
+   "tier": "easy"
+  },
+  {
+   "word": "karma",
+   "tier": "easy"
+  },
+  {
+   "word": "keeps",
+   "tier": "easy"
+  },
+  {
+   "word": "kills",
+   "tier": "easy"
+  },
+  {
+   "word": "kinds",
+   "tier": "easy"
+  },
+  {
+   "word": "kings",
+   "tier": "easy"
+  },
+  {
+   "word": "kitty",
+   "tier": "easy"
+  },
+  {
+   "word": "knife",
+   "tier": "easy"
+  },
+  {
+   "word": "knock",
+   "tier": "easy"
+  },
+  {
+   "word": "known",
+   "tier": "easy"
+  },
+  {
+   "word": "knows",
+   "tier": "easy"
+  },
+  {
+   "word": "label",
+   "tier": "easy"
+  },
+  {
+   "word": "labor",
+   "tier": "easy"
+  },
+  {
+   "word": "laden",
+   "tier": "easy"
+  },
+  {
+   "word": "lakes",
+   "tier": "easy"
+  },
+  {
+   "word": "lamps",
+   "tier": "easy"
+  },
+  {
+   "word": "lance",
+   "tier": "easy"
+  },
+  {
+   "word": "lands",
+   "tier": "easy"
+  },
+  {
+   "word": "lanes",
+   "tier": "easy"
+  },
+  {
+   "word": "large",
+   "tier": "easy"
+  },
+  {
+   "word": "laser",
+   "tier": "easy"
+  },
+  {
+   "word": "later",
+   "tier": "easy"
+  },
+  {
+   "word": "latex",
+   "tier": "easy"
+  },
+  {
+   "word": "laugh",
+   "tier": "easy"
+  },
+  {
+   "word": "layer",
+   "tier": "easy"
+  },
+  {
+   "word": "leads",
+   "tier": "easy"
+  },
+  {
+   "word": "learn",
+   "tier": "easy"
+  },
+  {
+   "word": "lease",
+   "tier": "easy"
+  },
+  {
+   "word": "least",
+   "tier": "easy"
+  },
+  {
+   "word": "leave",
+   "tier": "easy"
+  },
+  {
+   "word": "legal",
+   "tier": "easy"
+  },
+  {
+   "word": "lemon",
+   "tier": "easy"
+  },
+  {
+   "word": "level",
+   "tier": "easy"
+  },
+  {
+   "word": "light",
+   "tier": "easy"
+  },
+  {
+   "word": "liked",
+   "tier": "easy"
+  },
+  {
+   "word": "likes",
+   "tier": "easy"
+  },
+  {
+   "word": "limit",
+   "tier": "easy"
+  },
+  {
+   "word": "lined",
+   "tier": "easy"
+  },
+  {
+   "word": "lines",
+   "tier": "easy"
+  },
+  {
+   "word": "links",
+   "tier": "easy"
+  },
+  {
+   "word": "lions",
+   "tier": "easy"
+  },
+  {
+   "word": "lists",
+   "tier": "easy"
+  },
+  {
+   "word": "lived",
+   "tier": "easy"
+  },
+  {
+   "word": "liver",
+   "tier": "easy"
+  },
+  {
+   "word": "lives",
+   "tier": "easy"
+  },
+  {
+   "word": "loads",
+   "tier": "easy"
+  },
+  {
+   "word": "loans",
+   "tier": "easy"
+  },
+  {
+   "word": "lobby",
+   "tier": "easy"
+  },
+  {
+   "word": "local",
+   "tier": "easy"
+  },
+  {
+   "word": "locks",
+   "tier": "easy"
+  },
+  {
+   "word": "lodge",
+   "tier": "easy"
+  },
+  {
+   "word": "logic",
+   "tier": "easy"
+  },
+  {
+   "word": "login",
+   "tier": "easy"
+  },
+  {
+   "word": "logos",
+   "tier": "easy"
+  },
+  {
+   "word": "looks",
+   "tier": "easy"
+  },
+  {
+   "word": "loops",
+   "tier": "easy"
+  },
+  {
+   "word": "loose",
+   "tier": "easy"
+  },
+  {
+   "word": "lotus",
+   "tier": "easy"
+  },
+  {
+   "word": "loved",
+   "tier": "easy"
+  },
+  {
+   "word": "lover",
+   "tier": "easy"
+  },
+  {
+   "word": "loves",
+   "tier": "easy"
+  },
+  {
+   "word": "lower",
+   "tier": "easy"
+  },
+  {
+   "word": "lucky",
+   "tier": "easy"
+  },
+  {
+   "word": "lunch",
+   "tier": "easy"
+  },
+  {
+   "word": "lying",
+   "tier": "easy"
+  },
+  {
+   "word": "lyric",
+   "tier": "easy"
+  },
+  {
+   "word": "macro",
+   "tier": "easy"
+  },
+  {
+   "word": "magic",
+   "tier": "easy"
+  },
+  {
+   "word": "mails",
+   "tier": "easy"
+  },
+  {
+   "word": "major",
+   "tier": "easy"
+  },
+  {
+   "word": "maker",
+   "tier": "easy"
+  },
+  {
+   "word": "makes",
+   "tier": "easy"
+  },
+  {
+   "word": "males",
+   "tier": "easy"
+  },
+  {
+   "word": "mambo",
+   "tier": "easy"
+  },
+  {
+   "word": "manga",
+   "tier": "easy"
+  },
+  {
+   "word": "manor",
+   "tier": "easy"
+  },
+  {
+   "word": "maple",
+   "tier": "easy"
+  },
+  {
+   "word": "march",
+   "tier": "easy"
+  },
+  {
+   "word": "marks",
+   "tier": "easy"
+  },
+  {
+   "word": "marsh",
+   "tier": "easy"
+  },
+  {
+   "word": "mason",
+   "tier": "easy"
+  },
+  {
+   "word": "match",
+   "tier": "easy"
+  },
+  {
+   "word": "maybe",
+   "tier": "easy"
+  },
+  {
+   "word": "mayor",
+   "tier": "easy"
+  },
+  {
+   "word": "meals",
+   "tier": "easy"
+  },
+  {
+   "word": "means",
+   "tier": "easy"
+  },
+  {
+   "word": "meant",
+   "tier": "easy"
+  },
+  {
+   "word": "medal",
+   "tier": "easy"
+  },
+  {
+   "word": "media",
+   "tier": "easy"
+  },
+  {
+   "word": "meets",
+   "tier": "easy"
+  },
+  {
+   "word": "menus",
+   "tier": "easy"
+  },
+  {
+   "word": "mercy",
+   "tier": "easy"
+  },
+  {
+   "word": "merge",
+   "tier": "easy"
+  },
+  {
+   "word": "merit",
+   "tier": "easy"
+  },
+  {
+   "word": "merry",
+   "tier": "easy"
+  },
+  {
+   "word": "metal",
+   "tier": "easy"
+  },
+  {
+   "word": "meter",
+   "tier": "easy"
+  },
+  {
+   "word": "metro",
+   "tier": "easy"
+  },
+  {
+   "word": "micro",
+   "tier": "easy"
+  },
+  {
+   "word": "might",
+   "tier": "easy"
+  },
+  {
+   "word": "miles",
+   "tier": "easy"
+  },
+  {
+   "word": "mills",
+   "tier": "easy"
+  },
+  {
+   "word": "minds",
+   "tier": "easy"
+  },
+  {
+   "word": "mines",
+   "tier": "easy"
+  },
+  {
+   "word": "minor",
+   "tier": "easy"
+  },
+  {
+   "word": "minus",
+   "tier": "easy"
+  },
+  {
+   "word": "mixed",
+   "tier": "easy"
+  },
+  {
+   "word": "mixer",
+   "tier": "easy"
+  },
+  {
+   "word": "model",
+   "tier": "easy"
+  },
+  {
+   "word": "modem",
+   "tier": "easy"
+  },
+  {
+   "word": "modes",
+   "tier": "easy"
+  },
+  {
+   "word": "money",
+   "tier": "easy"
+  },
+  {
+   "word": "month",
+   "tier": "easy"
+  },
+  {
+   "word": "moral",
+   "tier": "easy"
+  },
+  {
+   "word": "motel",
+   "tier": "easy"
+  },
+  {
+   "word": "motor",
+   "tier": "easy"
+  },
+  {
+   "word": "mount",
+   "tier": "easy"
+  },
+  {
+   "word": "mouse",
+   "tier": "easy"
+  },
+  {
+   "word": "mouth",
+   "tier": "easy"
+  },
+  {
+   "word": "moved",
+   "tier": "easy"
+  },
+  {
+   "word": "moves",
+   "tier": "easy"
+  },
+  {
+   "word": "movie",
+   "tier": "easy"
+  },
+  {
+   "word": "multi",
+   "tier": "easy"
+  },
+  {
+   "word": "music",
+   "tier": "easy"
+  },
+  {
+   "word": "nails",
+   "tier": "easy"
+  },
+  {
+   "word": "naked",
+   "tier": "easy"
+  },
+  {
+   "word": "named",
+   "tier": "easy"
+  },
+  {
+   "word": "names",
+   "tier": "easy"
+  },
+  {
+   "word": "nasty",
+   "tier": "easy"
+  },
+  {
+   "word": "naval",
+   "tier": "easy"
+  },
+  {
+   "word": "needs",
+   "tier": "easy"
+  },
+  {
+   "word": "nerve",
+   "tier": "easy"
+  },
+  {
+   "word": "never",
+   "tier": "easy"
+  },
+  {
+   "word": "newer",
+   "tier": "easy"
+  },
+  {
+   "word": "newly",
+   "tier": "easy"
+  },
+  {
+   "word": "night",
+   "tier": "easy"
+  },
+  {
+   "word": "noble",
+   "tier": "easy"
+  },
+  {
+   "word": "nodes",
+   "tier": "easy"
+  },
+  {
+   "word": "noise",
+   "tier": "easy"
+  },
+  {
+   "word": "north",
+   "tier": "easy"
+  },
+  {
+   "word": "noted",
+   "tier": "easy"
+  },
+  {
+   "word": "notes",
+   "tier": "easy"
+  },
+  {
+   "word": "novel",
+   "tier": "easy"
+  },
+  {
+   "word": "nurse",
+   "tier": "easy"
+  },
+  {
+   "word": "nylon",
+   "tier": "easy"
+  },
+  {
+   "word": "oasis",
+   "tier": "easy"
+  },
+  {
+   "word": "occur",
+   "tier": "easy"
+  },
+  {
+   "word": "ocean",
+   "tier": "easy"
+  },
+  {
+   "word": "offer",
+   "tier": "easy"
+  },
+  {
+   "word": "often",
+   "tier": "easy"
+  },
+  {
+   "word": "older",
+   "tier": "easy"
+  },
+  {
+   "word": "olive",
+   "tier": "easy"
+  },
+  {
+   "word": "omega",
+   "tier": "easy"
+  },
+  {
+   "word": "onion",
+   "tier": "easy"
+  },
+  {
+   "word": "opens",
+   "tier": "easy"
+  },
+  {
+   "word": "opera",
+   "tier": "easy"
+  },
+  {
+   "word": "orbit",
+   "tier": "easy"
+  },
+  {
+   "word": "order",
+   "tier": "easy"
+  },
+  {
+   "word": "organ",
+   "tier": "easy"
+  },
+  {
+   "word": "other",
+   "tier": "easy"
+  },
+  {
+   "word": "ought",
+   "tier": "easy"
+  },
+  {
+   "word": "outer",
+   "tier": "easy"
+  },
+  {
+   "word": "owned",
+   "tier": "easy"
+  },
+  {
+   "word": "owner",
+   "tier": "easy"
+  },
+  {
+   "word": "oxide",
+   "tier": "easy"
+  },
+  {
+   "word": "ozone",
+   "tier": "easy"
+  },
+  {
+   "word": "packs",
+   "tier": "easy"
+  },
+  {
+   "word": "pages",
+   "tier": "easy"
+  },
+  {
+   "word": "paint",
+   "tier": "easy"
+  },
+  {
+   "word": "pairs",
+   "tier": "easy"
+  },
+  {
+   "word": "panel",
+   "tier": "easy"
+  },
+  {
+   "word": "panic",
+   "tier": "easy"
+  },
+  {
+   "word": "pants",
+   "tier": "easy"
+  },
+  {
+   "word": "paper",
+   "tier": "easy"
+  },
+  {
+   "word": "parks",
+   "tier": "easy"
+  },
+  {
+   "word": "parts",
+   "tier": "easy"
+  },
+  {
+   "word": "party",
+   "tier": "easy"
+  },
+  {
+   "word": "pasta",
+   "tier": "easy"
+  },
+  {
+   "word": "paste",
+   "tier": "easy"
+  },
+  {
+   "word": "patch",
+   "tier": "easy"
+  },
+  {
+   "word": "paths",
+   "tier": "easy"
+  },
+  {
+   "word": "patio",
+   "tier": "easy"
+  },
+  {
+   "word": "peace",
+   "tier": "easy"
+  },
+  {
+   "word": "pearl",
+   "tier": "easy"
+  },
+  {
+   "word": "peers",
+   "tier": "easy"
+  },
+  {
+   "word": "penny",
+   "tier": "easy"
+  },
+  {
+   "word": "peter",
+   "tier": "easy"
+  },
+  {
+   "word": "phase",
+   "tier": "easy"
+  },
+  {
+   "word": "phone",
+   "tier": "easy"
+  },
+  {
+   "word": "photo",
+   "tier": "easy"
+  },
+  {
+   "word": "piano",
+   "tier": "easy"
+  },
+  {
+   "word": "picks",
+   "tier": "easy"
+  },
+  {
+   "word": "piece",
+   "tier": "easy"
+  },
+  {
+   "word": "pills",
+   "tier": "easy"
+  },
+  {
+   "word": "pilot",
+   "tier": "easy"
+  },
+  {
+   "word": "pipes",
+   "tier": "easy"
+  },
+  {
+   "word": "pitch",
+   "tier": "easy"
+  },
+  {
+   "word": "pixel",
+   "tier": "easy"
+  },
+  {
+   "word": "pizza",
+   "tier": "easy"
+  },
+  {
+   "word": "place",
+   "tier": "easy"
+  },
+  {
+   "word": "plain",
+   "tier": "easy"
+  },
+  {
+   "word": "plane",
+   "tier": "easy"
+  },
+  {
+   "word": "plans",
+   "tier": "easy"
+  },
+  {
+   "word": "plant",
+   "tier": "easy"
+  },
+  {
+   "word": "plate",
+   "tier": "easy"
+  },
+  {
+   "word": "plays",
+   "tier": "easy"
+  },
+  {
+   "word": "plaza",
+   "tier": "easy"
+  },
+  {
+   "word": "plots",
+   "tier": "easy"
+  },
+  {
+   "word": "poems",
+   "tier": "easy"
+  },
+  {
+   "word": "point",
+   "tier": "easy"
+  },
+  {
+   "word": "poker",
+   "tier": "easy"
+  },
+  {
+   "word": "polar",
+   "tier": "easy"
+  },
+  {
+   "word": "polls",
+   "tier": "easy"
+  },
+  {
+   "word": "pools",
+   "tier": "easy"
+  },
+  {
+   "word": "ports",
+   "tier": "easy"
+  },
+  {
+   "word": "posts",
+   "tier": "easy"
+  },
+  {
+   "word": "pound",
+   "tier": "easy"
+  },
+  {
+   "word": "power",
+   "tier": "easy"
+  },
+  {
+   "word": "press",
+   "tier": "easy"
+  },
+  {
+   "word": "price",
+   "tier": "easy"
+  },
+  {
+   "word": "pride",
+   "tier": "easy"
+  },
+  {
+   "word": "prime",
+   "tier": "easy"
+  },
+  {
+   "word": "print",
+   "tier": "easy"
+  },
+  {
+   "word": "prior",
+   "tier": "easy"
+  },
+  {
+   "word": "prize",
+   "tier": "easy"
+  },
+  {
+   "word": "probe",
+   "tier": "easy"
+  },
+  {
+   "word": "promo",
+   "tier": "easy"
+  },
+  {
+   "word": "proof",
+   "tier": "easy"
+  },
+  {
+   "word": "proud",
+   "tier": "easy"
+  },
+  {
+   "word": "prove",
+   "tier": "easy"
+  },
+  {
+   "word": "proxy",
+   "tier": "easy"
+  },
+  {
+   "word": "pulse",
+   "tier": "easy"
+  },
+  {
+   "word": "pumps",
+   "tier": "easy"
+  },
+  {
+   "word": "punch",
+   "tier": "easy"
+  },
+  {
+   "word": "puppy",
+   "tier": "easy"
+  },
+  {
+   "word": "purse",
+   "tier": "easy"
+  },
+  {
+   "word": "queen",
+   "tier": "easy"
+  },
+  {
+   "word": "query",
+   "tier": "easy"
+  },
+  {
+   "word": "quest",
+   "tier": "easy"
+  },
+  {
+   "word": "queue",
+   "tier": "easy"
+  },
+  {
+   "word": "quick",
+   "tier": "easy"
+  },
+  {
+   "word": "quiet",
+   "tier": "easy"
+  },
+  {
+   "word": "quilt",
+   "tier": "easy"
+  },
+  {
+   "word": "quite",
+   "tier": "easy"
+  },
+  {
+   "word": "quote",
+   "tier": "easy"
+  },
+  {
+   "word": "races",
+   "tier": "easy"
+  },
+  {
+   "word": "racks",
+   "tier": "easy"
+  },
+  {
+   "word": "radar",
+   "tier": "easy"
+  },
+  {
+   "word": "radio",
+   "tier": "easy"
+  },
+  {
+   "word": "raise",
+   "tier": "easy"
+  },
+  {
+   "word": "rally",
+   "tier": "easy"
+  },
+  {
+   "word": "ranch",
+   "tier": "easy"
+  },
+  {
+   "word": "range",
+   "tier": "easy"
+  },
+  {
+   "word": "ranks",
+   "tier": "easy"
+  },
+  {
+   "word": "rapid",
+   "tier": "easy"
+  },
+  {
+   "word": "rated",
+   "tier": "easy"
+  },
+  {
+   "word": "rates",
+   "tier": "easy"
+  },
+  {
+   "word": "ratio",
+   "tier": "easy"
+  },
+  {
+   "word": "reach",
+   "tier": "easy"
+  },
+  {
+   "word": "reads",
+   "tier": "easy"
+  },
+  {
+   "word": "ready",
+   "tier": "easy"
+  },
+  {
+   "word": "realm",
+   "tier": "easy"
+  },
+  {
+   "word": "rebel",
+   "tier": "easy"
+  },
+  {
+   "word": "refer",
+   "tier": "easy"
+  },
+  {
+   "word": "rehab",
+   "tier": "easy"
+  },
+  {
+   "word": "relax",
+   "tier": "easy"
+  },
+  {
+   "word": "relay",
+   "tier": "easy"
+  },
+  {
+   "word": "remix",
+   "tier": "easy"
+  },
+  {
+   "word": "renew",
+   "tier": "easy"
+  },
+  {
+   "word": "reply",
+   "tier": "easy"
+  },
+  {
+   "word": "reset",
+   "tier": "easy"
+  },
+  {
+   "word": "retro",
+   "tier": "easy"
+  },
+  {
+   "word": "rider",
+   "tier": "easy"
+  },
+  {
+   "word": "rides",
+   "tier": "easy"
+  },
+  {
+   "word": "ridge",
+   "tier": "easy"
+  },
+  {
+   "word": "right",
+   "tier": "easy"
+  },
+  {
+   "word": "rings",
+   "tier": "easy"
+  },
+  {
+   "word": "risks",
+   "tier": "easy"
+  },
+  {
+   "word": "river",
+   "tier": "easy"
+  },
+  {
+   "word": "roads",
+   "tier": "easy"
+  },
+  {
+   "word": "robin",
+   "tier": "easy"
+  },
+  {
+   "word": "robot",
+   "tier": "easy"
+  },
+  {
+   "word": "rocks",
+   "tier": "easy"
+  },
+  {
+   "word": "rocky",
+   "tier": "easy"
+  },
+  {
+   "word": "roles",
+   "tier": "easy"
+  },
+  {
+   "word": "rolls",
+   "tier": "easy"
+  },
+  {
+   "word": "rooms",
+   "tier": "easy"
+  },
+  {
+   "word": "roots",
+   "tier": "easy"
+  },
+  {
+   "word": "roses",
+   "tier": "easy"
+  },
+  {
+   "word": "rouge",
+   "tier": "easy"
+  },
+  {
+   "word": "rough",
+   "tier": "easy"
+  },
+  {
+   "word": "round",
+   "tier": "easy"
+  },
+  {
+   "word": "route",
+   "tier": "easy"
+  },
+  {
+   "word": "royal",
+   "tier": "easy"
+  },
+  {
+   "word": "rugby",
+   "tier": "easy"
+  },
+  {
+   "word": "ruled",
+   "tier": "easy"
+  },
+  {
+   "word": "rules",
+   "tier": "easy"
+  },
+  {
+   "word": "rural",
+   "tier": "easy"
+  },
+  {
+   "word": "safer",
+   "tier": "easy"
+  },
+  {
+   "word": "saint",
+   "tier": "easy"
+  },
+  {
+   "word": "salad",
+   "tier": "easy"
+  },
+  {
+   "word": "sales",
+   "tier": "easy"
+  },
+  {
+   "word": "salon",
+   "tier": "easy"
+  },
+  {
+   "word": "samba",
+   "tier": "easy"
+  },
+  {
+   "word": "sandy",
+   "tier": "easy"
+  },
+  {
+   "word": "satin",
+   "tier": "easy"
+  },
+  {
+   "word": "sauce",
+   "tier": "easy"
+  },
+  {
+   "word": "saved",
+   "tier": "easy"
+  },
+  {
+   "word": "saver",
+   "tier": "easy"
+  },
+  {
+   "word": "saves",
+   "tier": "easy"
+  },
+  {
+   "word": "scale",
+   "tier": "easy"
+  },
+  {
+   "word": "scary",
+   "tier": "easy"
+  },
+  {
+   "word": "scene",
+   "tier": "easy"
+  },
+  {
+   "word": "scoop",
+   "tier": "easy"
+  },
+  {
+   "word": "scope",
+   "tier": "easy"
+  },
+  {
+   "word": "score",
+   "tier": "easy"
+  },
+  {
+   "word": "scout",
+   "tier": "easy"
+  },
+  {
+   "word": "screw",
+   "tier": "easy"
+  },
+  {
+   "word": "scuba",
+   "tier": "easy"
+  },
+  {
+   "word": "seats",
+   "tier": "easy"
+  },
+  {
+   "word": "seeds",
+   "tier": "easy"
+  },
+  {
+   "word": "seeks",
+   "tier": "easy"
+  },
+  {
+   "word": "seems",
+   "tier": "easy"
+  },
+  {
+   "word": "sells",
+   "tier": "easy"
+  },
+  {
+   "word": "sends",
+   "tier": "easy"
+  },
+  {
+   "word": "sense",
+   "tier": "easy"
+  },
+  {
+   "word": "serum",
+   "tier": "easy"
+  },
+  {
+   "word": "serve",
+   "tier": "easy"
+  },
+  {
+   "word": "setup",
+   "tier": "easy"
+  },
+  {
+   "word": "seven",
+   "tier": "easy"
+  },
+  {
+   "word": "shade",
+   "tier": "easy"
+  },
+  {
+   "word": "shaft",
+   "tier": "easy"
+  },
+  {
+   "word": "shake",
+   "tier": "easy"
+  },
+  {
+   "word": "shall",
+   "tier": "easy"
+  },
+  {
+   "word": "shame",
+   "tier": "easy"
+  },
+  {
+   "word": "shape",
+   "tier": "easy"
+  },
+  {
+   "word": "share",
+   "tier": "easy"
+  },
+  {
+   "word": "shark",
+   "tier": "easy"
+  },
+  {
+   "word": "sharp",
+   "tier": "easy"
+  },
+  {
+   "word": "sheep",
+   "tier": "easy"
+  },
+  {
+   "word": "sheer",
+   "tier": "easy"
+  },
+  {
+   "word": "sheet",
+   "tier": "easy"
+  },
+  {
+   "word": "shelf",
+   "tier": "easy"
+  },
+  {
+   "word": "shell",
+   "tier": "easy"
+  },
+  {
+   "word": "shift",
+   "tier": "easy"
+  },
+  {
+   "word": "shine",
+   "tier": "easy"
+  },
+  {
+   "word": "ships",
+   "tier": "easy"
+  },
+  {
+   "word": "shirt",
+   "tier": "easy"
+  },
+  {
+   "word": "shock",
+   "tier": "easy"
+  },
+  {
+   "word": "shoes",
+   "tier": "easy"
+  },
+  {
+   "word": "shoot",
+   "tier": "easy"
+  },
+  {
+   "word": "shops",
+   "tier": "easy"
+  },
+  {
+   "word": "shore",
+   "tier": "easy"
+  },
+  {
+   "word": "short",
+   "tier": "easy"
+  },
+  {
+   "word": "shots",
+   "tier": "easy"
+  },
+  {
+   "word": "shown",
+   "tier": "easy"
+  },
+  {
+   "word": "shows",
+   "tier": "easy"
+  },
+  {
+   "word": "sides",
+   "tier": "easy"
+  },
+  {
+   "word": "sight",
+   "tier": "easy"
+  },
+  {
+   "word": "sigma",
+   "tier": "easy"
+  },
+  {
+   "word": "signs",
+   "tier": "easy"
+  },
+  {
+   "word": "silly",
+   "tier": "easy"
+  },
+  {
+   "word": "since",
+   "tier": "easy"
+  },
+  {
+   "word": "sites",
+   "tier": "easy"
+  },
+  {
+   "word": "sixth",
+   "tier": "easy"
+  },
+  {
+   "word": "sized",
+   "tier": "easy"
+  },
+  {
+   "word": "sizes",
+   "tier": "easy"
+  },
+  {
+   "word": "skill",
+   "tier": "easy"
+  },
+  {
+   "word": "skins",
+   "tier": "easy"
+  },
+  {
+   "word": "skirt",
+   "tier": "easy"
+  },
+  {
+   "word": "slave",
+   "tier": "easy"
+  },
+  {
+   "word": "sleep",
+   "tier": "easy"
+  },
+  {
+   "word": "slide",
+   "tier": "easy"
+  },
+  {
+   "word": "slope",
+   "tier": "easy"
+  },
+  {
+   "word": "slots",
+   "tier": "easy"
+  },
+  {
+   "word": "small",
+   "tier": "easy"
+  },
+  {
+   "word": "smart",
+   "tier": "easy"
+  },
+  {
+   "word": "smell",
+   "tier": "easy"
+  },
+  {
+   "word": "smile",
+   "tier": "easy"
+  },
+  {
+   "word": "smoke",
+   "tier": "easy"
+  },
+  {
+   "word": "snake",
+   "tier": "easy"
+  },
+  {
+   "word": "socks",
+   "tier": "easy"
+  },
+  {
+   "word": "solar",
+   "tier": "easy"
+  },
+  {
+   "word": "solid",
+   "tier": "easy"
+  },
+  {
+   "word": "solve",
+   "tier": "easy"
+  },
+  {
+   "word": "songs",
+   "tier": "easy"
+  },
+  {
+   "word": "sonic",
+   "tier": "easy"
+  },
+  {
+   "word": "sorry",
+   "tier": "easy"
+  },
+  {
+   "word": "sorts",
+   "tier": "easy"
+  },
+  {
+   "word": "souls",
+   "tier": "easy"
+  },
+  {
+   "word": "sound",
+   "tier": "easy"
+  },
+  {
+   "word": "south",
+   "tier": "easy"
+  },
+  {
+   "word": "space",
+   "tier": "easy"
+  },
+  {
+   "word": "spank",
+   "tier": "easy"
+  },
+  {
+   "word": "spare",
+   "tier": "easy"
+  },
+  {
+   "word": "speak",
+   "tier": "easy"
+  },
+  {
+   "word": "specs",
+   "tier": "easy"
+  },
+  {
+   "word": "speed",
+   "tier": "easy"
+  },
+  {
+   "word": "spell",
+   "tier": "easy"
+  },
+  {
+   "word": "spend",
+   "tier": "easy"
+  },
+  {
+   "word": "spent",
+   "tier": "easy"
+  },
+  {
+   "word": "sperm",
+   "tier": "easy"
+  },
+  {
+   "word": "spice",
+   "tier": "easy"
+  },
+  {
+   "word": "spies",
+   "tier": "easy"
+  },
+  {
+   "word": "spine",
+   "tier": "easy"
+  },
+  {
+   "word": "split",
+   "tier": "easy"
+  },
+  {
+   "word": "spoke",
+   "tier": "easy"
+  },
+  {
+   "word": "sport",
+   "tier": "easy"
+  },
+  {
+   "word": "spots",
+   "tier": "easy"
+  },
+  {
+   "word": "spray",
+   "tier": "easy"
+  },
+  {
+   "word": "squad",
+   "tier": "easy"
+  },
+  {
+   "word": "stack",
+   "tier": "easy"
+  },
+  {
+   "word": "staff",
+   "tier": "easy"
+  },
+  {
+   "word": "stage",
+   "tier": "easy"
+  },
+  {
+   "word": "stake",
+   "tier": "easy"
+  },
+  {
+   "word": "stamp",
+   "tier": "easy"
+  },
+  {
+   "word": "stand",
+   "tier": "easy"
+  },
+  {
+   "word": "stars",
+   "tier": "easy"
+  },
+  {
+   "word": "start",
+   "tier": "easy"
+  },
+  {
+   "word": "state",
+   "tier": "easy"
+  },
+  {
+   "word": "stats",
+   "tier": "easy"
+  },
+  {
+   "word": "stays",
+   "tier": "easy"
+  },
+  {
+   "word": "steal",
+   "tier": "easy"
+  },
+  {
+   "word": "steam",
+   "tier": "easy"
+  },
+  {
+   "word": "steel",
+   "tier": "easy"
+  },
+  {
+   "word": "steps",
+   "tier": "easy"
+  },
+  {
+   "word": "stick",
+   "tier": "easy"
+  },
+  {
+   "word": "still",
+   "tier": "easy"
+  },
+  {
+   "word": "stock",
+   "tier": "easy"
+  },
+  {
+   "word": "stone",
+   "tier": "easy"
+  },
+  {
+   "word": "stood",
+   "tier": "easy"
+  },
+  {
+   "word": "stops",
+   "tier": "easy"
+  },
+  {
+   "word": "store",
+   "tier": "easy"
+  },
+  {
+   "word": "storm",
+   "tier": "easy"
+  },
+  {
+   "word": "story",
+   "tier": "easy"
+  },
+  {
+   "word": "strap",
+   "tier": "easy"
+  },
+  {
+   "word": "strip",
+   "tier": "easy"
+  },
+  {
+   "word": "stuck",
+   "tier": "easy"
+  },
+  {
+   "word": "study",
+   "tier": "easy"
+  },
+  {
+   "word": "stuff",
+   "tier": "easy"
+  },
+  {
+   "word": "style",
+   "tier": "easy"
+  },
+  {
+   "word": "sugar",
+   "tier": "easy"
+  },
+  {
+   "word": "suite",
+   "tier": "easy"
+  },
+  {
+   "word": "suits",
+   "tier": "easy"
+  },
+  {
+   "word": "sunny",
+   "tier": "easy"
+  },
+  {
+   "word": "super",
+   "tier": "easy"
+  },
+  {
+   "word": "surge",
+   "tier": "easy"
+  },
+  {
+   "word": "sweet",
+   "tier": "easy"
+  },
+  {
+   "word": "swift",
+   "tier": "easy"
+  },
+  {
+   "word": "swing",
+   "tier": "easy"
+  },
+  {
+   "word": "sword",
+   "tier": "easy"
+  },
+  {
+   "word": "table",
+   "tier": "easy"
+  },
+  {
+   "word": "taken",
+   "tier": "easy"
+  },
+  {
+   "word": "takes",
+   "tier": "easy"
+  },
+  {
+   "word": "tales",
+   "tier": "easy"
+  },
+  {
+   "word": "talks",
+   "tier": "easy"
+  },
+  {
+   "word": "tanks",
+   "tier": "easy"
+  },
+  {
+   "word": "tapes",
+   "tier": "easy"
+  },
+  {
+   "word": "tasks",
+   "tier": "easy"
+  },
+  {
+   "word": "taste",
+   "tier": "easy"
+  },
+  {
+   "word": "taxes",
+   "tier": "easy"
+  },
+  {
+   "word": "teach",
+   "tier": "easy"
+  },
+  {
+   "word": "teams",
+   "tier": "easy"
+  },
+  {
+   "word": "tears",
+   "tier": "easy"
+  },
+  {
+   "word": "teddy",
+   "tier": "easy"
+  },
+  {
+   "word": "teens",
+   "tier": "easy"
+  },
+  {
+   "word": "teeth",
+   "tier": "easy"
+  },
+  {
+   "word": "tells",
+   "tier": "easy"
+  },
+  {
+   "word": "terms",
+   "tier": "easy"
+  },
+  {
+   "word": "tests",
+   "tier": "easy"
+  },
+  {
+   "word": "texts",
+   "tier": "easy"
+  },
+  {
+   "word": "thank",
+   "tier": "easy"
+  },
+  {
+   "word": "thats",
+   "tier": "easy"
+  },
+  {
+   "word": "theft",
+   "tier": "easy"
+  },
+  {
+   "word": "their",
+   "tier": "easy"
+  },
+  {
+   "word": "theme",
+   "tier": "easy"
+  },
+  {
+   "word": "there",
+   "tier": "easy"
+  },
+  {
+   "word": "these",
+   "tier": "easy"
+  },
+  {
+   "word": "theta",
+   "tier": "easy"
+  },
+  {
+   "word": "thick",
+   "tier": "easy"
+  },
+  {
+   "word": "thing",
+   "tier": "easy"
+  },
+  {
+   "word": "think",
+   "tier": "easy"
+  },
+  {
+   "word": "third",
+   "tier": "easy"
+  },
+  {
+   "word": "thong",
+   "tier": "easy"
+  },
+  {
+   "word": "those",
+   "tier": "easy"
+  },
+  {
+   "word": "three",
+   "tier": "easy"
+  },
+  {
+   "word": "throw",
+   "tier": "easy"
+  },
+  {
+   "word": "thumb",
+   "tier": "easy"
+  },
+  {
+   "word": "tiger",
+   "tier": "easy"
+  },
+  {
+   "word": "tight",
+   "tier": "easy"
+  },
+  {
+   "word": "tiles",
+   "tier": "easy"
+  },
+  {
+   "word": "timer",
+   "tier": "easy"
+  },
+  {
+   "word": "times",
+   "tier": "easy"
+  },
+  {
+   "word": "tired",
+   "tier": "easy"
+  },
+  {
+   "word": "tires",
+   "tier": "easy"
+  },
+  {
+   "word": "title",
+   "tier": "easy"
+  },
+  {
+   "word": "today",
+   "tier": "easy"
+  },
+  {
+   "word": "token",
+   "tier": "easy"
+  },
+  {
+   "word": "toner",
+   "tier": "easy"
+  },
+  {
+   "word": "tones",
+   "tier": "easy"
+  },
+  {
+   "word": "tools",
+   "tier": "easy"
+  },
+  {
+   "word": "tooth",
+   "tier": "easy"
+  },
+  {
+   "word": "topic",
+   "tier": "easy"
+  },
+  {
+   "word": "total",
+   "tier": "easy"
+  },
+  {
+   "word": "touch",
+   "tier": "easy"
+  },
+  {
+   "word": "tough",
+   "tier": "easy"
+  },
+  {
+   "word": "tours",
+   "tier": "easy"
+  },
+  {
+   "word": "tower",
+   "tier": "easy"
+  },
+  {
+   "word": "towns",
+   "tier": "easy"
+  },
+  {
+   "word": "toxic",
+   "tier": "easy"
+  },
+  {
+   "word": "trace",
+   "tier": "easy"
+  },
+  {
+   "word": "track",
+   "tier": "easy"
+  },
+  {
+   "word": "tract",
+   "tier": "easy"
+  },
+  {
+   "word": "trade",
+   "tier": "easy"
+  },
+  {
+   "word": "trail",
+   "tier": "easy"
+  },
+  {
+   "word": "train",
+   "tier": "easy"
+  },
+  {
+   "word": "trans",
+   "tier": "easy"
+  },
+  {
+   "word": "trash",
+   "tier": "easy"
+  },
+  {
+   "word": "treat",
+   "tier": "easy"
+  },
+  {
+   "word": "trees",
+   "tier": "easy"
+  },
+  {
+   "word": "trend",
+   "tier": "easy"
+  },
+  {
+   "word": "trial",
+   "tier": "easy"
+  },
+  {
+   "word": "tribe",
+   "tier": "easy"
+  },
+  {
+   "word": "trick",
+   "tier": "easy"
+  },
+  {
+   "word": "tried",
+   "tier": "easy"
+  },
+  {
+   "word": "tries",
+   "tier": "easy"
+  },
+  {
+   "word": "trips",
+   "tier": "easy"
+  },
+  {
+   "word": "trout",
+   "tier": "easy"
+  },
+  {
+   "word": "truck",
+   "tier": "easy"
+  },
+  {
+   "word": "truly",
+   "tier": "easy"
+  },
+  {
+   "word": "trunk",
+   "tier": "easy"
+  },
+  {
+   "word": "trust",
+   "tier": "easy"
+  },
+  {
+   "word": "truth",
+   "tier": "easy"
+  },
+  {
+   "word": "tubes",
+   "tier": "easy"
+  },
+  {
+   "word": "tumor",
+   "tier": "easy"
+  },
+  {
+   "word": "tuner",
+   "tier": "easy"
+  },
+  {
+   "word": "tunes",
+   "tier": "easy"
+  },
+  {
+   "word": "turbo",
+   "tier": "easy"
+  },
+  {
+   "word": "turns",
+   "tier": "easy"
+  },
+  {
+   "word": "twice",
+   "tier": "easy"
+  },
+  {
+   "word": "twins",
+   "tier": "easy"
+  },
+  {
+   "word": "twist",
+   "tier": "easy"
+  },
+  {
+   "word": "types",
+   "tier": "easy"
+  },
+  {
+   "word": "ultra",
+   "tier": "easy"
+  },
+  {
+   "word": "uncle",
+   "tier": "easy"
+  },
+  {
+   "word": "under",
+   "tier": "easy"
+  },
+  {
+   "word": "union",
+   "tier": "easy"
+  },
+  {
+   "word": "units",
+   "tier": "easy"
+  },
+  {
+   "word": "unity",
+   "tier": "easy"
+  },
+  {
+   "word": "until",
+   "tier": "easy"
+  },
+  {
+   "word": "upper",
+   "tier": "easy"
+  },
+  {
+   "word": "upset",
+   "tier": "easy"
+  },
+  {
+   "word": "urban",
+   "tier": "easy"
+  },
+  {
+   "word": "usage",
+   "tier": "easy"
+  },
+  {
+   "word": "users",
+   "tier": "easy"
+  },
+  {
+   "word": "using",
+   "tier": "easy"
+  },
+  {
+   "word": "usual",
+   "tier": "easy"
+  },
+  {
+   "word": "valid",
+   "tier": "easy"
+  },
+  {
+   "word": "value",
+   "tier": "easy"
+  },
+  {
+   "word": "valve",
+   "tier": "easy"
+  },
+  {
+   "word": "vault",
+   "tier": "easy"
+  },
+  {
+   "word": "venue",
+   "tier": "easy"
+  },
+  {
+   "word": "verse",
+   "tier": "easy"
+  },
+  {
+   "word": "video",
+   "tier": "easy"
+  },
+  {
+   "word": "views",
+   "tier": "easy"
+  },
+  {
+   "word": "villa",
+   "tier": "easy"
+  },
+  {
+   "word": "vinyl",
+   "tier": "easy"
+  },
+  {
+   "word": "viral",
+   "tier": "easy"
+  },
+  {
+   "word": "virus",
+   "tier": "easy"
+  },
+  {
+   "word": "visit",
+   "tier": "easy"
+  },
+  {
+   "word": "vista",
+   "tier": "easy"
+  },
+  {
+   "word": "vital",
+   "tier": "easy"
+  },
+  {
+   "word": "vocal",
+   "tier": "easy"
+  },
+  {
+   "word": "voice",
+   "tier": "easy"
+  },
+  {
+   "word": "voted",
+   "tier": "easy"
+  },
+  {
+   "word": "votes",
+   "tier": "easy"
+  },
+  {
+   "word": "wages",
+   "tier": "easy"
+  },
+  {
+   "word": "wagon",
+   "tier": "easy"
+  },
+  {
+   "word": "walks",
+   "tier": "easy"
+  },
+  {
+   "word": "walls",
+   "tier": "easy"
+  },
+  {
+   "word": "wanna",
+   "tier": "easy"
+  },
+  {
+   "word": "wants",
+   "tier": "easy"
+  },
+  {
+   "word": "waste",
+   "tier": "easy"
+  },
+  {
+   "word": "watch",
+   "tier": "easy"
+  },
+  {
+   "word": "water",
+   "tier": "easy"
+  },
+  {
+   "word": "watts",
+   "tier": "easy"
+  },
+  {
+   "word": "waves",
+   "tier": "easy"
+  },
+  {
+   "word": "weeks",
+   "tier": "easy"
+  },
+  {
+   "word": "weird",
+   "tier": "easy"
+  },
+  {
+   "word": "wells",
+   "tier": "easy"
+  },
+  {
+   "word": "whale",
+   "tier": "easy"
+  },
+  {
+   "word": "whats",
+   "tier": "easy"
+  },
+  {
+   "word": "wheat",
+   "tier": "easy"
+  },
+  {
+   "word": "wheel",
+   "tier": "easy"
+  },
+  {
+   "word": "where",
+   "tier": "easy"
+  },
+  {
+   "word": "which",
+   "tier": "easy"
+  },
+  {
+   "word": "while",
+   "tier": "easy"
+  },
+  {
+   "word": "white",
+   "tier": "easy"
+  },
+  {
+   "word": "whole",
+   "tier": "easy"
+  },
+  {
+   "word": "whose",
+   "tier": "easy"
+  },
+  {
+   "word": "wider",
+   "tier": "easy"
+  },
+  {
+   "word": "width",
+   "tier": "easy"
+  },
+  {
+   "word": "winds",
+   "tier": "easy"
+  },
+  {
+   "word": "wines",
+   "tier": "easy"
+  },
+  {
+   "word": "wings",
+   "tier": "easy"
+  },
+  {
+   "word": "wired",
+   "tier": "easy"
+  },
+  {
+   "word": "wires",
+   "tier": "easy"
+  },
+  {
+   "word": "witch",
+   "tier": "easy"
+  },
+  {
+   "word": "wives",
+   "tier": "easy"
+  },
+  {
+   "word": "woman",
+   "tier": "easy"
+  },
+  {
+   "word": "women",
+   "tier": "easy"
+  },
+  {
+   "word": "woods",
+   "tier": "easy"
+  },
+  {
+   "word": "words",
+   "tier": "easy"
+  },
+  {
+   "word": "works",
+   "tier": "easy"
+  },
+  {
+   "word": "world",
+   "tier": "easy"
+  },
+  {
+   "word": "worry",
+   "tier": "easy"
+  },
+  {
+   "word": "worse",
+   "tier": "easy"
+  },
+  {
+   "word": "worst",
+   "tier": "easy"
+  },
+  {
+   "word": "worth",
+   "tier": "easy"
+  },
+  {
+   "word": "would",
+   "tier": "easy"
+  },
+  {
+   "word": "wound",
+   "tier": "easy"
+  },
+  {
+   "word": "wrist",
+   "tier": "easy"
+  },
+  {
+   "word": "write",
+   "tier": "easy"
+  },
+  {
+   "word": "wrong",
+   "tier": "easy"
+  },
+  {
+   "word": "wrote",
+   "tier": "easy"
+  },
+  {
+   "word": "yacht",
+   "tier": "easy"
+  },
+  {
+   "word": "yards",
+   "tier": "easy"
+  },
+  {
+   "word": "years",
+   "tier": "easy"
+  },
+  {
+   "word": "yeast",
+   "tier": "easy"
+  },
+  {
+   "word": "yield",
+   "tier": "easy"
+  },
+  {
+   "word": "young",
+   "tier": "easy"
+  },
+  {
+   "word": "yours",
+   "tier": "easy"
+  },
+  {
+   "word": "youth",
+   "tier": "easy"
+  },
+  {
+   "word": "zones",
+   "tier": "easy"
+  },
+  {
+   "word": "abroad",
+   "tier": "medium"
+  },
+  {
+   "word": "absent",
+   "tier": "medium"
+  },
+  {
+   "word": "accent",
+   "tier": "medium"
+  },
+  {
+   "word": "accept",
+   "tier": "medium"
+  },
+  {
+   "word": "access",
+   "tier": "medium"
+  },
+  {
+   "word": "across",
+   "tier": "medium"
+  },
+  {
+   "word": "acting",
+   "tier": "medium"
+  },
+  {
+   "word": "action",
+   "tier": "medium"
+  },
+  {
+   "word": "active",
+   "tier": "medium"
+  },
+  {
+   "word": "actors",
+   "tier": "medium"
+  },
+  {
+   "word": "actual",
+   "tier": "medium"
+  },
+  {
+   "word": "adding",
+   "tier": "medium"
+  },
+  {
+   "word": "adjust",
+   "tier": "medium"
+  },
+  {
+   "word": "adults",
+   "tier": "medium"
+  },
+  {
+   "word": "advert",
+   "tier": "medium"
+  },
+  {
+   "word": "advice",
+   "tier": "medium"
+  },
+  {
+   "word": "advise",
+   "tier": "medium"
+  },
+  {
+   "word": "aerial",
+   "tier": "medium"
+  },
+  {
+   "word": "affair",
+   "tier": "medium"
+  },
+  {
+   "word": "affect",
+   "tier": "medium"
+  },
+  {
+   "word": "afford",
+   "tier": "medium"
+  },
+  {
+   "word": "afraid",
+   "tier": "medium"
+  },
+  {
+   "word": "agency",
+   "tier": "medium"
+  },
+  {
+   "word": "agenda",
+   "tier": "medium"
+  },
+  {
+   "word": "agents",
+   "tier": "medium"
+  },
+  {
+   "word": "agreed",
+   "tier": "medium"
+  },
+  {
+   "word": "agrees",
+   "tier": "medium"
+  },
+  {
+   "word": "albums",
+   "tier": "medium"
+  },
+  {
+   "word": "alerts",
+   "tier": "medium"
+  },
+  {
+   "word": "allied",
+   "tier": "medium"
+  },
+  {
+   "word": "allows",
+   "tier": "medium"
+  },
+  {
+   "word": "almost",
+   "tier": "medium"
+  },
+  {
+   "word": "alpine",
+   "tier": "medium"
+  },
+  {
+   "word": "alumni",
+   "tier": "medium"
+  },
+  {
+   "word": "always",
+   "tier": "medium"
+  },
+  {
+   "word": "amount",
+   "tier": "medium"
+  },
+  {
+   "word": "analog",
+   "tier": "medium"
+  },
+  {
+   "word": "anchor",
+   "tier": "medium"
+  },
+  {
+   "word": "angels",
+   "tier": "medium"
+  },
+  {
+   "word": "animal",
+   "tier": "medium"
+  },
+  {
+   "word": "annual",
+   "tier": "medium"
+  },
+  {
+   "word": "answer",
+   "tier": "medium"
+  },
+  {
+   "word": "anyone",
+   "tier": "medium"
+  },
+  {
+   "word": "anyway",
+   "tier": "medium"
+  },
+  {
+   "word": "appeal",
+   "tier": "medium"
+  },
+  {
+   "word": "appear",
+   "tier": "medium"
+  },
+  {
+   "word": "arcade",
+   "tier": "medium"
+  },
+  {
+   "word": "arctic",
+   "tier": "medium"
+  },
+  {
+   "word": "argued",
+   "tier": "medium"
+  },
+  {
+   "word": "around",
+   "tier": "medium"
+  },
+  {
+   "word": "arrest",
+   "tier": "medium"
+  },
+  {
+   "word": "arrive",
+   "tier": "medium"
+  },
+  {
+   "word": "artist",
+   "tier": "medium"
+  },
+  {
+   "word": "asking",
+   "tier": "medium"
+  },
+  {
+   "word": "aspect",
+   "tier": "medium"
+  },
+  {
+   "word": "assess",
+   "tier": "medium"
+  },
+  {
+   "word": "assets",
+   "tier": "medium"
+  },
+  {
+   "word": "assign",
+   "tier": "medium"
+  },
+  {
+   "word": "assist",
+   "tier": "medium"
+  },
+  {
+   "word": "assume",
+   "tier": "medium"
+  },
+  {
+   "word": "assure",
+   "tier": "medium"
+  },
+  {
+   "word": "asthma",
+   "tier": "medium"
+  },
+  {
+   "word": "asylum",
+   "tier": "medium"
+  },
+  {
+   "word": "atomic",
+   "tier": "medium"
+  },
+  {
+   "word": "attach",
+   "tier": "medium"
+  },
+  {
+   "word": "attack",
+   "tier": "medium"
+  },
+  {
+   "word": "attend",
+   "tier": "medium"
+  },
+  {
+   "word": "auburn",
+   "tier": "medium"
+  },
+  {
+   "word": "august",
+   "tier": "medium"
+  },
+  {
+   "word": "aurora",
+   "tier": "medium"
+  },
+  {
+   "word": "author",
+   "tier": "medium"
+  },
+  {
+   "word": "autumn",
+   "tier": "medium"
+  },
+  {
+   "word": "avatar",
+   "tier": "medium"
+  },
+  {
+   "word": "avenue",
+   "tier": "medium"
+  },
+  {
+   "word": "awards",
+   "tier": "medium"
+  },
+  {
+   "word": "babies",
+   "tier": "medium"
+  },
+  {
+   "word": "backed",
+   "tier": "medium"
+  },
+  {
+   "word": "backup",
+   "tier": "medium"
+  },
+  {
+   "word": "bailey",
+   "tier": "medium"
+  },
+  {
+   "word": "baking",
+   "tier": "medium"
+  },
+  {
+   "word": "ballet",
+   "tier": "medium"
+  },
+  {
+   "word": "ballot",
+   "tier": "medium"
+  },
+  {
+   "word": "banana",
+   "tier": "medium"
+  },
+  {
+   "word": "banned",
+   "tier": "medium"
+  },
+  {
+   "word": "banner",
+   "tier": "medium"
+  },
+  {
+   "word": "barely",
+   "tier": "medium"
+  },
+  {
+   "word": "barrel",
+   "tier": "medium"
+  },
+  {
+   "word": "basics",
+   "tier": "medium"
+  },
+  {
+   "word": "basket",
+   "tier": "medium"
+  },
+  {
+   "word": "battle",
+   "tier": "medium"
+  },
+  {
+   "word": "beauty",
+   "tier": "medium"
+  },
+  {
+   "word": "beaver",
+   "tier": "medium"
+  },
+  {
+   "word": "became",
+   "tier": "medium"
+  },
+  {
+   "word": "become",
+   "tier": "medium"
+  },
+  {
+   "word": "before",
+   "tier": "medium"
+  },
+  {
+   "word": "begins",
+   "tier": "medium"
+  },
+  {
+   "word": "behalf",
+   "tier": "medium"
+  },
+  {
+   "word": "behind",
+   "tier": "medium"
+  },
+  {
+   "word": "beings",
+   "tier": "medium"
+  },
+  {
+   "word": "belief",
+   "tier": "medium"
+  },
+  {
+   "word": "belong",
+   "tier": "medium"
+  },
+  {
+   "word": "beside",
+   "tier": "medium"
+  },
+  {
+   "word": "better",
+   "tier": "medium"
+  },
+  {
+   "word": "beyond",
+   "tier": "medium"
+  },
+  {
+   "word": "bidder",
+   "tier": "medium"
+  },
+  {
+   "word": "bigger",
+   "tier": "medium"
+  },
+  {
+   "word": "bikini",
+   "tier": "medium"
+  },
+  {
+   "word": "binary",
+   "tier": "medium"
+  },
+  {
+   "word": "bishop",
+   "tier": "medium"
+  },
+  {
+   "word": "blacks",
+   "tier": "medium"
+  },
+  {
+   "word": "blades",
+   "tier": "medium"
+  },
+  {
+   "word": "blocks",
+   "tier": "medium"
+  },
+  {
+   "word": "blonde",
+   "tier": "medium"
+  },
+  {
+   "word": "boards",
+   "tier": "medium"
+  },
+  {
+   "word": "bodies",
+   "tier": "medium"
+  },
+  {
+   "word": "border",
+   "tier": "medium"
+  },
+  {
+   "word": "boring",
+   "tier": "medium"
+  },
+  {
+   "word": "bother",
+   "tier": "medium"
+  },
+  {
+   "word": "bottle",
+   "tier": "medium"
+  },
+  {
+   "word": "bottom",
+   "tier": "medium"
+  },
+  {
+   "word": "bought",
+   "tier": "medium"
+  },
+  {
+   "word": "boxing",
+   "tier": "medium"
+  },
+  {
+   "word": "brakes",
+   "tier": "medium"
+  },
+  {
+   "word": "branch",
+   "tier": "medium"
+  },
+  {
+   "word": "brands",
+   "tier": "medium"
+  },
+  {
+   "word": "breach",
+   "tier": "medium"
+  },
+  {
+   "word": "breaks",
+   "tier": "medium"
+  },
+  {
+   "word": "breast",
+   "tier": "medium"
+  },
+  {
+   "word": "breath",
+   "tier": "medium"
+  },
+  {
+   "word": "breeds",
+   "tier": "medium"
+  },
+  {
+   "word": "bridal",
+   "tier": "medium"
+  },
+  {
+   "word": "bridge",
+   "tier": "medium"
+  },
+  {
+   "word": "briefs",
+   "tier": "medium"
+  },
+  {
+   "word": "bright",
+   "tier": "medium"
+  },
+  {
+   "word": "brings",
+   "tier": "medium"
+  },
+  {
+   "word": "broken",
+   "tier": "medium"
+  },
+  {
+   "word": "broker",
+   "tier": "medium"
+  },
+  {
+   "word": "bronze",
+   "tier": "medium"
+  },
+  {
+   "word": "brooks",
+   "tier": "medium"
+  },
+  {
+   "word": "browse",
+   "tier": "medium"
+  },
+  {
+   "word": "brutal",
+   "tier": "medium"
+  },
+  {
+   "word": "bubble",
+   "tier": "medium"
+  },
+  {
+   "word": "budget",
+   "tier": "medium"
+  },
+  {
+   "word": "buffer",
+   "tier": "medium"
+  },
+  {
+   "word": "builds",
+   "tier": "medium"
+  },
+  {
+   "word": "bullet",
+   "tier": "medium"
+  },
+  {
+   "word": "bumper",
+   "tier": "medium"
+  },
+  {
+   "word": "bundle",
+   "tier": "medium"
+  },
+  {
+   "word": "burden",
+   "tier": "medium"
+  },
+  {
+   "word": "bureau",
+   "tier": "medium"
+  },
+  {
+   "word": "buried",
+   "tier": "medium"
+  },
+  {
+   "word": "burner",
+   "tier": "medium"
+  },
+  {
+   "word": "butler",
+   "tier": "medium"
+  },
+  {
+   "word": "butter",
+   "tier": "medium"
+  },
+  {
+   "word": "button",
+   "tier": "medium"
+  },
+  {
+   "word": "buyers",
+   "tier": "medium"
+  },
+  {
+   "word": "buying",
+   "tier": "medium"
+  },
+  {
+   "word": "cables",
+   "tier": "medium"
+  },
+  {
+   "word": "cached",
+   "tier": "medium"
+  },
+  {
+   "word": "called",
+   "tier": "medium"
+  },
+  {
+   "word": "camera",
+   "tier": "medium"
+  },
+  {
+   "word": "campus",
+   "tier": "medium"
+  },
+  {
+   "word": "cancel",
+   "tier": "medium"
+  },
+  {
+   "word": "cancer",
+   "tier": "medium"
+  },
+  {
+   "word": "candle",
+   "tier": "medium"
+  },
+  {
+   "word": "cannon",
+   "tier": "medium"
+  },
+  {
+   "word": "canvas",
+   "tier": "medium"
+  },
+  {
+   "word": "canyon",
+   "tier": "medium"
+  },
+  {
+   "word": "carbon",
+   "tier": "medium"
+  },
+  {
+   "word": "career",
+   "tier": "medium"
+  },
+  {
+   "word": "caring",
+   "tier": "medium"
+  },
+  {
+   "word": "carpet",
+   "tier": "medium"
+  },
+  {
+   "word": "casino",
+   "tier": "medium"
+  },
+  {
+   "word": "castle",
+   "tier": "medium"
+  },
+  {
+   "word": "casual",
+   "tier": "medium"
+  },
+  {
+   "word": "cattle",
+   "tier": "medium"
+  },
+  {
+   "word": "caught",
+   "tier": "medium"
+  },
+  {
+   "word": "caused",
+   "tier": "medium"
+  },
+  {
+   "word": "causes",
+   "tier": "medium"
+  },
+  {
+   "word": "celebs",
+   "tier": "medium"
+  },
+  {
+   "word": "cement",
+   "tier": "medium"
+  },
+  {
+   "word": "census",
+   "tier": "medium"
+  },
+  {
+   "word": "center",
+   "tier": "medium"
+  },
+  {
+   "word": "centre",
+   "tier": "medium"
+  },
+  {
+   "word": "chains",
+   "tier": "medium"
+  },
+  {
+   "word": "chairs",
+   "tier": "medium"
+  },
+  {
+   "word": "chance",
+   "tier": "medium"
+  },
+  {
+   "word": "change",
+   "tier": "medium"
+  },
+  {
+   "word": "chapel",
+   "tier": "medium"
+  },
+  {
+   "word": "charge",
+   "tier": "medium"
+  },
+  {
+   "word": "charms",
+   "tier": "medium"
+  },
+  {
+   "word": "charts",
+   "tier": "medium"
+  },
+  {
+   "word": "cheats",
+   "tier": "medium"
+  },
+  {
+   "word": "checks",
+   "tier": "medium"
+  },
+  {
+   "word": "cheers",
+   "tier": "medium"
+  },
+  {
+   "word": "cheese",
+   "tier": "medium"
+  },
+  {
+   "word": "cheque",
+   "tier": "medium"
+  },
+  {
+   "word": "cherry",
+   "tier": "medium"
+  },
+  {
+   "word": "chicks",
+   "tier": "medium"
+  },
+  {
+   "word": "choice",
+   "tier": "medium"
+  },
+  {
+   "word": "choose",
+   "tier": "medium"
+  },
+  {
+   "word": "chorus",
+   "tier": "medium"
+  },
+  {
+   "word": "chosen",
+   "tier": "medium"
+  },
+  {
+   "word": "chrome",
+   "tier": "medium"
+  },
+  {
+   "word": "chubby",
+   "tier": "medium"
+  },
+  {
+   "word": "church",
+   "tier": "medium"
+  },
+  {
+   "word": "cinema",
+   "tier": "medium"
+  },
+  {
+   "word": "circle",
+   "tier": "medium"
+  },
+  {
+   "word": "circus",
+   "tier": "medium"
+  },
+  {
+   "word": "cities",
+   "tier": "medium"
+  },
+  {
+   "word": "claims",
+   "tier": "medium"
+  },
+  {
+   "word": "clause",
+   "tier": "medium"
+  },
+  {
+   "word": "clicks",
+   "tier": "medium"
+  },
+  {
+   "word": "client",
+   "tier": "medium"
+  },
+  {
+   "word": "clinic",
+   "tier": "medium"
+  },
+  {
+   "word": "clocks",
+   "tier": "medium"
+  },
+  {
+   "word": "closed",
+   "tier": "medium"
+  },
+  {
+   "word": "closer",
+   "tier": "medium"
+  },
+  {
+   "word": "closes",
+   "tier": "medium"
+  },
+  {
+   "word": "clouds",
+   "tier": "medium"
+  },
+  {
+   "word": "cloudy",
+   "tier": "medium"
+  },
+  {
+   "word": "coated",
+   "tier": "medium"
+  },
+  {
+   "word": "coding",
+   "tier": "medium"
+  },
+  {
+   "word": "coffee",
+   "tier": "medium"
+  },
+  {
+   "word": "collar",
+   "tier": "medium"
+  },
+  {
+   "word": "colony",
+   "tier": "medium"
+  },
+  {
+   "word": "colors",
+   "tier": "medium"
+  },
+  {
+   "word": "colour",
+   "tier": "medium"
+  },
+  {
+   "word": "column",
+   "tier": "medium"
+  },
+  {
+   "word": "combat",
+   "tier": "medium"
+  },
+  {
+   "word": "comedy",
+   "tier": "medium"
+  },
+  {
+   "word": "comics",
+   "tier": "medium"
+  },
+  {
+   "word": "coming",
+   "tier": "medium"
+  },
+  {
+   "word": "commit",
+   "tier": "medium"
+  },
+  {
+   "word": "common",
+   "tier": "medium"
+  },
+  {
+   "word": "comply",
+   "tier": "medium"
+  },
+  {
+   "word": "condos",
+   "tier": "medium"
+  },
+  {
+   "word": "cooked",
+   "tier": "medium"
+  },
+  {
+   "word": "cookie",
+   "tier": "medium"
+  },
+  {
+   "word": "cooler",
+   "tier": "medium"
+  },
+  {
+   "word": "cooper",
+   "tier": "medium"
+  },
+  {
+   "word": "copied",
+   "tier": "medium"
+  },
+  {
+   "word": "copies",
+   "tier": "medium"
+  },
+  {
+   "word": "copper",
+   "tier": "medium"
+  },
+  {
+   "word": "corner",
+   "tier": "medium"
+  },
+  {
+   "word": "corpus",
+   "tier": "medium"
+  },
+  {
+   "word": "cotton",
+   "tier": "medium"
+  },
+  {
+   "word": "counts",
+   "tier": "medium"
+  },
+  {
+   "word": "county",
+   "tier": "medium"
+  },
+  {
+   "word": "couple",
+   "tier": "medium"
+  },
+  {
+   "word": "coupon",
+   "tier": "medium"
+  },
+  {
+   "word": "course",
+   "tier": "medium"
+  },
+  {
+   "word": "courts",
+   "tier": "medium"
+  },
+  {
+   "word": "covers",
+   "tier": "medium"
+  },
+  {
+   "word": "cowboy",
+   "tier": "medium"
+  },
+  {
+   "word": "cradle",
+   "tier": "medium"
+  },
+  {
+   "word": "crafts",
+   "tier": "medium"
+  },
+  {
+   "word": "create",
+   "tier": "medium"
+  },
+  {
+   "word": "credit",
+   "tier": "medium"
+  },
+  {
+   "word": "crimes",
+   "tier": "medium"
+  },
+  {
+   "word": "crisis",
+   "tier": "medium"
+  },
+  {
+   "word": "cruise",
+   "tier": "medium"
+  },
+  {
+   "word": "cursor",
+   "tier": "medium"
+  },
+  {
+   "word": "curves",
+   "tier": "medium"
+  },
+  {
+   "word": "custom",
+   "tier": "medium"
+  },
+  {
+   "word": "cycles",
+   "tier": "medium"
+  },
+  {
+   "word": "damage",
+   "tier": "medium"
+  },
+  {
+   "word": "danger",
+   "tier": "medium"
+  },
+  {
+   "word": "danish",
+   "tier": "medium"
+  },
+  {
+   "word": "dating",
+   "tier": "medium"
+  },
+  {
+   "word": "deadly",
+   "tier": "medium"
+  },
+  {
+   "word": "dealer",
+   "tier": "medium"
+  },
+  {
+   "word": "deaths",
+   "tier": "medium"
+  },
+  {
+   "word": "debate",
+   "tier": "medium"
+  },
+  {
+   "word": "decade",
+   "tier": "medium"
+  },
+  {
+   "word": "decent",
+   "tier": "medium"
+  },
+  {
+   "word": "decide",
+   "tier": "medium"
+  },
+  {
+   "word": "deemed",
+   "tier": "medium"
+  },
+  {
+   "word": "deeper",
+   "tier": "medium"
+  },
+  {
+   "word": "deeply",
+   "tier": "medium"
+  },
+  {
+   "word": "defeat",
+   "tier": "medium"
+  },
+  {
+   "word": "defend",
+   "tier": "medium"
+  },
+  {
+   "word": "define",
+   "tier": "medium"
+  },
+  {
+   "word": "degree",
+   "tier": "medium"
+  },
+  {
+   "word": "delays",
+   "tier": "medium"
+  },
+  {
+   "word": "delete",
+   "tier": "medium"
+  },
+  {
+   "word": "deluxe",
+   "tier": "medium"
+  },
+  {
+   "word": "demand",
+   "tier": "medium"
+  },
+  {
+   "word": "denial",
+   "tier": "medium"
+  },
+  {
+   "word": "denied",
+   "tier": "medium"
+  },
+  {
+   "word": "dental",
+   "tier": "medium"
+  },
+  {
+   "word": "depend",
+   "tier": "medium"
+  },
+  {
+   "word": "deputy",
+   "tier": "medium"
+  },
+  {
+   "word": "desert",
+   "tier": "medium"
+  },
+  {
+   "word": "design",
+   "tier": "medium"
+  },
+  {
+   "word": "desire",
+   "tier": "medium"
+  },
+  {
+   "word": "detail",
+   "tier": "medium"
+  },
+  {
+   "word": "detect",
+   "tier": "medium"
+  },
+  {
+   "word": "device",
+   "tier": "medium"
+  },
+  {
+   "word": "dialog",
+   "tier": "medium"
+  },
+  {
+   "word": "diesel",
+   "tier": "medium"
+  },
+  {
+   "word": "differ",
+   "tier": "medium"
+  },
+  {
+   "word": "digest",
+   "tier": "medium"
+  },
+  {
+   "word": "dining",
+   "tier": "medium"
+  },
+  {
+   "word": "dinner",
+   "tier": "medium"
+  },
+  {
+   "word": "direct",
+   "tier": "medium"
+  },
+  {
+   "word": "dishes",
+   "tier": "medium"
+  },
+  {
+   "word": "divide",
+   "tier": "medium"
+  },
+  {
+   "word": "divine",
+   "tier": "medium"
+  },
+  {
+   "word": "diving",
+   "tier": "medium"
+  },
+  {
+   "word": "doctor",
+   "tier": "medium"
+  },
+  {
+   "word": "dollar",
+   "tier": "medium"
+  },
+  {
+   "word": "domain",
+   "tier": "medium"
+  },
+  {
+   "word": "donate",
+   "tier": "medium"
+  },
+  {
+   "word": "donors",
+   "tier": "medium"
+  },
+  {
+   "word": "dosage",
+   "tier": "medium"
+  },
+  {
+   "word": "double",
+   "tier": "medium"
+  },
+  {
+   "word": "dozens",
+   "tier": "medium"
+  },
+  {
+   "word": "dragon",
+   "tier": "medium"
+  },
+  {
+   "word": "dreams",
+   "tier": "medium"
+  },
+  {
+   "word": "drinks",
+   "tier": "medium"
+  },
+  {
+   "word": "driven",
+   "tier": "medium"
+  },
+  {
+   "word": "driver",
+   "tier": "medium"
+  },
+  {
+   "word": "drives",
+   "tier": "medium"
+  },
+  {
+   "word": "during",
+   "tier": "medium"
+  },
+  {
+   "word": "duties",
+   "tier": "medium"
+  },
+  {
+   "word": "eagles",
+   "tier": "medium"
+  },
+  {
+   "word": "earned",
+   "tier": "medium"
+  },
+  {
+   "word": "easier",
+   "tier": "medium"
+  },
+  {
+   "word": "easily",
+   "tier": "medium"
+  },
+  {
+   "word": "eating",
+   "tier": "medium"
+  },
+  {
+   "word": "edited",
+   "tier": "medium"
+  },
+  {
+   "word": "editor",
+   "tier": "medium"
+  },
+  {
+   "word": "effect",
+   "tier": "medium"
+  },
+  {
+   "word": "effort",
+   "tier": "medium"
+  },
+  {
+   "word": "either",
+   "tier": "medium"
+  },
+  {
+   "word": "eleven",
+   "tier": "medium"
+  },
+  {
+   "word": "empire",
+   "tier": "medium"
+  },
+  {
+   "word": "employ",
+   "tier": "medium"
+  },
+  {
+   "word": "enable",
+   "tier": "medium"
+  },
+  {
+   "word": "ending",
+   "tier": "medium"
+  },
+  {
+   "word": "energy",
+   "tier": "medium"
+  },
+  {
+   "word": "engage",
+   "tier": "medium"
+  },
+  {
+   "word": "engine",
+   "tier": "medium"
+  },
+  {
+   "word": "enough",
+   "tier": "medium"
+  },
+  {
+   "word": "ensure",
+   "tier": "medium"
+  },
+  {
+   "word": "enters",
+   "tier": "medium"
+  },
+  {
+   "word": "entire",
+   "tier": "medium"
+  },
+  {
+   "word": "entity",
+   "tier": "medium"
+  },
+  {
+   "word": "enzyme",
+   "tier": "medium"
+  },
+  {
+   "word": "equity",
+   "tier": "medium"
+  },
+  {
+   "word": "errors",
+   "tier": "medium"
+  },
+  {
+   "word": "escape",
+   "tier": "medium"
+  },
+  {
+   "word": "essays",
+   "tier": "medium"
+  },
+  {
+   "word": "estate",
+   "tier": "medium"
+  },
+  {
+   "word": "ethics",
+   "tier": "medium"
+  },
+  {
+   "word": "ethnic",
+   "tier": "medium"
+  },
+  {
+   "word": "events",
+   "tier": "medium"
+  },
+  {
+   "word": "exceed",
+   "tier": "medium"
+  },
+  {
+   "word": "except",
+   "tier": "medium"
+  },
+  {
+   "word": "excess",
+   "tier": "medium"
+  },
+  {
+   "word": "excuse",
+   "tier": "medium"
+  },
+  {
+   "word": "exempt",
+   "tier": "medium"
+  },
+  {
+   "word": "exists",
+   "tier": "medium"
+  },
+  {
+   "word": "exotic",
+   "tier": "medium"
+  },
+  {
+   "word": "expand",
+   "tier": "medium"
+  },
+  {
+   "word": "expect",
+   "tier": "medium"
+  },
+  {
+   "word": "expert",
+   "tier": "medium"
+  },
+  {
+   "word": "export",
+   "tier": "medium"
+  },
+  {
+   "word": "extend",
+   "tier": "medium"
+  },
+  {
+   "word": "extent",
+   "tier": "medium"
+  },
+  {
+   "word": "extras",
+   "tier": "medium"
+  },
+  {
+   "word": "fabric",
+   "tier": "medium"
+  },
+  {
+   "word": "facial",
+   "tier": "medium"
+  },
+  {
+   "word": "facing",
+   "tier": "medium"
+  },
+  {
+   "word": "factor",
+   "tier": "medium"
+  },
+  {
+   "word": "failed",
+   "tier": "medium"
+  },
+  {
+   "word": "fairly",
+   "tier": "medium"
+  },
+  {
+   "word": "fallen",
+   "tier": "medium"
+  },
+  {
+   "word": "family",
+   "tier": "medium"
+  },
+  {
+   "word": "famous",
+   "tier": "medium"
+  },
+  {
+   "word": "farmer",
+   "tier": "medium"
+  },
+  {
+   "word": "faster",
+   "tier": "medium"
+  },
+  {
+   "word": "father",
+   "tier": "medium"
+  },
+  {
+   "word": "favors",
+   "tier": "medium"
+  },
+  {
+   "word": "favour",
+   "tier": "medium"
+  },
+  {
+   "word": "fellow",
+   "tier": "medium"
+  },
+  {
+   "word": "female",
+   "tier": "medium"
+  },
+  {
+   "word": "fetish",
+   "tier": "medium"
+  },
+  {
+   "word": "fields",
+   "tier": "medium"
+  },
+  {
+   "word": "figure",
+   "tier": "medium"
+  },
+  {
+   "word": "filing",
+   "tier": "medium"
+  },
+  {
+   "word": "filled",
+   "tier": "medium"
+  },
+  {
+   "word": "filter",
+   "tier": "medium"
+  },
+  {
+   "word": "finals",
+   "tier": "medium"
+  },
+  {
+   "word": "finder",
+   "tier": "medium"
+  },
+  {
+   "word": "finest",
+   "tier": "medium"
+  },
+  {
+   "word": "finger",
+   "tier": "medium"
+  },
+  {
+   "word": "finish",
+   "tier": "medium"
+  },
+  {
+   "word": "finite",
+   "tier": "medium"
+  },
+  {
+   "word": "fiscal",
+   "tier": "medium"
+  },
+  {
+   "word": "fisher",
+   "tier": "medium"
+  },
+  {
+   "word": "fitted",
+   "tier": "medium"
+  },
+  {
+   "word": "flavor",
+   "tier": "medium"
+  },
+  {
+   "word": "fleece",
+   "tier": "medium"
+  },
+  {
+   "word": "flight",
+   "tier": "medium"
+  },
+  {
+   "word": "floors",
+   "tier": "medium"
+  },
+  {
+   "word": "floppy",
+   "tier": "medium"
+  },
+  {
+   "word": "floral",
+   "tier": "medium"
+  },
+  {
+   "word": "flower",
+   "tier": "medium"
+  },
+  {
+   "word": "flying",
+   "tier": "medium"
+  },
+  {
+   "word": "folder",
+   "tier": "medium"
+  },
+  {
+   "word": "follow",
+   "tier": "medium"
+  },
+  {
+   "word": "forced",
+   "tier": "medium"
+  },
+  {
+   "word": "forces",
+   "tier": "medium"
+  },
+  {
+   "word": "forest",
+   "tier": "medium"
+  },
+  {
+   "word": "forget",
+   "tier": "medium"
+  },
+  {
+   "word": "forgot",
+   "tier": "medium"
+  },
+  {
+   "word": "formal",
+   "tier": "medium"
+  },
+  {
+   "word": "format",
+   "tier": "medium"
+  },
+  {
+   "word": "formed",
+   "tier": "medium"
+  },
+  {
+   "word": "former",
+   "tier": "medium"
+  },
+  {
+   "word": "forums",
+   "tier": "medium"
+  },
+  {
+   "word": "fossil",
+   "tier": "medium"
+  },
+  {
+   "word": "foster",
+   "tier": "medium"
+  },
+  {
+   "word": "fought",
+   "tier": "medium"
+  },
+  {
+   "word": "fourth",
+   "tier": "medium"
+  },
+  {
+   "word": "framed",
+   "tier": "medium"
+  },
+  {
+   "word": "frames",
+   "tier": "medium"
+  },
+  {
+   "word": "freely",
+   "tier": "medium"
+  },
+  {
+   "word": "freeze",
+   "tier": "medium"
+  },
+  {
+   "word": "fridge",
+   "tier": "medium"
+  },
+  {
+   "word": "friend",
+   "tier": "medium"
+  },
+  {
+   "word": "frozen",
+   "tier": "medium"
+  },
+  {
+   "word": "fruits",
+   "tier": "medium"
+  },
+  {
+   "word": "funded",
+   "tier": "medium"
+  },
+  {
+   "word": "fusion",
+   "tier": "medium"
+  },
+  {
+   "word": "future",
+   "tier": "medium"
+  },
+  {
+   "word": "gained",
+   "tier": "medium"
+  },
+  {
+   "word": "galaxy",
+   "tier": "medium"
+  },
+  {
+   "word": "gaming",
+   "tier": "medium"
+  },
+  {
+   "word": "garage",
+   "tier": "medium"
+  },
+  {
+   "word": "garden",
+   "tier": "medium"
+  },
+  {
+   "word": "garlic",
+   "tier": "medium"
+  },
+  {
+   "word": "gather",
+   "tier": "medium"
+  },
+  {
+   "word": "gender",
+   "tier": "medium"
+  },
+  {
+   "word": "genius",
+   "tier": "medium"
+  },
+  {
+   "word": "genome",
+   "tier": "medium"
+  },
+  {
+   "word": "genres",
+   "tier": "medium"
+  },
+  {
+   "word": "gentle",
+   "tier": "medium"
+  },
+  {
+   "word": "gently",
+   "tier": "medium"
+  },
+  {
+   "word": "giants",
+   "tier": "medium"
+  },
+  {
+   "word": "giving",
+   "tier": "medium"
+  },
+  {
+   "word": "glance",
+   "tier": "medium"
+  },
+  {
+   "word": "global",
+   "tier": "medium"
+  },
+  {
+   "word": "gloves",
+   "tier": "medium"
+  },
+  {
+   "word": "golden",
+   "tier": "medium"
+  },
+  {
+   "word": "gospel",
+   "tier": "medium"
+  },
+  {
+   "word": "gossip",
+   "tier": "medium"
+  },
+  {
+   "word": "gothic",
+   "tier": "medium"
+  },
+  {
+   "word": "gotten",
+   "tier": "medium"
+  },
+  {
+   "word": "grades",
+   "tier": "medium"
+  },
+  {
+   "word": "granny",
+   "tier": "medium"
+  },
+  {
+   "word": "grants",
+   "tier": "medium"
+  },
+  {
+   "word": "graphs",
+   "tier": "medium"
+  },
+  {
+   "word": "gratis",
+   "tier": "medium"
+  },
+  {
+   "word": "groove",
+   "tier": "medium"
+  },
+  {
+   "word": "ground",
+   "tier": "medium"
+  },
+  {
+   "word": "groups",
+   "tier": "medium"
+  },
+  {
+   "word": "growth",
+   "tier": "medium"
+  },
+  {
+   "word": "guards",
+   "tier": "medium"
+  },
+  {
+   "word": "guests",
+   "tier": "medium"
+  },
+  {
+   "word": "guided",
+   "tier": "medium"
+  },
+  {
+   "word": "guides",
+   "tier": "medium"
+  },
+  {
+   "word": "guilty",
+   "tier": "medium"
+  },
+  {
+   "word": "guitar",
+   "tier": "medium"
+  },
+  {
+   "word": "habits",
+   "tier": "medium"
+  },
+  {
+   "word": "hacker",
+   "tier": "medium"
+  },
+  {
+   "word": "hammer",
+   "tier": "medium"
+  },
+  {
+   "word": "handed",
+   "tier": "medium"
+  },
+  {
+   "word": "handle",
+   "tier": "medium"
+  },
+  {
+   "word": "happen",
+   "tier": "medium"
+  },
+  {
+   "word": "harbor",
+   "tier": "medium"
+  },
+  {
+   "word": "harder",
+   "tier": "medium"
+  },
+  {
+   "word": "hardly",
+   "tier": "medium"
+  },
+  {
+   "word": "having",
+   "tier": "medium"
+  },
+  {
+   "word": "hazard",
+   "tier": "medium"
+  },
+  {
+   "word": "headed",
+   "tier": "medium"
+  },
+  {
+   "word": "header",
+   "tier": "medium"
+  },
+  {
+   "word": "health",
+   "tier": "medium"
+  },
+  {
+   "word": "hearts",
+   "tier": "medium"
+  },
+  {
+   "word": "heated",
+   "tier": "medium"
+  },
+  {
+   "word": "heater",
+   "tier": "medium"
+  },
+  {
+   "word": "heaven",
+   "tier": "medium"
+  },
+  {
+   "word": "height",
+   "tier": "medium"
+  },
+  {
+   "word": "helmet",
+   "tier": "medium"
+  },
+  {
+   "word": "helped",
+   "tier": "medium"
+  },
+  {
+   "word": "herald",
+   "tier": "medium"
+  },
+  {
+   "word": "herbal",
+   "tier": "medium"
+  },
+  {
+   "word": "hereby",
+   "tier": "medium"
+  },
+  {
+   "word": "herein",
+   "tier": "medium"
+  },
+  {
+   "word": "heroes",
+   "tier": "medium"
+  },
+  {
+   "word": "hidden",
+   "tier": "medium"
+  },
+  {
+   "word": "higher",
+   "tier": "medium"
+  },
+  {
+   "word": "highly",
+   "tier": "medium"
+  },
+  {
+   "word": "hiking",
+   "tier": "medium"
+  },
+  {
+   "word": "hiring",
+   "tier": "medium"
+  },
+  {
+   "word": "hockey",
+   "tier": "medium"
+  },
+  {
+   "word": "holder",
+   "tier": "medium"
+  },
+  {
+   "word": "hollow",
+   "tier": "medium"
+  },
+  {
+   "word": "honest",
+   "tier": "medium"
+  },
+  {
+   "word": "honors",
+   "tier": "medium"
+  },
+  {
+   "word": "hoping",
+   "tier": "medium"
+  },
+  {
+   "word": "horror",
+   "tier": "medium"
+  },
+  {
+   "word": "horses",
+   "tier": "medium"
+  },
+  {
+   "word": "hosted",
+   "tier": "medium"
+  },
+  {
+   "word": "hostel",
+   "tier": "medium"
+  },
+  {
+   "word": "hotels",
+   "tier": "medium"
+  },
+  {
+   "word": "hourly",
+   "tier": "medium"
+  },
+  {
+   "word": "houses",
+   "tier": "medium"
+  },
+  {
+   "word": "humans",
+   "tier": "medium"
+  },
+  {
+   "word": "hunger",
+   "tier": "medium"
+  },
+  {
+   "word": "hungry",
+   "tier": "medium"
+  },
+  {
+   "word": "hunter",
+   "tier": "medium"
+  },
+  {
+   "word": "hybrid",
+   "tier": "medium"
+  },
+  {
+   "word": "ignore",
+   "tier": "medium"
+  },
+  {
+   "word": "images",
+   "tier": "medium"
+  },
+  {
+   "word": "immune",
+   "tier": "medium"
+  },
+  {
+   "word": "impact",
+   "tier": "medium"
+  },
+  {
+   "word": "import",
+   "tier": "medium"
+  },
+  {
+   "word": "impose",
+   "tier": "medium"
+  },
+  {
+   "word": "inches",
+   "tier": "medium"
+  },
+  {
+   "word": "income",
+   "tier": "medium"
+  },
+  {
+   "word": "indeed",
+   "tier": "medium"
+  },
+  {
+   "word": "indoor",
+   "tier": "medium"
+  },
+  {
+   "word": "infant",
+   "tier": "medium"
+  },
+  {
+   "word": "inform",
+   "tier": "medium"
+  },
+  {
+   "word": "injury",
+   "tier": "medium"
+  },
+  {
+   "word": "inkjet",
+   "tier": "medium"
+  },
+  {
+   "word": "inline",
+   "tier": "medium"
+  },
+  {
+   "word": "inputs",
+   "tier": "medium"
+  },
+  {
+   "word": "insert",
+   "tier": "medium"
+  },
+  {
+   "word": "inside",
+   "tier": "medium"
+  },
+  {
+   "word": "intake",
+   "tier": "medium"
+  },
+  {
+   "word": "intend",
+   "tier": "medium"
+  },
+  {
+   "word": "intent",
+   "tier": "medium"
+  },
+  {
+   "word": "invest",
+   "tier": "medium"
+  },
+  {
+   "word": "invite",
+   "tier": "medium"
+  },
+  {
+   "word": "island",
+   "tier": "medium"
+  },
+  {
+   "word": "issued",
+   "tier": "medium"
+  },
+  {
+   "word": "issues",
+   "tier": "medium"
+  },
+  {
+   "word": "italic",
+   "tier": "medium"
+  },
+  {
+   "word": "itself",
+   "tier": "medium"
+  },
+  {
+   "word": "jacket",
+   "tier": "medium"
+  },
+  {
+   "word": "jaguar",
+   "tier": "medium"
+  },
+  {
+   "word": "jersey",
+   "tier": "medium"
+  },
+  {
+   "word": "joined",
+   "tier": "medium"
+  },
+  {
+   "word": "judges",
+   "tier": "medium"
+  },
+  {
+   "word": "jungle",
+   "tier": "medium"
+  },
+  {
+   "word": "junior",
+   "tier": "medium"
+  },
+  {
+   "word": "kernel",
+   "tier": "medium"
+  },
+  {
+   "word": "kidney",
+   "tier": "medium"
+  },
+  {
+   "word": "killed",
+   "tier": "medium"
+  },
+  {
+   "word": "killer",
+   "tier": "medium"
+  },
+  {
+   "word": "kinase",
+   "tier": "medium"
+  },
+  {
+   "word": "knight",
+   "tier": "medium"
+  },
+  {
+   "word": "knives",
+   "tier": "medium"
+  },
+  {
+   "word": "labels",
+   "tier": "medium"
+  },
+  {
+   "word": "labour",
+   "tier": "medium"
+  },
+  {
+   "word": "ladder",
+   "tier": "medium"
+  },
+  {
+   "word": "ladies",
+   "tier": "medium"
+  },
+  {
+   "word": "lambda",
+   "tier": "medium"
+  },
+  {
+   "word": "laptop",
+   "tier": "medium"
+  },
+  {
+   "word": "larger",
+   "tier": "medium"
+  },
+  {
+   "word": "lately",
+   "tier": "medium"
+  },
+  {
+   "word": "latest",
+   "tier": "medium"
+  },
+  {
+   "word": "latter",
+   "tier": "medium"
+  },
+  {
+   "word": "launch",
+   "tier": "medium"
+  },
+  {
+   "word": "lawyer",
+   "tier": "medium"
+  },
+  {
+   "word": "layers",
+   "tier": "medium"
+  },
+  {
+   "word": "layout",
+   "tier": "medium"
+  },
+  {
+   "word": "leader",
+   "tier": "medium"
+  },
+  {
+   "word": "league",
+   "tier": "medium"
+  },
+  {
+   "word": "leaves",
+   "tier": "medium"
+  },
+  {
+   "word": "legacy",
+   "tier": "medium"
+  },
+  {
+   "word": "legend",
+   "tier": "medium"
+  },
+  {
+   "word": "lender",
+   "tier": "medium"
+  },
+  {
+   "word": "length",
+   "tier": "medium"
+  },
+  {
+   "word": "lenses",
+   "tier": "medium"
+  },
+  {
+   "word": "lesser",
+   "tier": "medium"
+  },
+  {
+   "word": "lesson",
+   "tier": "medium"
+  },
+  {
+   "word": "letter",
+   "tier": "medium"
+  },
+  {
+   "word": "levels",
+   "tier": "medium"
+  },
+  {
+   "word": "liable",
+   "tier": "medium"
+  },
+  {
+   "word": "lights",
+   "tier": "medium"
+  },
+  {
+   "word": "likely",
+   "tier": "medium"
+  },
+  {
+   "word": "limits",
+   "tier": "medium"
+  },
+  {
+   "word": "linear",
+   "tier": "medium"
+  },
+  {
+   "word": "linked",
+   "tier": "medium"
+  },
+  {
+   "word": "liquid",
+   "tier": "medium"
+  },
+  {
+   "word": "listed",
+   "tier": "medium"
+  },
+  {
+   "word": "listen",
+   "tier": "medium"
+  },
+  {
+   "word": "little",
+   "tier": "medium"
+  },
+  {
+   "word": "living",
+   "tier": "medium"
+  },
+  {
+   "word": "loaded",
+   "tier": "medium"
+  },
+  {
+   "word": "locale",
+   "tier": "medium"
+  },
+  {
+   "word": "locate",
+   "tier": "medium"
+  },
+  {
+   "word": "locked",
+   "tier": "medium"
+  },
+  {
+   "word": "logged",
+   "tier": "medium"
+  },
+  {
+   "word": "lonely",
+   "tier": "medium"
+  },
+  {
+   "word": "longer",
+   "tier": "medium"
+  },
+  {
+   "word": "looked",
+   "tier": "medium"
+  },
+  {
+   "word": "lookup",
+   "tier": "medium"
+  },
+  {
+   "word": "losing",
+   "tier": "medium"
+  },
+  {
+   "word": "losses",
+   "tier": "medium"
+  },
+  {
+   "word": "lounge",
+   "tier": "medium"
+  },
+  {
+   "word": "lovely",
+   "tier": "medium"
+  },
+  {
+   "word": "lovers",
+   "tier": "medium"
+  },
+  {
+   "word": "loving",
+   "tier": "medium"
+  },
+  {
+   "word": "lowest",
+   "tier": "medium"
+  },
+  {
+   "word": "luxury",
+   "tier": "medium"
+  },
+  {
+   "word": "lyrics",
+   "tier": "medium"
+  },
+  {
+   "word": "magnet",
+   "tier": "medium"
+  },
+  {
+   "word": "maiden",
+   "tier": "medium"
+  },
+  {
+   "word": "mailed",
+   "tier": "medium"
+  },
+  {
+   "word": "mainly",
+   "tier": "medium"
+  },
+  {
+   "word": "makers",
+   "tier": "medium"
+  },
+  {
+   "word": "makeup",
+   "tier": "medium"
+  },
+  {
+   "word": "making",
+   "tier": "medium"
+  },
+  {
+   "word": "manage",
+   "tier": "medium"
+  },
+  {
+   "word": "manner",
+   "tier": "medium"
+  },
+  {
+   "word": "manual",
+   "tier": "medium"
+  },
+  {
+   "word": "marble",
+   "tier": "medium"
+  },
+  {
+   "word": "margin",
+   "tier": "medium"
+  },
+  {
+   "word": "marina",
+   "tier": "medium"
+  },
+  {
+   "word": "marine",
+   "tier": "medium"
+  },
+  {
+   "word": "marked",
+   "tier": "medium"
+  },
+  {
+   "word": "marker",
+   "tier": "medium"
+  },
+  {
+   "word": "market",
+   "tier": "medium"
+  },
+  {
+   "word": "marvel",
+   "tier": "medium"
+  },
+  {
+   "word": "master",
+   "tier": "medium"
+  },
+  {
+   "word": "mating",
+   "tier": "medium"
+  },
+  {
+   "word": "matrix",
+   "tier": "medium"
+  },
+  {
+   "word": "matter",
+   "tier": "medium"
+  },
+  {
+   "word": "mature",
+   "tier": "medium"
+  },
+  {
+   "word": "median",
+   "tier": "medium"
+  },
+  {
+   "word": "medium",
+   "tier": "medium"
+  },
+  {
+   "word": "member",
+   "tier": "medium"
+  },
+  {
+   "word": "memory",
+   "tier": "medium"
+  },
+  {
+   "word": "mental",
+   "tier": "medium"
+  },
+  {
+   "word": "mentor",
+   "tier": "medium"
+  },
+  {
+   "word": "merely",
+   "tier": "medium"
+  },
+  {
+   "word": "merger",
+   "tier": "medium"
+  },
+  {
+   "word": "metals",
+   "tier": "medium"
+  },
+  {
+   "word": "meters",
+   "tier": "medium"
+  },
+  {
+   "word": "method",
+   "tier": "medium"
+  },
+  {
+   "word": "metres",
+   "tier": "medium"
+  },
+  {
+   "word": "metric",
+   "tier": "medium"
+  },
+  {
+   "word": "middle",
+   "tier": "medium"
+  },
+  {
+   "word": "mighty",
+   "tier": "medium"
+  },
+  {
+   "word": "miller",
+   "tier": "medium"
+  },
+  {
+   "word": "mining",
+   "tier": "medium"
+  },
+  {
+   "word": "minute",
+   "tier": "medium"
+  },
+  {
+   "word": "mirror",
+   "tier": "medium"
+  },
+  {
+   "word": "missed",
+   "tier": "medium"
+  },
+  {
+   "word": "mixing",
+   "tier": "medium"
+  },
+  {
+   "word": "mobile",
+   "tier": "medium"
+  },
+  {
+   "word": "models",
+   "tier": "medium"
+  },
+  {
+   "word": "modems",
+   "tier": "medium"
+  },
+  {
+   "word": "modern",
+   "tier": "medium"
+  },
+  {
+   "word": "modify",
+   "tier": "medium"
+  },
+  {
+   "word": "module",
+   "tier": "medium"
+  },
+  {
+   "word": "moment",
+   "tier": "medium"
+  },
+  {
+   "word": "monkey",
+   "tier": "medium"
+  },
+  {
+   "word": "months",
+   "tier": "medium"
+  },
+  {
+   "word": "mostly",
+   "tier": "medium"
+  },
+  {
+   "word": "motels",
+   "tier": "medium"
+  },
+  {
+   "word": "mother",
+   "tier": "medium"
+  },
+  {
+   "word": "motion",
+   "tier": "medium"
+  },
+  {
+   "word": "motors",
+   "tier": "medium"
+  },
+  {
+   "word": "mounts",
+   "tier": "medium"
+  },
+  {
+   "word": "movers",
+   "tier": "medium"
+  },
+  {
+   "word": "movies",
+   "tier": "medium"
+  },
+  {
+   "word": "moving",
+   "tier": "medium"
+  },
+  {
+   "word": "murder",
+   "tier": "medium"
+  },
+  {
+   "word": "muscle",
+   "tier": "medium"
+  },
+  {
+   "word": "museum",
+   "tier": "medium"
+  },
+  {
+   "word": "mutual",
+   "tier": "medium"
+  },
+  {
+   "word": "myrtle",
+   "tier": "medium"
+  },
+  {
+   "word": "myself",
+   "tier": "medium"
+  },
+  {
+   "word": "namely",
+   "tier": "medium"
+  },
+  {
+   "word": "narrow",
+   "tier": "medium"
+  },
+  {
+   "word": "nation",
+   "tier": "medium"
+  },
+  {
+   "word": "native",
+   "tier": "medium"
+  },
+  {
+   "word": "nature",
+   "tier": "medium"
+  },
+  {
+   "word": "nearby",
+   "tier": "medium"
+  },
+  {
+   "word": "nearly",
+   "tier": "medium"
+  },
+  {
+   "word": "needed",
+   "tier": "medium"
+  },
+  {
+   "word": "needle",
+   "tier": "medium"
+  },
+  {
+   "word": "nested",
+   "tier": "medium"
+  },
+  {
+   "word": "neural",
+   "tier": "medium"
+  },
+  {
+   "word": "newest",
+   "tier": "medium"
+  },
+  {
+   "word": "newton",
+   "tier": "medium"
+  },
+  {
+   "word": "nickel",
+   "tier": "medium"
+  },
+  {
+   "word": "nights",
+   "tier": "medium"
+  },
+  {
+   "word": "nobody",
+   "tier": "medium"
+  },
+  {
+   "word": "normal",
+   "tier": "medium"
+  },
+  {
+   "word": "notice",
+   "tier": "medium"
+  },
+  {
+   "word": "notify",
+   "tier": "medium"
+  },
+  {
+   "word": "notion",
+   "tier": "medium"
+  },
+  {
+   "word": "novels",
+   "tier": "medium"
+  },
+  {
+   "word": "nudist",
+   "tier": "medium"
+  },
+  {
+   "word": "number",
+   "tier": "medium"
+  },
+  {
+   "word": "nurses",
+   "tier": "medium"
+  },
+  {
+   "word": "object",
+   "tier": "medium"
+  },
+  {
+   "word": "obtain",
+   "tier": "medium"
+  },
+  {
+   "word": "occurs",
+   "tier": "medium"
+  },
+  {
+   "word": "offers",
+   "tier": "medium"
+  },
+  {
+   "word": "office",
+   "tier": "medium"
+  },
+  {
+   "word": "offset",
+   "tier": "medium"
+  },
+  {
+   "word": "oldest",
+   "tier": "medium"
+  },
+  {
+   "word": "online",
+   "tier": "medium"
+  },
+  {
+   "word": "opened",
+   "tier": "medium"
+  },
+  {
+   "word": "optics",
+   "tier": "medium"
+  },
+  {
+   "word": "option",
+   "tier": "medium"
+  },
+  {
+   "word": "oracle",
+   "tier": "medium"
+  },
+  {
+   "word": "orange",
+   "tier": "medium"
+  },
+  {
+   "word": "orders",
+   "tier": "medium"
+  },
+  {
+   "word": "origin",
+   "tier": "medium"
+  },
+  {
+   "word": "others",
+   "tier": "medium"
+  },
+  {
+   "word": "outlet",
+   "tier": "medium"
+  },
+  {
+   "word": "output",
+   "tier": "medium"
+  },
+  {
+   "word": "owners",
+   "tier": "medium"
+  },
+  {
+   "word": "oxford",
+   "tier": "medium"
+  },
+  {
+   "word": "oxygen",
+   "tier": "medium"
+  },
+  {
+   "word": "packed",
+   "tier": "medium"
+  },
+  {
+   "word": "packet",
+   "tier": "medium"
+  },
+  {
+   "word": "palace",
+   "tier": "medium"
+  },
+  {
+   "word": "panama",
+   "tier": "medium"
+  },
+  {
+   "word": "panels",
+   "tier": "medium"
+  },
+  {
+   "word": "papers",
+   "tier": "medium"
+  },
+  {
+   "word": "parade",
+   "tier": "medium"
+  },
+  {
+   "word": "parcel",
+   "tier": "medium"
+  },
+  {
+   "word": "parent",
+   "tier": "medium"
+  },
+  {
+   "word": "parish",
+   "tier": "medium"
+  },
+  {
+   "word": "partly",
+   "tier": "medium"
+  },
+  {
+   "word": "passed",
+   "tier": "medium"
+  },
+  {
+   "word": "passes",
+   "tier": "medium"
+  },
+  {
+   "word": "pastor",
+   "tier": "medium"
+  },
+  {
+   "word": "patent",
+   "tier": "medium"
+  },
+  {
+   "word": "patrol",
+   "tier": "medium"
+  },
+  {
+   "word": "payday",
+   "tier": "medium"
+  },
+  {
+   "word": "paying",
+   "tier": "medium"
+  },
+  {
+   "word": "peeing",
+   "tier": "medium"
+  },
+  {
+   "word": "pencil",
+   "tier": "medium"
+  },
+  {
+   "word": "people",
+   "tier": "medium"
+  },
+  {
+   "word": "pepper",
+   "tier": "medium"
+  },
+  {
+   "word": "period",
+   "tier": "medium"
+  },
+  {
+   "word": "permit",
+   "tier": "medium"
+  },
+  {
+   "word": "person",
+   "tier": "medium"
+  },
+  {
+   "word": "petite",
+   "tier": "medium"
+  },
+  {
+   "word": "phases",
+   "tier": "medium"
+  },
+  {
+   "word": "phones",
+   "tier": "medium"
+  },
+  {
+   "word": "photos",
+   "tier": "medium"
+  },
+  {
+   "word": "phrase",
+   "tier": "medium"
+  },
+  {
+   "word": "picked",
+   "tier": "medium"
+  },
+  {
+   "word": "pickup",
+   "tier": "medium"
+  },
+  {
+   "word": "picnic",
+   "tier": "medium"
+  },
+  {
+   "word": "pieces",
+   "tier": "medium"
+  },
+  {
+   "word": "pierce",
+   "tier": "medium"
+  },
+  {
+   "word": "pillow",
+   "tier": "medium"
+  },
+  {
+   "word": "pixels",
+   "tier": "medium"
+  },
+  {
+   "word": "placed",
+   "tier": "medium"
+  },
+  {
+   "word": "places",
+   "tier": "medium"
+  },
+  {
+   "word": "plains",
+   "tier": "medium"
+  },
+  {
+   "word": "planes",
+   "tier": "medium"
+  },
+  {
+   "word": "planet",
+   "tier": "medium"
+  },
+  {
+   "word": "plants",
+   "tier": "medium"
+  },
+  {
+   "word": "plasma",
+   "tier": "medium"
+  },
+  {
+   "word": "plates",
+   "tier": "medium"
+  },
+  {
+   "word": "played",
+   "tier": "medium"
+  },
+  {
+   "word": "player",
+   "tier": "medium"
+  },
+  {
+   "word": "please",
+   "tier": "medium"
+  },
+  {
+   "word": "pledge",
+   "tier": "medium"
+  },
+  {
+   "word": "plenty",
+   "tier": "medium"
+  },
+  {
+   "word": "pocket",
+   "tier": "medium"
+  },
+  {
+   "word": "poetry",
+   "tier": "medium"
+  },
+  {
+   "word": "points",
+   "tier": "medium"
+  },
+  {
+   "word": "poison",
+   "tier": "medium"
+  },
+  {
+   "word": "police",
+   "tier": "medium"
+  },
+  {
+   "word": "policy",
+   "tier": "medium"
+  },
+  {
+   "word": "polish",
+   "tier": "medium"
+  },
+  {
+   "word": "portal",
+   "tier": "medium"
+  },
+  {
+   "word": "porter",
+   "tier": "medium"
+  },
+  {
+   "word": "posing",
+   "tier": "medium"
+  },
+  {
+   "word": "postal",
+   "tier": "medium"
+  },
+  {
+   "word": "posted",
+   "tier": "medium"
+  },
+  {
+   "word": "poster",
+   "tier": "medium"
+  },
+  {
+   "word": "potato",
+   "tier": "medium"
+  },
+  {
+   "word": "potter",
+   "tier": "medium"
+  },
+  {
+   "word": "pounds",
+   "tier": "medium"
+  },
+  {
+   "word": "powder",
+   "tier": "medium"
+  },
+  {
+   "word": "powers",
+   "tier": "medium"
+  },
+  {
+   "word": "praise",
+   "tier": "medium"
+  },
+  {
+   "word": "prayer",
+   "tier": "medium"
+  },
+  {
+   "word": "prefer",
+   "tier": "medium"
+  },
+  {
+   "word": "prefix",
+   "tier": "medium"
+  },
+  {
+   "word": "pretty",
+   "tier": "medium"
+  },
+  {
+   "word": "priced",
+   "tier": "medium"
+  },
+  {
+   "word": "prices",
+   "tier": "medium"
+  },
+  {
+   "word": "priest",
+   "tier": "medium"
+  },
+  {
+   "word": "prince",
+   "tier": "medium"
+  },
+  {
+   "word": "prints",
+   "tier": "medium"
+  },
+  {
+   "word": "prison",
+   "tier": "medium"
+  },
+  {
+   "word": "prizes",
+   "tier": "medium"
+  },
+  {
+   "word": "profit",
+   "tier": "medium"
+  },
+  {
+   "word": "prompt",
+   "tier": "medium"
+  },
+  {
+   "word": "proper",
+   "tier": "medium"
+  },
+  {
+   "word": "proved",
+   "tier": "medium"
+  },
+  {
+   "word": "proven",
+   "tier": "medium"
+  },
+  {
+   "word": "public",
+   "tier": "medium"
+  },
+  {
+   "word": "pulled",
+   "tier": "medium"
+  },
+  {
+   "word": "pupils",
+   "tier": "medium"
+  },
+  {
+   "word": "purple",
+   "tier": "medium"
+  },
+  {
+   "word": "pursue",
+   "tier": "medium"
+  },
+  {
+   "word": "pushed",
+   "tier": "medium"
+  },
+  {
+   "word": "puzzle",
+   "tier": "medium"
+  },
+  {
+   "word": "python",
+   "tier": "medium"
+  },
+  {
+   "word": "queens",
+   "tier": "medium"
+  },
+  {
+   "word": "quoted",
+   "tier": "medium"
+  },
+  {
+   "word": "quotes",
+   "tier": "medium"
+  },
+  {
+   "word": "rabbit",
+   "tier": "medium"
+  },
+  {
+   "word": "racial",
+   "tier": "medium"
+  },
+  {
+   "word": "racing",
+   "tier": "medium"
+  },
+  {
+   "word": "radios",
+   "tier": "medium"
+  },
+  {
+   "word": "radius",
+   "tier": "medium"
+  },
+  {
+   "word": "raised",
+   "tier": "medium"
+  },
+  {
+   "word": "raises",
+   "tier": "medium"
+  },
+  {
+   "word": "random",
+   "tier": "medium"
+  },
+  {
+   "word": "ranger",
+   "tier": "medium"
+  },
+  {
+   "word": "ranges",
+   "tier": "medium"
+  },
+  {
+   "word": "ranked",
+   "tier": "medium"
+  },
+  {
+   "word": "rapids",
+   "tier": "medium"
+  },
+  {
+   "word": "rarely",
+   "tier": "medium"
+  },
+  {
+   "word": "rather",
+   "tier": "medium"
+  },
+  {
+   "word": "rating",
+   "tier": "medium"
+  },
+  {
+   "word": "ratios",
+   "tier": "medium"
+  },
+  {
+   "word": "reader",
+   "tier": "medium"
+  },
+  {
+   "word": "really",
+   "tier": "medium"
+  },
+  {
+   "word": "realty",
+   "tier": "medium"
+  },
+  {
+   "word": "reason",
+   "tier": "medium"
+  },
+  {
+   "word": "rebate",
+   "tier": "medium"
+  },
+  {
+   "word": "recall",
+   "tier": "medium"
+  },
+  {
+   "word": "recent",
+   "tier": "medium"
+  },
+  {
+   "word": "recipe",
+   "tier": "medium"
+  },
+  {
+   "word": "record",
+   "tier": "medium"
+  },
+  {
+   "word": "redeem",
+   "tier": "medium"
+  },
+  {
+   "word": "reduce",
+   "tier": "medium"
+  },
+  {
+   "word": "refers",
+   "tier": "medium"
+  },
+  {
+   "word": "refine",
+   "tier": "medium"
+  },
+  {
+   "word": "reform",
+   "tier": "medium"
+  },
+  {
+   "word": "refund",
+   "tier": "medium"
+  },
+  {
+   "word": "refuse",
+   "tier": "medium"
+  },
+  {
+   "word": "regard",
+   "tier": "medium"
+  },
+  {
+   "word": "reggae",
+   "tier": "medium"
+  },
+  {
+   "word": "regime",
+   "tier": "medium"
+  },
+  {
+   "word": "region",
+   "tier": "medium"
+  },
+  {
+   "word": "reject",
+   "tier": "medium"
+  },
+  {
+   "word": "relate",
+   "tier": "medium"
+  },
+  {
+   "word": "relief",
+   "tier": "medium"
+  },
+  {
+   "word": "reload",
+   "tier": "medium"
+  },
+  {
+   "word": "remain",
+   "tier": "medium"
+  },
+  {
+   "word": "remark",
+   "tier": "medium"
+  },
+  {
+   "word": "remedy",
+   "tier": "medium"
+  },
+  {
+   "word": "remind",
+   "tier": "medium"
+  },
+  {
+   "word": "remote",
+   "tier": "medium"
+  },
+  {
+   "word": "remove",
+   "tier": "medium"
+  },
+  {
+   "word": "render",
+   "tier": "medium"
+  },
+  {
+   "word": "rental",
+   "tier": "medium"
+  },
+  {
+   "word": "repair",
+   "tier": "medium"
+  },
+  {
+   "word": "repeat",
+   "tier": "medium"
+  },
+  {
+   "word": "report",
+   "tier": "medium"
+  },
+  {
+   "word": "rescue",
+   "tier": "medium"
+  },
+  {
+   "word": "resist",
+   "tier": "medium"
+  },
+  {
+   "word": "resort",
+   "tier": "medium"
+  },
+  {
+   "word": "result",
+   "tier": "medium"
+  },
+  {
+   "word": "resume",
+   "tier": "medium"
+  },
+  {
+   "word": "retail",
+   "tier": "medium"
+  },
+  {
+   "word": "retain",
+   "tier": "medium"
+  },
+  {
+   "word": "return",
+   "tier": "medium"
+  },
+  {
+   "word": "reveal",
+   "tier": "medium"
+  },
+  {
+   "word": "review",
+   "tier": "medium"
+  },
+  {
+   "word": "reward",
+   "tier": "medium"
+  },
+  {
+   "word": "rhythm",
+   "tier": "medium"
+  },
+  {
+   "word": "ribbon",
+   "tier": "medium"
+  },
+  {
+   "word": "riders",
+   "tier": "medium"
+  },
+  {
+   "word": "riding",
+   "tier": "medium"
+  },
+  {
+   "word": "rights",
+   "tier": "medium"
+  },
+  {
+   "word": "rising",
+   "tier": "medium"
+  },
+  {
+   "word": "rivers",
+   "tier": "medium"
+  },
+  {
+   "word": "robots",
+   "tier": "medium"
+  },
+  {
+   "word": "robust",
+   "tier": "medium"
+  },
+  {
+   "word": "rocket",
+   "tier": "medium"
+  },
+  {
+   "word": "rolled",
+   "tier": "medium"
+  },
+  {
+   "word": "roller",
+   "tier": "medium"
+  },
+  {
+   "word": "roster",
+   "tier": "medium"
+  },
+  {
+   "word": "rotary",
+   "tier": "medium"
+  },
+  {
+   "word": "rounds",
+   "tier": "medium"
+  },
+  {
+   "word": "router",
+   "tier": "medium"
+  },
+  {
+   "word": "routes",
+   "tier": "medium"
+  },
+  {
+   "word": "rubber",
+   "tier": "medium"
+  },
+  {
+   "word": "ruling",
+   "tier": "medium"
+  },
+  {
+   "word": "runner",
+   "tier": "medium"
+  },
+  {
+   "word": "sacred",
+   "tier": "medium"
+  },
+  {
+   "word": "safari",
+   "tier": "medium"
+  },
+  {
+   "word": "safely",
+   "tier": "medium"
+  },
+  {
+   "word": "safety",
+   "tier": "medium"
+  },
+  {
+   "word": "saints",
+   "tier": "medium"
+  },
+  {
+   "word": "salary",
+   "tier": "medium"
+  },
+  {
+   "word": "salmon",
+   "tier": "medium"
+  },
+  {
+   "word": "sample",
+   "tier": "medium"
+  },
+  {
+   "word": "savage",
+   "tier": "medium"
+  },
+  {
+   "word": "saving",
+   "tier": "medium"
+  },
+  {
+   "word": "saying",
+   "tier": "medium"
+  },
+  {
+   "word": "scales",
+   "tier": "medium"
+  },
+  {
+   "word": "scared",
+   "tier": "medium"
+  },
+  {
+   "word": "scenes",
+   "tier": "medium"
+  },
+  {
+   "word": "scenic",
+   "tier": "medium"
+  },
+  {
+   "word": "schema",
+   "tier": "medium"
+  },
+  {
+   "word": "scheme",
+   "tier": "medium"
+  },
+  {
+   "word": "school",
+   "tier": "medium"
+  },
+  {
+   "word": "scored",
+   "tier": "medium"
+  },
+  {
+   "word": "scores",
+   "tier": "medium"
+  },
+  {
+   "word": "screen",
+   "tier": "medium"
+  },
+  {
+   "word": "script",
+   "tier": "medium"
+  },
+  {
+   "word": "scroll",
+   "tier": "medium"
+  },
+  {
+   "word": "sealed",
+   "tier": "medium"
+  },
+  {
+   "word": "search",
+   "tier": "medium"
+  },
+  {
+   "word": "season",
+   "tier": "medium"
+  },
+  {
+   "word": "second",
+   "tier": "medium"
+  },
+  {
+   "word": "secret",
+   "tier": "medium"
+  },
+  {
+   "word": "sector",
+   "tier": "medium"
+  },
+  {
+   "word": "secure",
+   "tier": "medium"
+  },
+  {
+   "word": "seeing",
+   "tier": "medium"
+  },
+  {
+   "word": "seeker",
+   "tier": "medium"
+  },
+  {
+   "word": "seemed",
+   "tier": "medium"
+  },
+  {
+   "word": "select",
+   "tier": "medium"
+  },
+  {
+   "word": "seller",
+   "tier": "medium"
+  },
+  {
+   "word": "senate",
+   "tier": "medium"
+  },
+  {
+   "word": "sender",
+   "tier": "medium"
+  },
+  {
+   "word": "senior",
+   "tier": "medium"
+  },
+  {
+   "word": "sensor",
+   "tier": "medium"
+  },
+  {
+   "word": "serial",
+   "tier": "medium"
+  },
+  {
+   "word": "series",
+   "tier": "medium"
+  },
+  {
+   "word": "served",
+   "tier": "medium"
+  },
+  {
+   "word": "server",
+   "tier": "medium"
+  },
+  {
+   "word": "serves",
+   "tier": "medium"
+  },
+  {
+   "word": "settle",
+   "tier": "medium"
+  },
+  {
+   "word": "severe",
+   "tier": "medium"
+  },
+  {
+   "word": "sewing",
+   "tier": "medium"
+  },
+  {
+   "word": "sexual",
+   "tier": "medium"
+  },
+  {
+   "word": "shades",
+   "tier": "medium"
+  },
+  {
+   "word": "shadow",
+   "tier": "medium"
+  },
+  {
+   "word": "shaped",
+   "tier": "medium"
+  },
+  {
+   "word": "shapes",
+   "tier": "medium"
+  },
+  {
+   "word": "shared",
+   "tier": "medium"
+  },
+  {
+   "word": "shares",
+   "tier": "medium"
+  },
+  {
+   "word": "shaved",
+   "tier": "medium"
+  },
+  {
+   "word": "sheets",
+   "tier": "medium"
+  },
+  {
+   "word": "shield",
+   "tier": "medium"
+  },
+  {
+   "word": "shirts",
+   "tier": "medium"
+  },
+  {
+   "word": "shorts",
+   "tier": "medium"
+  },
+  {
+   "word": "should",
+   "tier": "medium"
+  },
+  {
+   "word": "showed",
+   "tier": "medium"
+  },
+  {
+   "word": "shower",
+   "tier": "medium"
+  },
+  {
+   "word": "sierra",
+   "tier": "medium"
+  },
+  {
+   "word": "signal",
+   "tier": "medium"
+  },
+  {
+   "word": "signed",
+   "tier": "medium"
+  },
+  {
+   "word": "silent",
+   "tier": "medium"
+  },
+  {
+   "word": "silver",
+   "tier": "medium"
+  },
+  {
+   "word": "simple",
+   "tier": "medium"
+  },
+  {
+   "word": "simply",
+   "tier": "medium"
+  },
+  {
+   "word": "singer",
+   "tier": "medium"
+  },
+  {
+   "word": "single",
+   "tier": "medium"
+  },
+  {
+   "word": "sister",
+   "tier": "medium"
+  },
+  {
+   "word": "skiing",
+   "tier": "medium"
+  },
+  {
+   "word": "skills",
+   "tier": "medium"
+  },
+  {
+   "word": "skirts",
+   "tier": "medium"
+  },
+  {
+   "word": "sleeps",
+   "tier": "medium"
+  },
+  {
+   "word": "sleeve",
+   "tier": "medium"
+  },
+  {
+   "word": "slides",
+   "tier": "medium"
+  },
+  {
+   "word": "slight",
+   "tier": "medium"
+  },
+  {
+   "word": "slowly",
+   "tier": "medium"
+  },
+  {
+   "word": "smooth",
+   "tier": "medium"
+  },
+  {
+   "word": "soccer",
+   "tier": "medium"
+  },
+  {
+   "word": "social",
+   "tier": "medium"
+  },
+  {
+   "word": "socket",
+   "tier": "medium"
+  },
+  {
+   "word": "sodium",
+   "tier": "medium"
+  },
+  {
+   "word": "solely",
+   "tier": "medium"
+  },
+  {
+   "word": "solved",
+   "tier": "medium"
+  },
+  {
+   "word": "sorted",
+   "tier": "medium"
+  },
+  {
+   "word": "sought",
+   "tier": "medium"
+  },
+  {
+   "word": "sounds",
+   "tier": "medium"
+  },
+  {
+   "word": "source",
+   "tier": "medium"
+  },
+  {
+   "word": "spaces",
+   "tier": "medium"
+  },
+  {
+   "word": "speaks",
+   "tier": "medium"
+  },
+  {
+   "word": "spears",
+   "tier": "medium"
+  },
+  {
+   "word": "speech",
+   "tier": "medium"
+  },
+  {
+   "word": "speeds",
+   "tier": "medium"
+  },
+  {
+   "word": "sphere",
+   "tier": "medium"
+  },
+  {
+   "word": "spider",
+   "tier": "medium"
+  },
+  {
+   "word": "spirit",
+   "tier": "medium"
+  },
+  {
+   "word": "spoken",
+   "tier": "medium"
+  },
+  {
+   "word": "sports",
+   "tier": "medium"
+  },
+  {
+   "word": "spouse",
+   "tier": "medium"
+  },
+  {
+   "word": "spread",
+   "tier": "medium"
+  },
+  {
+   "word": "spring",
+   "tier": "medium"
+  },
+  {
+   "word": "sprint",
+   "tier": "medium"
+  },
+  {
+   "word": "square",
+   "tier": "medium"
+  },
+  {
+   "word": "stable",
+   "tier": "medium"
+  },
+  {
+   "word": "stages",
+   "tier": "medium"
+  },
+  {
+   "word": "stamps",
+   "tier": "medium"
+  },
+  {
+   "word": "stands",
+   "tier": "medium"
+  },
+  {
+   "word": "starts",
+   "tier": "medium"
+  },
+  {
+   "word": "stated",
+   "tier": "medium"
+  },
+  {
+   "word": "states",
+   "tier": "medium"
+  },
+  {
+   "word": "static",
+   "tier": "medium"
+  },
+  {
+   "word": "status",
+   "tier": "medium"
+  },
+  {
+   "word": "stayed",
+   "tier": "medium"
+  },
+  {
+   "word": "steady",
+   "tier": "medium"
+  },
+  {
+   "word": "stereo",
+   "tier": "medium"
+  },
+  {
+   "word": "sticks",
+   "tier": "medium"
+  },
+  {
+   "word": "sticky",
+   "tier": "medium"
+  },
+  {
+   "word": "stocks",
+   "tier": "medium"
+  },
+  {
+   "word": "stolen",
+   "tier": "medium"
+  },
+  {
+   "word": "stones",
+   "tier": "medium"
+  },
+  {
+   "word": "stored",
+   "tier": "medium"
+  },
+  {
+   "word": "stores",
+   "tier": "medium"
+  },
+  {
+   "word": "strain",
+   "tier": "medium"
+  },
+  {
+   "word": "strand",
+   "tier": "medium"
+  },
+  {
+   "word": "stream",
+   "tier": "medium"
+  },
+  {
+   "word": "street",
+   "tier": "medium"
+  },
+  {
+   "word": "stress",
+   "tier": "medium"
+  },
+  {
+   "word": "strict",
+   "tier": "medium"
+  },
+  {
+   "word": "strike",
+   "tier": "medium"
+  },
+  {
+   "word": "string",
+   "tier": "medium"
+  },
+  {
+   "word": "strips",
+   "tier": "medium"
+  },
+  {
+   "word": "stroke",
+   "tier": "medium"
+  },
+  {
+   "word": "strong",
+   "tier": "medium"
+  },
+  {
+   "word": "struck",
+   "tier": "medium"
+  },
+  {
+   "word": "studio",
+   "tier": "medium"
+  },
+  {
+   "word": "stupid",
+   "tier": "medium"
+  },
+  {
+   "word": "styles",
+   "tier": "medium"
+  },
+  {
+   "word": "stylus",
+   "tier": "medium"
+  },
+  {
+   "word": "submit",
+   "tier": "medium"
+  },
+  {
+   "word": "subtle",
+   "tier": "medium"
+  },
+  {
+   "word": "sudden",
+   "tier": "medium"
+  },
+  {
+   "word": "suffer",
+   "tier": "medium"
+  },
+  {
+   "word": "suited",
+   "tier": "medium"
+  },
+  {
+   "word": "suites",
+   "tier": "medium"
+  },
+  {
+   "word": "summer",
+   "tier": "medium"
+  },
+  {
+   "word": "summit",
+   "tier": "medium"
+  },
+  {
+   "word": "sunset",
+   "tier": "medium"
+  },
+  {
+   "word": "superb",
+   "tier": "medium"
+  },
+  {
+   "word": "supply",
+   "tier": "medium"
+  },
+  {
+   "word": "surely",
+   "tier": "medium"
+  },
+  {
+   "word": "survey",
+   "tier": "medium"
+  },
+  {
+   "word": "switch",
+   "tier": "medium"
+  },
+  {
+   "word": "symbol",
+   "tier": "medium"
+  },
+  {
+   "word": "syntax",
+   "tier": "medium"
+  },
+  {
+   "word": "system",
+   "tier": "medium"
+  },
+  {
+   "word": "tables",
+   "tier": "medium"
+  },
+  {
+   "word": "tablet",
+   "tier": "medium"
+  },
+  {
+   "word": "tackle",
+   "tier": "medium"
+  },
+  {
+   "word": "tagged",
+   "tier": "medium"
+  },
+  {
+   "word": "taking",
+   "tier": "medium"
+  },
+  {
+   "word": "talent",
+   "tier": "medium"
+  },
+  {
+   "word": "talked",
+   "tier": "medium"
+  },
+  {
+   "word": "target",
+   "tier": "medium"
+  },
+  {
+   "word": "tariff",
+   "tier": "medium"
+  },
+  {
+   "word": "tattoo",
+   "tier": "medium"
+  },
+  {
+   "word": "taught",
+   "tier": "medium"
+  },
+  {
+   "word": "temple",
+   "tier": "medium"
+  },
+  {
+   "word": "tenant",
+   "tier": "medium"
+  },
+  {
+   "word": "tender",
+   "tier": "medium"
+  },
+  {
+   "word": "tennis",
+   "tier": "medium"
+  },
+  {
+   "word": "terror",
+   "tier": "medium"
+  },
+  {
+   "word": "tested",
+   "tier": "medium"
+  },
+  {
+   "word": "thanks",
+   "tier": "medium"
+  },
+  {
+   "word": "themes",
+   "tier": "medium"
+  },
+  {
+   "word": "theory",
+   "tier": "medium"
+  },
+  {
+   "word": "thesis",
+   "tier": "medium"
+  },
+  {
+   "word": "things",
+   "tier": "medium"
+  },
+  {
+   "word": "thinks",
+   "tier": "medium"
+  },
+  {
+   "word": "thirty",
+   "tier": "medium"
+  },
+  {
+   "word": "thongs",
+   "tier": "medium"
+  },
+  {
+   "word": "though",
+   "tier": "medium"
+  },
+  {
+   "word": "thread",
+   "tier": "medium"
+  },
+  {
+   "word": "threat",
+   "tier": "medium"
+  },
+  {
+   "word": "throat",
+   "tier": "medium"
+  },
+  {
+   "word": "thrown",
+   "tier": "medium"
+  },
+  {
+   "word": "throws",
+   "tier": "medium"
+  },
+  {
+   "word": "thumbs",
+   "tier": "medium"
+  },
+  {
+   "word": "ticket",
+   "tier": "medium"
+  },
+  {
+   "word": "tigers",
+   "tier": "medium"
+  },
+  {
+   "word": "timber",
+   "tier": "medium"
+  },
+  {
+   "word": "timely",
+   "tier": "medium"
+  },
+  {
+   "word": "timing",
+   "tier": "medium"
+  },
+  {
+   "word": "tissue",
+   "tier": "medium"
+  },
+  {
+   "word": "titans",
+   "tier": "medium"
+  },
+  {
+   "word": "titled",
+   "tier": "medium"
+  },
+  {
+   "word": "titles",
+   "tier": "medium"
+  },
+  {
+   "word": "toilet",
+   "tier": "medium"
+  },
+  {
+   "word": "tomato",
+   "tier": "medium"
+  },
+  {
+   "word": "tongue",
+   "tier": "medium"
+  },
+  {
+   "word": "topics",
+   "tier": "medium"
+  },
+  {
+   "word": "totals",
+   "tier": "medium"
+  },
+  {
+   "word": "toward",
+   "tier": "medium"
+  },
+  {
+   "word": "towers",
+   "tier": "medium"
+  },
+  {
+   "word": "tracks",
+   "tier": "medium"
+  },
+  {
+   "word": "trader",
+   "tier": "medium"
+  },
+  {
+   "word": "trades",
+   "tier": "medium"
+  },
+  {
+   "word": "trails",
+   "tier": "medium"
+  },
+  {
+   "word": "trains",
+   "tier": "medium"
+  },
+  {
+   "word": "trance",
+   "tier": "medium"
+  },
+  {
+   "word": "trauma",
+   "tier": "medium"
+  },
+  {
+   "word": "travel",
+   "tier": "medium"
+  },
+  {
+   "word": "treaty",
+   "tier": "medium"
+  },
+  {
+   "word": "trends",
+   "tier": "medium"
+  },
+  {
+   "word": "trials",
+   "tier": "medium"
+  },
+  {
+   "word": "tribal",
+   "tier": "medium"
+  },
+  {
+   "word": "tribes",
+   "tier": "medium"
+  },
+  {
+   "word": "tricks",
+   "tier": "medium"
+  },
+  {
+   "word": "triple",
+   "tier": "medium"
+  },
+  {
+   "word": "trivia",
+   "tier": "medium"
+  },
+  {
+   "word": "troops",
+   "tier": "medium"
+  },
+  {
+   "word": "trucks",
+   "tier": "medium"
+  },
+  {
+   "word": "trusts",
+   "tier": "medium"
+  },
+  {
+   "word": "trying",
+   "tier": "medium"
+  },
+  {
+   "word": "tuning",
+   "tier": "medium"
+  },
+  {
+   "word": "tunnel",
+   "tier": "medium"
+  },
+  {
+   "word": "turkey",
+   "tier": "medium"
+  },
+  {
+   "word": "turned",
+   "tier": "medium"
+  },
+  {
+   "word": "turner",
+   "tier": "medium"
+  },
+  {
+   "word": "turtle",
+   "tier": "medium"
+  },
+  {
+   "word": "twelve",
+   "tier": "medium"
+  },
+  {
+   "word": "twenty",
+   "tier": "medium"
+  },
+  {
+   "word": "typing",
+   "tier": "medium"
+  },
+  {
+   "word": "unable",
+   "tier": "medium"
+  },
+  {
+   "word": "unions",
+   "tier": "medium"
+  },
+  {
+   "word": "unique",
+   "tier": "medium"
+  },
+  {
+   "word": "united",
+   "tier": "medium"
+  },
+  {
+   "word": "unless",
+   "tier": "medium"
+  },
+  {
+   "word": "unlike",
+   "tier": "medium"
+  },
+  {
+   "word": "unlock",
+   "tier": "medium"
+  },
+  {
+   "word": "unwrap",
+   "tier": "medium"
+  },
+  {
+   "word": "update",
+   "tier": "medium"
+  },
+  {
+   "word": "upload",
+   "tier": "medium"
+  },
+  {
+   "word": "urgent",
+   "tier": "medium"
+  },
+  {
+   "word": "useful",
+   "tier": "medium"
+  },
+  {
+   "word": "vacuum",
+   "tier": "medium"
+  },
+  {
+   "word": "valley",
+   "tier": "medium"
+  },
+  {
+   "word": "valued",
+   "tier": "medium"
+  },
+  {
+   "word": "values",
+   "tier": "medium"
+  },
+  {
+   "word": "valves",
+   "tier": "medium"
+  },
+  {
+   "word": "varied",
+   "tier": "medium"
+  },
+  {
+   "word": "varies",
+   "tier": "medium"
+  },
+  {
+   "word": "vector",
+   "tier": "medium"
+  },
+  {
+   "word": "velvet",
+   "tier": "medium"
+  },
+  {
+   "word": "vendor",
+   "tier": "medium"
+  },
+  {
+   "word": "venues",
+   "tier": "medium"
+  },
+  {
+   "word": "verbal",
+   "tier": "medium"
+  },
+  {
+   "word": "verify",
+   "tier": "medium"
+  },
+  {
+   "word": "versus",
+   "tier": "medium"
+  },
+  {
+   "word": "vertex",
+   "tier": "medium"
+  },
+  {
+   "word": "vessel",
+   "tier": "medium"
+  },
+  {
+   "word": "victim",
+   "tier": "medium"
+  },
+  {
+   "word": "victor",
+   "tier": "medium"
+  },
+  {
+   "word": "videos",
+   "tier": "medium"
+  },
+  {
+   "word": "viewed",
+   "tier": "medium"
+  },
+  {
+   "word": "viewer",
+   "tier": "medium"
+  },
+  {
+   "word": "villas",
+   "tier": "medium"
+  },
+  {
+   "word": "violin",
+   "tier": "medium"
+  },
+  {
+   "word": "virgin",
+   "tier": "medium"
+  },
+  {
+   "word": "virtue",
+   "tier": "medium"
+  },
+  {
+   "word": "vision",
+   "tier": "medium"
+  },
+  {
+   "word": "visits",
+   "tier": "medium"
+  },
+  {
+   "word": "visual",
+   "tier": "medium"
+  },
+  {
+   "word": "vocals",
+   "tier": "medium"
+  },
+  {
+   "word": "voices",
+   "tier": "medium"
+  },
+  {
+   "word": "volume",
+   "tier": "medium"
+  },
+  {
+   "word": "voters",
+   "tier": "medium"
+  },
+  {
+   "word": "voting",
+   "tier": "medium"
+  },
+  {
+   "word": "waiver",
+   "tier": "medium"
+  },
+  {
+   "word": "walked",
+   "tier": "medium"
+  },
+  {
+   "word": "walker",
+   "tier": "medium"
+  },
+  {
+   "word": "wallet",
+   "tier": "medium"
+  },
+  {
+   "word": "walnut",
+   "tier": "medium"
+  },
+  {
+   "word": "wanted",
+   "tier": "medium"
+  },
+  {
+   "word": "warned",
+   "tier": "medium"
+  },
+  {
+   "word": "warren",
+   "tier": "medium"
+  },
+  {
+   "word": "washer",
+   "tier": "medium"
+  },
+  {
+   "word": "waters",
+   "tier": "medium"
+  },
+  {
+   "word": "wealth",
+   "tier": "medium"
+  },
+  {
+   "word": "weapon",
+   "tier": "medium"
+  },
+  {
+   "word": "weekly",
+   "tier": "medium"
+  },
+  {
+   "word": "weight",
+   "tier": "medium"
+  },
+  {
+   "word": "wheels",
+   "tier": "medium"
+  },
+  {
+   "word": "whilst",
+   "tier": "medium"
+  },
+  {
+   "word": "wicked",
+   "tier": "medium"
+  },
+  {
+   "word": "widely",
+   "tier": "medium"
+  },
+  {
+   "word": "willow",
+   "tier": "medium"
+  },
+  {
+   "word": "window",
+   "tier": "medium"
+  },
+  {
+   "word": "winner",
+   "tier": "medium"
+  },
+  {
+   "word": "winter",
+   "tier": "medium"
+  },
+  {
+   "word": "wiring",
+   "tier": "medium"
+  },
+  {
+   "word": "wisdom",
+   "tier": "medium"
+  },
+  {
+   "word": "wishes",
+   "tier": "medium"
+  },
+  {
+   "word": "within",
+   "tier": "medium"
+  },
+  {
+   "word": "wizard",
+   "tier": "medium"
+  },
+  {
+   "word": "wonder",
+   "tier": "medium"
+  },
+  {
+   "word": "wooden",
+   "tier": "medium"
+  },
+  {
+   "word": "worked",
+   "tier": "medium"
+  },
+  {
+   "word": "worker",
+   "tier": "medium"
+  },
+  {
+   "word": "worlds",
+   "tier": "medium"
+  },
+  {
+   "word": "worthy",
+   "tier": "medium"
+  },
+  {
+   "word": "wright",
+   "tier": "medium"
+  },
+  {
+   "word": "writer",
+   "tier": "medium"
+  },
+  {
+   "word": "writes",
+   "tier": "medium"
+  },
+  {
+   "word": "yearly",
+   "tier": "medium"
+  },
+  {
+   "word": "yellow",
+   "tier": "medium"
+  },
+  {
+   "word": "yields",
+   "tier": "medium"
+  },
+  {
+   "word": "zoning",
+   "tier": "medium"
+  },
+  {
+   "word": "ability",
+   "tier": "hard"
+  },
+  {
+   "word": "absence",
+   "tier": "hard"
+  },
+  {
+   "word": "academy",
+   "tier": "hard"
+  },
+  {
+   "word": "accepts",
+   "tier": "hard"
+  },
+  {
+   "word": "account",
+   "tier": "hard"
+  },
+  {
+   "word": "accused",
+   "tier": "hard"
+  },
+  {
+   "word": "achieve",
+   "tier": "hard"
+  },
+  {
+   "word": "acquire",
+   "tier": "hard"
+  },
+  {
+   "word": "acrobat",
+   "tier": "hard"
+  },
+  {
+   "word": "acrylic",
+   "tier": "hard"
+  },
+  {
+   "word": "actions",
+   "tier": "hard"
+  },
+  {
+   "word": "actress",
+   "tier": "hard"
+  },
+  {
+   "word": "adapted",
+   "tier": "hard"
+  },
+  {
+   "word": "adapter",
+   "tier": "hard"
+  },
+  {
+   "word": "adaptor",
+   "tier": "hard"
+  },
+  {
+   "word": "address",
+   "tier": "hard"
+  },
+  {
+   "word": "adopted",
+   "tier": "hard"
+  },
+  {
+   "word": "advance",
+   "tier": "hard"
+  },
+  {
+   "word": "adverse",
+   "tier": "hard"
+  },
+  {
+   "word": "advised",
+   "tier": "hard"
+  },
+  {
+   "word": "advisor",
+   "tier": "hard"
+  },
+  {
+   "word": "affairs",
+   "tier": "hard"
+  },
+  {
+   "word": "affects",
+   "tier": "hard"
+  },
+  {
+   "word": "against",
+   "tier": "hard"
+  },
+  {
+   "word": "airfare",
+   "tier": "hard"
+  },
+  {
+   "word": "airline",
+   "tier": "hard"
+  },
+  {
+   "word": "airport",
+   "tier": "hard"
+  },
+  {
+   "word": "alcohol",
+   "tier": "hard"
+  },
+  {
+   "word": "algebra",
+   "tier": "hard"
+  },
+  {
+   "word": "alleged",
+   "tier": "hard"
+  },
+  {
+   "word": "allergy",
+   "tier": "hard"
+  },
+  {
+   "word": "allowed",
+   "tier": "hard"
+  },
+  {
+   "word": "already",
+   "tier": "hard"
+  },
+  {
+   "word": "altered",
+   "tier": "hard"
+  },
+  {
+   "word": "amateur",
+   "tier": "hard"
+  },
+  {
+   "word": "amazing",
+   "tier": "hard"
+  },
+  {
+   "word": "ambient",
+   "tier": "hard"
+  },
+  {
+   "word": "amended",
+   "tier": "hard"
+  },
+  {
+   "word": "amongst",
+   "tier": "hard"
+  },
+  {
+   "word": "amounts",
+   "tier": "hard"
+  },
+  {
+   "word": "analyst",
+   "tier": "hard"
+  },
+  {
+   "word": "analyze",
+   "tier": "hard"
+  },
+  {
+   "word": "anatomy",
+   "tier": "hard"
+  },
+  {
+   "word": "ancient",
+   "tier": "hard"
+  },
+  {
+   "word": "animals",
+   "tier": "hard"
+  },
+  {
+   "word": "another",
+   "tier": "hard"
+  },
+  {
+   "word": "answers",
+   "tier": "hard"
+  },
+  {
+   "word": "antenna",
+   "tier": "hard"
+  },
+  {
+   "word": "antique",
+   "tier": "hard"
+  },
+  {
+   "word": "anxiety",
+   "tier": "hard"
+  },
+  {
+   "word": "anybody",
+   "tier": "hard"
+  },
+  {
+   "word": "anymore",
+   "tier": "hard"
+  },
+  {
+   "word": "anytime",
+   "tier": "hard"
+  },
+  {
+   "word": "apparel",
+   "tier": "hard"
+  },
+  {
+   "word": "appeals",
+   "tier": "hard"
+  },
+  {
+   "word": "appears",
+   "tier": "hard"
+  },
+  {
+   "word": "applied",
+   "tier": "hard"
+  },
+  {
+   "word": "applies",
+   "tier": "hard"
+  },
+  {
+   "word": "approve",
+   "tier": "hard"
+  },
+  {
+   "word": "aquatic",
+   "tier": "hard"
+  },
+  {
+   "word": "archive",
+   "tier": "hard"
+  },
+  {
+   "word": "arising",
+   "tier": "hard"
+  },
+  {
+   "word": "arrange",
+   "tier": "hard"
+  },
+  {
+   "word": "arrival",
+   "tier": "hard"
+  },
+  {
+   "word": "arrived",
+   "tier": "hard"
+  },
+  {
+   "word": "arrives",
+   "tier": "hard"
+  },
+  {
+   "word": "article",
+   "tier": "hard"
+  },
+  {
+   "word": "artists",
+   "tier": "hard"
+  },
+  {
+   "word": "artwork",
+   "tier": "hard"
+  },
+  {
+   "word": "aspects",
+   "tier": "hard"
+  },
+  {
+   "word": "assault",
+   "tier": "hard"
+  },
+  {
+   "word": "assists",
+   "tier": "hard"
+  },
+  {
+   "word": "assumed",
+   "tier": "hard"
+  },
+  {
+   "word": "assumes",
+   "tier": "hard"
+  },
+  {
+   "word": "assured",
+   "tier": "hard"
+  },
+  {
+   "word": "attacks",
+   "tier": "hard"
+  },
+  {
+   "word": "attempt",
+   "tier": "hard"
+  },
+  {
+   "word": "attract",
+   "tier": "hard"
+  },
+  {
+   "word": "auction",
+   "tier": "hard"
+  },
+  {
+   "word": "auditor",
+   "tier": "hard"
+  },
+  {
+   "word": "authors",
+   "tier": "hard"
+  },
+  {
+   "word": "average",
+   "tier": "hard"
+  },
+  {
+   "word": "awarded",
+   "tier": "hard"
+  },
+  {
+   "word": "awesome",
+   "tier": "hard"
+  },
+  {
+   "word": "backing",
+   "tier": "hard"
+  },
+  {
+   "word": "balance",
+   "tier": "hard"
+  },
+  {
+   "word": "balloon",
+   "tier": "hard"
+  },
+  {
+   "word": "banking",
+   "tier": "hard"
+  },
+  {
+   "word": "banners",
+   "tier": "hard"
+  },
+  {
+   "word": "bargain",
+   "tier": "hard"
+  },
+  {
+   "word": "barrier",
+   "tier": "hard"
+  },
+  {
+   "word": "baskets",
+   "tier": "hard"
+  },
+  {
+   "word": "battery",
+   "tier": "hard"
+  },
+  {
+   "word": "beaches",
+   "tier": "hard"
+  },
+  {
+   "word": "bearing",
+   "tier": "hard"
+  },
+  {
+   "word": "because",
+   "tier": "hard"
+  },
+  {
+   "word": "becomes",
+   "tier": "hard"
+  },
+  {
+   "word": "bedding",
+   "tier": "hard"
+  },
+  {
+   "word": "bedroom",
+   "tier": "hard"
+  },
+  {
+   "word": "beliefs",
+   "tier": "hard"
+  },
+  {
+   "word": "believe",
+   "tier": "hard"
+  },
+  {
+   "word": "belongs",
+   "tier": "hard"
+  },
+  {
+   "word": "beneath",
+   "tier": "hard"
+  },
+  {
+   "word": "benefit",
+   "tier": "hard"
+  },
+  {
+   "word": "besides",
+   "tier": "hard"
+  },
+  {
+   "word": "betting",
+   "tier": "hard"
+  },
+  {
+   "word": "between",
+   "tier": "hard"
+  },
+  {
+   "word": "bicycle",
+   "tier": "hard"
+  },
+  {
+   "word": "bidding",
+   "tier": "hard"
+  },
+  {
+   "word": "biggest",
+   "tier": "hard"
+  },
+  {
+   "word": "billing",
+   "tier": "hard"
+  },
+  {
+   "word": "billion",
+   "tier": "hard"
+  },
+  {
+   "word": "binding",
+   "tier": "hard"
+  },
+  {
+   "word": "biology",
+   "tier": "hard"
+  },
+  {
+   "word": "bizarre",
+   "tier": "hard"
+  },
+  {
+   "word": "blanket",
+   "tier": "hard"
+  },
+  {
+   "word": "blessed",
+   "tier": "hard"
+  },
+  {
+   "word": "blocked",
+   "tier": "hard"
+  },
+  {
+   "word": "blowing",
+   "tier": "hard"
+  },
+  {
+   "word": "boating",
+   "tier": "hard"
+  },
+  {
+   "word": "booking",
+   "tier": "hard"
+  },
+  {
+   "word": "borders",
+   "tier": "hard"
+  },
+  {
+   "word": "borough",
+   "tier": "hard"
+  },
+  {
+   "word": "bottles",
+   "tier": "hard"
+  },
+  {
+   "word": "boulder",
+   "tier": "hard"
+  },
+  {
+   "word": "bouquet",
+   "tier": "hard"
+  },
+  {
+   "word": "bowling",
+   "tier": "hard"
+  },
+  {
+   "word": "bracket",
+   "tier": "hard"
+  },
+  {
+   "word": "bridges",
+   "tier": "hard"
+  },
+  {
+   "word": "briefly",
+   "tier": "hard"
+  },
+  {
+   "word": "broader",
+   "tier": "hard"
+  },
+  {
+   "word": "brokers",
+   "tier": "hard"
+  },
+  {
+   "word": "brother",
+   "tier": "hard"
+  },
+  {
+   "word": "brought",
+   "tier": "hard"
+  },
+  {
+   "word": "browser",
+   "tier": "hard"
+  },
+  {
+   "word": "budgets",
+   "tier": "hard"
+  },
+  {
+   "word": "buffalo",
+   "tier": "hard"
+  },
+  {
+   "word": "builder",
+   "tier": "hard"
+  },
+  {
+   "word": "burning",
+   "tier": "hard"
+  },
+  {
+   "word": "buttons",
+   "tier": "hard"
+  },
+  {
+   "word": "cabinet",
+   "tier": "hard"
+  },
+  {
+   "word": "calcium",
+   "tier": "hard"
+  },
+  {
+   "word": "calling",
+   "tier": "hard"
+  },
+  {
+   "word": "cameras",
+   "tier": "hard"
+  },
+  {
+   "word": "camping",
+   "tier": "hard"
+  },
+  {
+   "word": "candles",
+   "tier": "hard"
+  },
+  {
+   "word": "capable",
+   "tier": "hard"
+  },
+  {
+   "word": "capital",
+   "tier": "hard"
+  },
+  {
+   "word": "capitol",
+   "tier": "hard"
+  },
+  {
+   "word": "captain",
+   "tier": "hard"
+  },
+  {
+   "word": "capture",
+   "tier": "hard"
+  },
+  {
+   "word": "cardiac",
+   "tier": "hard"
+  },
+  {
+   "word": "careers",
+   "tier": "hard"
+  },
+  {
+   "word": "careful",
+   "tier": "hard"
+  },
+  {
+   "word": "carried",
+   "tier": "hard"
+  },
+  {
+   "word": "carrier",
+   "tier": "hard"
+  },
+  {
+   "word": "carries",
+   "tier": "hard"
+  },
+  {
+   "word": "cartoon",
+   "tier": "hard"
+  },
+  {
+   "word": "casinos",
+   "tier": "hard"
+  },
+  {
+   "word": "casting",
+   "tier": "hard"
+  },
+  {
+   "word": "catalog",
+   "tier": "hard"
+  },
+  {
+   "word": "causing",
+   "tier": "hard"
+  },
+  {
+   "word": "caution",
+   "tier": "hard"
+  },
+  {
+   "word": "ceiling",
+   "tier": "hard"
+  },
+  {
+   "word": "centers",
+   "tier": "hard"
+  },
+  {
+   "word": "central",
+   "tier": "hard"
+  },
+  {
+   "word": "centres",
+   "tier": "hard"
+  },
+  {
+   "word": "century",
+   "tier": "hard"
+  },
+  {
+   "word": "ceramic",
+   "tier": "hard"
+  },
+  {
+   "word": "certain",
+   "tier": "hard"
+  },
+  {
+   "word": "chamber",
+   "tier": "hard"
+  },
+  {
+   "word": "chances",
+   "tier": "hard"
+  },
+  {
+   "word": "changed",
+   "tier": "hard"
+  },
+  {
+   "word": "changes",
+   "tier": "hard"
+  },
+  {
+   "word": "channel",
+   "tier": "hard"
+  },
+  {
+   "word": "chapter",
+   "tier": "hard"
+  },
+  {
+   "word": "charged",
+   "tier": "hard"
+  },
+  {
+   "word": "charger",
+   "tier": "hard"
+  },
+  {
+   "word": "charges",
+   "tier": "hard"
+  },
+  {
+   "word": "charity",
+   "tier": "hard"
+  },
+  {
+   "word": "charter",
+   "tier": "hard"
+  },
+  {
+   "word": "chassis",
+   "tier": "hard"
+  },
+  {
+   "word": "cheaper",
+   "tier": "hard"
+  },
+  {
+   "word": "checked",
+   "tier": "hard"
+  },
+  {
+   "word": "chicken",
+   "tier": "hard"
+  },
+  {
+   "word": "choices",
+   "tier": "hard"
+  },
+  {
+   "word": "chronic",
+   "tier": "hard"
+  },
+  {
+   "word": "circles",
+   "tier": "hard"
+  },
+  {
+   "word": "circuit",
+   "tier": "hard"
+  },
+  {
+   "word": "citizen",
+   "tier": "hard"
+  },
+  {
+   "word": "claimed",
+   "tier": "hard"
+  },
+  {
+   "word": "clarity",
+   "tier": "hard"
+  },
+  {
+   "word": "classes",
+   "tier": "hard"
+  },
+  {
+   "word": "classic",
+   "tier": "hard"
+  },
+  {
+   "word": "cleaner",
+   "tier": "hard"
+  },
+  {
+   "word": "cleanup",
+   "tier": "hard"
+  },
+  {
+   "word": "cleared",
+   "tier": "hard"
+  },
+  {
+   "word": "clearly",
+   "tier": "hard"
+  },
+  {
+   "word": "clients",
+   "tier": "hard"
+  },
+  {
+   "word": "climate",
+   "tier": "hard"
+  },
+  {
+   "word": "clinics",
+   "tier": "hard"
+  },
+  {
+   "word": "closely",
+   "tier": "hard"
+  },
+  {
+   "word": "closest",
+   "tier": "hard"
+  },
+  {
+   "word": "closing",
+   "tier": "hard"
+  },
+  {
+   "word": "closure",
+   "tier": "hard"
+  },
+  {
+   "word": "clothes",
+   "tier": "hard"
+  },
+  {
+   "word": "cluster",
+   "tier": "hard"
+  },
+  {
+   "word": "coaches",
+   "tier": "hard"
+  },
+  {
+   "word": "coastal",
+   "tier": "hard"
+  },
+  {
+   "word": "coating",
+   "tier": "hard"
+  },
+  {
+   "word": "collect",
+   "tier": "hard"
+  },
+  {
+   "word": "college",
+   "tier": "hard"
+  },
+  {
+   "word": "cologne",
+   "tier": "hard"
+  },
+  {
+   "word": "colored",
+   "tier": "hard"
+  },
+  {
+   "word": "colours",
+   "tier": "hard"
+  },
+  {
+   "word": "columns",
+   "tier": "hard"
+  },
+  {
+   "word": "combine",
+   "tier": "hard"
+  },
+  {
+   "word": "comfort",
+   "tier": "hard"
+  },
+  {
+   "word": "command",
+   "tier": "hard"
+  },
+  {
+   "word": "comment",
+   "tier": "hard"
+  },
+  {
+   "word": "commons",
+   "tier": "hard"
+  },
+  {
+   "word": "compact",
+   "tier": "hard"
+  },
+  {
+   "word": "company",
+   "tier": "hard"
+  },
+  {
+   "word": "compare",
+   "tier": "hard"
+  },
+  {
+   "word": "compete",
+   "tier": "hard"
+  },
+  {
+   "word": "compile",
+   "tier": "hard"
+  },
+  {
+   "word": "complex",
+   "tier": "hard"
+  },
+  {
+   "word": "compute",
+   "tier": "hard"
+  },
+  {
+   "word": "concept",
+   "tier": "hard"
+  },
+  {
+   "word": "concern",
+   "tier": "hard"
+  },
+  {
+   "word": "concert",
+   "tier": "hard"
+  },
+  {
+   "word": "concord",
+   "tier": "hard"
+  },
+  {
+   "word": "conduct",
+   "tier": "hard"
+  },
+  {
+   "word": "confirm",
+   "tier": "hard"
+  },
+  {
+   "word": "connect",
+   "tier": "hard"
+  },
+  {
+   "word": "consent",
+   "tier": "hard"
+  },
+  {
+   "word": "consist",
+   "tier": "hard"
+  },
+  {
+   "word": "console",
+   "tier": "hard"
+  },
+  {
+   "word": "consult",
+   "tier": "hard"
+  },
+  {
+   "word": "contact",
+   "tier": "hard"
+  },
+  {
+   "word": "contain",
+   "tier": "hard"
+  },
+  {
+   "word": "content",
+   "tier": "hard"
+  },
+  {
+   "word": "contest",
+   "tier": "hard"
+  },
+  {
+   "word": "context",
+   "tier": "hard"
+  },
+  {
+   "word": "control",
+   "tier": "hard"
+  },
+  {
+   "word": "convert",
+   "tier": "hard"
+  },
+  {
+   "word": "cookies",
+   "tier": "hard"
+  },
+  {
+   "word": "cooking",
+   "tier": "hard"
+  },
+  {
+   "word": "cooling",
+   "tier": "hard"
+  },
+  {
+   "word": "copying",
+   "tier": "hard"
+  },
+  {
+   "word": "corners",
+   "tier": "hard"
+  },
+  {
+   "word": "correct",
+   "tier": "hard"
+  },
+  {
+   "word": "costume",
+   "tier": "hard"
+  },
+  {
+   "word": "cottage",
+   "tier": "hard"
+  },
+  {
+   "word": "council",
+   "tier": "hard"
+  },
+  {
+   "word": "counsel",
+   "tier": "hard"
+  },
+  {
+   "word": "counted",
+   "tier": "hard"
+  },
+  {
+   "word": "counter",
+   "tier": "hard"
+  },
+  {
+   "word": "country",
+   "tier": "hard"
+  },
+  {
+   "word": "coupled",
+   "tier": "hard"
+  },
+  {
+   "word": "couples",
+   "tier": "hard"
+  },
+  {
+   "word": "coupons",
+   "tier": "hard"
+  },
+  {
+   "word": "courage",
+   "tier": "hard"
+  },
+  {
+   "word": "courier",
+   "tier": "hard"
+  },
+  {
+   "word": "courses",
+   "tier": "hard"
+  },
+  {
+   "word": "covered",
+   "tier": "hard"
+  },
+  {
+   "word": "created",
+   "tier": "hard"
+  },
+  {
+   "word": "creates",
+   "tier": "hard"
+  },
+  {
+   "word": "creator",
+   "tier": "hard"
+  },
+  {
+   "word": "credits",
+   "tier": "hard"
+  },
+  {
+   "word": "cricket",
+   "tier": "hard"
+  },
+  {
+   "word": "critics",
+   "tier": "hard"
+  },
+  {
+   "word": "crucial",
+   "tier": "hard"
+  },
+  {
+   "word": "cruises",
+   "tier": "hard"
+  },
+  {
+   "word": "crystal",
+   "tier": "hard"
+  },
+  {
+   "word": "cuisine",
+   "tier": "hard"
+  },
+  {
+   "word": "culture",
+   "tier": "hard"
+  },
+  {
+   "word": "curious",
+   "tier": "hard"
+  },
+  {
+   "word": "current",
+   "tier": "hard"
+  },
+  {
+   "word": "custody",
+   "tier": "hard"
+  },
+  {
+   "word": "customs",
+   "tier": "hard"
+  },
+  {
+   "word": "cutting",
+   "tier": "hard"
+  },
+  {
+   "word": "cycling",
+   "tier": "hard"
+  },
+  {
+   "word": "damaged",
+   "tier": "hard"
+  },
+  {
+   "word": "damages",
+   "tier": "hard"
+  },
+  {
+   "word": "dancing",
+   "tier": "hard"
+  },
+  {
+   "word": "dealers",
+   "tier": "hard"
+  },
+  {
+   "word": "dealing",
+   "tier": "hard"
+  },
+  {
+   "word": "decades",
+   "tier": "hard"
+  },
+  {
+   "word": "decided",
+   "tier": "hard"
+  },
+  {
+   "word": "decimal",
+   "tier": "hard"
+  },
+  {
+   "word": "declare",
+   "tier": "hard"
+  },
+  {
+   "word": "decline",
+   "tier": "hard"
+  },
+  {
+   "word": "default",
+   "tier": "hard"
+  },
+  {
+   "word": "defects",
+   "tier": "hard"
+  },
+  {
+   "word": "defence",
+   "tier": "hard"
+  },
+  {
+   "word": "defense",
+   "tier": "hard"
+  },
+  {
+   "word": "deficit",
+   "tier": "hard"
+  },
+  {
+   "word": "defined",
+   "tier": "hard"
+  },
+  {
+   "word": "defines",
+   "tier": "hard"
+  },
+  {
+   "word": "degrees",
+   "tier": "hard"
+  },
+  {
+   "word": "delayed",
+   "tier": "hard"
+  },
+  {
+   "word": "deleted",
+   "tier": "hard"
+  },
+  {
+   "word": "delight",
+   "tier": "hard"
+  },
+  {
+   "word": "deliver",
+   "tier": "hard"
+  },
+  {
+   "word": "demands",
+   "tier": "hard"
+  },
+  {
+   "word": "density",
+   "tier": "hard"
+  },
+  {
+   "word": "depends",
+   "tier": "hard"
+  },
+  {
+   "word": "deposit",
+   "tier": "hard"
+  },
+  {
+   "word": "derived",
+   "tier": "hard"
+  },
+  {
+   "word": "deserve",
+   "tier": "hard"
+  },
+  {
+   "word": "designs",
+   "tier": "hard"
+  },
+  {
+   "word": "desired",
+   "tier": "hard"
+  },
+  {
+   "word": "desktop",
+   "tier": "hard"
+  },
+  {
+   "word": "despite",
+   "tier": "hard"
+  },
+  {
+   "word": "destiny",
+   "tier": "hard"
+  },
+  {
+   "word": "destroy",
+   "tier": "hard"
+  },
+  {
+   "word": "details",
+   "tier": "hard"
+  },
+  {
+   "word": "develop",
+   "tier": "hard"
+  },
+  {
+   "word": "deviant",
+   "tier": "hard"
+  },
+  {
+   "word": "devices",
+   "tier": "hard"
+  },
+  {
+   "word": "devoted",
+   "tier": "hard"
+  },
+  {
+   "word": "diagram",
+   "tier": "hard"
+  },
+  {
+   "word": "diamond",
+   "tier": "hard"
+  },
+  {
+   "word": "dietary",
+   "tier": "hard"
+  },
+  {
+   "word": "digital",
+   "tier": "hard"
+  },
+  {
+   "word": "diploma",
+   "tier": "hard"
+  },
+  {
+   "word": "disable",
+   "tier": "hard"
+  },
+  {
+   "word": "discuss",
+   "tier": "hard"
+  },
+  {
+   "word": "disease",
+   "tier": "hard"
+  },
+  {
+   "word": "display",
+   "tier": "hard"
+  },
+  {
+   "word": "dispute",
+   "tier": "hard"
+  },
+  {
+   "word": "distant",
+   "tier": "hard"
+  },
+  {
+   "word": "diverse",
+   "tier": "hard"
+  },
+  {
+   "word": "divided",
+   "tier": "hard"
+  },
+  {
+   "word": "divorce",
+   "tier": "hard"
+  },
+  {
+   "word": "doctors",
+   "tier": "hard"
+  },
+  {
+   "word": "dollars",
+   "tier": "hard"
+  },
+  {
+   "word": "domains",
+   "tier": "hard"
+  },
+  {
+   "word": "donated",
+   "tier": "hard"
+  },
+  {
+   "word": "drawing",
+   "tier": "hard"
+  },
+  {
+   "word": "dressed",
+   "tier": "hard"
+  },
+  {
+   "word": "dresses",
+   "tier": "hard"
+  },
+  {
+   "word": "drivers",
+   "tier": "hard"
+  },
+  {
+   "word": "driving",
+   "tier": "hard"
+  },
+  {
+   "word": "dropped",
+   "tier": "hard"
+  },
+  {
+   "word": "durable",
+   "tier": "hard"
+  },
+  {
+   "word": "dynamic",
+   "tier": "hard"
+  },
+  {
+   "word": "earlier",
+   "tier": "hard"
+  },
+  {
+   "word": "earning",
+   "tier": "hard"
+  },
+  {
+   "word": "eastern",
+   "tier": "hard"
+  },
+  {
+   "word": "eclipse",
+   "tier": "hard"
+  },
+  {
+   "word": "ecology",
+   "tier": "hard"
+  },
+  {
+   "word": "economy",
+   "tier": "hard"
+  },
+  {
+   "word": "editing",
+   "tier": "hard"
+  },
+  {
+   "word": "edition",
+   "tier": "hard"
+  },
+  {
+   "word": "editors",
+   "tier": "hard"
+  },
+  {
+   "word": "effects",
+   "tier": "hard"
+  },
+  {
+   "word": "efforts",
+   "tier": "hard"
+  },
+  {
+   "word": "elderly",
+   "tier": "hard"
+  },
+  {
+   "word": "elected",
+   "tier": "hard"
+  },
+  {
+   "word": "electro",
+   "tier": "hard"
+  },
+  {
+   "word": "elegant",
+   "tier": "hard"
+  },
+  {
+   "word": "element",
+   "tier": "hard"
+  },
+  {
+   "word": "embassy",
+   "tier": "hard"
+  },
+  {
+   "word": "emerald",
+   "tier": "hard"
+  },
+  {
+   "word": "emperor",
+   "tier": "hard"
+  },
+  {
+   "word": "enabled",
+   "tier": "hard"
+  },
+  {
+   "word": "enables",
+   "tier": "hard"
+  },
+  {
+   "word": "endless",
+   "tier": "hard"
+  },
+  {
+   "word": "enemies",
+   "tier": "hard"
+  },
+  {
+   "word": "engaged",
+   "tier": "hard"
+  },
+  {
+   "word": "engines",
+   "tier": "hard"
+  },
+  {
+   "word": "enhance",
+   "tier": "hard"
+  },
+  {
+   "word": "enjoyed",
+   "tier": "hard"
+  },
+  {
+   "word": "enlarge",
+   "tier": "hard"
+  },
+  {
+   "word": "enquiry",
+   "tier": "hard"
+  },
+  {
+   "word": "ensures",
+   "tier": "hard"
+  },
+  {
+   "word": "entered",
+   "tier": "hard"
+  },
+  {
+   "word": "entries",
+   "tier": "hard"
+  },
+  {
+   "word": "episode",
+   "tier": "hard"
+  },
+  {
+   "word": "equally",
+   "tier": "hard"
+  },
+  {
+   "word": "erotica",
+   "tier": "hard"
+  },
+  {
+   "word": "escorts",
+   "tier": "hard"
+  },
+  {
+   "word": "essence",
+   "tier": "hard"
+  },
+  {
+   "word": "estates",
+   "tier": "hard"
+  },
+  {
+   "word": "eternal",
+   "tier": "hard"
+  },
+  {
+   "word": "ethical",
+   "tier": "hard"
+  },
+  {
+   "word": "evening",
+   "tier": "hard"
+  },
+  {
+   "word": "evident",
+   "tier": "hard"
+  },
+  {
+   "word": "exactly",
+   "tier": "hard"
+  },
+  {
+   "word": "examine",
+   "tier": "hard"
+  },
+  {
+   "word": "example",
+   "tier": "hard"
+  },
+  {
+   "word": "excerpt",
+   "tier": "hard"
+  },
+  {
+   "word": "excited",
+   "tier": "hard"
+  },
+  {
+   "word": "exclude",
+   "tier": "hard"
+  },
+  {
+   "word": "execute",
+   "tier": "hard"
+  },
+  {
+   "word": "exhaust",
+   "tier": "hard"
+  },
+  {
+   "word": "exhibit",
+   "tier": "hard"
+  },
+  {
+   "word": "existed",
+   "tier": "hard"
+  },
+  {
+   "word": "expects",
+   "tier": "hard"
+  },
+  {
+   "word": "expense",
+   "tier": "hard"
+  },
+  {
+   "word": "experts",
+   "tier": "hard"
+  },
+  {
+   "word": "expired",
+   "tier": "hard"
+  },
+  {
+   "word": "expires",
+   "tier": "hard"
+  },
+  {
+   "word": "explain",
+   "tier": "hard"
+  },
+  {
+   "word": "explore",
+   "tier": "hard"
+  },
+  {
+   "word": "exports",
+   "tier": "hard"
+  },
+  {
+   "word": "exposed",
+   "tier": "hard"
+  },
+  {
+   "word": "express",
+   "tier": "hard"
+  },
+  {
+   "word": "extends",
+   "tier": "hard"
+  },
+  {
+   "word": "extract",
+   "tier": "hard"
+  },
+  {
+   "word": "extreme",
+   "tier": "hard"
+  },
+  {
+   "word": "fabrics",
+   "tier": "hard"
+  },
+  {
+   "word": "factors",
+   "tier": "hard"
+  },
+  {
+   "word": "factory",
+   "tier": "hard"
+  },
+  {
+   "word": "faculty",
+   "tier": "hard"
+  },
+  {
+   "word": "failing",
+   "tier": "hard"
+  },
+  {
+   "word": "failure",
+   "tier": "hard"
+  },
+  {
+   "word": "falling",
+   "tier": "hard"
+  },
+  {
+   "word": "fantasy",
+   "tier": "hard"
+  },
+  {
+   "word": "farmers",
+   "tier": "hard"
+  },
+  {
+   "word": "farming",
+   "tier": "hard"
+  },
+  {
+   "word": "fashion",
+   "tier": "hard"
+  },
+  {
+   "word": "fastest",
+   "tier": "hard"
+  },
+  {
+   "word": "fathers",
+   "tier": "hard"
+  },
+  {
+   "word": "feature",
+   "tier": "hard"
+  },
+  {
+   "word": "federal",
+   "tier": "hard"
+  },
+  {
+   "word": "feeding",
+   "tier": "hard"
+  },
+  {
+   "word": "feeling",
+   "tier": "hard"
+  },
+  {
+   "word": "females",
+   "tier": "hard"
+  },
+  {
+   "word": "fiction",
+   "tier": "hard"
+  },
+  {
+   "word": "fifteen",
+   "tier": "hard"
+  },
+  {
+   "word": "fighter",
+   "tier": "hard"
+  },
+  {
+   "word": "figured",
+   "tier": "hard"
+  },
+  {
+   "word": "figures",
+   "tier": "hard"
+  },
+  {
+   "word": "filling",
+   "tier": "hard"
+  },
+  {
+   "word": "filters",
+   "tier": "hard"
+  },
+  {
+   "word": "finally",
+   "tier": "hard"
+  },
+  {
+   "word": "finance",
+   "tier": "hard"
+  },
+  {
+   "word": "finding",
+   "tier": "hard"
+  },
+  {
+   "word": "fingers",
+   "tier": "hard"
+  },
+  {
+   "word": "fishing",
+   "tier": "hard"
+  },
+  {
+   "word": "fitness",
+   "tier": "hard"
+  },
+  {
+   "word": "fitting",
+   "tier": "hard"
+  },
+  {
+   "word": "flights",
+   "tier": "hard"
+  },
+  {
+   "word": "florist",
+   "tier": "hard"
+  },
+  {
+   "word": "flowers",
+   "tier": "hard"
+  },
+  {
+   "word": "focused",
+   "tier": "hard"
+  },
+  {
+   "word": "focuses",
+   "tier": "hard"
+  },
+  {
+   "word": "folders",
+   "tier": "hard"
+  },
+  {
+   "word": "folding",
+   "tier": "hard"
+  },
+  {
+   "word": "follows",
+   "tier": "hard"
+  },
+  {
+   "word": "footage",
+   "tier": "hard"
+  },
+  {
+   "word": "foreign",
+   "tier": "hard"
+  },
+  {
+   "word": "forests",
+   "tier": "hard"
+  },
+  {
+   "word": "forever",
+   "tier": "hard"
+  },
+  {
+   "word": "formats",
+   "tier": "hard"
+  },
+  {
+   "word": "forming",
+   "tier": "hard"
+  },
+  {
+   "word": "formula",
+   "tier": "hard"
+  },
+  {
+   "word": "fortune",
+   "tier": "hard"
+  },
+  {
+   "word": "forward",
+   "tier": "hard"
+  },
+  {
+   "word": "founded",
+   "tier": "hard"
+  },
+  {
+   "word": "founder",
+   "tier": "hard"
+  },
+  {
+   "word": "framing",
+   "tier": "hard"
+  },
+  {
+   "word": "freedom",
+   "tier": "hard"
+  },
+  {
+   "word": "freight",
+   "tier": "hard"
+  },
+  {
+   "word": "friends",
+   "tier": "hard"
+  },
+  {
+   "word": "funding",
+   "tier": "hard"
+  },
+  {
+   "word": "funeral",
+   "tier": "hard"
+  },
+  {
+   "word": "further",
+   "tier": "hard"
+  },
+  {
+   "word": "futures",
+   "tier": "hard"
+  },
+  {
+   "word": "gadgets",
+   "tier": "hard"
+  },
+  {
+   "word": "gallery",
+   "tier": "hard"
+  },
+  {
+   "word": "garbage",
+   "tier": "hard"
+  },
+  {
+   "word": "gardens",
+   "tier": "hard"
+  },
+  {
+   "word": "gateway",
+   "tier": "hard"
+  },
+  {
+   "word": "gazette",
+   "tier": "hard"
+  },
+  {
+   "word": "general",
+   "tier": "hard"
+  },
+  {
+   "word": "generic",
+   "tier": "hard"
+  },
+  {
+   "word": "genesis",
+   "tier": "hard"
+  },
+  {
+   "word": "genetic",
+   "tier": "hard"
+  },
+  {
+   "word": "genuine",
+   "tier": "hard"
+  },
+  {
+   "word": "geology",
+   "tier": "hard"
+  },
+  {
+   "word": "getting",
+   "tier": "hard"
+  },
+  {
+   "word": "glasses",
+   "tier": "hard"
+  },
+  {
+   "word": "glucose",
+   "tier": "hard"
+  },
+  {
+   "word": "gourmet",
+   "tier": "hard"
+  },
+  {
+   "word": "grammar",
+   "tier": "hard"
+  },
+  {
+   "word": "granted",
+   "tier": "hard"
+  },
+  {
+   "word": "graphic",
+   "tier": "hard"
+  },
+  {
+   "word": "gravity",
+   "tier": "hard"
+  },
+  {
+   "word": "greater",
+   "tier": "hard"
+  },
+  {
+   "word": "greatly",
+   "tier": "hard"
+  },
+  {
+   "word": "griffin",
+   "tier": "hard"
+  },
+  {
+   "word": "grocery",
+   "tier": "hard"
+  },
+  {
+   "word": "grounds",
+   "tier": "hard"
+  },
+  {
+   "word": "growing",
+   "tier": "hard"
+  },
+  {
+   "word": "guitars",
+   "tier": "hard"
+  },
+  {
+   "word": "habitat",
+   "tier": "hard"
+  },
+  {
+   "word": "handled",
+   "tier": "hard"
+  },
+  {
+   "word": "handles",
+   "tier": "hard"
+  },
+  {
+   "word": "hanging",
+   "tier": "hard"
+  },
+  {
+   "word": "happens",
+   "tier": "hard"
+  },
+  {
+   "word": "harbour",
+   "tier": "hard"
+  },
+  {
+   "word": "harmful",
+   "tier": "hard"
+  },
+  {
+   "word": "harmony",
+   "tier": "hard"
+  },
+  {
+   "word": "harvest",
+   "tier": "hard"
+  },
+  {
+   "word": "hazards",
+   "tier": "hard"
+  },
+  {
+   "word": "headers",
+   "tier": "hard"
+  },
+  {
+   "word": "heading",
+   "tier": "hard"
+  },
+  {
+   "word": "headset",
+   "tier": "hard"
+  },
+  {
+   "word": "healing",
+   "tier": "hard"
+  },
+  {
+   "word": "healthy",
+   "tier": "hard"
+  },
+  {
+   "word": "hearing",
+   "tier": "hard"
+  },
+  {
+   "word": "heather",
+   "tier": "hard"
+  },
+  {
+   "word": "heating",
+   "tier": "hard"
+  },
+  {
+   "word": "heavily",
+   "tier": "hard"
+  },
+  {
+   "word": "heights",
+   "tier": "hard"
+  },
+  {
+   "word": "helpful",
+   "tier": "hard"
+  },
+  {
+   "word": "helping",
+   "tier": "hard"
+  },
+  {
+   "word": "herself",
+   "tier": "hard"
+  },
+  {
+   "word": "highest",
+   "tier": "hard"
+  },
+  {
+   "word": "highway",
+   "tier": "hard"
+  },
+  {
+   "word": "himself",
+   "tier": "hard"
+  },
+  {
+   "word": "history",
+   "tier": "hard"
+  },
+  {
+   "word": "hitting",
+   "tier": "hard"
+  },
+  {
+   "word": "hobbies",
+   "tier": "hard"
+  },
+  {
+   "word": "holders",
+   "tier": "hard"
+  },
+  {
+   "word": "holding",
+   "tier": "hard"
+  },
+  {
+   "word": "holiday",
+   "tier": "hard"
+  },
+  {
+   "word": "horizon",
+   "tier": "hard"
+  },
+  {
+   "word": "hormone",
+   "tier": "hard"
+  },
+  {
+   "word": "hostels",
+   "tier": "hard"
+  },
+  {
+   "word": "hosting",
+   "tier": "hard"
+  },
+  {
+   "word": "hottest",
+   "tier": "hard"
+  },
+  {
+   "word": "housing",
+   "tier": "hard"
+  },
+  {
+   "word": "however",
+   "tier": "hard"
+  },
+  {
+   "word": "hundred",
+   "tier": "hard"
+  },
+  {
+   "word": "hunting",
+   "tier": "hard"
+  },
+  {
+   "word": "husband",
+   "tier": "hard"
+  },
+  {
+   "word": "hygiene",
+   "tier": "hard"
+  },
+  {
+   "word": "ignored",
+   "tier": "hard"
+  },
+  {
+   "word": "illegal",
+   "tier": "hard"
+  },
+  {
+   "word": "illness",
+   "tier": "hard"
+  },
+  {
+   "word": "imagine",
+   "tier": "hard"
+  },
+  {
+   "word": "imaging",
+   "tier": "hard"
+  },
+  {
+   "word": "impacts",
+   "tier": "hard"
+  },
+  {
+   "word": "implied",
+   "tier": "hard"
+  },
+  {
+   "word": "implies",
+   "tier": "hard"
+  },
+  {
+   "word": "imports",
+   "tier": "hard"
+  },
+  {
+   "word": "imposed",
+   "tier": "hard"
+  },
+  {
+   "word": "improve",
+   "tier": "hard"
+  },
+  {
+   "word": "include",
+   "tier": "hard"
+  },
+  {
+   "word": "indexed",
+   "tier": "hard"
+  },
+  {
+   "word": "indexes",
+   "tier": "hard"
+  },
+  {
+   "word": "indices",
+   "tier": "hard"
+  },
+  {
+   "word": "induced",
+   "tier": "hard"
+  },
+  {
+   "word": "infants",
+   "tier": "hard"
+  },
+  {
+   "word": "initial",
+   "tier": "hard"
+  },
+  {
+   "word": "injured",
+   "tier": "hard"
+  },
+  {
+   "word": "inquire",
+   "tier": "hard"
+  },
+  {
+   "word": "inquiry",
+   "tier": "hard"
+  },
+  {
+   "word": "insects",
+   "tier": "hard"
+  },
+  {
+   "word": "insider",
+   "tier": "hard"
+  },
+  {
+   "word": "insight",
+   "tier": "hard"
+  },
+  {
+   "word": "install",
+   "tier": "hard"
+  },
+  {
+   "word": "instant",
+   "tier": "hard"
+  },
+  {
+   "word": "instead",
+   "tier": "hard"
+  },
+  {
+   "word": "insulin",
+   "tier": "hard"
+  },
+  {
+   "word": "insured",
+   "tier": "hard"
+  },
+  {
+   "word": "integer",
+   "tier": "hard"
+  },
+  {
+   "word": "intense",
+   "tier": "hard"
+  },
+  {
+   "word": "interim",
+   "tier": "hard"
+  },
+  {
+   "word": "invalid",
+   "tier": "hard"
+  },
+  {
+   "word": "invited",
+   "tier": "hard"
+  },
+  {
+   "word": "invoice",
+   "tier": "hard"
+  },
+  {
+   "word": "involve",
+   "tier": "hard"
+  },
+  {
+   "word": "islands",
+   "tier": "hard"
+  },
+  {
+   "word": "jackets",
+   "tier": "hard"
+  },
+  {
+   "word": "jewelry",
+   "tier": "hard"
+  },
+  {
+   "word": "joining",
+   "tier": "hard"
+  },
+  {
+   "word": "journal",
+   "tier": "hard"
+  },
+  {
+   "word": "journey",
+   "tier": "hard"
+  },
+  {
+   "word": "jumping",
+   "tier": "hard"
+  },
+  {
+   "word": "justice",
+   "tier": "hard"
+  },
+  {
+   "word": "justify",
+   "tier": "hard"
+  },
+  {
+   "word": "karaoke",
+   "tier": "hard"
+  },
+  {
+   "word": "keeping",
+   "tier": "hard"
+  },
+  {
+   "word": "keyword",
+   "tier": "hard"
+  },
+  {
+   "word": "killing",
+   "tier": "hard"
+  },
+  {
+   "word": "kingdom",
+   "tier": "hard"
+  },
+  {
+   "word": "kissing",
+   "tier": "hard"
+  },
+  {
+   "word": "kitchen",
+   "tier": "hard"
+  },
+  {
+   "word": "knights",
+   "tier": "hard"
+  },
+  {
+   "word": "knowing",
+   "tier": "hard"
+  },
+  {
+   "word": "labeled",
+   "tier": "hard"
+  },
+  {
+   "word": "landing",
+   "tier": "hard"
+  },
+  {
+   "word": "laptops",
+   "tier": "hard"
+  },
+  {
+   "word": "largely",
+   "tier": "hard"
+  },
+  {
+   "word": "largest",
+   "tier": "hard"
+  },
+  {
+   "word": "lasting",
+   "tier": "hard"
+  },
+  {
+   "word": "laundry",
+   "tier": "hard"
+  },
+  {
+   "word": "lawsuit",
+   "tier": "hard"
+  },
+  {
+   "word": "lawyers",
+   "tier": "hard"
+  },
+  {
+   "word": "leaders",
+   "tier": "hard"
+  },
+  {
+   "word": "leading",
+   "tier": "hard"
+  },
+  {
+   "word": "learned",
+   "tier": "hard"
+  },
+  {
+   "word": "leasing",
+   "tier": "hard"
+  },
+  {
+   "word": "leather",
+   "tier": "hard"
+  },
+  {
+   "word": "leaving",
+   "tier": "hard"
+  },
+  {
+   "word": "lecture",
+   "tier": "hard"
+  },
+  {
+   "word": "legally",
+   "tier": "hard"
+  },
+  {
+   "word": "legends",
+   "tier": "hard"
+  },
+  {
+   "word": "leisure",
+   "tier": "hard"
+  },
+  {
+   "word": "lenders",
+   "tier": "hard"
+  },
+  {
+   "word": "lending",
+   "tier": "hard"
+  },
+  {
+   "word": "lesbian",
+   "tier": "hard"
+  },
+  {
+   "word": "lessons",
+   "tier": "hard"
+  },
+  {
+   "word": "letters",
+   "tier": "hard"
+  },
+  {
+   "word": "letting",
+   "tier": "hard"
+  },
+  {
+   "word": "liberal",
+   "tier": "hard"
+  },
+  {
+   "word": "liberty",
+   "tier": "hard"
+  },
+  {
+   "word": "library",
+   "tier": "hard"
+  },
+  {
+   "word": "licence",
+   "tier": "hard"
+  },
+  {
+   "word": "license",
+   "tier": "hard"
+  },
+  {
+   "word": "licking",
+   "tier": "hard"
+  },
+  {
+   "word": "lighter",
+   "tier": "hard"
+  },
+  {
+   "word": "limited",
+   "tier": "hard"
+  },
+  {
+   "word": "linking",
+   "tier": "hard"
+  },
+  {
+   "word": "listing",
+   "tier": "hard"
+  },
+  {
+   "word": "loading",
+   "tier": "hard"
+  },
+  {
+   "word": "locally",
+   "tier": "hard"
+  },
+  {
+   "word": "located",
+   "tier": "hard"
+  },
+  {
+   "word": "locator",
+   "tier": "hard"
+  },
+  {
+   "word": "locking",
+   "tier": "hard"
+  },
+  {
+   "word": "lodging",
+   "tier": "hard"
+  },
+  {
+   "word": "logging",
+   "tier": "hard"
+  },
+  {
+   "word": "logical",
+   "tier": "hard"
+  },
+  {
+   "word": "longest",
+   "tier": "hard"
+  },
+  {
+   "word": "looking",
+   "tier": "hard"
+  },
+  {
+   "word": "lottery",
+   "tier": "hard"
+  },
+  {
+   "word": "luggage",
+   "tier": "hard"
+  },
+  {
+   "word": "machine",
+   "tier": "hard"
+  },
+  {
+   "word": "madness",
+   "tier": "hard"
+  },
+  {
+   "word": "magical",
+   "tier": "hard"
+  },
+  {
+   "word": "mailing",
+   "tier": "hard"
+  },
+  {
+   "word": "mailman",
+   "tier": "hard"
+  },
+  {
+   "word": "managed",
+   "tier": "hard"
+  },
+  {
+   "word": "manager",
+   "tier": "hard"
+  },
+  {
+   "word": "mandate",
+   "tier": "hard"
+  },
+  {
+   "word": "manuals",
+   "tier": "hard"
+  },
+  {
+   "word": "mapping",
+   "tier": "hard"
+  },
+  {
+   "word": "markers",
+   "tier": "hard"
+  },
+  {
+   "word": "markets",
+   "tier": "hard"
+  },
+  {
+   "word": "marking",
+   "tier": "hard"
+  },
+  {
+   "word": "married",
+   "tier": "hard"
+  },
+  {
+   "word": "martial",
+   "tier": "hard"
+  },
+  {
+   "word": "massage",
+   "tier": "hard"
+  },
+  {
+   "word": "massive",
+   "tier": "hard"
+  },
+  {
+   "word": "masters",
+   "tier": "hard"
+  },
+  {
+   "word": "matched",
+   "tier": "hard"
+  },
+  {
+   "word": "matches",
+   "tier": "hard"
+  },
+  {
+   "word": "matters",
+   "tier": "hard"
+  },
+  {
+   "word": "maximum",
+   "tier": "hard"
+  },
+  {
+   "word": "meaning",
+   "tier": "hard"
+  },
+  {
+   "word": "measure",
+   "tier": "hard"
+  },
+  {
+   "word": "medical",
+   "tier": "hard"
+  },
+  {
+   "word": "meeting",
+   "tier": "hard"
+  },
+  {
+   "word": "members",
+   "tier": "hard"
+  },
+  {
+   "word": "mention",
+   "tier": "hard"
+  },
+  {
+   "word": "mercury",
+   "tier": "hard"
+  },
+  {
+   "word": "message",
+   "tier": "hard"
+  },
+  {
+   "word": "methods",
+   "tier": "hard"
+  },
+  {
+   "word": "mileage",
+   "tier": "hard"
+  },
+  {
+   "word": "million",
+   "tier": "hard"
+  },
+  {
+   "word": "mineral",
+   "tier": "hard"
+  },
+  {
+   "word": "minimal",
+   "tier": "hard"
+  },
+  {
+   "word": "minimum",
+   "tier": "hard"
+  },
+  {
+   "word": "minutes",
+   "tier": "hard"
+  },
+  {
+   "word": "miracle",
+   "tier": "hard"
+  },
+  {
+   "word": "mirrors",
+   "tier": "hard"
+  },
+  {
+   "word": "missile",
+   "tier": "hard"
+  },
+  {
+   "word": "missing",
+   "tier": "hard"
+  },
+  {
+   "word": "mission",
+   "tier": "hard"
+  },
+  {
+   "word": "mistake",
+   "tier": "hard"
+  },
+  {
+   "word": "mixture",
+   "tier": "hard"
+  },
+  {
+   "word": "mobiles",
+   "tier": "hard"
+  },
+  {
+   "word": "modular",
+   "tier": "hard"
+  },
+  {
+   "word": "modules",
+   "tier": "hard"
+  },
+  {
+   "word": "moments",
+   "tier": "hard"
+  },
+  {
+   "word": "monitor",
+   "tier": "hard"
+  },
+  {
+   "word": "monster",
+   "tier": "hard"
+  },
+  {
+   "word": "monthly",
+   "tier": "hard"
+  },
+  {
+   "word": "morning",
+   "tier": "hard"
+  },
+  {
+   "word": "mothers",
+   "tier": "hard"
+  },
+  {
+   "word": "mounted",
+   "tier": "hard"
+  },
+  {
+   "word": "muscles",
+   "tier": "hard"
+  },
+  {
+   "word": "museums",
+   "tier": "hard"
+  },
+  {
+   "word": "musical",
+   "tier": "hard"
+  },
+  {
+   "word": "mustang",
+   "tier": "hard"
+  },
+  {
+   "word": "mystery",
+   "tier": "hard"
+  },
+  {
+   "word": "nations",
+   "tier": "hard"
+  },
+  {
+   "word": "natural",
+   "tier": "hard"
+  },
+  {
+   "word": "naughty",
+   "tier": "hard"
+  },
+  {
+   "word": "nearest",
+   "tier": "hard"
+  },
+  {
+   "word": "neither",
+   "tier": "hard"
+  },
+  {
+   "word": "nervous",
+   "tier": "hard"
+  },
+  {
+   "word": "network",
+   "tier": "hard"
+  },
+  {
+   "word": "neutral",
+   "tier": "hard"
+  },
+  {
+   "word": "nirvana",
+   "tier": "hard"
+  },
+  {
+   "word": "nothing",
+   "tier": "hard"
+  },
+  {
+   "word": "noticed",
+   "tier": "hard"
+  },
+  {
+   "word": "notices",
+   "tier": "hard"
+  },
+  {
+   "word": "novelty",
+   "tier": "hard"
+  },
+  {
+   "word": "nowhere",
+   "tier": "hard"
+  },
+  {
+   "word": "nuclear",
+   "tier": "hard"
+  },
+  {
+   "word": "numbers",
+   "tier": "hard"
+  },
+  {
+   "word": "numeric",
+   "tier": "hard"
+  },
+  {
+   "word": "nursery",
+   "tier": "hard"
+  },
+  {
+   "word": "nursing",
+   "tier": "hard"
+  },
+  {
+   "word": "obesity",
+   "tier": "hard"
+  },
+  {
+   "word": "objects",
+   "tier": "hard"
+  },
+  {
+   "word": "observe",
+   "tier": "hard"
+  },
+  {
+   "word": "obvious",
+   "tier": "hard"
+  },
+  {
+   "word": "offense",
+   "tier": "hard"
+  },
+  {
+   "word": "offered",
+   "tier": "hard"
+  },
+  {
+   "word": "officer",
+   "tier": "hard"
+  },
+  {
+   "word": "offices",
+   "tier": "hard"
+  },
+  {
+   "word": "offline",
+   "tier": "hard"
+  },
+  {
+   "word": "ongoing",
+   "tier": "hard"
+  },
+  {
+   "word": "opening",
+   "tier": "hard"
+  },
+  {
+   "word": "operate",
+   "tier": "hard"
+  },
+  {
+   "word": "opinion",
+   "tier": "hard"
+  },
+  {
+   "word": "opposed",
+   "tier": "hard"
+  },
+  {
+   "word": "optical",
+   "tier": "hard"
+  },
+  {
+   "word": "optimal",
+   "tier": "hard"
+  },
+  {
+   "word": "optimum",
+   "tier": "hard"
+  },
+  {
+   "word": "options",
+   "tier": "hard"
+  },
+  {
+   "word": "ordered",
+   "tier": "hard"
+  },
+  {
+   "word": "organic",
+   "tier": "hard"
+  },
+  {
+   "word": "origins",
+   "tier": "hard"
+  },
+  {
+   "word": "outcome",
+   "tier": "hard"
+  },
+  {
+   "word": "outdoor",
+   "tier": "hard"
+  },
+  {
+   "word": "outlets",
+   "tier": "hard"
+  },
+  {
+   "word": "outline",
+   "tier": "hard"
+  },
+  {
+   "word": "outlook",
+   "tier": "hard"
+  },
+  {
+   "word": "outputs",
+   "tier": "hard"
+  },
+  {
+   "word": "outside",
+   "tier": "hard"
+  },
+  {
+   "word": "overall",
+   "tier": "hard"
+  },
+  {
+   "word": "package",
+   "tier": "hard"
+  },
+  {
+   "word": "packets",
+   "tier": "hard"
+  },
+  {
+   "word": "packing",
+   "tier": "hard"
+  },
+  {
+   "word": "painful",
+   "tier": "hard"
+  },
+  {
+   "word": "painted",
+   "tier": "hard"
+  },
+  {
+   "word": "parents",
+   "tier": "hard"
+  },
+  {
+   "word": "parking",
+   "tier": "hard"
+  },
+  {
+   "word": "partial",
+   "tier": "hard"
+  },
+  {
+   "word": "parties",
+   "tier": "hard"
+  },
+  {
+   "word": "partner",
+   "tier": "hard"
+  },
+  {
+   "word": "passage",
+   "tier": "hard"
+  },
+  {
+   "word": "passing",
+   "tier": "hard"
+  },
+  {
+   "word": "passion",
+   "tier": "hard"
+  },
+  {
+   "word": "passive",
+   "tier": "hard"
+  },
+  {
+   "word": "patches",
+   "tier": "hard"
+  },
+  {
+   "word": "patents",
+   "tier": "hard"
+  },
+  {
+   "word": "patient",
+   "tier": "hard"
+  },
+  {
+   "word": "pattern",
+   "tier": "hard"
+  },
+  {
+   "word": "payable",
+   "tier": "hard"
+  },
+  {
+   "word": "payment",
+   "tier": "hard"
+  },
+  {
+   "word": "payroll",
+   "tier": "hard"
+  },
+  {
+   "word": "penalty",
+   "tier": "hard"
+  },
+  {
+   "word": "pendant",
+   "tier": "hard"
+  },
+  {
+   "word": "pending",
+   "tier": "hard"
+  },
+  {
+   "word": "penguin",
+   "tier": "hard"
+  },
+  {
+   "word": "pension",
+   "tier": "hard"
+  },
+  {
+   "word": "peoples",
+   "tier": "hard"
+  },
+  {
+   "word": "percent",
+   "tier": "hard"
+  },
+  {
+   "word": "perfect",
+   "tier": "hard"
+  },
+  {
+   "word": "perform",
+   "tier": "hard"
+  },
+  {
+   "word": "perfume",
+   "tier": "hard"
+  },
+  {
+   "word": "perhaps",
+   "tier": "hard"
+  },
+  {
+   "word": "periods",
+   "tier": "hard"
+  },
+  {
+   "word": "permits",
+   "tier": "hard"
+  },
+  {
+   "word": "persons",
+   "tier": "hard"
+  },
+  {
+   "word": "phantom",
+   "tier": "hard"
+  },
+  {
+   "word": "phrases",
+   "tier": "hard"
+  },
+  {
+   "word": "physics",
+   "tier": "hard"
+  },
+  {
+   "word": "picking",
+   "tier": "hard"
+  },
+  {
+   "word": "picture",
+   "tier": "hard"
+  },
+  {
+   "word": "pioneer",
+   "tier": "hard"
+  },
+  {
+   "word": "pirates",
+   "tier": "hard"
+  },
+  {
+   "word": "placing",
+   "tier": "hard"
+  },
+  {
+   "word": "planets",
+   "tier": "hard"
+  },
+  {
+   "word": "planned",
+   "tier": "hard"
+  },
+  {
+   "word": "planner",
+   "tier": "hard"
+  },
+  {
+   "word": "plastic",
+   "tier": "hard"
+  },
+  {
+   "word": "players",
+   "tier": "hard"
+  },
+  {
+   "word": "playing",
+   "tier": "hard"
+  },
+  {
+   "word": "pleased",
+   "tier": "hard"
+  },
+  {
+   "word": "pockets",
+   "tier": "hard"
+  },
+  {
+   "word": "pointed",
+   "tier": "hard"
+  },
+  {
+   "word": "pointer",
+   "tier": "hard"
+  },
+  {
+   "word": "polymer",
+   "tier": "hard"
+  },
+  {
+   "word": "popular",
+   "tier": "hard"
+  },
+  {
+   "word": "portion",
+   "tier": "hard"
+  },
+  {
+   "word": "possess",
+   "tier": "hard"
+  },
+  {
+   "word": "postage",
+   "tier": "hard"
+  },
+  {
+   "word": "posters",
+   "tier": "hard"
+  },
+  {
+   "word": "posting",
+   "tier": "hard"
+  },
+  {
+   "word": "pottery",
+   "tier": "hard"
+  },
+  {
+   "word": "poultry",
+   "tier": "hard"
+  },
+  {
+   "word": "poverty",
+   "tier": "hard"
+  },
+  {
+   "word": "powered",
+   "tier": "hard"
+  },
+  {
+   "word": "prairie",
+   "tier": "hard"
+  },
+  {
+   "word": "prayers",
+   "tier": "hard"
+  },
+  {
+   "word": "precise",
+   "tier": "hard"
+  },
+  {
+   "word": "predict",
+   "tier": "hard"
+  },
+  {
+   "word": "prefers",
+   "tier": "hard"
+  },
+  {
+   "word": "premier",
+   "tier": "hard"
+  },
+  {
+   "word": "premium",
+   "tier": "hard"
+  },
+  {
+   "word": "prepaid",
+   "tier": "hard"
+  },
+  {
+   "word": "prepare",
+   "tier": "hard"
+  },
+  {
+   "word": "present",
+   "tier": "hard"
+  },
+  {
+   "word": "pressed",
+   "tier": "hard"
+  },
+  {
+   "word": "prevent",
+   "tier": "hard"
+  },
+  {
+   "word": "preview",
+   "tier": "hard"
+  },
+  {
+   "word": "pricing",
+   "tier": "hard"
+  },
+  {
+   "word": "primary",
+   "tier": "hard"
+  },
+  {
+   "word": "printed",
+   "tier": "hard"
+  },
+  {
+   "word": "printer",
+   "tier": "hard"
+  },
+  {
+   "word": "privacy",
+   "tier": "hard"
+  },
+  {
+   "word": "private",
+   "tier": "hard"
+  },
+  {
+   "word": "problem",
+   "tier": "hard"
+  },
+  {
+   "word": "proceed",
+   "tier": "hard"
+  },
+  {
+   "word": "process",
+   "tier": "hard"
+  },
+  {
+   "word": "produce",
+   "tier": "hard"
+  },
+  {
+   "word": "product",
+   "tier": "hard"
+  },
+  {
+   "word": "profile",
+   "tier": "hard"
+  },
+  {
+   "word": "profits",
+   "tier": "hard"
+  },
+  {
+   "word": "program",
+   "tier": "hard"
+  },
+  {
+   "word": "project",
+   "tier": "hard"
+  },
+  {
+   "word": "promise",
+   "tier": "hard"
+  },
+  {
+   "word": "promote",
+   "tier": "hard"
+  },
+  {
+   "word": "prophet",
+   "tier": "hard"
+  },
+  {
+   "word": "propose",
+   "tier": "hard"
+  },
+  {
+   "word": "protect",
+   "tier": "hard"
+  },
+  {
+   "word": "protein",
+   "tier": "hard"
+  },
+  {
+   "word": "protest",
+   "tier": "hard"
+  },
+  {
+   "word": "proudly",
+   "tier": "hard"
+  },
+  {
+   "word": "provide",
+   "tier": "hard"
+  },
+  {
+   "word": "publish",
+   "tier": "hard"
+  },
+  {
+   "word": "pulling",
+   "tier": "hard"
+  },
+  {
+   "word": "purpose",
+   "tier": "hard"
+  },
+  {
+   "word": "pursuit",
+   "tier": "hard"
+  },
+  {
+   "word": "pushing",
+   "tier": "hard"
+  },
+  {
+   "word": "putting",
+   "tier": "hard"
+  },
+  {
+   "word": "puzzles",
+   "tier": "hard"
+  },
+  {
+   "word": "qualify",
+   "tier": "hard"
+  },
+  {
+   "word": "quality",
+   "tier": "hard"
+  },
+  {
+   "word": "quantum",
+   "tier": "hard"
+  },
+  {
+   "word": "quarter",
+   "tier": "hard"
+  },
+  {
+   "word": "queries",
+   "tier": "hard"
+  },
+  {
+   "word": "quickly",
+   "tier": "hard"
+  },
+  {
+   "word": "quizzes",
+   "tier": "hard"
+  },
+  {
+   "word": "radical",
+   "tier": "hard"
+  },
+  {
+   "word": "railway",
+   "tier": "hard"
+  },
+  {
+   "word": "rainbow",
+   "tier": "hard"
+  },
+  {
+   "word": "raising",
+   "tier": "hard"
+  },
+  {
+   "word": "rangers",
+   "tier": "hard"
+  },
+  {
+   "word": "ranging",
+   "tier": "hard"
+  },
+  {
+   "word": "ranking",
+   "tier": "hard"
+  },
+  {
+   "word": "rapidly",
+   "tier": "hard"
+  },
+  {
+   "word": "ratings",
+   "tier": "hard"
+  },
+  {
+   "word": "reached",
+   "tier": "hard"
+  },
+  {
+   "word": "reaches",
+   "tier": "hard"
+  },
+  {
+   "word": "readers",
+   "tier": "hard"
+  },
+  {
+   "word": "readily",
+   "tier": "hard"
+  },
+  {
+   "word": "reading",
+   "tier": "hard"
+  },
+  {
+   "word": "reality",
+   "tier": "hard"
+  },
+  {
+   "word": "realize",
+   "tier": "hard"
+  },
+  {
+   "word": "realtor",
+   "tier": "hard"
+  },
+  {
+   "word": "reasons",
+   "tier": "hard"
+  },
+  {
+   "word": "rebates",
+   "tier": "hard"
+  },
+  {
+   "word": "rebound",
+   "tier": "hard"
+  },
+  {
+   "word": "receipt",
+   "tier": "hard"
+  },
+  {
+   "word": "receive",
+   "tier": "hard"
+  },
+  {
+   "word": "recipes",
+   "tier": "hard"
+  },
+  {
+   "word": "records",
+   "tier": "hard"
+  },
+  {
+   "word": "recover",
+   "tier": "hard"
+  },
+  {
+   "word": "redhead",
+   "tier": "hard"
+  },
+  {
+   "word": "reduced",
+   "tier": "hard"
+  },
+  {
+   "word": "reduces",
+   "tier": "hard"
+  },
+  {
+   "word": "refined",
+   "tier": "hard"
+  },
+  {
+   "word": "reflect",
+   "tier": "hard"
+  },
+  {
+   "word": "reforms",
+   "tier": "hard"
+  },
+  {
+   "word": "refresh",
+   "tier": "hard"
+  },
+  {
+   "word": "refused",
+   "tier": "hard"
+  },
+  {
+   "word": "regards",
+   "tier": "hard"
+  },
+  {
+   "word": "regions",
+   "tier": "hard"
+  },
+  {
+   "word": "regular",
+   "tier": "hard"
+  },
+  {
+   "word": "related",
+   "tier": "hard"
+  },
+  {
+   "word": "relates",
+   "tier": "hard"
+  },
+  {
+   "word": "release",
+   "tier": "hard"
+  },
+  {
+   "word": "relying",
+   "tier": "hard"
+  },
+  {
+   "word": "remains",
+   "tier": "hard"
+  },
+  {
+   "word": "remarks",
+   "tier": "hard"
+  },
+  {
+   "word": "removal",
+   "tier": "hard"
+  },
+  {
+   "word": "removed",
+   "tier": "hard"
+  },
+  {
+   "word": "renewal",
+   "tier": "hard"
+  },
+  {
+   "word": "rentals",
+   "tier": "hard"
+  },
+  {
+   "word": "repairs",
+   "tier": "hard"
+  },
+  {
+   "word": "replace",
+   "tier": "hard"
+  },
+  {
+   "word": "replica",
+   "tier": "hard"
+  },
+  {
+   "word": "replied",
+   "tier": "hard"
+  },
+  {
+   "word": "replies",
+   "tier": "hard"
+  },
+  {
+   "word": "reports",
+   "tier": "hard"
+  },
+  {
+   "word": "reprint",
+   "tier": "hard"
+  },
+  {
+   "word": "request",
+   "tier": "hard"
+  },
+  {
+   "word": "require",
+   "tier": "hard"
+  },
+  {
+   "word": "reserve",
+   "tier": "hard"
+  },
+  {
+   "word": "resolve",
+   "tier": "hard"
+  },
+  {
+   "word": "resorts",
+   "tier": "hard"
+  },
+  {
+   "word": "respect",
+   "tier": "hard"
+  },
+  {
+   "word": "respond",
+   "tier": "hard"
+  },
+  {
+   "word": "restore",
+   "tier": "hard"
+  },
+  {
+   "word": "results",
+   "tier": "hard"
+  },
+  {
+   "word": "resumes",
+   "tier": "hard"
+  },
+  {
+   "word": "retired",
+   "tier": "hard"
+  },
+  {
+   "word": "retreat",
+   "tier": "hard"
+  },
+  {
+   "word": "returns",
+   "tier": "hard"
+  },
+  {
+   "word": "reunion",
+   "tier": "hard"
+  },
+  {
+   "word": "reveals",
+   "tier": "hard"
+  },
+  {
+   "word": "revenge",
+   "tier": "hard"
+  },
+  {
+   "word": "revenue",
+   "tier": "hard"
+  },
+  {
+   "word": "reverse",
+   "tier": "hard"
+  },
+  {
+   "word": "reviews",
+   "tier": "hard"
+  },
+  {
+   "word": "revised",
+   "tier": "hard"
+  },
+  {
+   "word": "rewards",
+   "tier": "hard"
+  },
+  {
+   "word": "rolling",
+   "tier": "hard"
+  },
+  {
+   "word": "romance",
+   "tier": "hard"
+  },
+  {
+   "word": "roughly",
+   "tier": "hard"
+  },
+  {
+   "word": "routers",
+   "tier": "hard"
+  },
+  {
+   "word": "routine",
+   "tier": "hard"
+  },
+  {
+   "word": "routing",
+   "tier": "hard"
+  },
+  {
+   "word": "royalty",
+   "tier": "hard"
+  },
+  {
+   "word": "running",
+   "tier": "hard"
+  },
+  {
+   "word": "runtime",
+   "tier": "hard"
+  },
+  {
+   "word": "sailing",
+   "tier": "hard"
+  },
+  {
+   "word": "samples",
+   "tier": "hard"
+  },
+  {
+   "word": "satisfy",
+   "tier": "hard"
+  },
+  {
+   "word": "savings",
+   "tier": "hard"
+  },
+  {
+   "word": "scanned",
+   "tier": "hard"
+  },
+  {
+   "word": "scanner",
+   "tier": "hard"
+  },
+  {
+   "word": "schemes",
+   "tier": "hard"
+  },
+  {
+   "word": "scholar",
+   "tier": "hard"
+  },
+  {
+   "word": "schools",
+   "tier": "hard"
+  },
+  {
+   "word": "science",
+   "tier": "hard"
+  },
+  {
+   "word": "scoring",
+   "tier": "hard"
+  },
+  {
+   "word": "scratch",
+   "tier": "hard"
+  },
+  {
+   "word": "screens",
+   "tier": "hard"
+  },
+  {
+   "word": "scripts",
+   "tier": "hard"
+  },
+  {
+   "word": "seafood",
+   "tier": "hard"
+  },
+  {
+   "word": "seasons",
+   "tier": "hard"
+  },
+  {
+   "word": "seating",
+   "tier": "hard"
+  },
+  {
+   "word": "seconds",
+   "tier": "hard"
+  },
+  {
+   "word": "secrets",
+   "tier": "hard"
+  },
+  {
+   "word": "section",
+   "tier": "hard"
+  },
+  {
+   "word": "sectors",
+   "tier": "hard"
+  },
+  {
+   "word": "secured",
+   "tier": "hard"
+  },
+  {
+   "word": "seekers",
+   "tier": "hard"
+  },
+  {
+   "word": "seeking",
+   "tier": "hard"
+  },
+  {
+   "word": "segment",
+   "tier": "hard"
+  },
+  {
+   "word": "sellers",
+   "tier": "hard"
+  },
+  {
+   "word": "selling",
+   "tier": "hard"
+  },
+  {
+   "word": "seminar",
+   "tier": "hard"
+  },
+  {
+   "word": "senator",
+   "tier": "hard"
+  },
+  {
+   "word": "sending",
+   "tier": "hard"
+  },
+  {
+   "word": "seniors",
+   "tier": "hard"
+  },
+  {
+   "word": "sensors",
+   "tier": "hard"
+  },
+  {
+   "word": "serious",
+   "tier": "hard"
+  },
+  {
+   "word": "servers",
+   "tier": "hard"
+  },
+  {
+   "word": "service",
+   "tier": "hard"
+  },
+  {
+   "word": "serving",
+   "tier": "hard"
+  },
+  {
+   "word": "session",
+   "tier": "hard"
+  },
+  {
+   "word": "setting",
+   "tier": "hard"
+  },
+  {
+   "word": "settled",
+   "tier": "hard"
+  },
+  {
+   "word": "seventh",
+   "tier": "hard"
+  },
+  {
+   "word": "several",
+   "tier": "hard"
+  },
+  {
+   "word": "shadows",
+   "tier": "hard"
+  },
+  {
+   "word": "sharing",
+   "tier": "hard"
+  },
+  {
+   "word": "shelter",
+   "tier": "hard"
+  },
+  {
+   "word": "sheriff",
+   "tier": "hard"
+  },
+  {
+   "word": "shipped",
+   "tier": "hard"
+  },
+  {
+   "word": "shopper",
+   "tier": "hard"
+  },
+  {
+   "word": "shorter",
+   "tier": "hard"
+  },
+  {
+   "word": "shortly",
+   "tier": "hard"
+  },
+  {
+   "word": "showers",
+   "tier": "hard"
+  },
+  {
+   "word": "showing",
+   "tier": "hard"
+  },
+  {
+   "word": "shuttle",
+   "tier": "hard"
+  },
+  {
+   "word": "signals",
+   "tier": "hard"
+  },
+  {
+   "word": "signing",
+   "tier": "hard"
+  },
+  {
+   "word": "silence",
+   "tier": "hard"
+  },
+  {
+   "word": "silicon",
+   "tier": "hard"
+  },
+  {
+   "word": "similar",
+   "tier": "hard"
+  },
+  {
+   "word": "singing",
+   "tier": "hard"
+  },
+  {
+   "word": "singles",
+   "tier": "hard"
+  },
+  {
+   "word": "sisters",
+   "tier": "hard"
+  },
+  {
+   "word": "sitting",
+   "tier": "hard"
+  },
+  {
+   "word": "skating",
+   "tier": "hard"
+  },
+  {
+   "word": "skilled",
+   "tier": "hard"
+  },
+  {
+   "word": "smaller",
+   "tier": "hard"
+  },
+  {
+   "word": "smoking",
+   "tier": "hard"
+  },
+  {
+   "word": "society",
+   "tier": "hard"
+  },
+  {
+   "word": "soldier",
+   "tier": "hard"
+  },
+  {
+   "word": "solving",
+   "tier": "hard"
+  },
+  {
+   "word": "somehow",
+   "tier": "hard"
+  },
+  {
+   "word": "someone",
+   "tier": "hard"
+  },
+  {
+   "word": "soonest",
+   "tier": "hard"
+  },
+  {
+   "word": "sources",
+   "tier": "hard"
+  },
+  {
+   "word": "spatial",
+   "tier": "hard"
+  },
+  {
+   "word": "speaker",
+   "tier": "hard"
+  },
+  {
+   "word": "special",
+   "tier": "hard"
+  },
+  {
+   "word": "species",
+   "tier": "hard"
+  },
+  {
+   "word": "specify",
+   "tier": "hard"
+  },
+  {
+   "word": "spirits",
+   "tier": "hard"
+  },
+  {
+   "word": "sponsor",
+   "tier": "hard"
+  },
+  {
+   "word": "springs",
+   "tier": "hard"
+  },
+  {
+   "word": "stadium",
+   "tier": "hard"
+  },
+  {
+   "word": "started",
+   "tier": "hard"
+  },
+  {
+   "word": "starter",
+   "tier": "hard"
+  },
+  {
+   "word": "startup",
+   "tier": "hard"
+  },
+  {
+   "word": "stating",
+   "tier": "hard"
+  },
+  {
+   "word": "station",
+   "tier": "hard"
+  },
+  {
+   "word": "statute",
+   "tier": "hard"
+  },
+  {
+   "word": "staying",
+   "tier": "hard"
+  },
+  {
+   "word": "sticker",
+   "tier": "hard"
+  },
+  {
+   "word": "stomach",
+   "tier": "hard"
+  },
+  {
+   "word": "stopped",
+   "tier": "hard"
+  },
+  {
+   "word": "storage",
+   "tier": "hard"
+  },
+  {
+   "word": "stories",
+   "tier": "hard"
+  },
+  {
+   "word": "strange",
+   "tier": "hard"
+  },
+  {
+   "word": "streams",
+   "tier": "hard"
+  },
+  {
+   "word": "streets",
+   "tier": "hard"
+  },
+  {
+   "word": "stretch",
+   "tier": "hard"
+  },
+  {
+   "word": "strikes",
+   "tier": "hard"
+  },
+  {
+   "word": "strings",
+   "tier": "hard"
+  },
+  {
+   "word": "stripes",
+   "tier": "hard"
+  },
+  {
+   "word": "student",
+   "tier": "hard"
+  },
+  {
+   "word": "studied",
+   "tier": "hard"
+  },
+  {
+   "word": "studies",
+   "tier": "hard"
+  },
+  {
+   "word": "studios",
+   "tier": "hard"
+  },
+  {
+   "word": "stuffed",
+   "tier": "hard"
+  },
+  {
+   "word": "stylish",
+   "tier": "hard"
+  },
+  {
+   "word": "subject",
+   "tier": "hard"
+  },
+  {
+   "word": "sublime",
+   "tier": "hard"
+  },
+  {
+   "word": "succeed",
+   "tier": "hard"
+  },
+  {
+   "word": "success",
+   "tier": "hard"
+  },
+  {
+   "word": "sucking",
+   "tier": "hard"
+  },
+  {
+   "word": "suggest",
+   "tier": "hard"
+  },
+  {
+   "word": "suicide",
+   "tier": "hard"
+  },
+  {
+   "word": "summary",
+   "tier": "hard"
+  },
+  {
+   "word": "sunrise",
+   "tier": "hard"
+  },
+  {
+   "word": "support",
+   "tier": "hard"
+  },
+  {
+   "word": "suppose",
+   "tier": "hard"
+  },
+  {
+   "word": "supreme",
+   "tier": "hard"
+  },
+  {
+   "word": "surface",
+   "tier": "hard"
+  },
+  {
+   "word": "surfing",
+   "tier": "hard"
+  },
+  {
+   "word": "surgeon",
+   "tier": "hard"
+  },
+  {
+   "word": "surgery",
+   "tier": "hard"
+  },
+  {
+   "word": "surname",
+   "tier": "hard"
+  },
+  {
+   "word": "surplus",
+   "tier": "hard"
+  },
+  {
+   "word": "surveys",
+   "tier": "hard"
+  },
+  {
+   "word": "survive",
+   "tier": "hard"
+  },
+  {
+   "word": "suspect",
+   "tier": "hard"
+  },
+  {
+   "word": "symbols",
+   "tier": "hard"
+  },
+  {
+   "word": "systems",
+   "tier": "hard"
+  },
+  {
+   "word": "tablets",
+   "tier": "hard"
+  },
+  {
+   "word": "tactics",
+   "tier": "hard"
+  },
+  {
+   "word": "talking",
+   "tier": "hard"
+  },
+  {
+   "word": "targets",
+   "tier": "hard"
+  },
+  {
+   "word": "teacher",
+   "tier": "hard"
+  },
+  {
+   "word": "teaches",
+   "tier": "hard"
+  },
+  {
+   "word": "teenage",
+   "tier": "hard"
+  },
+  {
+   "word": "telling",
+   "tier": "hard"
+  },
+  {
+   "word": "tension",
+   "tier": "hard"
+  },
+  {
+   "word": "terrace",
+   "tier": "hard"
+  },
+  {
+   "word": "terrain",
+   "tier": "hard"
+  },
+  {
+   "word": "testing",
+   "tier": "hard"
+  },
+  {
+   "word": "textile",
+   "tier": "hard"
+  },
+  {
+   "word": "texture",
+   "tier": "hard"
+  },
+  {
+   "word": "theater",
+   "tier": "hard"
+  },
+  {
+   "word": "theatre",
+   "tier": "hard"
+  },
+  {
+   "word": "theorem",
+   "tier": "hard"
+  },
+  {
+   "word": "therapy",
+   "tier": "hard"
+  },
+  {
+   "word": "thereby",
+   "tier": "hard"
+  },
+  {
+   "word": "thereof",
+   "tier": "hard"
+  },
+  {
+   "word": "thermal",
+   "tier": "hard"
+  },
+  {
+   "word": "thought",
+   "tier": "hard"
+  },
+  {
+   "word": "threads",
+   "tier": "hard"
+  },
+  {
+   "word": "threats",
+   "tier": "hard"
+  },
+  {
+   "word": "through",
+   "tier": "hard"
+  },
+  {
+   "word": "thunder",
+   "tier": "hard"
+  },
+  {
+   "word": "tickets",
+   "tier": "hard"
+  },
+  {
+   "word": "tobacco",
+   "tier": "hard"
+  },
+  {
+   "word": "toddler",
+   "tier": "hard"
+  },
+  {
+   "word": "tonight",
+   "tier": "hard"
+  },
+  {
+   "word": "toolbox",
+   "tier": "hard"
+  },
+  {
+   "word": "toolkit",
+   "tier": "hard"
+  },
+  {
+   "word": "torture",
+   "tier": "hard"
+  },
+  {
+   "word": "totally",
+   "tier": "hard"
+  },
+  {
+   "word": "touched",
+   "tier": "hard"
+  },
+  {
+   "word": "touring",
+   "tier": "hard"
+  },
+  {
+   "word": "tourism",
+   "tier": "hard"
+  },
+  {
+   "word": "tourist",
+   "tier": "hard"
+  },
+  {
+   "word": "towards",
+   "tier": "hard"
+  },
+  {
+   "word": "tracked",
+   "tier": "hard"
+  },
+  {
+   "word": "tracker",
+   "tier": "hard"
+  },
+  {
+   "word": "tractor",
+   "tier": "hard"
+  },
+  {
+   "word": "trading",
+   "tier": "hard"
+  },
+  {
+   "word": "traffic",
+   "tier": "hard"
+  },
+  {
+   "word": "tragedy",
+   "tier": "hard"
+  },
+  {
+   "word": "trailer",
+   "tier": "hard"
+  },
+  {
+   "word": "trained",
+   "tier": "hard"
+  },
+  {
+   "word": "trainer",
+   "tier": "hard"
+  },
+  {
+   "word": "transit",
+   "tier": "hard"
+  },
+  {
+   "word": "travels",
+   "tier": "hard"
+  },
+  {
+   "word": "treated",
+   "tier": "hard"
+  },
+  {
+   "word": "tribune",
+   "tier": "hard"
+  },
+  {
+   "word": "tribute",
+   "tier": "hard"
+  },
+  {
+   "word": "trigger",
+   "tier": "hard"
+  },
+  {
+   "word": "triumph",
+   "tier": "hard"
+  },
+  {
+   "word": "trouble",
+   "tier": "hard"
+  },
+  {
+   "word": "trusted",
+   "tier": "hard"
+  },
+  {
+   "word": "trustee",
+   "tier": "hard"
+  },
+  {
+   "word": "tsunami",
+   "tier": "hard"
+  },
+  {
+   "word": "tuition",
+   "tier": "hard"
+  },
+  {
+   "word": "turning",
+   "tier": "hard"
+  },
+  {
+   "word": "twisted",
+   "tier": "hard"
+  },
+  {
+   "word": "typical",
+   "tier": "hard"
+  },
+  {
+   "word": "unified",
+   "tier": "hard"
+  },
+  {
+   "word": "uniform",
+   "tier": "hard"
+  },
+  {
+   "word": "unknown",
+   "tier": "hard"
+  },
+  {
+   "word": "unusual",
+   "tier": "hard"
+  },
+  {
+   "word": "updated",
+   "tier": "hard"
+  },
+  {
+   "word": "updates",
+   "tier": "hard"
+  },
+  {
+   "word": "upgrade",
+   "tier": "hard"
+  },
+  {
+   "word": "usually",
+   "tier": "hard"
+  },
+  {
+   "word": "utility",
+   "tier": "hard"
+  },
+  {
+   "word": "utilize",
+   "tier": "hard"
+  },
+  {
+   "word": "vaccine",
+   "tier": "hard"
+  },
+  {
+   "word": "vampire",
+   "tier": "hard"
+  },
+  {
+   "word": "vanilla",
+   "tier": "hard"
+  },
+  {
+   "word": "variety",
+   "tier": "hard"
+  },
+  {
+   "word": "various",
+   "tier": "hard"
+  },
+  {
+   "word": "varying",
+   "tier": "hard"
+  },
+  {
+   "word": "vehicle",
+   "tier": "hard"
+  },
+  {
+   "word": "vendors",
+   "tier": "hard"
+  },
+  {
+   "word": "venture",
+   "tier": "hard"
+  },
+  {
+   "word": "version",
+   "tier": "hard"
+  },
+  {
+   "word": "vessels",
+   "tier": "hard"
+  },
+  {
+   "word": "veteran",
+   "tier": "hard"
+  },
+  {
+   "word": "victims",
+   "tier": "hard"
+  },
+  {
+   "word": "victory",
+   "tier": "hard"
+  },
+  {
+   "word": "viewers",
+   "tier": "hard"
+  },
+  {
+   "word": "viewing",
+   "tier": "hard"
+  },
+  {
+   "word": "village",
+   "tier": "hard"
+  },
+  {
+   "word": "vintage",
+   "tier": "hard"
+  },
+  {
+   "word": "violent",
+   "tier": "hard"
+  },
+  {
+   "word": "virtual",
+   "tier": "hard"
+  },
+  {
+   "word": "viruses",
+   "tier": "hard"
+  },
+  {
+   "word": "visible",
+   "tier": "hard"
+  },
+  {
+   "word": "visited",
+   "tier": "hard"
+  },
+  {
+   "word": "visitor",
+   "tier": "hard"
+  },
+  {
+   "word": "vitamin",
+   "tier": "hard"
+  },
+  {
+   "word": "voltage",
+   "tier": "hard"
+  },
+  {
+   "word": "volumes",
+   "tier": "hard"
+  },
+  {
+   "word": "waiting",
+   "tier": "hard"
+  },
+  {
+   "word": "walking",
+   "tier": "hard"
+  },
+  {
+   "word": "wanting",
+   "tier": "hard"
+  },
+  {
+   "word": "warming",
+   "tier": "hard"
+  },
+  {
+   "word": "warning",
+   "tier": "hard"
+  },
+  {
+   "word": "warrant",
+   "tier": "hard"
+  },
+  {
+   "word": "warrior",
+   "tier": "hard"
+  },
+  {
+   "word": "washing",
+   "tier": "hard"
+  },
+  {
+   "word": "watched",
+   "tier": "hard"
+  },
+  {
+   "word": "watches",
+   "tier": "hard"
+  },
+  {
+   "word": "weapons",
+   "tier": "hard"
+  },
+  {
+   "word": "wearing",
+   "tier": "hard"
+  },
+  {
+   "word": "weather",
+   "tier": "hard"
+  },
+  {
+   "word": "wedding",
+   "tier": "hard"
+  },
+  {
+   "word": "weekend",
+   "tier": "hard"
+  },
+  {
+   "word": "weights",
+   "tier": "hard"
+  },
+  {
+   "word": "welcome",
+   "tier": "hard"
+  },
+  {
+   "word": "welding",
+   "tier": "hard"
+  },
+  {
+   "word": "welfare",
+   "tier": "hard"
+  },
+  {
+   "word": "western",
+   "tier": "hard"
+  },
+  {
+   "word": "whereas",
+   "tier": "hard"
+  },
+  {
+   "word": "whether",
+   "tier": "hard"
+  },
+  {
+   "word": "willing",
+   "tier": "hard"
+  },
+  {
+   "word": "windows",
+   "tier": "hard"
+  },
+  {
+   "word": "winners",
+   "tier": "hard"
+  },
+  {
+   "word": "winning",
+   "tier": "hard"
+  },
+  {
+   "word": "wishing",
+   "tier": "hard"
+  },
+  {
+   "word": "without",
+   "tier": "hard"
+  },
+  {
+   "word": "witness",
+   "tier": "hard"
+  },
+  {
+   "word": "workers",
+   "tier": "hard"
+  },
+  {
+   "word": "working",
+   "tier": "hard"
+  },
+  {
+   "word": "workout",
+   "tier": "hard"
+  },
+  {
+   "word": "worried",
+   "tier": "hard"
+  },
+  {
+   "word": "worship",
+   "tier": "hard"
+  },
+  {
+   "word": "wrapped",
+   "tier": "hard"
+  },
+  {
+   "word": "writers",
+   "tier": "hard"
+  },
+  {
+   "word": "writing",
+   "tier": "hard"
+  },
+  {
+   "word": "written",
+   "tier": "hard"
+  },
+  {
+   "word": "younger",
+   "tier": "hard"
+  }
+ ]
+}
