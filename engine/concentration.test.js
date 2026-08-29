@@ -32,7 +32,7 @@ test('concentration: exports the documented defaults', () => {
   assert.equal(REGISTRATION_MS, 60_000)
   assert.equal(MIN_PLAYERS, 2)
   assert.equal(TURN_CLOCK_SECONDS, 15)
-  assert.equal(START_DELAY_MS, 10_000)
+  assert.equal(START_DELAY_MS, 5_000)
 })
 
 test('concentration: rejects a bank with zero categories', () => {
@@ -77,7 +77,7 @@ test('concentration: the registration timer enters a starting phase once minPlay
   assert.equal(startEvents.length, 1)
   assert.equal(startEvents[0].type, 'concentration_start')
   assert.deepEqual(startEvents[0].players.sort(), ['p1', 'p2', 'p3'])
-  assert.equal(startEvents[0].seconds, 10)
+  assert.equal(startEvents[0].seconds, 5)
   assert.equal(game.state, 'starting')
 
   assert.deepEqual(game.tick(60_000 + START_DELAY_MS - 1), [])
@@ -163,16 +163,24 @@ test('concentration: an alias scores the same as the canonical name', () => {
   assert.equal(events[0].answer, 'Bayern Munich')
 })
 
-test('concentration: a wrong answer eliminates the player and switches category', () => {
+test('concentration: a wrong answer eliminates the player, then the new category arrives only after the pause', () => {
   const game = started()
-  const events = game.submit('p1', 'Purple', START_DELAY_MS + 100) // not in Primary colors
+  const at = START_DELAY_MS + 100
+  const events = game.submit('p1', 'Purple', at) // not in Primary colors
+
+  // The elimination lands alone — no category/turn in the same batch.
+  assert.equal(events.length, 1)
   assert.equal(events[0].type, 'concentration_eliminated')
   assert.equal(events[0].player, 'p1')
   assert.equal(events[0].reason, 'wrong')
   assert.equal(events[0].answer, 'Purple')
-  assert.equal(events[1].type, 'concentration_category_switch')
-  assert.equal(events[1].reason, 'elimination')
-  const turn = events.find((e) => e.type === 'concentration_turn')
+
+  assert.deepEqual(game.tick(at + START_DELAY_MS - 1), [], 'nothing before the pause elapses')
+
+  const resumed = game.tick(at + START_DELAY_MS)
+  assert.equal(resumed[0].type, 'concentration_category_switch')
+  assert.equal(resumed[0].reason, 'elimination')
+  const turn = resumed.find((e) => e.type === 'concentration_turn')
   assert.equal(turn.alive, 2)
 })
 
@@ -206,19 +214,21 @@ test('concentration: a submission arriving after the deadline is ignored (tick i
 test('concentration: pool-low proactively switches category before players run out of unused items', () => {
   // 'Primary colors' has exactly 3 items; with 3 alive players, after 1 accepted
   // answer only 2 remain (< 3 alive) — must switch before the pool is exhausted.
-  const game = newGame({ bank: {
-    size: () => 2,
-    pickCategory: (() => {
-      const cats = [
-        { id: 'small', category: 'Primary colors', items: ['Red', 'Blue', 'Yellow'] },
-        { id: 'big', category: 'Football clubs in Germany', items: ['Bayern Munich', 'Borussia Dortmund', 'RB Leipzig', 'Bayer Leverkusen'] },
-      ]
-      return ({ exclude }) => {
-        const available = cats.filter((c) => !exclude.has(c.id))
-        return available[0] ?? null
-      }
-    })(),
-  }})
+  const game = newGame({
+    bank: {
+      size: () => 2,
+      pickCategory: (() => {
+        const cats = [
+          { id: 'small', category: 'Primary colors', items: ['Red', 'Blue', 'Yellow'] },
+          { id: 'big', category: 'Football clubs in Germany', items: ['Bayern Munich', 'Borussia Dortmund', 'RB Leipzig', 'Bayer Leverkusen'] },
+        ]
+        return ({ exclude }) => {
+          const available = cats.filter((c) => !exclude.has(c.id))
+          return available[0] ?? null
+        }
+      })(),
+    }
+  })
   game.tick(0)
   game.join('p1', 0); game.join('p2', 0); game.join('p3', 0)
   game.begin(0)
@@ -263,12 +273,19 @@ test('concentration: end() during the starting phase terminates before any categ
 
 test('concentration: the game ends when only one player remains, standings winner-first then reverse elimination order', () => {
   const game = started(['p1', 'p2', 'p3'])
+
+  // p1's turn times out -> eliminated, then the post-elimination pause runs.
   const t1 = START_DELAY_MS + TURN_CLOCK_SECONDS * 1000
-  const r1 = game.tick(t1) // p1's turn times out -> eliminated, category switches, p2's turn (fresh 15s clock from t1)
+  const r1 = game.tick(t1)
   assert.equal(r1[0].player, 'p1')
-  const t2 = t1 + TURN_CLOCK_SECONDS * 1000
-  const r2 = game.tick(t2) // p2's turn times out -> only p3 left -> game over
-  const overEvent = r2.find((e) => e.type === 'concentration_over')
+
+  // Pause elapses -> new category + p2's turn (fresh 15s clock from here).
+  const t2 = t1 + START_DELAY_MS
+  game.tick(t2)
+
+  // p2 times out -> only p3 left -> game over immediately, no pause needed.
+  const r3 = game.tick(t2 + TURN_CLOCK_SECONDS * 1000)
+  const overEvent = r3.find((e) => e.type === 'concentration_over')
   assert.ok(overEvent, 'expected concentration_over once one player remains')
   assert.equal(overEvent.winner, 'p3')
   assert.deepEqual(overEvent.standings, [{ player: 'p3' }, { player: 'p2' }, { player: 'p1' }])

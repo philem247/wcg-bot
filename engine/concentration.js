@@ -19,7 +19,7 @@ import { fold } from './normalize.js'
 export const REGISTRATION_MS = 60_000
 export const MIN_PLAYERS = 2
 export const TURN_CLOCK_SECONDS = 15
-export const START_DELAY_MS = 10_000
+export const START_DELAY_MS = 5_000
 
 function sanitize(s) {
   return fold(String(s ?? '')).replace(/[^a-z0-9]/g, '')
@@ -57,6 +57,7 @@ export function createConcentrationGame({
   const players = []
   const registrationDeadline = now + registrationMs
   let startDeadline = 0
+  let pendingSwitchReason = 'start' // which reason the deferred category reveal carries
 
   let order = []
   let active = []
@@ -123,8 +124,12 @@ export function createConcentrationGame({
     }
 
     turnIndex = turnIndex % active.length
-    events.push(switchCategory('elimination'))
-    events.push(makeTurnEvent(at))
+    // Same deferred-reveal pause as the game's opening: the elimination message
+    // lands alone, then the next category arrives startDelayMs later, so players
+    // get a beat to react instead of the whole batch hitting at once.
+    state = 'starting'
+    startDeadline = at + startDelayMs
+    pendingSwitchReason = 'elimination'
   }
 
   // Heads-up: announce the roster now, then wait startDelayMs before the
@@ -138,12 +143,13 @@ export function createConcentrationGame({
     round = 0
     state = 'starting'
     startDeadline = at + startDelayMs
+    pendingSwitchReason = 'start'
     events.push({ type: 'concentration_start', players: order.slice(), seconds: Math.round(startDelayMs / 1000) })
   }
 
-  function revealFirstCategory(at, events) {
+  function revealNextCategory(at, events) {
     state = 'playing'
-    events.push(switchCategory('start'))
+    events.push(switchCategory(pendingSwitchReason))
     events.push(makeTurnEvent(at))
   }
 
@@ -222,7 +228,7 @@ export function createConcentrationGame({
 
       if (state === 'starting') {
         if (at < startDeadline) return events
-        revealFirstCategory(at, events)
+        revealNextCategory(at, events)
         return events
       }
 
