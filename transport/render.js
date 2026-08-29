@@ -250,6 +250,61 @@ export function render(event) {
     case 'flag_terminated':
       return { text: `Guess the Flag stopped.`, mentions: [] }
 
+    case 'concentration_registration_open':
+      return {
+        text: `🃏 *CONCENTRATION* is starting!\nType *join* to play — need ${event.minPlayers}+ players.\n⏳ ${event.seconds}s to join.`,
+        mentions: [],
+      }
+
+    case 'concentration_joined':
+      return { text: `${mention(event.player)} joined 👏 (${event.count} joined)`, mentions: [event.player] }
+
+    case 'concentration_begin_denied': {
+      const text = event.reason === 'not_enough_players'
+        ? `Need at least ${event.needed} players to start (only ${event.count} joined).`
+        : `Concentration isn't in its join phase right now.`
+      return { text, mentions: [] }
+    }
+
+    case 'concentration_cancelled':
+      return { text: `_Not enough players to start Concentration (${event.count} joined, need ${event.needed}+). Game cancelled._`, mentions: [] }
+
+    case 'concentration_start':
+      return null
+
+    case 'concentration_category_switch': {
+      const label = event.reason === 'start' ? '🃏 Category:' : '🔄 New category:'
+      return { text: `${label} *${event.category}*`, mentions: [] }
+    }
+
+    case 'concentration_turn':
+      return {
+        text: `👉 Turn: ${mention(event.player)}\n🏆 Players left: ${event.alive}/${event.total}\n⏳ You have *${event.clockSeconds}* seconds`,
+        mentions: [event.player],
+      }
+
+    case 'concentration_accepted':
+      return null
+
+    case 'concentration_eliminated': {
+      const CONCENTRATION_ELIMINATION_TEXT = {
+        wrong: (e) => `❌ ${mention(e.player)} said "${e.answer}" — not valid. You're out! 🚫`,
+        duplicate: (e) => `♻️ ${mention(e.player)} repeated "${e.answer}" — already said! You're out! 🚫`,
+        timeout: (e) => `⏰ ${mention(e.player)} ran out of time! You're out! 🚫`,
+      }
+      const fn = CONCENTRATION_ELIMINATION_TEXT[event.reason]
+      return { text: fn ? fn(event) : `${mention(event.player)} is out! 🚫`, mentions: [event.player] }
+    }
+
+    case 'concentration_over': {
+      const lines = [`🏆 ${mention(event.winner)} wins Concentration!`, ``]
+      event.standings.forEach((s, i) => lines.push(`${MEDALS[i] ?? '　'} ${mention(s.player)}`))
+      return { text: lines.join('\n'), mentions: event.standings.map((s) => s.player) }
+    }
+
+    case 'concentration_terminated':
+      return { text: `Concentration stopped.`, mentions: [] }
+
     case 'riddle_start': {
       return {
         text: `🧩 *RIDDLE QUEST* (Round ${event.round}/${event.totalRounds})\n───────────────────\n❓ _"${event.riddle}"_\n\n⏳ *Time:* 20s`,

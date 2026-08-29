@@ -8,7 +8,8 @@ import { createScrambleGame, SCRAMBLE_COUNT } from '../engine/scramble.js'
 import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
 import { createFlagGame, FLAG_COUNT, CLOCK_SECONDS as FLAG_CLOCK_SECONDS } from '../engine/flag.js'
 import { createRiddleGame, RIDDLE_COUNT } from '../engine/riddle.js'
-import { loadRiddleBank, loadFlagBank, loadWordleBank } from '../engine/bank.js'
+import { createConcentrationGame, MIN_PLAYERS as CONCENTRATION_MIN_PLAYERS } from '../engine/concentration.js'
+import { loadRiddleBank, loadFlagBank, loadWordleBank, loadCategoryBank } from '../engine/bank.js'
 import { createTournament } from '../engine/tournament.js'
 import { createWordleTournament } from '../engine/wordleTournament.js'
 import { fold, isWord } from '../engine/normalize.js'
@@ -35,7 +36,7 @@ const MODE_NAMES = new Set(['easy', 'medium', 'hard'])
 // Commands a banned player cannot use. Keep every playable mode listed here —
 // a mode missing from this set is a mode a banned player can still start.
 const GAME_COMMANDS = new Set([
-  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney', 'wordle',
+  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney', 'wordle', 'concentration',
 ])
 
 // rejected events (engine/game.js) don't carry the required letter/minLength, only
@@ -96,6 +97,16 @@ const KIND_BY_EVENT = {
   riddle_timeout: 'result',
   riddle_game_over: 'result',
   riddle_terminated: 'result',
+  concentration_registration_open: 'lobby',
+  concentration_joined: 'lobby',
+  concentration_start: 'lobby',
+  concentration_category_switch: 'turn',
+  concentration_turn: 'turn',
+  concentration_eliminated: 'result',
+  concentration_over: 'result',
+  concentration_cancelled: 'result',
+  concentration_terminated: 'result',
+  concentration_begin_denied: 'misc',
 }
 
 // Ordering (ramp->turn, accepted->turn, eliminated->winner, ...) carries meaning,
@@ -298,6 +309,32 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'riddle_terminated') {
       gameMeta.delete(jid)
+    } else if (event.type === 'concentration_over') {
+      const meta = gameMeta.get(jid)
+      const pnMap = meta?.pnMap || new Map()
+      const results = event.standings.map((s, i) => ({
+        player: s.player, placement: i + 1, player_pn: pnMap.get(s.player),
+      }))
+      if (results.length > 0) {
+        try {
+          db?.recordGame({
+            jid, mode: 'mixed', type: 'concentration',
+            startedAt: meta?.startedAt ?? now, endedAt: now,
+            words: event.standings.length, results,
+          })
+        } catch (e) {
+          // store failure must never break gameplay
+        }
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'concentration_cancelled' || event.type === 'concentration_terminated') {
+      gameMeta.delete(jid)
+    } else if (event.type === 'concentration_category_switch') {
+      try {
+        db?.markAskedCategory(jid, event.id, now)
+      } catch (e) {
+        // store failure must never break gameplay
+      }
     } else if (event.type === 'tournament_champion') {
       // Tournament wins are a SEPARATE table from trivia/chain results — never
       // touches `results`/leaderboard(). Keyed on the winner's FULL JID (via
@@ -394,6 +431,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   const riddleBank = loadRiddleBank()
   const flagBank = loadFlagBank()
   const wordleBank = loadWordleBank()
+  const categoryBank = loadCategoryBank()
   // Engine games don't expose who started them; track it here, mirroring `games`.
   // ponytail: scheduler-driven deletions (timeout/lobby-fail) don't clean this map,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
@@ -930,6 +968,41 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     sendEvents(enqueue, jid, game.join(sender, now), undefined, now, db)
   }
 
+  async function startConcentrationGame(jid, sender, senderPn, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. Use ${PREFIX}concentration end to stop it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (categoryBank.size() === 0) {
+      enqueue(jid, { text: `Concentration is currently unavailable — no category data found.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    let exclude
+    try {
+      exclude = db?.askedCategoryIds(jid) ?? new Set()
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed loading asked categories')
+      exclude = new Set()
+    }
+    if (exclude.size >= categoryBank.size()) {
+      try { db?.clearAskedCategories(jid) } catch (e) { /* best-effort */ }
+      exclude = new Set()
+    }
+
+    const game = createConcentrationGame({ now, random: Math.random, bank: categoryBank, exclude })
+    games.set(jid, game)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'concentration')
+    gameMeta.set(jid, { type: 'concentration', startedAt: now, pnMap: new Map() })
+    if (senderPn) gameMeta.get(jid).pnMap.set(sender, senderPn)
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+    sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
+  }
 
   async function startRiddleGame(jid, sender, senderPn, now, isGroup) {
     if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
@@ -1025,6 +1098,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}flag start`,
         `▸ ${PREFIX}flag end`,
         ``,
+        `*🃏 CONCENTRATION* _(start: admins only)_`,
+        `▸ ${PREFIX}concentration start`,
+        `▸ ${PREFIX}concentration begin`,
+        `▸ ${PREFIX}concentration end`,
+        ``,
         `*🧩 RIDDLE QUEST* _(start: admins only)_`,
         `▸ ${PREFIX}riddle`,
         `▸ ${PREFIX}riddle end`,
@@ -1044,6 +1122,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}scramble stats [all]`,
         `▸ ${PREFIX}logo stats [all]`,
         `▸ ${PREFIX}flag stats [all]`,
+        `▸ ${PREFIX}concentration stats [all]`,
         `▸ ${PREFIX}riddle stats [all]`,
       ]
 
@@ -1345,6 +1424,59 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
 
       await startFlagGame(jid, sender, senderPn, now, isGroup)
+      return
+    }
+
+    if (cmd === 'concentration') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'stats') {
+        const all = args[1] === 'all'
+        const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'concentration' })
+        const { text, mentions } = formatLeaderboard(board, all ? '🏆 Concentration — all-time' : '🏆 Concentration — this week')
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'status') {
+        const game = games.get(jid)
+        if (!game || gameTypes.get(jid) !== 'concentration') {
+          enqueue(jid, { text: `No Concentration game running here.`, mentions: [], kind: 'misc' })
+          return
+        }
+        const status = game.state === 'registering'
+          ? `still open for joining (${game.playerCount} joined, need ${CONCENTRATION_MIN_PLAYERS}+)`
+          : 'in progress'
+        enqueue(jid, { text: `Concentration is ${status}.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end') {
+        await endGame(jid, sender, senderPn, isGroup, now, 'concentration')
+        return
+      }
+
+      if (sub === 'begin') {
+        if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+          enqueue(jid, { text: `Only a group admin can start the round early.`, mentions: [], kind: 'misc' })
+          return
+        }
+        const game = games.get(jid)
+        if (!game || gameTypes.get(jid) !== 'concentration') {
+          enqueue(jid, { text: `No Concentration lobby running here. ${PREFIX}concentration start to open one.`, mentions: [], kind: 'misc' })
+          return
+        }
+        sendEvents(enqueue, jid, game.begin(now), undefined, now, db)
+        if (game.state === 'over') { games.delete(jid); starters.delete(jid); gameTypes.delete(jid) }
+        return
+      }
+
+      await startConcentrationGame(jid, sender, senderPn, now, isGroup)
       return
     }
 

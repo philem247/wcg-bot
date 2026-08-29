@@ -75,6 +75,10 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       jid TEXT NOT NULL, word TEXT NOT NULL, ts INTEGER NOT NULL,
       PRIMARY KEY (jid, word)
     );
+    CREATE TABLE IF NOT EXISTS asked_category_ids (
+      jid TEXT NOT NULL, id TEXT NOT NULL, ts INTEGER NOT NULL,
+      PRIMARY KEY (jid, id)
+    );
     CREATE TABLE IF NOT EXISTS trivia_bans (
       jid TEXT NOT NULL, number TEXT NOT NULL,
       PRIMARY KEY (jid, number)
@@ -157,7 +161,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const stmtSelectResultsChain = db.prepare(`
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
-    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo', 'riddle', 'flag')
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo', 'riddle', 'flag', 'concentration')
     ORDER BY player
   `)
   const stmtSelectResultsScramble = db.prepare(`
@@ -176,6 +180,12 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
     WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'flag'
+    ORDER BY player
+  `)
+  const stmtSelectResultsConcentration = db.prepare(`
+    SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
+    FROM results r JOIN games g ON g.id = r.game_id
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'concentration'
     ORDER BY player
   `)
   const stmtSelectResultsRiddle = db.prepare(`
@@ -210,6 +220,15 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   )
   const stmtClearAskedFlags = db.prepare(
     'DELETE FROM asked_flags WHERE jid = ?'
+  )
+  const stmtMarkAskedCategory = db.prepare(
+    'INSERT OR IGNORE INTO asked_category_ids (jid, id, ts) VALUES (?, ?, ?)'
+  )
+  const stmtAskedCategoryIds = db.prepare(
+    'SELECT id FROM asked_category_ids WHERE jid = ?'
+  )
+  const stmtClearAskedCategories = db.prepare(
+    'DELETE FROM asked_category_ids WHERE jid = ?'
   )
   const stmtMarkAskedWordle = db.prepare(
     'INSERT OR IGNORE INTO asked_wordle (jid, word, ts) VALUES (?, ?, ?)'
@@ -319,6 +338,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       else if (type === 'scramble') stmt = stmtSelectResultsScramble;
       else if (type === 'logo') stmt = stmtSelectResultsLogo;
       else if (type === 'flag') stmt = stmtSelectResultsFlag;
+      else if (type === 'concentration') stmt = stmtSelectResultsConcentration;
       else if (type === 'riddle') stmt = stmtSelectResultsRiddle;
       else stmt = stmtSelectResultsChain;
       const rows = stmt.all(jid, since)
@@ -395,6 +415,21 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
 
     clearAskedFlags(jid) {
       stmtClearAskedFlags.run(jid)
+    },
+
+    // One row per category actually used in a game (marked incrementally as each
+    // category is switched into, not pre-picked up front like Flag/Riddle, since
+    // Concentration doesn't know how many categories a game will use until it ends).
+    markAskedCategory(jid, id, ts) {
+      stmtMarkAskedCategory.run(jid, id, ts)
+    },
+
+    askedCategoryIds(jid) {
+      return new Set(stmtAskedCategoryIds.all(jid).map((r) => r.id))
+    },
+
+    clearAskedCategories(jid) {
+      stmtClearAskedCategories.run(jid)
     },
 
     // Cross-tournament repeat-avoidance for Wordle Tournament — separate from

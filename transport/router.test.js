@@ -1104,6 +1104,72 @@ const tests = [
     },
   },
   {
+    name: 'concentration: /concentration start opens a lobby; a banned user cannot join it',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: { has: () => true, randomLetter: () => 'a' }, games, enqueue: (j, m) => sent.push(m),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      const jid = 'g-concentration@g.us'
+      const banned = '2223334444'
+      db.addBan(jid, banned)
+
+      await router.handleMessage({ jid, sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: `${OWNER_NUMBER}@s.whatsapp.net`, text: '/concentration start', isGroup: true }, 0)
+
+      const game = games.get(jid)
+      assert.ok(game, 'concentration lobby should have started')
+      assert.equal(game.state, 'registering')
+
+      let joinCalls = 0
+      const originalJoin = game.join.bind(game)
+      game.join = (...args) => { joinCalls++; return originalJoin(...args) }
+
+      await router.handleMessage({ jid, sender: `${banned}@s.whatsapp.net`, senderPn: `${banned}@s.whatsapp.net`, text: 'join', isGroup: true }, 100)
+      assert.equal(joinCalls, 0, 'a banned player must not reach the concentration lobby')
+      db.close()
+    },
+  },
+  {
+    name: 'concentration: three players joining then /concentration begin starts the round and records a result on completion',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: { has: () => true, randomLetter: () => 'a' }, games, enqueue: (j, m) => sent.push(m),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: (jid) => jid,
+      })
+      const jid = 'g-concentration-2@g.us'
+      const admin = `${OWNER_NUMBER}@s.whatsapp.net`
+
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/concentration start', isGroup: true }, 0)
+      await router.handleMessage({ jid, sender: 'p1@s.whatsapp.net', senderPn: 'p1@s.whatsapp.net', text: 'join', isGroup: true }, 100)
+      await router.handleMessage({ jid, sender: 'p2@s.whatsapp.net', senderPn: 'p2@s.whatsapp.net', text: 'join', isGroup: true }, 200)
+      await router.handleMessage({ jid, sender: 'p3@s.whatsapp.net', senderPn: 'p3@s.whatsapp.net', text: 'join', isGroup: true }, 300)
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/concentration begin', isGroup: true }, 400)
+
+      const game = games.get(jid)
+      assert.ok(game, 'game should exist after begin')
+      assert.equal(game.state, 'playing')
+
+      let now = 400
+      for (let i = 0; i < 10 && game.state !== 'over'; i++) {
+        now += 20_000
+        sendEvents((j, m) => sent.push(m), jid, game.tick(now), undefined, now, db)
+      }
+
+      assert.equal(game.state, 'over')
+      const board = db.leaderboard({ jid, type: 'concentration' })
+      assert.ok(board.length >= 1, 'expected a recorded concentration result')
+      db.close()
+    },
+  },
+  {
     // The banned player is a GROUP ADMIN here on purpose: admins are the only
     // ones who can start games at all, so this is the case that proves a ban
     // outranks admin rights rather than being masked by the admin gate.

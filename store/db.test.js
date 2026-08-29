@@ -711,6 +711,51 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'asked_category_ids & concentration leaderboard: round-trip and isolation',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.markAskedCategory('jid-a', 'cat-001', 1000)
+      db.markAskedCategory('jid-a', 'cat-002', 1000)
+      const asked = db.askedCategoryIds('jid-a')
+      assert.ok(asked.has('cat-001'))
+      assert.ok(asked.has('cat-002'))
+      assert.equal(asked.size, 2)
+
+      db.clearAskedCategories('jid-a')
+      assert.equal(db.askedCategoryIds('jid-a').size, 0)
+
+      db.markAskedCategory('jid-b', 'cat-001', 2000)
+      assert.equal(db.askedCategoryIds('jid-a').size, 0)
+      assert.equal(db.askedCategoryIds('jid-b').size, 1)
+
+      db.recordGame({
+        jid: 'jid-a',
+        mode: 'mixed',
+        type: 'concentration',
+        startedAt: 1000,
+        endedAt: 2000,
+        words: 3,
+        results: [
+          { player: 'player-1', placement: 1, player_pn: 'pn-1' },
+          { player: 'player-2', placement: 2, player_pn: 'pn-2' },
+          { player: 'player-3', placement: 3, player_pn: 'pn-3' },
+        ],
+      })
+
+      const board = db.leaderboard({ jid: 'jid-a', type: 'concentration' })
+      assert.equal(board.length, 3)
+      assert.equal(board[0].player, 'pn-1')
+      assert.equal(board[0].score, 3)
+      assert.equal(board[1].player, 'pn-2')
+      assert.equal(board[1].score, 1)
+      assert.equal(board[2].player, 'pn-3')
+      assert.equal(board[2].score, 0)
+
+      assert.equal(db.leaderboard({ jid: 'jid-a', type: 'chain' }).length, 0)
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

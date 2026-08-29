@@ -366,6 +366,26 @@ const tests = [
       assert.ok(!out.text.includes('Score:'), 'sudden death is single-question winner-take-all — no running score to show')
     },
   },
+  {
+    name: 'concentration_eliminated: wrong answer mentions the player and shows their answer',
+    fn: () => {
+      const r = render({ type: 'concentration_eliminated', player: P1, reason: 'wrong', answer: 'Purple' })
+      assert.match(r.text, /Purple/)
+      assert.deepEqual(r.mentions, [P1])
+    },
+  },
+  {
+    name: 'concentration_over: lists standings in order with medals',
+    fn: () => {
+      const r = render({
+        type: 'concentration_over',
+        winner: P1,
+        standings: [{ player: P1 }, { player: P2 }, { player: '333333333@s.whatsapp.net' }],
+      })
+      assert.match(r.text, /🥇/)
+      assert.deepEqual(r.mentions, [P1, P2, '333333333@s.whatsapp.net'])
+    },
+  },
 ]
 
 let passed = 0
