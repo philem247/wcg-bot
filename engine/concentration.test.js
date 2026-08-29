@@ -1,7 +1,7 @@
 // engine/concentration.test.js
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { createConcentrationGame, REGISTRATION_MS, MIN_PLAYERS, TURN_CLOCK_SECONDS } from './concentration.js'
+import { createConcentrationGame, REGISTRATION_MS, MIN_PLAYERS, TURN_CLOCK_SECONDS, START_DELAY_MS } from './concentration.js'
 
 // A tiny fixed bank: two categories, small item lists so tests can exhaust
 // them deliberately. pickCategory cycles deterministically off `exclude`.
@@ -29,9 +29,10 @@ function newGame(opts = {}) {
 }
 
 test('concentration: exports the documented defaults', () => {
-  assert.equal(REGISTRATION_MS, 90_000)
-  assert.equal(MIN_PLAYERS, 3)
+  assert.equal(REGISTRATION_MS, 60_000)
+  assert.equal(MIN_PLAYERS, 2)
   assert.equal(TURN_CLOCK_SECONDS, 15)
+  assert.equal(START_DELAY_MS, 10_000)
 })
 
 test('concentration: rejects a bank with zero categories', () => {
@@ -44,8 +45,8 @@ test('concentration: tick() lazily announces registration on the first call', ()
   const events = game.tick(0)
   assert.equal(events.length, 1)
   assert.equal(events[0].type, 'concentration_registration_open')
-  assert.equal(events[0].minPlayers, 3)
-  assert.equal(events[0].seconds, 90)
+  assert.equal(events[0].minPlayers, 2)
+  assert.equal(events[0].seconds, 60)
 })
 
 test('concentration: join adds a player and does not double-count a repeat join', () => {
@@ -60,26 +61,31 @@ test('concentration: the registration timer cancels the game below minPlayers', 
   const game = newGame()
   game.tick(0)
   game.join('p1', 100)
-  game.join('p2', 200)
-  const events = game.tick(90_000)
+  const events = game.tick(60_000)
   assert.equal(events.length, 1)
-  assert.deepEqual(events[0], { type: 'concentration_cancelled', reason: 'not_enough_players', count: 2, needed: 3 })
+  assert.deepEqual(events[0], { type: 'concentration_cancelled', reason: 'not_enough_players', count: 1, needed: 2 })
   assert.equal(game.state, 'over')
 })
 
-test('concentration: the registration timer starts the game once minPlayers is met', () => {
+test('concentration: the registration timer enters a starting phase once minPlayers is met, then reveals the first turn after the heads-up delay', () => {
   const game = newGame()
   game.tick(0)
   game.join('p1', 100)
   game.join('p2', 200)
   game.join('p3', 300)
-  const events = game.tick(90_000)
-  assert.equal(events[0].type, 'concentration_start')
-  assert.deepEqual(events[0].players.sort(), ['p1', 'p2', 'p3'])
-  assert.equal(events[1].type, 'concentration_category_switch')
-  assert.equal(events[1].reason, 'start')
-  assert.equal(events[2].type, 'concentration_turn')
-  assert.equal(events[2].round, 1)
+  const startEvents = game.tick(60_000)
+  assert.equal(startEvents.length, 1)
+  assert.equal(startEvents[0].type, 'concentration_start')
+  assert.deepEqual(startEvents[0].players.sort(), ['p1', 'p2', 'p3'])
+  assert.equal(startEvents[0].seconds, 10)
+  assert.equal(game.state, 'starting')
+
+  assert.deepEqual(game.tick(60_000 + START_DELAY_MS - 1), [])
+  const revealEvents = game.tick(60_000 + START_DELAY_MS)
+  assert.equal(revealEvents[0].type, 'concentration_category_switch')
+  assert.equal(revealEvents[0].reason, 'start')
+  assert.equal(revealEvents[1].type, 'concentration_turn')
+  assert.equal(revealEvents[1].round, 1)
   assert.equal(game.state, 'playing')
 })
 
@@ -88,18 +94,20 @@ test('concentration: begin() is denied below minPlayers and does not start the g
   game.tick(0)
   game.join('p1', 100)
   const events = game.begin(200)
-  assert.deepEqual(events, [{ type: 'concentration_begin_denied', reason: 'not_enough_players', count: 1, needed: 3 }])
+  assert.deepEqual(events, [{ type: 'concentration_begin_denied', reason: 'not_enough_players', count: 1, needed: 2 }])
   assert.equal(game.state, 'registering')
 })
 
-test('concentration: begin() starts the game early once minPlayers is met', () => {
+test('concentration: begin() enters the starting phase early once minPlayers is met', () => {
   const game = newGame()
   game.tick(0)
   game.join('p1', 100)
   game.join('p2', 200)
-  game.join('p3', 300)
   const events = game.begin(400)
   assert.equal(events[0].type, 'concentration_start')
+  assert.equal(game.state, 'starting')
+  const revealEvents = game.tick(400 + START_DELAY_MS)
+  assert.equal(revealEvents.find((e) => e.type === 'concentration_turn')?.round, 1)
   assert.equal(game.state, 'playing')
 })
 
@@ -108,28 +116,32 @@ test('concentration: begin() outside registering is denied', () => {
   game.tick(0)
   game.join('p1', 100)
   game.join('p2', 200)
-  game.join('p3', 300)
   game.begin(400)
   assert.deepEqual(game.begin(500), [{ type: 'concentration_begin_denied', reason: 'not_registering' }])
 })
 
+// Drives a game all the way into 'playing' with the first turn revealed —
+// begin() at t=0 enters 'starting', then tick() at START_DELAY_MS reveals
+// the first category/turn. Every test using this helper works in terms of
+// offsets from START_DELAY_MS, not from 0, since that's when play actually begins.
 function started(players = ['p1', 'p2', 'p3']) {
   const game = newGame()
   game.tick(0)
   for (const p of players) game.join(p, 0)
   game.begin(0)
+  game.tick(START_DELAY_MS)
   return game
 }
 
 test('concentration: only the current player\'s submission is accepted', () => {
   const game = started()
-  const events = game.submit('p2', 'Red', 100) // p1 is up first (join order, random()=0.5 keeps order stable)
+  const events = game.submit('p2', 'Red', START_DELAY_MS + 100) // p1 is up first (join order)
   assert.deepEqual(events, [])
 })
 
 test('concentration: a correct, unused answer advances to the next player in the same category', () => {
   const game = started()
-  const events = game.submit('p1', 'Red', 100)
+  const events = game.submit('p1', 'Red', START_DELAY_MS + 100)
   assert.equal(events[0].type, 'concentration_accepted')
   assert.equal(events[0].player, 'p1')
   assert.equal(events[0].answer, 'Red')
@@ -145,14 +157,15 @@ test('concentration: an alias scores the same as the canonical name', () => {
   game.tick(0)
   game.join('p1', 0); game.join('p2', 0); game.join('p3', 0)
   game.begin(0)
-  const events = game.submit('p1', 'bayern', 100)
+  game.tick(START_DELAY_MS)
+  const events = game.submit('p1', 'bayern', START_DELAY_MS + 100)
   assert.equal(events[0].type, 'concentration_accepted')
   assert.equal(events[0].answer, 'Bayern Munich')
 })
 
 test('concentration: a wrong answer eliminates the player and switches category', () => {
   const game = started()
-  const events = game.submit('p1', 'Purple', 100) // not in Primary colors
+  const events = game.submit('p1', 'Purple', START_DELAY_MS + 100) // not in Primary colors
   assert.equal(events[0].type, 'concentration_eliminated')
   assert.equal(events[0].player, 'p1')
   assert.equal(events[0].reason, 'wrong')
@@ -165,9 +178,9 @@ test('concentration: a wrong answer eliminates the player and switches category'
 
 test('concentration: repeating an already-said answer eliminates as a duplicate', () => {
   const game = started()
-  game.submit('p1', 'Red', 100)
-  game.submit('p2', 'Blue', 200)
-  const events = game.submit('p3', 'red', 300) // case-insensitive repeat
+  game.submit('p1', 'Red', START_DELAY_MS + 100)
+  game.submit('p2', 'Blue', START_DELAY_MS + 200)
+  const events = game.submit('p3', 'red', START_DELAY_MS + 300) // case-insensitive repeat
   assert.equal(events[0].type, 'concentration_eliminated')
   assert.equal(events[0].reason, 'duplicate')
   assert.equal(events[0].answer, 'Red')
@@ -175,8 +188,9 @@ test('concentration: repeating an already-said answer eliminates as a duplicate'
 
 test('concentration: a timed-out turn eliminates via tick(), not submit()', () => {
   const game = started()
-  assert.deepEqual(game.tick(14_999), [])
-  const events = game.tick(15_000)
+  const deadline = START_DELAY_MS + TURN_CLOCK_SECONDS * 1000
+  assert.deepEqual(game.tick(deadline - 1), [])
+  const events = game.tick(deadline)
   assert.equal(events[0].type, 'concentration_eliminated')
   assert.equal(events[0].reason, 'timeout')
   assert.equal(events[0].player, 'p1')
@@ -185,7 +199,8 @@ test('concentration: a timed-out turn eliminates via tick(), not submit()', () =
 
 test('concentration: a submission arriving after the deadline is ignored (tick is sole timeout authority)', () => {
   const game = started()
-  assert.deepEqual(game.submit('p1', 'Red', 15_000), [])
+  const deadline = START_DELAY_MS + TURN_CLOCK_SECONDS * 1000
+  assert.deepEqual(game.submit('p1', 'Red', deadline), [])
 })
 
 test('concentration: pool-low proactively switches category before players run out of unused items', () => {
@@ -194,7 +209,6 @@ test('concentration: pool-low proactively switches category before players run o
   const game = newGame({ bank: {
     size: () => 2,
     pickCategory: (() => {
-      let calls = 0
       const cats = [
         { id: 'small', category: 'Primary colors', items: ['Red', 'Blue', 'Yellow'] },
         { id: 'big', category: 'Football clubs in Germany', items: ['Bayern Munich', 'Borussia Dortmund', 'RB Leipzig', 'Bayer Leverkusen'] },
@@ -208,7 +222,8 @@ test('concentration: pool-low proactively switches category before players run o
   game.tick(0)
   game.join('p1', 0); game.join('p2', 0); game.join('p3', 0)
   game.begin(0)
-  const events = game.submit('p1', 'Red', 100) // 2 unused left, 3 alive -> must switch
+  game.tick(START_DELAY_MS)
+  const events = game.submit('p1', 'Red', START_DELAY_MS + 100) // 2 unused left, 3 alive -> must switch
   const switchEvent = events.find((e) => e.type === 'concentration_category_switch')
   assert.ok(switchEvent, 'expected a proactive category switch')
   assert.equal(switchEvent.reason, 'pool_low')
@@ -217,28 +232,42 @@ test('concentration: pool-low proactively switches category before players run o
 
 test('concentration: end() mid-game terminates immediately and further input is ignored', () => {
   const game = started()
-  const events = game.end(500)
+  const events = game.end(START_DELAY_MS + 500)
   assert.deepEqual(events, [{ type: 'concentration_terminated' }])
   assert.equal(game.state, 'over')
-  assert.deepEqual(game.submit('p2', 'Blue', 600), [])
-  assert.deepEqual(game.tick(700), [])
-  assert.deepEqual(game.join('new', 700), [])
+  assert.deepEqual(game.submit('p2', 'Blue', START_DELAY_MS + 600), [])
+  assert.deepEqual(game.tick(START_DELAY_MS + 700), [])
+  assert.deepEqual(game.join('new', START_DELAY_MS + 700), [])
 })
 
 test('concentration: exclude seeds the initial category pool (cross-game dedup)', () => {
   const game = newGame({ exclude: new Set(['colors']) })
   game.tick(0)
   game.join('p1', 0); game.join('p2', 0); game.join('p3', 0)
-  const events = game.begin(0)
-  const switchEvent = events.find((e) => e.type === 'concentration_category_switch')
+  game.begin(0)
+  const revealEvents = game.tick(START_DELAY_MS)
+  const switchEvent = revealEvents.find((e) => e.type === 'concentration_category_switch')
   assert.equal(switchEvent.id, 'clubs') // colors excluded, only clubs left
+})
+
+test('concentration: end() during the starting phase terminates before any category is revealed', () => {
+  const game = newGame()
+  game.tick(0)
+  game.join('p1', 0); game.join('p2', 0); game.join('p3', 0)
+  game.begin(0)
+  assert.equal(game.state, 'starting')
+  const events = game.end(1000)
+  assert.deepEqual(events, [{ type: 'concentration_terminated' }])
+  assert.equal(game.state, 'over')
 })
 
 test('concentration: the game ends when only one player remains, standings winner-first then reverse elimination order', () => {
   const game = started(['p1', 'p2', 'p3'])
-  const r1 = game.tick(15_000) // p1's turn times out -> eliminated, category switches, p2's turn (fresh 15s clock from now)
+  const t1 = START_DELAY_MS + TURN_CLOCK_SECONDS * 1000
+  const r1 = game.tick(t1) // p1's turn times out -> eliminated, category switches, p2's turn (fresh 15s clock from t1)
   assert.equal(r1[0].player, 'p1')
-  const r2 = game.tick(30_000) // p2's turn (deadline was 15_000+15_000) times out -> only p3 left -> game over
+  const t2 = t1 + TURN_CLOCK_SECONDS * 1000
+  const r2 = game.tick(t2) // p2's turn times out -> only p3 left -> game over
   const overEvent = r2.find((e) => e.type === 'concentration_over')
   assert.ok(overEvent, 'expected concentration_over once one player remains')
   assert.equal(overEvent.winner, 'p3')

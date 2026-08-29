@@ -269,8 +269,13 @@ export function render(event) {
     case 'concentration_cancelled':
       return { text: `_Not enough players to start Concentration (${event.count} joined, need ${event.needed}+). Game cancelled._`, mentions: [] }
 
-    case 'concentration_start':
-      return null
+    case 'concentration_start': {
+      const roster = event.players.map((p) => mention(p)).join(', ')
+      return {
+        text: `🃏 *CONCENTRATION* is starting!\nPlayers: ${roster}\n⏳ First category in ${event.seconds}s — get ready!`,
+        mentions: event.players,
+      }
+    }
 
     case 'concentration_category_switch': {
       const label = event.reason === 'start' ? '🃏 Category:' : '🔄 New category:'

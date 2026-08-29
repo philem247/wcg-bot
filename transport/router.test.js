@@ -1155,7 +1155,7 @@ const tests = [
 
       const game = games.get(jid)
       assert.ok(game, 'game should exist after begin')
-      assert.equal(game.state, 'playing')
+      assert.equal(game.state, 'starting') // heads-up delay before the first category
 
       let now = 400
       for (let i = 0; i < 10 && game.state !== 'over'; i++) {

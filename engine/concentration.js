@@ -16,9 +16,10 @@
 // No Date.now(), no Math.random(). Time via `now`, randomness via `random`.
 import { fold } from './normalize.js'
 
-export const REGISTRATION_MS = 90_000
-export const MIN_PLAYERS = 3
+export const REGISTRATION_MS = 60_000
+export const MIN_PLAYERS = 2
 export const TURN_CLOCK_SECONDS = 15
+export const START_DELAY_MS = 10_000
 
 function sanitize(s) {
   return fold(String(s ?? '')).replace(/[^a-z0-9]/g, '')
@@ -44,6 +45,7 @@ export function createConcentrationGame({
   registrationMs = REGISTRATION_MS,
   clockSeconds = TURN_CLOCK_SECONDS,
   minPlayers = MIN_PLAYERS,
+  startDelayMs = START_DELAY_MS,
   exclude = new Set(),
 }) {
   if (!bank || bank.size() === 0) {
@@ -54,6 +56,7 @@ export function createConcentrationGame({
   let opened = false
   const players = []
   const registrationDeadline = now + registrationMs
+  let startDeadline = 0
 
   let order = []
   let active = []
@@ -124,12 +127,22 @@ export function createConcentrationGame({
     events.push(makeTurnEvent(at))
   }
 
-  function startGame(at, events) {
+  // Heads-up: announce the roster now, then wait startDelayMs before the
+  // first category/turn actually lands — same deferred-tick pattern as
+  // engine/tournament.js's MATCH_START_DELAY_MS (Fix 2), so the "who's
+  // playing" message and the first prompt never arrive in the same batch.
+  function enterStartingPhase(at, events) {
     order = players.slice()
     active = order.slice()
     turnIndex = 0
+    round = 0
+    state = 'starting'
+    startDeadline = at + startDelayMs
+    events.push({ type: 'concentration_start', players: order.slice(), seconds: Math.round(startDelayMs / 1000) })
+  }
+
+  function revealFirstCategory(at, events) {
     state = 'playing'
-    events.push({ type: 'concentration_start', players: order.slice() })
     events.push(switchCategory('start'))
     events.push(makeTurnEvent(at))
   }
@@ -140,7 +153,7 @@ export function createConcentrationGame({
       events.push({ type: 'concentration_cancelled', reason: 'not_enough_players', count: players.length, needed: minPlayers })
       return
     }
-    startGame(at, events)
+    enterStartingPhase(at, events)
   }
 
   return {
@@ -160,7 +173,7 @@ export function createConcentrationGame({
         return [{ type: 'concentration_begin_denied', reason: 'not_enough_players', count: players.length, needed: minPlayers }]
       }
       const events = []
-      startGame(at, events)
+      enterStartingPhase(at, events)
       return events
     },
 
@@ -204,6 +217,12 @@ export function createConcentrationGame({
         }
         if (at < registrationDeadline) return events
         closeRegistration(at, events)
+        return events
+      }
+
+      if (state === 'starting') {
+        if (at < startDeadline) return events
+        revealFirstCategory(at, events)
         return events
       }
 
