@@ -317,6 +317,155 @@
     }
   },
   {
+    "id": "italy-clubs",
+    "category": "Football clubs in Italy",
+    "items": [
+      "Atalanta",
+      "Bologna",
+      "Cagliari",
+      "Como",
+      "Cremonese",
+      "Fiorentina",
+      "Genoa",
+      "Hellas Verona",
+      "Inter Milan",
+      "Juventus",
+      "Lazio",
+      "Lecce",
+      "AC Milan",
+      "Napoli",
+      "Parma",
+      "Pisa",
+      "Roma",
+      "Sassuolo",
+      "Torino",
+      "Udinese",
+      "Sampdoria",
+      "Palermo",
+      "Bari",
+      "Spezia",
+      "Empoli",
+      "Venezia",
+      "Monza",
+      "Frosinone",
+      "Salernitana",
+      "Brescia",
+      "Catanzaro",
+      "Modena",
+      "Reggiana",
+      "Cesena",
+      "Sudtirol",
+      "Carrarese",
+      "Juve Stabia",
+      "Mantova",
+      "Catania",
+      "Vicenza",
+      "Perugia",
+      "Ternana",
+      "Cosenza",
+      "Avellino"
+    ],
+    "aliases": {
+      "Inter Milan": [
+        "inter",
+        "internazionale"
+      ],
+      "AC Milan": [
+        "milan"
+      ],
+      "Roma": [
+        "as roma"
+      ],
+      "Juventus": [
+        "juve"
+      ],
+      "Napoli": [
+        "ssc napoli"
+      ],
+      "Hellas Verona": [
+        "verona"
+      ]
+    }
+  },
+  {
+    "id": "france-clubs",
+    "category": "Football clubs in France",
+    "items": [
+      "Angers",
+      "Auxerre",
+      "Brest",
+      "Le Havre",
+      "Lens",
+      "Lille",
+      "Lorient",
+      "Lyon",
+      "Marseille",
+      "Metz",
+      "Monaco",
+      "Nantes",
+      "Nice",
+      "Paris FC",
+      "Paris Saint-Germain",
+      "Rennes",
+      "Strasbourg",
+      "Toulouse",
+      "Saint-Etienne",
+      "Reims",
+      "Montpellier",
+      "Bordeaux",
+      "Nancy",
+      "Caen",
+      "Ajaccio",
+      "Bastia",
+      "Guingamp",
+      "Troyes",
+      "Amiens",
+      "Clermont",
+      "Grenoble",
+      "Laval",
+      "Pau",
+      "Rodez",
+      "Annecy",
+      "Dunkerque",
+      "Red Star",
+      "Sochaux",
+      "Valenciennes",
+      "Le Mans",
+      "Nimes"
+    ],
+    "aliases": {
+      "Paris Saint-Germain": [
+        "psg",
+        "paris sg"
+      ],
+      "Marseille": [
+        "om",
+        "olympique marseille",
+        "olympique de marseille"
+      ],
+      "Lyon": [
+        "ol",
+        "olympique lyonnais"
+      ],
+      "Lille": [
+        "losc"
+      ],
+      "Saint-Etienne": [
+        "saint etienne",
+        "asse"
+      ],
+      "Rennes": [
+        "stade rennais"
+      ],
+      "Brest": [
+        "stade brestois"
+      ],
+      "Strasbourg": [
+        "rc strasbourg"
+      ]
+    }
+  },
+  {
     "id": "countries-africa",
     "category": "Countries in Africa",
     "items": [
