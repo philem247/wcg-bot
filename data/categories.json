@@ -1,7 +1,7 @@
 [
   {
-    "id": "premier-league-clubs",
-    "category": "Football clubs in England (Premier League)",
+    "id": "england-clubs",
+    "category": "Football clubs in England",
     "items": [
       "Arsenal",
       "Chelsea",
@@ -38,7 +38,63 @@
       "Cardiff City",
       "Huddersfield Town",
       "Wigan Athletic",
-      "Coventry City"
+      "Coventry City",
+      "Birmingham City",
+      "Blackburn Rovers",
+      "Bristol City",
+      "Charlton Athletic",
+      "Derby County",
+      "Millwall",
+      "Oxford United",
+      "Portsmouth",
+      "Preston North End",
+      "Queens Park Rangers",
+      "Sheffield Wednesday",
+      "Wrexham",
+      "AFC Wimbledon",
+      "Barnsley",
+      "Blackpool",
+      "Bolton Wanderers",
+      "Bradford City",
+      "Burton Albion",
+      "Doncaster Rovers",
+      "Exeter City",
+      "Leyton Orient",
+      "Lincoln City",
+      "Mansfield Town",
+      "Northampton Town",
+      "Peterborough United",
+      "Plymouth Argyle",
+      "Port Vale",
+      "Reading",
+      "Rotherham United",
+      "Stevenage",
+      "Stockport County",
+      "Wycombe Wanderers",
+      "Accrington Stanley",
+      "Barnet",
+      "Barrow",
+      "Bristol Rovers",
+      "Bromley",
+      "Cambridge United",
+      "Cheltenham Town",
+      "Chesterfield",
+      "Colchester United",
+      "Crawley Town",
+      "Crewe Alexandra",
+      "Fleetwood Town",
+      "Gillingham",
+      "Grimsby Town",
+      "Harrogate Town",
+      "Milton Keynes Dons",
+      "Newport County",
+      "Notts County",
+      "Oldham Athletic",
+      "Salford City",
+      "Shrewsbury Town",
+      "Swindon Town",
+      "Tranmere Rovers",
+      "Walsall"
     ],
     "aliases": {
       "Manchester United": [
@@ -64,10 +120,12 @@
         "west ham"
       ],
       "Nottingham Forest": [
-        "forest"
+        "forest",
+        "notts forest"
       ],
       "West Bromwich Albion": [
-        "west brom"
+        "west brom",
+        "wba"
       ],
       "Brighton": [
         "brighton and hove albion",
@@ -75,12 +133,37 @@
       ],
       "Coventry City": [
         "coventry"
+      ],
+      "Queens Park Rangers": [
+        "qpr"
+      ],
+      "Milton Keynes Dons": [
+        "mk dons"
+      ],
+      "Sheffield Wednesday": [
+        "sheff wed"
+      ],
+      "Sheffield United": [
+        "sheff utd",
+        "sheffield utd"
+      ],
+      "Preston North End": [
+        "preston"
+      ],
+      "Bolton Wanderers": [
+        "bolton"
+      ],
+      "Wycombe Wanderers": [
+        "wycombe"
+      ],
+      "Plymouth Argyle": [
+        "plymouth"
       ]
     }
   },
   {
-    "id": "bundesliga-clubs",
-    "category": "Football clubs in Germany (Bundesliga)",
+    "id": "germany-clubs",
+    "category": "Football clubs in Germany",
     "items": [
       "Bayern Munich",
       "Borussia Dortmund",
@@ -107,7 +190,21 @@
       "Nurnberg",
       "Fortuna Dusseldorf",
       "Kaiserslautern",
-      "FC St. Pauli"
+      "FC St. Pauli",
+      "Karlsruher SC",
+      "SC Paderborn",
+      "Greuther Furth",
+      "Holstein Kiel",
+      "Arminia Bielefeld",
+      "Dynamo Dresden",
+      "Eintracht Braunschweig",
+      "SV Elversberg",
+      "Preussen Munster",
+      "Magdeburg",
+      "Energie Cottbus",
+      "MSV Duisburg",
+      "Rot-Weiss Essen",
+      "TSV 1860 Munich"
     ],
     "aliases": {
       "Bayern Munich": [
@@ -136,12 +233,19 @@
       "FC St. Pauli": [
         "st pauli",
         "st. pauli"
+      ],
+      "TSV 1860 Munich": [
+        "1860 munich"
+      ],
+      "Fortuna Dusseldorf": [
+        "fortuna dusseldorf",
+        "dusseldorf"
       ]
     }
   },
   {
-    "id": "laliga-clubs",
-    "category": "Football clubs in Spain (La Liga)",
+    "id": "spain-clubs",
+    "category": "Football clubs in Spain",
     "items": [
       "Real Madrid",
       "Barcelona",
@@ -168,7 +272,21 @@
       "Levante",
       "Elche",
       "Eibar",
-      "Real Oviedo"
+      "Real Oviedo",
+      "Real Zaragoza",
+      "Sporting Gijon",
+      "Racing Santander",
+      "Deportivo La Coruna",
+      "Malaga",
+      "Tenerife",
+      "Albacete",
+      "Huesca",
+      "Leganes",
+      "Burgos",
+      "Mirandes",
+      "Castellon",
+      "Cordoba",
+      "Ceuta"
     ],
     "aliases": {
       "Real Madrid": [
@@ -188,6 +306,13 @@
       ],
       "Real Oviedo": [
         "oviedo"
+      ],
+      "Deportivo La Coruna": [
+        "deportivo",
+        "depor"
+      ],
+      "Sporting Gijon": [
+        "sporting gijon"
       ]
     }
   },
@@ -535,7 +660,8 @@
       "Panther",
       "Walrus",
       "Manatee",
-      "Wolverine"
+      "Wolverine",
+      "Ibex"
     ],
     "aliases": {
       "Hippopotamus": [
@@ -879,8 +1005,8 @@
       "Sugar Apple"
     ],
     "aliases": {
-      "Pawpaw": [
-        "papaya"
+      "Papaya": [
+        "pawpaw"
       ]
     }
   },
@@ -1196,17 +1322,18 @@
       "Lilangeni",
       "Lira",
       "Hryvnia",
-      "Euro"
+      "Euro",
+      "Yuan"
     ],
     "aliases": {
-      "Pound Sterling": [
-        "pound",
-        "sterling",
-        "gbp"
-      ],
       "Dollar": [
         "usd",
         "us dollar"
+      ],
+      "Pound": [
+        "pound sterling",
+        "sterling",
+        "gbp"
       ]
     }
   },
@@ -1252,8 +1379,8 @@
       "Clue"
     ],
     "aliases": {
-      "Draughts": [
-        "checkers"
+      "Checkers": [
+        "draughts"
       ]
     }
   },
