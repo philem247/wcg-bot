@@ -100,7 +100,7 @@ const KIND_BY_EVENT = {
   concentration_registration_open: 'lobby',
   concentration_joined: 'lobby',
   concentration_start: 'lobby',
-  concentration_category_switch: 'turn',
+  concentration_category_switch: 'misc',
   concentration_turn: 'turn',
   concentration_eliminated: 'result',
   concentration_over: 'result',
