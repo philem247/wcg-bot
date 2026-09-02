@@ -70,6 +70,7 @@ export function createConcentrationGame({
   let deadline = 0
 
   const eliminatedOrder = [] // in elimination order, first eliminated first
+  let pendingEliminatedIndex = -1 // active[]-index to reinsert at if reinstate() undoes the pending elimination
 
   const clockMs = clockSeconds * 1000
 
@@ -113,20 +114,25 @@ export function createConcentrationGame({
   }
 
   function eliminate(at, reason, answer, events) {
-    const player = active[turnIndex]
-    active.splice(turnIndex, 1)
+    const idx = turnIndex
+    const player = active[idx]
+    active.splice(idx, 1)
     eliminatedOrder.push(player)
-    events.push({ type: 'concentration_eliminated', player, reason, answer: answer ?? null })
+    // `category` lets a caller (e.g. a background answer validator) know what
+    // the rejected answer was judged against, without needing to track it separately.
+    events.push({ type: 'concentration_eliminated', player, reason, answer: answer ?? null, category: currentCategory.category })
 
     if (active.length === 1) {
       finish(events)
       return
     }
 
-    turnIndex = turnIndex % active.length
+    turnIndex = idx % active.length
+    pendingEliminatedIndex = idx
     // Same deferred-reveal pause as the game's opening: the elimination message
     // lands alone, then the next category arrives startDelayMs later, so players
-    // get a beat to react instead of the whole batch hitting at once.
+    // get a beat to react instead of the whole batch hitting at once. This same
+    // pause is also the window reinstate() can still undo a 'wrong' elimination in.
     state = 'starting'
     startDeadline = at + startDelayMs
     pendingSwitchReason = 'elimination'
@@ -234,6 +240,34 @@ export function createConcentrationGame({
 
       if (at < deadline) return events
       eliminate(at, 'timeout', null, events)
+      return events
+    },
+
+    // Undoes the most recent elimination — used when a background answer
+    // validator later confirms a 'wrong'-rejected answer was actually valid.
+    // Only possible while still paused in the post-elimination 'starting'
+    // window (see eliminate()) and only for the same elimination that's still
+    // pending: if the window already closed (next category revealed, or the
+    // game ended), it's too late to undo cleanly and this is a no-op — the
+    // caller falls back to logging the miss for manual review instead.
+    // Otherwise it replays the accept path exactly as if `answer` had matched
+    // the first time: same category, same used-set, turn advances normally.
+    reinstate(player, answer, at = now) {
+      if (state !== 'starting' || pendingSwitchReason !== 'elimination') return []
+      if (eliminatedOrder[eliminatedOrder.length - 1] !== player) return []
+
+      eliminatedOrder.pop()
+      const insertAt = Math.min(pendingEliminatedIndex, active.length)
+      active.splice(insertAt, 0, player)
+      used.add(answer)
+
+      const events = [{ type: 'concentration_reinstated', player, answer }]
+      turnIndex = (insertAt + 1) % active.length
+      state = 'playing'
+      if (unusedCount() < active.length) {
+        events.push(switchCategory('pool_low'))
+      }
+      events.push(makeTurnEvent(at))
       return events
     },
 

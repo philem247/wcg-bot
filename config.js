@@ -68,6 +68,17 @@ export const AUTO_RESTART_HOURS = envNum('AUTO_RESTART_HOURS', 0);
 // this force-flushes sock.ev after the timeout so the bot doesn't sit deaf
 // forever. 0 disables it.
 export const BUFFER_FLUSH_TIMEOUT_MS = envNum('BUFFER_FLUSH_TIMEOUT_MS', 60_000);
+// Concentration's answer validator: a fallback LLM check for a rejected
+// answer, fired in the background during the post-elimination pause (see
+// engine/concentration.js's 'starting' phase). Off unless both the flag and
+// a token are present — see engine/validator.js.
+export const CONCENTRATION_VALIDATOR = process.env.CONCENTRATION_VALIDATOR === 'on';
+export const CONCENTRATION_VALIDATOR_TOKEN = process.env.CONCENTRATION_VALIDATOR_TOKEN ?? '';
+export const CONCENTRATION_VALIDATOR_MODEL = envStr('CONCENTRATION_VALIDATOR_MODEL', 'claude-haiku-4-5-20251001');
+export const CONCENTRATION_VALIDATOR_TIMEOUT_MS = envNum('CONCENTRATION_VALIDATOR_TIMEOUT_MS', 3000);
+// Hard ceiling on validator calls per game — a chaotic round can't run up a bill.
+export const CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME = envNum('CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME', 5);
+
 export const ADMINS = (process.env.ADMINS || '')
   .split(',')
   .map(s => s.trim())

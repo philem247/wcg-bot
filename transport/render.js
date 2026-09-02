@@ -301,6 +301,12 @@ export function render(event) {
       return { text: fn ? fn(event) : `${mention(event.player)} is out! 🚫`, mentions: [event.player] }
     }
 
+    case 'concentration_reinstated':
+      return {
+        text: `↩️ Second look: "${event.answer}" is actually valid — ${mention(event.player)} is back in!`,
+        mentions: [event.player],
+      }
+
     case 'concentration_over': {
       const lines = [`🏆 ${mention(event.winner)} wins Concentration!`, ``]
       event.standings.forEach((s, i) => lines.push(`${MEDALS[i] ?? '　'} ${mention(s.player)}`))

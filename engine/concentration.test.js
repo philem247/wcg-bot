@@ -291,3 +291,73 @@ test('concentration: the game ends when only one player remains, standings winne
   assert.deepEqual(overEvent.standings, [{ player: 'p3' }, { player: 'p2' }, { player: 'p1' }])
   assert.equal(game.state, 'over')
 })
+
+test('concentration: eliminated event carries the category, for a validator to check the rejected answer against', () => {
+  const game = started()
+  const events = game.submit('p1', 'Purple', START_DELAY_MS + 100)
+  assert.equal(events[0].category, 'Primary colors')
+})
+
+test('concentration: reinstate() undoes a wrong-answer elimination during the pause and play continues normally', () => {
+  const game = started(['p1', 'p2', 'p3'])
+  const at = START_DELAY_MS + 100
+  game.submit('p1', 'Purple', at) // wrong -> p1 eliminated, paused
+
+  const events = game.reinstate('p1', 'Purple', at + 500)
+  assert.equal(events[0].type, 'concentration_reinstated')
+  assert.equal(events[0].player, 'p1')
+  assert.equal(events[0].answer, 'Purple')
+  assert.equal(game.state, 'playing')
+
+  // p1 is back in the active rotation; the category never actually switched.
+  const turn = events.find((e) => e.type === 'concentration_turn')
+  assert.equal(turn.alive, 3)
+  assert.equal(turn.category, 'Primary colors')
+  assert.equal(turn.player, 'p2') // play resumes with whoever was next, same as a normal accept
+
+  // Known limitation: a validator-approved answer isn't in the static JSON,
+  // so matchItem() still can't find it locally — a second player repeating
+  // the exact same reinstated answer goes through the same eliminate/validate/
+  // reinstate round-trip again (harmless — the validator cache makes the
+  // second lookup free — but it is NOT caught as an instant local duplicate
+  // the way an in-JSON answer would be, since matchItem() fails before the
+  // used-set check is ever reached). Documented here rather than engineered
+  // around, since it only matters until the content gets folded into the
+  // permanent category file.
+  const repeat = game.submit('p2', 'Purple', at + 600)
+  assert.equal(repeat[0].reason, 'wrong')
+})
+
+test('concentration: reinstate() is a no-op once the post-elimination pause has already closed', () => {
+  const game = started()
+  const at = START_DELAY_MS + 100
+  game.submit('p1', 'Purple', at) // wrong -> p1 eliminated, paused
+  game.tick(at + START_DELAY_MS) // pause elapses -> next category already revealed
+
+  assert.deepEqual(game.reinstate('p1', 'Purple', at + START_DELAY_MS + 10), [])
+})
+
+test('concentration: reinstate() is a no-op for a stale elimination (someone else was eliminated since)', () => {
+  const game = started(['p1', 'p2', 'p3'])
+  const at1 = START_DELAY_MS + 100
+  game.submit('p1', 'Purple', at1) // p1 eliminated (wrong), paused
+  // A validator call for p1 arrives late — after p2 has ALSO since been eliminated
+  // by a fresh timeout, superseding it. Reinstating p1 now would be incoherent.
+  const events2 = game.tick(at1 + START_DELAY_MS) // reveals new category/turn for p2
+  const t = events2.find((e) => e.type === 'concentration_turn')
+  game.tick(t.deadline) // p2 times out -> eliminated, paused again
+
+  assert.deepEqual(game.reinstate('p1', 'Purple', t.deadline + 10), [])
+})
+
+test('concentration: reinstate() ends the game immediately if it leaves only one player unaccounted for', () => {
+  // Not directly reachable via reinstate (it only ever restores to >= 2 active,
+  // since eliminate() already special-cased the 1-remaining case to finish()
+  // before ever entering 'starting') — this documents that reinstate() is
+  // therefore never called on a game that has already reached 'over'.
+  const game = started(['p1', 'p2'])
+  const at = START_DELAY_MS + 100
+  game.submit('p1', 'Purple', at) // only 2 players -> wrong answer ends the game outright
+  assert.equal(game.state, 'over')
+  assert.deepEqual(game.reinstate('p1', 'Purple', at + 10), [])
+})

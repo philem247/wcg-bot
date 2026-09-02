@@ -9,12 +9,17 @@ import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
 import { createFlagGame, FLAG_COUNT, CLOCK_SECONDS as FLAG_CLOCK_SECONDS } from '../engine/flag.js'
 import { createRiddleGame, RIDDLE_COUNT } from '../engine/riddle.js'
 import { createConcentrationGame, MIN_PLAYERS as CONCENTRATION_MIN_PLAYERS } from '../engine/concentration.js'
+import { createValidator } from '../engine/validator.js'
 import { loadRiddleBank, loadFlagBank, loadWordleBank, loadCategoryBank } from '../engine/bank.js'
 import { createTournament } from '../engine/tournament.js'
 import { createWordleTournament } from '../engine/wordleTournament.js'
 import { fold, isWord } from '../engine/normalize.js'
 import { startOfWeek } from '../store/db.js'
-import { PREFIX, OWNER, ADMINS, TRACE_LOG } from '../config.js'
+import {
+  PREFIX, OWNER, ADMINS, TRACE_LOG,
+  CONCENTRATION_VALIDATOR, CONCENTRATION_VALIDATOR_TOKEN, CONCENTRATION_VALIDATOR_MODEL,
+  CONCENTRATION_VALIDATOR_TIMEOUT_MS, CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME,
+} from '../config.js'
 import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -50,7 +55,19 @@ const lastTurn = new Map() // jid -> { letter, minLength }
 // carries no mode/type/startedAt/roster) can still be turned into a store record.
 // Built up incrementally as lobby_open -> game_start -> eliminated* -> winner events
 // pass through sendEvents (across separate calls - one per tick/submit).
-const gameMeta = new Map() // jid -> { mode, type, startedAt, players, eliminated, pnMap }
+const gameMeta = new Map() // jid -> { mode, type, startedAt, players, eliminated, pnMap, validatorCalls }
+
+// Concentration's background answer-validator, module-level (mirrors gameMeta
+// above) so its disk-backed cache is shared across every group's games, not
+// duplicated per createRouter() call. Fully inert unless both the flag and a
+// token are configured — see engine/validator.js and config.js.
+const concentrationValidator = CONCENTRATION_VALIDATOR && CONCENTRATION_VALIDATOR_TOKEN
+  ? createValidator({
+      token: CONCENTRATION_VALIDATOR_TOKEN,
+      model: CONCENTRATION_VALIDATOR_MODEL,
+      timeoutMs: CONCENTRATION_VALIDATOR_TIMEOUT_MS,
+    })
+  : null
 
 // When each chat's last trivia game ended, so a new one cannot start immediately.
 // Module-level beside gameMeta because trivia_over arrives through sendEvents,
@@ -103,6 +120,7 @@ const KIND_BY_EVENT = {
   concentration_category_switch: 'misc',
   concentration_turn: 'turn',
   concentration_eliminated: 'result',
+  concentration_reinstated: 'result',
   concentration_over: 'result',
   concentration_cancelled: 'result',
   concentration_terminated: 'result',
@@ -1004,6 +1022,33 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
   }
 
+  // Fires a background check for a 'wrong'-rejected Concentration answer.
+  // Never awaited by the caller — this is a fire-and-forget side effect that
+  // resolves well after handleMessage has already returned. If the validator
+  // later confirms the answer, game.reinstate() replays it as if it had
+  // matched the first time; if the post-elimination pause has already closed
+  // by then (or a later elimination superseded this one), reinstate() is a
+  // documented no-op and the miss is simply lost to this round — see
+  // engine/validator.js's data/validator-approved.json for the permanent record.
+  function fireConcentrationValidator(jid, game, event) {
+    if (!concentrationValidator) return
+    const meta = gameMeta.get(jid)
+    const calls = meta?.validatorCalls ?? 0
+    if (calls >= CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME) return
+    if (meta) meta.validatorCalls = calls + 1
+
+    concentrationValidator.check(event.category, event.answer)
+      .then((valid) => {
+        if (valid !== true) return
+        const reinstateEvents = game.reinstate(event.player, event.answer, Date.now())
+        if (reinstateEvents.length === 0) return
+        sendEvents(enqueue, jid, reinstateEvents, undefined, Date.now(), db)
+      })
+      .catch((e) => {
+        logger?.error?.({ err: e }, 'Concentration validator check failed')
+      })
+  }
+
   async function startRiddleGame(jid, sender, senderPn, now, isGroup) {
     if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
       enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
@@ -1756,6 +1801,17 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
 
       sendEvents(enqueue, jid, events, raw, now, db)
+      if (gameTypes.get(jid) === 'concentration') {
+        // Fired even if this elimination just ended the game (game.state
+        // 'over', not 'starting') — reinstate() itself no-ops once it's too
+        // late to undo, but the validator check still runs and still records
+        // a confirmed-valid answer to the review file for later content work.
+        for (const ev of events) {
+          if (ev.type === 'concentration_eliminated' && ev.reason === 'wrong') {
+            fireConcentrationValidator(jid, game, ev)
+          }
+        }
+      }
       if (game.state === 'over') {
         games.delete(jid)
         starters.delete(jid)
