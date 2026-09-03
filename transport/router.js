@@ -4,13 +4,14 @@ import { render } from './render.js'
 import { isAdmin, isAdminEither, toNumber } from './admin.js'
 import { createGame } from '../engine/game.js'
 import { createTriviaGame, QUESTION_COUNT, parseAnswer } from '../engine/trivia.js'
+import { createCareerPathGame, ROUND_COUNT as CAREERPATH_ROUND_COUNT } from '../engine/careerpath.js'
 import { createScrambleGame, SCRAMBLE_COUNT } from '../engine/scramble.js'
 import { createLogoGame, LOGO_COUNT } from '../engine/logo.js'
 import { createFlagGame, FLAG_COUNT, CLOCK_SECONDS as FLAG_CLOCK_SECONDS } from '../engine/flag.js'
 import { createRiddleGame, RIDDLE_COUNT } from '../engine/riddle.js'
 import { createConcentrationGame, MIN_PLAYERS as CONCENTRATION_MIN_PLAYERS } from '../engine/concentration.js'
 import { createValidator } from '../engine/validator.js'
-import { loadRiddleBank, loadFlagBank, loadWordleBank, loadCategoryBank } from '../engine/bank.js'
+import { loadRiddleBank, loadFlagBank, loadWordleBank, loadCategoryBank, shuffle } from '../engine/bank.js'
 import { createTournament } from '../engine/tournament.js'
 import { createWordleTournament } from '../engine/wordleTournament.js'
 import { fold, isWord } from '../engine/normalize.js'
@@ -36,12 +37,25 @@ try {
   // If words.txt doesn't exist or fails, it will remain null
 }
 
+// Career Path's player pool: data/football/career-paths.json, built by
+// data/football/build-career-paths.mjs. Nobody has run the live build yet in
+// every environment, so a missing/empty file is expected, not a startup
+// error — same graceful degradation as index.js's loadBank try/catch for
+// Trivia's question bank.
+let careerPathPool = null
+try {
+  const parsed = JSON.parse(readFileSync(join('data', 'football', 'career-paths.json'), 'utf8'))
+  if (Array.isArray(parsed) && parsed.length > 0) careerPathPool = parsed
+} catch (e) {
+  // File doesn't exist yet or is invalid — /careerpath reports unavailable, doesn't crash.
+}
+
 const MODE_NAMES = new Set(['easy', 'medium', 'hard'])
 
 // Commands a banned player cannot use. Keep every playable mode listed here —
 // a mode missing from this set is a mode a banned player can still start.
 const GAME_COMMANDS = new Set([
-  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney', 'wordle', 'concentration',
+  'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney', 'wordle', 'concentration', 'careerpath',
 ])
 
 // rejected events (engine/game.js) don't carry the required letter/minLength, only
@@ -125,6 +139,14 @@ const KIND_BY_EVENT = {
   concentration_cancelled: 'result',
   concentration_terminated: 'result',
   concentration_begin_denied: 'misc',
+  // careerpath_reveal replaces the previous reveal for this jid (growing club
+  // list is the "current state" message), same as trivia_question — 'turn'
+  // so a stale reveal is coalesced away rather than stacking up in the outbox.
+  careerpath_reveal: 'turn',
+  careerpath_correct: 'result',
+  careerpath_timeout: 'result',
+  careerpath_over: 'result',
+  careerpath_terminated: 'result',
 }
 
 // Ordering (ramp->turn, accepted->turn, eliminated->winner, ...) carries meaning,
@@ -222,6 +244,26 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
       gameMeta.delete(jid)
     } else if (event.type === 'trivia_terminated') {
       lastTriviaEnd.set(jid, now)
+      gameMeta.delete(jid)
+    } else if (event.type === 'careerpath_over') {
+      const meta = gameMeta.get(jid)
+      const pnMap = meta?.pnMap || new Map()
+      const results = event.standings.map((s, i) => ({
+        player: s.player, placement: i + 1, player_pn: pnMap.get(s.player),
+      }))
+      if (results.length > 0) {
+        try {
+          db?.recordGame({
+            jid, mode: 'careerpath', type: 'careerpath',
+            startedAt: meta?.startedAt ?? now, endedAt: now,
+            words: event.totalRounds, results,
+          })
+        } catch (e) {
+          // store failure must never break gameplay
+        }
+      }
+      gameMeta.delete(jid)
+    } else if (event.type === 'careerpath_terminated') {
       gameMeta.delete(jid)
     } else if (event.type === 'scramble_word') {
       if (event.index === 1) {
@@ -696,6 +738,67 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
   }
 
+  // No lobby, free-for-all: same shape as startTrivia above. No category
+  // argument — the pool is one flat list of players.
+  async function startCareerPath(jid, sender, senderPn, now, isGroup) {
+    if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
+      enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (games.has(jid)) {
+      enqueue(jid, { text: `A game is already running here. Use ${PREFIX}careerpath end to stop it first.`, mentions: [], kind: 'misc' })
+      return
+    }
+    if (!careerPathPool) {
+      enqueue(jid, { text: `Career Path is not available yet.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    // Reuses Trivia's asked_questions mechanism as-is (per design spec), tagged
+    // with category 'careerpath'. askedIds(jid) is global across every mode —
+    // fine here since Wikidata player QIDs don't collide with trivia question ids.
+    let exclude
+    try {
+      exclude = db?.askedIds(jid) ?? new Set()
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed loading asked players')
+      exclude = new Set()
+    }
+    let available = careerPathPool.filter((p) => !exclude.has(p.id))
+    // Pool exhausted for this group: recycle rather than serving a short game.
+    if (available.length === 0) {
+      try {
+        db?.clearAsked(jid, 'careerpath')
+      } catch (e) {
+        logger?.error({ err: e }, 'Failed clearing asked players')
+      }
+      available = careerPathPool
+    }
+    if (available.length === 0) {
+      enqueue(jid, { text: `Career Path is not available yet.`, mentions: [], kind: 'misc' })
+      return
+    }
+
+    const picked = shuffle(available, Math.random).slice(0, CAREERPATH_ROUND_COUNT)
+    const game = createCareerPathGame({ pool: picked, now, random: Math.random })
+    games.set(jid, game)
+    starters.set(jid, sender)
+    gameTypes.set(jid, 'careerpath')
+    gameMeta.set(jid, { mode: 'careerpath', type: 'careerpath', startedAt: now, players: [], eliminated: [], pnMap: new Map() })
+    if (senderPn) gameMeta.get(jid).pnMap.set(sender, senderPn)
+    try {
+      db?.markAsked(jid, picked.map((p) => ({ id: p.id, category: 'careerpath' })), now)
+    } catch (e) {
+      logger?.error({ err: e }, 'Failed recording asked players')
+    }
+    try { db?.recordGameActivity?.(jid, now) } catch (e) { /* store failure must never break gameplay */ }
+    enqueue(jid, {
+      text: `⚽ *CAREER PATH* is starting!\nGuess the footballer from their club history — clubs revealed one at a time.\nFirst correct guess in the chat wins the round!\n⏳ ${CAREERPATH_ROUND_COUNT} rounds — get ready!`,
+      mentions: [], kind: 'misc',
+    })
+    sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
+  }
+
   // Open registration for a head-to-head tournament. `args` here is everything
   // after "start" (e.g. /tourney start football -> args = ['football']).
   async function startTournament(jid, sender, senderPn, args, now, isGroup) {
@@ -1152,6 +1255,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}riddle`,
         `▸ ${PREFIX}riddle end`,
         ``,
+        `*⚽ CAREER PATH* _(start: admins only)_`,
+        `▸ ${PREFIX}careerpath`,
+        `▸ ${PREFIX}careerpath end`,
+        ``,
         `*🏆 TOURNAMENT* _(start/next/end: admins only)_`,
         `▸ ${PREFIX}tourney status`,
         `▸ ${PREFIX}tourney stats`,
@@ -1169,6 +1276,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}flag stats [all]`,
         `▸ ${PREFIX}concentration stats [all]`,
         `▸ ${PREFIX}riddle stats [all]`,
+        `▸ ${PREFIX}careerpath stats [all]`,
       ]
 
       // Hidden from players who cannot use them: no point listing a command
@@ -1394,6 +1502,31 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       }
 
       await startTrivia(jid, sender, senderPn, args, now, isGroup)
+      return
+    }
+
+    if (cmd === 'careerpath') {
+      const sub = (args[0] ?? '').toLowerCase()
+
+      if (sub === 'stats') {
+        const all = args[1] === 'all'
+        const board = db.leaderboard({ jid, since: all ? 0 : startOfWeek(now), limit: 10, type: 'careerpath' })
+        const { text, mentions } = formatLeaderboard(board, all ? '🏆 Career Path — all-time' : '🏆 Career Path — this week')
+        enqueue(jid, { text, mentions, kind: 'misc' })
+        return
+      }
+
+      if (!isGroup) {
+        enqueue(jid, { text: `Game commands only work inside a group.`, mentions: [], kind: 'misc' })
+        return
+      }
+
+      if (sub === 'end') {
+        await endGame(jid, sender, senderPn, isGroup, now, 'careerpath')
+        return
+      }
+
+      await startCareerPath(jid, sender, senderPn, now, isGroup)
       return
     }
 

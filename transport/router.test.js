@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict'
+import { existsSync, mkdirSync, unlinkSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 // config.js throws if PHONE_NUMBER is missing; set env before any import that touches it.
 process.env.PHONE_NUMBER = '1234567890'
@@ -8,6 +10,22 @@ process.env.ADMINS = '15550000001'
 import { openDb } from '../store/db.js'
 
 const OWNER_NUMBER = '15550000000'
+
+// router.js loads data/football/career-paths.json once at import time (mirrors
+// Concentration's categoryBank pattern) — that file is a live-build artifact
+// not checked into the repo yet. Write a small fixture before importing
+// router.js so /careerpath has a pool to test against, then remove it once
+// these tests finish so the repo is left exactly as it was found.
+const CAREERPATH_FIXTURE = join('data', 'football', 'career-paths.json')
+const careerPathFixtureExisted = existsSync(CAREERPATH_FIXTURE)
+if (!careerPathFixtureExisted) {
+  mkdirSync(join('data', 'football'), { recursive: true })
+  writeFileSync(CAREERPATH_FIXTURE, JSON.stringify([
+    { id: 'Q1', name: 'Kylian Mbappe', aliases: ['Mbappe'], clubs: ['Le Havre', 'Monaco', 'PSG', 'Real Madrid'] },
+    { id: 'Q2', name: 'Erling Haaland', aliases: ['Haaland'], clubs: ['Bryne', 'Molde', 'Salzburg', 'Dortmund', 'Man City'] },
+    { id: 'Q3', name: 'Mohamed Salah', aliases: ['Salah'], clubs: ['El Mokawloon', 'Basel', 'Chelsea', 'Roma', 'Liverpool'] },
+  ]))
+}
 
 const { sendEvents, createRouter } = await import('./router.js')
 const { GAP_SECONDS } = await import('../engine/trivia.js')
@@ -1482,6 +1500,108 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: '/careerpath starts a game and posts the opening announcement plus first reveal',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g-cp-1@g.us', sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/careerpath', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'game registered so the scheduler ticks it')
+      assert.ok(sent.some((t) => t.includes('CAREER PATH')), 'opening announcement sent')
+      assert.ok(sent.some((t) => t.includes('*Round 1/')), 'first reveal posted immediately, no lobby')
+      db.close()
+    },
+  },
+  {
+    name: '/careerpath start is refused for a non-admin group member',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g-cp-2@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/careerpath', isGroup: true }, 0)
+      assert.equal(games.size, 0, 'no game started by a non-admin')
+      db.close()
+    },
+  },
+  {
+    name: '/careerpath end is refused for a non-owner, non-admin player, then works for the starter',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const admin = 'admin@s.whatsapp.net'
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [admin], db, resolvePn: () => undefined,
+      })
+      const jid = 'g-cp-3@g.us'
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath', isGroup: true }, 0)
+      assert.equal(games.size, 1)
+
+      await router.handleMessage({ jid, sender: 'rando@s.whatsapp.net', senderPn: 'rando@s.whatsapp.net', text: '/careerpath end', isGroup: true }, 100)
+      assert.equal(games.size, 1, 'a non-starter, non-admin cannot end the game')
+
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath end', isGroup: true }, 200)
+      assert.equal(games.size, 0, 'the starter can end the game')
+      assert.ok(sent.some((t) => t.includes('Career Path stopped')), 'termination message sent')
+      db.close()
+    },
+  },
+  {
+    name: '/careerpath stats returns the type-filtered leaderboard',
+    fn: async () => {
+      const sent = []
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, resolvePn: () => undefined,
+      })
+      const jid = 'g-cp-4@g.us'
+      await router.handleMessage({ jid, sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/careerpath stats', isGroup: true }, 0)
+      assert.ok(sent.some((t) => t.includes('Career Path — this week')))
+      db.close()
+    },
+  },
+  {
+    name: '/careerpath recycles the pool once every player in it has been asked here',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const admin = 'admin@s.whatsapp.net'
+      const jid = 'g-cp-5@g.us'
+      // Fixture has 3 players; mark all 3 as already-asked for this jid so a
+      // fresh pick comes back empty and the router must recycle (clearAsked)
+      // rather than reporting "not available yet" — same fallback Trivia has.
+      db.markAsked(jid, [
+        { id: 'Q1', category: 'careerpath' },
+        { id: 'Q2', category: 'careerpath' },
+        { id: 'Q3', category: 'careerpath' },
+      ], 0)
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [admin], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath', isGroup: true }, 100)
+      assert.equal(games.size, 1, 'pool recycled instead of refusing to start')
+      assert.ok(!sent.some((t) => t.includes('not available')), 'must not report unavailable after a recycle')
+      db.close()
+    },
+  },
 ]
 
 let passed = 0
@@ -1496,6 +1616,10 @@ for (const test of tests) {
     console.error(`✗ ${test.name}: ${e.message}`)
     failed++
   }
+}
+
+if (!careerPathFixtureExisted) {
+  try { unlinkSync(CAREERPATH_FIXTURE) } catch (e) { /* best-effort cleanup */ }
 }
 
 console.log(`\n${passed} passed, ${failed} failed`)

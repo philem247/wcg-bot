@@ -140,6 +140,44 @@ export function render(event) {
     case 'trivia_terminated':
       return { text: `Trivia stopped.`, mentions: [] }
 
+    case 'careerpath_reveal': {
+      const lines = []
+      lines.push(`⚽ *Round ${event.round}/${event.totalRounds}*  ·  ⏱ *${event.revealSeconds}s*`, '')
+      lines.push(event.clubs.map((c, i) => `Club ${i + 1}: ${c}`).join(' → '), '')
+      lines.push(`_Type the player's name to guess!_`)
+      return { text: lines.join('\n'), mentions: [] }
+    }
+
+    case 'careerpath_correct':
+      return {
+        text: `✅ ${mention(event.player)} got it — ${event.answer} (${event.clubs.join(' → ')})`,
+        mentions: [event.player],
+      }
+
+    case 'careerpath_timeout':
+      return {
+        text: `❌ Nobody got it. Answer: ${event.answer} (${event.clubs.join(' → ')})`,
+        mentions: [],
+      }
+
+    case 'careerpath_over': {
+      const lines = []
+      const mentions = []
+      if (event.standings.length === 0) {
+        lines.push('🏁 *FINAL*', '━━━━━━━━━━━━━━━━', '', 'Nobody scored. Brutal.')
+        return { text: lines.join('\n'), mentions }
+      }
+      lines.push('🏁 *FINAL*', '━━━━━━━━━━━━━━━━', '')
+      event.standings.forEach((s, i) => {
+        lines.push(`${MEDALS[i] ?? '　'} ${mention(s.player)} — *${s.score}*`)
+        mentions.push(s.player)
+      })
+      return { text: lines.join('\n'), mentions }
+    }
+
+    case 'careerpath_terminated':
+      return { text: `Career Path stopped.`, mentions: [] }
+
     case 'scramble_word': {
       return {
         text: `🔀 *Scramble (${event.index}/${event.total})*\nUnscramble this word: \`${event.scrambled}\` (${event.clockSeconds}s)`,

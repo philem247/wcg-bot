@@ -289,6 +289,75 @@ const tests = [
     },
   },
   {
+    name: 'careerpath_reveal: header, growing club list, prompt, no mentions',
+    fn: () => {
+      const out = render({
+        type: 'careerpath_reveal', round: 1, totalRounds: 8, revealSeconds: 20,
+        clubs: ['Le Havre', 'Monaco'],
+      })
+      assert.ok(out.text.includes('*Round 1/8*'))
+      assert.ok(out.text.includes('⏱ *20s*'))
+      assert.ok(out.text.includes('Club 1: Le Havre → Club 2: Monaco'))
+      assert.ok(out.text.includes("Type the player's name to guess!"))
+      assert.deepEqual(out.mentions, [])
+    },
+  },
+  {
+    name: 'careerpath_correct: mentions the scorer and shows the full club path',
+    fn: () => {
+      const out = render({
+        type: 'careerpath_correct', player: P1, answer: 'Kylian Mbappé',
+        clubs: ['Le Havre', 'Monaco', 'PSG', 'Real Madrid'], round: 1, totalRounds: 8,
+      })
+      assert.ok(out.text.startsWith('✅'))
+      assert.ok(out.text.includes('@111111111'))
+      assert.ok(out.text.includes('Kylian Mbappé'))
+      assert.ok(out.text.includes('Le Havre → Monaco → PSG → Real Madrid'))
+      assert.deepEqual(out.mentions, [P1])
+    },
+  },
+  {
+    name: 'careerpath_timeout: reveals the answer and mentions nobody',
+    fn: () => {
+      const out = render({
+        type: 'careerpath_timeout', answer: 'Kylian Mbappé',
+        clubs: ['Le Havre', 'Monaco'], round: 1, totalRounds: 8,
+      })
+      assert.ok(out.text.startsWith('❌'))
+      assert.ok(out.text.includes('Kylian Mbappé'))
+      assert.ok(out.text.includes('Le Havre → Monaco'))
+      assert.deepEqual(out.mentions, [])
+    },
+  },
+  {
+    name: 'careerpath_over: standings are medalled and every player is mentioned',
+    fn: () => {
+      const out = render({
+        type: 'careerpath_over', totalRounds: 8,
+        standings: [{ player: P1, score: 3 }, { player: P2, score: 1 }],
+      })
+      assert.ok(out.text.startsWith('🏁 *FINAL*'))
+      assert.ok(out.text.includes('🥇'))
+      assert.equal(out.mentions.length, 2)
+    },
+  },
+  {
+    name: 'careerpath_over: nobody scoring still renders without crashing',
+    fn: () => {
+      const out = render({ type: 'careerpath_over', totalRounds: 8, standings: [] })
+      assert.ok(out.text.length > 0)
+      assert.deepEqual(out.mentions, [])
+    },
+  },
+  {
+    name: 'careerpath_terminated renders a stop message',
+    fn: () => {
+      const out = render({ type: 'careerpath_terminated' })
+      assert.equal(out.text, 'Career Path stopped.')
+      assert.deepEqual(out.mentions, [])
+    },
+  },
+  {
     name: 'tournament_bracket_ready: byes get their own labeled block, matches are numbered',
     fn: () => {
       const out = render({
