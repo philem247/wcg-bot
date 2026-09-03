@@ -197,6 +197,7 @@ function onConnected() {
     `▸ */flag start* — guess the flag`,
     `▸ */concentration start* — category elimination`,
     `▸ */riddle* — riddle quest`,
+    `▸ */careerpath* — guess the footballer`,
     `▸ */wordle* — wordle tournament`,
     `▸ */tourney start* — tournament`,
     ``,

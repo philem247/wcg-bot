@@ -23,6 +23,22 @@ export const MIN_CLUBS = 3
 // league).
 export const CAREER_PATH_LEAGUES = ['premier_league', 'la_liga', 'serie_a', 'bundesliga', 'ligue_1']
 
+// Additional leagues, career-path only — NOT added to queries.mjs's shared
+// LEAGUES export (that map feeds trivia questions elsewhere; touching it
+// risks unrelated regressions). Each QID confirmed live via
+// `ASK/COUNT { ?club wdt:P118 wd:<qid> }` before being trusted here — league
+// names collide with multiple Wikidata items across eras/reorganizations and
+// only one per league actually carries current P118 club links.
+export const CAREER_PATH_EXTRA_LEAGUES = {
+  championship:       { qid: 'Q19510', name: 'EFL Championship' },
+  eredivisie:          { qid: 'Q167541', name: 'Eredivisie' },
+  primeira_liga:       { qid: 'Q182994', name: 'Primeira Liga' },
+  saudi_pro_league:    { qid: 'Q255633', name: 'Saudi Pro League' },
+  mls:                 { qid: 'Q18543', name: 'MLS' },
+  super_lig:           { qid: 'Q485568', name: 'Süper Lig' },
+  belgian_pro_league:  { qid: 'Q216022', name: 'Belgian Pro League' },
+}
+
 // First attempt at this (single query, subquery restricted to leagueQid but
 // outer P54 pull unrestricted) still hit WDQS 504 live on Q9448 — an
 // unrestricted outer clause defeats the query planner even when the join
@@ -31,14 +47,20 @@ export const CAREER_PATH_LEAGUES = ['premier_league', 'la_liga', 'serie_a', 'bun
 // via a bounded query, then a VALUES-scoped second query — 891 players in,
 // 1062 rows, 6.3s live).
 //
-// Step 1: exactly playerClubsQuery's candidate subquery (sitelinks + MIN_YEAR
-// spell + 3+ distinct clubs IN leagueQid), standalone, bounded the same way.
+// Step 1: any player with sitelinks >= MIN_SITELINKS who has at least one
+// dated spell at a club in leagueQid since MIN_YEAR. No per-league clubs>=3
+// HAVING here — that wrongly required 3+ DIFFERENT clubs WITHIN this single
+// league (killed MLS/Saudi Pro League: late-career, one-club-in-league
+// signings) — the real >=3-clubs-total-career rule is enforced later by
+// eligiblePlayers() on the full merged career (buildCareerPaths, all
+// leagues combined). Same shape as queries.mjs's proven playerClubsQuery,
+// which has no such HAVING either.
 export function candidatePlayersQuery(leagueQid) {
-  return `SELECT ?player WHERE {
+  return `SELECT DISTINCT ?player WHERE {
   ?player p:P54 ?st . ?st ps:P54 ?c ; pq:P580 ?start .
   ?c wdt:P118 wd:${leagueQid} . FILTER(YEAR(?start) >= ${MIN_YEAR})
   ?player wikibase:sitelinks ?sl . FILTER(?sl >= ${MIN_SITELINKS})
-} GROUP BY ?player ?sl HAVING(COUNT(DISTINCT ?c) >= 3)`
+}`
 }
 
 // Step 2: FULL P54 history (no club/league/year restriction — an MLS spell or
@@ -51,15 +73,38 @@ export function candidatePlayersQuery(leagueQid) {
 // is itself wdt:P279* wd:Q6979593 ("national association football team");
 // age-group squads (e.g. England U18, Q1049171) are typed P31 Q6979593
 // directly. FILTER NOT EXISTS on the transitive P31/P279* chain excludes both.
+//
+// Q6979593 only covers 11-a-side football — a player who also turned out for
+// their country's futsal or beach soccer squad still slips through (found
+// live: Wissam Ben Yedder's rows included "France national futsal team").
+// Confirmed live: France national futsal team (Q2398221) is typed P31
+// Q94696559 ("national futsal team"); France national beach soccer team
+// (Q2420906) is typed P31 Q47460286 ("national beach soccer team"). Neither
+// is P279* under Q6979593 (checked: no useful common ancestor closer than
+// generic "organization"), so each needs its own FILTER NOT EXISTS clause.
 export function careerHistoryQuery(playerUris) {
   return `SELECT ?player ?playerLabel ?clubLabel ?start WHERE {
   VALUES ?player { ${playerUris.map((u) => `<${u}>`).join(' ')} }
   ?player p:P54 ?st .
   ?st ps:P54 ?club ; pq:P580 ?start .
   FILTER NOT EXISTS { ?club wdt:P31/wdt:P279* wd:Q6979593 }
+  FILTER NOT EXISTS { ?club wdt:P31/wdt:P279* wd:Q94696559 }
+  FILTER NOT EXISTS { ?club wdt:P31/wdt:P279* wd:Q47460286 }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 } ORDER BY ?player ?start`
 }
+
+// A single VALUES batch of player URIs is a live WDQS reliability risk, not
+// just a size guess: measured live, a 445-player La Liga batch 502'd on the
+// first attempt and only succeeded on a bare retry. runQuery already retries
+// gateway errors, but if both attempts fail the ENTIRE league's rows are lost
+// (main()'s per-league try/catch skips it silently) — confirmed as the actual
+// cause of Vinícius Júnior missing from a real build: he clears sitelinks,
+// clears MIN_CLUBS with 3 real clubs (Flamengo, Real Madrid, Real Madrid
+// Castilla), and is in La Liga's candidate set, but is unreachable through any
+// other tracked league. Chunking bounds the blast radius of one WDQS hiccup to
+// a slice of players instead of the whole league.
+const CAREER_HISTORY_CHUNK_SIZE = 150
 
 // Runs both steps and returns the row shape buildCareerPaths expects. Empty
 // candidate set short-circuits — an empty VALUES clause is invalid SPARQL.
@@ -67,7 +112,17 @@ export async function careerPathsQuery(leagueQid, opts) {
   const candidates = await runQuery(candidatePlayersQuery(leagueQid), opts)
   const playerUris = candidates.map((r) => r.player).filter(Boolean)
   if (playerUris.length === 0) return []
-  return runQuery(careerHistoryQuery(playerUris), opts)
+  const rows = []
+  for (let i = 0; i < playerUris.length; i += CAREER_HISTORY_CHUNK_SIZE) {
+    const chunk = playerUris.slice(i, i + CAREER_HISTORY_CHUNK_SIZE)
+    try {
+      rows.push(...(await runQuery(careerHistoryQuery(chunk), opts)))
+    } catch (e) {
+      // One chunk's WDQS failure must not cost every OTHER chunk's players.
+      console.error(`  chunk ${i / CAREER_HISTORY_CHUNK_SIZE + 1} failed: ${e.message}`)
+    }
+  }
+  return rows
 }
 
 // Groups P54 rows by player, orders each player's spells by start date, and
@@ -172,8 +227,11 @@ export async function patchLatestClub(player, { apiKey, fetchImpl = fetch } = {}
 async function main() {
   console.log('Querying Wikidata for career paths...')
   const rows = []
-  for (const key of CAREER_PATH_LEAGUES) {
-    const { qid, name } = LEAGUES[key]
+  const leagues = [
+    ...CAREER_PATH_LEAGUES.map((key) => LEAGUES[key]),
+    ...Object.values(CAREER_PATH_EXTRA_LEAGUES),
+  ]
+  for (const { qid, name } of leagues) {
     // One league's query failing (transient WDQS error) is skipped, not fatal to the build.
     try {
       const leagueRows = await careerPathsQuery(qid)
@@ -187,9 +245,13 @@ async function main() {
   console.log(`  ${base.length} players with >= ${MIN_CLUBS} clubs`)
 
   console.log('Fetching FPL for freshness overlay...')
-  const bootstrap = await fetchBootstrap()
-  const teamById = new Map((bootstrap.teams ?? []).map((t) => [t.id, t.name]))
-  mergeFplOverlay(base, recognisablePlayers(bootstrap), teamById)
+  try {
+    const bootstrap = await fetchBootstrap()
+    const teamById = new Map((bootstrap.teams ?? []).map((t) => [t.id, t.name]))
+    mergeFplOverlay(base, recognisablePlayers(bootstrap), teamById)
+  } catch (e) {
+    console.error(`FPL overlay skipped: ${e.message}`)
+  }
 
   const pool = withAliases(base)
   if (pool.length === 0) {
