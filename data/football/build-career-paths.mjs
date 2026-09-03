@@ -7,7 +7,18 @@
 import { writeFile } from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 import { runQuery } from './sparql.mjs'
-import { isQid, MIN_SITELINKS, MIN_YEAR, LEAGUES } from './queries.mjs'
+import { isQid, MIN_SITELINKS, LEAGUES } from './queries.mjs'
+
+// Career Path reveals a candidate's FULL career regardless of date once
+// they're in the pool (careerHistoryQuery has no year filter at all) — the
+// year gate here only decides who gets discovered as a candidate in the
+// first place. queries.mjs's MIN_YEAR=2000 is tuned for trivia (needs a
+// recent/answerable era) and wrongly excludes legends whose ONLY qualifying
+// spell in a tracked league predates it (e.g. Beckham's Man Utd spell started
+// 1992). 1985 covers any career recognisable to someone alive today (late-
+// career legends included) without reaching into unrecognisable 1960s-70s
+// territory — MIN_SITELINKS is still the real fame gate regardless of date.
+export const CAREER_PATH_MIN_YEAR = 1985
 import { fetchBootstrap, recognisablePlayers } from './fpl.mjs'
 
 // Same eligibility rule the design spec settled on: excludes one-club careers
@@ -58,7 +69,7 @@ export const CAREER_PATH_EXTRA_LEAGUES = {
 export function candidatePlayersQuery(leagueQid) {
   return `SELECT DISTINCT ?player WHERE {
   ?player p:P54 ?st . ?st ps:P54 ?c ; pq:P580 ?start .
-  ?c wdt:P118 wd:${leagueQid} . FILTER(YEAR(?start) >= ${MIN_YEAR})
+  ?c wdt:P118 wd:${leagueQid} . FILTER(YEAR(?start) >= ${CAREER_PATH_MIN_YEAR})
   ?player wikibase:sitelinks ?sl . FILTER(?sl >= ${MIN_SITELINKS})
 }`
 }
