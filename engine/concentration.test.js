@@ -315,17 +315,57 @@ test('concentration: reinstate() undoes a wrong-answer elimination during the pa
   assert.equal(turn.category, 'Primary colors')
   assert.equal(turn.player, 'p2') // play resumes with whoever was next, same as a normal accept
 
-  // Known limitation: a validator-approved answer isn't in the static JSON,
-  // so matchItem() still can't find it locally — a second player repeating
-  // the exact same reinstated answer goes through the same eliminate/validate/
-  // reinstate round-trip again (harmless — the validator cache makes the
-  // second lookup free — but it is NOT caught as an instant local duplicate
-  // the way an in-JSON answer would be, since matchItem() fails before the
-  // used-set check is ever reached). Documented here rather than engineered
-  // around, since it only matters until the content gets folded into the
-  // permanent category file.
+  // A reinstated answer is folded into the current category as a first-class
+  // item, so a repeat is now caught locally as an instant duplicate.
   const repeat = game.submit('p2', 'Purple', at + 600)
-  assert.equal(repeat[0].reason, 'wrong')
+  assert.equal(repeat[0].reason, 'duplicate')
+})
+
+test('concentration: a repeat of a validator-approved answer by a different player is eliminated as duplicate, not wrong', () => {
+  const game = started(['p1', 'p2', 'p3'])
+  const at = START_DELAY_MS + 100
+  game.submit('p1', 'Chopstick', at) // not in category -> wrong, paused
+  const reinstateEvents = game.reinstate('p1', 'Chopstick', at + 500) // validator says valid -> back in, extras updated
+  const next = reinstateEvents.find((e) => e.type === 'concentration_turn').player
+
+  const repeat = game.submit(next, 'chopstick', at + 600) // different player repeats the same answer
+  assert.equal(repeat[0].type, 'concentration_eliminated')
+  assert.equal(repeat[0].reason, 'duplicate')
+  assert.equal(repeat[0].answer, 'Chopstick')
+})
+
+test('concentration: a validator-approved answer does not survive a category switch', () => {
+  const game = started(['p1', 'p2', 'p3'])
+  const at = START_DELAY_MS + 100
+  game.submit('p1', 'Chopstick', at) // wrong -> paused
+  const reinstateEvents = game.reinstate('p1', 'Chopstick', at + 500) // approved, back in same category
+  const turn = reinstateEvents.find((e) => e.type === 'concentration_turn')
+  assert.equal(turn.category, 'Primary colors')
+
+  // Eliminate the resumed player with a wrong answer to trigger the
+  // post-elimination pause, then let it resolve into a fresh category.
+  const wrongAt = at + 600
+  game.submit(turn.player, 'NotAColor', wrongAt)
+  const resumed = game.tick(wrongAt + START_DELAY_MS)
+  const switchEvent = resumed.find((e) => e.type === 'concentration_category_switch')
+  assert.ok(switchEvent)
+
+  const newTurn = resumed.find((e) => e.type === 'concentration_turn')
+  const repeat = game.submit(newTurn.player, 'Chopstick', wrongAt + START_DELAY_MS + 10)
+  assert.equal(repeat[0].reason, 'wrong') // extra did not carry over into the new category
+})
+
+test('concentration: reinstating a validator-approved answer nets zero against unusedCount, no spurious pool-low switch', () => {
+  // 'colors' has 6 items, 3 alive players -> unusedCount starts well above
+  // alive count. A reinstatement adds one to the item pool (extraItems) and
+  // one to `used` at the same time, so unusedCount is unchanged and no
+  // pool_low switch should fire as a side effect of the reinstatement itself.
+  const game = started(['p1', 'p2', 'p3'])
+  const at = START_DELAY_MS + 100
+  game.submit('p1', 'Chopstick', at) // wrong -> paused
+  const events = game.reinstate('p1', 'Chopstick', at + 500)
+  const switchEvent = events.find((e) => e.type === 'concentration_category_switch')
+  assert.equal(switchEvent, undefined, 'reinstating should not by itself trigger pool_low')
 })
 
 test('concentration: reinstate() is a no-op once the post-elimination pause has already closed', () => {

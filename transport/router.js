@@ -1135,10 +1135,16 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   // engine/validator.js's data/validator-approved.json for the permanent record.
   function fireConcentrationValidator(jid, game, event) {
     if (!concentrationValidator) return
-    const meta = gameMeta.get(jid)
-    const calls = meta?.validatorCalls ?? 0
-    if (calls >= CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME) return
-    if (meta) meta.validatorCalls = calls + 1
+    // A cache hit resolves for free (no network call), so it must not count
+    // against the per-game budget — otherwise identical answers get
+    // inconsistent treatment once the cap is hit (see fix note above).
+    const isCacheHit = concentrationValidator.has(event.category, event.answer)
+    if (!isCacheHit) {
+      const meta = gameMeta.get(jid)
+      const calls = meta?.validatorCalls ?? 0
+      if (calls >= CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME) return
+      if (meta) meta.validatorCalls = calls + 1
+    }
 
     concentrationValidator.check(event.category, event.answer)
       .then((valid) => {

@@ -25,9 +25,9 @@ function sanitize(s) {
   return fold(String(s ?? '')).replace(/[^a-z0-9]/g, '')
 }
 
-// Returns the item's canonical answer string if `text` matches it by name or
-// alias, else null.
-function matchItem(text, category) {
+// Returns the item's canonical answer string if `text` matches it by name,
+// alias, or a validator-approved extra for the current game, else null.
+function matchItem(text, category, extraItems) {
   const g = sanitize(text)
   if (!g) return null
   for (const item of category.items) {
@@ -35,6 +35,7 @@ function matchItem(text, category) {
     const aliases = category.aliases?.[item] ?? []
     if (aliases.some((a) => sanitize(a) === g)) return item
   }
+  if (extraItems?.has(g)) return extraItems.get(g)
   return null
 }
 
@@ -67,6 +68,7 @@ export function createConcentrationGame({
   const usedCategoryIds = new Set(exclude)
   let currentCategory = null
   const used = new Set() // canonical answers accepted in the current category
+  let extraItems = new Map() // sanitized -> canonical, validator-approved answers for the current category
   let deadline = 0
 
   const eliminatedOrder = [] // in elimination order, first eliminated first
@@ -82,6 +84,7 @@ export function createConcentrationGame({
   function switchCategory(reason) {
     currentCategory = pickCategory()
     used.clear()
+    extraItems.clear()
     usedCategoryIds.add(currentCategory.id)
     return { type: 'concentration_category_switch', id: currentCategory.id, category: currentCategory.category, reason }
   }
@@ -102,7 +105,7 @@ export function createConcentrationGame({
   }
 
   function unusedCount() {
-    return currentCategory.items.length - used.size
+    return currentCategory.items.length + extraItems.size - used.size
   }
 
   function finish(events) {
@@ -195,7 +198,7 @@ export function createConcentrationGame({
       if (at >= deadline) return [] // tick() is sole timeout authority
 
       const events = []
-      const match = matchItem(text, currentCategory)
+      const match = matchItem(text, currentCategory, extraItems)
 
       if (!match) {
         eliminate(at, 'wrong', text, events)
@@ -259,6 +262,10 @@ export function createConcentrationGame({
       eliminatedOrder.pop()
       const insertAt = Math.min(pendingEliminatedIndex, active.length)
       active.splice(insertAt, 0, player)
+      // Make the validator-approved answer a first-class member of the current
+      // category (not just `used`), so a later repeat is caught as 'duplicate'
+      // instead of falling through matchItem() as 'wrong' forever (the soft-lock).
+      extraItems.set(sanitize(answer), answer)
       used.add(answer)
 
       const events = [{ type: 'concentration_reinstated', player, answer }]

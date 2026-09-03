@@ -103,6 +103,30 @@ test('validator: a slow response past timeoutMs resolves null', async () => {
   rmSync(dir, { recursive: true, force: true })
 })
 
+test('validator: a resolved check is reflected by has(), and is absent before', async () => {
+  const { cachePath, approvedPath, dir } = tempPaths()
+  const v = createValidator({ token: 'tok', cachePath, approvedPath, fetchFn: fakeFetch('yes') })
+  assert.equal(v.has('Birds', 'Dove'), false)
+  await v.check('Birds', 'Dove')
+  assert.equal(v.has('Birds', 'Dove'), true)
+  assert.equal(v.has('Birds', 'dove'), true, 'has() must be case-insensitive like cacheKey')
+  rmSync(dir, { recursive: true, force: true })
+})
+
+test('validator: writing the cache does not clobber pre-existing entries on disk', async () => {
+  const { cachePath, approvedPath, dir } = tempPaths()
+  const fs = await import('node:fs')
+  fs.writeFileSync(cachePath, JSON.stringify({ 'mammals::lion': true }))
+
+  const v = createValidator({ token: 'tok', cachePath, approvedPath, fetchFn: fakeFetch('yes') })
+  await v.check('Birds', 'Dove')
+
+  const onDisk = JSON.parse(readFileSync(cachePath, 'utf8'))
+  assert.equal(onDisk['mammals::lion'], true, 'pre-existing entry must survive the new write')
+  assert.equal(onDisk['birds::dove'], true, 'new entry must be present too')
+  rmSync(dir, { recursive: true, force: true })
+})
+
 test('validator: existing cache/approved files load on construction', async () => {
   const { cachePath, approvedPath, dir } = tempPaths()
   const fs = await import('node:fs')

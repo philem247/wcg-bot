@@ -10,7 +10,7 @@
 // never throws: the caller's contract is "null means leave the elimination
 // as it is," so a flaky network can never make gameplay worse than doing
 // nothing.
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync, renameSync } from 'node:fs'
 
 const API_URL = 'https://api.anthropic.com/v1/messages'
 
@@ -20,6 +20,17 @@ function loadJson(path, fallback) {
   } catch {
     return fallback
   }
+}
+
+// Atomic write: a crash mid-writeFileSync on `path` directly would leave a
+// truncated/corrupt file, and loadJson()'s silent fallback would then reset
+// the whole accumulated map on next read. Write to a tmp file in the same
+// dir, then rename over the target — rename is atomic (same pattern as
+// data/football/build-career-paths.mjs).
+function writeJsonAtomic(path, data) {
+  const tmp = `${path}.tmp`
+  writeFileSync(tmp, data)
+  renameSync(tmp, path)
 }
 
 function cacheKey(categoryLabel, answer) {
@@ -39,7 +50,7 @@ export function createValidator({
 
   function saveCache() {
     try {
-      writeFileSync(cachePath, JSON.stringify(Object.fromEntries(cache), null, 2) + '\n')
+      writeJsonAtomic(cachePath, JSON.stringify(Object.fromEntries(cache), null, 2) + '\n')
     } catch {
       // Best-effort — a failed write only costs a re-check next time, never breaks gameplay.
     }
@@ -49,13 +60,20 @@ export function createValidator({
     if (approved.some((a) => a.category === categoryLabel && a.answer.toLowerCase() === answer.toLowerCase())) return
     approved.push({ category: categoryLabel, answer, ts: Date.now() })
     try {
-      writeFileSync(approvedPath, JSON.stringify(approved, null, 2) + '\n')
+      writeJsonAtomic(approvedPath, JSON.stringify(approved, null, 2) + '\n')
     } catch {
       // Best-effort — this file is a human review aid, not gameplay state.
     }
   }
 
   return {
+    // True if this category+answer was already resolved (cache hit) — lets a
+    // caller skip charging its own call budget for what will be a free,
+    // no-network check() resolution.
+    has(categoryLabel, answer) {
+      return cache.has(cacheKey(categoryLabel, answer))
+    },
+
     // Returns true/false once resolved from cache or the API, or null if the
     // check could not be made (disabled, timed out, or errored) — the caller
     // must treat null exactly like false (leave the elimination standing).
