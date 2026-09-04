@@ -738,9 +738,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     sendEvents(enqueue, jid, game.tick(now), undefined, now, db)
   }
 
-  // No lobby, free-for-all: same shape as startTrivia above. No category
-  // argument — the pool is one flat list of players.
-  async function startCareerPath(jid, sender, senderPn, now, isGroup) {
+  // No lobby, free-for-all: same shape as startTrivia above. `era` selects
+  // 'legend' or 'current' from the pool — required by the caller, /careerpath
+  // dispatch below refuses to call this without one.
+  async function startCareerPath(jid, sender, senderPn, era, now, isGroup) {
     if (!(await mayStartGame(jid, sender, senderPn, isGroup))) {
       enqueue(jid, { text: `Only a group admin can start a game.`, mentions: [], kind: 'misc' })
       return
@@ -749,7 +750,8 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       enqueue(jid, { text: `A game is already running here. Use ${PREFIX}careerpath end to stop it first.`, mentions: [], kind: 'misc' })
       return
     }
-    if (!careerPathPool) {
+    const erasPool = careerPathPool?.filter((p) => p.era === era)
+    if (!erasPool || erasPool.length === 0) {
       enqueue(jid, { text: `Career Path is not available yet.`, mentions: [], kind: 'misc' })
       return
     }
@@ -764,7 +766,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       logger?.error({ err: e }, 'Failed loading asked players')
       exclude = new Set()
     }
-    let available = careerPathPool.filter((p) => !exclude.has(p.id))
+    let available = erasPool.filter((p) => !exclude.has(p.id))
     // Pool exhausted for this group: recycle rather than serving a short game.
     if (available.length === 0) {
       try {
@@ -772,7 +774,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       } catch (e) {
         logger?.error({ err: e }, 'Failed clearing asked players')
       }
-      available = careerPathPool
+      available = erasPool
     }
     if (available.length === 0) {
       enqueue(jid, { text: `Career Path is not available yet.`, mentions: [], kind: 'misc' })
@@ -1262,7 +1264,8 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         `▸ ${PREFIX}riddle end`,
         ``,
         `*⚽ CAREER PATH* _(start: admins only)_`,
-        `▸ ${PREFIX}careerpath`,
+        `▸ ${PREFIX}careerpath legends`,
+        `▸ ${PREFIX}careerpath current`,
         `▸ ${PREFIX}careerpath end`,
         ``,
         `*🏆 TOURNAMENT* _(start/next/end: admins only)_`,
@@ -1532,7 +1535,15 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         return
       }
 
-      await startCareerPath(jid, sender, senderPn, now, isGroup)
+      if (sub === 'legends' || sub === 'current') {
+        await startCareerPath(jid, sender, senderPn, sub === 'legends' ? 'legend' : 'current', now, isGroup)
+        return
+      }
+
+      enqueue(jid, {
+        text: `Pick a mode: ${PREFIX}careerpath legends or ${PREFIX}careerpath current`,
+        mentions: [], kind: 'misc',
+      })
       return
     }
 

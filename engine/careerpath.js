@@ -14,6 +14,7 @@ import { fold } from './normalize.js'
 export const ROUND_COUNT = 8
 export const REVEAL_SECONDS = 20
 export const GAP_SECONDS = 10
+export const POINTS_MAX = 5
 
 function sanitize(s) {
   return fold(String(s ?? '')).replace(/[^a-z0-9]/g, '')
@@ -127,7 +128,8 @@ export function createCareerPathGame({
       if (state === 'over' || phase !== 'revealing' || !current) return []
       if (!matchPlayer(text, current)) return []
 
-      scores.set(player, (scores.get(player) ?? 0) + 1)
+      const points = Math.max(1, POINTS_MAX - (revealed.length - 1))
+      scores.set(player, (scores.get(player) ?? 0) + points)
       if (!scoredAt.has(player)) scoredAt.set(player, at)
 
       enterGap(at)
@@ -138,6 +140,7 @@ export function createCareerPathGame({
         clubs: current.clubs.slice(),
         round: round + 1,
         totalRounds,
+        points,
       }]
     },
 

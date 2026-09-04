@@ -150,7 +150,7 @@ export function render(event) {
 
     case 'careerpath_correct':
       return {
-        text: `✅ ${mention(event.player)} got it — ${event.answer} (${event.clubs.join(' → ')})`,
+        text: `✅ ${mention(event.player)} got it — ${event.answer} (${event.clubs.join(' → ')}) (+${event.points} pts)`,
         mentions: [event.player],
       }
 

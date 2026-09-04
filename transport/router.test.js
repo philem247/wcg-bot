@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { existsSync, mkdirSync, unlinkSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 // config.js throws if PHONE_NUMBER is missing; set env before any import that touches it.
@@ -12,20 +12,22 @@ import { openDb } from '../store/db.js'
 const OWNER_NUMBER = '15550000000'
 
 // router.js loads data/football/career-paths.json once at import time (mirrors
-// Concentration's categoryBank pattern) — that file is a live-build artifact
-// not checked into the repo yet. Write a small fixture before importing
-// router.js so /careerpath has a pool to test against, then remove it once
-// these tests finish so the repo is left exactly as it was found.
+// Concentration's categoryBank pattern). The checked-in copy is a stale
+// pre-`era` build artifact, so swap in a small fixture (with `era`) before
+// importing router.js and restore whatever was on disk afterward — same
+// swap-and-restore shape regardless of whether the file existed, since the
+// real committed data lacks the field these tests need.
 const CAREERPATH_FIXTURE = join('data', 'football', 'career-paths.json')
 const careerPathFixtureExisted = existsSync(CAREERPATH_FIXTURE)
-if (!careerPathFixtureExisted) {
-  mkdirSync(join('data', 'football'), { recursive: true })
-  writeFileSync(CAREERPATH_FIXTURE, JSON.stringify([
-    { id: 'Q1', name: 'Kylian Mbappe', aliases: ['Mbappe'], clubs: ['Le Havre', 'Monaco', 'PSG', 'Real Madrid'] },
-    { id: 'Q2', name: 'Erling Haaland', aliases: ['Haaland'], clubs: ['Bryne', 'Molde', 'Salzburg', 'Dortmund', 'Man City'] },
-    { id: 'Q3', name: 'Mohamed Salah', aliases: ['Salah'], clubs: ['El Mokawloon', 'Basel', 'Chelsea', 'Roma', 'Liverpool'] },
-  ]))
-}
+const careerPathOriginalContent = careerPathFixtureExisted ? readFileSync(CAREERPATH_FIXTURE, 'utf8') : null
+if (!careerPathFixtureExisted) mkdirSync(join('data', 'football'), { recursive: true })
+writeFileSync(CAREERPATH_FIXTURE, JSON.stringify([
+  { id: 'Q1', name: 'Kylian Mbappe', aliases: ['Mbappe'], clubs: ['Le Havre', 'Monaco', 'PSG', 'Real Madrid'], era: 'current' },
+  { id: 'Q2', name: 'Erling Haaland', aliases: ['Haaland'], clubs: ['Bryne', 'Molde', 'Salzburg', 'Dortmund', 'Man City'], era: 'current' },
+  { id: 'Q3', name: 'Mohamed Salah', aliases: ['Salah'], clubs: ['El Mokawloon', 'Basel', 'Chelsea', 'Roma', 'Liverpool'], era: 'current' },
+  { id: 'Q4', name: 'Pele', aliases: ['Pele'], clubs: ['Santos', 'New York Cosmos'], era: 'legend' },
+  { id: 'Q5', name: 'Diego Maradona', aliases: ['Maradona'], clubs: ['Argentinos Juniors', 'Boca Juniors', 'Barcelona', 'Napoli'], era: 'legend' },
+]))
 
 const { sendEvents, createRouter } = await import('./router.js')
 const { GAP_SECONDS } = await import('../engine/trivia.js')
@@ -1511,7 +1513,7 @@ const tests = [
         logger: { info() {}, error() {}, debug() {} },
         getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, resolvePn: () => undefined,
       })
-      await router.handleMessage({ jid: 'g-cp-1@g.us', sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/careerpath', isGroup: true }, 0)
+      await router.handleMessage({ jid: 'g-cp-1@g.us', sender: 'admin@s.whatsapp.net', senderPn: 'admin@s.whatsapp.net', text: '/careerpath current', isGroup: true }, 0)
       assert.equal(games.size, 1, 'game registered so the scheduler ticks it')
       assert.ok(sent.some((t) => t.includes('CAREER PATH')), 'opening announcement sent')
       assert.ok(sent.some((t) => t.includes('*Round 1/')), 'first reveal posted immediately, no lobby')
@@ -1529,7 +1531,7 @@ const tests = [
         logger: { info() {}, error() {}, debug() {} },
         getGroupAdmins: async () => ['admin@s.whatsapp.net'], db, resolvePn: () => undefined,
       })
-      await router.handleMessage({ jid: 'g-cp-2@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/careerpath', isGroup: true }, 0)
+      await router.handleMessage({ jid: 'g-cp-2@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/careerpath current', isGroup: true }, 0)
       assert.equal(games.size, 0, 'no game started by a non-admin')
       db.close()
     },
@@ -1547,7 +1549,7 @@ const tests = [
         getGroupAdmins: async () => [admin], db, resolvePn: () => undefined,
       })
       const jid = 'g-cp-3@g.us'
-      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath', isGroup: true }, 0)
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath current', isGroup: true }, 0)
       assert.equal(games.size, 1)
 
       await router.handleMessage({ jid, sender: 'rando@s.whatsapp.net', senderPn: 'rando@s.whatsapp.net', text: '/careerpath end', isGroup: true }, 100)
@@ -1596,9 +1598,68 @@ const tests = [
         logger: { info() {}, error() {}, debug() {} },
         getGroupAdmins: async () => [admin], db, resolvePn: () => undefined,
       })
-      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath', isGroup: true }, 100)
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath current', isGroup: true }, 100)
       assert.equal(games.size, 1, 'pool recycled instead of refusing to start')
       assert.ok(!sent.some((t) => t.includes('not available')), 'must not report unavailable after a recycle')
+      db.close()
+    },
+  },
+  {
+    name: '/careerpath legends starts a game using only era: legend fixture entries',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const admin = 'admin@s.whatsapp.net'
+      const jid = 'g-cp-6@g.us'
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [admin], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath legends', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'game started from the legend-only pool')
+      const asked = [...db.askedIds(jid)]
+      assert.ok(asked.every((id) => id === 'Q4' || id === 'Q5'), 'only legend fixture entries picked')
+      db.close()
+    },
+  },
+  {
+    name: '/careerpath current starts a game using only era: current fixture entries',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const admin = 'admin@s.whatsapp.net'
+      const jid = 'g-cp-7@g.us'
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [admin], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath current', isGroup: true }, 0)
+      assert.equal(games.size, 1, 'game started from the current-only pool')
+      const asked = [...db.askedIds(jid)]
+      assert.ok(asked.every((id) => id === 'Q1' || id === 'Q2' || id === 'Q3'), 'only current fixture entries picked')
+      db.close()
+    },
+  },
+  {
+    name: '/careerpath with no argument does not start a game and asks the player to pick a mode',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const admin = 'admin@s.whatsapp.net'
+      const jid = 'g-cp-8@g.us'
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [admin], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/careerpath', isGroup: true }, 0)
+      assert.equal(games.size, 0, 'no game started without an era argument')
+      assert.ok(sent.some((t) => t.includes('Pick a mode')), 'pick-a-mode message sent')
       db.close()
     },
   },
@@ -1618,7 +1679,9 @@ for (const test of tests) {
   }
 }
 
-if (!careerPathFixtureExisted) {
+if (careerPathFixtureExisted) {
+  try { writeFileSync(CAREERPATH_FIXTURE, careerPathOriginalContent) } catch (e) { /* best-effort cleanup */ }
+} else {
   try { unlinkSync(CAREERPATH_FIXTURE) } catch (e) { /* best-effort cleanup */ }
 }
 

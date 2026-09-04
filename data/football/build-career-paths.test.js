@@ -7,6 +7,7 @@ import {
   mergeFplOverlay,
   patchLatestClub,
   MIN_CLUBS,
+  CURRENT_ERA_CUTOFF_YEAR,
 } from './build-career-paths.mjs'
 
 const tests = [
@@ -25,21 +26,46 @@ const tests = [
   {
     name: 'buildCareerPaths: consecutive identical club rows dedupe (loan-and-return through the same club)',
     fn: () => {
-      const rows = [
-        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club X', start: '2010-01-01' },
-        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club Y', start: '2011-01-01' },
-        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club X', start: '2012-01-01' },
-      ]
-      const [p] = buildCareerPaths(rows)
-      // Not a "same club twice in a row" case — X, Y, X is 3 real transfers, all kept.
-      assert.deepEqual(p.clubs, ['Club X', 'Club Y', 'Club X'])
-
       const consecutive = [
         { player: 'Q2', playerLabel: 'C D', clubLabel: 'Club X', start: '2010-01-01' },
         { player: 'Q2', playerLabel: 'C D', clubLabel: 'Club X', start: '2010-06-01' },
       ]
       const [p2] = buildCareerPaths(consecutive)
       assert.deepEqual(p2.clubs, ['Club X'], 'two rows for the same club back-to-back collapse to one')
+    },
+  },
+  {
+    name: 'buildCareerPaths: non-consecutive repeat (A -> B -> A) collapses to first-occurrence-unique [A, B]',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: '2011-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2012-01-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Club A', 'Club B'])
+    },
+  },
+  {
+    name: 'buildCareerPaths: era is "legend" when the latest spell starts before the cutoff year',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: `${CURRENT_ERA_CUTOFF_YEAR - 1}-01-01` },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.equal(p.era, 'legend')
+    },
+  },
+  {
+    name: 'buildCareerPaths: era is "current" when the latest spell starts at/after the cutoff year',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: `${CURRENT_ERA_CUTOFF_YEAR}-01-01` },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.equal(p.era, 'current')
     },
   },
   {
@@ -91,11 +117,18 @@ const tests = [
     name: 'withAliases: populates aliases with the surname when it differs from the full name',
     fn: () => {
       const [a, b] = withAliases([
-        { id: 'Q1', name: 'Kylian Mbappe', clubs: ['X', 'Y', 'Z'] },
-        { id: 'Q2', name: 'Pele', clubs: ['X', 'Y', 'Z'] },
+        { id: 'Q1', name: 'Kylian Mbappe', clubs: ['X', 'Y', 'Z'], era: 'current' },
+        { id: 'Q2', name: 'Pele', clubs: ['X', 'Y', 'Z'], era: 'legend' },
       ])
       assert.deepEqual(a.aliases, ['Mbappe'])
       assert.deepEqual(b.aliases, [])
+    },
+  },
+  {
+    name: 'withAliases: passes era through into the final object alongside id/name/aliases/clubs',
+    fn: () => {
+      const [a] = withAliases([{ id: 'Q1', name: 'A One', clubs: ['X', 'Y', 'Z'], era: 'current' }])
+      assert.deepEqual(a, { id: 'Q1', name: 'A One', aliases: ['One'], clubs: ['X', 'Y', 'Z'], era: 'current' })
     },
   },
   {

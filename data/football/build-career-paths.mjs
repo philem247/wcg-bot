@@ -136,11 +136,20 @@ export async function careerPathsQuery(leagueQid, opts) {
   return rows
 }
 
+// A player still getting new club spells recently reads as "current"; someone
+// whose last recorded move was years ago reads as a "legend" for this game's
+// purposes — an imperfect proxy (a legend can still make news, a current pro
+// can go quiet), but simple, explainable, and driven by data we already have.
+export const CURRENT_ERA_CUTOFF_YEAR = 2022
+
 // Groups P54 rows by player, orders each player's spells by start date, and
-// collapses consecutive identical club entries (a loan-and-return through the
-// SAME club shows up as one repeated row, not a second real club — see spec's
-// "distinct clubs" rule). Two different clubs with the same name are not
-// something this data can distinguish and are not something the spec asks for.
+// dedupes to FIRST-OCCURRENCE-UNIQUE clubs — not just consecutive-unique.
+// Wikidata records reserve-team call-ups and loan-recall cycles as ALTERNATING
+// P54 rows with overlapping dates (e.g. club → reserves → club → reserves →
+// ...), so consecutive-only dedup left that noise in as fake "transfers".
+// A club appears once, at the position it was first joined; two different
+// clubs with the same name are not something this data can distinguish and
+// are not something the spec asks for.
 export function buildCareerPaths(rows) {
   const byPlayer = new Map() // id -> { id, name, spells: [{club, start}] }
   for (const r of rows) {
@@ -152,11 +161,17 @@ export function buildCareerPaths(rows) {
   const out = []
   for (const { id, name, spells } of byPlayer.values()) {
     const ordered = [...spells].sort((a, b) => new Date(a.start) - new Date(b.start))
+    const seen = new Set()
     const clubs = []
     for (const { club } of ordered) {
-      if (clubs[clubs.length - 1] !== club) clubs.push(club)
+      if (!seen.has(club)) {
+        seen.add(club)
+        clubs.push(club)
+      }
     }
-    out.push({ id, name, clubs })
+    const latestYear = new Date(ordered[ordered.length - 1].start).getFullYear()
+    const era = latestYear >= CURRENT_ERA_CUTOFF_YEAR ? 'current' : 'legend'
+    out.push({ id, name, clubs, era })
   }
   return out
 }
@@ -174,9 +189,9 @@ export function surnameAlias(name) {
 }
 
 export function withAliases(players) {
-  return players.map(({ id, name, clubs }) => {
+  return players.map(({ id, name, clubs, era }) => {
     const surname = surnameAlias(name)
-    return { id, name, aliases: surname ? [surname] : [], clubs }
+    return { id, name, aliases: surname ? [surname] : [], clubs, era }
   })
 }
 

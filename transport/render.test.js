@@ -307,12 +307,13 @@ const tests = [
     fn: () => {
       const out = render({
         type: 'careerpath_correct', player: P1, answer: 'Kylian Mbappé',
-        clubs: ['Le Havre', 'Monaco', 'PSG', 'Real Madrid'], round: 1, totalRounds: 8,
+        clubs: ['Le Havre', 'Monaco', 'PSG', 'Real Madrid'], round: 1, totalRounds: 8, points: 5,
       })
       assert.ok(out.text.startsWith('✅'))
       assert.ok(out.text.includes('@111111111'))
       assert.ok(out.text.includes('Kylian Mbappé'))
       assert.ok(out.text.includes('Le Havre → Monaco → PSG → Real Madrid'))
+      assert.ok(out.text.includes('+5 pts'))
       assert.deepEqual(out.mentions, [P1])
     },
   },

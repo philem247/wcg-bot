@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { createCareerPathGame, ROUND_COUNT, REVEAL_SECONDS, GAP_SECONDS } from './careerpath.js'
+import { createCareerPathGame, ROUND_COUNT, REVEAL_SECONDS, GAP_SECONDS, POINTS_MAX } from './careerpath.js'
 
 const REVEAL_MS = REVEAL_SECONDS * 1000
 const GAP_MS = GAP_SECONDS * 1000
@@ -60,6 +60,7 @@ const tests = [
       assert.deepEqual(ev[0].clubs, ['ClubA0', 'ClubB0', 'ClubC0'], 'full list even though only 1 club had been revealed')
       assert.equal(ev[0].round, 1)
       assert.equal(ev[0].totalRounds, 3)
+      assert.equal(ev[0].points, POINTS_MAX, 'first reveal scores POINTS_MAX')
       assert.equal(g.state, 'playing', 'not over yet, in gap')
     },
   },
@@ -129,8 +130,59 @@ const tests = [
       assert.equal(g.state, 'over')
       assert.equal(ev[0].totalRounds, 2)
       assert.deepEqual(ev[0].standings, [
-        { player: 'bob', score: 1 },
-        { player: 'alice', score: 1 },
+        { player: 'bob', score: POINTS_MAX },
+        { player: 'alice', score: POINTS_MAX },
+      ])
+    },
+  },
+  {
+    name: 'correct guess after 3 reveals scores POINTS_MAX - 2',
+    fn: () => {
+      const { g } = startGame(3)
+      g.tick(REVEAL_MS)     // reveal club 2 (revealed.length = 2)
+      g.tick(REVEAL_MS * 2) // reveal club 3 (revealed.length = 3)
+      const ev = g.submit('alice', 'Player 0', REVEAL_MS * 2 + 100)
+      assert.equal(ev[0].type, 'careerpath_correct')
+      assert.equal(ev[0].points, POINTS_MAX - 2)
+    },
+  },
+  {
+    name: 'correct guess after POINTS_MAX or more reveals floors at 1',
+    fn: () => {
+      const pool = Array.from({ length: 1 }, (_, i) => ({
+        id: `p${i}`,
+        name: `Player ${i}`,
+        aliases: [],
+        clubs: Array.from({ length: POINTS_MAX + 3 }, (_, j) => `Club${j}`),
+      }))
+      const g = createCareerPathGame({ pool, now: 0 })
+      g.tick(0)
+      let at = 0
+      for (let i = 1; i < POINTS_MAX + 2; i++) {
+        at = REVEAL_MS * i
+        g.tick(at) // reveals up through revealed.length = POINTS_MAX + 2
+      }
+      const ev = g.submit('alice', 'Player 0', at + 100)
+      assert.equal(ev[0].type, 'careerpath_correct')
+      assert.equal(ev[0].points, 1, 'floors at 1, never 0 or negative')
+    },
+  },
+  {
+    name: 'cumulative scoring across rounds with different points-per-round sums correctly',
+    fn: () => {
+      const { g } = startGame(2)
+      // Round 1: alice scores on first reveal (points = POINTS_MAX)
+      let ev = g.submit('alice', 'Player 0', 1000)
+      assert.equal(ev[0].points, POINTS_MAX)
+      g.tick(1000 + GAP_MS) // advance to round 2
+      // Round 2: alice scores after 1 extra reveal (points = POINTS_MAX - 1)
+      g.tick(1000 + GAP_MS + REVEAL_MS)
+      ev = g.submit('alice', 'Player 1', 1000 + GAP_MS + REVEAL_MS + 100)
+      assert.equal(ev[0].points, POINTS_MAX - 1)
+      const over = g.tick(1000 + GAP_MS + REVEAL_MS + 100 + GAP_MS)
+      assert.equal(over[0].type, 'careerpath_over')
+      assert.deepEqual(over[0].standings, [
+        { player: 'alice', score: POINTS_MAX + (POINTS_MAX - 1) },
       ])
     },
   },

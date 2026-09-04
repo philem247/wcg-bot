@@ -1,0 +1,312 @@
+[
+  {
+    "category": "Clothing items",
+    "answer": "Trouser",
+    "ts": 1788436448686
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Brassiere",
+    "ts": 1788436460998
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Boxers",
+    "ts": 1788436468829
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Polo",
+    "ts": 1788436478239
+  },
+  {
+    "category": "Colours",
+    "answer": "Vermillion",
+    "ts": 1788436557168
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Jet",
+    "ts": 1788436874990
+  },
+  {
+    "category": "Household items",
+    "answer": "Chopstick",
+    "ts": 1788437054593
+  },
+  {
+    "category": "Household items",
+    "answer": "Pot",
+    "ts": 1788437115698
+  },
+  {
+    "category": "Mammals",
+    "answer": "Human",
+    "ts": 1788449573148
+  },
+  {
+    "category": "Mammals",
+    "answer": "Monkey",
+    "ts": 1788449596850
+  },
+  {
+    "category": "Mammals",
+    "answer": "Chimpanzees",
+    "ts": 1788449611123
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Penis",
+    "ts": 1788449659030
+  },
+  {
+    "category": "Musical instruments",
+    "answer": "Drum",
+    "ts": 1788449693791
+  },
+  {
+    "category": "Fruits",
+    "answer": "Agbalumo",
+    "ts": 1788449898728
+  },
+  {
+    "category": "Fruits",
+    "answer": "pomelo",
+    "ts": 1788449916441
+  },
+  {
+    "category": "Board games",
+    "answer": "mahjong",
+    "ts": 1788450458247
+  },
+  {
+    "category": "Board games",
+    "answer": "Snake and ladder",
+    "ts": 1788452138503
+  },
+  {
+    "category": "Sports",
+    "answer": "Karting",
+    "ts": 1788452269509
+  },
+  {
+    "category": "Occupations",
+    "answer": "Ophthalmologist",
+    "ts": 1788454787018
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Leverkusen",
+    "ts": 1788454808585
+  },
+  {
+    "category": "Weather types",
+    "answer": "Windy",
+    "ts": 1788454899836
+  },
+  {
+    "category": "Football clubs in England",
+    "answer": "Salford",
+    "ts": 1788454983575
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Centimeter",
+    "ts": 1788465781694
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Kilowatt",
+    "ts": 1788465803099
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Feet",
+    "ts": 1788465829443
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "millimeter",
+    "ts": 1788465839031
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Kilocalorie",
+    "ts": 1788465853200
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Joules",
+    "ts": 1788465887366
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "amperes",
+    "ts": 1788465895316
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Atmosphere",
+    "ts": 1788465928863
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "volts",
+    "ts": 1788465947304
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "kilo joules",
+    "ts": 1788465979336
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Square centimetre",
+    "ts": 1788465992797
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Freiburg",
+    "ts": 1788467279437
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Shoe",
+    "ts": 1788467297521
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Mainz",
+    "ts": 1788467345443
+  },
+  {
+    "category": "World currencies",
+    "answer": "Ghana Cedis",
+    "ts": 1788467394079
+  },
+  {
+    "category": "World currencies",
+    "answer": "Canadian dollar",
+    "ts": 1788467426731
+  },
+  {
+    "category": "World currencies",
+    "answer": "Australian dollar",
+    "ts": 1788467437244
+  },
+  {
+    "category": "Household items",
+    "answer": "Stool",
+    "ts": 1788467653436
+  },
+  {
+    "category": "Household items",
+    "answer": "Fridge",
+    "ts": 1788467665711
+  },
+  {
+    "category": "Household items",
+    "answer": "Remote",
+    "ts": 1788467683243
+  },
+  {
+    "category": "Occupations",
+    "answer": "Police",
+    "ts": 1788467928903
+  },
+  {
+    "category": "Football clubs in France",
+    "answer": "Clermont foot",
+    "ts": 1788468254387
+  },
+  {
+    "category": "Football clubs in France",
+    "answer": "Dijon",
+    "ts": 1788468259818
+  },
+  {
+    "category": "World currencies",
+    "answer": "Indian rupee",
+    "ts": 1788468342999
+  },
+  {
+    "category": "World currencies",
+    "answer": "Nepalese rupee",
+    "ts": 1788468353733
+  },
+  {
+    "category": "Smartphone brands",
+    "answer": "Poco",
+    "ts": 1788468433841
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Kilometer",
+    "ts": 1788468636904
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Decibels",
+    "ts": 1788468640607
+  },
+  {
+    "category": "Mammals",
+    "answer": "Polar bear",
+    "ts": 1788468808686
+  },
+  {
+    "category": "Mammals",
+    "answer": "Ape",
+    "ts": 1788468838432
+  },
+  {
+    "category": "Mammals",
+    "answer": "Boar",
+    "ts": 1788468862387
+  },
+  {
+    "category": "Weather types",
+    "answer": "Rainy",
+    "ts": 1788468943332
+  },
+  {
+    "category": "Weather types",
+    "answer": "Cloudy",
+    "ts": 1788468952935
+  },
+  {
+    "category": "Weather types",
+    "answer": "Stormy",
+    "ts": 1788468966533
+  },
+  {
+    "category": "Weather types",
+    "answer": "Foggy",
+    "ts": 1788468974336
+  },
+  {
+    "category": "Smartphone brands",
+    "answer": "Google pixel",
+    "ts": 1788469237233
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Feet",
+    "ts": 1788469449586
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Toes",
+    "ts": 1788469455150
+  },
+  {
+    "category": "Colours",
+    "answer": "Emerald green",
+    "ts": 1788469848695
+  },
+  {
+    "category": "Colours",
+    "answer": "Deep blue",
+    "ts": 1788469870395
+  }
+]
