@@ -19,6 +19,12 @@ import { isQid, MIN_SITELINKS, LEAGUES } from './queries.mjs'
 // career legends included) without reaching into unrecognisable 1960s-70s
 // territory — MIN_SITELINKS is still the real fame gate regardless of date.
 export const CAREER_PATH_MIN_YEAR = 1985
+
+// P1642 (acquisition transaction) qualifier value for a loan move. Verified
+// live (Lukaku Q313316): West Brom/Everton loan spells carry this exact URI
+// on ?transaction; permanent spells carry Q1811518 (transfer) or nothing at
+// all. Absence is a data gap, not "not a loan" — never inferred as such.
+const LOAN_QID = 'http://www.wikidata.org/entity/Q2914547'
 import { fetchBootstrap, recognisablePlayers } from './fpl.mjs'
 
 // Same eligibility rule the design spec settled on: excludes one-club careers
@@ -94,10 +100,12 @@ export function candidatePlayersQuery(leagueQid) {
 // is P279* under Q6979593 (checked: no useful common ancestor closer than
 // generic "organization"), so each needs its own FILTER NOT EXISTS clause.
 export function careerHistoryQuery(playerUris) {
-  return `SELECT ?player ?playerLabel ?clubLabel ?start WHERE {
+  return `SELECT ?player ?playerLabel ?clubLabel ?start ?end ?transaction WHERE {
   VALUES ?player { ${playerUris.map((u) => `<${u}>`).join(' ')} }
   ?player p:P54 ?st .
   ?st ps:P54 ?club ; pq:P580 ?start .
+  OPTIONAL { ?st pq:P582 ?end }
+  OPTIONAL { ?st pq:P1642 ?transaction }
   FILTER NOT EXISTS { ?club wdt:P31/wdt:P279* wd:Q6979593 }
   FILTER NOT EXISTS { ?club wdt:P31/wdt:P279* wd:Q94696559 }
   FILTER NOT EXISTS { ?club wdt:P31/wdt:P279* wd:Q47460286 }
@@ -136,11 +144,80 @@ export async function careerPathsQuery(leagueQid, opts) {
   return rows
 }
 
-// A player still getting new club spells recently reads as "current"; someone
-// whose last recorded move was years ago reads as a "legend" for this game's
-// purposes — an imperfect proxy (a legend can still make news, a current pro
-// can go quiet), but simple, explainable, and driven by data we already have.
-export const CURRENT_ERA_CUTOFF_YEAR = 2022
+// era is driven directly by whether the player's most recent club spell is
+// still ONGOING, per Wikidata's P582 (end date) qualifier on the P54 (member
+// of sports team) statement: no end date on the latest spell means they're
+// still there right now. This replaced an older "did they transfer recently"
+// proxy (latest spell started >= a cutoff year) that badly undercounted
+// current players — someone who joined their club years ago and never left
+// still reads as "current" in real life, but that rule tagged them 'legend'
+// just because their last transfer wasn't recent. Live rebuild with the old
+// rule: 777 'legend' vs 540 'current' out of 1317 — implausible given how
+// long today's stars stay put.
+//
+// CURRENT_ERA_SANITY_FLOOR_YEAR guards against the OTHER failure mode: a
+// long-retired player whose Wikidata entry simply never got an end date
+// filled in (missing data, not "still playing"). If the latest spell's start
+// year is older than this floor, treat it as 'legend' regardless of the
+// missing end date. This is a data-quality guard, not the primary signal —
+// the primary signal is always "does the latest spell have an end date".
+export const CURRENT_ERA_SANITY_FLOOR_YEAR = 2015
+
+// Legal-entity suffixes Wikidata hangs on a first-team club's official name
+// (e.g. "Real Madrid Club de Fútbol") that its reserve side doesn't carry
+// (e.g. "Real Madrid Castilla") — stripped before prefix comparison so the
+// two labels can be recognised as the same club family. Known limitation:
+// covers common Iberian/English patterns only, not every legal-suffix format
+// worldwide.
+const CLUB_LEGAL_SUFFIXES = /\s+(Club de F[uú]tbol|F[uú]tbol Club|Football Club|Club de Futebol|F\.?C\.?|C\.?F\.?|S\.?L\.?|S\.?A\.?D\.?|A\.?F\.?C\.?)$/i
+
+function clubCoreName(name) {
+  let core = name
+  let prev
+  do {
+    prev = core
+    core = core.replace(CLUB_LEGAL_SUFFIXES, '')
+  } while (core !== prev)
+  return core.trim()
+}
+
+// Common reserve/affiliate naming patterns. Deliberately not exhaustive —
+// a reasonable heuristic, not a database of every club's reserve-side name.
+const RESERVE_SUFFIX = /^\s+(B|II|III|U\d{2}|Youth|Juvenil|Castilla|Mestalla|Reservas?|Reserves?)$/i
+
+// candidate is parent's reserve/affiliate side if candidate's name starts
+// with parent's CORE name (legal suffix stripped) followed by a known
+// reserve-suffix pattern. Anchored on prefix-of-full-core-name, not "shares a
+// word" — "Real Madrid Baloncesto" (the basketball section) also starts with
+// "Real Madrid" but " Baloncesto" isn't a reserve suffix, so it's correctly
+// never paired.
+function isReserveTeamOf(candidate, parent) {
+  if (candidate === parent) return false
+  const core = clubCoreName(parent)
+  if (!core || !candidate.startsWith(core)) return false
+  return RESERVE_SUFFIX.test(candidate.slice(core.length))
+}
+
+// Wikidata legitimately records overlapping simultaneous registration at a
+// reserve side and the first team (Spanish clubs specifically allow this) —
+// real data, not an error. Sorting purely by raw start date can then put the
+// first-team entry BEFORE its own reserve entry, which reads as nonsense
+// (nobody makes the first team before ever playing for the reserves).
+// Youth/reserve-to-first-team promotion is a one-way progression in a real
+// career, so any detected reserve/parent pair gets forced into that order
+// regardless of raw date noise. Mutates clubs in place; one reorder per
+// parent per pass is enough for the patterns seen in practice.
+function reorderReservePairs(clubs) {
+  for (let i = 0; i < clubs.length; i++) {
+    for (let j = i + 1; j < clubs.length; j++) {
+      if (isReserveTeamOf(clubs[j], clubs[i])) {
+        const [reserve] = clubs.splice(j, 1)
+        clubs.splice(i, 0, reserve)
+        break
+      }
+    }
+  }
+}
 
 // Groups P54 rows by player, orders each player's spells by start date, and
 // dedupes to FIRST-OCCURRENCE-UNIQUE clubs — not just consecutive-unique.
@@ -151,12 +228,12 @@ export const CURRENT_ERA_CUTOFF_YEAR = 2022
 // clubs with the same name are not something this data can distinguish and
 // are not something the spec asks for.
 export function buildCareerPaths(rows) {
-  const byPlayer = new Map() // id -> { id, name, spells: [{club, start}] }
+  const byPlayer = new Map() // id -> { id, name, spells: [{club, start, end}] }
   for (const r of rows) {
     if (!r.player || !r.playerLabel || !r.clubLabel || !r.start) continue
     if (isQid(r.playerLabel) || isQid(r.clubLabel)) continue
     if (!byPlayer.has(r.player)) byPlayer.set(r.player, { id: r.player, name: r.playerLabel, spells: [] })
-    byPlayer.get(r.player).spells.push({ club: r.clubLabel, start: r.start })
+    byPlayer.get(r.player).spells.push({ club: r.clubLabel, start: r.start, end: r.end, transaction: r.transaction })
   }
   const out = []
   for (const { id, name, spells } of byPlayer.values()) {
@@ -169,9 +246,25 @@ export function buildCareerPaths(rows) {
         clubs.push(club)
       }
     }
-    const latestYear = new Date(ordered[ordered.length - 1].start).getFullYear()
-    const era = latestYear >= CURRENT_ERA_CUTOFF_YEAR ? 'current' : 'legend'
-    out.push({ id, name, clubs, era })
+    reorderReservePairs(clubs)
+    // "True latest club" is the last entry of the REORDERED list, not
+    // whatever raw row happened to sort last by date — a reserve-team row
+    // with an end date can otherwise outrank an ongoing first-team spell
+    // that started earlier (Vinícius Júnior's real failure mode).
+    const latestClub = clubs[clubs.length - 1]
+    const latestClubSpells = ordered.filter((s) => s.club === latestClub)
+    const latest = latestClubSpells[latestClubSpells.length - 1]
+    const latestYear = new Date(latest.start).getFullYear()
+    const era = !latest.end && latestYear >= CURRENT_ERA_SANITY_FLOOR_YEAR ? 'current' : 'legend'
+    // Loan-suffix pass: strictly last, after dedup/reorder/era all settled on
+    // bare names above. Each club's FIRST occurrence in `ordered` is the spell
+    // that decided its position — that spell's transaction qualifier decides
+    // the tag. Silent (no tag) whenever the qualifier is absent or non-loan.
+    const clubsWithLoan = clubs.map((club) => {
+      const firstSpell = ordered.find((s) => s.club === club)
+      return firstSpell?.transaction === LOAN_QID ? `${club} (loan)` : club
+    })
+    out.push({ id, name, clubs: clubsWithLoan, era })
   }
   return out
 }

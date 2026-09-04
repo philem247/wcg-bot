@@ -7,7 +7,7 @@ import {
   mergeFplOverlay,
   patchLatestClub,
   MIN_CLUBS,
-  CURRENT_ERA_CUTOFF_YEAR,
+  CURRENT_ERA_SANITY_FLOOR_YEAR,
 } from './build-career-paths.mjs'
 
 const tests = [
@@ -47,25 +47,47 @@ const tests = [
     },
   },
   {
-    name: 'buildCareerPaths: era is "legend" when the latest spell starts before the cutoff year',
+    name: 'buildCareerPaths: era is "current" when the latest spell has no end date and a plausible start year',
     fn: () => {
       const rows = [
-        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01' },
-        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: `${CURRENT_ERA_CUTOFF_YEAR - 1}-01-01` },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01', end: '2018-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: '2019-01-01' }, // no end: still there
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.equal(p.era, 'current')
+    },
+  },
+  {
+    name: 'buildCareerPaths: era is "legend" when the latest spell has an end date, however recent the start',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01', end: '2019-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: '2023-01-01', end: '2024-01-01' },
       ]
       const [p] = buildCareerPaths(rows)
       assert.equal(p.era, 'legend')
     },
   },
   {
-    name: 'buildCareerPaths: era is "current" when the latest spell starts at/after the cutoff year',
+    name: 'buildCareerPaths: era is "legend" when the latest spell has no end date but predates the sanity floor',
     fn: () => {
       const rows = [
-        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01' },
-        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: `${CURRENT_ERA_CUTOFF_YEAR}-01-01` },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2000-01-01' }, // no end, but too old
       ]
       const [p] = buildCareerPaths(rows)
-      assert.equal(p.era, 'current')
+      assert.ok(new Date(rows[0].start).getFullYear() < CURRENT_ERA_SANITY_FLOOR_YEAR)
+      assert.equal(p.era, 'legend')
+    },
+  },
+  {
+    name: 'buildCareerPaths: the "end" field never leaks into the output clubs array',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01', end: '2018-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: '2019-01-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Club A', 'Club B'])
     },
   },
   {
@@ -91,6 +113,124 @@ const tests = [
       assert.equal(players.length, 2)
       assert.deepEqual(players.find((p) => p.id === 'Q1').clubs, ['Club A', 'Club B'])
       assert.deepEqual(players.find((p) => p.id === 'Q2').clubs, ['Club C'])
+    },
+  },
+  {
+    name: 'buildCareerPaths: reserve-team row sorts BEFORE its parent first-team club, overriding raw date order',
+    fn: () => {
+      const rows = [
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'São Paulo FC', start: '2010-01-01', end: '2013-01-01' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Real Madrid Club de Fútbol', start: '2013-06-01', end: '2013-08-01' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Real Madrid Castilla', start: '2013-07-01', end: '2014-06-01' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Real Madrid Club de Fútbol', start: '2013-09-01', end: '2020-08-01' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'FC Porto', start: '2014-07-01', end: '2015-06-01' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Manchester United F.C.', start: '2022-08-01', end: '2025-06-01' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Inter Miami CF', start: '2025-07-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, [
+        'São Paulo FC',
+        'Real Madrid Castilla',
+        'Real Madrid Club de Fútbol',
+        'FC Porto',
+        'Manchester United F.C.',
+        'Inter Miami CF',
+      ])
+    },
+  },
+  {
+    name: 'buildCareerPaths: era reads the reordered TRUE latest club, not a stray reserve row that sorts last by date',
+    fn: () => {
+      // Mirrors the Vinícius-style failure: the reserve row's raw start date
+      // sorts after the first team's, and carries an end date, but the real
+      // ongoing spell is the first team's.
+      const rows = [
+        { player: 'Q1', playerLabel: 'V J', clubLabel: 'Flamengo', start: '2016-01-01', end: '2017-12-01' },
+        { player: 'Q1', playerLabel: 'V J', clubLabel: 'Real Madrid Club de Fútbol', start: '2018-01-01' }, // ongoing
+        { player: 'Q1', playerLabel: 'V J', clubLabel: 'Real Madrid Castilla', start: '2018-06-01', end: '2019-06-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Flamengo', 'Real Madrid Castilla', 'Real Madrid Club de Fútbol'])
+      assert.equal(p.era, 'current')
+    },
+  },
+  {
+    name: 'buildCareerPaths: a spell tagged with the loan QID gets " (loan)" appended to that club',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Chelsea F.C.', start: '2011-01-01', end: '2014-01-01', transaction: 'http://www.wikidata.org/entity/Q1811518' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'West Bromwich Albion F.C.', start: '2012-01-01', end: '2013-01-01', transaction: 'http://www.wikidata.org/entity/Q2914547' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Everton F.C.', start: '2014-01-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Chelsea F.C.', 'West Bromwich Albion F.C. (loan)', 'Everton F.C.'])
+    },
+  },
+  {
+    name: 'buildCareerPaths: a spell tagged transfer (or any non-loan value) is left unsuffixed',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01', end: '2014-01-01', transaction: 'http://www.wikidata.org/entity/Q1811518' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: '2014-01-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Club A', 'Club B'])
+    },
+  },
+  {
+    name: 'buildCareerPaths: a spell with no transaction field at all is left unsuffixed (silent on absence)',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01', end: '2014-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: '2014-01-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Club A', 'Club B'])
+    },
+  },
+  {
+    name: 'buildCareerPaths: loan-then-later-permanent-return are distinct strings, dedup unaffected',
+    fn: () => {
+      // Real pattern: loaned to Club X, later re-signed permanently by Club X.
+      // "Club X (loan)" and "Club X" are different strings, so both entries
+      // legitimately survive first-occurrence-unique dedup as two career steps.
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club A', start: '2010-01-01', end: '2012-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club X', start: '2012-01-01', end: '2013-01-01', transaction: 'http://www.wikidata.org/entity/Q2914547' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club B', start: '2013-01-01', end: '2016-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Club X', start: '2016-01-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      // Note: exact-string dedup keys on the bare club name BEFORE the loan
+      // suffix is appended (`seen` in buildCareerPaths tracks bare `club`),
+      // so the second "Club X" occurrence is still deduped away by the
+      // existing first-occurrence-unique rule — it does not appear twice.
+      assert.deepEqual(p.clubs, ['Club A', 'Club X (loan)', 'Club B'])
+    },
+  },
+  {
+    name: 'buildCareerPaths: loan tag composes with reserve-pairing — a loaned reserve spell reorders with its tag intact',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Real Madrid Club de Fútbol', start: '2013-06-01', end: '2013-08-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Real Madrid Castilla', start: '2013-07-01', end: '2014-06-01', transaction: 'http://www.wikidata.org/entity/Q2914547' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Real Madrid Castilla (loan)', 'Real Madrid Club de Fútbol'])
+    },
+  },
+  {
+    name: 'buildCareerPaths: reserve-pairing heuristic does not falsely reorder two unrelated same-word clubs',
+    fn: () => {
+      // "Real Madrid Baloncesto" (the basketball section) also starts with
+      // "Real Madrid", but " Baloncesto" is not a reserve-suffix pattern —
+      // must NOT be treated as Real Madrid's football reserve side.
+      const rows = [
+        { player: 'Q1', playerLabel: 'X Y', clubLabel: 'Real Madrid Club de Fútbol', start: '2010-01-01', end: '2015-01-01' },
+        { player: 'Q1', playerLabel: 'X Y', clubLabel: 'Real Madrid Baloncesto', start: '2016-01-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Real Madrid Club de Fútbol', 'Real Madrid Baloncesto'])
     },
   },
   {
