@@ -209,14 +209,49 @@ const tests = [
     },
   },
   {
-    name: 'buildCareerPaths: loan tag composes with reserve-pairing — a loaned reserve spell reorders with its tag intact',
+    name: 'buildCareerPaths: a reserve/parent pair never gets " (loan)", even if a raw row carries the loan qualifier',
     fn: () => {
       const rows = [
         { player: 'Q1', playerLabel: 'A B', clubLabel: 'Real Madrid Club de Fútbol', start: '2013-06-01', end: '2013-08-01' },
         { player: 'Q1', playerLabel: 'A B', clubLabel: 'Real Madrid Castilla', start: '2013-07-01', end: '2014-06-01', transaction: 'http://www.wikidata.org/entity/Q2914547' },
       ]
       const [p] = buildCareerPaths(rows)
-      assert.deepEqual(p.clubs, ['Real Madrid Castilla (loan)', 'Real Madrid Club de Fútbol'])
+      assert.deepEqual(p.clubs, ['Real Madrid Castilla', 'Real Madrid Club de Fútbol'])
+    },
+  },
+  {
+    name: 'buildCareerPaths: Casemiro-shape — reserve+parent pair stay untagged, a genuinely external loan elsewhere still gets tagged',
+    fn: () => {
+      const rows = [
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'São Paulo FC', start: '2010-01-01', end: '2013-01-01' },
+        // Interleaved rows: parent first-team row carries a stray loan qualifier.
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Real Madrid Club de Fútbol', start: '2013-06-01', end: '2013-08-01', transaction: 'http://www.wikidata.org/entity/Q2914547' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Real Madrid Castilla', start: '2013-07-01', end: '2014-06-01', transaction: 'http://www.wikidata.org/entity/Q2914547' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Real Madrid Club de Fútbol', start: '2013-09-01', end: '2020-08-01' },
+        // Genuine external loan, outside the reserve/parent pair.
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'FC Porto', start: '2014-07-01', end: '2015-06-01', transaction: 'http://www.wikidata.org/entity/Q2914547' },
+        { player: 'Q616664', playerLabel: 'Casemiro', clubLabel: 'Manchester United F.C.', start: '2022-08-01', end: '2025-06-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, [
+        'São Paulo FC',
+        'Real Madrid Castilla',
+        'Real Madrid Club de Fútbol',
+        'FC Porto (loan)',
+        'Manchester United F.C.',
+      ])
+    },
+  },
+  {
+    name: 'buildCareerPaths: no reserve pairing at all — normal loan tagging still works (regression check)',
+    fn: () => {
+      const rows = [
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Chelsea F.C.', start: '2011-01-01', end: '2014-01-01' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'West Bromwich Albion F.C.', start: '2012-01-01', end: '2013-01-01', transaction: 'http://www.wikidata.org/entity/Q2914547' },
+        { player: 'Q1', playerLabel: 'A B', clubLabel: 'Everton F.C.', start: '2014-01-01' },
+      ]
+      const [p] = buildCareerPaths(rows)
+      assert.deepEqual(p.clubs, ['Chelsea F.C.', 'West Bromwich Albion F.C. (loan)', 'Everton F.C.'])
     },
   },
   {

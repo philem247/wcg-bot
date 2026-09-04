@@ -256,11 +256,30 @@ export function buildCareerPaths(rows) {
     const latest = latestClubSpells[latestClubSpells.length - 1]
     const latestYear = new Date(latest.start).getFullYear()
     const era = !latest.end && latestYear >= CURRENT_ERA_SANITY_FLOOR_YEAR ? 'current' : 'legend'
+    // A club on either side of a detected reserve/parent pair is never
+    // loan-eligible: reserve registration and home-grown promotion to the
+    // first team are not external loans, whatever a raw row's transaction
+    // qualifier says (Wikidata's interleaved reserve/first-team rows can
+    // carry a stray/incorrect P1642 on either side — Casemiro's real data:
+    // Real Madrid Castilla and Real Madrid Club de Fútbol both got tagged
+    // "(loan)" off one bad qualifier despite being the same club family).
+    const reservePairExempt = new Set()
+    for (let i = 0; i < clubs.length; i++) {
+      for (let j = 0; j < clubs.length; j++) {
+        if (i === j) continue
+        if (isReserveTeamOf(clubs[j], clubs[i])) {
+          reservePairExempt.add(clubs[i])
+          reservePairExempt.add(clubs[j])
+        }
+      }
+    }
     // Loan-suffix pass: strictly last, after dedup/reorder/era all settled on
     // bare names above. Each club's FIRST occurrence in `ordered` is the spell
     // that decided its position — that spell's transaction qualifier decides
-    // the tag. Silent (no tag) whenever the qualifier is absent or non-loan.
+    // the tag. Silent (no tag) whenever the qualifier is absent, non-loan, or
+    // the club is reserve-pair-exempt.
     const clubsWithLoan = clubs.map((club) => {
+      if (reservePairExempt.has(club)) return club
       const firstSpell = ordered.find((s) => s.club === club)
       return firstSpell?.transaction === LOAN_QID ? `${club} (loan)` : club
     })
