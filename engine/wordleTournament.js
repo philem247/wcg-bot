@@ -13,7 +13,7 @@
 import { createWordleMatch, MAX_GUESSES, SUDDEN_DEATH_MAX_GUESSES, MATCH_CLOCK_MS, SUDDEN_DEATH_CLOCK_MS } from './wordle.js'
 import { shuffle } from './bank.js'
 
-export const REGISTRATION_MS = 120_000
+export const REGISTRATION_MS = 60_000
 // Same reasoning as the trivia tournament's Fix 2: give players a moment to
 // read who they're facing before their boards appear.
 export const MATCH_START_DELAY_MS = 4000

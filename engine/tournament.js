@@ -12,7 +12,7 @@
 import { createTriviaGame, QUESTION_COUNT } from './trivia.js'
 import { shuffle } from './bank.js'
 
-export const REGISTRATION_MS = 120_000
+export const REGISTRATION_MS = 60_000
 // Shorter than group trivia's 30s (CLOCK_SECONDS in trivia.js, deliberately tuned
 // there for casual group play) — a 1v1 elimination match has real stakes, so 10s
 // is used instead: anti-cheat, short enough nobody can search an answer up

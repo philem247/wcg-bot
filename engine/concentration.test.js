@@ -283,10 +283,21 @@ test('concentration: the game ends when only one player remains, standings winne
   const t2 = t1 + START_DELAY_MS
   game.tick(t2)
 
-  // p2 times out -> only p3 left -> game over immediately, no pause needed.
-  const r3 = game.tick(t2 + TURN_CLOCK_SECONDS * 1000)
-  const overEvent = r3.find((e) => e.type === 'concentration_over')
-  assert.ok(overEvent, 'expected concentration_over once one player remains')
+  // p2 times out -> only p3 left -> same post-elimination pause as any other
+  // elimination, no concentration_over in the same batch.
+  const t3 = t2 + TURN_CLOCK_SECONDS * 1000
+  const r3 = game.tick(t3)
+  assert.equal(r3.length, 1)
+  assert.equal(r3[0].type, 'concentration_eliminated')
+  assert.equal(r3[0].player, 'p2')
+  assert.equal(game.state, 'starting')
+
+  assert.deepEqual(game.tick(t3 + START_DELAY_MS - 1), [], 'nothing before the pause elapses')
+
+  // Pause elapses with no reinstate -> game actually ends.
+  const r4 = game.tick(t3 + START_DELAY_MS)
+  const overEvent = r4.find((e) => e.type === 'concentration_over')
+  assert.ok(overEvent, 'expected concentration_over once the final pause elapses')
   assert.equal(overEvent.winner, 'p3')
   assert.deepEqual(overEvent.standings, [{ player: 'p3' }, { player: 'p2' }, { player: 'p1' }])
   assert.equal(game.state, 'over')
@@ -390,14 +401,61 @@ test('concentration: reinstate() is a no-op for a stale elimination (someone els
   assert.deepEqual(game.reinstate('p1', 'Purple', t.deadline + 10), [])
 })
 
-test('concentration: reinstate() ends the game immediately if it leaves only one player unaccounted for', () => {
-  // Not directly reachable via reinstate (it only ever restores to >= 2 active,
-  // since eliminate() already special-cased the 1-remaining case to finish()
-  // before ever entering 'starting') — this documents that reinstate() is
-  // therefore never called on a game that has already reached 'over'.
+test('concentration: the final elimination (down to 1) pauses in "starting" instead of ending the game immediately', () => {
   const game = started(['p1', 'p2'])
   const at = START_DELAY_MS + 100
-  game.submit('p1', 'Purple', at) // only 2 players -> wrong answer ends the game outright
+  const events = game.submit('p1', 'Purple', at) // wrong -> down to 1 active
+  assert.equal(events.length, 1)
+  assert.equal(events[0].type, 'concentration_eliminated')
+  assert.equal(events[0].player, 'p1')
+  assert.equal(game.state, 'starting') // not 'over' yet — same pause as any other elimination
+
+  assert.deepEqual(game.tick(at + START_DELAY_MS - 1), [], 'nothing before the pause elapses')
+  const overEvents = game.tick(at + START_DELAY_MS)
+  assert.equal(overEvents.length, 1)
+  assert.equal(overEvents[0].type, 'concentration_over')
+  assert.equal(overEvents[0].winner, 'p2')
+  assert.deepEqual(overEvents[0].standings, [{ player: 'p2' }, { player: 'p1' }])
   assert.equal(game.state, 'over')
-  assert.deepEqual(game.reinstate('p1', 'Purple', at + 10), [])
+})
+
+test('concentration: reinstate() during the final-elimination pause undoes it and play continues instead of ending', () => {
+  const game = started(['p1', 'p2'])
+  const at = START_DELAY_MS + 100
+  game.submit('p1', 'Purple', at) // wrong -> down to 1 active, pending finish
+  assert.equal(game.state, 'starting')
+
+  const events = game.reinstate('p1', 'Purple', at + 500)
+  assert.equal(events[0].type, 'concentration_reinstated')
+  assert.equal(events[0].player, 'p1')
+  assert.equal(game.state, 'playing') // resumed, not ended
+
+  const turn = events.find((e) => e.type === 'concentration_turn')
+  assert.equal(turn.alive, 2)
+  assert.equal(turn.player, 'p2')
+
+  // Pending finish must not fire later on its own.
+  assert.deepEqual(game.tick(at + START_DELAY_MS), [])
+  assert.equal(game.state, 'playing')
+})
+
+test('concentration: pendingFinish does not leak forward after a final-elimination reinstate — the game only ends on a later real elimination', () => {
+  const game = started(['p1', 'p2'])
+  const at = START_DELAY_MS + 100
+  game.submit('p1', 'Purple', at) // wrong -> pending finish
+  const reinstateEvents = game.reinstate('p1', 'Purple', at + 500) // undone, play resumes
+  const turn = reinstateEvents.find((e) => e.type === 'concentration_turn')
+
+  // A later, genuinely new elimination should go through its own normal pause,
+  // not finish instantly (which would happen if pendingFinish had leaked).
+  const wrongAt = at + 600
+  const elimEvents = game.submit(turn.player, 'NotAColor', wrongAt)
+  assert.equal(elimEvents.length, 1)
+  assert.equal(elimEvents[0].type, 'concentration_eliminated')
+  assert.equal(game.state, 'starting')
+
+  // Now pendingFinish correctly reflects this new elimination (down to 1 again).
+  const overEvents = game.tick(wrongAt + START_DELAY_MS)
+  assert.equal(overEvents[0].type, 'concentration_over')
+  assert.equal(game.state, 'over')
 })

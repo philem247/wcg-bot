@@ -73,6 +73,7 @@ export function createConcentrationGame({
 
   const eliminatedOrder = [] // in elimination order, first eliminated first
   let pendingEliminatedIndex = -1 // active[]-index to reinsert at if reinstate() undoes the pending elimination
+  let pendingFinish = false // true when the pending 'starting' pause is for the game-ending elimination
 
   const clockMs = clockSeconds * 1000
 
@@ -125,20 +126,19 @@ export function createConcentrationGame({
     // the rejected answer was judged against, without needing to track it separately.
     events.push({ type: 'concentration_eliminated', player, reason, answer: answer ?? null, category: currentCategory.category })
 
-    if (active.length === 1) {
-      finish(events)
-      return
-    }
-
     turnIndex = idx % active.length
     pendingEliminatedIndex = idx
     // Same deferred-reveal pause as the game's opening: the elimination message
     // lands alone, then the next category arrives startDelayMs later, so players
     // get a beat to react instead of the whole batch hitting at once. This same
-    // pause is also the window reinstate() can still undo a 'wrong' elimination in.
+    // pause is also the window reinstate() can still undo a 'wrong' elimination in
+    // — including the game-ending elimination (active.length === 1), which must
+    // get the same pause/reinstate chance as any other, hence pendingFinish
+    // instead of calling finish() immediately.
     state = 'starting'
     startDeadline = at + startDelayMs
     pendingSwitchReason = 'elimination'
+    pendingFinish = active.length === 1
   }
 
   // Heads-up: announce the roster now, then wait startDelayMs before the
@@ -237,6 +237,11 @@ export function createConcentrationGame({
 
       if (state === 'starting') {
         if (at < startDeadline) return events
+        if (pendingFinish) {
+          pendingFinish = false
+          finish(events)
+          return events
+        }
         revealNextCategory(at, events)
         return events
       }
@@ -270,6 +275,7 @@ export function createConcentrationGame({
 
       const events = [{ type: 'concentration_reinstated', player, answer }]
       turnIndex = (insertAt + 1) % active.length
+      pendingFinish = false
       state = 'playing'
       if (unusedCount() < active.length) {
         events.push(switchCategory('pool_low'))
