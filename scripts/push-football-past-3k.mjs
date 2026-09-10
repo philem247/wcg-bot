@@ -302,8 +302,8 @@ const moreFlagsWorldwide = [
   ['Chris Wood', 'New Zealand', ['Australia', 'England', 'Scotland'], '🇳🇿']
 ];
 
-for (const [player, correct, wrong, flag] of moreFlagsWorldwide) {
-  pool.push(makeQ(`Which national team does ${player} represent internationally? ${flag}`, correct, wrong, 'world', 'country-flag'));
+for (const [player, correct, wrong] of moreFlagsWorldwide) {
+  pool.push(makeQ(`Which national team does ${player} represent internationally?`, correct, wrong, 'world', 'country-flag'));
 }
 
 console.log(`Generated ${pool.length} total questions in push-to-3k.`);

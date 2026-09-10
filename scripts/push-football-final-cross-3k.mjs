@@ -232,8 +232,8 @@ const flagsFinal = [
   ['Carlos Mané', 'Guinea-Bissau', ['Portugal', 'Cape Verde', 'Angola'], '🇬🇼']
 ];
 
-for (const [player, correct, wrong, flag] of flagsFinal) {
-  pool.push(makeQ(`Which national team does ${player} represent internationally? ${flag}`, correct, wrong, 'world', 'country-flag'));
+for (const [player, correct, wrong] of flagsFinal) {
+  pool.push(makeQ(`Which national team does ${player} represent internationally?`, correct, wrong, 'world', 'country-flag'));
 }
 
 console.log(`Generated ${pool.length} total questions in final push to 3k.`);

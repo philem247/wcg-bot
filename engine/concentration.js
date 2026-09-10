@@ -16,7 +16,7 @@
 // No Date.now(), no Math.random(). Time via `now`, randomness via `random`.
 import { fold } from './normalize.js'
 
-export const REGISTRATION_MS = 60_000
+export const REGISTRATION_MS = 30_000
 export const MIN_PLAYERS = 2
 export const TURN_CLOCK_SECONDS = 15
 export const START_DELAY_MS = 5_000

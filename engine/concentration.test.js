@@ -29,7 +29,7 @@ function newGame(opts = {}) {
 }
 
 test('concentration: exports the documented defaults', () => {
-  assert.equal(REGISTRATION_MS, 60_000)
+  assert.equal(REGISTRATION_MS, 30_000)
   assert.equal(MIN_PLAYERS, 2)
   assert.equal(TURN_CLOCK_SECONDS, 15)
   assert.equal(START_DELAY_MS, 5_000)
@@ -46,7 +46,7 @@ test('concentration: tick() lazily announces registration on the first call', ()
   assert.equal(events.length, 1)
   assert.equal(events[0].type, 'concentration_registration_open')
   assert.equal(events[0].minPlayers, 2)
-  assert.equal(events[0].seconds, 60)
+  assert.equal(events[0].seconds, 30)
 })
 
 test('concentration: join adds a player and does not double-count a repeat join', () => {
@@ -61,7 +61,7 @@ test('concentration: the registration timer cancels the game below minPlayers', 
   const game = newGame()
   game.tick(0)
   game.join('p1', 100)
-  const events = game.tick(60_000)
+  const events = game.tick(REGISTRATION_MS)
   assert.equal(events.length, 1)
   assert.deepEqual(events[0], { type: 'concentration_cancelled', reason: 'not_enough_players', count: 1, needed: 2 })
   assert.equal(game.state, 'over')
@@ -73,15 +73,15 @@ test('concentration: the registration timer enters a starting phase once minPlay
   game.join('p1', 100)
   game.join('p2', 200)
   game.join('p3', 300)
-  const startEvents = game.tick(60_000)
+  const startEvents = game.tick(REGISTRATION_MS)
   assert.equal(startEvents.length, 1)
   assert.equal(startEvents[0].type, 'concentration_start')
   assert.deepEqual(startEvents[0].players.sort(), ['p1', 'p2', 'p3'])
   assert.equal(startEvents[0].seconds, 5)
   assert.equal(game.state, 'starting')
 
-  assert.deepEqual(game.tick(60_000 + START_DELAY_MS - 1), [])
-  const revealEvents = game.tick(60_000 + START_DELAY_MS)
+  assert.deepEqual(game.tick(REGISTRATION_MS + START_DELAY_MS - 1), [])
+  const revealEvents = game.tick(REGISTRATION_MS + START_DELAY_MS)
   assert.equal(revealEvents[0].type, 'concentration_category_switch')
   assert.equal(revealEvents[0].reason, 'start')
   assert.equal(revealEvents[1].type, 'concentration_turn')

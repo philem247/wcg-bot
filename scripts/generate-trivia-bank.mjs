@@ -254,8 +254,8 @@ const flagPairs = [
   ['Keylor Navas', 'Costa Rica', ['Honduras', 'Panama', 'Guatemala'], '🇨🇷']
 ];
 
-for (const [player, correct, wrong, flag] of flagPairs) {
-  newFootball.push(makeQ(`Which national team does ${player} represent internationally? ${flag}`, correct, wrong, 'world', 'country-flag'));
+for (const [player, correct, wrong] of flagPairs) {
+  newFootball.push(makeQ(`Which national team does ${player} represent internationally?`, correct, wrong, 'world', 'country-flag'));
 }
 
 // ==========================================
