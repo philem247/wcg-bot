@@ -170,12 +170,12 @@ const namesSuper = [
   ['Atakan', 'Karazor', ['Stiller', 'Millot', 'Keitel'], 'VfB Stuttgart & Turkey midfield destroyer'],
   ['Jamie', 'Leweling', ['Führich', 'Undav', 'Demirović'], 'VfB Stuttgart & Germany winger'],
   ['Alexander', 'Nübel', ['Bredlow', 'Seimen', 'Schock'], 'VfB Stuttgart & Germany goalkeeper'],
-  ['Hugo', 'Larsson', ['Skhiri', 'Chaïbi', 'Götze'], 'Eintracht Frankfurt & Sweden midfield wonderkid'],
+  ['Hugo', 'Larsson', ['Skhiri', 'Chaïbi', 'Götze'], 'Fulham & Sweden midfield wonderkid'],
   ['Farès', 'Chaïbi', ['Larsson', 'Skhiri', 'Götze'], 'Eintracht Frankfurt & Algeria creative midfielder'],
-  ['Omar', 'Marmoush', ['Ekitiké', 'Matanović', 'Knauff'], 'Eintracht Frankfurt & Egypt electric striker'],
-  ['Hugo', 'Ekitiké', ['Marmoush', 'Matanović', 'Bahoya'], 'Eintracht Frankfurt & France dynamic striker'],
+  ['Omar', 'Marmoush', ['Ekitiké', 'Matanović', 'Knauff'], 'Tottenham & Egypt electric striker'],
+  ['Hugo', 'Ekitiké', ['Marmoush', 'Matanović', 'Bahoya'], 'Liverpool & France dynamic striker'],
   ['Igor', 'Matanović', ['Ekitiké', 'Marmoush', 'Ngankam'], 'Eintracht Frankfurt & Croatia tall striker'],
-  ['Jean-Mattéo', 'Bahoya', ['Ekitiké', 'Knauff', 'Ebimbe'], 'Eintracht Frankfurt & France young attacker'],
+  ['Jean-Mattéo', 'Bahoya', ['Ekitiké', 'Knauff', 'Ebimbe'], 'Leeds & France young attacker'],
   ['Ansgar', 'Knauff', ['Bahoya', 'Ebimbe', 'Nkounkou'], 'Eintracht Frankfurt & Germany winger'],
   ['Niels', 'Nkounkou', ['Theate', 'Tuta', 'Koch'], 'Eintracht Frankfurt & France attacking left-back'],
   ['Robin', 'Koch', ['Theate', 'Tuta', 'Amenda'], 'Eintracht Frankfurt & Germany defender'],
@@ -187,8 +187,8 @@ const namesSuper = [
   ['Alassane', 'Pléa', ['Cvancara', 'Hack', 'Honorat'], 'Borussia Mönchengladbach & France striker'],
   ['Tomás', 'Cvancara', ['Pléa', 'Hack', 'Honorat'], 'Borussia Mönchengladbach & Czech Republic tall striker'],
   ['Ko', 'Itakura', ['Elvedi', 'Friedrich', 'Chiarodia'], 'Borussia Mönchengladbach & Japan centre-back'],
-  ['Nico', 'Elvedi', ['Itakura', 'Friedrich', 'Netz'], 'Borussia Mönchengladbach & Switzerland defender'],
-  ['Luca', 'Netz', ['Scally', 'Elvedi', 'Ullrich'], 'Borussia Mönchengladbach & Germany full-back'],
+  ['Nico', 'Elvedi', ['Itakura', 'Friedrich', 'Netz'], 'Leeds & Switzerland defender'],
+  ['Luca', 'Netz', ['Scally', 'Elvedi', 'Ullrich'], 'Nottingham Forest & Germany full-back'],
   ['Joe', 'Scally', ['Netz', 'Elvedi', 'Itakura'], 'Borussia Mönchengladbach & USA right-back']
 ];
 
