@@ -158,6 +158,9 @@
       ],
       "Plymouth Argyle": [
         "plymouth"
+      ],
+      "Salford City": [
+        "salford"
       ]
     }
   },
@@ -240,6 +243,15 @@
       "Fortuna Dusseldorf": [
         "fortuna dusseldorf",
         "dusseldorf"
+      ],
+      "Bayer Leverkusen": [
+        "leverkusen"
+      ],
+      "SC Freiburg": [
+        "freiburg"
+      ],
+      "Mainz 05": [
+        "mainz"
       ]
     }
   },
@@ -431,7 +443,8 @@
       "Sochaux",
       "Valenciennes",
       "Le Mans",
-      "Nimes"
+      "Nimes",
+      "Dijon FCO"
     ],
     "aliases": {
       "Paris Saint-Germain": [
@@ -462,6 +475,12 @@
       ],
       "Strasbourg": [
         "rc strasbourg"
+      ],
+      "Clermont": [
+        "clermont foot"
+      ],
+      "Dijon FCO": [
+        "dijon"
       ]
     }
   },
@@ -839,7 +858,12 @@
       "Dingo",
       "Narwhal",
       "Orca",
-      "Porpoise"
+      "Porpoise",
+      "Human",
+      "Monkey",
+      "Polar Bear",
+      "Ape",
+      "Boar"
     ],
     "aliases": {
       "Hippopotamus": [
@@ -849,7 +873,8 @@
         "rhino"
       ],
       "Chimpanzee": [
-        "chimp"
+        "chimp",
+        "chimpanzees"
       ]
     }
   },
@@ -1222,7 +1247,9 @@
       "Medlar",
       "Genip",
       "Monstera Fruit",
-      "Cactus Pear"
+      "Cactus Pear",
+      "Agbalumo",
+      "Pomelo"
     ],
     "aliases": {
       "Papaya": [
@@ -1420,11 +1447,16 @@
       "Gaelic Football",
       "Parkour",
       "Bungee Jumping",
-      "Paragliding"
+      "Paragliding",
+      "Karting"
     ],
     "aliases": {
       "Table Tennis": [
         "ping pong"
+      ],
+      "Karting": [
+        "go-karting",
+        "go karting"
       ]
     }
   },
@@ -1571,12 +1603,21 @@
     "aliases": {
       "Dollar": [
         "usd",
-        "us dollar"
+        "us dollar",
+        "canadian dollar",
+        "australian dollar"
       ],
       "Pound": [
         "pound sterling",
         "sterling",
         "gbp"
+      ],
+      "Cedi": [
+        "ghana cedis"
+      ],
+      "Rupee": [
+        "indian rupee",
+        "nepalese rupee"
       ]
     }
   },
@@ -1633,11 +1674,15 @@
       "Bananagrams",
       "Rummikub",
       "Cranium",
-      "Chutes and Ladders"
+      "Chutes and Ladders",
+      "Mahjong"
     ],
     "aliases": {
       "Checkers": [
         "draughts"
+      ],
+      "Snakes and Ladders": [
+        "snake and ladder"
       ]
     }
   },
@@ -1722,7 +1767,11 @@
       "Triangle",
       "Cowbell"
     ],
-    "aliases": {}
+    "aliases": {
+      "Drums": [
+        "drum"
+      ]
+    }
   },
   {
     "id": "smartphone-brands",
@@ -1765,9 +1814,17 @@
       "Coolpad",
       "Doogee",
       "Ulefone",
-      "Umidigi"
+      "Umidigi",
+      "Poco"
     ],
-    "aliases": {}
+    "aliases": {
+      "Poco": [
+        "poco phone"
+      ],
+      "Google": [
+        "google pixel"
+      ]
+    }
   },
   {
     "id": "colours",
@@ -1894,11 +1951,18 @@
       "Byzantium",
       "Cardinal",
       "Chartreuse",
-      "Cobalt Blue"
+      "Cobalt Blue",
+      "Deep Blue"
     ],
     "aliases": {
       "Grey": [
         "gray"
+      ],
+      "Vermilion": [
+        "vermillion"
+      ],
+      "Emerald": [
+        "emerald green"
       ]
     }
   },
@@ -2136,7 +2200,16 @@
       "Bit",
       "Byte",
       "Megabyte",
-      "Gigabyte"
+      "Gigabyte",
+      "Kilowatt",
+      "Kilocalorie",
+      "Joule",
+      "Ampere",
+      "Atmosphere",
+      "Volt",
+      "Kilojoule",
+      "Square Centimetre",
+      "Decibel"
     ],
     "aliases": {
       "Metre": [
@@ -2144,6 +2217,37 @@
       ],
       "Litre": [
         "liter"
+      ],
+      "Centimetre": [
+        "centimeter"
+      ],
+      "Foot": [
+        "feet"
+      ],
+      "Millimetre": [
+        "millimeter"
+      ],
+      "Joule": [
+        "joules",
+        "joule"
+      ],
+      "Ampere": [
+        "amperes",
+        "ampere",
+        "amps",
+        "amp"
+      ],
+      "Volt": [
+        "volts",
+        "volt"
+      ],
+      "Kilometre": [
+        "kilometer"
+      ],
+      "Decibel": [
+        "decibels",
+        "decibel",
+        "db"
       ]
     }
   },
@@ -2434,9 +2538,14 @@
       "Bartender",
       "Hotel Manager",
       "Security Officer",
-      "Reporter"
+      "Reporter",
+      "Ophthalmologist"
     ],
-    "aliases": {}
+    "aliases": {
+      "Police Officer": [
+        "police"
+      ]
+    }
   },
   {
     "id": "clothing-items",
@@ -2585,9 +2694,24 @@
       "Tuxedo",
       "Bodywarmer",
       "Bomber Jacket",
-      "Rugby Shirt"
+      "Rugby Shirt",
+      "Brassiere",
+      "Boxers"
     ],
-    "aliases": {}
+    "aliases": {
+      "Trousers": [
+        "trouser"
+      ],
+      "Brassiere": [
+        "bra"
+      ],
+      "Polo Shirt": [
+        "polo"
+      ],
+      "Shoes": [
+        "shoe"
+      ]
+    }
   },
   {
     "id": "household-items",
@@ -2691,9 +2815,22 @@
       "Detergent",
       "Air Freshener",
       "Fly Swatter",
-      "Mosquito Net"
+      "Mosquito Net",
+      "Chopstick",
+      "Pot",
+      "Stool"
     ],
-    "aliases": {}
+    "aliases": {
+      "Chopstick": [
+        "chopsticks"
+      ],
+      "Refrigerator": [
+        "fridge"
+      ],
+      "Remote Control": [
+        "remote"
+      ]
+    }
   },
   {
     "id": "weather-types",
@@ -2757,7 +2894,23 @@
       "Rainstorm",
       "Downpour"
     ],
-    "aliases": {}
+    "aliases": {
+      "Wind": [
+        "windy"
+      ],
+      "Rain": [
+        "rainy"
+      ],
+      "Cloud": [
+        "cloudy"
+      ],
+      "Storm": [
+        "stormy"
+      ],
+      "Fog": [
+        "foggy"
+      ]
+    }
   },
   {
     "id": "means-of-transport",
@@ -2829,7 +2982,8 @@
       "Sledge",
       "Dog Sled",
       "Ox Cart",
-      "Pedicab"
+      "Pedicab",
+      "Jet"
     ],
     "aliases": {
       "Aeroplane": [
@@ -2951,8 +3105,16 @@
       "Ligament",
       "Cartilage",
       "Bone Marrow",
-      "Blood Vessel"
+      "Blood Vessel",
+      "Penis"
     ],
-    "aliases": {}
+    "aliases": {
+      "Foot": [
+        "feet"
+      ],
+      "Toe": [
+        "toes"
+      ]
+    }
   }
 ]
