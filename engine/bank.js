@@ -17,6 +17,57 @@ export function shuffle(array, random) {
   return a
 }
 
+// Sample questions with template diversity: if items have template tags,
+// round-robin across templates so no single template over-dominates.
+export function sampleDiverse(pool, count, random) {
+  const byTemplate = new Map()
+  for (const item of pool) {
+    const t = item.template || '__none__'
+    let group = byTemplate.get(t)
+    if (!group) {
+      group = []
+      byTemplate.set(t, group)
+    }
+    group.push(item)
+  }
+
+  if (byTemplate.size <= 1) {
+    return shuffle(pool, random).slice(0, count)
+  }
+
+  const templatePools = Array.from(byTemplate.entries()).map(([tmpl, items]) => ({
+    tmpl,
+    items: shuffle(items, random),
+  }))
+  const order = shuffle(templatePools, random)
+  const out = []
+
+  for (let round = 0; out.length < count; round++) {
+    let addedThisRound = 0
+    for (const p of order) {
+      if (out.length >= count) break
+      if (round < p.items.length) {
+        out.push(p.items[round])
+        addedThisRound++
+      }
+    }
+    if (addedThisRound === 0) break
+  }
+
+  if (out.length < count) {
+    for (const p of order) {
+      for (const item of p.items) {
+        if (out.length >= count) break
+        if (!out.some((q) => q.id === item.id)) {
+          out.push(item)
+        }
+      }
+    }
+  }
+
+  return shuffle(out, random)
+}
+
 export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
   const bank = data ?? JSON.parse(readFileSync(path, 'utf8'))
   const byCategory = bank.categories ?? {}
@@ -38,9 +89,10 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
       return (byCategory[category] ?? []).length
     },
 
-    pick({ category, count, exclude = new Set(), random }) {
+    pick({ category, count, exclude = new Set(), random = Math.random }) {
       if (category !== 'mixed') {
-        return shuffle(poolOf(category, exclude), random).slice(0, count).map((q) => ({ ...q, category }))
+        const pool = poolOf(category, exclude)
+        return sampleDiverse(pool, count, random).map((q) => ({ ...q, category }))
       }
 
       const ANIMATION_CATEGORIES = new Set(['anime', 'naruto', 'cartoons'])
@@ -51,10 +103,13 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
       // Animation/anime is capped to at most 1 question per mixed game/match
       // so it never over-saturates mixed mode.
       const pools = this.categories()
-        .map((c) => ({
-          category: c,
-          items: shuffle(poolOf(c, exclude), random).map((q) => ({ ...q, category: c })),
-        }))
+        .map((c) => {
+          const pool = poolOf(c, exclude)
+          return {
+            category: c,
+            items: sampleDiverse(pool, pool.length, random).map((q) => ({ ...q, category: c })),
+          }
+        })
         .filter((p) => p.items.length > 0)
 
       const order = shuffle(pools, random)

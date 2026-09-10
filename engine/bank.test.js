@@ -139,6 +139,29 @@ const tests = [
       assert.equal(bank.pickCategory({ exclude: new Set(['cat-a', 'cat-b']), random: () => 0 }), null)
     },
   },
+  {
+    name: 'pick: balances across templates round-robin so single template does not dominate',
+    fn: () => {
+      const templateFixture = {
+        attribution: 'test',
+        categories: {
+          football: [
+            { id: 'w1', q: 'w1', correct: 'a', wrong: ['b', 'c', 'd'], template: 'winner' },
+            { id: 'w2', q: 'w2', correct: 'a', wrong: ['b', 'c', 'd'], template: 'winner' },
+            { id: 'w3', q: 'w3', correct: 'a', wrong: ['b', 'c', 'd'], template: 'winner' },
+            { id: 'w4', q: 'w4', correct: 'a', wrong: ['b', 'c', 'd'], template: 'winner' },
+            { id: 'c1', q: 'c1', correct: 'a', wrong: ['b', 'c', 'd'], template: 'commentary' },
+            { id: 'a1', q: 'a1', correct: 'a', wrong: ['b', 'c', 'd'], template: 'assist' },
+          ],
+        },
+      }
+      const bank = loadBank({ data: templateFixture })
+      const picked = bank.pick({ category: 'football', count: 3, random: () => 0.1 })
+      assert.equal(picked.length, 3)
+      const templates = new Set(picked.map((q) => q.template))
+      assert.equal(templates.size, 3, 'Must draw 1 from each available template before repeating any template')
+    },
+  },
 ]
 
 let passed = 0
