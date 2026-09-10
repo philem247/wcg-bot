@@ -39,8 +39,8 @@ for (const q of rawData.categories.football || []) {
     q.q = q.q.replace(/What shirt number does (.*) wear for (.*)\?/i, 'What shirt number did $1 wear for $2?');
     q.q = q.q.replace(/What iconic shirt number does (.*) wear for (.*)\?/i, 'What iconic shirt number did $1 famously wear for $2?');
   }
-  if (q.template === 'record-transfer' && q.q.startsWith('Who is the all-time record signing in the history of')) {
-    q.q = q.q.replace(/Who is the all-time record signing in the history of (.*)\?/i, 'As of 2024, who is the record transfer signing in the history of $1?');
+  if (q.template === 'record-transfer' && (q.q.startsWith('Who is the all-time record signing in the history of') || q.q.startsWith('As of 2024'))) {
+    q.q = q.q.replace(/(?:Who is the all-time record signing in the history of|As of 2024, who is the record transfer signing in the history of) (.*)\?/i, 'As of 2026, who is the record transfer signing in the history of $1?');
   }
 }
 

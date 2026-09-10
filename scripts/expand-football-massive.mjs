@@ -218,13 +218,13 @@ for (const [team, correct, wrong] of nicknames) {
 // =========================================================================
 const recordTransfers = [
   ['Arsenal', 'Declan Rice (£105m)', ['Nicolas Pépé (£72m)', 'Kai Havertz (£65m)', 'Pierre-Emerick Aubameyang (£56m)']],
-  ['Chelsea', 'Moisés Caicedo (£115m)', ['Enzo Fernández (£106.8m)', 'Romelu Lukaku (£97.5m)', 'Kai Havertz (£72m)']],
-  ['Manchester City', 'Jack Grealish (£100m)', ['Josko Gvardiol (£77m)', 'Kevin De Bruyne (£55m)', 'Rodri (£62.8m)']],
+  ['Chelsea', 'Morgan Rogers (£117m)', ['Moisés Caicedo (£115m)', 'Enzo Fernández (£106.8m)', 'Romelu Lukaku (£97.5m)']],
+  ['Manchester City', 'Enzo Fernández (£125m)', ['Jack Grealish (£100m)', 'Josko Gvardiol (£77m)', 'Kevin De Bruyne (£55m)']],
   ['Manchester United', 'Paul Pogba (£89m)', ['Antony (£82m)', 'Harry Maguire (£80m)', 'Jadon Sancho (£73m)']],
-  ['Liverpool', 'Virgil van Dijk (£75m)', ['Darwin Núñez (£64m + add-ons)', 'Alisson Becker (£65m)', 'Dominik Szoboszlai (£60m)']],
-  ['Tottenham Hotspur', 'Dominic Solanke (£65m)', ['Tanguy Ndombele (£63m)', 'Richarlison (£60m)', 'Brennan Johnson (£47.5m)']],
-  ['Newcastle United', 'Alexander Isak (£63m)', ['Sandro Tonali (£55m)', 'Bruno Guimarães (£40m)', 'Anthony Gordon (£45m)']],
-  ['Aston Villa', 'Amadou Onana (£50m)', ['Moussa Diaby (£51.9m)', 'Emiliano Buendía (£38m)', 'Pau Torres (£31.5m)']],
+  ['Liverpool', 'Alexander Isak (£125m)', ['Florian Wirtz (£116.5m)', 'Virgil van Dijk (£75m)', 'Darwin Núñez (£64m + add-ons)']],
+  ['Tottenham Hotspur', 'Sandro Tonali (£100m)', ['Dominic Solanke (£65m)', 'Tanguy Ndombele (£63m)', 'Richarlison (£60m)']],
+  ['Newcastle United', 'Nick Woltemade (£69m)', ['Alexander Isak (£63m)', 'Sandro Tonali (£55m)', 'Bruno Guimarães (£40m)']],
+  ['Aston Villa', 'Nicolas Jackson (£65m)', ['Amadou Onana (£50m)', 'Moussa Diaby (£51.9m)', 'Emiliano Buendía (£38m)']],
   ['West Ham United', 'Sébastien Haller (£45m)', ['Lucas Paquetá (£51m inc add-ons)', 'Mohammed Kudus (£38m)', 'Gianluca Scamacca (£35.5m)']],
   ['Real Madrid', 'Jude Bellingham / Eden Hazard (€103m - €115m)', ['Gareth Bale (€101m)', 'Cristiano Ronaldo (€94m)', 'Aurélien Tchouaméni (€80m)']],
   ['Barcelona', 'Philippe Coutinho (€135m - €160m)', ['Ousmane Dembélé (€135m)', 'Antoine Griezmann (€120m)', 'Neymar (€88m)']],
@@ -233,7 +233,7 @@ const recordTransfers = [
 ];
 
 for (const [club, correct, wrong] of recordTransfers) {
-  pool.push(makeQ(`Who is the all-time record signing in the history of ${club}?`, correct, wrong, 'other', 'record-transfer'));
+  pool.push(makeQ(`As of 2026, who is the record transfer signing in the history of ${club}?`, correct, wrong, 'other', 'record-transfer'));
 }
 
 // =========================================================================
