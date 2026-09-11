@@ -140,3 +140,100 @@ test('validator: existing cache/approved files load on construction', async () =
   assert.equal(called, false, 'a pre-seeded cache hit must not call fetch')
   rmSync(dir, { recursive: true, force: true })
 })
+
+test('validator: Gemini primary works when token is absent and geminiKey is set', async () => {
+  const { cachePath, approvedPath, dir } = tempPaths()
+  let requestedUrl = ''
+  let requestBody = null
+  const fetchFn = async (url, opts) => {
+    requestedUrl = url
+    requestBody = JSON.parse(opts.body)
+    return {
+      ok: true,
+      status: 200,
+      json: async () => ({
+        candidates: [{ content: { parts: [{ text: 'Yes' }] } }],
+      }),
+    }
+  }
+
+  const v = createValidator({ geminiKey: 'gem-key', cachePath, approvedPath, fetchFn })
+  const result = await v.check('Mammals', 'Dolphin')
+  assert.equal(result, true)
+  assert.ok(requestedUrl.includes('generativelanguage.googleapis.com'))
+  assert.ok(requestedUrl.includes('gemini-2.5-flash'))
+  assert.ok(requestedUrl.includes('key=gem-key'))
+  assert.equal(requestBody.generationConfig?.thinkingConfig?.thinkingBudget, 0)
+
+  const cached = JSON.parse(readFileSync(cachePath, 'utf8'))
+  assert.equal(cached['mammals::dolphin'], true)
+  rmSync(dir, { recursive: true, force: true })
+})
+
+test('validator: Gemini fallback triggers when Claude fails (403/401)', async () => {
+  const { cachePath, approvedPath, dir } = tempPaths()
+  const calls = []
+  const fetchFn = async (url) => {
+    calls.push(url)
+    if (url.includes('anthropic.com')) {
+      return { ok: false, status: 403, json: async () => ({ error: 'forbidden' }) }
+    }
+    if (url.includes('googleapis.com')) {
+      return {
+        ok: true,
+        status: 200,
+        json: async () => ({
+          candidates: [{ content: { parts: [{ text: 'yes' }] } }],
+        }),
+      }
+    }
+    throw new Error('unknown url')
+  }
+
+  const v = createValidator({
+    token: 'claude-tok',
+    geminiKey: 'gem-key',
+    cachePath,
+    approvedPath,
+    fetchFn,
+  })
+
+  const result = await v.check('Mammals', 'Whale')
+  assert.equal(result, true)
+  assert.equal(calls.length, 2)
+  assert.ok(calls[0].includes('anthropic.com'))
+  assert.ok(calls[1].includes('googleapis.com'))
+  rmSync(dir, { recursive: true, force: true })
+})
+
+test('validator: Gemini fallback triggers when Claude fetch throws', async () => {
+  const { cachePath, approvedPath, dir } = tempPaths()
+  const calls = []
+  const fetchFn = async (url) => {
+    calls.push(url)
+    if (url.includes('anthropic.com')) {
+      throw new Error('network down')
+    }
+    return {
+      ok: true,
+      status: 200,
+      json: async () => ({
+        candidates: [{ content: { parts: [{ text: 'no' }] } }],
+      }),
+    }
+  }
+
+  const v = createValidator({
+    token: 'claude-tok',
+    geminiKey: 'gem-key',
+    cachePath,
+    approvedPath,
+    fetchFn,
+  })
+
+  const result = await v.check('Mammals', 'Bicycle')
+  assert.equal(result, false)
+  assert.equal(calls.length, 2)
+  rmSync(dir, { recursive: true, force: true })
+})
+

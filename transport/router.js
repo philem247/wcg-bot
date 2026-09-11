@@ -20,6 +20,7 @@ import {
   PREFIX, OWNER, ADMINS, TRACE_LOG,
   CONCENTRATION_VALIDATOR, CONCENTRATION_VALIDATOR_TOKEN, CONCENTRATION_VALIDATOR_MODEL,
   CONCENTRATION_VALIDATOR_TIMEOUT_MS, CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME,
+  GEMINI_API_KEY, GEMINI_MODEL,
 } from '../config.js'
 import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
@@ -75,10 +76,12 @@ const gameMeta = new Map() // jid -> { mode, type, startedAt, players, eliminate
 // above) so its disk-backed cache is shared across every group's games, not
 // duplicated per createRouter() call. Fully inert unless both the flag and a
 // token are configured — see engine/validator.js and config.js.
-const concentrationValidator = CONCENTRATION_VALIDATOR && CONCENTRATION_VALIDATOR_TOKEN
+const concentrationValidator = CONCENTRATION_VALIDATOR && (CONCENTRATION_VALIDATOR_TOKEN || GEMINI_API_KEY)
   ? createValidator({
       token: CONCENTRATION_VALIDATOR_TOKEN,
       model: CONCENTRATION_VALIDATOR_MODEL,
+      geminiKey: GEMINI_API_KEY,
+      geminiModel: GEMINI_MODEL,
       timeoutMs: CONCENTRATION_VALIDATOR_TIMEOUT_MS,
     })
   : null
