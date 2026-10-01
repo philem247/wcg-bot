@@ -44287,6 +44287,234 @@
         ],
         "league": "ucl",
         "template": "modern-classics"
+      },
+      {
+        "id": "b0e86f18050e",
+        "q": "Iceland, playing at their first ever major tournament, stunned England 2-1 at Euro 2016, with the match-winning goal and a crucial equaliser both coming from the same player family surname. Who scored Iceland's winner?",
+        "correct": "Kolbeinn Sigþórsson",
+        "wrong": [
+          "Ragnar Sigurðsson",
+          "Gylfi Sigurðsson",
+          "Birkir Bjarnason"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "df621e4cdf71",
+        "q": "France beat Croatia 4-2 in the 2018 World Cup final, with Kylian Mbappé becoming the youngest player to score in a World Cup final since which Brazilian legend in 1958?",
+        "correct": "Pelé",
+        "wrong": [
+          "Garrincha",
+          "Ronaldo",
+          "Zico"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "006d2770e314",
+        "q": "The 2018 World Cup was the first to use Video Assistant Referee (VAR) technology. A VAR review awarded the first ever VAR-given penalty in World Cup history, against which country, for a foul on Antoine Griezmann?",
+        "correct": "Australia",
+        "wrong": [
+          "Peru",
+          "Denmark",
+          "Argentina"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "f8aa39af31ca",
+        "q": "Manchester City became the first Premier League team to reach 100 points in a single season, winning the 2017-18 title under which manager?",
+        "correct": "Pep Guardiola",
+        "wrong": [
+          "José Mourinho",
+          "Jürgen Klopp",
+          "Antonio Conte"
+        ],
+        "league": "pl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "1c63202979b1",
+        "q": "Liverpool overturned a 3-0 first-leg deficit against Barcelona in the 2019 Champions League semi-final, winning 4-0 at Anfield thanks partly to a quickly-taken corner. Who scored the decisive fourth goal from that corner?",
+        "correct": "Divock Origi",
+        "wrong": [
+          "Georginio Wijnaldum",
+          "Roberto Firmino",
+          "Mohamed Salah"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "758a6b2f147e",
+        "q": "Just a day after Liverpool's comeback against Barcelona, Tottenham overturned a 1-0 deficit to beat Ajax 3-2 in Amsterdam and reach the 2019 Champions League final on away goals. Who scored a stoppage-time hat-trick winner?",
+        "correct": "Lucas Moura",
+        "wrong": [
+          "Son Heung-min",
+          "Harry Kane",
+          "Dele Alli"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "0ce50ce9df1e",
+        "q": "Liverpool won the Premier League in 2019-20, ending a 30-year wait for the English top-flight title, under which manager?",
+        "correct": "Jürgen Klopp",
+        "wrong": [
+          "Brendan Rodgers",
+          "Rafael Benítez",
+          "Kenny Dalglish"
+        ],
+        "league": "pl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "72b925266a07",
+        "q": "Kai Havertz scored the only goal as Chelsea beat Manchester City 1-0 to win the 2021 Champions League final. Who was Chelsea's manager at the time?",
+        "correct": "Thomas Tuchel",
+        "wrong": [
+          "Frank Lampard",
+          "Maurizio Sarri",
+          "Graham Potter"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "cbbfe77758ba",
+        "q": "Villarreal won the 2021 Europa League final in a marathon penalty shootout against Manchester United, in which every single outfield player plus both goalkeepers took a kick before anyone missed. Which Manchester United goalkeeper finally missed the decisive 22nd penalty?",
+        "correct": "David de Gea",
+        "wrong": [
+          "Dean Henderson",
+          "Tom Heaton",
+          "Sergio Romero"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "20a4a72039a2",
+        "q": "Italy beat England on penalties to win Euro 2020 (played in 2021) at Wembley, extending England's wait for a major trophy to how many years?",
+        "correct": "55",
+        "wrong": [
+          "50",
+          "60",
+          "45"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "2f0f4f26383b",
+        "q": "Denmark midfielder Christian Eriksen suffered a cardiac arrest on the pitch during Denmark's opening Euro 2020 match, shocking the football world. Which team were Denmark playing when it happened?",
+        "correct": "Finland",
+        "wrong": [
+          "Belgium",
+          "Russia",
+          "Wales"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "4d96c36d87cb",
+        "q": "In April 2021, twelve of Europe's biggest clubs announced a breakaway \"European Super League\" that collapsed within 48 hours after massive fan backlash. How many founding clubs were originally involved?",
+        "correct": "12",
+        "wrong": [
+          "10",
+          "14",
+          "8"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "4d12fb9d37e3",
+        "q": "Barcelona completed the treble in 2015 behind their famous \"MSN\" attacking trio, beating Juventus 3-1 in the Champions League final. Which two of the trio scored in that final?",
+        "correct": "Suárez and Neymar",
+        "wrong": [
+          "Messi and Suárez",
+          "Messi and Neymar",
+          "Neymar and Iniesta"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "b01f1cddf216",
+        "q": "Real Madrid won the 2016 Champions League final on penalties against city rivals Atlético Madrid, after Atlético's Juanfran hit the post with their fourth spot-kick. Who scored Real Madrid's decisive winning penalty?",
+        "correct": "Cristiano Ronaldo",
+        "wrong": [
+          "Sergio Ramos",
+          "Gareth Bale",
+          "Marcelo"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "fb1bee8fbcd4",
+        "q": "Mario Mandžukić scored an outrageous bicycle kick for Juventus in the 2017 Champions League final, only for Real Madrid to win 4-1 with a brace from which player?",
+        "correct": "Cristiano Ronaldo",
+        "wrong": [
+          "Karim Benzema",
+          "Gareth Bale",
+          "Toni Kroos"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "9bd18b7825a4",
+        "q": "Gareth Bale scored a spectacular overhead kick as a substitute in the 2018 Champions League final, as Real Madrid beat Liverpool 3-1 despite two costly errors from which Liverpool goalkeeper?",
+        "correct": "Loris Karius",
+        "wrong": [
+          "Simon Mignolet",
+          "Alisson Becker",
+          "Adrián"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "2f0804ede492",
+        "q": "Liverpool won the 2019 Champions League final 2-0 against Tottenham in an all-English final, with Mohamed Salah scoring from the penalty spot after just 22 seconds. Who scored Liverpool's second goal?",
+        "correct": "Divock Origi",
+        "wrong": [
+          "Sadio Mané",
+          "Roberto Firmino",
+          "Georginio Wijnaldum"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "54aabbc5d972",
+        "q": "Bayern Munich demolished Barcelona 8-2 in the 2020 Champions League quarter-final, one of the most lopsided results in the competition's history. In which city, due to COVID-19 restrictions, was that match played as a one-off tie?",
+        "correct": "Lisbon",
+        "wrong": [
+          "Munich",
+          "Barcelona",
+          "Porto"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "860692a93c36",
+        "q": "Bayern Munich completed a treble in 2020, beating PSG 1-0 in the Champions League final with a goal from a player who grew up in the French capital and came through PSG's own academy. Who scored it?",
+        "correct": "Kingsley Coman",
+        "wrong": [
+          "Thomas Müller",
+          "Serge Gnabry",
+          "Robert Lewandowski"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
       }
     ],
     "fpl": [
