@@ -77,6 +77,7 @@ export const CONCENTRATION_VALIDATOR_TOKEN = process.env.CONCENTRATION_VALIDATOR
 export const CONCENTRATION_VALIDATOR_MODEL = envStr('CONCENTRATION_VALIDATOR_MODEL', 'claude-haiku-4-5-20251001');
 export const GEMINI_API_KEY = envStr('GEMINI_API_KEY', '');
 export const GEMINI_MODEL = envStr('GEMINI_MODEL', 'gemini-2.5-flash');
+export const YOUCOM_API_KEY = envStr('YOUCOM_API_KEY', '');
 export const CONCENTRATION_VALIDATOR_TIMEOUT_MS = envNum('CONCENTRATION_VALIDATOR_TIMEOUT_MS', 3000);
 // Hard ceiling on validator calls per game — a chaotic round can't run up a bill.
 export const CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME = envNum('CONCENTRATION_VALIDATOR_MAX_CALLS_PER_GAME', 20);

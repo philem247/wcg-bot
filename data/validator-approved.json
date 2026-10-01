@@ -308,5 +308,720 @@
     "category": "Colours",
     "answer": "Deep blue",
     "ts": 1788469870395
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Lorry",
+    "ts": 1789119825181
+  },
+  {
+    "category": "Occupations",
+    "answer": "Chauffeur",
+    "ts": 1789119911021
+  },
+  {
+    "category": "Occupations",
+    "answer": "Clerk",
+    "ts": 1789119919681
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Pant",
+    "ts": 1789120134115
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Sweaters",
+    "ts": 1789120172387
+  },
+  {
+    "category": "Weather types",
+    "answer": "Snowy",
+    "ts": 1789120319291
+  },
+  {
+    "category": "Reptiles",
+    "answer": "Agama lizard",
+    "ts": 1789120728579
+  },
+  {
+    "category": "Football clubs in France",
+    "answer": "FC Lorient",
+    "ts": 1789121237038
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Eyes",
+    "ts": 1789121465183
+  },
+  {
+    "category": "Countries in Europe",
+    "answer": "Netherland",
+    "ts": 1789145075496
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "ATLÉTICO DE MADRID",
+    "ts": 1789198414351
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Meters",
+    "ts": 1789203612936
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Centimetres",
+    "ts": 1789203627303
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Lingerie",
+    "ts": 1789233326803
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Tracksuit",
+    "ts": 1789233332712
+  },
+  {
+    "category": "Fruits",
+    "answer": "Cashew",
+    "ts": 1789233514872
+  },
+  {
+    "category": "Vegetables",
+    "answer": "Swede",
+    "ts": 1789233560486
+  },
+  {
+    "category": "Vegetables",
+    "answer": "Pepper",
+    "ts": 1789233572544
+  },
+  {
+    "category": "Vegetables",
+    "answer": "Garden egg",
+    "ts": 1789233597335
+  },
+  {
+    "category": "Mammals",
+    "answer": "humans",
+    "ts": 1789233691183
+  },
+  {
+    "category": "Mammals",
+    "answer": "Ram",
+    "ts": 1789253101517
+  },
+  {
+    "category": "Weather types",
+    "answer": "Hazy",
+    "ts": 1789253602321
+  },
+  {
+    "category": "Fruits",
+    "answer": "Kiwi",
+    "ts": 1789256703487
+  },
+  {
+    "category": "Household items",
+    "answer": "Pan",
+    "ts": 1789328581581
+  },
+  {
+    "category": "Football clubs in France",
+    "answer": "As Monaco",
+    "ts": 1789329602205
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Legs",
+    "ts": 1789331239382
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Breast",
+    "ts": 1789331246987
+  },
+  {
+    "category": "Occupations",
+    "answer": "Engineering",
+    "ts": 1789331307198
+  },
+  {
+    "category": "World currencies",
+    "answer": "Indian rupees",
+    "ts": 1789397700182
+  },
+  {
+    "category": "World currencies",
+    "answer": "Mexican peso",
+    "ts": 1789397706897
+  },
+  {
+    "category": "World currencies",
+    "answer": "Brazilian real",
+    "ts": 1789397719789
+  },
+  {
+    "category": "World currencies",
+    "answer": "Turkish lira",
+    "ts": 1789397731083
+  },
+  {
+    "category": "Fruits",
+    "answer": "Star apple",
+    "ts": 1789423308395
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Vfl Bochum",
+    "ts": 1789423464202
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Elversberg",
+    "ts": 1789423477672
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Paderborn",
+    "ts": 1789423481287
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Unicycle",
+    "ts": 1789423558283
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Luxurious bus",
+    "ts": 1789423581886
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Boeing 737",
+    "ts": 1789423597881
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Scrotum",
+    "ts": 1789423828898
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Fingers",
+    "ts": 1789423836605
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Index finger",
+    "ts": 1789423871242
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Duodenum",
+    "ts": 1789423877742
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Middle finger",
+    "ts": 1789423884590
+  },
+  {
+    "category": "Board games",
+    "answer": "Mouse trap",
+    "ts": 1789424130984
+  },
+  {
+    "category": "Reptiles",
+    "answer": "Aligator",
+    "ts": 1789508620077
+  },
+  {
+    "category": "Reptiles",
+    "answer": "Croc",
+    "ts": 1789508638487
+  },
+  {
+    "category": "Vegetables",
+    "answer": "Spring onion",
+    "ts": 1789509034398
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Centimeters",
+    "ts": 1789509090029
+  },
+  {
+    "category": "Musical instruments",
+    "answer": "Drumset",
+    "ts": 1789510747998
+  },
+  {
+    "category": "Household items",
+    "answer": "Couch",
+    "ts": 1789557452989
+  },
+  {
+    "category": "Occupations",
+    "answer": "Business administrator",
+    "ts": 1789558071456
+  },
+  {
+    "category": "Occupations",
+    "answer": "Nanny",
+    "ts": 1789558083586
+  },
+  {
+    "category": "Occupations",
+    "answer": "Footballer",
+    "ts": 1789558095497
+  },
+  {
+    "category": "Football clubs in England",
+    "answer": "Ipswich",
+    "ts": 1789558158287
+  },
+  {
+    "category": "Football clubs in England",
+    "answer": "Leicester",
+    "ts": 1789558171956
+  },
+  {
+    "category": "Birds",
+    "answer": "Fowl",
+    "ts": 1789680138180
+  },
+  {
+    "category": "Birds",
+    "answer": "Patridge",
+    "ts": 1789680164485
+  },
+  {
+    "category": "Musical instruments",
+    "answer": "Sekere",
+    "ts": 1789735083379
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Subway",
+    "ts": 1789735304781
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Camel",
+    "ts": 1789735310380
+  },
+  {
+    "category": "Football clubs in England",
+    "answer": "Norwich",
+    "ts": 1789735398185
+  },
+  {
+    "category": "Football clubs in France",
+    "answer": "RC lens",
+    "ts": 1789735553283
+  },
+  {
+    "category": "Sports",
+    "answer": "SOCCER",
+    "ts": 1789735710503
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Yards",
+    "ts": 1789735771064
+  },
+  {
+    "category": "Reptiles",
+    "answer": "Krait",
+    "ts": 1789736039095
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Sandal",
+    "ts": 1789736291395
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Sock",
+    "ts": 1789736298495
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Singlet",
+    "ts": 1789736314590
+  },
+  {
+    "category": "Occupations",
+    "answer": "lab scientist",
+    "ts": 1789741406417
+  },
+  {
+    "category": "Birds",
+    "answer": "Eaglet",
+    "ts": 1789812118486
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Metres",
+    "ts": 1789812539809
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Gran",
+    "ts": 1789812562082
+  },
+  {
+    "category": "Nigerian states",
+    "answer": "Nassarawa",
+    "ts": 1789812891486
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Motorbike",
+    "ts": 1789812928116
+  },
+  {
+    "category": "Sports",
+    "answer": "Lawn Tennis",
+    "ts": 1789813497692
+  },
+  {
+    "category": "Occupations",
+    "answer": "checkers",
+    "ts": 1789813533302
+  },
+  {
+    "category": "Occupations",
+    "answer": "Gymnast",
+    "ts": 1789813570887
+  },
+  {
+    "category": "Occupations",
+    "answer": "Swimmer",
+    "ts": 1789813596274
+  },
+  {
+    "category": "Weather types",
+    "answer": "Thunderstorms",
+    "ts": 1789854111810
+  },
+  {
+    "category": "Vegetables",
+    "answer": "onions",
+    "ts": 1789854158618
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "Sevilla FC",
+    "ts": 1789921919883
+  },
+  {
+    "category": "Vegetables",
+    "answer": "Potato",
+    "ts": 1789922265201
+  },
+  {
+    "category": "Vegetables",
+    "answer": "Green Pea",
+    "ts": 1789922311779
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Stuttgart",
+    "ts": 1789922519497
+  },
+  {
+    "category": "Sports",
+    "answer": "Skating",
+    "ts": 1789922764133
+  },
+  {
+    "category": "Sports",
+    "answer": "Hurdles",
+    "ts": 1789922802486
+  },
+  {
+    "category": "Sports",
+    "answer": "Formula 1",
+    "ts": 1789922842096
+  },
+  {
+    "category": "Shapes",
+    "answer": "Squares",
+    "ts": 1789924728034
+  },
+  {
+    "category": "World currencies",
+    "answer": "Cedis",
+    "ts": 1789925416792
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Sweatshirt",
+    "ts": 1789932629697
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Vagina",
+    "ts": 1789995983984
+  },
+  {
+    "category": "Colours",
+    "answer": "biege",
+    "ts": 1789996303284
+  },
+  {
+    "category": "Colours",
+    "answer": "Navy blue",
+    "ts": 1789996307885
+  },
+  {
+    "category": "Colours",
+    "answer": "Ox blood",
+    "ts": 1789996311699
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Horse",
+    "ts": 1789996901203
+  },
+  {
+    "category": "Weather types",
+    "answer": "Dry",
+    "ts": 1789996941183
+  },
+  {
+    "category": "Football clubs in England",
+    "answer": "Wigan",
+    "ts": 1789997374582
+  },
+  {
+    "category": "Means of transport",
+    "answer": "Rollerskates",
+    "ts": 1790095264760
+  },
+  {
+    "category": "Sports",
+    "answer": "Sprinting",
+    "ts": 1790097022292
+  },
+  {
+    "category": "Sports",
+    "answer": "Huddle",
+    "ts": 1790097042436
+  },
+  {
+    "category": "Vegetables",
+    "answer": "Green bean",
+    "ts": 1790097204061
+  },
+  {
+    "category": "Household items",
+    "answer": "Peg",
+    "ts": 1790097526163
+  },
+  {
+    "category": "Household items",
+    "answer": "Cabinet",
+    "ts": 1790097544459
+  },
+  {
+    "category": "Household items",
+    "answer": "Soap",
+    "ts": 1790097571166
+  },
+  {
+    "category": "Board games",
+    "answer": "Snake and ladders",
+    "ts": 1790098102545
+  },
+  {
+    "category": "Board games",
+    "answer": "carrom",
+    "ts": 1790098119569
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "Rayo vallcano",
+    "ts": 1790098679014
+  },
+  {
+    "category": "Occupations",
+    "answer": "Blogger",
+    "ts": 1790103297593
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "Athletic club",
+    "ts": 1790103437154
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Watts",
+    "ts": 1790241869713
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Liters",
+    "ts": 1790241888077
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Decimeters",
+    "ts": 1790241895961
+  },
+  {
+    "category": "Football clubs in Italy",
+    "answer": "Parma Calcio 1913",
+    "ts": 1790242041454
+  },
+  {
+    "category": "Football clubs in Italy",
+    "answer": "Benevento Calcio",
+    "ts": 1790242054590
+  },
+  {
+    "category": "Football clubs in Italy",
+    "answer": "FC Internazionale Milano",
+    "ts": 1790242065081
+  },
+  {
+    "category": "Football clubs in Italy",
+    "answer": "Torino FC",
+    "ts": 1790242073444
+  },
+  {
+    "category": "Football clubs in Italy",
+    "answer": "Hellas Verona FC",
+    "ts": 1790242082403
+  },
+  {
+    "category": "Football clubs in Italy",
+    "answer": "UC Sampdoria",
+    "ts": 1790242096973
+  },
+  {
+    "category": "Occupations",
+    "answer": "Gynecologist",
+    "ts": 1790242134586
+  },
+  {
+    "category": "Occupations",
+    "answer": "Wrestler",
+    "ts": 1790242143069
+  },
+  {
+    "category": "Occupations",
+    "answer": "Therapist",
+    "ts": 1790242163956
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Bayern Munchen",
+    "ts": 1790458085982
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Eintracht Frankfurt e.V",
+    "ts": 1790458095524
+  },
+  {
+    "category": "Football clubs in Germany",
+    "answer": "Ballspielverein Borussia 09 e. V. Dortmund",
+    "ts": 1790458115185
+  },
+  {
+    "category": "Birds",
+    "answer": "Mockingbird",
+    "ts": 1790458804334
+  },
+  {
+    "category": "Fruits",
+    "answer": "Watermelom",
+    "ts": 1790458850875
+  },
+  {
+    "category": "Fruits",
+    "answer": "Pomes",
+    "ts": 1790458894018
+  },
+  {
+    "category": "Capital cities",
+    "answer": "Djibouti",
+    "ts": 1790459089039
+  },
+  {
+    "category": "Football clubs in England",
+    "answer": "Huddersfield",
+    "ts": 1790459158639
+  },
+  {
+    "category": "Parts of the body",
+    "answer": "Testicle",
+    "ts": 1790459325256
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "kilometers",
+    "ts": 1790459553335
+  },
+  {
+    "category": "Units of measurement",
+    "answer": "Millimeters",
+    "ts": 1790459566635
+  },
+  {
+    "category": "Countries in Europe",
+    "answer": "Lichtenstein",
+    "ts": 1790459599901
+  },
+  {
+    "category": "Clothing items",
+    "answer": "Belts",
+    "ts": 1790529088245
+  },
+  {
+    "category": "Birds",
+    "answer": "Hen",
+    "ts": 1790814490392
+  },
+  {
+    "category": "Birds",
+    "answer": "Cock",
+    "ts": 1790814497860
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "Malaga CF",
+    "ts": 1790861093618
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "Real Madrid CF",
+    "ts": 1790861100640
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "Real Sociedad de Football S.A.D",
+    "ts": 1790861108935
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "villareal",
+    "ts": 1790861113688
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "Real Valladolid CF",
+    "ts": 1790861116141
+  },
+  {
+    "category": "Football clubs in Spain",
+    "answer": "Getafe CF",
+    "ts": 1790861126063
   }
 ]

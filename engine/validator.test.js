@@ -237,3 +237,54 @@ test('validator: Gemini fallback triggers when Claude fetch throws', async () =>
   rmSync(dir, { recursive: true, force: true })
 })
 
+test('validator: you.com last-resort fallback confirms true when Claude/Gemini are both absent', async () => {
+  const { cachePath, approvedPath, dir } = tempPaths()
+  let requestedUrl = ''
+  const fetchFn = async (url) => {
+    requestedUrl = url
+    return {
+      ok: true,
+      status: 200,
+      json: async () => ({ hits: [{ title: 'Elversberg', snippet: 'SV Elversberg is a German football club in 3. Liga.' }] }),
+    }
+  }
+
+  const v = createValidator({ youcomKey: 'yc-key', cachePath, approvedPath, fetchFn })
+  const result = await v.check('Football clubs in Germany', 'Elversberg')
+  assert.equal(result, true)
+  assert.ok(requestedUrl.includes('api.you.com'))
+  rmSync(dir, { recursive: true, force: true })
+})
+
+test('validator: you.com fallback never turns a null into a false — a miss stays null', async () => {
+  const { cachePath, approvedPath, dir } = tempPaths()
+  const fetchFn = async () => ({
+    ok: true,
+    status: 200,
+    json: async () => ({ hits: [{ title: 'unrelated', snippet: 'nothing here about it' }] }),
+  })
+
+  const v = createValidator({ youcomKey: 'yc-key', cachePath, approvedPath, fetchFn })
+  const result = await v.check('Football clubs in Germany', 'Nonexistentia FC')
+  assert.equal(result, null)
+  rmSync(dir, { recursive: true, force: true })
+})
+
+test('validator: you.com is never consulted when Claude already returned a confident no', async () => {
+  const { cachePath, approvedPath, dir } = tempPaths()
+  const calls = []
+  const fetchFn = async (url) => {
+    calls.push(url)
+    if (url.includes('anthropic.com')) {
+      return { ok: true, status: 200, json: async () => ({ content: [{ text: 'no' }] }) }
+    }
+    throw new Error('you.com must not be called when Claude already answered')
+  }
+
+  const v = createValidator({ token: 'claude-tok', youcomKey: 'yc-key', cachePath, approvedPath, fetchFn })
+  const result = await v.check('Mammals', 'Toaster')
+  assert.equal(result, false)
+  assert.equal(calls.length, 1)
+  rmSync(dir, { recursive: true, force: true })
+})
+

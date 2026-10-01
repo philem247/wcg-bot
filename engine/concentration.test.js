@@ -29,7 +29,7 @@ function newGame(opts = {}) {
 }
 
 test('concentration: exports the documented defaults', () => {
-  assert.equal(REGISTRATION_MS, 30_000)
+  assert.equal(REGISTRATION_MS, 60_000)
   assert.equal(MIN_PLAYERS, 2)
   assert.equal(TURN_CLOCK_SECONDS, 15)
   assert.equal(START_DELAY_MS, 5_000)
@@ -46,7 +46,7 @@ test('concentration: tick() lazily announces registration on the first call', ()
   assert.equal(events.length, 1)
   assert.equal(events[0].type, 'concentration_registration_open')
   assert.equal(events[0].minPlayers, 2)
-  assert.equal(events[0].seconds, 30)
+  assert.equal(events[0].seconds, 60)
 })
 
 test('concentration: join adds a player and does not double-count a repeat join', () => {

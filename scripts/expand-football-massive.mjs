@@ -89,7 +89,7 @@ const uclMoments = [
   makeQ('Which player has won the most UEFA Champions League / European Cup titles in history (6 titles)?', 'Paco Gento, Dani Carvajal, Luka Modrić, Toni Kroos & Nacho', ['Cristiano Ronaldo', 'Paolo Maldini', 'Lionel Messi'], 'ucl', 'ucl-records'),
   makeQ('Which manager has won the most UEFA Champions League titles in history (5 titles)?', 'Carlo Ancelotti', ['Pep Guardiola', 'Zinedine Zidane', 'Bob Paisley'], 'ucl', 'ucl-records'),
   makeQ('Who scored the fastest goal in UEFA Champions League history (10.12 seconds, for Bayern Munich vs Real Madrid in 2007)?', 'Roy Makaay', ['Clarence Seedorf', 'Alessandro Del Piero', 'Alexandre Pato'], 'ucl', 'ucl-records'),
-  makeQ('Which player scored a stunning bicycle kick in the 2002 Champions League Final for Real Madrid against Bayer Leverkusen?', 'Zinedine Zidane', ['Raúl', 'Fernando Morientes', 'Luís Figo'], 'ucl', 'ucl-drama'),
+  makeQ('Which player scored a stunning left-foot volley in the 2002 Champions League Final for Real Madrid against Bayer Leverkusen?', 'Zinedine Zidane', ['Raúl', 'Fernando Morientes', 'Luís Figo'], 'ucl', 'ucl-drama'),
   makeQ('Which French club reached the Champions League final in 2004 under Didier Deschamps before losing to José Mourinho\'s FC Porto?', 'AS Monaco', ['Olympique Lyonnais', 'Paris Saint-Germain', 'Marseille'], 'ucl', 'ucl-history'),
   makeQ('Which club is the only French side to have ever won the UEFA Champions League / European Cup (in 1993)?', 'Olympique de Marseille', ['Paris Saint-Germain', 'AS Monaco', 'Saint-Étienne'], 'ucl', 'ucl-history')
 ];

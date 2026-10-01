@@ -117,11 +117,41 @@ async function callGemini({ key, model = 'gemini-2.5-flash', prompt, timeoutMs, 
   }
 }
 
+const YOUCOM_URL = 'https://api.you.com/v1/search'
+
+// Last-resort fallback when both Claude and Gemini are unavailable (missing
+// keys, down, or timed out) — not a reasoning check, just "does a real source
+// mention this answer in this category at all". Search text is too noisy to
+// trust for a confident "no", so this only ever returns true or null, never
+// false: a miss here must never turn into a wrongly-rejected real answer.
+async function callYouCom({ key, categoryLabel, answer, timeoutMs, fetchFn }) {
+  if (!key) return null
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeoutMs)
+  try {
+    const query = encodeURIComponent(`${answer} ${categoryLabel}`)
+    const res = await fetchFn(`${YOUCOM_URL}?query=${query}`, {
+      signal: controller.signal,
+      headers: { 'X-API-Key': key },
+    })
+    if (!res.ok) return null
+    const data = await res.json()
+    const hits = data?.hits ?? data?.results ?? []
+    const text = hits.map((h) => `${h.title ?? ''} ${h.snippet ?? h.description ?? ''}`).join(' ').toLowerCase()
+    return text.includes(answer.trim().toLowerCase()) ? true : null
+  } catch {
+    return null
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
 export function createValidator({
   token,
   model,
   geminiKey,
   geminiModel = 'gemini-2.5-flash',
+  youcomKey,
   timeoutMs = 3000,
   fetchFn = fetch,
   cachePath = 'data/validator-cache.json',
@@ -160,12 +190,17 @@ export function createValidator({
     // the check could not be made (disabled, timed out, or errored) — the caller
     // must treat null exactly like false (leave the elimination standing).
     async check(categoryLabel, answer) {
-      if (!token && !geminiKey) return null
+      if (!token && !geminiKey && !youcomKey) return null
 
       const key = cacheKey(categoryLabel, answer)
       if (cache.has(key)) return cache.get(key)
 
-      const prompt = `Category: "${categoryLabel}". Proposed answer: "${answer}". Is this a real, correct, unambiguous member of that category? Reply with exactly one word: yes or no.`
+      // "Unambiguous" used to make the judge err conservative on anything it
+      // wasn't fully sure of — exactly the failure mode for a genuine but
+      // obscure member (lower-division club, small-country entry). Reworded
+      // to explicitly count those as valid, and to tolerate minor misspellings
+      // that clearly still refer to a real member.
+      const prompt = `Category: "${categoryLabel}". Proposed answer: "${answer}". Is this a real member of that category — including obscure, lower-tier, regional, or historical members? A minor misspelling that clearly refers to a real member still counts as yes. Reply with exactly one word: yes or no.`
       const startTime = Date.now()
 
       let valid = null
@@ -184,6 +219,22 @@ export function createValidator({
             model: geminiModel,
             prompt,
             timeoutMs: token ? remainingMs : timeoutMs,
+            fetchFn,
+          })
+        }
+      }
+
+      // Both LLM providers unavailable or erroring — last-resort search-based
+      // confirmation. Can only turn a null into a true, never into a false.
+      if (valid === null && youcomKey) {
+        const elapsed = Date.now() - startTime
+        const remainingMs = timeoutMs - elapsed
+        if (remainingMs > 200 || (!token && !geminiKey)) {
+          valid = await callYouCom({
+            key: youcomKey,
+            categoryLabel,
+            answer,
+            timeoutMs: (token || geminiKey) ? remainingMs : timeoutMs,
             fetchFn,
           })
         }
