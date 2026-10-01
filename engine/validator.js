@@ -136,8 +136,13 @@ async function callYouCom({ key, categoryLabel, answer, timeoutMs, fetchFn }) {
     })
     if (!res.ok) return null
     const data = await res.json()
-    const hits = data?.hits ?? data?.results ?? []
-    const text = hits.map((h) => `${h.title ?? ''} ${h.snippet ?? h.description ?? ''}`).join(' ').toLowerCase()
+    // Confirmed live shape: { results: { web: [{ title, description, snippets: [...] }] } }.
+    // data.hits/data.results (array) were wrong guesses — never matched real output.
+    const hits = data?.results?.web ?? []
+    const text = hits
+      .map((h) => `${h.title ?? ''} ${h.description ?? ''} ${(h.snippets ?? []).join(' ')}`)
+      .join(' ')
+      .toLowerCase()
     return text.includes(answer.trim().toLowerCase()) ? true : null
   } catch {
     return null

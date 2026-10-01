@@ -356,7 +356,7 @@ const tests = [
         calls.push({ url, opts })
         return {
           ok: true,
-          json: async () => ({ hits: [{ snippet: 'A One joined Real Madrid this summer.' }] }),
+          json: async () => ({ results: { web: [{ snippets: ['A One joined Real Madrid this summer.'] }] } }),
         }
       }
       const player = { id: 'Q1', name: 'A One', clubs: ['X', 'Y'] }

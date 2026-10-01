@@ -336,8 +336,10 @@ export function mergeFplOverlay(careerPlayers, fplElements, teamById) {
 // code, untested by design (same rule as sparql.mjs) — falls back to null (no
 // patch) on anything unexpected rather than guessing.
 function extractClubFromYouComResult(data) {
-  const hit = data?.hits?.[0] ?? data?.results?.[0]
-  const text = hit?.snippet ?? hit?.description
+  // Confirmed live shape: { results: { web: [{ title, description, snippets: [...] }] } }.
+  // data.hits/data.results (array) were wrong guesses — never matched real output.
+  const hit = data?.results?.web?.[0]
+  const text = hit?.snippets?.[0] ?? hit?.description
   if (!text || typeof text !== 'string') return null
   // Club names are capitalized words (e.g. "Real Madrid") — stop at the first
   // lowercase word so trailing prose ("... this summer.") isn't swept in.

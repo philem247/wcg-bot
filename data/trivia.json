@@ -43651,6 +43651,642 @@
         ],
         "league": "football",
         "template": "match-drama"
+      },
+      {
+        "id": "bd0e640406e7",
+        "q": "In the 2002-03 Champions League quarterfinal second leg at Old Trafford, which Real Madrid striker scored a hat-trick in a 4-3 loss to Manchester United, with Real still advancing 6-5 on aggregate?",
+        "correct": "Ronaldo (Ronaldo Nazário)",
+        "wrong": [
+          "Raúl",
+          "Fernando Morientes",
+          "Luís Figo"
+        ],
+        "league": "ucl",
+        "template": "ucl-drama"
+      },
+      {
+        "id": "f8e1da6c9f24",
+        "q": "In the 1950 World Cup final at the Maracanã, which Uruguayan winger scored the decisive goal to stun a 200,000-strong crowd expecting a Brazilian coronation — a result still called the \"Maracanazo\"?",
+        "correct": "Alcides Ghiggia",
+        "wrong": [
+          "Juan Schiaffino",
+          "Óscar Míguez",
+          "Julio Pérez"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "65ca90a42127",
+        "q": "Who scored the only goal as the USA beat England 1-0 at the 1950 World Cup, a result nicknamed the \"Miracle on Grass\"?",
+        "correct": "Joe Gaetjens",
+        "wrong": [
+          "Walter Bahr",
+          "Frank Wallace",
+          "Ed McIlvenny"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "070826784f77",
+        "q": "In the 1954 World Cup final, West Germany came back from 2-0 down to beat the heavily favoured Hungary — who had thrashed them 8-3 earlier in the tournament — winning 3-2 with a late winner. Who scored it?",
+        "correct": "Helmut Rahn",
+        "wrong": [
+          "Max Morlock",
+          "Fritz Walter",
+          "Ottmar Walter"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "f5fa980054d0",
+        "q": "At the 1982 World Cup, West Germany beat Austria 1-0 in a match both sides seemed content to see finish that way, since it eliminated Algeria — a game remembered as the \"Disgrace of Gijón\". Who scored the only goal?",
+        "correct": "Horst Hrubesch",
+        "wrong": [
+          "Karl-Heinz Rummenigge",
+          "Pierre Littbarski",
+          "Klaus Fischer"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "375b68f10335",
+        "q": "Cameroon stunned the reigning champions 1-0 in the opening match of the 1990 World Cup, despite having two players sent off. Which defending champions did they beat?",
+        "correct": "Argentina",
+        "wrong": [
+          "Brazil",
+          "Italy",
+          "West Germany"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "01b6f4d1cc7c",
+        "q": "North Korea produced one of football's great shocks at the 1966 World Cup by beating which former world champions 1-0 to reach the quarterfinals?",
+        "correct": "Italy",
+        "wrong": [
+          "Brazil",
+          "Uruguay",
+          "England"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "8c1cf5e59292",
+        "q": "Senegal, playing in their first ever World Cup, beat the defending champions 1-0 in the opening match of the 2002 tournament. Who did they beat?",
+        "correct": "France",
+        "wrong": [
+          "Brazil",
+          "Italy",
+          "Argentina"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "7a77b8d6b1ab",
+        "q": "At the 2018 World Cup, South Korea eliminated the defending champions from the group stage with a shock 2-0 win in the final group match. Who did they beat?",
+        "correct": "Germany",
+        "wrong": [
+          "Spain",
+          "Argentina",
+          "Portugal"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "8f7ad2fe1de9",
+        "q": "Pelé became the youngest player to score in a World Cup final at just 17, netting twice as Brazil beat the hosts 5-2 in the 1958 final. Which country did they beat?",
+        "correct": "Sweden",
+        "wrong": [
+          "Switzerland",
+          "France",
+          "West Germany"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "0c7d2f9466fe",
+        "q": "England's controversial third goal in the 1966 World Cup final — whether the ball crossed the line — was awarded after the linesman, Tofiq Bakhramov, consulted with the referee. Who scored it?",
+        "correct": "Geoff Hurst",
+        "wrong": [
+          "Bobby Charlton",
+          "Martin Peters",
+          "Roger Hunt"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "c6c1759d6625",
+        "q": "Denmark won UEFA Euro 1992 despite not originally qualifying for the tournament — they were called up as a late replacement just ten days before it started. Which country did they replace, disqualified due to civil war?",
+        "correct": "Yugoslavia",
+        "wrong": [
+          "Soviet Union",
+          "Czechoslovakia",
+          "East Germany"
+        ],
+        "league": "world",
+        "template": "euro-classics"
+      },
+      {
+        "id": "cf2f282a24e2",
+        "q": "Greece won UEFA Euro 2004 as outsiders at odds of roughly 150-1, beating the hosts 1-0 in the final. Which country did they beat?",
+        "correct": "Portugal",
+        "wrong": [
+          "Spain",
+          "France",
+          "Germany"
+        ],
+        "league": "world",
+        "template": "euro-classics"
+      },
+      {
+        "id": "ef848770569a",
+        "q": "In the 1984 European Cup final, Liverpool beat Roma on penalties after a 1-1 draw, with their goalkeeper wobbling his legs to put off Roma's takers. Who was that goalkeeper?",
+        "correct": "Bruce Grobbelaar",
+        "wrong": [
+          "Ray Clemence",
+          "David James",
+          "Jerzy Dudek"
+        ],
+        "league": "ucl",
+        "template": "ucl-drama"
+      },
+      {
+        "id": "a50fcff7d24f",
+        "q": "Liverpool completed one of football's greatest comebacks in the 2005 Champions League final, trailing AC Milan 3-0 at half-time before winning on penalties. What was the score after 90 minutes?",
+        "correct": "3-3",
+        "wrong": [
+          "3-2",
+          "2-2",
+          "4-3"
+        ],
+        "league": "ucl",
+        "template": "ucl-drama"
+      },
+      {
+        "id": "b0ec1cefc73a",
+        "q": "Barcelona's \"La Remontada\" against PSG in the 2017 Champions League saw them overturn a 4-0 first-leg deficit, winning the second leg 6-1. Who scored the decisive 95th-minute goal?",
+        "correct": "Sergi Roberto",
+        "wrong": [
+          "Neymar",
+          "Lionel Messi",
+          "Luis Suárez"
+        ],
+        "league": "ucl",
+        "template": "ucl-drama"
+      },
+      {
+        "id": "e9c389b35de6",
+        "q": "Liverpool overturned a 3-0 first-leg deficit against Barcelona in the 2019 Champions League semi-final, winning the second leg 4-0 at Anfield. Who scored the famous quickly-taken-corner goal?",
+        "correct": "Divock Origi",
+        "wrong": [
+          "Georginio Wijnaldum",
+          "Roberto Firmino",
+          "Trent Alexander-Arnold"
+        ],
+        "league": "ucl",
+        "template": "ucl-drama"
+      },
+      {
+        "id": "bcabd514f7a8",
+        "q": "In the 2006 World Cup final, Zinedine Zidane was sent off in extra time for headbutting an opponent in the chest. Who was the opponent?",
+        "correct": "Marco Materazzi",
+        "wrong": [
+          "Fabio Cannavaro",
+          "Gennaro Gattuso",
+          "Andrea Pirlo"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "6cd093575248",
+        "q": "David Beckham was sent off for England against Argentina at the 1998 World Cup after flicking a boot at an opponent who had fouled him from behind. Who was that opponent?",
+        "correct": "Diego Simeone",
+        "wrong": [
+          "Juan Sebastián Verón",
+          "Gabriel Batistuta",
+          "Ariel Ortega"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "b0983675ec11",
+        "q": "Roy Keane left Ireland's 2002 World Cup squad before a ball was kicked after a public falling-out with the manager over training facilities, in what became known as the \"Saipan incident\". Who was the Ireland manager at the time?",
+        "correct": "Mick McCarthy",
+        "wrong": [
+          "Jack Charlton",
+          "Steve Staunton",
+          "Brian Kerr"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "a6060bf83750",
+        "q": "Hakan Şükür scored the fastest goal in World Cup history, finding the net just 11 seconds into Turkey's third-place play-off at the 2002 World Cup. Who did Turkey beat in that match?",
+        "correct": "South Korea",
+        "wrong": [
+          "Japan",
+          "Brazil",
+          "Germany"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "101dd4256934",
+        "q": "Wimbledon's \"Crazy Gang\" stunned the heavily favoured \"Culture Club\" in the 1988 FA Cup final, winning 1-0 courtesy of a Lawrie Sanchez header. Who did they beat?",
+        "correct": "Liverpool",
+        "wrong": [
+          "Everton",
+          "Manchester United",
+          "Arsenal"
+        ],
+        "league": "pl",
+        "template": "underdog-shocks"
+      },
+      {
+        "id": "67d0b9f9696d",
+        "q": "Second Division Sunderland shocked the dominant Leeds United side 1-0 to win the 1973 FA Cup final, with goalkeeper Jim Montgomery making a famous double save. Who scored Sunderland's winning goal?",
+        "correct": "Ian Porterfield",
+        "wrong": [
+          "Billy Hughes",
+          "Dennis Tueart",
+          "Vic Halom"
+        ],
+        "league": "pl",
+        "template": "underdog-shocks"
+      },
+      {
+        "id": "2e01411188df",
+        "q": "Norman Whiteside became the youngest player in World Cup history at the 1982 tournament, aged just 17 years and 41 days. Which country did he represent?",
+        "correct": "Northern Ireland",
+        "wrong": [
+          "Republic of Ireland",
+          "Scotland",
+          "Wales"
+        ],
+        "league": "world",
+        "template": "wc-records"
+      },
+      {
+        "id": "ad004462d0f7",
+        "q": "Brazil's 7-1 semi-final defeat to Germany at the 2014 World Cup — nicknamed the \"Mineirazo\" after the stadium — remains their heaviest ever competitive loss. In which Brazilian city was it played?",
+        "correct": "Belo Horizonte",
+        "wrong": [
+          "Rio de Janeiro",
+          "São Paulo",
+          "Salvador"
+        ],
+        "league": "world",
+        "template": "wc-classics"
+      },
+      {
+        "id": "c9e701c9e42d",
+        "q": "Spain won the 2026 World Cup final 1-0 after extra time, denying Argentina back-to-back titles. Which substitute scored the winning goal?",
+        "correct": "Ferran Torres",
+        "wrong": [
+          "Nico Williams",
+          "Lamine Yamal",
+          "Mikel Oyarzabal"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "b6ef4b3c9765",
+        "q": "The 2026 World Cup was the first to feature 48 teams and three host nations. Which three countries co-hosted it?",
+        "correct": "USA, Mexico and Canada",
+        "wrong": [
+          "USA, Mexico and Brazil",
+          "USA, Canada and Brazil",
+          "Mexico, Canada and Qatar"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "f013accb68e0",
+        "q": "Kylian Mbappé won the adidas Golden Boot at the 2026 World Cup with 10 goals, retaining the award he won in 2022 — making him the first player to do what since the award's modern era?",
+        "correct": "Win the World Cup Golden Boot back-to-back",
+        "wrong": [
+          "Score in every group match",
+          "Score a hat-trick in two different World Cups",
+          "Win Golden Boot and Golden Ball in the same tournament"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "20828b6a7f4b",
+        "q": "Rodri's selection as the 2026 World Cup Golden Ball winner sparked debate, echoing a similar controversy around another award he won in 2024 over Vinícius Júnior. What was that 2024 award?",
+        "correct": "Ballon d'Or",
+        "wrong": [
+          "FIFA The Best",
+          "UEFA Men's Player of the Year",
+          "Puskás Award"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "28b1332f183d",
+        "q": "Cape Verde, playing in their first ever World Cup, pulled off one of the tournament's biggest shocks at the 2026 finals by holding which European champions to a 0-0 draw?",
+        "correct": "Spain",
+        "wrong": [
+          "France",
+          "Portugal",
+          "Italy"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "3209597e205a",
+        "q": "Kylian Mbappé scored two goals in 97 seconds late in the second half of the 2022 World Cup final to drag France level at 2-2, before completing his hat-trick in extra time. Who did France lose to on penalties?",
+        "correct": "Argentina",
+        "wrong": [
+          "Croatia",
+          "Morocco",
+          "Brazil"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "5f3ce9df68b7",
+        "q": "Saudi Arabia produced one of the greatest shocks in World Cup history by beating Argentina 2-1 in the 2022 group stage. Who scored both Saudi Arabia goals?",
+        "correct": "Salem Al-Dawsari",
+        "wrong": [
+          "Saleh Al-Shehri",
+          "Firas Al-Buraikan",
+          "Hattan Bahebri"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "38f5dc3b3906",
+        "q": "Morocco became the first African nation to reach a World Cup semi-final in 2022, eventually finishing 4th. Which European giants did they beat in the quarter-finals?",
+        "correct": "Portugal",
+        "wrong": [
+          "Spain",
+          "France",
+          "England"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "ffbcb57c002f",
+        "q": "Manchester City completed the treble in 2023 by beating Inter Milan 1-0 in the Champions League final in Istanbul. Who scored the only goal?",
+        "correct": "Rodri",
+        "wrong": [
+          "Kevin De Bruyne",
+          "Erling Haaland",
+          "İlkay Gündoğan"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "26fb9f2faa65",
+        "q": "Arsenal stunned the defending champions 3-0 away in the first leg of the 2024-25 Champions League quarter-finals, with Declan Rice scoring two free-kicks. Who were the defending champions?",
+        "correct": "Real Madrid",
+        "wrong": [
+          "Manchester City",
+          "Bayern Munich",
+          "Paris Saint-Germain"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "27d4ea74c681",
+        "q": "Paris Saint-Germain finally won their first Champions League title in 2024-25, thrashing Inter Milan 5-0 in the final. Who scored twice in that final?",
+        "correct": "Désiré Doué",
+        "wrong": [
+          "Ousmane Dembélé",
+          "Khvicha Kvaratskhelia",
+          "Achraf Hakimi"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "4354ea1cf515",
+        "q": "Ousmane Dembélé won the 2025 Ballon d'Or after powering PSG to their first ever Champions League title, beating which Spanish teenager into second place?",
+        "correct": "Lamine Yamal",
+        "wrong": [
+          "Pedri",
+          "Nico Williams",
+          "Gavi"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "29bc026875fb",
+        "q": "Spain beat England 2-1 in the Euro 2024 final in Berlin, with a substitute scoring the winner in the 86th minute. Who scored it?",
+        "correct": "Mikel Oyarzabal",
+        "wrong": [
+          "Dani Olmo",
+          "Nico Williams",
+          "Álvaro Morata"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "6dee8f5b82eb",
+        "q": "Argentina won a record 16th Copa América title in 2024, beating Colombia 1-0 in extra time without the injured Lionel Messi finishing the match. Who scored the winning goal?",
+        "correct": "Lautaro Martínez",
+        "wrong": [
+          "Julián Álvarez",
+          "Ángel Di María",
+          "Rodrigo De Paul"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "8d278ebda713",
+        "q": "Arne Slot led Liverpool to the 2024-25 Premier League title in his very first season in charge, equalling a historic club milestone. How many top-flight titles did it give Liverpool?",
+        "correct": "20",
+        "wrong": [
+          "19",
+          "18",
+          "21"
+        ],
+        "league": "pl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "2bad8b61726a",
+        "q": "The newly expanded 32-team Club World Cup was held in the USA in the summer of 2025. Which English club won the tournament, beating PSG 3-0 in the final?",
+        "correct": "Chelsea",
+        "wrong": [
+          "Manchester City",
+          "Real Madrid",
+          "Manchester United"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "900e4388608c",
+        "q": "At the 2025 Club World Cup, Brazilian side Botafogo pulled off a huge shock by beating European champions PSG 1-0 in the group stage. Who scored the winning goal?",
+        "correct": "Igor Jesus",
+        "wrong": [
+          "Luiz Henrique",
+          "Thiago Almada",
+          "Alex Telles"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "24b71b28be45",
+        "q": "Napoli won their first Serie A title in 33 years in 2022-23 — their first since the Diego Maradona era. Who was their head coach that season?",
+        "correct": "Luciano Spalletti",
+        "wrong": [
+          "Rudi Garcia",
+          "Gennaro Gattuso",
+          "Aurelio De Laurentiis"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "d00afa45400a",
+        "q": "Bayer Leverkusen won the 2023-24 Bundesliga title without losing a single match all season, under which manager in his final campaign at the club?",
+        "correct": "Xabi Alonso",
+        "wrong": [
+          "Julian Nagelsmann",
+          "Edin Terzić",
+          "Thomas Tuchel"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "6b8147a202ce",
+        "q": "Erling Haaland set a new Premier League single-season scoring record in his debut campaign for Manchester City in 2022-23. How many league goals did he score?",
+        "correct": "36",
+        "wrong": [
+          "34",
+          "38",
+          "31"
+        ],
+        "league": "pl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "d7d0c9ed98aa",
+        "q": "Luton Town beat Coventry City on penalties in the 2023 Championship play-off final to reach the Premier League for the first time since 1992. What was the penalty shootout score?",
+        "correct": "6-5",
+        "wrong": [
+          "5-4",
+          "7-6",
+          "4-3"
+        ],
+        "league": "pl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "1dff4064aaf5",
+        "q": "Leicester City, Premier League champions in 2016, were relegated from the top flight in 2022-23 — then suffered a second relegation just two seasons after promotion back. In which season were they relegated again?",
+        "correct": "2024-25",
+        "wrong": [
+          "2023-24",
+          "2025-26",
+          "2022-23"
+        ],
+        "league": "pl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "c83e22e62f37",
+        "q": "Cristiano Ronaldo joined Al-Nassr in January 2023 in a move that triggered a wave of global stars joining the Saudi Pro League. In which season did Ronaldo finally win his first Saudi league title with the club?",
+        "correct": "2024-25",
+        "wrong": [
+          "2022-23",
+          "2023-24",
+          "2025-26"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "0c53b32c631c",
+        "q": "Lionel Messi won his first trophy with Inter Miami just seven games into his MLS career, lifting the 2023 Leagues Cup. What was the name of the cross-border competition he won?",
+        "correct": "Leagues Cup",
+        "wrong": [
+          "MLS Cup",
+          "US Open Cup",
+          "Supporters' Shield"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "cc24138b5f8f",
+        "q": "Jude Bellingham scored a stoppage-time overhead kick to rescue England against Slovakia in the Euro 2024 round of 16, later comparing the moment to a famous Real Madrid teammate's trademark goal. Which overhead-kick specialist did he mean?",
+        "correct": "Cristiano Ronaldo",
+        "wrong": [
+          "Karim Benzema",
+          "Gareth Bale",
+          "Marco Asensio"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "af966b2b6bc3",
+        "q": "Georgia reached the knockout stages of a major tournament for the first time in their history by beating which former champions at Euro 2024?",
+        "correct": "Portugal",
+        "wrong": [
+          "Germany",
+          "Czech Republic",
+          "Turkey"
+        ],
+        "league": "world",
+        "template": "modern-classics"
+      },
+      {
+        "id": "459b505b40dd",
+        "q": "Real Madrid beat Borussia Dortmund 2-0 in the 2024 Champions League final, with Dani Carvajal and which other player scoring?",
+        "correct": "Vinícius Júnior",
+        "wrong": [
+          "Jude Bellingham",
+          "Rodrygo",
+          "Toni Kroos"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "988591ece864",
+        "q": "Carlo Ancelotti became the most successful coach in Real Madrid's history after winning the club's 15th Champions League title in 2024 — his own fifth as a manager. How many European Cups is that record for any single coach?",
+        "correct": "5",
+        "wrong": [
+          "4",
+          "6",
+          "3"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
       }
     ],
     "fpl": [

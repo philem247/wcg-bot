@@ -245,7 +245,7 @@ test('validator: you.com last-resort fallback confirms true when Claude/Gemini a
     return {
       ok: true,
       status: 200,
-      json: async () => ({ hits: [{ title: 'Elversberg', snippet: 'SV Elversberg is a German football club in 3. Liga.' }] }),
+      json: async () => ({ results: { web: [{ title: 'Elversberg', description: 'SV Elversberg is a German football club in 3. Liga.' }] } }),
     }
   }
 
@@ -261,7 +261,7 @@ test('validator: you.com fallback never turns a null into a false — a miss sta
   const fetchFn = async () => ({
     ok: true,
     status: 200,
-    json: async () => ({ hits: [{ title: 'unrelated', snippet: 'nothing here about it' }] }),
+    json: async () => ({ results: { web: [{ title: 'unrelated', description: 'nothing here about it' }] } }),
   })
 
   const v = createValidator({ youcomKey: 'yc-key', cachePath, approvedPath, fetchFn })
