@@ -44515,6 +44515,66 @@
         ],
         "league": "ucl",
         "template": "modern-classics"
+      },
+      {
+        "id": "309a9fc6dfb7",
+        "q": "Manchester United completed a historic treble in 1999, scoring twice in injury time to beat Bayern Munich 2-1 in the Champions League final. Who scored the dramatic late winner?",
+        "correct": "Ole Gunnar Solskjær",
+        "wrong": [
+          "Teddy Sheringham",
+          "Ryan Giggs",
+          "David Beckham"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "bf164db1ca38",
+        "q": "AC Milan beat Juventus in an all-Italian 2003 Champions League final, with a 0-0 draw settled 3-2 on penalties. Who scored the decisive spot-kick for Milan?",
+        "correct": "Andriy Shevchenko",
+        "wrong": [
+          "Filippo Inzaghi",
+          "Paolo Maldini",
+          "Rui Costa"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "d1b409d9724b",
+        "q": "José Mourinho won the 2004 Champions League with unfancied Porto, beating Monaco 3-0 in the final, before leaving to join Chelsea that summer. Who was named man of the match for Porto?",
+        "correct": "Deco",
+        "wrong": [
+          "Carlos Alberto",
+          "Dmitri Alenichev",
+          "Ricardo Carvalho"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "db9f1332e1e8",
+        "q": "Pep Guardiola won the treble in his very first season as a manager, leading Barcelona to a 2-0 win over Manchester United in the 2009 Champions League final. Who scored Barcelona's second goal with a header?",
+        "correct": "Lionel Messi",
+        "wrong": [
+          "Samuel Eto'o",
+          "Thierry Henry",
+          "Xavi"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
+      },
+      {
+        "id": "aabddb1241c0",
+        "q": "Bayern Munich won the 2013 Champions League final — an all-German final against Borussia Dortmund — with a late winner from which Dutch winger?",
+        "correct": "Arjen Robben",
+        "wrong": [
+          "Franck Ribéry",
+          "Thomas Müller",
+          "Mario Götze"
+        ],
+        "league": "ucl",
+        "template": "modern-classics"
       }
     ],
     "fpl": [
