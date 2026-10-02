@@ -117,38 +117,22 @@ async function callGemini({ key, model = 'gemini-2.5-flash', prompt, timeoutMs, 
   }
 }
 
-const YOUCOM_URL = 'https://api.you.com/v1/search'
-
-// Last-resort fallback when both Claude and Gemini are unavailable (missing
-// keys, down, or timed out) — not a reasoning check, just "does a real source
-// mention this answer in this category at all". Search text is too noisy to
-// trust for a confident "no", so this only ever returns true or null, never
-// false: a miss here must never turn into a wrongly-rejected real answer.
-async function callYouCom({ key, categoryLabel, answer, timeoutMs, fetchFn }) {
-  if (!key) return null
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), timeoutMs)
-  try {
-    const query = encodeURIComponent(`${answer} ${categoryLabel}`)
-    const res = await fetchFn(`${YOUCOM_URL}?query=${query}`, {
-      signal: controller.signal,
-      headers: { 'X-API-Key': key },
-    })
-    if (!res.ok) return null
-    const data = await res.json()
-    // Confirmed live shape: { results: { web: [{ title, description, snippets: [...] }] } }.
-    // data.hits/data.results (array) were wrong guesses — never matched real output.
-    const hits = data?.results?.web ?? []
-    const text = hits
-      .map((h) => `${h.title ?? ''} ${h.description ?? ''} ${(h.snippets ?? []).join(' ')}`)
-      .join(' ')
-      .toLowerCase()
-    return text.includes(answer.trim().toLowerCase()) ? true : null
-  } catch {
-    return null
-  } finally {
-    clearTimeout(timer)
-  }
+// DISABLED as a category-validity judge (2026-10-02): a web search API cannot
+// answer "is X a member of category Y" — it's a retrieval engine, not a
+// classifier. The previous "does the answer text appear anywhere in the
+// search results" heuristic was a false-positive machine: any short or
+// common word (even "Oh", "Yes") trivially appears SOMEWHERE in any search
+// result, and padding the query with the category label doesn't help either,
+// since a search engine echoes query terms back in its own results — so even
+// a "category word co-occurs with answer word" check always passes. Confirmed
+// live: this was approving unrelated football-club names and literal chat
+// noise as valid "Colours" answers, corrupting real games in production. Kept
+// as a documented no-op (not deleted) so a future, sounder replacement has a
+// clear slot — see session notes for the root infra issue this was papering
+// over (CONCENTRATION_VALIDATOR_TOKEN unset, Gemini free-tier quota of 20/day
+// exhausted by a single game), which is the actual fix needed.
+async function callYouCom() {
+  return null
 }
 
 export function createValidator({

@@ -237,35 +237,18 @@ test('validator: Gemini fallback triggers when Claude fetch throws', async () =>
   rmSync(dir, { recursive: true, force: true })
 })
 
-test('validator: you.com last-resort fallback confirms true when Claude/Gemini are both absent', async () => {
+test('validator: you.com fallback is disabled — it is a search API, not a category classifier, and must never be consulted for a verdict', async () => {
+  // See engine/validator.js's callYouCom doc comment (2026-10-02): a prior
+  // text-containment heuristic here false-positived on nearly everything
+  // ("Oh", "Yes", unrelated football club names all "matched"), corrupting
+  // live games. callYouCom() is now a hard no-op regardless of youcomKey.
   const { cachePath, approvedPath, dir } = tempPaths()
-  let requestedUrl = ''
-  const fetchFn = async (url) => {
-    requestedUrl = url
-    return {
-      ok: true,
-      status: 200,
-      json: async () => ({ results: { web: [{ title: 'Elversberg', description: 'SV Elversberg is a German football club in 3. Liga.' }] } }),
-    }
+  const fetchFn = async () => {
+    throw new Error('you.com must never be called — it is disabled')
   }
 
   const v = createValidator({ youcomKey: 'yc-key', cachePath, approvedPath, fetchFn })
-  const result = await v.check('Football clubs in Germany', 'Elversberg')
-  assert.equal(result, true)
-  assert.ok(requestedUrl.includes('api.you.com'))
-  rmSync(dir, { recursive: true, force: true })
-})
-
-test('validator: you.com fallback never turns a null into a false — a miss stays null', async () => {
-  const { cachePath, approvedPath, dir } = tempPaths()
-  const fetchFn = async () => ({
-    ok: true,
-    status: 200,
-    json: async () => ({ results: { web: [{ title: 'unrelated', description: 'nothing here about it' }] } }),
-  })
-
-  const v = createValidator({ youcomKey: 'yc-key', cachePath, approvedPath, fetchFn })
-  const result = await v.check('Football clubs in Germany', 'Nonexistentia FC')
+  const result = await v.check('Colours', 'Burgos')
   assert.equal(result, null)
   rmSync(dir, { recursive: true, force: true })
 })
