@@ -63,11 +63,10 @@ export const SILENCE_TIMEOUT_MS = envNum('SILENCE_TIMEOUT_MS', 15 * 60 * 1000);
 // runs the bot under pm2/systemd/a supervisor that restarts on exit.
 export const AUTO_RESTART_HOURS = envNum('AUTO_RESTART_HOURS', 0);
 // Guards the initial post-connect event buffer (baileys withholds ALL events,
-// including messages.upsert, until WhatsApp's "offline queue drained" node
-// arrives — see transport/wa.js shouldForceFlush). If that node never comes,
-// this force-flushes sock.ev after the timeout so the bot doesn't sit deaf
-// forever. 0 disables it.
-export const BUFFER_FLUSH_TIMEOUT_MS = envNum('BUFFER_FLUSH_TIMEOUT_MS', 60_000);
+// Buffer flush watchdog disabled by default (0): Baileys flushes its buffer
+// natively once WhatsApp delivers offline notifications ('CB:ib,,offline').
+// Manually forcing flush causes race conditions and session desync.
+export const BUFFER_FLUSH_TIMEOUT_MS = envNum('BUFFER_FLUSH_TIMEOUT_MS', 0);
 // Concentration's answer validator: a fallback LLM check for a rejected
 // answer, fired in the background during the post-elimination pause (see
 // engine/concentration.js's 'starting' phase). Off unless both the flag and

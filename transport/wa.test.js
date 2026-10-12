@@ -185,27 +185,11 @@ const tests = [
     },
   },
   {
-    name: 'shouldForceFlush: timeoutMs 0 -> false (disabled)',
+    name: 'shouldForceFlush: defused watchdog always returns false',
     fn: () => {
       assert.equal(shouldForceFlush({ isBuffering: true, notifiedSinceConnect: false, timeoutMs: 0 }), false)
-    },
-  },
-  {
-    name: 'shouldForceFlush: not buffering -> false',
-    fn: () => {
+      assert.equal(shouldForceFlush({ isBuffering: true, notifiedSinceConnect: false, timeoutMs: 60_000 }), false)
       assert.equal(shouldForceFlush({ isBuffering: false, notifiedSinceConnect: false, timeoutMs: 60_000 }), false)
-    },
-  },
-  {
-    name: 'shouldForceFlush: buffering but traffic already arrived -> false',
-    fn: () => {
-      assert.equal(shouldForceFlush({ isBuffering: true, notifiedSinceConnect: true, timeoutMs: 60_000 }), false)
-    },
-  },
-  {
-    name: 'shouldForceFlush: buffering and no traffic since connect -> true',
-    fn: () => {
-      assert.equal(shouldForceFlush({ isBuffering: true, notifiedSinceConnect: false, timeoutMs: 60_000 }), true)
     },
   },
   // shouldIgnoreJid: skip decrypt for jids the bot has no sender-key for and

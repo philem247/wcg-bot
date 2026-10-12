@@ -179,8 +179,11 @@ function cancelGraceFallback() {
 // processNodeWithBuffer) — notifiedSinceConnect is what tells the two apart:
 // if real traffic already flowed, the transient case, never the stuck initial
 // buffer. Pure/testable in isolation from any socket.
+// DEPRECATED & DEFUSED: Baileys buffers events on connect and flushes them
+// naturally upon receiving WhatsApp's 'CB:ib,,offline' node. Manually forcing
+// ev.flush() interrupts the Signal ratchet and causes companion session dropouts.
 export function shouldForceFlush({ isBuffering, notifiedSinceConnect, timeoutMs }) {
-  return Boolean(timeoutMs > 0 && isBuffering && !notifiedSinceConnect);
+  return false;
 }
 
 let bufferFlushTimer = null;
@@ -191,25 +194,7 @@ function cancelBufferFlushTimer() {
 }
 
 function armBufferFlushTimer(startedSock) {
-  cancelBufferFlushTimer();
-  if (!BUFFER_FLUSH_TIMEOUT_MS) return;
-  bufferFlushTimer = setTimeout(() => {
-    bufferFlushTimer = null;
-    if (sock !== startedSock) return; // a reconnect already happened
-    if (shouldForceFlush({
-      isBuffering: !!startedSock?.ev?.isBuffering?.(),
-      notifiedSinceConnect: lastNotifyAt > connectedAt,
-      timeoutMs: BUFFER_FLUSH_TIMEOUT_MS,
-    })) {
-      logger.warn(`Buffer-flush watchdog: initial event buffer still held and no traffic delivered ${(BUFFER_FLUSH_TIMEOUT_MS / 1000).toFixed(0)}s after connect — forcing flush`);
-      try {
-        startedSock?.ev?.flush?.();
-      } catch (e) {
-        logger?.error({ err: e }, 'Buffer-flush watchdog: flush() failed');
-      }
-    }
-  }, BUFFER_FLUSH_TIMEOUT_MS);
-  bufferFlushTimer.unref?.();
+  // Defused: Baileys manages its initial event buffer natively.
 }
 
 // Call right after sock.end() where a close event is expected to drive
