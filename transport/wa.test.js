@@ -62,15 +62,16 @@ const tests = [
       assert.equal(shouldForceReconnect({ connected: true, trafficExpected, msSinceLastDispatch: 200_000, timeoutMs: 180_000 }), false)
     },
   },
-  // Widened watchdog (Change 3): no game running, but messages are visibly
-  // ARRIVING and nothing is dispatching — an idle-bot hang, not a quiet group.
+  // Stall watchdog: when no game/traffic is expected, the bot must stay idle.
+  // Genuinely idle bots in active group chats must NOT be reconnected simply
+  // because conversational messages arrive without triggering games.
   {
-    name: 'no game running, notify traffic recent, silent past timeout -> reconnect',
+    name: 'no game running, notify traffic recent, silent past timeout -> do NOT reconnect on idle chatter',
     fn: () => {
       assert.equal(shouldForceReconnect({
         connected: true, trafficExpected: false,
         msSinceLastDispatch: 200_000, msSinceLastNotify: 5_000, timeoutMs: 180_000,
-      }), true)
+      }), false)
     },
   },
   {

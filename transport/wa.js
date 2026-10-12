@@ -1,4 +1,4 @@
-import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion, isJidBroadcast, isJidNewsletter } from 'baileys';
+import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion, isJidBroadcast, isJidNewsletter, makeCacheableSignalKeyStore } from 'baileys';
 import pino from 'pino';
 import { DatabaseSync } from 'node:sqlite';
 import { SESSION_DIR, SESSION_ID, PHONE_NUMBER, WA_LOG_LEVEL, STALL_TIMEOUT_MS, SILENCE_TIMEOUT_MS, BUFFER_FLUSH_TIMEOUT_MS, PURGE_SIGNAL_ON_BOOT, RESET_SESSION, MARK_ONLINE } from '../config.js';
@@ -122,17 +122,15 @@ export function setTrafficProbe(fn) {
   trafficProbe = fn;
 }
 
-// Pure decision logic, exported so it's testable without a socket. Two
-// independent trip conditions, either one forces a reconnect:
-//   - trafficExpected: a game is running and nothing dispatched (original signal)
-//   - msSinceLastNotify < timeoutMs: messages are visibly ARRIVING but nothing is
-//     being dispatched — catches an idle-bot hang with no game running, without
-//     ever tripping against a genuinely quiet group (which has no notify traffic
-//     either, so msSinceLastNotify stays >= timeoutMs there).
+// Pure decision logic, exported so it's testable without a socket.
+// Only forces a reconnect when game traffic was actively expected
+// (trafficExpected is true) and nothing was dispatched for timeoutMs.
+// An idle bot waiting for games/commands in quiet or conversational groups
+// must NOT be killed simply because non-command group chatter was received.
 export function shouldForceReconnect({ connected, trafficExpected, msSinceLastDispatch, msSinceLastNotify, timeoutMs }) {
   if (!timeoutMs) return false; // 0 disables the watchdog
   if (!connected || msSinceLastDispatch <= timeoutMs) return false;
-  return trafficExpected || msSinceLastNotify < timeoutMs;
+  return Boolean(trafficExpected);
 }
 
 // Deaf-socket detector: connected, silent for SILENCE_TIMEOUT_MS, AND libsignal
@@ -418,15 +416,15 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
 
   sock = makeWASocket({
     version,
-    auth: state,
+    auth: {
+      creds: state.creds,
+      keys: makeCacheableSignalKeyStore(state.keys, waLogger),
+    },
     browser: Browsers.macOS('Safari'),
     logger: waLogger,
-    keepAliveIntervalMs: 15000,
-    // Phone-lag fix: markOnlineOnConnect defaults true, which makes this linked
-    // device announce itself as the active client and pulls presence/notification
-    // routing onto it, degrading the phone. syncFullHistory/shouldSyncHistoryMessage
-    // stop it pulling the account's full history on connect. Now env-controlled via
-    // MARK_ONLINE; set true to diagnose if WhatsApp queues messages instead of streaming live.
+    keepAliveIntervalMs: 30_000,
+    // Phone-lag fix: markOnlineOnConnect defaults false (env-controlled via MARK_ONLINE),
+    // preventing companion device conflicts with the user's primary mobile phone.
     markOnlineOnConnect: MARK_ONLINE,
     shouldIgnoreJid,
     syncFullHistory: false,
@@ -537,8 +535,14 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
         } else if (msg.message?.extendedTextMessage?.text) {
           text = msg.message.extendedTextMessage.text;
         } else {
-          if (!msg.message) inboundStats.noPayload++;
-          logger.debug('  skip: no text payload');
+          if (!msg.message) {
+            inboundStats.noPayload++;
+          } else {
+            logger.debug('  skip: no text payload');
+            if (!msg.key.fromMe && !msg.key.remoteJid?.endsWith?.('@broadcast') && !msg.key.remoteJid?.endsWith?.('@newsletter')) {
+              lastDispatchAt = Date.now();
+            }
+          }
           continue;
         }
 

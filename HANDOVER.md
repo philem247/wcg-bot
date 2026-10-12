@@ -418,3 +418,20 @@ These are scoped in the plan but deferred:
 4. **No solver auto-detection.** `/suspect` is report-only and opt-in. False accusation costs more than an undetected cheater.
 5. **`session/` is the session.** Never call `sock.logout()` — that unlinks the device permanently. Use `sock.end()` for clean disconnect.
 6. **Dictionary pool and difficulty are independent knobs.** `common.txt` restricts the pool; difficulty only changes the length floor and clock.
+
+
+---
+
+## Connection Stability Hardening (2026-10-12)
+
+Reverse-engineered long-running connection strategies from `lyfe00011/levanter` and identified why WCG Bot suffered unexpected disconnections:
+
+1. **In-Memory Signal Key Caching (`makeCacheableSignalKeyStore`):**
+   - Wrapped `state.keys` using Baileys' built-in `makeCacheableSignalKeyStore(state.keys, waLogger)`. Eliminates synchronous SQLite disk thrashing and race conditions during high-volume group traffic decryption.
+2. **Defused Stall Watchdog False Trips:**
+   - `shouldForceReconnect()` previously checked `msSinceLastNotify < timeoutMs` even when `trafficExpected` was false. An idle bot in active group chats would receive ordinary chatter (which refreshed notify timestamps), and if 3 minutes passed without an active game or command, the watchdog erroneously believed the socket was stalled and forced a reconnect.
+   - Now, watchdog reconnection ONLY trips if `trafficExpected` is true (an active game was expected to dispatch events).
+3. **Inbound Peer Non-Text Liveness:**
+   - Messages without text payloads (stickers, audio, reactions, media) from peers now refresh `lastDispatchAt` so non-text traffic counts as valid socket liveness.
+4. **Optimized Socket Keep-Alive:**
+   - `keepAliveIntervalMs` set to 30,000ms.
