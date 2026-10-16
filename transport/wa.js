@@ -39,6 +39,25 @@ export function wipeAllForReset(db) {
 }
 const RECONNECT_DELAY = 3000;
 const VERSION_FETCH_TIMEOUT_MS = 10_000;
+
+// 440 connectionReplaced: another client logged in with this session. If that
+// is a second bot instance (another host — the session lock only covers this
+// one), reconnecting every 3s just kicks it off, it kicks us off, and the two
+// fight forever while both drop messages. Each consecutive 440 doubles the
+// wait, capped; a connection that stayed up long enough resets the streak.
+const REPLACED_MAX_DELAY_MS = 10 * 60 * 1000;
+export const REPLACED_STABLE_MS = 2 * 60 * 1000;
+let replacedStreak = 0;
+
+export function nextReplacedStreak({ reason, streak, upMs }) {
+  if (reason !== DisconnectReason.connectionReplaced) return 0;
+  return upMs >= REPLACED_STABLE_MS ? 1 : streak + 1;
+}
+
+export function reconnectDelay({ reason, streak }) {
+  if (reason !== DisconnectReason.connectionReplaced || streak <= 0) return RECONNECT_DELAY;
+  return Math.min(RECONNECT_DELAY * 2 ** streak, REPLACED_MAX_DELAY_MS);
+}
 let waVersion = null;
 
 // Offline-queued messages (baileys upsert type 'append') are delivered in a
@@ -427,7 +446,9 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
   // Auth state: always use SQLite. No per-file races, no session folder to corrupt.
   if (!authState) {
     authState = useSqliteAuthState({ sessionId: SESSION_ID, existingDb });
-    if (SESSION_ID) {
+    if (authState.sessionIdIgnored) {
+      logger.warn('Auth: SESSION_ID belongs to a session WhatsApp logged out — ignoring it and generating new credentials. Pair with the code below, then replace SESSION_ID with the new one printed after connecting.');
+    } else if (SESSION_ID) {
       logger.info('Auth: using SQLite-backed session (SESSION_ID set)');
     } else {
       logger.info('Auth: using SQLite-backed session (generating new credentials)');
@@ -513,7 +534,7 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
       // If the user hasn't set a SESSION_ID in their env yet, it means they just
       // paired or are still running on the legacy file-based auth. Print the base64
       // string so they can set it and transition to SQLite.
-      if (!SESSION_ID) {
+      if (!SESSION_ID || authState.sessionIdIgnored) {
         const sid = encodeCreds(state.creds);
         console.log('\n' + '═'.repeat(60));
         console.log('  ✅ SESSION_ID (copy this entire string into your .env):');
@@ -534,8 +555,11 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
       const reason = lastDisconnect?.error?.output?.statusCode;
       const reasonName = disconnectReasonName(reason);
       if (reason === DisconnectReason.loggedOut) {
+        // Mark first, then wipe: the mark lives outside wa_keys and is what
+        // stops the next boot from reloading these dead creds out of SESSION_ID.
+        authState.markLoggedOut();
         authState.wipeAll();
-        logger.error(`Logged out (${reason} ${reasonName}). Session is dead and has been wiped from the database. Clear your SESSION_ID env var and restart the bot to re-pair.`);
+        logger.error(`Logged out (${reason} ${reasonName}). Session is dead and has been wiped from the database. The next start ignores the old SESSION_ID and prints a pairing code — re-pair, then replace SESSION_ID with the new one it prints.`);
         process.exit(1);
       } else if (reason === DisconnectReason.restartRequired) {
         logger.info(`Pairing complete, restarting connection (this is normal) [${reason} ${reasonName}, up ${upSec}s]`);
@@ -543,9 +567,15 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
         connect(onMessage, logger, onConnected);
 
       } else {
-        logger.info(`Disconnected (${reason} ${reasonName}) after ${upSec}s connected, reconnecting in ${RECONNECT_DELAY}ms...`);
+        replacedStreak = nextReplacedStreak({ reason, streak: replacedStreak, upMs: upSec * 1000 });
+        const delay = reconnectDelay({ reason, streak: replacedStreak });
+        if (reason === DisconnectReason.connectionReplaced) {
+          logger.warn(`Connection replaced (${reason}) — another client is using this WhatsApp session (a second bot instance on another host?). Backing off ${Math.round(delay / 1000)}s before reconnecting (replaced ${replacedStreak}x in a row). Stop the other instance.`);
+        } else {
+          logger.info(`Disconnected (${reason} ${reasonName}) after ${upSec}s connected, reconnecting in ${delay}ms...`);
+        }
         sock.ev.removeAllListeners();
-        setTimeout(() => connect(onMessage, logger, onConnected), RECONNECT_DELAY);
+        setTimeout(() => connect(onMessage, logger, onConnected), delay);
       }
     }
   });

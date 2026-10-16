@@ -206,13 +206,31 @@ const tests = [
       })
 
       await router.handleMessage(
-        { jid: 'g1', sender: '2340001@s.whatsapp.net', senderPn: undefined, text: '/addword hello', isGroup: true, raw: undefined },
+        { jid: 'g1', sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: undefined, text: '/addword hello', isGroup: true, raw: undefined },
         1000
       )
 
       assert.deepEqual(dictCalls, ['hello'])
       assert.equal(dbCalls.length, 1)
       assert.equal(dbCalls[0].w, 'hello')
+    },
+  },
+  {
+    name: '/addword and /delword are refused for a group admin (shared dictionary is owner/global-admin only)',
+    fn: async () => {
+      const dictCalls = []
+      const fakeDict = { add: (w) => { dictCalls.push(w); return true }, remove: (w) => { dictCalls.push(w); return true } }
+      const fakeDb = { addWord: () => { throw new Error('must not write') }, delWord: () => { throw new Error('must not write') } }
+      const replies = []
+      const router = createRouter({
+        dict: fakeDict, games: new Map(), enqueue: (jid, p) => replies.push(p.text), logger: undefined,
+        getGroupAdmins: async () => ['2340001@s.whatsapp.net'], db: fakeDb,
+      })
+      await router.handleMessage({ jid: 'g5@g.us', sender: '2340001@s.whatsapp.net', senderPn: undefined, text: '/addword hello', isGroup: true }, 1000)
+      await router.handleMessage({ jid: 'g5@g.us', sender: '2340001@s.whatsapp.net', senderPn: undefined, text: '/delword hello', isGroup: true }, 1000)
+      assert.equal(dictCalls.length, 0)
+      assert.equal(replies.length, 2)
+      assert.ok(replies.every((t) => t.includes('Only the owner')))
     },
   },
   {
@@ -234,7 +252,7 @@ const tests = [
       })
 
       await router.handleMessage(
-        { jid: 'g3', sender: '2340001@s.whatsapp.net', senderPn: undefined, text: '/addword hello!!', isGroup: true, raw: undefined },
+        { jid: 'g3', sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: undefined, text: '/addword hello!!', isGroup: true, raw: undefined },
         1000
       )
 
@@ -262,7 +280,7 @@ const tests = [
       })
 
       await router.handleMessage(
-        { jid: 'g4', sender: '2340001@s.whatsapp.net', senderPn: undefined, text: '/addword wahala', isGroup: true, raw: undefined },
+        { jid: 'g4', sender: `${OWNER_NUMBER}@s.whatsapp.net`, senderPn: undefined, text: '/addword wahala', isGroup: true, raw: undefined },
         1000
       )
 
@@ -719,7 +737,8 @@ const tests = [
       await router.handleMessage({ jid: 'g@g.us', sender: '77777@s.whatsapp.net', senderPn: '77777@s.whatsapp.net', text: '/help', isGroup: true }, 0)
       const text = sent[0]
       assert.ok(text.includes('ADMIN'))
-      assert.ok(text.includes('/addword'))
+      assert.ok(text.includes('/pending'))
+      assert.ok(!text.includes('/addword'), 'the shared dictionary is owner-only')
       assert.ok(!text.includes('/promote'), 'group admins cannot mint bot admins')
       db.close()
     },

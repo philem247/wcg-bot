@@ -1312,8 +1312,6 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
           ``,
           `*⚙️ ADMIN*`,
           `▸ ${PREFIX}pending`,
-          `▸ ${PREFIX}addword <word>|all`,
-          `▸ ${PREFIX}delword <word>`,
           `▸ ${PREFIX}admin`,
           `▸ ${PREFIX}tourney start [category]`,
           `▸ ${PREFIX}tourney next`,
@@ -1324,6 +1322,8 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         lines.push(
           ``,
           `*👑 OWNER*`,
+          `▸ ${PREFIX}addword <word>|all`,
+          `▸ ${PREFIX}delword <word>`,
           `▸ ${PREFIX}promote @user`,
           `▸ ${PREFIX}demote @user`,
           `▸ ${PREFIX}ban @user`,
@@ -1388,10 +1388,21 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     }
 
     if (cmd === 'pending' || cmd === 'addword' || cmd === 'delword') {
-      const groupAdmins = await groupAdminsFor(jid, isGroup)
-      if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)) {
-        enqueue(jid, { text: `Admins only.`, mentions: [], kind: 'misc' })
-        return
+      // The dictionary is shared by every group, so editing it is owner/global-
+      // admin only: otherwise anyone could make a group, add the bot, and
+      // /delword common words for everyone. /pending only reads this group's
+      // rejections, so group admins keep it.
+      if (cmd !== 'pending') {
+        if (!isOwnerOrGlobalAdmin(sender, senderPn)) {
+          enqueue(jid, { text: `Only the owner can change the word list.`, mentions: [], kind: 'misc' })
+          return
+        }
+      } else {
+        const groupAdmins = await groupAdminsFor(jid, isGroup)
+        if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid) && !isOwnerOrGlobalAdmin(sender, senderPn)) {
+          enqueue(jid, { text: `Admins only.`, mentions: [], kind: 'misc' })
+          return
+        }
       }
 
       if (cmd === 'pending') {

@@ -44,6 +44,20 @@ function ensureTable(db) {
       PRIMARY KEY (category, id)
     )
   `);
+  // Identities WhatsApp has logged out (401). Kept OUTSIDE wa_keys on purpose:
+  // wipeAll() clears wa_keys, and this list must survive that wipe so a
+  // restart can tell SESSION_ID still points at a dead login.
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS wa_dead_sessions (
+      noise_pub TEXT PRIMARY KEY,
+      ts        INTEGER NOT NULL
+    )
+  `);
+}
+
+function noisePubOf(creds) {
+  const pub = creds?.noiseKey?.public;
+  return pub ? Buffer.from(pub).toString('base64') : null;
 }
 
 /**
@@ -111,6 +125,24 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
   }
 
   // ── Creds ──
+  // A SESSION_ID whose identity was logged out (see markLoggedOut) is treated
+  // as unset. Without this, a supervisor restart after a 401 decoded the same
+  // dead creds from SESSION_ID, got 401 again, and looped until pm2 gave up.
+  // Ignoring it instead lets the next boot generate fresh creds and print a
+  // pairing code.
+  let sessionIdIgnored = false;
+  if (sessionId) {
+    try {
+      const pub = noisePubOf(decodeCreds(sessionId));
+      if (pub && db.prepare('SELECT 1 FROM wa_dead_sessions WHERE noise_pub = ?').get(pub)) {
+        sessionId = undefined;
+        sessionIdIgnored = true;
+      }
+    } catch {
+      // Invalid SESSION_ID: handled (ignored) the same way further down.
+    }
+  }
+
   // Check if creds are already in the DB from a previous run.
   let creds = readKey('creds', 'default');
 
@@ -137,6 +169,10 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
 
 
   return {
+    // True when SESSION_ID was set but belongs to a logged-out identity, so
+    // it was ignored and fresh creds are in use (a new pairing is needed).
+    sessionIdIgnored,
+
     state: {
       creds,
       keys: {
@@ -206,6 +242,14 @@ export function useSqliteAuthState({ sessionId, dbPath, existingDb } = {}) {
         "DELETE FROM wa_keys WHERE category IN ('session', 'sender-key')"
       ).run();
       return result.changes;
+    },
+
+    // Record the current identity as logged out, so a SESSION_ID that still
+    // decodes to it is ignored on the next boot (see sessionIdIgnored above).
+    markLoggedOut: () => {
+      const pub = noisePubOf(creds);
+      if (!pub) return;
+      db.prepare('INSERT OR IGNORE INTO wa_dead_sessions (noise_pub, ts) VALUES (?, ?)').run(pub, Date.now());
     },
 
     // Completely wipe all credentials and signal keys. Used when the session

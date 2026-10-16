@@ -2,11 +2,29 @@ import assert from 'node:assert/strict'
 import { DatabaseSync } from 'node:sqlite'
 import { useSqliteAuthState } from '../store/auth.js'
 
-const { shouldForceReconnect, shouldRepairPreKeys, shouldForceFlush, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid, phoneFormOf, resolvePn, isStaleMessage, STALE_MESSAGE_MS } = await import('./wa.js')
+const { shouldForceReconnect, shouldRepairPreKeys, shouldForceFlush, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid, phoneFormOf, resolvePn, isStaleMessage, STALE_MESSAGE_MS, reconnectDelay, nextReplacedStreak, REPLACED_STABLE_MS } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const tests = [
+  {
+    name: '440 backoff: consecutive connectionReplaced doubles the wait (capped); other reasons stay at 3s',
+    fn: () => {
+      assert.equal(reconnectDelay({ reason: 428, streak: 0 }), 3000)
+      assert.equal(reconnectDelay({ reason: 440, streak: 1 }), 6000)
+      assert.equal(reconnectDelay({ reason: 440, streak: 2 }), 12000)
+      assert.equal(reconnectDelay({ reason: 440, streak: 50 }), 10 * 60 * 1000)
+    },
+  },
+  {
+    name: '440 streak: grows on quick repeats, resets after a stable connection or any other reason',
+    fn: () => {
+      assert.equal(nextReplacedStreak({ reason: 440, streak: 0, upMs: 1000 }), 1)
+      assert.equal(nextReplacedStreak({ reason: 440, streak: 3, upMs: 1000 }), 4)
+      assert.equal(nextReplacedStreak({ reason: 440, streak: 3, upMs: REPLACED_STABLE_MS }), 1)
+      assert.equal(nextReplacedStreak({ reason: 428, streak: 3, upMs: 1000 }), 0)
+    },
+  },
   {
     name: 'silent past timeout, traffic expected, connected -> reconnect',
     fn: () => {

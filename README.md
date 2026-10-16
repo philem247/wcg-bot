@@ -177,15 +177,17 @@ Prefix all commands with `/` (or your custom `PREFIX`):
 | Command | Does |
 |---------|------|
 | `/pending` | most-rejected words in this group |
-| `/addword <word>` | approve a rejected word into the dictionary, live |
-| `/addword all` | approve the top 10 rejected words at once |
-| `/delword <word>` | remove a word |
 | `/admin` | list who can run admin commands here and why |
 
 ### Owner (owner and global admins only)
 
+The dictionary is shared by every group, so editing it is owner-only.
+
 | Command | Does |
 |---------|------|
+| `/addword <word>` | approve a rejected word into the dictionary, live |
+| `/addword all` | approve this group's top 10 rejected words at once |
+| `/delword <word>` | remove a word |
 | `/promote @user` | grant bot-admin rights in this group (persists) |
 | `/demote @user` | revoke them |
 | `/ban @user` | ban a user from trivia in this group |

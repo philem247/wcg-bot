@@ -1,7 +1,30 @@
 import assert from 'node:assert/strict'
+import { DatabaseSync } from 'node:sqlite'
 import { useSqliteAuthState } from './auth.js'
 
 const tests = [
+  {
+    name: 'a SESSION_ID marked logged-out is ignored on the next boot: fresh creds, never the dead ones',
+    fn: async () => {
+      const db = new DatabaseSync(':memory:')
+      const first = useSqliteAuthState({ existingDb: db })
+      const deadSid = first.getSessionId()
+      // Unmarked: the SESSION_ID is honoured.
+      assert.equal(useSqliteAuthState({ sessionId: deadSid, existingDb: db }).sessionIdIgnored, false)
+
+      first.markLoggedOut()
+      first.wipeAll() // the 401 path: mark survives the wa_keys wipe
+      const reboot = useSqliteAuthState({ sessionId: deadSid, existingDb: db })
+      assert.equal(reboot.sessionIdIgnored, true)
+      assert.notEqual(reboot.getSessionId(), deadSid, 'fresh identity generated')
+
+      // After re-pairing, the stale SESSION_ID must not overwrite the new creds either.
+      const newSid = reboot.getSessionId()
+      const later = useSqliteAuthState({ sessionId: deadSid, existingDb: db })
+      assert.equal(later.getSessionId(), newSid)
+      db.close()
+    },
+  },
   {
     name: 'keys.set batch round-trips all keys across multiple categories in one call',
     fn: async () => {
