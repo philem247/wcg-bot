@@ -213,29 +213,45 @@ Only the OWNER and global ADMINS can run `/promote`, `/demote`, `/ban`, `/unban`
 
 ## Trivia categories
 
-Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 30,977 questions total** (counts via `node data/check_sizes.mjs`):
+Questions live in `data/trivia.json`, committed, no network at runtime. Current bank: **30 categories, 30,471 questions total, 1,708 of them flagged `hard`** (counts via `node data/check_sizes.mjs`):
 
 | Category | Questions | Category | Questions |
 |----------|-----------|----------|-----------|
-| football | 3,480 | tech-gadgets | 851 |
-| fpl | 2,644 | animals | 845 |
-| got | 1,195 | mythology | 842 |
-| sports | 1,053 | videogames | 837 |
-| music | 1,053 | general | 836 |
-| history | 1,042 | nigerian-entertainment | 836 |
-| movies | 1,041 | food | 835 |
-| science | 1,039 | health | 834 |
-| naruto | 1,039 | pidgin-english | 833 |
-| tv-shows | 1,033 | vehicles | 832 |
-| geography | 1,031 | anime | 832 |
-| bible | 1,030 | nigerian-history | 832 |
-| cartoons | 1,028 | nigerian-food | 832 |
-| tech | 982 | art | 300 |
-| nigerian-music | 858 | web3 | 252 |
+| football | 4,344 | nigerian-entertainment | 880 |
+| fpl | 2,694 | nigerian-history | 865 |
+| got | 1,222 | anime | 838 |
+| music | 1,103 | pidgin-english | 832 |
+| science | 1,091 | videogames | 821 |
+| history | 1,091 | tech-gadgets | 816 |
+| geography | 1,031 | vehicles | 810 |
+| naruto | 1,020 | tv-shows | 804 |
+| bible | 1,012 | movies | 765 |
+| tech | 967 | cartoons | 707 |
+| sports | 909 | food | 670 |
+| nigerian-music | 894 | nigerian-food | 544 |
+| mythology | 892 | animals | 533 |
+| general | 890 | art | 299 |
+| health | 883 | web3 | 244 |
 
 `football` and `fpl` cover 2024–2026, including the 2026 World Cup and 2025/26 season — see `data/football/` for the generation pipeline.
 
-Regenerate the full bank with `npm run build`, a multi-stage pipeline (`build-pidgin` → `build-bible` → `build-mega` → `build-mega-2` → `build-mega-3` → `build-got` → `build-anime` → `build-naruto` → `build-final`). A targeted rebuild script also exists for refreshing football/FPL without re-running the whole pipeline:
+**Hard tier.** Questions with `hard: true` get 40% of every game (`HARD_SHARE` in `engine/bank.js`), in single-category games, mixed games and tournaments. They are hand-written: football's in `data/football/hard-pack*.mjs`, every other category's in `data/hard/<category>.mjs` (50+ each). To add a pack, write the file, run `node data/hard/check.mjs <category>` until it passes, then `node data/add-hard-packs.mjs`. The checker rejects:
+
+- questions already in the bank;
+- questions that contain a word from their own answer;
+- answers that are the only list among the options;
+- answers much longer than the other options.
+
+Twelve categories have no pack yet (see `docs/audit-2026-10-16.md`).
+
+**Draws.** Picks are spread across question templates so one template can't fill a game. Mixed games take every category once before repeating any, and limit anime, naruto and cartoons to one question while other categories are available.
+
+Regenerate the full bank with `npm run build`. It runs in this order:
+
+1. The base builders: `build-pidgin` → `build-bible` → `build-mega` → `build-mega-2` → `build-mega-3` → `build-got` → `build-anime` → `build-naruto` → `build-final`.
+2. The fix-up scripts, which can be run again safely: `fix-trivia-giveaways` → `fix-football-giveaways` → `fix-football-season-labels` → `fix-football-easy-decoys` → `add-football-variety` → `fix-fixed-decoys` → `fix-decoy-types` → `fix-template-repeats` → `fix-shape-giveaways` → `add-hard-packs`.
+
+Together these remove answers that give themselves away, wrong options that are the wrong type, and the same fact asked several ways. A targeted rebuild also exists for refreshing football/FPL without re-running the whole pipeline; it runs the same fix-up scripts:
 
     npm run build:football   # rewrites categories.football and categories.fpl only
 
