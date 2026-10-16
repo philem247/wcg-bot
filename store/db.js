@@ -396,6 +396,27 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       stmtClearAsked.run(jid, category)
     },
 
+    // Moves every asked_questions row tagged `from` to the category
+    // `categoryOf(qid)` returns (rows it can't place are left alone).
+    retagAsked(from, categoryOf) {
+      const rows = db.prepare('SELECT DISTINCT qid FROM asked_questions WHERE category = ?').all(from)
+      if (rows.length === 0) return 0
+      const stmt = db.prepare('UPDATE asked_questions SET category = ? WHERE category = ? AND qid = ?')
+      let n = 0
+      db.exec('BEGIN')
+      try {
+        for (const { qid } of rows) {
+          const c = categoryOf(qid)
+          if (c && c !== from) n += stmt.run(c, from, qid).changes
+        }
+        db.exec('COMMIT')
+      } catch (e) {
+        db.exec('ROLLBACK')
+        throw e
+      }
+      return n
+    },
+
     markAskedRiddles(jid, riddles, ts) {
       timed('markAskedRiddles', () => {
         for (const r of riddles) stmtMarkAskedRiddles.run(jid, r.id, ts)

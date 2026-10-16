@@ -71,9 +71,30 @@ export function sampleDiverse(pool, count, random) {
   return shuffle(out, random)
 }
 
+// Template-first order: templates interleaved round-robin in a shuffled
+// order, each template's questions shuffled. Taking the first few gives an
+// even spread of question shapes, unlike a plain shuffle of the pool.
+export function diverseOrder(pool, random) {
+  const byTemplate = new Map()
+  for (const q of pool) {
+    const t = q.template || '__none__'
+    if (!byTemplate.has(t)) byTemplate.set(t, [])
+    byTemplate.get(t).push(q)
+  }
+  const groups = shuffle([...byTemplate.values()], random).map((g) => shuffle(g, random))
+  const out = []
+  for (let i = 0; out.length < pool.length; i++) {
+    for (const g of groups) if (i < g.length) out.push(g[i])
+  }
+  return out
+}
+
 export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
   const bank = data ?? JSON.parse(readFileSync(path, 'utf8'))
   const byCategory = bank.categories ?? {}
+
+  const categoryById = new Map()
+  for (const [c, qs] of Object.entries(byCategory)) for (const q of qs) categoryById.set(q.id, c)
 
   const poolOf = (category, exclude) =>
     (byCategory[category] ?? []).filter((q) => !exclude.has(q.id))
@@ -81,6 +102,11 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
   return {
     get attribution() {
       return bank.attribution ?? ''
+    },
+
+    // Source category of a question id (tournaments record ids only).
+    categoryOf(id) {
+      return categoryById.get(id)
     },
 
     // Only categories that actually have questions are offerable.
@@ -116,51 +142,62 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
 
       const ANIMATION_CATEGORIES = new Set(['anime', 'naruto', 'cartoons'])
 
-      // Mixed: round-robin one question from each non-empty category in turn.
-      // Drawing uniformly from a pooled list would let the largest category
-      // supply a third of every game purely for being large.
-      // Animation/anime is capped to at most 1 question per mixed game/match
-      // so it never over-saturates mixed mode.
-      const pools = this.categories()
+      // Mixed: categories take turns in a shuffled order, so the largest
+      // category can't supply a third of every game purely for being large.
+      // Within a category the draw is template-first (diverseOrder), so one
+      // big template — FPL's "how many assists did X provide?" was 37% of
+      // FPL draws — no longer dominates. HARD_SHARE of the slots ask for a
+      // question flagged `hard`, falling back to a normal one when that
+      // category has none left (and vice versa). Animation/anime is capped
+      // to one question per game while anything else is still available.
+      const pools = shuffle(this.categories(), random)
         .map((c) => {
           const pool = poolOf(c, exclude)
           return {
             category: c,
-            items: sampleDiverse(pool, pool.length, random).map((q) => ({ ...q, category: c })),
+            hard: diverseOrder(pool.filter((q) => q.hard), random),
+            normal: diverseOrder(pool.filter((q) => !q.hard), random),
           }
         })
-        .filter((p) => p.items.length > 0)
+        .filter((p) => p.hard.length + p.normal.length > 0)
 
-      const order = shuffle(pools, random)
+      const nHard = Math.round(count * HARD_SHARE)
       const out = []
+      const seen = new Set()
+      const usedCats = new Set()
       let animationCount = 0
-
-      for (let round = 0; out.length < count; round++) {
-        let addedThisRound = 0
-        for (const pool of order) {
-          if (out.length >= count) break
-          if (round < pool.items.length) {
-            const isAnim = ANIMATION_CATEGORIES.has(pool.category)
-            if (isAnim && animationCount >= 1 && order.some((p) => !ANIMATION_CATEGORIES.has(p.category) && p.items.length > round)) {
-              continue
-            }
-            out.push(pool.items[round])
-            if (isAnim) animationCount++
-            addedThisRound++
-          }
-        }
-        if (addedThisRound === 0) break
+      const animBlocked = (p) =>
+        ANIMATION_CATEGORIES.has(p.category) && animationCount >= 1 &&
+        pools.some((o) => !ANIMATION_CATEGORIES.has(o.category) && !usedCats.has(o.category) && o.hard.length + o.normal.length > 0)
+      const take = (p, q) => {
+        if (!q || seen.has(q.id)) return
+        seen.add(q.id)
+        usedCats.add(p.category)
+        out.push({ ...q, category: p.category })
+        if (ANIMATION_CATEGORIES.has(p.category)) animationCount++
       }
 
-      if (out.length < count) {
-        for (const pool of order) {
-          for (const item of pool.items) {
-            if (out.length >= count) break
-            if (!out.some((q) => q.id === item.id)) {
-              out.push(item)
-            }
-          }
+      // Hard slots first, one per category, from categories that have hard
+      // questions left — otherwise they'd mostly land on categories without
+      // any and quietly become normal questions.
+      for (const p of pools) {
+        if (out.length >= Math.min(nHard, count)) break
+        if (p.hard.length === 0 || animBlocked(p)) continue
+        take(p, p.hard.shift())
+      }
+
+      // The rest round-robin: every unused category once before any repeats.
+      for (let round = 0; out.length < count; round++) {
+        let added = 0
+        for (const p of pools) {
+          if (out.length >= count) break
+          if (round === 0 && usedCats.has(p.category)) continue
+          if (animBlocked(p)) continue
+          const before = out.length
+          take(p, p.normal.shift() ?? p.hard.shift())
+          if (out.length > before) added++
         }
+        if (added === 0) break
       }
 
       return out

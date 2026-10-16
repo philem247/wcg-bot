@@ -767,6 +767,18 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: "retagAsked: rows recorded as 'mixed' move to their real category, so recycling can clear them",
+    fn: () => {
+      const db = openDb(':memory:')
+      db.markAsked('g', [{ id: 'q1', category: 'mixed' }, { id: 'q2', category: 'mixed' }, { id: 'q3', category: 'science' }], 0)
+      const moved = db.retagAsked('mixed', (id) => ({ q1: 'football', q2: 'science' })[id])
+      assert.equal(moved, 2)
+      db.clearAsked('g', 'football')
+      assert.deepEqual([...db.askedIds('g')].sort(), ['q2', 'q3'])
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

@@ -101,6 +101,10 @@ const concentrationValidator = CONCENTRATION_VALIDATOR && (CONCENTRATION_VALIDAT
 // Module-level beside gameMeta because trivia_over arrives through sendEvents,
 // which is module-level too.
 const lastTriviaEnd = new Map() // jid -> ts
+
+// Source category of a trivia question id, for recording tournament questions
+// under their real category. Set by createRouter from its bank.
+let categoryOfQuestion = () => undefined
 export const TRIVIA_COOLDOWN_MS = 2 * 60 * 1000
 
 // The "bot restarted" orphan notice (see createRouter's handleMessage) must only
@@ -453,7 +457,9 @@ export function sendEvents(enqueue, jid, events, quoted, now, db) {
         if (event.snapshot.state === 'over') db?.deleteTournament(jid)
         else db?.saveTournament(jid, event.snapshot, now)
         if (Array.isArray(event.snapshot.usedQids) && event.snapshot.usedQids.length > 0) {
-          db?.markAsked(jid, event.snapshot.usedQids.map((id) => ({ id, category: event.snapshot.category || 'mixed' })), now)
+          // Tagged by each question's real category, never 'mixed': recycling
+          // clears by real category, so 'mixed' rows stayed excluded forever.
+          db?.markAsked(jid, event.snapshot.usedQids.map((id) => ({ id, category: categoryOfQuestion(id) ?? event.snapshot.category ?? 'mixed' })), now)
         }
         if (Array.isArray(event.snapshot.usedWords) && event.snapshot.usedWords.length > 0) {
           db?.markAskedWordle(jid, event.snapshot.usedWords, now)
@@ -506,6 +512,12 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   const flagBank = loadFlagBank()
   const wordleBank = loadWordleBank()
   const categoryBank = loadCategoryBank()
+  if (bank?.categoryOf) {
+    categoryOfQuestion = (id) => bank.categoryOf(id)
+    // One-off repair: tournaments used to record their questions as 'mixed',
+    // a tag no recycle ever clears. Re-tag those rows with their category.
+    try { db?.retagAsked?.('mixed', (qid) => bank.categoryOf(qid)) } catch (e) { logger?.error?.({ err: e }, 'Failed re-tagging mixed asked questions') }
+  }
 
   // Picks `count` items this group hasn't had, recorded in asked_questions
   // under `category`. When fewer than `count` are left, takes what's left,

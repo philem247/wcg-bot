@@ -39,6 +39,11 @@ function pairConsecutive(list) {
 
 export function createTournament({ bank, category = 'mixed', now = 0, random = () => 0.5, registrationMs = REGISTRATION_MS, restore = null, exclude = new Set() }) {
   let state, players, registrationDeadline, rounds, roundIndex, fixtureIndex, usedQids, champion, totalRounds, opened
+  // The group's earlier history (from the store) is kept apart from usedQids,
+  // which is only what THIS tournament asked. Mixing them used to write the
+  // group's entire history into every saved snapshot, and the router then
+  // re-recorded all of it as asked again under the tournament's category.
+  const groupAsked = new Set(exclude ?? [])
   let inner = null   // live trivia game for the match/sudden-death round in progress; transient, never persisted
   let sd = false      // in sudden death for the current match
   let sdCorrect = null // Set of contestants who answered THIS sudden-death question correctly
@@ -52,7 +57,7 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
     rounds = restore.rounds.map((r) => ({ fixtures: r.fixtures.map((f) => ({ ...f })) }))
     roundIndex = restore.roundIndex
     fixtureIndex = restore.fixtureIndex
-    usedQids = new Set([...(restore.usedQids ?? []), ...(exclude ?? [])])
+    usedQids = new Set(restore.usedQids ?? [])
     champion = restore.champion
     totalRounds = restore.totalRounds
     // ponytail: a persisted 'match' means the process died mid-question-flow — the
@@ -68,7 +73,7 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
     rounds = []
     roundIndex = 0
     fixtureIndex = 0
-    usedQids = new Set(exclude ?? [])
+    usedQids = new Set()
     champion = null
     totalRounds = 0
     opened = false
@@ -139,11 +144,19 @@ export function createTournament({ bank, category = 'mixed', now = 0, random = (
     }]
   }
 
+  // Never repeat a question within the tournament; prefer ones the group
+  // hasn't seen anywhere. Topped up in that order rather than playing a short
+  // match: first questions the group saw before (but not in this
+  // tournament), then — only if this tournament has used up the whole
+  // category — anything at all.
   function pickQuestions(count) {
     if (!bank) return []
-    let picked = bank.pick({ category, count, exclude: usedQids, random })
-    if (picked.length === 0) {
-      picked = bank.pick({ category, count, exclude: new Set(), random })
+    const picked = bank.pick({ category, count, exclude: new Set([...usedQids, ...groupAsked]), random })
+    const have = () => new Set([...usedQids, ...picked.map((q) => q.id)])
+    if (picked.length < count) picked.push(...bank.pick({ category, count: count - picked.length, exclude: have(), random }))
+    if (picked.length < count) {
+      const ids = new Set(picked.map((q) => q.id))
+      picked.push(...bank.pick({ category, count: count - picked.length, exclude: ids, random }))
     }
     for (const q of picked) usedQids.add(q.id)
     return picked

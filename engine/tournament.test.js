@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { createTournament, REGISTRATION_MS, TOURNAMENT_CLOCK_SECONDS, MATCH_START_DELAY_MS } from './tournament.js'
 import { QUESTION_COUNT, GAP_SECONDS } from './trivia.js'
 import { openDb } from '../store/db.js'
+import { loadBank } from './bank.js'
 
 // transport/router.js -> config.js throws if PHONE_NUMBER is missing; set env
 // before the dynamic import below (a static import would be hoisted ahead of
@@ -100,6 +101,33 @@ function playOutTournament(n, random = fixed(0)) {
 }
 
 const tests = [
+  {
+    name: "the saved snapshot holds only this tournament's questions, not the group's whole history",
+    fn: () => {
+      const history = new Set(Array.from({ length: 500 }, (_, i) => `old${i}`))
+      const t = createTournament({ bank: makeBank(), now: 0, random: fixed(0.37), exclude: history })
+      const { closeEv } = registerPlayers(t, 2)
+      const { events } = startMatch(t, REGISTRATION_MS + 1)
+      const snap = [...closeEv, ...events].reverse().find((e) => e.snapshot)?.snapshot ?? t.status()
+      const used = snap.usedQids ?? []
+      assert.ok(!used.some((id) => history.has(id)), 'no earlier-history ids in the snapshot')
+    },
+  },
+  {
+    name: 'a match is never short: a nearly exhausted pool is topped up with questions the group saw before',
+    fn: () => {
+      const qs = Array.from({ length: 12 }, (_, i) => ({ id: `g${i}`, q: `G${i}?`, correct: 'right', wrong: ['a', 'b', 'c'], template: `t${i % 3}` }))
+      const bank = loadBank({ data: { categories: { general: qs } } })
+      // The group has already seen 9 of the 12 questions.
+      const seen = new Set(qs.slice(0, 9).map((q) => q.id))
+      const t = createTournament({ bank, category: 'general', now: 0, random: Math.random, exclude: seen })
+      registerPlayers(t, 2)
+      const { events } = startMatch(t, REGISTRATION_MS + 1)
+      const first = events.find((e) => e.type === 'trivia_question')
+      assert.ok(first, 'match started')
+      assert.equal(first.total, QUESTION_COUNT, 'a full-length match, not a 3-question one')
+    },
+  },
   {
     name: 'bracket seeding is deterministic for a fixed random',
     fn: () => {

@@ -24,6 +24,33 @@ const fixture = {
 
 const tests = [
   {
+    name: 'mixed: hard slots come from categories that have hard questions; one question per category; templates spread',
+    fn: () => {
+      const categories = {}
+      for (const c of CATEGORIES.slice(0, 12)) {
+        categories[c] = [
+          // one dominant template (30) and three small ones (2 each)
+          ...Array.from({ length: 30 }, (_, i) => ({ id: `${c}-big${i}`, q: `${c} big ${i}?`, correct: 'a', wrong: ['b', 'c', 'd'], template: 'big' })),
+          ...['s1', 's2', 's3'].flatMap((t) => [0, 1].map((i) => ({ id: `${c}-${t}-${i}`, q: `${c} ${t} ${i}?`, correct: 'a', wrong: ['b', 'c', 'd'], template: t }))),
+        ]
+      }
+      // Only two categories have hard questions.
+      for (const c of CATEGORIES.slice(0, 2)) categories[c].push(...[0, 1, 2].map((i) => ({ id: `${c}-h${i}`, q: `${c} hard ${i}?`, correct: 'a', wrong: ['b', 'c', 'd'], template: 'hard', hard: true })))
+      const bank = loadBank({ data: { categories } })
+      let big = 0
+      let total = 0
+      for (let g = 0; g < 300; g++) {
+        const picked = bank.pick({ category: 'mixed', count: 10, random: Math.random })
+        assert.equal(picked.length, 10)
+        assert.equal(new Set(picked.map((q) => q.category)).size, 10, 'one question per category')
+        assert.equal(picked.filter((q) => q.hard).length, 2, 'both categories with hard questions supply one')
+        for (const q of picked) { total++; if (q.template === 'big') big++ }
+      }
+      // Template-first: the big template is 1 of 4 templates, not 30 of 36 questions.
+      assert.ok(big / total < 0.45, `dominant template share ${(big / total).toFixed(2)}`)
+    },
+  },
+  {
     name: 'pick: questions flagged hard fill 40% of a single-category game, the rest come from the normal pool',
     fn: () => {
       const qs = [
