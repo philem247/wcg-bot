@@ -93250,6 +93250,654 @@
           "Mercury"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "ccac0dd37a3e",
+        "q": "How many bones are in the adult human body?",
+        "correct": "206",
+        "wrong": [
+          "208",
+          "212",
+          "201"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "74f8ef582121",
+        "q": "How many keys does a standard modern piano have?",
+        "correct": "88",
+        "wrong": [
+          "86",
+          "92",
+          "76"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "f588b5ce68de",
+        "q": "How many hearts does an octopus have?",
+        "correct": "Three",
+        "wrong": [
+          "Two",
+          "Four",
+          "One"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "1db611301865",
+        "q": "As of 2020, how many time zones does Russia span?",
+        "correct": "11",
+        "wrong": [
+          "9",
+          "12",
+          "10"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "0a61b6f56990",
+        "q": "How many players does each side have on the field in rugby union?",
+        "correct": "15",
+        "wrong": [
+          "13",
+          "11",
+          "12"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "b23fa08cb619",
+        "q": "How many minutes are there in a day?",
+        "correct": "1,440",
+        "wrong": [
+          "1,240",
+          "1,460",
+          "1,400"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "bc6ffd6e3bab",
+        "q": "How many sides does a dodecagon have?",
+        "correct": "12",
+        "wrong": [
+          "10",
+          "11",
+          "20"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "f882a20c4108",
+        "q": "How many teeth does an adult human typically have, including wisdom teeth?",
+        "correct": "32",
+        "wrong": [
+          "28",
+          "30",
+          "34"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "bdcbf6cc65ca",
+        "q": "What is the smallest prime number?",
+        "correct": "2",
+        "wrong": [
+          "1",
+          "3",
+          "0"
+        ],
+        "template": "hard-numbers",
+        "hard": true
+      },
+      {
+        "id": "d5ca7ccf0f42",
+        "q": "Who was the first woman to win a Nobel Prize?",
+        "correct": "Marie Curie",
+        "wrong": [
+          "Mother Teresa",
+          "Bertha von Suttner",
+          "Jane Addams"
+        ],
+        "template": "hard-firsts",
+        "hard": true
+      },
+      {
+        "id": "25aca77d4734",
+        "q": "Who was the first African to win the Nobel Prize in Literature?",
+        "correct": "Wole Soyinka",
+        "wrong": [
+          "Chinua Achebe",
+          "Naguib Mahfouz",
+          "Nadine Gordimer"
+        ],
+        "template": "hard-firsts",
+        "hard": true
+      },
+      {
+        "id": "d10803abb500",
+        "q": "Who was the second person to walk on the Moon?",
+        "correct": "Buzz Aldrin",
+        "wrong": [
+          "Michael Collins",
+          "Pete Conrad",
+          "Alan Shepard"
+        ],
+        "template": "hard-firsts",
+        "hard": true
+      },
+      {
+        "id": "6474f40fc08f",
+        "q": "Which country was the first to give women the vote in national elections, in 1893?",
+        "correct": "New Zealand",
+        "wrong": [
+          "Australia",
+          "Finland",
+          "Norway"
+        ],
+        "template": "hard-firsts",
+        "hard": true
+      },
+      {
+        "id": "c3655970b3a1",
+        "q": "Who was the first woman in space?",
+        "correct": "Valentina Tereshkova",
+        "wrong": [
+          "Sally Ride",
+          "Svetlana Savitskaya",
+          "Mae Jemison"
+        ],
+        "template": "hard-firsts",
+        "hard": true
+      },
+      {
+        "id": "acbcd5cf922f",
+        "q": "Which country hosted the first modern Olympic Games in 1896?",
+        "correct": "Greece",
+        "wrong": [
+          "France",
+          "England",
+          "Italy"
+        ],
+        "template": "hard-firsts",
+        "hard": true
+      },
+      {
+        "id": "1fc8d5c2e28d",
+        "q": "Who invented the World Wide Web?",
+        "correct": "Tim Berners-Lee",
+        "wrong": [
+          "Vint Cerf",
+          "Bill Gates",
+          "Steve Jobs"
+        ],
+        "template": "hard-inventions",
+        "hard": true
+      },
+      {
+        "id": "ea25c6ab67d5",
+        "q": "Which civilisation invented paper?",
+        "correct": "China",
+        "wrong": [
+          "Egypt",
+          "India",
+          "Persia"
+        ],
+        "template": "hard-inventions",
+        "hard": true
+      },
+      {
+        "id": "efb9b288d41a",
+        "q": "Who was granted the 1876 patent for the telephone?",
+        "correct": "Alexander Graham Bell",
+        "wrong": [
+          "Thomas Edison",
+          "Nikola Tesla",
+          "Guglielmo Marconi"
+        ],
+        "template": "hard-inventions",
+        "hard": true
+      },
+      {
+        "id": "96c81bb617f7",
+        "q": "Who discovered penicillin in 1928?",
+        "correct": "Alexander Fleming",
+        "wrong": [
+          "Louis Pasteur",
+          "Joseph Lister",
+          "Robert Koch"
+        ],
+        "template": "hard-inventions",
+        "hard": true
+      },
+      {
+        "id": "5e156a148e98",
+        "q": "Philo Farnsworth is known as a pioneer of which invention?",
+        "correct": "Television",
+        "wrong": [
+          "Radio",
+          "Telephone",
+          "Microwave"
+        ],
+        "template": "hard-inventions",
+        "hard": true
+      },
+      {
+        "id": "49dc9a9c7110",
+        "q": "Which company made the DynaTAC, the first handheld mobile phone sold commercially?",
+        "correct": "Motorola",
+        "wrong": [
+          "Nokia",
+          "Ericsson",
+          "Siemens"
+        ],
+        "template": "hard-inventions",
+        "hard": true
+      },
+      {
+        "id": "07eb29c9a524",
+        "q": "Which of these was NOT one of the Seven Wonders of the Ancient World?",
+        "correct": "Great Wall of China",
+        "wrong": [
+          "Colossus of Rhodes",
+          "Lighthouse of Alexandria",
+          "Hanging Gardens of Babylon"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "7c614eac6f65",
+        "q": "Which of these planets has no moons?",
+        "correct": "Venus",
+        "wrong": [
+          "Mars",
+          "Neptune",
+          "Uranus"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "358b5fa140da",
+        "q": "Which of these is NOT a primary colour of light?",
+        "correct": "Yellow",
+        "wrong": [
+          "Red",
+          "Green",
+          "Blue"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "2e6634eaf0ad",
+        "q": "Which of these countries is NOT a member of the G7?",
+        "correct": "China",
+        "wrong": [
+          "Italy",
+          "Canada",
+          "Japan"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "d299a3a88d94",
+        "q": "Which of these is NOT a noble gas?",
+        "correct": "Nitrogen",
+        "wrong": [
+          "Argon",
+          "Neon",
+          "Krypton"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "c33a4ae07974",
+        "q": "Which of these countries does NOT share a border with Nigeria?",
+        "correct": "Ghana",
+        "wrong": [
+          "Benin",
+          "Niger",
+          "Chad"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "b0cd3c2757b8",
+        "q": "In which year did Nigeria switch from driving on the left to the right?",
+        "correct": "1972",
+        "wrong": [
+          "1970",
+          "1975",
+          "1968"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "46c52c2fa632",
+        "q": "In which year did Abuja officially become Nigeria's capital?",
+        "correct": "1991",
+        "wrong": [
+          "1989",
+          "1993",
+          "1976"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "aba5623deac0",
+        "q": "Who designed the Nigerian flag?",
+        "correct": "Taiwo Akinkunmi",
+        "wrong": [
+          "Ben Enwonwu",
+          "Herbert Macaulay",
+          "Benedict Odiase"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "f0dc8c631150",
+        "q": "Who composed the music for the national anthem \"Arise, O Compatriots\"?",
+        "correct": "Benedict Odiase",
+        "wrong": [
+          "Taiwo Akinkunmi",
+          "Fela Kuti",
+          "Sunny Okosuns"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "ddff75292795",
+        "q": "In which year was the naira introduced to replace the Nigerian pound?",
+        "correct": "1973",
+        "wrong": [
+          "1971",
+          "1975",
+          "1969"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "e79a32277082",
+        "q": "Which Nigerian state has the slogan \"Centre of Excellence\"?",
+        "correct": "Lagos",
+        "wrong": [
+          "Ogun",
+          "Oyo",
+          "Rivers"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "b9247f4ed3b0",
+        "q": "Which Nigerian state has the slogan \"Coal City State\"?",
+        "correct": "Enugu",
+        "wrong": [
+          "Kogi",
+          "Anambra",
+          "Benue"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "ca26eb76c2cd",
+        "q": "In which year was Things Fall Apart first published?",
+        "correct": "1958",
+        "wrong": [
+          "1960",
+          "1956",
+          "1962"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "9233800e17fd",
+        "q": "Which Chinua Achebe novel is the direct sequel to Things Fall Apart?",
+        "correct": "No Longer at Ease",
+        "wrong": [
+          "Arrow of God",
+          "Anthills of the Savannah",
+          "A Man of the People"
+        ],
+        "template": "hard-nigeria",
+        "hard": true
+      },
+      {
+        "id": "f0fb76fd1d7f",
+        "q": "What does \"SIM\" in SIM card stand for?",
+        "correct": "Subscriber Identity Module",
+        "wrong": [
+          "Secure Internet Module",
+          "System Identity Mobile",
+          "Subscriber Internet Mode"
+        ],
+        "template": "hard-acronyms",
+        "hard": true
+      },
+      {
+        "id": "8c7a5d01a39b",
+        "q": "What does \"NYSC\" stand for?",
+        "correct": "National Youth Service Corps",
+        "wrong": [
+          "National Youth Service Council",
+          "National Youth Skills Corps",
+          "Nigerian Youth Service Corps"
+        ],
+        "template": "hard-acronyms",
+        "hard": true
+      },
+      {
+        "id": "21a2de80232c",
+        "q": "What does \"JAMB\" stand for?",
+        "correct": "Joint Admissions and Matriculation Board",
+        "wrong": [
+          "Joint Admissions and Matriculation Bureau",
+          "Junior Admissions and Matriculation Board",
+          "Joint Academic and Matriculation Board"
+        ],
+        "template": "hard-acronyms",
+        "hard": true
+      },
+      {
+        "id": "a31c71aab7ef",
+        "q": "What did \"NEPA\" stand for?",
+        "correct": "National Electric Power Authority",
+        "wrong": [
+          "Nigerian Electric Power Agency",
+          "National Energy Power Authority",
+          "National Electric Power Agency"
+        ],
+        "template": "hard-acronyms",
+        "hard": true
+      },
+      {
+        "id": "a6e053527ac7",
+        "q": "Which language has the most native speakers in the world?",
+        "correct": "Mandarin Chinese",
+        "wrong": [
+          "Spanish",
+          "English",
+          "Hindi"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "42b27d7069a5",
+        "q": "What is the second-longest river in Africa?",
+        "correct": "Congo",
+        "wrong": [
+          "Niger",
+          "Zambezi",
+          "Orange"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "a5c2c2089b37",
+        "q": "What is the largest desert in the world, counting polar deserts?",
+        "correct": "Antarctic",
+        "wrong": [
+          "Sahara",
+          "Arctic",
+          "Gobi"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "c79bd7267c98",
+        "q": "Which is the largest country in Africa by area?",
+        "correct": "Algeria",
+        "wrong": [
+          "DR Congo",
+          "Sudan",
+          "Libya"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "dd71035e2371",
+        "q": "Which country has the most ancient pyramids?",
+        "correct": "Sudan",
+        "wrong": [
+          "Egypt",
+          "Mexico",
+          "Peru"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "40d6d8b07b89",
+        "q": "Which is the only letter that does not appear in any US state name?",
+        "correct": "Q",
+        "wrong": [
+          "Z",
+          "X",
+          "J"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "ceb0da16d8d4",
+        "q": "Which country gave the Statue of Liberty to the United States?",
+        "correct": "France",
+        "wrong": [
+          "Britain",
+          "Spain",
+          "Italy"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "27868aeaf198",
+        "q": "Which is the smallest of the world's oceans?",
+        "correct": "Arctic",
+        "wrong": [
+          "Indian",
+          "Southern",
+          "Atlantic"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "df2e0289168d",
+        "q": "Who painted the ceiling of the Sistine Chapel?",
+        "correct": "Michelangelo",
+        "wrong": [
+          "Raphael",
+          "Leonardo da Vinci",
+          "Donatello"
+        ],
+        "template": "hard-world",
+        "hard": true
+      },
+      {
+        "id": "886c163dce69",
+        "q": "Which blood type is known as the universal donor?",
+        "correct": "O negative",
+        "wrong": [
+          "AB positive",
+          "O positive",
+          "AB negative"
+        ],
+        "template": "hard-science",
+        "hard": true
+      },
+      {
+        "id": "58bbfbc09f06",
+        "q": "As of 2023, which planet has the most confirmed moons?",
+        "correct": "Saturn",
+        "wrong": [
+          "Jupiter",
+          "Uranus",
+          "Neptune"
+        ],
+        "template": "hard-science",
+        "hard": true
+      },
+      {
+        "id": "239191ed5862",
+        "q": "Which element has the chemical symbol Pb?",
+        "correct": "Lead",
+        "wrong": [
+          "Platinum",
+          "Palladium",
+          "Phosphorus"
+        ],
+        "template": "hard-science",
+        "hard": true
+      },
+      {
+        "id": "b1d746f5a560",
+        "q": "Which element has the chemical symbol Fe?",
+        "correct": "Iron",
+        "wrong": [
+          "Fluorine",
+          "Fermium",
+          "Francium"
+        ],
+        "template": "hard-science",
+        "hard": true
+      },
+      {
+        "id": "819a3434cc92",
+        "q": "Which element has the chemical symbol Ag?",
+        "correct": "Silver",
+        "wrong": [
+          "Gold",
+          "Argon",
+          "Aluminium"
+        ],
+        "template": "hard-science",
+        "hard": true
       }
     ],
     "science": [
@@ -202697,6 +203345,690 @@
           "Rio Bravo"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "95364b89f46e",
+        "q": "Which film won the very first Academy Award for Best Picture?",
+        "correct": "Wings",
+        "wrong": [
+          "Sunrise",
+          "The Jazz Singer",
+          "7th Heaven"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "5b5657303468",
+        "q": "Which was the first non-English-language film to win Best Picture?",
+        "correct": "Parasite",
+        "wrong": [
+          "Roma",
+          "Amour",
+          "Life Is Beautiful"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "24ae9e31f59b",
+        "q": "Who was the first Black woman to win the Oscar for Best Actress?",
+        "correct": "Halle Berry",
+        "wrong": [
+          "Whoopi Goldberg",
+          "Viola Davis",
+          "Lupita Nyong'o"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "6de55630ec6d",
+        "q": "Which Steven Spielberg film received 11 Oscar nominations but won none?",
+        "correct": "The Color Purple",
+        "wrong": [
+          "Empire of the Sun",
+          "Amistad",
+          "War Horse"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "20a98d729911",
+        "q": "Which of these films did NOT win 11 Academy Awards?",
+        "correct": "West Side Story",
+        "wrong": [
+          "Titanic",
+          "Ben-Hur",
+          "The Return of the King"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "d81d93fb4769",
+        "q": "Who is the youngest winner of the Oscar for Best Actress?",
+        "correct": "Marlee Matlin",
+        "wrong": [
+          "Jennifer Lawrence",
+          "Audrey Hepburn",
+          "Grace Kelly"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "06a277d6ae48",
+        "q": "As of 2025, who has won the most Academy Awards for acting?",
+        "correct": "Katharine Hepburn",
+        "wrong": [
+          "Meryl Streep",
+          "Jack Nicholson",
+          "Daniel Day-Lewis"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "ad42e94682e9",
+        "q": "Which actor of Nigerian descent was nominated for Best Actor for 12 Years a Slave?",
+        "correct": "Chiwetel Ejiofor",
+        "wrong": [
+          "David Oyelowo",
+          "John Boyega",
+          "Daniel Kaluuya"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "df05713f93b9",
+        "q": "Daniel Kaluuya won his Oscar for playing which character?",
+        "correct": "Fred Hampton",
+        "wrong": [
+          "Chris Washington",
+          "OJ Haywood",
+          "W'Kabi"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "168683361593",
+        "q": "For which film did Lupita Nyong'o win her Oscar?",
+        "correct": "12 Years a Slave",
+        "wrong": [
+          "Black Panther",
+          "Us",
+          "Queen of Katwe"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "adb6708b9b64",
+        "q": "Which film beat Pulp Fiction to Best Picture at the 1995 Oscars?",
+        "correct": "Forrest Gump",
+        "wrong": [
+          "The Shawshank Redemption",
+          "Quiz Show",
+          "Four Weddings and a Funeral"
+        ],
+        "template": "hard-oscars",
+        "hard": true
+      },
+      {
+        "id": "488c15a52a7d",
+        "q": "In which year was the first Star Wars film released?",
+        "correct": "1977",
+        "wrong": [
+          "1976",
+          "1979",
+          "1980"
+        ],
+        "template": "hard-year",
+        "hard": true
+      },
+      {
+        "id": "954ca30c4995",
+        "q": "In which year was James Cameron's Titanic released?",
+        "correct": "1997",
+        "wrong": [
+          "1996",
+          "1998",
+          "1999"
+        ],
+        "template": "hard-year",
+        "hard": true
+      },
+      {
+        "id": "e5fe01174aa4",
+        "q": "In which year was the first Harry Potter film released?",
+        "correct": "2001",
+        "wrong": [
+          "2000",
+          "2002",
+          "2003"
+        ],
+        "template": "hard-year",
+        "hard": true
+      },
+      {
+        "id": "d1e6e14e4bc6",
+        "q": "In which year was Spielberg's Jurassic Park released?",
+        "correct": "1993",
+        "wrong": [
+          "1992",
+          "1994",
+          "1995"
+        ],
+        "template": "hard-year",
+        "hard": true
+      },
+      {
+        "id": "e2f949396759",
+        "q": "In which year was Toy Story, the first fully computer-animated feature, released?",
+        "correct": "1995",
+        "wrong": [
+          "1994",
+          "1996",
+          "1993"
+        ],
+        "template": "hard-year",
+        "hard": true
+      },
+      {
+        "id": "25724ed0b693",
+        "q": "In which year was Marvel's first Avengers film released?",
+        "correct": "2012",
+        "wrong": [
+          "2011",
+          "2013",
+          "2010"
+        ],
+        "template": "hard-year",
+        "hard": true
+      },
+      {
+        "id": "5a10afc9a20b",
+        "q": "In which year was Black Panther released in cinemas?",
+        "correct": "2018",
+        "wrong": [
+          "2017",
+          "2019",
+          "2016"
+        ],
+        "template": "hard-year",
+        "hard": true
+      },
+      {
+        "id": "a68cd8650ee9",
+        "q": "Who directed the 1975 shark thriller Jaws?",
+        "correct": "Steven Spielberg",
+        "wrong": [
+          "George Lucas",
+          "Brian De Palma",
+          "John Carpenter"
+        ],
+        "template": "hard-directors",
+        "hard": true
+      },
+      {
+        "id": "22ace307ed15",
+        "q": "Who directed both Black Panther films?",
+        "correct": "Ryan Coogler",
+        "wrong": [
+          "Jordan Peele",
+          "Barry Jenkins",
+          "F. Gary Gray"
+        ],
+        "template": "hard-directors",
+        "hard": true
+      },
+      {
+        "id": "3d10ac43018e",
+        "q": "Who directed Moonlight, the Best Picture winner announced after the La La Land mix-up?",
+        "correct": "Barry Jenkins",
+        "wrong": [
+          "Jordan Peele",
+          "Damien Chazelle",
+          "Steve McQueen"
+        ],
+        "template": "hard-directors",
+        "hard": true
+      },
+      {
+        "id": "402fd8841a57",
+        "q": "Who directed The Lord of the Rings film trilogy?",
+        "correct": "Peter Jackson",
+        "wrong": [
+          "Guillermo del Toro",
+          "Sam Raimi",
+          "Chris Columbus"
+        ],
+        "template": "hard-directors",
+        "hard": true
+      },
+      {
+        "id": "11fc726e7c27",
+        "q": "Who directed the 2013 space thriller Gravity?",
+        "correct": "Alfonso Cuarón",
+        "wrong": [
+          "Alejandro G. Iñárritu",
+          "Guillermo del Toro",
+          "Ridley Scott"
+        ],
+        "template": "hard-directors",
+        "hard": true
+      },
+      {
+        "id": "842a811ab1b4",
+        "q": "Who directed Selma (2014)?",
+        "correct": "Ava DuVernay",
+        "wrong": [
+          "Lee Daniels",
+          "Gina Prince-Bythewood",
+          "Kasi Lemmons"
+        ],
+        "template": "hard-directors",
+        "hard": true
+      },
+      {
+        "id": "8afd6204f0fc",
+        "q": "Who directed Boyz n the Hood (1991)?",
+        "correct": "John Singleton",
+        "wrong": [
+          "Spike Lee",
+          "F. Gary Gray",
+          "Antoine Fuqua"
+        ],
+        "template": "hard-directors",
+        "hard": true
+      },
+      {
+        "id": "022a8b728c3f",
+        "q": "Which director made both Alien and Gladiator?",
+        "correct": "Ridley Scott",
+        "wrong": [
+          "Tony Scott",
+          "James Cameron",
+          "Ron Howard"
+        ],
+        "template": "hard-directors",
+        "hard": true
+      },
+      {
+        "id": "cef16f64ad71",
+        "q": "Which was the first feature-length \"talkie\" with synchronised dialogue?",
+        "correct": "The Jazz Singer",
+        "wrong": [
+          "Wings",
+          "Metropolis",
+          "The Broadway Melody"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "1cb924730dca",
+        "q": "What was Disney's first full-length animated feature?",
+        "correct": "Snow White",
+        "wrong": [
+          "Pinocchio",
+          "Fantasia",
+          "Bambi"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "ecc1d4842332",
+        "q": "Which Fast & Furious film was the first to feature Dwayne Johnson?",
+        "correct": "Fast Five",
+        "wrong": [
+          "Furious 7",
+          "Fast & Furious",
+          "Tokyo Drift"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "0b917dd1dfbc",
+        "q": "In The Godfather, what does film producer Jack Woltz wake up to find in his bed?",
+        "correct": "A horse's head",
+        "wrong": [
+          "A dead fish",
+          "A severed hand",
+          "A bloody knife"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "1518b2fb79db",
+        "q": "What is the name of the hotel in The Shining?",
+        "correct": "The Overlook",
+        "wrong": [
+          "The Stanley",
+          "The Bates",
+          "The Grand Budapest"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "13b5fae70bc5",
+        "q": "Who voiced Mufasa in the 1994 Lion King?",
+        "correct": "James Earl Jones",
+        "wrong": [
+          "Morgan Freeman",
+          "Samuel L. Jackson",
+          "Danny Glover"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "0fe035945e0f",
+        "q": "Which film features the mysterious criminal Keyser Söze?",
+        "correct": "The Usual Suspects",
+        "wrong": [
+          "Se7en",
+          "Memento",
+          "Fight Club"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "dc0db83b06c2",
+        "q": "In Citizen Kane, what turns out to be \"Rosebud\"?",
+        "correct": "A sled",
+        "wrong": [
+          "A horse",
+          "A woman",
+          "A house"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "9ba1cc302c27",
+        "q": "In Back to the Future, what speed must the DeLorean reach to time travel?",
+        "correct": "88 mph",
+        "wrong": [
+          "77 mph",
+          "99 mph",
+          "121 mph"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "fae293729cdd",
+        "q": "How many Infinity Stones are there in the Marvel films?",
+        "correct": "Six",
+        "wrong": [
+          "Five",
+          "Seven",
+          "Eight"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "c032fd8b12e2",
+        "q": "Which actor won a posthumous Oscar for playing the Joker?",
+        "correct": "Heath Ledger",
+        "wrong": [
+          "Joaquin Phoenix",
+          "Jack Nicholson",
+          "Jared Leto"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "f3966fc01d30",
+        "q": "Which film regained the title of highest-grossing film of all time in 2021?",
+        "correct": "Avatar",
+        "wrong": [
+          "Titanic",
+          "Avengers: Endgame",
+          "The Force Awakens"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "439670b36808",
+        "q": "In which 2022 film does Viola Davis lead the Agojie warriors of Dahomey?",
+        "correct": "The Woman King",
+        "wrong": [
+          "Harriet",
+          "Fences",
+          "Widows"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "d76dc83e35c9",
+        "q": "John Boyega made his feature film debut in which 2011 film?",
+        "correct": "Attack the Block",
+        "wrong": [
+          "Detroit",
+          "Pacific Rim Uprising",
+          "Imperial Dreams"
+        ],
+        "template": "hard-film-facts",
+        "hard": true
+      },
+      {
+        "id": "8077f4ed66a3",
+        "q": "Which of these films was NOT directed by Christopher Nolan?",
+        "correct": "Shutter Island",
+        "wrong": [
+          "Memento",
+          "Interstellar",
+          "Dunkirk"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "6f6ef302ca34",
+        "q": "Which of these films was NOT directed by Quentin Tarantino?",
+        "correct": "Snatch",
+        "wrong": [
+          "Jackie Brown",
+          "Death Proof",
+          "Django Unchained"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "0cbccbf3b551",
+        "q": "Which of these actors has NEVER played James Bond?",
+        "correct": "Clive Owen",
+        "wrong": [
+          "Timothy Dalton",
+          "George Lazenby",
+          "Roger Moore"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "b8ff45e276ed",
+        "q": "Which of these actors has NEVER played Batman in a live-action film?",
+        "correct": "Henry Cavill",
+        "wrong": [
+          "George Clooney",
+          "Val Kilmer",
+          "Michael Keaton"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "717ed952a6de",
+        "q": "Which of these is NOT a Pixar film?",
+        "correct": "Shrek",
+        "wrong": [
+          "Ratatouille",
+          "Up",
+          "Coco"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "4422765b0caa",
+        "q": "Which of these films did NOT win Best Picture?",
+        "correct": "Pulp Fiction",
+        "wrong": [
+          "Gladiator",
+          "Braveheart",
+          "Chicago"
+        ],
+        "template": "hard-odd-one-out",
+        "hard": true
+      },
+      {
+        "id": "6dae7f27d7a5",
+        "q": "Which 1992 film is credited with launching the Nollywood home-video boom?",
+        "correct": "Living in Bondage",
+        "wrong": [
+          "Glamour Girls",
+          "Osuofia in London",
+          "Saworoide"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "c96bdbced978",
+        "q": "Who directed The Wedding Party (2016)?",
+        "correct": "Kemi Adetiba",
+        "wrong": [
+          "Kunle Afolayan",
+          "Funke Akindele",
+          "Mo Abudu"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "0d7c6fa67a3e",
+        "q": "Which was the first Nollywood film to gross over ₦1 billion at the Nigerian box office?",
+        "correct": "A Tribe Called Judah",
+        "wrong": [
+          "Battle on Buka Street",
+          "Omo Ghetto: The Saga",
+          "The Wedding Party"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "a7a00fa02a08",
+        "q": "Who directed the 2014 period thriller October 1?",
+        "correct": "Kunle Afolayan",
+        "wrong": [
+          "Tunde Kelani",
+          "Kemi Adetiba",
+          "Izu Ojukwu"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "dfc3875a00f2",
+        "q": "Which film was Nigeria's first-ever submission for the Best International Feature Oscar?",
+        "correct": "Lionheart",
+        "wrong": [
+          "The Milkmaid",
+          "King of Boys",
+          "Citation"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "ced80033a045",
+        "q": "Who directed and starred in Lionheart (2018)?",
+        "correct": "Genevieve Nnaji",
+        "wrong": [
+          "Omotola Jalade-Ekeinde",
+          "Funke Akindele",
+          "Rita Dominic"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "11331d912763",
+        "q": "In which year was King of Boys: The Return of the King released on Netflix?",
+        "correct": "2021",
+        "wrong": [
+          "2020",
+          "2022",
+          "2019"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "99db5483c912",
+        "q": "Which actress played Eniola Salami in King of Boys?",
+        "correct": "Sola Sobowale",
+        "wrong": [
+          "Toyin Abraham",
+          "Joke Silva",
+          "Kate Henshaw"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "971f6d1a160a",
+        "q": "Which comic actor starred in Osuofia in London (2003)?",
+        "correct": "Nkem Owoh",
+        "wrong": [
+          "Chinedu Ikedieze",
+          "John Okafor",
+          "Osita Iheme"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "0033acba418a",
+        "q": "The comedy duo Aki and Pawpaw are Chinedu Ikedieze and which actor?",
+        "correct": "Osita Iheme",
+        "wrong": [
+          "Nkem Owoh",
+          "John Okafor",
+          "Zubby Michael"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "2ca064dd3e3f",
+        "q": "Who played Andy Okeke in the original Living in Bondage?",
+        "correct": "Kenneth Okonkwo",
+        "wrong": [
+          "Bob-Manuel Udokwu",
+          "Kanayo O. Kanayo",
+          "Francis Agu"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
       }
     ],
     "tv-shows": [
@@ -273069,6 +274401,642 @@
           "Rema"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "ca5962e17ec1",
+        "q": "What was Wizkid's debut studio album?",
+        "correct": "Superstar",
+        "wrong": [
+          "Ayo",
+          "Made in Lagos",
+          "Sounds from the Other Side"
+        ],
+        "template": "hard-debuts",
+        "hard": true
+      },
+      {
+        "id": "ea4ca3f77952",
+        "q": "What was Davido's debut studio album?",
+        "correct": "Omo Baba Olowo",
+        "wrong": [
+          "A Good Time",
+          "A Better Time",
+          "Timeless"
+        ],
+        "template": "hard-debuts",
+        "hard": true
+      },
+      {
+        "id": "ff95093df650",
+        "q": "What was Burna Boy's debut studio album, released in 2013?",
+        "correct": "L.I.F.E",
+        "wrong": [
+          "Outside",
+          "On a Spaceship",
+          "Redemption"
+        ],
+        "template": "hard-debuts",
+        "hard": true
+      },
+      {
+        "id": "517af7d89949",
+        "q": "What was Olamide's debut studio album, released in 2011?",
+        "correct": "Rapsodi",
+        "wrong": [
+          "YBNL",
+          "Street OT",
+          "Baddest Guy Ever Liveth"
+        ],
+        "template": "hard-debuts",
+        "hard": true
+      },
+      {
+        "id": "8a37f183e886",
+        "q": "What was Asake's debut studio album, released in 2022?",
+        "correct": "Mr. Money with the Vibe",
+        "wrong": [
+          "Work of Art",
+          "Lungu Boy",
+          "Ololade Asake"
+        ],
+        "template": "hard-debuts",
+        "hard": true
+      },
+      {
+        "id": "76d654d03666",
+        "q": "What was Wande Coal's debut album, released in 2009?",
+        "correct": "Mushin 2 Mo'Hits",
+        "wrong": [
+          "Wanted",
+          "Superstar",
+          "The Entertainer"
+        ],
+        "template": "hard-debuts",
+        "hard": true
+      },
+      {
+        "id": "30a5f570ca36",
+        "q": "Which label did D'banj and Don Jazzy co-found in 2004?",
+        "correct": "Mo' Hits Records",
+        "wrong": [
+          "Mavin Records",
+          "Chocolate City",
+          "Kennis Music"
+        ],
+        "template": "hard-labels",
+        "hard": true
+      },
+      {
+        "id": "5f7c4e03aa7f",
+        "q": "Which label did Don Jazzy launch in 2012?",
+        "correct": "Mavin Records",
+        "wrong": [
+          "Mo' Hits Records",
+          "YBNL Nation",
+          "DMW"
+        ],
+        "template": "hard-labels",
+        "hard": true
+      },
+      {
+        "id": "22763427a577",
+        "q": "Which artist founded the YBNL label?",
+        "correct": "Olamide",
+        "wrong": [
+          "Lil Kesh",
+          "Phyno",
+          "Reminisce"
+        ],
+        "template": "hard-labels",
+        "hard": true
+      },
+      {
+        "id": "08809014b314",
+        "q": "Which artist founded Starboy Entertainment?",
+        "correct": "Wizkid",
+        "wrong": [
+          "Davido",
+          "Mr Eazi",
+          "Burna Boy"
+        ],
+        "template": "hard-labels",
+        "hard": true
+      },
+      {
+        "id": "2c330c3f0429",
+        "q": "Which is Davido's record label?",
+        "correct": "DMW",
+        "wrong": [
+          "YBNL",
+          "Starboy",
+          "Spaceship"
+        ],
+        "template": "hard-labels",
+        "hard": true
+      },
+      {
+        "id": "351c43c9788b",
+        "q": "Which artist leads the Spaceship collective?",
+        "correct": "Burna Boy",
+        "wrong": [
+          "Zlatan",
+          "Rema",
+          "Wizkid"
+        ],
+        "template": "hard-labels",
+        "hard": true
+      },
+      {
+        "id": "79eae2a5b976",
+        "q": "Rema rose to fame signed to which label?",
+        "correct": "Mavin Records",
+        "wrong": [
+          "YBNL Nation",
+          "Chocolate City",
+          "Starboy"
+        ],
+        "template": "hard-labels",
+        "hard": true
+      },
+      {
+        "id": "5b6e9c039dc3",
+        "q": "Fireboy DML is signed to which label?",
+        "correct": "YBNL Nation",
+        "wrong": [
+          "Mavin Records",
+          "DMW",
+          "Chocolate City"
+        ],
+        "template": "hard-labels",
+        "hard": true
+      },
+      {
+        "id": "bce6fbb66ed8",
+        "q": "Which artist was born Damini Ebunoluwa Ogulu?",
+        "correct": "Burna Boy",
+        "wrong": [
+          "Davido",
+          "Wizkid",
+          "Rema"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "15dac289ef14",
+        "q": "Which artist was born Ayodeji Ibrahim Balogun?",
+        "correct": "Wizkid",
+        "wrong": [
+          "Davido",
+          "Wande Coal",
+          "Mr Eazi"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "63d363c79ba4",
+        "q": "Which artist was born Ahmed Ololade?",
+        "correct": "Asake",
+        "wrong": [
+          "Seyi Vibez",
+          "Fireboy DML",
+          "Zinoleesky"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "69f2c99aba31",
+        "q": "Which artist was born Michael Collins Ajereh?",
+        "correct": "Don Jazzy",
+        "wrong": [
+          "D'banj",
+          "Dr SID",
+          "D'Prince"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "88a31cec3dd3",
+        "q": "Which artist was born Oladapo Oyebanjo?",
+        "correct": "D'banj",
+        "wrong": [
+          "Don Jazzy",
+          "Dr SID",
+          "Wande Coal"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "dc1de21a1737",
+        "q": "Which artist goes by the nickname \"Odogwu\"?",
+        "correct": "Burna Boy",
+        "wrong": [
+          "Davido",
+          "Phyno",
+          "Flavour"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "4b07f423f70f",
+        "q": "Which artist goes by the nickname \"OBO\"?",
+        "correct": "Davido",
+        "wrong": [
+          "Wizkid",
+          "Olamide",
+          "Peruzzi"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "397a39616399",
+        "q": "P-Square are the twins Peter and which brother?",
+        "correct": "Paul",
+        "wrong": [
+          "Jude",
+          "James",
+          "Patrick"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "cfe2560c2d59",
+        "q": "Which Tems song was sampled on Future's \"Wait for U\"?",
+        "correct": "Higher",
+        "wrong": [
+          "Free Mind",
+          "Damages",
+          "Crazy Tings"
+        ],
+        "template": "hard-collabs",
+        "hard": true
+      },
+      {
+        "id": "c508f9695952",
+        "q": "Tems earned an Oscar nomination for co-writing which song?",
+        "correct": "Lift Me Up",
+        "wrong": [
+          "Born Again",
+          "Love Me JeJe",
+          "Me & U"
+        ],
+        "template": "hard-collabs",
+        "hard": true
+      },
+      {
+        "id": "bfece9487d85",
+        "q": "Which American singer featured on the remix of Rema's \"Calm Down\"?",
+        "correct": "Selena Gomez",
+        "wrong": [
+          "Chris Brown",
+          "Justin Bieber",
+          "Ariana Grande"
+        ],
+        "template": "hard-collabs",
+        "hard": true
+      },
+      {
+        "id": "077961ecec7a",
+        "q": "Which singer featured on the original version of Wizkid's \"Essence\"?",
+        "correct": "Tems",
+        "wrong": [
+          "Ayra Starr",
+          "Simi",
+          "Tiwa Savage"
+        ],
+        "template": "hard-collabs",
+        "hard": true
+      },
+      {
+        "id": "a6f993a2fc2f",
+        "q": "Which Wizkid album contains \"Essence\"?",
+        "correct": "Made in Lagos",
+        "wrong": [
+          "Sounds from the Other Side",
+          "More Love, Less Ego",
+          "Ayo"
+        ],
+        "template": "hard-collabs",
+        "hard": true
+      },
+      {
+        "id": "7b827a681fd6",
+        "q": "Wizkid featured on which 2016 Drake global hit?",
+        "correct": "One Dance",
+        "wrong": [
+          "Hotline Bling",
+          "Controlla",
+          "Passionfruit"
+        ],
+        "template": "hard-collabs",
+        "hard": true
+      },
+      {
+        "id": "9328c8d9f8aa",
+        "q": "Which UK rapper joined Drake on the remix of Wizkid's \"Ojuelegba\"?",
+        "correct": "Skepta",
+        "wrong": [
+          "Stormzy",
+          "Wretch 32",
+          "Tinie Tempah"
+        ],
+        "template": "hard-collabs",
+        "hard": true
+      },
+      {
+        "id": "ddb514e60633",
+        "q": "Who produced Davido's 2017 hit \"If\"?",
+        "correct": "Tekno",
+        "wrong": [
+          "Kiddominant",
+          "Sarz",
+          "Shizzi"
+        ],
+        "template": "hard-collabs",
+        "hard": true
+      },
+      {
+        "id": "20cf9c5d6398",
+        "q": "Which Burna Boy album won the Grammy for Best Global Music Album?",
+        "correct": "Twice as Tall",
+        "wrong": [
+          "African Giant",
+          "Love, Damini",
+          "Outside"
+        ],
+        "template": "hard-grammys",
+        "hard": true
+      },
+      {
+        "id": "a45ce73d91ad",
+        "q": "In which year did Burna Boy win his first Grammy?",
+        "correct": "2021",
+        "wrong": [
+          "2020",
+          "2022",
+          "2019"
+        ],
+        "template": "hard-grammys",
+        "hard": true
+      },
+      {
+        "id": "19b35d29affa",
+        "q": "Burna Boy's \"Ye\" appears on which album?",
+        "correct": "Outside",
+        "wrong": [
+          "African Giant",
+          "Twice as Tall",
+          "L.I.F.E"
+        ],
+        "template": "hard-grammys",
+        "hard": true
+      },
+      {
+        "id": "c432d0c7808a",
+        "q": "Which group were Eedris Abdulkareem, Tony Tetuila and Eddy Montana part of?",
+        "correct": "The Remedies",
+        "wrong": [
+          "Plantashun Boiz",
+          "Styl-Plus",
+          "Trybesmen"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "2b004e305d48",
+        "q": "With which group did 2Baba first find fame?",
+        "correct": "Plantashun Boiz",
+        "wrong": [
+          "The Remedies",
+          "Styl-Plus",
+          "Trybesmen"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "7552921dd96d",
+        "q": "Which drummer co-created Afrobeat alongside Fela Kuti?",
+        "correct": "Tony Allen",
+        "wrong": [
+          "Femi Kuti",
+          "Ginger Baker",
+          "Seun Kuti"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "aac15c5d8fd4",
+        "q": "King Sunny Adé is the best-known star of which genre?",
+        "correct": "Jùjú",
+        "wrong": [
+          "Fuji",
+          "Highlife",
+          "Apala"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "e0e37c8d67d2",
+        "q": "Sikiru Ayinde Barrister is credited with creating which genre?",
+        "correct": "Fuji",
+        "wrong": [
+          "Jùjú",
+          "Apala",
+          "Waka"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "b52e8ef10889",
+        "q": "Haruna Ishola was a leading star of which genre?",
+        "correct": "Apala",
+        "wrong": [
+          "Fuji",
+          "Jùjú",
+          "Sakara"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "0fcfb7061a6b",
+        "q": "Who sang the 1976 highlife classic \"Sweet Mother\"?",
+        "correct": "Prince Nico Mbarga",
+        "wrong": [
+          "Oliver De Coque",
+          "Osita Osadebe",
+          "Victor Uwaifo"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "1138ba838afb",
+        "q": "Which highlife great was known as \"Cardinal\"?",
+        "correct": "Rex Lawson",
+        "wrong": [
+          "Victor Olaiya",
+          "Osita Osadebe",
+          "Celestine Ukwu"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "d02db077c5f3",
+        "q": "Who was called \"the Evil Genius of Highlife\"?",
+        "correct": "Victor Olaiya",
+        "wrong": [
+          "Rex Lawson",
+          "Bobby Benson",
+          "Victor Uwaifo"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "83eb5ccb7574",
+        "q": "Which singer is Femi Kuti's son?",
+        "correct": "Made Kuti",
+        "wrong": [
+          "Seun Kuti",
+          "Fela Kuti",
+          "Yeni Kuti"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "b199e47a8527",
+        "q": "Which artist released the 2016 hit \"Wo!!\"?",
+        "correct": "Olamide",
+        "wrong": [
+          "Phyno",
+          "Lil Kesh",
+          "Reminisce"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "70e05ae0b8f4",
+        "q": "Which artist released \"Rush\" in 2022?",
+        "correct": "Ayra Starr",
+        "wrong": [
+          "Tems",
+          "Simi",
+          "Yemi Alade"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "33c713c63ea6",
+        "q": "What was Yemi Alade's 2014 breakout hit?",
+        "correct": "Johnny",
+        "wrong": [
+          "Kissing",
+          "Ferrari",
+          "Shekere"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "3f310496232f",
+        "q": "Which artist sang \"Ojuelegba\" (2014)?",
+        "correct": "Wizkid",
+        "wrong": [
+          "Olamide",
+          "Davido",
+          "Phyno"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "c54b05c97c27",
+        "q": "What was Adekunle Gold's 2015 breakout single?",
+        "correct": "Sade",
+        "wrong": [
+          "Orente",
+          "Pick Up",
+          "Ire"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "275267fb0c12",
+        "q": "Which CKay song went viral on TikTok in 2021?",
+        "correct": "Love Nwantiti",
+        "wrong": [
+          "Emiliana",
+          "Felony",
+          "Watawi"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "016513c14ba5",
+        "q": "Which artist released \"Joro\" in 2019?",
+        "correct": "Wizkid",
+        "wrong": [
+          "Davido",
+          "Burna Boy",
+          "Rema"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "c9cc454b0e09",
+        "q": "Which artist released \"Dumebi\" in 2019?",
+        "correct": "Rema",
+        "wrong": [
+          "Fireboy DML",
+          "Joeboy",
+          "Oxlade"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "2068f6fc5bc1",
+        "q": "Which artist sang \"African Queen\" (2004)?",
+        "correct": "2face Idibia",
+        "wrong": [
+          "D'banj",
+          "P-Square",
+          "Eedris Abdulkareem"
+        ],
+        "template": "hard-hits",
+        "hard": true
+      },
+      {
+        "id": "50deecddbb72",
+        "q": "In 2019, Tiwa Savage signed a global deal with which music company?",
+        "correct": "Universal Music Group",
+        "wrong": [
+          "Def Jam",
+          "Sony Music",
+          "Atlantic Records"
+        ],
+        "template": "hard-hits",
+        "hard": true
       }
     ],
     "nigerian-entertainment": [
@@ -281644,6 +283612,666 @@
           "MTV Base Naija Hit List"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "703203f62276",
+        "q": "Who won the first season of Big Brother Nigeria in 2006?",
+        "correct": "Katung Aduwak",
+        "wrong": [
+          "Efe Ejeba",
+          "Miracle Ikechukwu",
+          "Laycon"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "1d5fd04ea10b",
+        "q": "Who won BBNaija season 2, \"See Gobbe\" (2017)?",
+        "correct": "Efe",
+        "wrong": [
+          "Bisola",
+          "Tboss",
+          "Marvis"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "09f26529e052",
+        "q": "Who won BBNaija \"Double Wahala\" (2018)?",
+        "correct": "Miracle",
+        "wrong": [
+          "Cee-C",
+          "Alex",
+          "Tobi"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "8d9aa1cdc39e",
+        "q": "Who won BBNaija \"Pepper Dem\" (2019)?",
+        "correct": "Mercy Eke",
+        "wrong": [
+          "Mike Edwards",
+          "Tacha",
+          "Frodd"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "85c93b79702d",
+        "q": "Who won BBNaija \"Lockdown\" (2020)?",
+        "correct": "Laycon",
+        "wrong": [
+          "Dorathy",
+          "Nengi",
+          "Neo"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "2e7009e23131",
+        "q": "Who won BBNaija \"Shine Ya Eye\" (2021)?",
+        "correct": "Whitemoney",
+        "wrong": [
+          "Liquorose",
+          "Pere",
+          "Angel"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "67c17035e634",
+        "q": "Who won BBNaija \"Level Up\" (2022)?",
+        "correct": "Phyna",
+        "wrong": [
+          "Bella",
+          "Groovy",
+          "Sheggz"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "00954ef01b62",
+        "q": "Who won BBNaija \"All Stars\" (2023)?",
+        "correct": "Ilebaye",
+        "wrong": [
+          "Mercy Eke",
+          "Cee-C",
+          "Whitemoney"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "4a9f73f22c31",
+        "q": "Who won BBNaija \"No Loose Guard\" (2024)?",
+        "correct": "Kellyrae",
+        "wrong": [
+          "Wanni",
+          "Handi",
+          "Onyeka"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "d2518e10f3d1",
+        "q": "Who has hosted Big Brother Naija since 2017?",
+        "correct": "Ebuka Obi-Uchendu",
+        "wrong": [
+          "IK Osakioduwa",
+          "Toke Makinwa",
+          "Denrele Edun"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "68fc71e993bb",
+        "q": "Who was the first woman to win Big Brother Naija?",
+        "correct": "Mercy Eke",
+        "wrong": [
+          "Phyna",
+          "Ilebaye",
+          "Cee-C"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "10a863571b50",
+        "q": "In which year did Big Brother Naija return after a long break since 2006?",
+        "correct": "2017",
+        "wrong": [
+          "2016",
+          "2018",
+          "2015"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "424a0f848bba",
+        "q": "Before his BBNaija win, Laycon was best known as a what?",
+        "correct": "Rapper",
+        "wrong": [
+          "Actor",
+          "Comedian",
+          "Chef"
+        ],
+        "template": "hard-bbnaija",
+        "hard": true
+      },
+      {
+        "id": "a64a1a6438d5",
+        "q": "What is the real name of the comedian Basketmouth?",
+        "correct": "Bright Okpocha",
+        "wrong": [
+          "Ayo Makun",
+          "Atunyota Akpobome",
+          "Francis Agoda"
+        ],
+        "template": "hard-comedy",
+        "hard": true
+      },
+      {
+        "id": "ad7d61b8b08b",
+        "q": "Which comedian is widely called the father of Nigerian stand-up comedy?",
+        "correct": "Ali Baba",
+        "wrong": [
+          "Basketmouth",
+          "Gordons",
+          "Okey Bakassi"
+        ],
+        "template": "hard-comedy",
+        "hard": true
+      },
+      {
+        "id": "4bbc3f795255",
+        "q": "What is the name of Bright Okpocha's long-running stand-up show?",
+        "correct": "Basketmouth Uncensored",
+        "wrong": [
+          "AY Live",
+          "Man on Fire",
+          "Night of a Thousand Laughs"
+        ],
+        "template": "hard-comedy",
+        "hard": true
+      },
+      {
+        "id": "09b82a5690d4",
+        "q": "Who created the comedy show \"Night of a Thousand Laughs\"?",
+        "correct": "Opa Williams",
+        "wrong": [
+          "Ali Baba",
+          "Ayo Makun",
+          "Julius Agwu"
+        ],
+        "template": "hard-comedy",
+        "hard": true
+      },
+      {
+        "id": "9aa2c1f4905a",
+        "q": "Which skit maker plays the character \"Mr Macaroni\"?",
+        "correct": "Debo Adedayo",
+        "wrong": [
+          "Bright Okpocha",
+          "Kie Kie",
+          "Sabinus"
+        ],
+        "template": "hard-comedy",
+        "hard": true
+      },
+      {
+        "id": "2d50b4529487",
+        "q": "Which skit maker plays the strict mother \"Aunty Ramota\"?",
+        "correct": "Taaooma",
+        "wrong": [
+          "Kie Kie",
+          "Maraji",
+          "Ashmusy"
+        ],
+        "template": "hard-comedy",
+        "hard": true
+      },
+      {
+        "id": "8801cf326a6a",
+        "q": "Which comic actor was known as \"Baba Sala\"?",
+        "correct": "Moses Olaiya",
+        "wrong": [
+          "Adeyemi Afolayan",
+          "Jimoh Aliu",
+          "Babatunde Omidina"
+        ],
+        "template": "hard-comedy",
+        "hard": true
+      },
+      {
+        "id": "672fcef74f88",
+        "q": "In which year was Omotola Jalade-Ekeinde named in TIME's 100 most influential people?",
+        "correct": "2013",
+        "wrong": [
+          "2011",
+          "2015",
+          "2009"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "89abbd161e64",
+        "q": "Which actor was famous as \"Mr Ibu\"?",
+        "correct": "John Okafor",
+        "wrong": [
+          "Osita Iheme",
+          "Chinedu Ikedieze",
+          "Nkem Owoh"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "979f71ac6243",
+        "q": "In which year did Mr Ibu actor John Okafor die?",
+        "correct": "2024",
+        "wrong": [
+          "2023",
+          "2022",
+          "2021"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "6baa06535c01",
+        "q": "Which actress created and plays the character Jenifa?",
+        "correct": "Funke Akindele",
+        "wrong": [
+          "Toyin Abraham",
+          "Mercy Johnson",
+          "Bimbo Thomas"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "cfb3ba37746c",
+        "q": "Which veteran actor is Joke Silva's husband?",
+        "correct": "Olu Jacobs",
+        "wrong": [
+          "Pete Edochie",
+          "Richard Mofe-Damijo",
+          "Kanayo O. Kanayo"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "cf3867b75911",
+        "q": "Who played Okonkwo in the 1987 TV adaptation of Things Fall Apart?",
+        "correct": "Pete Edochie",
+        "wrong": [
+          "Nkem Owoh",
+          "Olu Jacobs",
+          "Sam Loco Efe"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "c94350a337bb",
+        "q": "Who directed Living in Bondage: Breaking Free (2019)?",
+        "correct": "Ramsey Nouah",
+        "wrong": [
+          "Kenneth Okonkwo",
+          "Kunle Afolayan",
+          "Charles Okpaleke"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "10cc30e4fc2b",
+        "q": "Which actress is popularly called \"Mama G\"?",
+        "correct": "Patience Ozokwor",
+        "wrong": [
+          "Ngozi Ezeonu",
+          "Rita Edochie",
+          "Clarion Chukwura"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "41d32c6e2626",
+        "q": "Which actress played Dr Ameyo Adadevoh in the Ebola drama 93 Days?",
+        "correct": "Bimbo Akintola",
+        "wrong": [
+          "Joke Silva",
+          "Kate Henshaw",
+          "Omotola Jalade-Ekeinde"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "79059f17132f",
+        "q": "Which actress played Moremi in the Netflix film Citation?",
+        "correct": "Temi Otedola",
+        "wrong": [
+          "DJ Cuppy",
+          "Bisola Aiyeola",
+          "Ini Dima-Okojie"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "152b6ab62e2c",
+        "q": "Which Kunle Afolayan film features the mythical Akala bird?",
+        "correct": "Anikulapo",
+        "wrong": [
+          "Citation",
+          "Mokalik",
+          "October 1"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "8291e2ff9ce6",
+        "q": "Which pioneering filmmaker was known by the nickname \"Ade Love\"?",
+        "correct": "Adeyemi Afolayan",
+        "wrong": [
+          "Hubert Ogunde",
+          "Moses Olaiya",
+          "Duro Ladipo"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "d4922573401d",
+        "q": "Who is widely regarded as the father of Nigerian theatre?",
+        "correct": "Hubert Ogunde",
+        "wrong": [
+          "Duro Ladipo",
+          "Wole Soyinka",
+          "Ola Rotimi"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "34557018f265",
+        "q": "Which Yoruba film actress is known as \"Iya Awero\"?",
+        "correct": "Lanre Hassan",
+        "wrong": [
+          "Idowu Phillips",
+          "Bimbo Oshin",
+          "Toyin Abraham"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "8e61c380298f",
+        "q": "Which actress is known by the screen name \"Mama Rainbow\"?",
+        "correct": "Idowu Phillips",
+        "wrong": [
+          "Lanre Hassan",
+          "Toyin Abraham",
+          "Ronke Oshodi-Oke"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "74aa62bdc83e",
+        "q": "In which year was the Living in Bondage sequel \"Breaking Free\" released?",
+        "correct": "2019",
+        "wrong": [
+          "2018",
+          "2020",
+          "2017"
+        ],
+        "template": "hard-nollywood",
+        "hard": true
+      },
+      {
+        "id": "488e0800014a",
+        "q": "Which station, launched in Ibadan in 1959, was the first TV station in Africa?",
+        "correct": "WNTV",
+        "wrong": [
+          "NTA",
+          "ETV",
+          "RKTV"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "6d9898422ed7",
+        "q": "Which classic NTA programme told folktales to children?",
+        "correct": "Tales by Moonlight",
+        "wrong": [
+          "Super Story",
+          "Village Headmaster",
+          "Cock Crow at Dawn"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "3cac7d9b13cf",
+        "q": "On which streaming platform was King of Boys: The Return of the King released?",
+        "correct": "Netflix",
+        "wrong": [
+          "Amazon Prime",
+          "Showmax",
+          "iROKOtv"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "d53d6b6b47f9",
+        "q": "Which streaming service did Jason Njoku found?",
+        "correct": "iROKOtv",
+        "wrong": [
+          "Showmax",
+          "EbonyLife ON",
+          "Africa Magic"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "d3ff25a779cc",
+        "q": "Who founded EbonyLife TV?",
+        "correct": "Mo Abudu",
+        "wrong": [
+          "Jason Njoku",
+          "Funke Akindele",
+          "Linda Ikeji"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "40e8d651d031",
+        "q": "Which 2022 drama was billed as the first Nigerian Netflix original series?",
+        "correct": "Blood Sisters",
+        "wrong": [
+          "Shanty Town",
+          "Far From Home",
+          "Castle & Castle"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "f00204efd5b6",
+        "q": "Which platform produced the web series \"Skinny Girl in Transit\"?",
+        "correct": "NdaniTV",
+        "wrong": [
+          "EbonyLife TV",
+          "iROKOtv",
+          "Accelerate TV"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "b60bce9987cc",
+        "q": "Which bank is behind the NdaniTV platform?",
+        "correct": "GTBank",
+        "wrong": [
+          "Access Bank",
+          "Zenith Bank",
+          "First Bank"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "683c6a6a3bb9",
+        "q": "Which long-running soap is set in the Nigerian film industry?",
+        "correct": "Tinsel",
+        "wrong": [
+          "Super Story",
+          "Hush",
+          "Battleground"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "9ac6de8dd024",
+        "q": "Which game show did Frank Edoho famously host in Nigeria?",
+        "correct": "Who Wants to Be a Millionaire",
+        "wrong": [
+          "The Weakest Link",
+          "Are You Smarter Than a 5th Grader",
+          "Deal or No Deal"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "0fb08cd25f74",
+        "q": "Which reality show launched the career of singer Iyanya?",
+        "correct": "Project Fame West Africa",
+        "wrong": [
+          "Nigerian Idol",
+          "The Voice Nigeria",
+          "Glo X-Factor"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "0fce9d60a219",
+        "q": "Which beer brand sponsored the survival reality show \"Ultimate Search\"?",
+        "correct": "Gulder",
+        "wrong": [
+          "Star",
+          "Harp",
+          "Trophy"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "3219ebf6f1e1",
+        "q": "Which TV talk show was hosted by Funmi Iyanda?",
+        "correct": "New Dawn",
+        "wrong": [
+          "Moments with Mo",
+          "Rubbin' Minds",
+          "The Spot"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "953aebcc702c",
+        "q": "Which Channels TV talk show does Ebuka Obi-Uchendu host?",
+        "correct": "Rubbin' Minds",
+        "wrong": [
+          "New Dawn",
+          "Moments with Mo",
+          "The Spot"
+        ],
+        "template": "hard-tv",
+        "hard": true
+      },
+      {
+        "id": "5d0d528e2534",
+        "q": "Which actor plays \"Saka\" in the famous MTN adverts?",
+        "correct": "Hafiz Oyetoro",
+        "wrong": [
+          "Babatunde Omidina",
+          "Nkem Owoh",
+          "Ime Bishop Umoh"
+        ],
+        "template": "hard-comedy",
+        "hard": true
+      },
+      {
+        "id": "9e1348218309",
+        "q": "Who founded the Africa Movie Academy Awards (AMAA)?",
+        "correct": "Peace Anyiam-Osigwe",
+        "wrong": [
+          "Mo Abudu",
+          "Jason Njoku",
+          "Ego Boyo"
+        ],
+        "template": "hard-media",
+        "hard": true
+      },
+      {
+        "id": "03f112f90c20",
+        "q": "Who founded the media platform BellaNaija?",
+        "correct": "Uche Pedro",
+        "wrong": [
+          "Linda Ikeji",
+          "Mo Abudu",
+          "Stella Dimoko Korkus"
+        ],
+        "template": "hard-media",
+        "hard": true
+      },
+      {
+        "id": "1923ffa6446e",
+        "q": "Which blogger started her famous Nigerian celebrity blog in 2006?",
+        "correct": "Linda Ikeji",
+        "wrong": [
+          "Uche Pedro",
+          "Stella Dimoko Korkus",
+          "Toke Makinwa"
+        ],
+        "template": "hard-media",
+        "hard": true
+      },
+      {
+        "id": "0218d435eb07",
+        "q": "What is the name of Toke Makinwa's popular vlog?",
+        "correct": "Toke Moments",
+        "wrong": [
+          "Toke Talks",
+          "Toke Tuesdays",
+          "Toke Diaries"
+        ],
+        "template": "hard-media",
+        "hard": true
       }
     ],
     "nigerian-history": [
