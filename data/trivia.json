@@ -142361,6 +142361,618 @@
           "Blue crab"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "929d2cb14fa2",
+        "q": "Which bird is the fastest animal in a dive?",
+        "correct": "Peregrine falcon",
+        "wrong": [
+          "Golden eagle",
+          "Common swift",
+          "Albatross"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "fe8152d6e16e",
+        "q": "Which bird has the largest wingspan?",
+        "correct": "Wandering albatross",
+        "wrong": [
+          "Andean condor",
+          "Marabou stork",
+          "Great white pelican"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "aab790c64afb",
+        "q": "Which animal has the longest pregnancy?",
+        "correct": "African elephant",
+        "wrong": [
+          "Blue whale",
+          "Giraffe",
+          "Rhinoceros"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "3250a629104b",
+        "q": "What is the largest living species of shark?",
+        "correct": "Whale shark",
+        "wrong": [
+          "Great white shark",
+          "Basking shark",
+          "Tiger shark"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "f233e4972611",
+        "q": "Which is the largest living species of big cat?",
+        "correct": "Tiger",
+        "wrong": [
+          "Lion",
+          "Jaguar",
+          "Leopard"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "376861aec7a1",
+        "q": "Which animal is often said to have the strongest bite of any living animal?",
+        "correct": "Saltwater crocodile",
+        "wrong": [
+          "Hippopotamus",
+          "Great white shark",
+          "Jaguar"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "6b545251dc97",
+        "q": "What is the longest venomous snake in the world?",
+        "correct": "King cobra",
+        "wrong": [
+          "Black mamba",
+          "Inland taipan",
+          "Gaboon viper"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "d31a88861801",
+        "q": "Which snake has the longest fangs?",
+        "correct": "Gaboon viper",
+        "wrong": [
+          "King cobra",
+          "Black mamba",
+          "Rattlesnake"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "471570920b1c",
+        "q": "What is the largest frog in the world?",
+        "correct": "Goliath frog",
+        "wrong": [
+          "Hairy frog",
+          "African bullfrog",
+          "Lake Titicaca frog"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "83474bf89cdc",
+        "q": "Which bird lays the largest eggs?",
+        "correct": "Ostrich",
+        "wrong": [
+          "Emu",
+          "Albatross",
+          "Cassowary"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "1cc71d0e649f",
+        "q": "Which is the slowest mammal in the world?",
+        "correct": "Three-toed sloth",
+        "wrong": [
+          "Koala",
+          "Slow loris",
+          "Hedgehog"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "816c977be90f",
+        "q": "Which mammal has the densest fur?",
+        "correct": "Sea otter",
+        "wrong": [
+          "Polar bear",
+          "Arctic fox",
+          "Chinchilla"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "a408ab8a2459",
+        "q": "Which animal has the highest blood pressure?",
+        "correct": "Giraffe",
+        "wrong": [
+          "Elephant",
+          "Horse",
+          "Rhinoceros"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "d9e8479cad56",
+        "q": "Which mammal is the most trafficked in the world?",
+        "correct": "Pangolin",
+        "wrong": [
+          "Elephant",
+          "Rhinoceros",
+          "Tiger"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "703df34f485e",
+        "q": "Which of these mammals lays eggs?",
+        "correct": "Echidna",
+        "wrong": [
+          "Opossum",
+          "Pangolin",
+          "Armadillo"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "37394eebc414",
+        "q": "What colour is a polar bear's skin?",
+        "correct": "Black",
+        "wrong": [
+          "White",
+          "Pink",
+          "Grey"
+        ],
+        "template": "hard-anatomy",
+        "hard": true
+      },
+      {
+        "id": "64b3c538b780",
+        "q": "Which big cat cannot fully retract its claws?",
+        "correct": "Cheetah",
+        "wrong": [
+          "Leopard",
+          "Jaguar",
+          "Lion"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "4514cf63a897",
+        "q": "On which island are lemurs found in the wild?",
+        "correct": "Madagascar",
+        "wrong": [
+          "Borneo",
+          "Sri Lanka",
+          "Mauritius"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "d0a25bc82a9e",
+        "q": "How many humps does a dromedary camel have?",
+        "correct": "One",
+        "wrong": [
+          "Two",
+          "Three",
+          "None"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "ef7a3b51bc02",
+        "q": "Which bird can fly backwards?",
+        "correct": "Hummingbird",
+        "wrong": [
+          "Kingfisher",
+          "Swift",
+          "Sparrow"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "b1031ea0736e",
+        "q": "Which animal has fingerprints almost identical to human ones?",
+        "correct": "Koala",
+        "wrong": [
+          "Chimpanzee",
+          "Gorilla",
+          "Orangutan"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "47bfb1f094f2",
+        "q": "What is a pangolin's body covered in?",
+        "correct": "Scales",
+        "wrong": [
+          "Spines",
+          "Shell plates",
+          "Quills"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "93ffbffc8787",
+        "q": "How many eyes do most spiders have?",
+        "correct": "Eight",
+        "wrong": [
+          "Six",
+          "Four",
+          "Two"
+        ],
+        "template": "hard-anatomy",
+        "hard": true
+      },
+      {
+        "id": "f92d9fcf27f7",
+        "q": "Which whale has a long spiral tusk?",
+        "correct": "Narwhal",
+        "wrong": [
+          "Beluga",
+          "Orca",
+          "Sperm whale"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "acfe1c9c36a5",
+        "q": "The orca is the largest member of which family?",
+        "correct": "Dolphins",
+        "wrong": [
+          "Sharks",
+          "Porpoises",
+          "Seals"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "95745513311e",
+        "q": "What do blue whales mainly eat?",
+        "correct": "Krill",
+        "wrong": [
+          "Squid",
+          "Seals",
+          "Sardines"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "561b66aced1a",
+        "q": "Which African snake gets its name from the colour inside its mouth?",
+        "correct": "Black mamba",
+        "wrong": [
+          "Green mamba",
+          "Boomslang",
+          "Puff adder"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "501f3017afd8",
+        "q": "Which is the largest living amphibian?",
+        "correct": "Chinese giant salamander",
+        "wrong": [
+          "Japanese giant salamander",
+          "Goliath frog",
+          "Mexican axolotl"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "b2e34eb4ec62",
+        "q": "Which continent has no native reptiles?",
+        "correct": "Antarctica",
+        "wrong": [
+          "Europe",
+          "Australia",
+          "South America"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "0c4c10017657",
+        "q": "Roughly how many hearts does an earthworm have?",
+        "correct": "Five",
+        "wrong": [
+          "One",
+          "Two",
+          "Ten"
+        ],
+        "template": "hard-anatomy",
+        "hard": true
+      },
+      {
+        "id": "aeba4045e691",
+        "q": "Which animal is the only mammal capable of true flight?",
+        "correct": "Bat",
+        "wrong": [
+          "Flying squirrel",
+          "Sugar glider",
+          "Colugo"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "a2dd7e9a1dc5",
+        "q": "What is a group of whales called?",
+        "correct": "A pod",
+        "wrong": [
+          "A school",
+          "A herd",
+          "A colony"
+        ],
+        "template": "hard-names",
+        "hard": true
+      },
+      {
+        "id": "899e3e4c9b12",
+        "q": "What is a male donkey called?",
+        "correct": "Jack",
+        "wrong": [
+          "Jenny",
+          "Mule",
+          "Hinny"
+        ],
+        "template": "hard-names",
+        "hard": true
+      },
+      {
+        "id": "f8547316b8f3",
+        "q": "What is the offspring of a male donkey and a female horse?",
+        "correct": "Mule",
+        "wrong": [
+          "Hinny",
+          "Jennet",
+          "Zebroid"
+        ],
+        "template": "hard-names",
+        "hard": true
+      },
+      {
+        "id": "f40602104ae6",
+        "q": "What is a female fox called?",
+        "correct": "Vixen",
+        "wrong": [
+          "Doe",
+          "Sow",
+          "Jenny"
+        ],
+        "template": "hard-names",
+        "hard": true
+      },
+      {
+        "id": "5a78de0730c0",
+        "q": "What is a baby goat called?",
+        "correct": "Kid",
+        "wrong": [
+          "Calf",
+          "Lamb",
+          "Foal"
+        ],
+        "template": "hard-names",
+        "hard": true
+      },
+      {
+        "id": "c38f139116f4",
+        "q": "What is a baby swan called?",
+        "correct": "Cygnet",
+        "wrong": [
+          "Gosling",
+          "Duckling",
+          "Eaglet"
+        ],
+        "template": "hard-names",
+        "hard": true
+      },
+      {
+        "id": "eb53f6e28c1b",
+        "q": "What is a baby owl called?",
+        "correct": "Owlet",
+        "wrong": [
+          "Cygnet",
+          "Gosling",
+          "Eaglet"
+        ],
+        "template": "hard-names",
+        "hard": true
+      },
+      {
+        "id": "a6461ff4d48f",
+        "q": "As of 2023, which country is home to most of the world's wild tigers?",
+        "correct": "India",
+        "wrong": [
+          "Russia",
+          "Indonesia",
+          "Nepal"
+        ],
+        "template": "hard-habitats",
+        "hard": true
+      },
+      {
+        "id": "3f544dc16a7b",
+        "q": "Mountain gorillas live in Uganda, Rwanda and which other country?",
+        "correct": "DR Congo",
+        "wrong": [
+          "Kenya",
+          "Tanzania",
+          "Burundi"
+        ],
+        "template": "hard-habitats",
+        "hard": true
+      },
+      {
+        "id": "853b2137cdaa",
+        "q": "Which ape is found only on the islands of Borneo and Sumatra?",
+        "correct": "Orangutan",
+        "wrong": [
+          "Bonobo",
+          "Gibbon",
+          "Gorilla"
+        ],
+        "template": "hard-habitats",
+        "hard": true
+      },
+      {
+        "id": "4cf1b227fa32",
+        "q": "In which country is the only wild population of bonobos found?",
+        "correct": "DR Congo",
+        "wrong": [
+          "Cameroon",
+          "Gabon",
+          "Uganda"
+        ],
+        "template": "hard-habitats",
+        "hard": true
+      },
+      {
+        "id": "98248cb0e9c5",
+        "q": "On which Indonesian islands does the Komodo dragon live?",
+        "correct": "Lesser Sunda Islands",
+        "wrong": [
+          "Maluku Islands",
+          "Riau Islands",
+          "Mentawai Islands"
+        ],
+        "template": "hard-habitats",
+        "hard": true
+      },
+      {
+        "id": "405b6f1ff356",
+        "q": "Which big cat lives in the high mountains of Central Asia?",
+        "correct": "Snow leopard",
+        "wrong": [
+          "Clouded leopard",
+          "Lynx",
+          "Caracal"
+        ],
+        "template": "hard-habitats",
+        "hard": true
+      },
+      {
+        "id": "cbeafa944f3e",
+        "q": "Which animal, found only in Australia, sleeps around 20 hours a day?",
+        "correct": "Koala",
+        "wrong": [
+          "Wombat",
+          "Kangaroo",
+          "Platypus"
+        ],
+        "template": "hard-habitats",
+        "hard": true
+      },
+      {
+        "id": "eaeb110b42d5",
+        "q": "What is the largest species of penguin?",
+        "correct": "Emperor penguin",
+        "wrong": [
+          "King penguin",
+          "Gentoo penguin",
+          "Adélie penguin"
+        ],
+        "template": "hard-anatomy",
+        "hard": true
+      },
+      {
+        "id": "caa27176bf5a",
+        "q": "Which insect causes the most human deaths?",
+        "correct": "Mosquito",
+        "wrong": [
+          "Tsetse fly",
+          "Housefly",
+          "Kissing bug"
+        ],
+        "template": "hard-facts",
+        "hard": true
+      },
+      {
+        "id": "fc29ef8835db",
+        "q": "What is the largest living lizard?",
+        "correct": "Komodo dragon",
+        "wrong": [
+          "Water monitor",
+          "Green iguana",
+          "Nile monitor"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "b3d04843292e",
+        "q": "What kind of animal is the coelacanth, once thought extinct?",
+        "correct": "A fish",
+        "wrong": [
+          "A reptile",
+          "An amphibian",
+          "A mammal"
+        ],
+        "template": "hard-anatomy",
+        "hard": true
+      },
+      {
+        "id": "ec6b9af47432",
+        "q": "Which marsupial is native to the Americas?",
+        "correct": "Opossum",
+        "wrong": [
+          "Wombat",
+          "Kangaroo",
+          "Koala"
+        ],
+        "template": "hard-habitats",
+        "hard": true
+      },
+      {
+        "id": "6a72f57ba421",
+        "q": "How many legs does a lobster have?",
+        "correct": "Ten",
+        "wrong": [
+          "Eight",
+          "Six",
+          "Twelve"
+        ],
+        "template": "hard-anatomy",
+        "hard": true
       }
     ],
     "videogames": [
@@ -170117,6 +170729,606 @@
           "Baldr"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "eb39e09cd90a",
+        "q": "Who ferried the souls of the dead across the river Styx?",
+        "correct": "Charon",
+        "wrong": [
+          "Hermes",
+          "Thanatos",
+          "Cerberus"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "0a95561be62e",
+        "q": "How many heads is Cerberus usually said to have?",
+        "correct": "Three",
+        "wrong": [
+          "Two",
+          "Five",
+          "Nine"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "8093cae83770",
+        "q": "Who was the mother of Achilles?",
+        "correct": "Thetis",
+        "wrong": [
+          "Hera",
+          "Athena",
+          "Leda"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "f1f96ab93eac",
+        "q": "Who killed Achilles with an arrow?",
+        "correct": "Paris",
+        "wrong": [
+          "Hector",
+          "Agamemnon",
+          "Odysseus"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "fcbb48a47827",
+        "q": "Who gave Theseus the thread to find his way out of the labyrinth?",
+        "correct": "Ariadne",
+        "wrong": [
+          "Phaedra",
+          "Medea",
+          "Andromeda"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "280f30600b6b",
+        "q": "Who built the labyrinth of Crete?",
+        "correct": "Daedalus",
+        "wrong": [
+          "Icarus",
+          "Minos",
+          "Hephaestus"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "4f433a629f9c",
+        "q": "What was the name of Jason's ship?",
+        "correct": "The Argo",
+        "wrong": [
+          "The Arcadia",
+          "The Hermes",
+          "The Pegasus"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "76386b87cf9d",
+        "q": "How many labours did Heracles perform?",
+        "correct": "Twelve",
+        "wrong": [
+          "Ten",
+          "Seven",
+          "Nine"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "6347c7e16f59",
+        "q": "After the Trojan War, how many years did it take Odysseus to get home?",
+        "correct": "Ten",
+        "wrong": [
+          "Seven",
+          "Twenty",
+          "Five"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "216623ba09cd",
+        "q": "Who was Odysseus's faithful wife?",
+        "correct": "Penelope",
+        "wrong": [
+          "Helen",
+          "Andromache",
+          "Circe"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "7e318e58ea85",
+        "q": "Which one-eyed giant did Odysseus blind?",
+        "correct": "Polyphemus",
+        "wrong": [
+          "Argus",
+          "Talos",
+          "Antaeus"
+        ],
+        "template": "hard-greek-heroes",
+        "hard": true
+      },
+      {
+        "id": "c3faee47053d",
+        "q": "What was left inside Pandora's jar after the evils escaped?",
+        "correct": "Hope",
+        "wrong": [
+          "Fear",
+          "Greed",
+          "Love"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "19985572c069",
+        "q": "Which bird ate Prometheus's liver every day?",
+        "correct": "An eagle",
+        "wrong": [
+          "A vulture",
+          "A raven",
+          "A hawk"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "40fe1e49a2e0",
+        "q": "Which Titan was condemned to hold up the sky?",
+        "correct": "Atlas",
+        "wrong": [
+          "Cronus",
+          "Hyperion",
+          "Oceanus"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "a5b06b07d496",
+        "q": "Who was the father of Zeus?",
+        "correct": "Cronus",
+        "wrong": [
+          "Uranus",
+          "Atlas",
+          "Hyperion"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "d6293baa9a21",
+        "q": "Which goddess was born from the sea foam?",
+        "correct": "Aphrodite",
+        "wrong": [
+          "Athena",
+          "Hera",
+          "Persephone"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "b844824667aa",
+        "q": "Eating the seeds of which fruit bound Persephone to the underworld?",
+        "correct": "Pomegranate",
+        "wrong": [
+          "Apple",
+          "Fig",
+          "Grape"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "ec772a09d655",
+        "q": "Who was the Greek goddess of victory?",
+        "correct": "Nike",
+        "wrong": [
+          "Nemesis",
+          "Tyche",
+          "Eris"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "3fcd3b69df2e",
+        "q": "Which goddess threw the golden apple marked \"to the fairest\"?",
+        "correct": "Eris",
+        "wrong": [
+          "Nemesis",
+          "Hera",
+          "Athena"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "39388bb6792b",
+        "q": "What is the Roman name for Hephaestus?",
+        "correct": "Vulcan",
+        "wrong": [
+          "Mars",
+          "Neptune",
+          "Saturn"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "9d279225c14c",
+        "q": "What is the Roman name for Artemis?",
+        "correct": "Diana",
+        "wrong": [
+          "Minerva",
+          "Juno",
+          "Vesta"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "faa491060a2f",
+        "q": "What is the Roman name for Athena?",
+        "correct": "Minerva",
+        "wrong": [
+          "Diana",
+          "Juno",
+          "Ceres"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "be52b11cf13a",
+        "q": "What is the Roman name for Hermes?",
+        "correct": "Mercury",
+        "wrong": [
+          "Mars",
+          "Vulcan",
+          "Janus"
+        ],
+        "template": "hard-greek-gods",
+        "hard": true
+      },
+      {
+        "id": "def84f854593",
+        "q": "Which giant wolf kills Odin at Ragnarök?",
+        "correct": "Fenrir",
+        "wrong": [
+          "Sköll",
+          "Garmr",
+          "Hati"
+        ],
+        "template": "hard-norse",
+        "hard": true
+      },
+      {
+        "id": "165a267f8b8e",
+        "q": "What is the name of the world tree that links the nine realms?",
+        "correct": "Yggdrasil",
+        "wrong": [
+          "Bifröst",
+          "Ginnungagap",
+          "Asgard"
+        ],
+        "template": "hard-norse",
+        "hard": true
+      },
+      {
+        "id": "085eee6ad96a",
+        "q": "What is the name of the rainbow bridge to Asgard?",
+        "correct": "Bifröst",
+        "wrong": [
+          "Yggdrasil",
+          "Valhalla",
+          "Midgard"
+        ],
+        "template": "hard-norse",
+        "hard": true
+      },
+      {
+        "id": "6824d396313a",
+        "q": "Which child of Loki is the serpent that encircles Midgard?",
+        "correct": "Jörmungandr",
+        "wrong": [
+          "Fenrir",
+          "Níðhöggr",
+          "Hel"
+        ],
+        "template": "hard-norse",
+        "hard": true
+      },
+      {
+        "id": "7e5a86b9075b",
+        "q": "To which hall does Odin bring half of the warriors slain in battle?",
+        "correct": "Valhalla",
+        "wrong": [
+          "Fólkvangr",
+          "Helheim",
+          "Gladsheim"
+        ],
+        "template": "hard-norse",
+        "hard": true
+      },
+      {
+        "id": "b2ea900f0667",
+        "q": "Which god was killed by a dart of mistletoe?",
+        "correct": "Baldr",
+        "wrong": [
+          "Höðr",
+          "Tyr",
+          "Freyr"
+        ],
+        "template": "hard-norse",
+        "hard": true
+      },
+      {
+        "id": "6169f4dbf411",
+        "q": "Which god lost his hand to the wolf Fenrir?",
+        "correct": "Tyr",
+        "wrong": [
+          "Thor",
+          "Heimdall",
+          "Vidar"
+        ],
+        "template": "hard-norse",
+        "hard": true
+      },
+      {
+        "id": "b57f8611bd2d",
+        "q": "Which god guards the Bifröst bridge?",
+        "correct": "Heimdall",
+        "wrong": [
+          "Tyr",
+          "Baldr",
+          "Freyr"
+        ],
+        "template": "hard-norse",
+        "hard": true
+      },
+      {
+        "id": "8537adf372a1",
+        "q": "Which Egyptian god has the head of a jackal?",
+        "correct": "Anubis",
+        "wrong": [
+          "Horus",
+          "Thoth",
+          "Sobek"
+        ],
+        "template": "hard-egyptian",
+        "hard": true
+      },
+      {
+        "id": "7ec2d2bb03bd",
+        "q": "Which Egyptian god has the head of an ibis?",
+        "correct": "Thoth",
+        "wrong": [
+          "Horus",
+          "Anubis",
+          "Khnum"
+        ],
+        "template": "hard-egyptian",
+        "hard": true
+      },
+      {
+        "id": "c83ba70928d4",
+        "q": "Which Egyptian god has the head of a crocodile?",
+        "correct": "Sobek",
+        "wrong": [
+          "Thoth",
+          "Anubis",
+          "Khnum"
+        ],
+        "template": "hard-egyptian",
+        "hard": true
+      },
+      {
+        "id": "c4bb55bd86eb",
+        "q": "Who murdered Osiris?",
+        "correct": "Set",
+        "wrong": [
+          "Horus",
+          "Anubis",
+          "Ra"
+        ],
+        "template": "hard-egyptian",
+        "hard": true
+      },
+      {
+        "id": "8a9a68e6aef8",
+        "q": "Who was the wife of Osiris?",
+        "correct": "Isis",
+        "wrong": [
+          "Nephthys",
+          "Hathor",
+          "Bastet"
+        ],
+        "template": "hard-egyptian",
+        "hard": true
+      },
+      {
+        "id": "176546bc34aa",
+        "q": "Which Egyptian goddess was shown with the head of a cat?",
+        "correct": "Bastet",
+        "wrong": [
+          "Sekhmet",
+          "Hathor",
+          "Nut"
+        ],
+        "template": "hard-egyptian",
+        "hard": true
+      },
+      {
+        "id": "3d8d0666f7b9",
+        "q": "Which Egyptian goddess is the sky, arching over the earth?",
+        "correct": "Nut",
+        "wrong": [
+          "Geb",
+          "Isis",
+          "Hathor"
+        ],
+        "template": "hard-egyptian",
+        "hard": true
+      },
+      {
+        "id": "d189fc3084b2",
+        "q": "Which orisha is the Yoruba god of iron and war?",
+        "correct": "Ogun",
+        "wrong": [
+          "Sango",
+          "Oya",
+          "Osun"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "9f2731e524b0",
+        "q": "Which orisha, a wife of Sango, rules the winds and storms?",
+        "correct": "Oya",
+        "wrong": [
+          "Osun",
+          "Yemoja",
+          "Oba"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "fe3245f5d374",
+        "q": "Which orisha is the trickster and divine messenger?",
+        "correct": "Esu",
+        "wrong": [
+          "Ogun",
+          "Orunmila",
+          "Obatala"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "8f90f9e119ff",
+        "q": "Which orisha is linked to Ifá divination and wisdom?",
+        "correct": "Orunmila",
+        "wrong": [
+          "Esu",
+          "Obatala",
+          "Sango"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "f65bcd322b1a",
+        "q": "Which orisha moulded human bodies from clay?",
+        "correct": "Obatala",
+        "wrong": [
+          "Olodumare",
+          "Orunmila",
+          "Ogun"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "6e5c66fcafd7",
+        "q": "The trickster spider Anansi comes from the folklore of which people?",
+        "correct": "Akan",
+        "wrong": [
+          "Yoruba",
+          "Zulu",
+          "Igbo"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "0fec764de481",
+        "q": "Who is the Igbo earth goddess?",
+        "correct": "Ala",
+        "wrong": [
+          "Amadioha",
+          "Chukwu",
+          "Ikenga"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "2bdd60be87bf",
+        "q": "Amadioha is the Igbo god of what?",
+        "correct": "Thunder",
+        "wrong": [
+          "Earth",
+          "Rivers",
+          "War"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "fdad2d12a7f4",
+        "q": "Which monkey god helps Rama rescue Sita?",
+        "correct": "Hanuman",
+        "wrong": [
+          "Garuda",
+          "Ganesha",
+          "Krishna"
+        ],
+        "template": "hard-world-myth",
+        "hard": true
+      },
+      {
+        "id": "99aefc262df3",
+        "q": "Which feathered serpent was a major god of the Aztecs?",
+        "correct": "Quetzalcoatl",
+        "wrong": [
+          "Tlaloc",
+          "Huitzilopochtli",
+          "Tezcatlipoca"
+        ],
+        "template": "hard-world-myth",
+        "hard": true
+      },
+      {
+        "id": "34e4d8dc1794",
+        "q": "In Mesopotamian myth, who is the hero-king of Uruk in the oldest surviving epic?",
+        "correct": "Gilgamesh",
+        "wrong": [
+          "Enkidu",
+          "Marduk",
+          "Sargon"
+        ],
+        "template": "hard-world-myth",
+        "hard": true
+      },
+      {
+        "id": "4c7957f05dbd",
+        "q": "Which Japanese sun goddess hid in a cave and plunged the world into darkness?",
+        "correct": "Amaterasu",
+        "wrong": [
+          "Izanami",
+          "Inari",
+          "Benzaiten"
+        ],
+        "template": "hard-world-myth",
+        "hard": true
       }
     ],
     "vehicles": [
@@ -187581,6 +188793,606 @@
           "Reversal"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "7ad3561d0490",
+        "q": "In which city did Usain Bolt run his 9.58 world record in 2009?",
+        "correct": "Berlin",
+        "wrong": [
+          "Beijing",
+          "London",
+          "Osaka"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "52fc3a215c07",
+        "q": "As of 2025, what is the men's 100m world record?",
+        "correct": "9.58",
+        "wrong": [
+          "9.63",
+          "9.69",
+          "9.72"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "fcc191e4728b",
+        "q": "As of 2025, who holds the women's 100m world record?",
+        "correct": "Florence Griffith-Joyner",
+        "wrong": [
+          "Shelly-Ann Fraser-Pryce",
+          "Elaine Thompson-Herah",
+          "Marion Jones"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "de79c5a10a38",
+        "q": "Which Nigerian won Olympic long jump gold at Atlanta 1996?",
+        "correct": "Chioma Ajunwa",
+        "wrong": [
+          "Blessing Okagbare",
+          "Mary Onyali",
+          "Glory Alozie"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "68268788071b",
+        "q": "Which Nigerian won the 2022 world 100m hurdles title with a world record?",
+        "correct": "Tobi Amusan",
+        "wrong": [
+          "Blessing Okagbare",
+          "Ese Brume",
+          "Favour Ofili"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "ecd16816e960",
+        "q": "What time did Tobi Amusan set as the 100m hurdles world record in 2022?",
+        "correct": "12.12",
+        "wrong": [
+          "12.20",
+          "12.06",
+          "12.26"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "291b9919a163",
+        "q": "Which Nigerian won a long jump bronze medal at the Tokyo 2020 Olympics?",
+        "correct": "Ese Brume",
+        "wrong": [
+          "Chioma Ajunwa",
+          "Blessing Okagbare",
+          "Tobi Amusan"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "f6babb8a1b6a",
+        "q": "Who was the first man to run a mile in under four minutes?",
+        "correct": "Roger Bannister",
+        "wrong": [
+          "John Landy",
+          "Sebastian Coe",
+          "Jim Ryun"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "9c21867cacec",
+        "q": "Who became the first person to run a marathon in under two hours, in 2019?",
+        "correct": "Eliud Kipchoge",
+        "wrong": [
+          "Kelvin Kiptum",
+          "Kenenisa Bekele",
+          "Haile Gebrselassie"
+        ],
+        "template": "hard-athletics",
+        "hard": true
+      },
+      {
+        "id": "615ba769141e",
+        "q": "Who did Muhammad Ali beat in the \"Rumble in the Jungle\"?",
+        "correct": "George Foreman",
+        "wrong": [
+          "Joe Frazier",
+          "Sonny Liston",
+          "Ken Norton"
+        ],
+        "template": "hard-combat",
+        "hard": true
+      },
+      {
+        "id": "fdf676ad4a82",
+        "q": "In which city was the \"Rumble in the Jungle\" held?",
+        "correct": "Kinshasa",
+        "wrong": [
+          "Lagos",
+          "Nairobi",
+          "Accra"
+        ],
+        "template": "hard-combat",
+        "hard": true
+      },
+      {
+        "id": "8dde5167576e",
+        "q": "Which boxer of Nigerian descent won Olympic super-heavyweight gold in 2012?",
+        "correct": "Anthony Joshua",
+        "wrong": [
+          "Joe Joyce",
+          "Dillian Whyte",
+          "Efe Ajagba"
+        ],
+        "template": "hard-combat",
+        "hard": true
+      },
+      {
+        "id": "a8396018779e",
+        "q": "Who was Nigeria's first world boxing champion?",
+        "correct": "Hogan Bassey",
+        "wrong": [
+          "Dick Tiger",
+          "Samuel Peter",
+          "Bash Ali"
+        ],
+        "template": "hard-combat",
+        "hard": true
+      },
+      {
+        "id": "3b2035d66e3e",
+        "q": "What is Kamaru Usman's fighting nickname?",
+        "correct": "The Nigerian Nightmare",
+        "wrong": [
+          "The Last Stylebender",
+          "The Predator",
+          "The Notorious"
+        ],
+        "template": "hard-combat",
+        "hard": true
+      },
+      {
+        "id": "1c3ca12ef357",
+        "q": "What is Israel Adesanya's fighting nickname?",
+        "correct": "The Last Stylebender",
+        "wrong": [
+          "The Nigerian Nightmare",
+          "The Predator",
+          "The Notorious"
+        ],
+        "template": "hard-combat",
+        "hard": true
+      },
+      {
+        "id": "4d6968b80980",
+        "q": "Which UFC heavyweight champion was born in Cameroon?",
+        "correct": "Francis Ngannou",
+        "wrong": [
+          "Kamaru Usman",
+          "Israel Adesanya",
+          "Sodiq Yusuff"
+        ],
+        "template": "hard-combat",
+        "hard": true
+      },
+      {
+        "id": "cd252c80cf12",
+        "q": "Which team drafted Hakeem Olajuwon first overall in 1984?",
+        "correct": "Houston Rockets",
+        "wrong": [
+          "Portland Trail Blazers",
+          "Chicago Bulls",
+          "Philadelphia 76ers"
+        ],
+        "template": "hard-basketball",
+        "hard": true
+      },
+      {
+        "id": "0d071e0a187a",
+        "q": "Who was drafted second in 1984, one pick ahead of Michael Jordan?",
+        "correct": "Sam Bowie",
+        "wrong": [
+          "Charles Barkley",
+          "John Stockton",
+          "Patrick Ewing"
+        ],
+        "template": "hard-basketball",
+        "hard": true
+      },
+      {
+        "id": "ab069d19fc9a",
+        "q": "From which country did Giannis Antetokounmpo's parents emigrate to Greece?",
+        "correct": "Nigeria",
+        "wrong": [
+          "Ghana",
+          "Senegal",
+          "Cameroon"
+        ],
+        "template": "hard-basketball",
+        "hard": true
+      },
+      {
+        "id": "97faad309857",
+        "q": "As of 2025, who is the NBA's all-time leading scorer?",
+        "correct": "LeBron James",
+        "wrong": [
+          "Kareem Abdul-Jabbar",
+          "Karl Malone",
+          "Kobe Bryant"
+        ],
+        "template": "hard-basketball",
+        "hard": true
+      },
+      {
+        "id": "bfc1e9e5e2c2",
+        "q": "How many points did Wilt Chamberlain score in a single NBA game in 1962?",
+        "correct": "100",
+        "wrong": [
+          "81",
+          "92",
+          "73"
+        ],
+        "template": "hard-basketball",
+        "hard": true
+      },
+      {
+        "id": "5748115470a5",
+        "q": "How many NBA championships did Michael Jordan win?",
+        "correct": "6",
+        "wrong": [
+          "5",
+          "4",
+          "7"
+        ],
+        "template": "hard-basketball",
+        "hard": true
+      },
+      {
+        "id": "e03511ac6957",
+        "q": "With which team did Michael Jordan end his playing career?",
+        "correct": "Washington Wizards",
+        "wrong": [
+          "Chicago Bulls",
+          "Charlotte Hornets",
+          "Miami Heat"
+        ],
+        "template": "hard-basketball",
+        "hard": true
+      },
+      {
+        "id": "9711394eba86",
+        "q": "As of 2025, who has won the most men's Grand Slam singles titles?",
+        "correct": "Novak Djokovic",
+        "wrong": [
+          "Rafael Nadal",
+          "Roger Federer",
+          "Pete Sampras"
+        ],
+        "template": "hard-tennis",
+        "hard": true
+      },
+      {
+        "id": "a672d869c613",
+        "q": "How many French Open singles titles did Rafael Nadal win?",
+        "correct": "14",
+        "wrong": [
+          "12",
+          "13",
+          "15"
+        ],
+        "template": "hard-tennis",
+        "hard": true
+      },
+      {
+        "id": "36202012f184",
+        "q": "Who won the most women's Grand Slam singles titles of the Open Era?",
+        "correct": "Serena Williams",
+        "wrong": [
+          "Steffi Graf",
+          "Martina Navratilova",
+          "Chris Evert"
+        ],
+        "template": "hard-tennis",
+        "hard": true
+      },
+      {
+        "id": "a3d9a11b56ba",
+        "q": "Which Grand Slam tournament is played on clay?",
+        "correct": "French Open",
+        "wrong": [
+          "Wimbledon",
+          "US Open",
+          "Australian Open"
+        ],
+        "template": "hard-tennis",
+        "hard": true
+      },
+      {
+        "id": "cfed3a249a11",
+        "q": "Which Grand Slam tournament is played first each year?",
+        "correct": "Australian Open",
+        "wrong": [
+          "French Open",
+          "Wimbledon",
+          "US Open"
+        ],
+        "template": "hard-tennis",
+        "hard": true
+      },
+      {
+        "id": "cb619dad6df7",
+        "q": "As of 2025, how many F1 world titles has Lewis Hamilton won?",
+        "correct": "7",
+        "wrong": [
+          "6",
+          "8",
+          "5"
+        ],
+        "template": "hard-motor-golf",
+        "hard": true
+      },
+      {
+        "id": "1a0a21af4faa",
+        "q": "Which F1 team did Lewis Hamilton join for the 2025 season?",
+        "correct": "Ferrari",
+        "wrong": [
+          "Red Bull",
+          "McLaren",
+          "Aston Martin"
+        ],
+        "template": "hard-motor-golf",
+        "hard": true
+      },
+      {
+        "id": "0c468b1d4c88",
+        "q": "Who won the 2021 Formula One drivers' championship?",
+        "correct": "Max Verstappen",
+        "wrong": [
+          "Lewis Hamilton",
+          "Valtteri Bottas",
+          "Sergio Pérez"
+        ],
+        "template": "hard-motor-golf",
+        "hard": true
+      },
+      {
+        "id": "f451b3d7a0ff",
+        "q": "How many major championships has Tiger Woods won?",
+        "correct": "15",
+        "wrong": [
+          "14",
+          "18",
+          "13"
+        ],
+        "template": "hard-motor-golf",
+        "hard": true
+      },
+      {
+        "id": "4f05bc005cc7",
+        "q": "Who holds the record for the most men's golf majors?",
+        "correct": "Jack Nicklaus",
+        "wrong": [
+          "Tiger Woods",
+          "Arnold Palmer",
+          "Gary Player"
+        ],
+        "template": "hard-motor-golf",
+        "hard": true
+      },
+      {
+        "id": "4b267f0e833e",
+        "q": "In golf, what is a score of two under par on a hole?",
+        "correct": "Eagle",
+        "wrong": [
+          "Birdie",
+          "Albatross",
+          "Bogey"
+        ],
+        "template": "hard-motor-golf",
+        "hard": true
+      },
+      {
+        "id": "f8f1562b690c",
+        "q": "In golf, what is a score of three under par on a hole?",
+        "correct": "Albatross",
+        "wrong": [
+          "Eagle",
+          "Condor",
+          "Birdie"
+        ],
+        "template": "hard-motor-golf",
+        "hard": true
+      },
+      {
+        "id": "7b9761c56f8d",
+        "q": "Which city will host the 2028 Summer Olympics?",
+        "correct": "Los Angeles",
+        "wrong": [
+          "Brisbane",
+          "Paris",
+          "Madrid"
+        ],
+        "template": "hard-olympics",
+        "hard": true
+      },
+      {
+        "id": "1222fdd8e6b5",
+        "q": "Which city will host the 2032 Summer Olympics?",
+        "correct": "Brisbane",
+        "wrong": [
+          "Los Angeles",
+          "Doha",
+          "Madrid"
+        ],
+        "template": "hard-olympics",
+        "hard": true
+      },
+      {
+        "id": "f6402ecb69ce",
+        "q": "Who has won the most Olympic medals of all time?",
+        "correct": "Michael Phelps",
+        "wrong": [
+          "Larisa Latynina",
+          "Usain Bolt",
+          "Carl Lewis"
+        ],
+        "template": "hard-olympics",
+        "hard": true
+      },
+      {
+        "id": "9f0db68af900",
+        "q": "How many Olympic gold medals did Michael Phelps win?",
+        "correct": "23",
+        "wrong": [
+          "18",
+          "21",
+          "28"
+        ],
+        "template": "hard-olympics",
+        "hard": true
+      },
+      {
+        "id": "315c84b6cc39",
+        "q": "Which Nigerian table tennis star reached the Rio 2016 Olympic quarter-finals?",
+        "correct": "Quadri Aruna",
+        "wrong": [
+          "Segun Toriola",
+          "Bode Abiodun",
+          "Olajide Omotayo"
+        ],
+        "template": "hard-olympics",
+        "hard": true
+      },
+      {
+        "id": "e40d198c8d0f",
+        "q": "In which city were the 2024 Summer Olympics held?",
+        "correct": "Paris",
+        "wrong": [
+          "London",
+          "Los Angeles",
+          "Rome"
+        ],
+        "template": "hard-olympics",
+        "hard": true
+      },
+      {
+        "id": "fec346eaa402",
+        "q": "How many balls are bowled in a standard cricket over?",
+        "correct": "Six",
+        "wrong": [
+          "Five",
+          "Eight",
+          "Ten"
+        ],
+        "template": "hard-cricket-rugby",
+        "hard": true
+      },
+      {
+        "id": "fdc7964263f2",
+        "q": "Which team won the first Cricket World Cup in 1975?",
+        "correct": "West Indies",
+        "wrong": [
+          "Australia",
+          "England",
+          "India"
+        ],
+        "template": "hard-cricket-rugby",
+        "hard": true
+      },
+      {
+        "id": "755ce0d4a93a",
+        "q": "As of 2023, which country has won the most Rugby World Cups?",
+        "correct": "South Africa",
+        "wrong": [
+          "New Zealand",
+          "Australia",
+          "England"
+        ],
+        "template": "hard-cricket-rugby",
+        "hard": true
+      },
+      {
+        "id": "40f45bdb7ebc",
+        "q": "Which country won the 2011 Cricket World Cup on home soil?",
+        "correct": "India",
+        "wrong": [
+          "Sri Lanka",
+          "Australia",
+          "Pakistan"
+        ],
+        "template": "hard-cricket-rugby",
+        "hard": true
+      },
+      {
+        "id": "f7a69fef7ee6",
+        "q": "Which famous trophy is contested in Test cricket between England and Australia?",
+        "correct": "The Ashes",
+        "wrong": [
+          "The Wisden Trophy",
+          "The Frank Worrell Trophy",
+          "The Basil D'Oliveira Trophy"
+        ],
+        "template": "hard-cricket-rugby",
+        "hard": true
+      },
+      {
+        "id": "04822532256c",
+        "q": "Which country won the first Rugby World Cup in 1987?",
+        "correct": "New Zealand",
+        "wrong": [
+          "Australia",
+          "South Africa",
+          "France"
+        ],
+        "template": "hard-cricket-rugby",
+        "hard": true
+      },
+      {
+        "id": "107d848b9f8f",
+        "q": "In which sport is the Ryder Cup contested?",
+        "correct": "Golf",
+        "wrong": [
+          "Tennis",
+          "Polo",
+          "Sailing"
+        ],
+        "template": "hard-motor-golf",
+        "hard": true
+      },
+      {
+        "id": "cf2d8af2f1ca",
+        "q": "As of 2025, which country has won the most Davis Cup titles?",
+        "correct": "United States",
+        "wrong": [
+          "Australia",
+          "France",
+          "Spain"
+        ],
+        "template": "hard-tennis",
+        "hard": true
+      },
+      {
+        "id": "2e1cd1ca41b5",
+        "q": "In which event would you perform a Fosbury Flop?",
+        "correct": "High jump",
+        "wrong": [
+          "Pole vault",
+          "Diving",
+          "Gymnastics"
+        ],
+        "template": "hard-athletics",
+        "hard": true
       }
     ],
     "music": [
@@ -215088,6 +216900,606 @@
           "Ugly Betty"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "53ecbbb4dac5",
+        "q": "What is the name of the car wash Walter White buys in Breaking Bad?",
+        "correct": "A1A Car Wash",
+        "wrong": [
+          "Bright Car Wash",
+          "Vamonos Wash",
+          "Sunset Car Wash"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "6ca6d2d030f7",
+        "q": "Which fast-food chain fronts Gus Fring's drug empire?",
+        "correct": "Los Pollos Hermanos",
+        "wrong": [
+          "Pollos Locos",
+          "Taco Loco",
+          "El Pollo Grande"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "50d9763216d5",
+        "q": "What is Saul Goodman's real name?",
+        "correct": "Jimmy McGill",
+        "wrong": [
+          "Chuck McGill",
+          "Howard Hamlin",
+          "Mike Ehrmantraut"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "89bf6003ecbf",
+        "q": "What is the name of Tony Soprano's strip club?",
+        "correct": "Bada Bing",
+        "wrong": [
+          "Satriale's",
+          "Nuovo Vesuvio",
+          "The Crazy Horse"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "fe952ea99a83",
+        "q": "Which actor played Omar Little in The Wire?",
+        "correct": "Michael K. Williams",
+        "wrong": [
+          "Idris Elba",
+          "Wendell Pierce",
+          "Lance Reddick"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "ab00b492b166",
+        "q": "Which British actor played Stringer Bell in The Wire?",
+        "correct": "Idris Elba",
+        "wrong": [
+          "Dominic West",
+          "Michael K. Williams",
+          "Lance Reddick"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "a9ab86522d46",
+        "q": "Which city is the setting of The Wire?",
+        "correct": "Baltimore",
+        "wrong": [
+          "Philadelphia",
+          "Detroit",
+          "Chicago"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "c94d14b71c43",
+        "q": "What does Michael Scofield have tattooed on his body in Prison Break?",
+        "correct": "The building plans",
+        "wrong": [
+          "A map of Chicago",
+          "Bible verses",
+          "His brother's face"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "54f140ce48fd",
+        "q": "Who is Michael Scofield's brother in Prison Break?",
+        "correct": "Lincoln Burrows",
+        "wrong": [
+          "Fernando Sucre",
+          "Theodore Bagwell",
+          "Brad Bellick"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "bc92cc2eb667",
+        "q": "Which drug lord is the focus of the first two seasons of Narcos?",
+        "correct": "Pablo Escobar",
+        "wrong": [
+          "El Chapo",
+          "Gilberto Rodríguez",
+          "Carlos Lehder"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "215a5b55d0a2",
+        "q": "In which city is Peaky Blinders set?",
+        "correct": "Birmingham",
+        "wrong": [
+          "Manchester",
+          "Liverpool",
+          "Leeds"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "7a5b771393a4",
+        "q": "What do the Peaky Blinders hide in the peaks of their caps?",
+        "correct": "Razor blades",
+        "wrong": [
+          "Bullets",
+          "Coins",
+          "Knives"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "ced183d1e7d3",
+        "q": "What is the original Spanish title of Money Heist?",
+        "correct": "La casa de papel",
+        "wrong": [
+          "El robo del siglo",
+          "La casa de las flores",
+          "Élite"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "f384c2fd116b",
+        "q": "What is the name of the mastermind behind the heist in Money Heist?",
+        "correct": "The Professor",
+        "wrong": [
+          "Berlin",
+          "Denver",
+          "Palermo"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "605505bb376a",
+        "q": "Which Money Heist character narrates the story?",
+        "correct": "Tokyo",
+        "wrong": [
+          "Nairobi",
+          "Rio",
+          "Lisbon"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "6bb10b45482a",
+        "q": "What is Ghost's real name in Power?",
+        "correct": "James St. Patrick",
+        "wrong": [
+          "Tommy Egan",
+          "Kanan Stark",
+          "Tariq St. Patrick"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "f3b353989c24",
+        "q": "Which actor plays Assane Diop in Lupin?",
+        "correct": "Omar Sy",
+        "wrong": [
+          "Vincent Cassel",
+          "Jean Dujardin",
+          "Tahar Rahim"
+        ],
+        "template": "hard-crime",
+        "hard": true
+      },
+      {
+        "id": "0c3f78b07955",
+        "q": "What is the name of Ross's pet monkey in Friends?",
+        "correct": "Marcel",
+        "wrong": [
+          "Hugsy",
+          "Mr. Heckles",
+          "Gunther"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "cc82584c84d5",
+        "q": "What is Chandler Bing's middle name?",
+        "correct": "Muriel",
+        "wrong": [
+          "Marion",
+          "Monroe",
+          "Milton"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "8da38ed2014a",
+        "q": "What is the name of Joey Tribbiani's agent?",
+        "correct": "Estelle Leonard",
+        "wrong": [
+          "Janice Hosenstein",
+          "Carol Willick",
+          "Ursula Buffay"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "279c43510f0f",
+        "q": "How many seasons did Friends run for?",
+        "correct": "10",
+        "wrong": [
+          "9",
+          "8",
+          "11"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "ce99afc68175",
+        "q": "In which city is the Dunder Mifflin branch in The Office (US)?",
+        "correct": "Scranton",
+        "wrong": [
+          "Stamford",
+          "Nashua",
+          "Utica"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "24ea44d86eaf",
+        "q": "What is the name of Dwight Schrute's family farm?",
+        "correct": "Schrute Farms",
+        "wrong": [
+          "Schrute Acres",
+          "Beet Hollow",
+          "Mose's Farm"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "7d3701263b2c",
+        "q": "What is Sheldon's surname in The Big Bang Theory?",
+        "correct": "Cooper",
+        "wrong": [
+          "Hofstadter",
+          "Wolowitz",
+          "Koothrappali"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "3882ae8355a9",
+        "q": "What is the name of the bar in How I Met Your Mother?",
+        "correct": "MacLaren's",
+        "wrong": [
+          "Paddy's",
+          "Cheers",
+          "Moe's"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "8a2eec4f0c46",
+        "q": "What is the Mother's name in How I Met Your Mother?",
+        "correct": "Tracy McConnell",
+        "wrong": [
+          "Robin Scherbatsky",
+          "Stella Zinman",
+          "Victoria"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "b639b8c5652e",
+        "q": "What is Kramer's first name in Seinfeld?",
+        "correct": "Cosmo",
+        "wrong": [
+          "Kenny",
+          "Carl",
+          "Kevin"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "624f0d945ba5",
+        "q": "In The Fresh Prince of Bel-Air, where does Will move from?",
+        "correct": "West Philadelphia",
+        "wrong": [
+          "Brooklyn",
+          "Compton",
+          "Detroit"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "c717fd814ed6",
+        "q": "Which actor played Uncle Phil in The Fresh Prince of Bel-Air?",
+        "correct": "James Avery",
+        "wrong": [
+          "Alfonso Ribeiro",
+          "Joseph Marcell",
+          "Carl Weathers"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "5f73aa1dbed4",
+        "q": "Who played Aunt Viv in the first three seasons of The Fresh Prince?",
+        "correct": "Janet Hubert",
+        "wrong": [
+          "Daphne Maxwell Reid",
+          "Tatyana Ali",
+          "Karyn Parsons"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "2dcf9ae94ce8",
+        "q": "Who narrates Everybody Hates Chris?",
+        "correct": "Chris Rock",
+        "wrong": [
+          "Chris Tucker",
+          "Tyler James Williams",
+          "Terry Crews"
+        ],
+        "template": "hard-sitcoms",
+        "hard": true
+      },
+      {
+        "id": "b1755946a59a",
+        "q": "In which fictional town is Stranger Things set?",
+        "correct": "Hawkins",
+        "wrong": [
+          "Derry",
+          "Castle Rock",
+          "Riverdale"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "5da5cce1e71f",
+        "q": "What is the alternate dimension in Stranger Things called?",
+        "correct": "The Upside Down",
+        "wrong": [
+          "The Other Side",
+          "The Nether",
+          "The Shadow Realm"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "13d4077ebf27",
+        "q": "What number is tattooed on Eleven's wrist?",
+        "correct": "011",
+        "wrong": [
+          "001",
+          "008",
+          "010"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "23bbb544099b",
+        "q": "In season 1 of Stranger Things, the kids name the monster after which D&D creature?",
+        "correct": "Demogorgon",
+        "wrong": [
+          "Mind Flayer",
+          "Vecna",
+          "Beholder"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "c7f5d58c64a7",
+        "q": "What is Seong Gi-hun's player number in Squid Game?",
+        "correct": "456",
+        "wrong": [
+          "001",
+          "067",
+          "218"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "3dd669a36ae4",
+        "q": "In Lost, what was the number of the flight that crashed?",
+        "correct": "Oceanic 815",
+        "wrong": [
+          "Oceanic 316",
+          "Ajira 316",
+          "Oceanic 618"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "61da885a44c2",
+        "q": "What is the name of the Doctor's time machine in Doctor Who?",
+        "correct": "The TARDIS",
+        "wrong": [
+          "The DeLorean",
+          "The Time Turner",
+          "The Stargate"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "ac84d6d1e998",
+        "q": "Who leads the superhero team The Seven in The Boys?",
+        "correct": "Homelander",
+        "wrong": [
+          "Queen Maeve",
+          "The Deep",
+          "A-Train"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "a982d5cfddca",
+        "q": "Which school does Wednesday Addams attend in Wednesday?",
+        "correct": "Nevermore Academy",
+        "wrong": [
+          "Miskatonic Academy",
+          "Crestwood Prep",
+          "Riverdale High"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "0efb68c25b40",
+        "q": "What does Negan call his barbed-wire bat in The Walking Dead?",
+        "correct": "Lucille",
+        "wrong": [
+          "Lucinda",
+          "Lula",
+          "Louise"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "f186f4ec579c",
+        "q": "What was Rick Grimes' job before the outbreak in The Walking Dead?",
+        "correct": "Sheriff's deputy",
+        "wrong": [
+          "Doctor",
+          "Teacher",
+          "Firefighter"
+        ],
+        "template": "hard-scifi",
+        "hard": true
+      },
+      {
+        "id": "98c48f0659ba",
+        "q": "What is the original name of the hospital in Grey's Anatomy?",
+        "correct": "Seattle Grace",
+        "wrong": [
+          "Seattle Mercy",
+          "Sacred Heart",
+          "Princeton-Plainsboro"
+        ],
+        "template": "hard-drama",
+        "hard": true
+      },
+      {
+        "id": "78e4683ddd0b",
+        "q": "At which hospital does Dr. Gregory House work?",
+        "correct": "Princeton-Plainsboro",
+        "wrong": [
+          "Seattle Grace",
+          "Sacred Heart",
+          "County General"
+        ],
+        "template": "hard-drama",
+        "hard": true
+      },
+      {
+        "id": "856562bbb271",
+        "q": "Who played Queen Elizabeth II in the first two seasons of The Crown?",
+        "correct": "Claire Foy",
+        "wrong": [
+          "Olivia Colman",
+          "Imelda Staunton",
+          "Helena Bonham Carter"
+        ],
+        "template": "hard-drama",
+        "hard": true
+      },
+      {
+        "id": "6a252370611d",
+        "q": "At which address does Sherlock live in the BBC series Sherlock?",
+        "correct": "221B Baker Street",
+        "wrong": [
+          "10 Downing Street",
+          "12 Grimmauld Place",
+          "4 Privet Drive"
+        ],
+        "template": "hard-drama",
+        "hard": true
+      },
+      {
+        "id": "ab99a2349bac",
+        "q": "What is the name of the Roy family company in Succession?",
+        "correct": "Waystar Royco",
+        "wrong": [
+          "Pierce Global",
+          "GoJo",
+          "Vaulter"
+        ],
+        "template": "hard-drama",
+        "hard": true
+      },
+      {
+        "id": "e6023ba9d94e",
+        "q": "Which character does Taraji P. Henson play in Empire?",
+        "correct": "Cookie Lyon",
+        "wrong": [
+          "Anika Calhoun",
+          "Rhonda Lyon",
+          "Camilla Marks"
+        ],
+        "template": "hard-drama",
+        "hard": true
+      },
+      {
+        "id": "2fff6c2521d2",
+        "q": "What is the name of Kiefer Sutherland's character in 24?",
+        "correct": "Jack Bauer",
+        "wrong": [
+          "Tony Almeida",
+          "David Palmer",
+          "Chloe O'Brian"
+        ],
+        "template": "hard-drama",
+        "hard": true
+      },
+      {
+        "id": "07a5e8f64d6b",
+        "q": "In 24, roughly how much real time does each season cover?",
+        "correct": "One day",
+        "wrong": [
+          "One week",
+          "One month",
+          "One year"
+        ],
+        "template": "hard-drama",
+        "hard": true
       }
     ],
     "food": [
@@ -260846,6 +263258,606 @@
           "Impetigo"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "b109f33cd2e5",
+        "q": "Which vitamin helps the blood to clot?",
+        "correct": "Vitamin K",
+        "wrong": [
+          "Vitamin C",
+          "Vitamin B12",
+          "Vitamin E"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "4a38e78662c4",
+        "q": "A lack of iodine causes which condition?",
+        "correct": "Goitre",
+        "wrong": [
+          "Rickets",
+          "Scurvy",
+          "Anaemia"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "2fa21564afd8",
+        "q": "A lack of vitamin B1 (thiamine) causes which disease?",
+        "correct": "Beriberi",
+        "wrong": [
+          "Pellagra",
+          "Scurvy",
+          "Rickets"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "b9e5673cc3c5",
+        "q": "A lack of niacin (vitamin B3) causes which disease?",
+        "correct": "Pellagra",
+        "wrong": [
+          "Beriberi",
+          "Scurvy",
+          "Rickets"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "18578ed885db",
+        "q": "A lack of vitamin A can lead to which condition?",
+        "correct": "Night blindness",
+        "wrong": [
+          "Rickets",
+          "Scurvy",
+          "Goitre"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "09605b6acfc0",
+        "q": "Which mineral deficiency is the most common cause of anaemia?",
+        "correct": "Iron",
+        "wrong": [
+          "Calcium",
+          "Zinc",
+          "Magnesium"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "c1faa619ecb7",
+        "q": "Which vitamin is also called ascorbic acid?",
+        "correct": "Vitamin C",
+        "wrong": [
+          "Vitamin A",
+          "Vitamin B12",
+          "Vitamin D"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "9ba17a4bc409",
+        "q": "Which vitamin is also called retinol?",
+        "correct": "Vitamin A",
+        "wrong": [
+          "Vitamin D",
+          "Vitamin E",
+          "Vitamin K"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "e8bf211300e1",
+        "q": "Cobalamin is another name for which vitamin?",
+        "correct": "Vitamin B12",
+        "wrong": [
+          "Vitamin B6",
+          "Vitamin B1",
+          "Vitamin B9"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "46dc804081ef",
+        "q": "Folic acid is a form of which vitamin?",
+        "correct": "Vitamin B9",
+        "wrong": [
+          "Vitamin B12",
+          "Vitamin B6",
+          "Vitamin B2"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "f16b2a91a0b8",
+        "q": "In adults, a BMI of 30 or more is classed as what?",
+        "correct": "Obese",
+        "wrong": [
+          "Overweight",
+          "Normal",
+          "Underweight"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "d828f99bd677",
+        "q": "What does BMI stand for?",
+        "correct": "Body Mass Index",
+        "wrong": [
+          "Body Muscle Index",
+          "Basal Metabolic Index",
+          "Body Measurement Index"
+        ],
+        "template": "hard-nutrition",
+        "hard": true
+      },
+      {
+        "id": "0150ccd5c2f0",
+        "q": "Which mosquito genus transmits malaria?",
+        "correct": "Anopheles",
+        "wrong": [
+          "Aedes",
+          "Culex",
+          "Mansonia"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "cebb933709ae",
+        "q": "Which mosquito genus spreads dengue and yellow fever?",
+        "correct": "Aedes",
+        "wrong": [
+          "Anopheles",
+          "Culex",
+          "Mansonia"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "cd8bdd6917bc",
+        "q": "Which parasite causes malaria?",
+        "correct": "Plasmodium",
+        "wrong": [
+          "Trypanosoma",
+          "Leishmania",
+          "Giardia"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "5f5d557e4386",
+        "q": "Sleeping sickness is spread by which insect?",
+        "correct": "Tsetse fly",
+        "wrong": [
+          "Sandfly",
+          "Blackfly",
+          "Housefly"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "731bd00ea955",
+        "q": "River blindness is spread by which insect?",
+        "correct": "Blackfly",
+        "wrong": [
+          "Tsetse fly",
+          "Sandfly",
+          "Housefly"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "b756a3208481",
+        "q": "Lassa fever is mainly spread by which animals?",
+        "correct": "Rats",
+        "wrong": [
+          "Bats",
+          "Mosquitoes",
+          "Ticks"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "7308bec4fbe9",
+        "q": "In which present-day Nigerian state was Lassa fever first identified in 1969?",
+        "correct": "Borno",
+        "wrong": [
+          "Lagos",
+          "Kano",
+          "Plateau"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "6a2bf04743c3",
+        "q": "In which year was Nigeria certified free of wild polio?",
+        "correct": "2020",
+        "wrong": [
+          "2018",
+          "2016",
+          "2022"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "6fcb3bb194b1",
+        "q": "What kind of germ causes tuberculosis?",
+        "correct": "A bacterium",
+        "wrong": [
+          "A virus",
+          "A fungus",
+          "A parasite"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "a312ae665062",
+        "q": "Which genotype does a person with sickle cell anaemia have?",
+        "correct": "SS",
+        "wrong": [
+          "AS",
+          "AA",
+          "AC"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "d73dac23f98d",
+        "q": "Which parent pairing gives the highest chance of a child with sickle cell anaemia?",
+        "correct": "AS and AS",
+        "wrong": [
+          "AA and AS",
+          "AA and AA",
+          "AA and SS"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "dab7cd6f9466",
+        "q": "Which type of diabetes is an autoimmune disease?",
+        "correct": "Type 1",
+        "wrong": [
+          "Type 2",
+          "Gestational",
+          "Prediabetes"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "cadff1a73de2",
+        "q": "What does tachycardia mean?",
+        "correct": "A fast heart rate",
+        "wrong": [
+          "A slow heart rate",
+          "Low blood pressure",
+          "A blocked artery"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "66597e14fdec",
+        "q": "Edward Jenner developed the first vaccine against which disease?",
+        "correct": "Smallpox",
+        "wrong": [
+          "Polio",
+          "Rabies",
+          "Measles"
+        ],
+        "template": "hard-pioneers",
+        "hard": true
+      },
+      {
+        "id": "f5b9e146b09c",
+        "q": "Who developed the first rabies vaccine?",
+        "correct": "Louis Pasteur",
+        "wrong": [
+          "Edward Jenner",
+          "Robert Koch",
+          "Alexander Fleming"
+        ],
+        "template": "hard-pioneers",
+        "hard": true
+      },
+      {
+        "id": "351ffe186e01",
+        "q": "Who developed the first widely used polio vaccine in 1955?",
+        "correct": "Jonas Salk",
+        "wrong": [
+          "Albert Sabin",
+          "Louis Pasteur",
+          "Edward Jenner"
+        ],
+        "template": "hard-pioneers",
+        "hard": true
+      },
+      {
+        "id": "d478015c0204",
+        "q": "Which disease did the WHO declare eradicated in 1980?",
+        "correct": "Smallpox",
+        "wrong": [
+          "Polio",
+          "Measles",
+          "Guinea worm"
+        ],
+        "template": "hard-pioneers",
+        "hard": true
+      },
+      {
+        "id": "fef7f8a9b18d",
+        "q": "Who identified the bacterium that causes tuberculosis in 1882?",
+        "correct": "Robert Koch",
+        "wrong": [
+          "Louis Pasteur",
+          "Joseph Lister",
+          "Paul Ehrlich"
+        ],
+        "template": "hard-pioneers",
+        "hard": true
+      },
+      {
+        "id": "d6c40c7bd258",
+        "q": "Which surgeon pioneered antiseptic surgery using carbolic acid?",
+        "correct": "Joseph Lister",
+        "wrong": [
+          "Robert Koch",
+          "Ignaz Semmelweis",
+          "John Snow"
+        ],
+        "template": "hard-pioneers",
+        "hard": true
+      },
+      {
+        "id": "f0de77eeadfe",
+        "q": "What is the normal resting heart rate for an adult?",
+        "correct": "60-100 bpm",
+        "wrong": [
+          "40-60 bpm",
+          "100-140 bpm",
+          "30-50 bpm"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "745e5ac9c364",
+        "q": "Which organ produces bile?",
+        "correct": "Liver",
+        "wrong": [
+          "Gallbladder",
+          "Pancreas",
+          "Stomach"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "838fe0598303",
+        "q": "Where in the body is bile stored?",
+        "correct": "Gallbladder",
+        "wrong": [
+          "Liver",
+          "Pancreas",
+          "Duodenum"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "6c22d4015d4c",
+        "q": "What is the medical name for the collarbone?",
+        "correct": "Clavicle",
+        "wrong": [
+          "Scapula",
+          "Sternum",
+          "Patella"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "81f3d8001be4",
+        "q": "What is the medical name for the kneecap?",
+        "correct": "Patella",
+        "wrong": [
+          "Clavicle",
+          "Tibia",
+          "Fibula"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "eac4bfba0205",
+        "q": "Roughly how much blood does an average adult have?",
+        "correct": "About 5 litres",
+        "wrong": [
+          "About 2 litres",
+          "About 8 litres",
+          "About 10 litres"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "f7e16162dd8d",
+        "q": "Which blood group can receive blood from every group?",
+        "correct": "AB positive",
+        "wrong": [
+          "O negative",
+          "A positive",
+          "B negative"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "9903738b10fb",
+        "q": "Which hormone is best known as the stress hormone?",
+        "correct": "Cortisol",
+        "wrong": [
+          "Insulin",
+          "Melatonin",
+          "Oxytocin"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "4bfd89b0849b",
+        "q": "Which hormone helps regulate sleep?",
+        "correct": "Melatonin",
+        "wrong": [
+          "Cortisol",
+          "Serotonin",
+          "Adrenaline"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "408856efb5a5",
+        "q": "What is the largest artery in the human body?",
+        "correct": "Aorta",
+        "wrong": [
+          "Carotid artery",
+          "Femoral artery",
+          "Pulmonary artery"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "ce6d5ab12c38",
+        "q": "Which protein in red blood cells carries oxygen?",
+        "correct": "Haemoglobin",
+        "wrong": [
+          "Myoglobin",
+          "Albumin",
+          "Fibrinogen"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "a27e876e9f0a",
+        "q": "What is the medical name for the voice box?",
+        "correct": "Larynx",
+        "wrong": [
+          "Pharynx",
+          "Trachea",
+          "Epiglottis"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "1fccee7920c9",
+        "q": "Which part of the body contains the alveoli?",
+        "correct": "Lungs",
+        "wrong": [
+          "Kidneys",
+          "Liver",
+          "Intestines"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "1373eac78d49",
+        "q": "Which organ contains the nephrons that filter blood?",
+        "correct": "Kidney",
+        "wrong": [
+          "Liver",
+          "Spleen",
+          "Pancreas"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "9c874e4ae8f2",
+        "q": "Which blood cells help the blood to clot?",
+        "correct": "Platelets",
+        "wrong": [
+          "Red blood cells",
+          "White blood cells",
+          "Plasma cells"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "bca7cd5f5363",
+        "q": "Which part of the eye is the coloured ring?",
+        "correct": "Iris",
+        "wrong": [
+          "Pupil",
+          "Cornea",
+          "Lens"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "de97cec80fe4",
+        "q": "Which joint connects the jaw to the skull?",
+        "correct": "Temporomandibular joint",
+        "wrong": [
+          "Atlanto-occipital joint",
+          "Sternoclavicular joint",
+          "Acromioclavicular joint"
+        ],
+        "template": "hard-body",
+        "hard": true
+      },
+      {
+        "id": "a04d0223ae54",
+        "q": "What is the medical term for too little oxygen reaching the body's tissues?",
+        "correct": "Hypoxia",
+        "wrong": [
+          "Hypoglycaemia",
+          "Hypotension",
+          "Anaemia"
+        ],
+        "template": "hard-diseases",
+        "hard": true
+      },
+      {
+        "id": "e13d94ff8700",
+        "q": "The BCG vaccine protects against which disease?",
+        "correct": "Tuberculosis",
+        "wrong": [
+          "Polio",
+          "Measles",
+          "Tetanus"
+        ],
+        "template": "hard-pioneers",
+        "hard": true
       }
     ],
     "tech-gadgets": [
