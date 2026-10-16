@@ -84669,6 +84669,606 @@
           "Trent Alexander-Arnold"
         ],
         "template": "curated-2026"
+      },
+      {
+        "id": "9aeea3a199b1",
+        "q": "How many FPL points does a midfielder get for scoring a goal?",
+        "correct": "5",
+        "wrong": [
+          "4",
+          "6",
+          "3"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "b36fbafc36cb",
+        "q": "How many FPL points does a forward get for scoring a goal?",
+        "correct": "4",
+        "wrong": [
+          "5",
+          "6",
+          "3"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "34bc6cd7b1c6",
+        "q": "How many FPL points does a defender get for scoring a goal?",
+        "correct": "6",
+        "wrong": [
+          "5",
+          "4",
+          "7"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "a3b1d54d66e4",
+        "q": "How many FPL points does a midfielder get for a clean sheet?",
+        "correct": "1",
+        "wrong": [
+          "0",
+          "2",
+          "4"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "dc8bca236a1a",
+        "q": "How many FPL points does a defender get for a clean sheet?",
+        "correct": "4",
+        "wrong": [
+          "3",
+          "5",
+          "6"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "8d2ed4f55afa",
+        "q": "How many FPL points is an assist worth?",
+        "correct": "3",
+        "wrong": [
+          "2",
+          "1",
+          "4"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "1928f0b1983a",
+        "q": "How many FPL appearance points does a player get for playing 60 minutes or more?",
+        "correct": "2",
+        "wrong": [
+          "1",
+          "3",
+          "4"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "96600bb04224",
+        "q": "How many FPL appearance points does a player get for playing under 60 minutes?",
+        "correct": "1",
+        "wrong": [
+          "0",
+          "2",
+          "3"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "702c06e6b0ec",
+        "q": "How many FPL points are deducted for a red card?",
+        "correct": "3",
+        "wrong": [
+          "1",
+          "2",
+          "4"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "1911f36ece56",
+        "q": "How many FPL points are deducted for a yellow card?",
+        "correct": "1",
+        "wrong": [
+          "2",
+          "3",
+          "0"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "0e03a54bbc4a",
+        "q": "How many FPL points are deducted for missing a penalty?",
+        "correct": "2",
+        "wrong": [
+          "1",
+          "3",
+          "4"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "896af43f2627",
+        "q": "How many FPL points does a goalkeeper get for saving a penalty?",
+        "correct": "5",
+        "wrong": [
+          "3",
+          "4",
+          "6"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "97947627021d",
+        "q": "How many FPL points are deducted for an own goal?",
+        "correct": "2",
+        "wrong": [
+          "1",
+          "3",
+          "4"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "c0c9fb68ca91",
+        "q": "In FPL, a goalkeeper earns 1 point for every how many saves?",
+        "correct": "3",
+        "wrong": [
+          "2",
+          "4",
+          "5"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "d06cc58865ab",
+        "q": "A defender loses 1 FPL point for every how many goals conceded?",
+        "correct": "2",
+        "wrong": [
+          "1",
+          "3",
+          "4"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "443bc85fbb4c",
+        "q": "What is the most bonus points one player can earn in a single match?",
+        "correct": "3",
+        "wrong": [
+          "2",
+          "4",
+          "5"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "51c70a7017bb",
+        "q": "In FPL, what does BPS stand for?",
+        "correct": "Bonus Points System",
+        "wrong": [
+          "Best Player Score",
+          "Bonus Performance Scale",
+          "Base Points System"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "794ae572d2ac",
+        "q": "Which new scoring category did FPL introduce for 2025/26?",
+        "correct": "Defensive contributions",
+        "wrong": [
+          "Key passes",
+          "Shots on target",
+          "Successful dribbles"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "3cf03e753136",
+        "q": "Under 2025/26 rules, how many points does a defender earn for 10 defensive contributions?",
+        "correct": "2",
+        "wrong": [
+          "1",
+          "3",
+          "4"
+        ],
+        "template": "hard-scoring",
+        "hard": true
+      },
+      {
+        "id": "e27f8f1b6fdd",
+        "q": "How much money does every FPL manager start the season with?",
+        "correct": "£100m",
+        "wrong": [
+          "£90m",
+          "£110m",
+          "£105m"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "1318b385194e",
+        "q": "What is the most players you can pick from a single Premier League club?",
+        "correct": "3",
+        "wrong": [
+          "2",
+          "4",
+          "5"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "2a8967b0bb5e",
+        "q": "How many points does each FPL transfer beyond your free ones cost?",
+        "correct": "4",
+        "wrong": [
+          "2",
+          "3",
+          "6"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "84f6ae9c3266",
+        "q": "From 2024/25, what is the most free transfers an FPL manager can bank?",
+        "correct": "5",
+        "wrong": [
+          "2",
+          "3",
+          "4"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "994d864379f0",
+        "q": "How many goalkeepers must an FPL squad contain?",
+        "correct": "2",
+        "wrong": [
+          "1",
+          "3",
+          "4"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "dbd810c0370d",
+        "q": "How many forwards must an FPL squad contain?",
+        "correct": "3",
+        "wrong": [
+          "2",
+          "4",
+          "5"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "2a439926e09d",
+        "q": "How many midfielders must an FPL squad contain?",
+        "correct": "5",
+        "wrong": [
+          "4",
+          "3",
+          "6"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "c0b1008459b1",
+        "q": "What is the fewest defenders an FPL starting XI can field?",
+        "correct": "3",
+        "wrong": [
+          "2",
+          "4",
+          "1"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "e47925db338b",
+        "q": "Which of these formations is NOT allowed in FPL?",
+        "correct": "2-5-3",
+        "wrong": [
+          "5-2-3",
+          "3-5-2",
+          "4-5-1"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "6cdcea58df7d",
+        "q": "When you sell a player whose price has risen, how much of the rise do you keep?",
+        "correct": "Half",
+        "wrong": [
+          "All of it",
+          "None",
+          "A quarter"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "be9e770f0884",
+        "q": "If your skipper does not play, whose points are doubled instead?",
+        "correct": "The vice-captain",
+        "wrong": [
+          "The top scorer",
+          "The first sub",
+          "Nobody"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "e1b2d6544577",
+        "q": "How long before the first kick-off of a gameweek is the FPL deadline?",
+        "correct": "90 minutes",
+        "wrong": [
+          "60 minutes",
+          "30 minutes",
+          "24 hours"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "63581cfc0c37",
+        "q": "How many free transfers does an FPL manager normally get each gameweek?",
+        "correct": "1",
+        "wrong": [
+          "2",
+          "0",
+          "3"
+        ],
+        "template": "hard-rules",
+        "hard": true
+      },
+      {
+        "id": "d8400c49e470",
+        "q": "Which chip triples your armband player's points for one gameweek?",
+        "correct": "Triple Captain",
+        "wrong": [
+          "Bench Boost",
+          "Wildcard",
+          "Free Hit"
+        ],
+        "template": "hard-chips",
+        "hard": true
+      },
+      {
+        "id": "30dd68bf268c",
+        "q": "Which chip adds your four substitutes' points to your score for one gameweek?",
+        "correct": "Bench Boost",
+        "wrong": [
+          "Triple Captain",
+          "Free Hit",
+          "Wildcard"
+        ],
+        "template": "hard-chips",
+        "hard": true
+      },
+      {
+        "id": "9af6a343e64b",
+        "q": "Which chip lets you rebuild your squad for one gameweek before it reverts?",
+        "correct": "Free Hit",
+        "wrong": [
+          "Wildcard",
+          "Bench Boost",
+          "Triple Captain"
+        ],
+        "template": "hard-chips",
+        "hard": true
+      },
+      {
+        "id": "956ef4af7a8e",
+        "q": "Which chip makes all your transfers permanent and free for that gameweek?",
+        "correct": "Wildcard",
+        "wrong": [
+          "Free Hit",
+          "Bench Boost",
+          "Triple Captain"
+        ],
+        "template": "hard-chips",
+        "hard": true
+      },
+      {
+        "id": "2026f5972fde",
+        "q": "In 2024/25, how many Wildcards did each manager get?",
+        "correct": "Two",
+        "wrong": [
+          "One",
+          "Three",
+          "Four"
+        ],
+        "template": "hard-chips",
+        "hard": true
+      },
+      {
+        "id": "aa0ca2cf6f1b",
+        "q": "Which chip, added in 2024/25, let you pick a Premier League boss for three gameweeks?",
+        "correct": "Assistant Manager",
+        "wrong": [
+          "Free Hit",
+          "Bench Boost",
+          "Triple Captain"
+        ],
+        "template": "hard-chips",
+        "hard": true
+      },
+      {
+        "id": "b5a7065f2496",
+        "q": "In FPL, what is a \"blank gameweek\" for a team?",
+        "correct": "They have no fixture",
+        "wrong": [
+          "They play twice",
+          "They play at home",
+          "They score no goals"
+        ],
+        "template": "hard-terms",
+        "hard": true
+      },
+      {
+        "id": "d8823e19a617",
+        "q": "In FPL, what does a \"double gameweek\" mean for a team?",
+        "correct": "They play twice",
+        "wrong": [
+          "They have no fixture",
+          "Their points double",
+          "They play at home"
+        ],
+        "template": "hard-terms",
+        "hard": true
+      },
+      {
+        "id": "0605ec1b867d",
+        "q": "In FPL slang, what is a \"differential\"?",
+        "correct": "A low-owned player",
+        "wrong": [
+          "A premium captain",
+          "A bench player",
+          "A price-rise target"
+        ],
+        "template": "hard-terms",
+        "hard": true
+      },
+      {
+        "id": "0bb6ed7a5722",
+        "q": "What is the FPL \"Dream Team\"?",
+        "correct": "The gameweek's best XI",
+        "wrong": [
+          "Your highest-value XI",
+          "The season's top managers",
+          "A mini-league prize"
+        ],
+        "template": "hard-terms",
+        "hard": true
+      },
+      {
+        "id": "106310b20a03",
+        "q": "In FPL, what is a \"hit\"?",
+        "correct": "A transfer points cost",
+        "wrong": [
+          "A captain who blanks",
+          "A price drop",
+          "A red card deduction"
+        ],
+        "template": "hard-terms",
+        "hard": true
+      },
+      {
+        "id": "a5174d308c98",
+        "q": "In which year was Fantasy Premier League launched?",
+        "correct": "2002",
+        "wrong": [
+          "2000",
+          "2004",
+          "1998"
+        ],
+        "template": "hard-history",
+        "hard": true
+      },
+      {
+        "id": "fd97d3a9b65d",
+        "q": "Which player was the first to score over 300 FPL points in a season?",
+        "correct": "Mohamed Salah",
+        "wrong": [
+          "Harry Kane",
+          "Kevin De Bruyne",
+          "Erling Haaland"
+        ],
+        "template": "hard-history",
+        "hard": true
+      },
+      {
+        "id": "f42821a8366e",
+        "q": "As of the end of 2024/25, which player held the record for FPL points in a season?",
+        "correct": "Mohamed Salah",
+        "wrong": [
+          "Erling Haaland",
+          "Harry Kane",
+          "Son Heung-min"
+        ],
+        "template": "hard-history",
+        "hard": true
+      },
+      {
+        "id": "57cbe8bdbce9",
+        "q": "In which FPL position is Mohamed Salah listed?",
+        "correct": "Midfielder",
+        "wrong": [
+          "Forward",
+          "Defender",
+          "Winger"
+        ],
+        "template": "hard-history",
+        "hard": true
+      },
+      {
+        "id": "466854744ebb",
+        "q": "How many Premier League goals did Erling Haaland score in 2022/23?",
+        "correct": "36",
+        "wrong": [
+          "34",
+          "32",
+          "38"
+        ],
+        "template": "hard-history",
+        "hard": true
+      },
+      {
+        "id": "ba1b33a3c928",
+        "q": "Who won the Premier League Golden Boot in 2023/24?",
+        "correct": "Erling Haaland",
+        "wrong": [
+          "Cole Palmer",
+          "Ollie Watkins",
+          "Alexander Isak"
+        ],
+        "template": "hard-history",
+        "hard": true
+      },
+      {
+        "id": "461b7f199726",
+        "q": "Who won the Premier League Golden Boot in 2024/25?",
+        "correct": "Mohamed Salah",
+        "wrong": [
+          "Alexander Isak",
+          "Erling Haaland",
+          "Chris Wood"
+        ],
+        "template": "hard-history",
+        "hard": true
       }
     ],
     "general": [
@@ -157221,6 +157821,606 @@
           "Mr. Krabs"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "5c5ccb2933e0",
+        "q": "What is the name of Plankton's restaurant?",
+        "correct": "The Chum Bucket",
+        "wrong": [
+          "The Rusty Anchor",
+          "The Salty Spitoon",
+          "Weenie Hut Jr"
+        ],
+        "template": "hard-spongebob",
+        "hard": true
+      },
+      {
+        "id": "0b7847e72831",
+        "q": "What is the name of Plankton's computer wife?",
+        "correct": "Karen",
+        "wrong": [
+          "Pearl",
+          "Sandy",
+          "Mindy"
+        ],
+        "template": "hard-spongebob",
+        "hard": true
+      },
+      {
+        "id": "ad53ebe4edb8",
+        "q": "What is the name of Mr. Krabs' daughter?",
+        "correct": "Pearl",
+        "wrong": [
+          "Karen",
+          "Mindy",
+          "Betsy"
+        ],
+        "template": "hard-spongebob",
+        "hard": true
+      },
+      {
+        "id": "b71bf450b326",
+        "q": "Which US state is Sandy Cheeks from?",
+        "correct": "Texas",
+        "wrong": [
+          "Florida",
+          "Alaska",
+          "Nevada"
+        ],
+        "template": "hard-spongebob",
+        "hard": true
+      },
+      {
+        "id": "6f94ce37d4f0",
+        "q": "At which bar does Homer Simpson usually drink?",
+        "correct": "Moe's Tavern",
+        "wrong": [
+          "The Leftorium",
+          "Krusty Burger",
+          "Kwik-E-Mart"
+        ],
+        "template": "hard-simpsons",
+        "hard": true
+      },
+      {
+        "id": "98144800e7b0",
+        "q": "What is Homer Simpson's middle name?",
+        "correct": "Jay",
+        "wrong": [
+          "James",
+          "John",
+          "Joseph"
+        ],
+        "template": "hard-simpsons",
+        "hard": true
+      },
+      {
+        "id": "83a16ec08ede",
+        "q": "What is Bart Simpson's full first name?",
+        "correct": "Bartholomew",
+        "wrong": [
+          "Bartley",
+          "Barton",
+          "Bartram"
+        ],
+        "template": "hard-simpsons",
+        "hard": true
+      },
+      {
+        "id": "556c1c643ef9",
+        "q": "Who voices Bart Simpson?",
+        "correct": "Nancy Cartwright",
+        "wrong": [
+          "Yeardley Smith",
+          "Julie Kavner",
+          "Pamela Hayden"
+        ],
+        "template": "hard-simpsons",
+        "hard": true
+      },
+      {
+        "id": "809b49580ea5",
+        "q": "Who owns the Springfield Nuclear Power Plant?",
+        "correct": "Mr. Burns",
+        "wrong": [
+          "Mr. Smithers",
+          "Mayor Quimby",
+          "Krusty"
+        ],
+        "template": "hard-simpsons",
+        "hard": true
+      },
+      {
+        "id": "955e96d7ba1f",
+        "q": "What is the name of Stewie Griffin's teddy bear?",
+        "correct": "Rupert",
+        "wrong": [
+          "Robert",
+          "Ralph",
+          "Reginald"
+        ],
+        "template": "hard-simpsons",
+        "hard": true
+      },
+      {
+        "id": "c64a86e5f612",
+        "q": "What is Rick's surname in Rick and Morty?",
+        "correct": "Sanchez",
+        "wrong": [
+          "Smith",
+          "Sanderson",
+          "Santos"
+        ],
+        "template": "hard-simpsons",
+        "hard": true
+      },
+      {
+        "id": "1e195067f6c8",
+        "q": "Which film studio first released Tom and Jerry cartoons?",
+        "correct": "MGM",
+        "wrong": [
+          "Warner Bros.",
+          "Disney",
+          "Paramount"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "fb86e1fe0b00",
+        "q": "What was Tom's name in his 1940 debut cartoon?",
+        "correct": "Jasper",
+        "wrong": [
+          "Tommy",
+          "Felix",
+          "Butch"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "83a33ec531f1",
+        "q": "Who was the original voice of Bugs Bunny?",
+        "correct": "Mel Blanc",
+        "wrong": [
+          "Daws Butler",
+          "June Foray",
+          "Don Messick"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "e5c361283c7e",
+        "q": "Which company makes the gadgets Wile E. Coyote buys?",
+        "correct": "Acme",
+        "wrong": [
+          "Ajax",
+          "Apex",
+          "Zenith"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "eba6caa345af",
+        "q": "Which Looney Tunes character says \"Sufferin' succotash\"?",
+        "correct": "Sylvester",
+        "wrong": [
+          "Daffy Duck",
+          "Porky Pig",
+          "Foghorn Leghorn"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "b6ebf82d6abb",
+        "q": "Which 1928 short was the first Mickey Mouse cartoon released with sound?",
+        "correct": "Steamboat Willie",
+        "wrong": [
+          "Plane Crazy",
+          "The Gallopin' Gaucho",
+          "Mickey's Revue"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "1475fc69a0c9",
+        "q": "Which rabbit character did Walt Disney create before Mickey Mouse?",
+        "correct": "Oswald",
+        "wrong": [
+          "Roger",
+          "Thumper",
+          "Bugs"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "eb2e92c646f9",
+        "q": "What is Scooby-Doo's full name?",
+        "correct": "Scoobert Doo",
+        "wrong": [
+          "Scooby Dooby Doo",
+          "Scoobington Doo",
+          "Scooter Doo"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "6265a649bd5d",
+        "q": "What is Shaggy's real first name?",
+        "correct": "Norville",
+        "wrong": [
+          "Norman",
+          "Neville",
+          "Nigel"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "393490a0d8fc",
+        "q": "What is the name of Aang's sky bison?",
+        "correct": "Appa",
+        "wrong": [
+          "Momo",
+          "Naga",
+          "Pabu"
+        ],
+        "template": "hard-avatar",
+        "hard": true
+      },
+      {
+        "id": "170c7930aaab",
+        "q": "What is the name of Zuko's uncle?",
+        "correct": "Iroh",
+        "wrong": [
+          "Ozai",
+          "Zhao",
+          "Bumi"
+        ],
+        "template": "hard-avatar",
+        "hard": true
+      },
+      {
+        "id": "1f7f98348089",
+        "q": "Who invented metalbending in Avatar?",
+        "correct": "Toph Beifong",
+        "wrong": [
+          "Bumi",
+          "Lin Beifong",
+          "Kuvira"
+        ],
+        "template": "hard-avatar",
+        "hard": true
+      },
+      {
+        "id": "3140f9452997",
+        "q": "Who is the Avatar in the sequel series to Avatar: The Last Airbender?",
+        "correct": "Korra",
+        "wrong": [
+          "Asami",
+          "Jinora",
+          "Kyoshi"
+        ],
+        "template": "hard-avatar",
+        "hard": true
+      },
+      {
+        "id": "b7e10b036de1",
+        "q": "What is the name of Aang's winged lemur?",
+        "correct": "Momo",
+        "wrong": [
+          "Appa",
+          "Pabu",
+          "Naga"
+        ],
+        "template": "hard-avatar",
+        "hard": true
+      },
+      {
+        "id": "1ea65cf8cb46",
+        "q": "Which ingredient was spilled into the mix that created the Powerpuff Girls?",
+        "correct": "Chemical X",
+        "wrong": [
+          "Compound V",
+          "Element Z",
+          "Formula 86"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "a3a855fb0680",
+        "q": "Who is the Powerpuff Girls' monkey arch-villain?",
+        "correct": "Mojo Jojo",
+        "wrong": [
+          "HIM",
+          "Fuzzy Lumpkins",
+          "Princess Morbucks"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "41056a4dd1d0",
+        "q": "What is the name of Dexter's sister in Dexter's Laboratory?",
+        "correct": "Dee Dee",
+        "wrong": [
+          "Didi",
+          "Debbie",
+          "Daisy"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "da894fbcf179",
+        "q": "Which sweets are the Eds always trying to buy in Ed, Edd n Eddy?",
+        "correct": "Jawbreakers",
+        "wrong": [
+          "Gumballs",
+          "Lollipops",
+          "Candy canes"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "2777edb09f98",
+        "q": "Who is Courage the Cowardly Dog's kind owner?",
+        "correct": "Muriel",
+        "wrong": [
+          "Eustace",
+          "Shirley",
+          "Katz"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "83e4622e9df6",
+        "q": "What is the name of the device Ben Tennyson finds in Ben 10?",
+        "correct": "Omnitrix",
+        "wrong": [
+          "Ultimatrix",
+          "Nemetrix",
+          "Biomnitrix"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "849eb61500e4",
+        "q": "What is the name of Ben Tennyson's cousin?",
+        "correct": "Gwen",
+        "wrong": [
+          "Kevin",
+          "Julie",
+          "Max"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "b82ecffbd7b5",
+        "q": "In Adventure Time, which princess is made of candy?",
+        "correct": "Princess Bubblegum",
+        "wrong": [
+          "Lumpy Space Princess",
+          "Flame Princess",
+          "Marceline"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "c9caba4bcd38",
+        "q": "Which triangular villain haunts Gravity Falls?",
+        "correct": "Bill Cipher",
+        "wrong": [
+          "Gideon Gleeful",
+          "Blendin Blandin",
+          "Robbie Valentino"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "c2b41a41ad5d",
+        "q": "In Samurai Jack, what is the name of the shape-shifting demon Jack fights?",
+        "correct": "Aku",
+        "wrong": [
+          "Mojo",
+          "Vilgax",
+          "Hexxus"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "845d751b6c09",
+        "q": "What is the name of the alien villain who keeps trying to take the Omnitrix?",
+        "correct": "Vilgax",
+        "wrong": [
+          "Aku",
+          "Kevin 11",
+          "Zs'Skayr"
+        ],
+        "template": "hard-cartoon-network",
+        "hard": true
+      },
+      {
+        "id": "1bf9a42820c7",
+        "q": "What is Perry the Platypus's secret agent codename?",
+        "correct": "Agent P",
+        "wrong": [
+          "Agent X",
+          "Agent F",
+          "Agent D"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "468d4712ebf0",
+        "q": "Who is Perry the Platypus's nemesis?",
+        "correct": "Dr. Doofenshmirtz",
+        "wrong": [
+          "Dr. Drakken",
+          "Professor Chaos",
+          "Dr. Blowhole"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "6c30369bcfff",
+        "q": "What is Ron Stoppable's pet naked mole-rat called in Kim Possible?",
+        "correct": "Rufus",
+        "wrong": [
+          "Rudy",
+          "Rocky",
+          "Rex"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "24839608e971",
+        "q": "Which Teenage Mutant Ninja Turtle wears a purple mask?",
+        "correct": "Donatello",
+        "wrong": [
+          "Raphael",
+          "Michelangelo",
+          "Leonardo"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "2070dfd7a0e0",
+        "q": "Which Teenage Mutant Ninja Turtle wears a red mask?",
+        "correct": "Raphael",
+        "wrong": [
+          "Donatello",
+          "Michelangelo",
+          "Leonardo"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "215684fbf214",
+        "q": "What is the name of the Ninja Turtles' rat sensei?",
+        "correct": "Splinter",
+        "wrong": [
+          "Shredder",
+          "Krang",
+          "Bebop"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "1c0bf196d8fe",
+        "q": "In The Fairly OddParents, what are the names of Timmy's fairy godparents?",
+        "correct": "Cosmo and Wanda",
+        "wrong": [
+          "Jorgen and Wanda",
+          "Cosmo and Poof",
+          "Binky and Wanda"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "bc0c3621661d",
+        "q": "Which Rugrats character is the bossy three-year-old cousin?",
+        "correct": "Angelica",
+        "wrong": [
+          "Susie",
+          "Lil",
+          "Kimi"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "ef2e632721b0",
+        "q": "What is the name of Jimmy Neutron's robot dog?",
+        "correct": "Goddard",
+        "wrong": [
+          "Gizmo",
+          "K-9",
+          "Bolt"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "3b6fda7f371c",
+        "q": "In Danny Phantom, what is the name of the town Danny protects?",
+        "correct": "Amity Park",
+        "wrong": [
+          "Dimmsdale",
+          "Retroville",
+          "Danville"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "357d8166ca81",
+        "q": "In Hey Arnold!, what is unusual about the shape of Arnold's head?",
+        "correct": "It is football-shaped",
+        "wrong": [
+          "It is square",
+          "It is a triangle",
+          "It is star-shaped"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "2a72c889a17d",
+        "q": "Which Nickelodeon cartoon follows twins Phil and Lil DeVille among others?",
+        "correct": "Rugrats",
+        "wrong": [
+          "Hey Arnold!",
+          "The Wild Thornberrys",
+          "As Told by Ginger"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "55409df2f20d",
+        "q": "In Phineas and Ferb, what is the name of the boys' older sister?",
+        "correct": "Candace",
+        "wrong": [
+          "Isabella",
+          "Stacy",
+          "Vanessa"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
+      },
+      {
+        "id": "e7ba02461910",
+        "q": "Which Disney Channel cartoon features the twins Dipper and Mabel?",
+        "correct": "Gravity Falls",
+        "wrong": [
+          "Phineas and Ferb",
+          "Star vs. the Forces of Evil",
+          "The Owl House"
+        ],
+        "template": "hard-disney-nick",
+        "hard": true
       }
     ],
     "art": [
@@ -250431,6 +251631,606 @@
           "Isao Takahata"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "93cfe2cd9a44",
+        "q": "Which anime film won the Oscar for Best Animated Feature in 2003?",
+        "correct": "Spirited Away",
+        "wrong": [
+          "Princess Mononoke",
+          "Akira",
+          "Your Name"
+        ],
+        "template": "hard-studios",
+        "hard": true
+      },
+      {
+        "id": "ee026960cf97",
+        "q": "In 2024, which director won his second Oscar for Best Animated Feature?",
+        "correct": "Hayao Miyazaki",
+        "wrong": [
+          "Makoto Shinkai",
+          "Mamoru Hosoda",
+          "Isao Takahata"
+        ],
+        "template": "hard-studios",
+        "hard": true
+      },
+      {
+        "id": "a72363390028",
+        "q": "Which studio animated the final season of Attack on Titan?",
+        "correct": "MAPPA",
+        "wrong": [
+          "Wit Studio",
+          "Ufotable",
+          "Bones"
+        ],
+        "template": "hard-studios",
+        "hard": true
+      },
+      {
+        "id": "c95f83162dd6",
+        "q": "Which studio animates Demon Slayer?",
+        "correct": "Ufotable",
+        "wrong": [
+          "MAPPA",
+          "Bones",
+          "Madhouse"
+        ],
+        "template": "hard-studios",
+        "hard": true
+      },
+      {
+        "id": "bde95fb622cd",
+        "q": "Which studio animates My Hero Academia?",
+        "correct": "Bones",
+        "wrong": [
+          "MAPPA",
+          "Ufotable",
+          "Toei Animation"
+        ],
+        "template": "hard-studios",
+        "hard": true
+      },
+      {
+        "id": "16f4e5a16935",
+        "q": "Which studio made the 2011 Hunter x Hunter series?",
+        "correct": "Madhouse",
+        "wrong": [
+          "Nippon Animation",
+          "Bones",
+          "Pierrot"
+        ],
+        "template": "hard-studios",
+        "hard": true
+      },
+      {
+        "id": "ff063c0384b0",
+        "q": "In 2020, which Demon Slayer film became the highest-grossing film in Japanese history?",
+        "correct": "Mugen Train",
+        "wrong": [
+          "Infinity Castle",
+          "Entertainment District",
+          "Swordsmith Village"
+        ],
+        "template": "hard-studios",
+        "hard": true
+      },
+      {
+        "id": "a09dd4cba016",
+        "q": "In which city is the 1988 film Akira set?",
+        "correct": "Neo-Tokyo",
+        "wrong": [
+          "Neo-Osaka",
+          "New Kyoto",
+          "Tokyo-3"
+        ],
+        "template": "hard-studios",
+        "hard": true
+      },
+      {
+        "id": "048926bf4672",
+        "q": "In which year did the One Piece manga begin?",
+        "correct": "1997",
+        "wrong": [
+          "1999",
+          "1995",
+          "2001"
+        ],
+        "template": "hard-one-piece",
+        "hard": true
+      },
+      {
+        "id": "f9a4a05fc1df",
+        "q": "What was the name of the Straw Hats' first ship?",
+        "correct": "Going Merry",
+        "wrong": [
+          "Thousand Sunny",
+          "Red Force",
+          "Moby Dick"
+        ],
+        "template": "hard-one-piece",
+        "hard": true
+      },
+      {
+        "id": "3f1e6671dc51",
+        "q": "Which Straw Hat is the crew's navigator?",
+        "correct": "Nami",
+        "wrong": [
+          "Robin",
+          "Usopp",
+          "Sanji"
+        ],
+        "template": "hard-one-piece",
+        "hard": true
+      },
+      {
+        "id": "efdb819217b2",
+        "q": "What is Zoro's signature three-sword fighting style called?",
+        "correct": "Santoryu",
+        "wrong": [
+          "Ittoryu",
+          "Nitoryu",
+          "Hiten Mitsurugi"
+        ],
+        "template": "hard-one-piece",
+        "hard": true
+      },
+      {
+        "id": "ac8a38790352",
+        "q": "What is Eren's surname in Attack on Titan?",
+        "correct": "Yeager",
+        "wrong": [
+          "Ackerman",
+          "Arlert",
+          "Braun"
+        ],
+        "template": "hard-aot",
+        "hard": true
+      },
+      {
+        "id": "55690d9ff51c",
+        "q": "Who is known as \"humanity's strongest soldier\" in Attack on Titan?",
+        "correct": "Levi",
+        "wrong": [
+          "Mikasa",
+          "Erwin",
+          "Hange"
+        ],
+        "template": "hard-aot",
+        "hard": true
+      },
+      {
+        "id": "5a4d17758831",
+        "q": "Which Titan does Reiner Braun inherit?",
+        "correct": "Armored Titan",
+        "wrong": [
+          "Colossal Titan",
+          "Beast Titan",
+          "Jaw Titan"
+        ],
+        "template": "hard-aot",
+        "hard": true
+      },
+      {
+        "id": "f2ef1549e551",
+        "q": "Which Titan does Bertholdt Hoover inherit?",
+        "correct": "Colossal Titan",
+        "wrong": [
+          "Armored Titan",
+          "Cart Titan",
+          "Female Titan"
+        ],
+        "template": "hard-aot",
+        "hard": true
+      },
+      {
+        "id": "792f629ec401",
+        "q": "Who is the Beast Titan?",
+        "correct": "Zeke Yeager",
+        "wrong": [
+          "Reiner Braun",
+          "Porco Galliard",
+          "Eren Kruger"
+        ],
+        "template": "hard-aot",
+        "hard": true
+      },
+      {
+        "id": "d494f7abc087",
+        "q": "Which Shinigami drops the Death Note into the human world?",
+        "correct": "Ryuk",
+        "wrong": [
+          "Rem",
+          "Sidoh",
+          "Gelus"
+        ],
+        "template": "hard-death-note",
+        "hard": true
+      },
+      {
+        "id": "a2d7c7513841",
+        "q": "What is L's real name in Death Note?",
+        "correct": "L Lawliet",
+        "wrong": [
+          "Nate River",
+          "Mihael Keehl",
+          "Quillsh Wammy"
+        ],
+        "template": "hard-death-note",
+        "hard": true
+      },
+      {
+        "id": "27e10bbdc8b5",
+        "q": "What name does the public give Light Yagami's killer persona?",
+        "correct": "Kira",
+        "wrong": [
+          "Ryuk",
+          "Near",
+          "Mello"
+        ],
+        "template": "hard-death-note",
+        "hard": true
+      },
+      {
+        "id": "18380ebdcfeb",
+        "q": "What is Goku's Saiyan birth name?",
+        "correct": "Kakarot",
+        "wrong": [
+          "Raditz",
+          "Bardock",
+          "Tarble"
+        ],
+        "template": "hard-dragon-ball",
+        "hard": true
+      },
+      {
+        "id": "ad2790c1b177",
+        "q": "In which year did Dragon Ball creator Akira Toriyama die?",
+        "correct": "2024",
+        "wrong": [
+          "2023",
+          "2022",
+          "2025"
+        ],
+        "template": "hard-dragon-ball",
+        "hard": true
+      },
+      {
+        "id": "aceb6a1cbac6",
+        "q": "Who is Goku's first son?",
+        "correct": "Gohan",
+        "wrong": [
+          "Goten",
+          "Trunks",
+          "Pan"
+        ],
+        "template": "hard-dragon-ball",
+        "hard": true
+      },
+      {
+        "id": "0d689a5c44e7",
+        "q": "Which transformation did Goku first achieve on Namek?",
+        "correct": "Super Saiyan",
+        "wrong": [
+          "Super Saiyan 2",
+          "Kaioken",
+          "Ultra Instinct"
+        ],
+        "template": "hard-dragon-ball",
+        "hard": true
+      },
+      {
+        "id": "a2cbf96aeb9f",
+        "q": "What is Tanjiro's surname in Demon Slayer?",
+        "correct": "Kamado",
+        "wrong": [
+          "Agatsuma",
+          "Hashibira",
+          "Tomioka"
+        ],
+        "template": "hard-demon-slayer",
+        "hard": true
+      },
+      {
+        "id": "8dc1a4354da1",
+        "q": "Which breathing style does Tanjiro first learn?",
+        "correct": "Water Breathing",
+        "wrong": [
+          "Flame Breathing",
+          "Thunder Breathing",
+          "Sun Breathing"
+        ],
+        "template": "hard-demon-slayer",
+        "hard": true
+      },
+      {
+        "id": "10fef6422747",
+        "q": "Which Demon Slayer character uses Thunder Breathing?",
+        "correct": "Zenitsu",
+        "wrong": [
+          "Inosuke",
+          "Rengoku",
+          "Giyu"
+        ],
+        "template": "hard-demon-slayer",
+        "hard": true
+      },
+      {
+        "id": "b2b2bcef0aa8",
+        "q": "Who is the Flame Hashira?",
+        "correct": "Kyojuro Rengoku",
+        "wrong": [
+          "Giyu Tomioka",
+          "Sanemi Shinazugawa",
+          "Tengen Uzui"
+        ],
+        "template": "hard-demon-slayer",
+        "hard": true
+      },
+      {
+        "id": "1b48e53dc8c1",
+        "q": "Who is the \"King of Curses\" in Jujutsu Kaisen?",
+        "correct": "Ryomen Sukuna",
+        "wrong": [
+          "Mahito",
+          "Jogo",
+          "Kenjaku"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "a2d5b34aaabf",
+        "q": "Which Jujutsu Kaisen sorcerer wears a blindfold?",
+        "correct": "Satoru Gojo",
+        "wrong": [
+          "Megumi Fushiguro",
+          "Kento Nanami",
+          "Suguru Geto"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "62aa714c8bcd",
+        "q": "What is Gon's surname in Hunter x Hunter?",
+        "correct": "Freecss",
+        "wrong": [
+          "Zoldyck",
+          "Kurta",
+          "Netero"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "9beb5c4dd0bb",
+        "q": "Which family of assassins does Killua belong to?",
+        "correct": "Zoldyck",
+        "wrong": [
+          "Freecss",
+          "Kurta",
+          "Lucilfer"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "332ab6f76a7c",
+        "q": "Kurapika is the last survivor of which clan?",
+        "correct": "Kurta",
+        "wrong": [
+          "Zoldyck",
+          "Freecss",
+          "Lucilfer"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "8abbe7d8148c",
+        "q": "In Fullmetal Alchemist, what does Edward give up to bind Alphonse's soul to the armour?",
+        "correct": "His right arm",
+        "wrong": [
+          "His left leg",
+          "His left arm",
+          "His right leg"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "e5e73d677890",
+        "q": "What is Deku's real name in My Hero Academia?",
+        "correct": "Izuku Midoriya",
+        "wrong": [
+          "Katsuki Bakugo",
+          "Shoto Todoroki",
+          "Tenya Iida"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "25bc91a72d62",
+        "q": "Which Quirk does All Might pass on to Deku?",
+        "correct": "One For All",
+        "wrong": [
+          "All For One",
+          "Half-Cold Half-Hot",
+          "Explosion"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "cc48dc229fed",
+        "q": "What is Saitama's official hero name in One Punch Man?",
+        "correct": "Caped Baldy",
+        "wrong": [
+          "Silver Fang",
+          "Metal Knight",
+          "Blast"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "c408a1c02281",
+        "q": "Who is Saitama's cyborg disciple?",
+        "correct": "Genos",
+        "wrong": [
+          "Mumen Rider",
+          "King",
+          "Sonic"
+        ],
+        "template": "hard-shonen",
+        "hard": true
+      },
+      {
+        "id": "d0ae16912275",
+        "q": "What is Sailor Moon's civilian name?",
+        "correct": "Usagi Tsukino",
+        "wrong": [
+          "Ami Mizuno",
+          "Rei Hino",
+          "Makoto Kino"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "2a9dc9c40656",
+        "q": "In which region does Ash begin his Pokémon journey?",
+        "correct": "Kanto",
+        "wrong": [
+          "Johto",
+          "Hoenn",
+          "Sinnoh"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "438562d15be7",
+        "q": "Which town is Ash Ketchum from?",
+        "correct": "Pallet Town",
+        "wrong": [
+          "Lavender Town",
+          "Viridian City",
+          "Cerulean City"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "df8a409a2edc",
+        "q": "In Neon Genesis Evangelion, who pilots Eva Unit-01?",
+        "correct": "Shinji Ikari",
+        "wrong": [
+          "Asuka Langley",
+          "Rei Ayanami",
+          "Toji Suzuhara"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "0babf99aec1e",
+        "q": "Who is the main character of Cowboy Bebop?",
+        "correct": "Spike Spiegel",
+        "wrong": [
+          "Jet Black",
+          "Vicious",
+          "Faye Valentine"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "d15b2d35bd66",
+        "q": "Who pilots the RX-78-2 in the original Mobile Suit Gundam?",
+        "correct": "Amuro Ray",
+        "wrong": [
+          "Char Aznable",
+          "Kamille Bidan",
+          "Heero Yuy"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "3e21f2970c46",
+        "q": "In Bleach, what is Ichigo's surname?",
+        "correct": "Kurosaki",
+        "wrong": [
+          "Kuchiki",
+          "Abarai",
+          "Ishida"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "39e1affd2779",
+        "q": "What is the name of Ichigo's Zanpakutō?",
+        "correct": "Zangetsu",
+        "wrong": [
+          "Senbonzakura",
+          "Zabimaru",
+          "Hyōrinmaru"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "081545e54cc9",
+        "q": "In Fullmetal Alchemist, what is the name of the colonel known as the Flame Alchemist?",
+        "correct": "Roy Mustang",
+        "wrong": [
+          "Alex Armstrong",
+          "Maes Hughes",
+          "King Bradley"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "4d04bdf82740",
+        "q": "In Code Geass, what masked identity does Lelouch adopt?",
+        "correct": "Zero",
+        "wrong": [
+          "Kira",
+          "Black King",
+          "The Joker"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "130f78e586eb",
+        "q": "Which anime follows the volleyball team of Karasuno High?",
+        "correct": "Haikyu!!",
+        "wrong": [
+          "Kuroko no Basket",
+          "Blue Lock",
+          "Slam Dunk"
+        ],
+        "template": "hard-classics",
+        "hard": true
+      },
+      {
+        "id": "f17569abac1b",
+        "q": "Which anime follows the football project to create Japan's best striker?",
+        "correct": "Blue Lock",
+        "wrong": [
+          "Captain Tsubasa",
+          "Haikyu!!",
+          "Inazuma Eleven"
+        ],
+        "template": "hard-classics",
+        "hard": true
       }
     ],
     "health": [
@@ -306891,6 +308691,606 @@
           "Castle Black",
           "The House of Black and White"
         ]
+      },
+      {
+        "id": "7dd51c843168",
+        "q": "What are the words of House Greyjoy?",
+        "correct": "We Do Not Sow",
+        "wrong": [
+          "Ours Is the Fury",
+          "Growing Strong",
+          "Hear Me Roar"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "1c2d6d23a244",
+        "q": "What are the words of House Tyrell?",
+        "correct": "Growing Strong",
+        "wrong": [
+          "Hear Me Roar",
+          "Ours Is the Fury",
+          "As High as Honor"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "244e2979dd6d",
+        "q": "What are the words of House Baratheon?",
+        "correct": "Ours Is the Fury",
+        "wrong": [
+          "Growing Strong",
+          "We Do Not Sow",
+          "Hear Me Roar"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "a63ab009ec31",
+        "q": "Which house's sigil is a kraken?",
+        "correct": "Greyjoy",
+        "wrong": [
+          "Tully",
+          "Arryn",
+          "Martell"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "2da5908a9713",
+        "q": "Which house's sigil is a flayed man?",
+        "correct": "Bolton",
+        "wrong": [
+          "Frey",
+          "Karstark",
+          "Umber"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "30144df8f188",
+        "q": "Which house's sigil is a leaping trout?",
+        "correct": "Tully",
+        "wrong": [
+          "Frey",
+          "Arryn",
+          "Mormont"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "e8cc2d408ce3",
+        "q": "Which castle is the ancestral seat of House Lannister?",
+        "correct": "Casterly Rock",
+        "wrong": [
+          "Storm's End",
+          "Highgarden",
+          "Riverrun"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "3d64c8b12e04",
+        "q": "Which castle is the seat of House Arryn?",
+        "correct": "The Eyrie",
+        "wrong": [
+          "Riverrun",
+          "Pyke",
+          "Sunspear"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "4bbaf7199623",
+        "q": "Which castle is the seat of House Greyjoy?",
+        "correct": "Pyke",
+        "wrong": [
+          "Harrenhal",
+          "Dragonstone",
+          "Sunspear"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "a95d0b515e74",
+        "q": "Which castle is the seat of House Baratheon?",
+        "correct": "Storm's End",
+        "wrong": [
+          "Casterly Rock",
+          "Highgarden",
+          "Dragonstone"
+        ],
+        "template": "hard-houses",
+        "hard": true
+      },
+      {
+        "id": "6b39f51c5554",
+        "q": "Who forged Arya's sword Needle?",
+        "correct": "Mikken",
+        "wrong": [
+          "Gendry",
+          "Tobho Mott",
+          "Donal Noye"
+        ],
+        "template": "hard-swords",
+        "hard": true
+      },
+      {
+        "id": "8d14920cebe7",
+        "q": "What is the name of Jon Snow's Valyrian steel sword?",
+        "correct": "Longclaw",
+        "wrong": [
+          "Ice",
+          "Heartsbane",
+          "Oathkeeper"
+        ],
+        "template": "hard-swords",
+        "hard": true
+      },
+      {
+        "id": "a17df96064b6",
+        "q": "Heartsbane is the ancestral sword of which house?",
+        "correct": "Tarly",
+        "wrong": [
+          "Tyrell",
+          "Dayne",
+          "Mormont"
+        ],
+        "template": "hard-swords",
+        "hard": true
+      },
+      {
+        "id": "6b624fc750b4",
+        "q": "Which sword did Jaime Lannister give to Brienne?",
+        "correct": "Oathkeeper",
+        "wrong": [
+          "Widow's Wail",
+          "Longclaw",
+          "Dawn"
+        ],
+        "template": "hard-swords",
+        "hard": true
+      },
+      {
+        "id": "21a01e41d47a",
+        "q": "What was Joffrey's sword, forged from Ice, called?",
+        "correct": "Widow's Wail",
+        "wrong": [
+          "Oathkeeper",
+          "Lion's Tooth",
+          "Hearteater"
+        ],
+        "template": "hard-swords",
+        "hard": true
+      },
+      {
+        "id": "b4857a685f2e",
+        "q": "Who killed the Night King?",
+        "correct": "Arya Stark",
+        "wrong": [
+          "Jon Snow",
+          "Bran Stark",
+          "Daenerys Targaryen"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "0d34e974168f",
+        "q": "Who confessed to Jaime that she poisoned Joffrey?",
+        "correct": "Olenna Tyrell",
+        "wrong": [
+          "Margaery Tyrell",
+          "Cersei Lannister",
+          "Sansa Stark"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "0a9c09d450e7",
+        "q": "Who killed Tywin Lannister?",
+        "correct": "Tyrion Lannister",
+        "wrong": [
+          "Jaime Lannister",
+          "Varys",
+          "Bronn"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "9925e4431fb0",
+        "q": "Who executed Petyr Baelish at Winterfell?",
+        "correct": "Arya Stark",
+        "wrong": [
+          "Sansa Stark",
+          "Bran Stark",
+          "Brienne of Tarth"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "a35e826d85e3",
+        "q": "Who sentenced Ramsay Bolton to be eaten by his own hounds?",
+        "correct": "Sansa Stark",
+        "wrong": [
+          "Jon Snow",
+          "Arya Stark",
+          "Theon Greyjoy"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "bb31eb37ca92",
+        "q": "Who killed Oberyn Martell in their trial by combat?",
+        "correct": "Gregor Clegane",
+        "wrong": [
+          "Sandor Clegane",
+          "Jaime Lannister",
+          "Meryn Trant"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "169368be8ff5",
+        "q": "Who killed Robb Stark at the Red Wedding?",
+        "correct": "Roose Bolton",
+        "wrong": [
+          "Walder Frey",
+          "Black Walder",
+          "Lothar Frey"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "e1dcd844be33",
+        "q": "Who led the mutiny that killed Jon Snow, saying \"For the Watch\"?",
+        "correct": "Alliser Thorne",
+        "wrong": [
+          "Olly",
+          "Bowen Marsh",
+          "Janos Slynt"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "a2862af6c3a7",
+        "q": "Who brought Jon Snow back to life?",
+        "correct": "Melisandre",
+        "wrong": [
+          "Thoros of Myr",
+          "Bran Stark",
+          "Qyburn"
+        ],
+        "template": "hard-deaths",
+        "hard": true
+      },
+      {
+        "id": "e67aa9928978",
+        "q": "What is the name of Daenerys's largest dragon?",
+        "correct": "Drogon",
+        "wrong": [
+          "Rhaegal",
+          "Viserion",
+          "Balerion"
+        ],
+        "template": "hard-essos",
+        "hard": true
+      },
+      {
+        "id": "c24bb47e9aea",
+        "q": "Which dragon did the Night King raise as an ice dragon?",
+        "correct": "Viserion",
+        "wrong": [
+          "Rhaegal",
+          "Drogon",
+          "Vhagar"
+        ],
+        "template": "hard-essos",
+        "hard": true
+      },
+      {
+        "id": "6bd8fafba317",
+        "q": "Which dragon does Jon Snow ride?",
+        "correct": "Rhaegal",
+        "wrong": [
+          "Viserion",
+          "Drogon",
+          "Syrax"
+        ],
+        "template": "hard-essos",
+        "hard": true
+      },
+      {
+        "id": "0f0d7c979ee4",
+        "q": "What was the name of Daenerys's first husband?",
+        "correct": "Khal Drogo",
+        "wrong": [
+          "Khal Moro",
+          "Khal Jhaqo",
+          "Daario Naharis"
+        ],
+        "template": "hard-essos",
+        "hard": true
+      },
+      {
+        "id": "f1578306b3e8",
+        "q": "Who was Daenerys's trusted translator and adviser?",
+        "correct": "Missandei",
+        "wrong": [
+          "Doreah",
+          "Irri",
+          "Jhiqui"
+        ],
+        "template": "hard-essos",
+        "hard": true
+      },
+      {
+        "id": "4aec2e34d596",
+        "q": "Who commands the Unsullied?",
+        "correct": "Grey Worm",
+        "wrong": [
+          "Daario Naharis",
+          "Barristan Selmy",
+          "Jorah Mormont"
+        ],
+        "template": "hard-essos",
+        "hard": true
+      },
+      {
+        "id": "3a727d8cae52",
+        "q": "In which city does Daenerys acquire the Unsullied?",
+        "correct": "Astapor",
+        "wrong": [
+          "Yunkai",
+          "Meereen",
+          "Qarth"
+        ],
+        "template": "hard-essos",
+        "hard": true
+      },
+      {
+        "id": "7720e8cb7c78",
+        "q": "Which city does Daenerys rule for several seasons in Slaver's Bay?",
+        "correct": "Meereen",
+        "wrong": [
+          "Astapor",
+          "Yunkai",
+          "Volantis"
+        ],
+        "template": "hard-essos",
+        "hard": true
+      },
+      {
+        "id": "98083296445d",
+        "q": "Who is named king at the end of the show?",
+        "correct": "Bran Stark",
+        "wrong": [
+          "Jon Snow",
+          "Tyrion Lannister",
+          "Sansa Stark"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "256368fdc45a",
+        "q": "What title does Sansa take in the final episode?",
+        "correct": "Queen in the North",
+        "wrong": [
+          "Lady of Winterfell",
+          "Warden of the North",
+          "Lady Paramount"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "8d40538537a4",
+        "q": "What is Jon Snow's true name, revealed in season 7?",
+        "correct": "Aegon Targaryen",
+        "wrong": [
+          "Rhaegar Targaryen",
+          "Viserys Targaryen",
+          "Daeron Targaryen"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "bb2e5e47e054",
+        "q": "Whose death leads Ned Stark to become Hand of the King?",
+        "correct": "Jon Arryn",
+        "wrong": [
+          "Robert Baratheon",
+          "Stannis Baratheon",
+          "Tywin Lannister"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "7c843c684a78",
+        "q": "Which god does Melisandre serve?",
+        "correct": "The Lord of Light",
+        "wrong": [
+          "The Many-Faced God",
+          "The Drowned God",
+          "The Seven"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "1aae4a6be90a",
+        "q": "Which god do the Faceless Men serve?",
+        "correct": "The Many-Faced God",
+        "wrong": [
+          "The Lord of Light",
+          "The Drowned God",
+          "The Old Gods"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "5a4397ace14e",
+        "q": "Which Faceless Man does Arya first meet on the road to Harrenhal?",
+        "correct": "Jaqen H'ghar",
+        "wrong": [
+          "Syrio Forel",
+          "Gendry",
+          "Hot Pie"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "aef3c5f0d497",
+        "q": "Who was Arya's \"dancing master\" in season 1?",
+        "correct": "Syrio Forel",
+        "wrong": [
+          "Jaqen H'ghar",
+          "Rodrik Cassel",
+          "Barristan Selmy"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "89d2c566aa0d",
+        "q": "Who was Lord Commander of the Night's Watch when Jon joined?",
+        "correct": "Jeor Mormont",
+        "wrong": [
+          "Alliser Thorne",
+          "Benjen Stark",
+          "Aemon Targaryen"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "81df0dbdc0c2",
+        "q": "Maester Aemon of Castle Black was born into which house?",
+        "correct": "Targaryen",
+        "wrong": [
+          "Stark",
+          "Tarly",
+          "Baratheon"
+        ],
+        "template": "hard-characters",
+        "hard": true
+      },
+      {
+        "id": "18ff1953d9d2",
+        "q": "In which year did Game of Thrones premiere on HBO?",
+        "correct": "2011",
+        "wrong": [
+          "2010",
+          "2012",
+          "2009"
+        ],
+        "template": "hard-production",
+        "hard": true
+      },
+      {
+        "id": "50ed7560f221",
+        "q": "How many Emmys did Peter Dinklage win for playing Tyrion?",
+        "correct": "4",
+        "wrong": [
+          "3",
+          "2",
+          "5"
+        ],
+        "template": "hard-production",
+        "hard": true
+      },
+      {
+        "id": "7497f0039eb7",
+        "q": "Which episode of season 6 is \"Battle of the Bastards\"?",
+        "correct": "Episode 9",
+        "wrong": [
+          "Episode 10",
+          "Episode 8",
+          "Episode 7"
+        ],
+        "template": "hard-production",
+        "hard": true
+      },
+      {
+        "id": "b9ddd0a815ec",
+        "q": "In the books, which novel contains the Red Wedding?",
+        "correct": "A Storm of Swords",
+        "wrong": [
+          "A Clash of Kings",
+          "A Feast for Crows",
+          "A Dance with Dragons"
+        ],
+        "template": "hard-production",
+        "hard": true
+      },
+      {
+        "id": "2d35459a87b7",
+        "q": "Which Game of Thrones prequel series premiered in 2022?",
+        "correct": "House of the Dragon",
+        "wrong": [
+          "A Knight of the Seven Kingdoms",
+          "Blood of My Blood",
+          "The Long Night"
+        ],
+        "template": "hard-production",
+        "hard": true
+      },
+      {
+        "id": "a20c68d58070",
+        "q": "How many seasons did Game of Thrones run for?",
+        "correct": "8",
+        "wrong": [
+          "7",
+          "9",
+          "10"
+        ],
+        "template": "hard-production",
+        "hard": true
+      },
+      {
+        "id": "6cdb99ef6afe",
+        "q": "Where were the Winterfell exteriors in season 1 mainly filmed?",
+        "correct": "Northern Ireland",
+        "wrong": [
+          "Scotland",
+          "Iceland",
+          "Croatia"
+        ],
+        "template": "hard-production",
+        "hard": true
+      },
+      {
+        "id": "49f06e409bcc",
+        "q": "Which Croatian city stood in for King's Landing?",
+        "correct": "Dubrovnik",
+        "wrong": [
+          "Split",
+          "Zagreb",
+          "Zadar"
+        ],
+        "template": "hard-production",
+        "hard": true
       }
     ],
     "naruto": [
