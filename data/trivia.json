@@ -156750,9 +156750,9 @@
         "q": "Which animated series is described: \"William Hanna and Joseph Barbera (MGM, 1940)\"?",
         "correct": "Tom and Jerry",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Danny Phantom",
+          "Avatar: The Last Airbender",
+          "Samurai Jack"
         ],
         "template": "cartoon-creators"
       },
@@ -156772,9 +156772,9 @@
         "q": "Which animated series is described: \"Warner Bros. (Chuck Jones, Tex Avery, Bob Clampett, Mel Blanc)\"?",
         "correct": "Looney Tunes",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "The Powerpuff Girls",
+          "Johnny Bravo",
+          "Tom and Jerry"
         ],
         "template": "cartoon-creators"
       },
@@ -156794,9 +156794,9 @@
         "q": "Which animated series is described: \"Matt Groening (Springfield - Homer, Marge, Bart, Lisa, Maggie)\"?",
         "correct": "The Simpsons",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Samurai Jack",
+          "SpongeBob SquarePants",
+          "South Park"
         ],
         "template": "cartoon-creators"
       },
@@ -156816,9 +156816,9 @@
         "q": "Which animated series is described: \"Seth MacFarlane (Quahog, Rhode Island - Peter, Lois, Meg, Chris, Stewie, Brian)\"?",
         "correct": "Family Guy",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Tom and Jerry",
+          "The Powerpuff Girls",
+          "Danny Phantom"
         ],
         "template": "cartoon-creators"
       },
@@ -156838,9 +156838,9 @@
         "q": "Which animated series is described: \"Trey Parker and Matt Stone (Stan, Kyle, Cartman, Kenny)\"?",
         "correct": "South Park",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Ed, Edd n Eddy",
+          "The Fairly OddParents",
+          "Family Guy"
         ],
         "template": "cartoon-creators"
       },
@@ -156860,9 +156860,9 @@
         "q": "Which animated series is described: \"Stephen Hillenburg (Bikini Bottom - the title character, Patrick, Squidward, Mr. Krabs)\"?",
         "correct": "SpongeBob SquarePants",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "South Park",
+          "Adventure Time",
+          "Looney Tunes"
         ],
         "template": "cartoon-creators"
       },
@@ -156882,9 +156882,9 @@
         "q": "Which animated series is described: \"Michael Dante DiMartino and Bryan Konietzko (Aang, Katara, Sokka, Zuko, Toph)\"?",
         "correct": "Avatar: The Last Airbender",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "The Fairly OddParents",
+          "Looney Tunes",
+          "The Simpsons"
         ],
         "template": "cartoon-creators"
       },
@@ -156904,9 +156904,9 @@
         "q": "Which animated series is described: \"Dan Povenmire and Jeff \"Swampy\" Marsh (Perry the Platypus, Dr. Doofenshmirtz)\"?",
         "correct": "Phineas and Ferb",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "The Powerpuff Girls",
+          "South Park",
+          "Adventure Time"
         ],
         "template": "cartoon-creators"
       },
@@ -156926,9 +156926,9 @@
         "q": "Which animated series is described: \"Alex Hirsch (Mystery Shack in Oregon - Dipper, Mabel, Grunkle Stan, Bill Cipher)\"?",
         "correct": "Gravity Falls",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "The Flintstones",
+          "Phineas and Ferb",
+          "The Fairly OddParents"
         ],
         "template": "cartoon-creators"
       },
@@ -156948,9 +156948,9 @@
         "q": "Which animated series is described: \"Pendleton Ward (Land of Ooo - Finn the Human, Jake the Dog, Marceline)\"?",
         "correct": "Adventure Time",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Phineas and Ferb",
+          "The Fairly OddParents",
+          "Steven Universe"
         ],
         "template": "cartoon-creators"
       },
@@ -156970,9 +156970,9 @@
         "q": "Which animated series is described: \"Rebecca Sugar (Crystal Gems - Garnet, Amethyst, Pearl, the title character)\"?",
         "correct": "Steven Universe",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "The Powerpuff Girls",
+          "The Flintstones",
+          "Johnny Bravo"
         ],
         "template": "cartoon-creators"
       },
@@ -156992,9 +156992,9 @@
         "q": "Which animated series is described: \"Justin Roiland and Dan Harmon (Rick Sanchez and the title character Smith across dimensions)\"?",
         "correct": "Rick and Morty",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Ed, Edd n Eddy",
+          "Johnny Bravo",
+          "Ben 10"
         ],
         "template": "cartoon-creators"
       },
@@ -157014,9 +157014,9 @@
         "q": "Which animated series is described: \"Man of Action (Ben Tennyson, Omnitrix, Gwen, Grandpa Max)\"?",
         "correct": "Ben 10",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "South Park",
+          "Kim Possible",
+          "Family Guy"
         ],
         "template": "cartoon-creators"
       },
@@ -157047,9 +157047,9 @@
         "q": "Which animated series is described: \"Craig McCracken (Blossom, Bubbles, Buttercup, Professor Utonium, Mojo Jojo)\"?",
         "correct": "The Powerpuff Girls",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Family Guy",
+          "Ben 10",
+          "Gravity Falls"
         ],
         "template": "cartoon-creators"
       },
@@ -157069,9 +157069,9 @@
         "q": "Which animated series is described: \"Genndy Tartakovsky (Jack sent into the future by the shapeshifting demon Aku)\"?",
         "correct": "Samurai Jack",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Phineas and Ferb",
+          "Johnny Bravo",
+          "Adventure Time"
         ],
         "template": "cartoon-creators"
       },
@@ -157091,9 +157091,9 @@
         "q": "Which animated series is described: \"John R. Dilworth (Nowhere, Kansas - the title character, Muriel, Eustace Bagge)\"?",
         "correct": "Courage the Cowardly Dog",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Ed, Edd n Eddy",
+          "Teen Titans",
+          "SpongeBob SquarePants"
         ],
         "template": "cartoon-creators"
       },
@@ -157113,9 +157113,9 @@
         "q": "Which animated series is described: \"Van Partible (Muscular blond narcissist voiced by Jeff Bennett)\"?",
         "correct": "Johnny Bravo",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Rick and Morty",
+          "The Powerpuff Girls",
+          "Courage the Cowardly Dog"
         ],
         "template": "cartoon-creators"
       },
@@ -157135,9 +157135,9 @@
         "q": "Which animated series is described: \"Danny Antonucci (Peach Creek cul-de-sac - Jawbreakers scheming trio)\"?",
         "correct": "Ed, Edd n Eddy",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Avatar: The Last Airbender",
+          "SpongeBob SquarePants",
+          "Samurai Jack"
         ],
         "template": "cartoon-creators"
       },
@@ -157157,9 +157157,9 @@
         "q": "Which animated series is described: \"Butch Hartman (Timmy Turner, Cosmo, Wanda, Mr. Crocker)\"?",
         "correct": "The Fairly OddParents",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "South Park",
+          "The Powerpuff Girls",
+          "The Simpsons"
         ],
         "template": "cartoon-creators"
       },
@@ -157179,9 +157179,9 @@
         "q": "Which animated series is described: \"Butch Hartman (the title character Fenton half-ghost hero \"Going Ghost!\")\"?",
         "correct": "Danny Phantom",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Samurai Jack",
+          "South Park",
+          "Kim Possible"
         ],
         "template": "cartoon-creators"
       },
@@ -157201,9 +157201,9 @@
         "q": "Which animated series is described: \"Bob Schooley and Mark McCorkle (Teen hero Kim, Ron Stoppable, Rufus, Dr. Drakken)\"?",
         "correct": "Kim Possible",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Family Guy",
+          "The Simpsons",
+          "Adventure Time"
         ],
         "template": "cartoon-creators"
       },
@@ -157234,9 +157234,9 @@
         "q": "Which animated series is described: \"Hanna-Barbera (Bedrock - Fred, Wilma, Barney, Betty, Dino)\"?",
         "correct": "The Flintstones",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "Gravity Falls",
+          "Ed, Edd n Eddy",
+          "Avatar: The Last Airbender"
         ],
         "template": "cartoon-creators"
       },
@@ -157256,9 +157256,9 @@
         "q": "Which animated series is described: \"Glen Murakami (Robin, Starfire, Cyborg, Raven, Beast Boy)\"?",
         "correct": "Teen Titans",
         "wrong": [
-          "Rugrats",
-          "Hey Arnold!",
-          "The Wild Thornberrys"
+          "The Powerpuff Girls",
+          "Ben 10",
+          "SpongeBob SquarePants"
         ],
         "template": "cartoon-creators"
       },
@@ -157305,336 +157305,6 @@
           "The Wild Thornberrys"
         ],
         "template": "cartoon-creators"
-      },
-      {
-        "id": "e5d736403603",
-        "q": "Which animated series is described: \"Matt Groening & David X. Cohen (Fry frozen in 1999 waking up in New Year 3000 at Planet Express with Bender & Leela)\"?",
-        "correct": "Futurama",
-        "wrong": [
-          "The Simpsons",
-          "Disenchantment",
-          "Rick and Morty"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "dee3efc017bf",
-        "q": "What is the premise of the animated cartoon \"Futurama\"?",
-        "correct": "Matt Groening & David X. Cohen",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "af9d90f976a9",
-        "q": "Which animated series is described: \"Trey Parker and Matt Stone (Long-running satire set in Colorado with Stan, Kyle, Eric Cartman, and Kenny)\"?",
-        "correct": "South Park",
-        "wrong": [
-          "Family Guy",
-          "American Dad!",
-          "King of the Hill"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "fcfc812f09b3",
-        "q": "What is the premise of the animated cartoon \"South Park\"?",
-        "correct": "Trey Parker and Matt Stone",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "a69073026207",
-        "q": "Which animated series is described: \"Mike Judge and Greg Daniels (Hank Hill selling propane and propane accessories in Arlen, Texas)\"?",
-        "correct": "King of the Hill",
-        "wrong": [
-          "Beavis and Butt-Head",
-          "The Simpsons",
-          "Fugget About It"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "9679b76fae51",
-        "q": "What is the premise of the animated cartoon \"King of the Hill\"?",
-        "correct": "Mike Judge and Greg Daniels",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "f31cce7fab91",
-        "q": "Which animated series is described: \"Raphael Bob-Waksberg (Satirical animated dramedy about a washed-up 90s sitcom horse star dealing with depression and Hollywood)\"?",
-        "correct": "BoJack Horseman",
-        "wrong": [
-          "Rick and Morty",
-          "Archer",
-          "F Is for Family"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "41f45490eb12",
-        "q": "What is the premise of the animated cartoon \"BoJack Horseman\"?",
-        "correct": "Raphael Bob-Waksberg",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "3711e777853f",
-        "q": "Which animated series is described: \"Adam Reed (Secret agent Sterling the main character at the spy agency ISIS with mother Malory and Lana Kane)\"?",
-        "correct": "Archer",
-        "wrong": [
-          "BoJack Horseman",
-          "Rick and Morty",
-          "South Park"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "6fdbb39dfd56",
-        "q": "What is the premise of the animated cartoon \"Archer\"?",
-        "correct": "Adam Reed",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "72efb8b80936",
-        "q": "Which animated series is described: \"Robert Kirkman (Adult superhero animated series following Mark Grayson, son of Omni-Man / Nolan Grayson)\"?",
-        "correct": "Invincible",
-        "wrong": [
-          "The Boys",
-          "Castlevania",
-          "Vox Machina"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "31860b6bb40f",
-        "q": "What is the premise of the animated cartoon \"Invincible\"?",
-        "correct": "Robert Kirkman",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "f66bd6b14610",
-        "q": "Which animated series is described: \"Michael Dante DiMartino and Bryan Konietzko (Sequel to Avatar following Avatar the title character in Republic City)\"?",
-        "correct": "The Legend of Korra",
-        "wrong": [
-          "Avatar: The Last Airbender",
-          "Dragon Prince",
-          "She-Ra"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "09dbce92478e",
-        "q": "What is the premise of the animated cartoon \"The Legend of Korra\"?",
-        "correct": "Michael Dante DiMartino and Bryan Konietzko",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "10e83c9e3af2",
-        "q": "Which animated series is described: \"Aaron Ehasz and Justin Richmond (Fantasy adventure in Xadia created by head writer of Avatar: The Last Airbender)\"?",
-        "correct": "The Dragon Prince",
-        "wrong": [
-          "Avatar",
-          "Korra",
-          "Voltron"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "57dc2b2f3726",
-        "q": "What is the premise of the animated cartoon \"The Dragon Prince\"?",
-        "correct": "Aaron Ehasz and Justin Richmond",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "50044ab46a1e",
-        "q": "Which animated series is described: \"Alex Hirsch (Dipper and Mabel Pines spending summer with Grunkle Stan solving paranormal mysteries in the main character, Oregon)\"?",
-        "correct": "Gravity Falls",
-        "wrong": [
-          "Over the Garden Wall",
-          "Star vs. the Forces of Evil",
-          "Amphibia"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "c2d12208f5aa",
-        "q": "What is the premise of the animated cartoon \"Gravity Falls\"?",
-        "correct": "Alex Hirsch",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "63b44367c8a0",
-        "q": "Which animated series is described: \"Patrick McHale (Emmy-winning dark fantasy miniseries following two half-brothers, Wirt and Greg, lost in the Unknown)\"?",
-        "correct": "Over the Garden Wall",
-        "wrong": [
-          "Gravity Falls",
-          "Hilda",
-          "Adventure Time"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "7e578730ddeb",
-        "q": "What is the premise of the animated cartoon \"Over the Garden Wall\"?",
-        "correct": "Patrick McHale",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "7c1dfc3ea76b",
-        "q": "Which animated series is described: \"J. G. Quintel (Mordecai the blue jay and Rigby the raccoon working as park groundskeepers dealing with bizarre supernatural events)\"?",
-        "correct": "Regular Show",
-        "wrong": [
-          "Adventure Time",
-          "Gumball",
-          "Flapjack"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "a7a1e2a4d1d4",
-        "q": "What is the premise of the animated cartoon \"Regular Show\"?",
-        "correct": "J. G. Quintel",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "52b96376b553",
-        "q": "Which animated series is described: \"Ben Bocquelet (Surreal mixed-media comedy following the title character Watterson the blue cat and Darwin the goldfish in Elmore)\"?",
-        "correct": "The Amazing World of Gumball",
-        "wrong": [
-          "Regular Show",
-          "Clarence",
-          "Uncle Grandpa"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "9866dc12e163",
-        "q": "What is the premise of the animated cartoon \"The Amazing World of Gumball\"?",
-        "correct": "Ben Bocquelet",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "6ddec2d01b1b",
-        "q": "Which animated series is described: \"Daniel Chong (Three adoptive bear brothers: Grizzly, Panda, and Ice Bear trying to integrate into human society in San Francisco)\"?",
-        "correct": "We Bare Bears",
-        "wrong": [
-          "Gumball",
-          "Craig of the Creek",
-          "Hilda"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "c8d537c1ae9d",
-        "q": "What is the premise of the animated cartoon \"We Bare Bears\"?",
-        "correct": "Daniel Chong",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "e380c25817ce",
-        "q": "Which animated series is described: \"Butch Hartman (Teenager the title character Fenton gaining ghostly superpowers after an accident in his parents' ghost portal)\"?",
-        "correct": "Danny Phantom",
-        "wrong": [
-          "Fairly OddParents",
-          "Ben 10",
-          "My Life as a Teenage Robot"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "6023c8c68ff7",
-        "q": "What is the premise of the animated cartoon \"Danny Phantom\"?",
-        "correct": "Butch Hartman",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "3cc9d890e188",
-        "q": "Which animated series is described: \"Craig McCracken (Orphanage for abandoned the title character the title character founded by Madame Foster, starring Mac and Bloo)\"?",
-        "correct": "Foster's Home for Imaginary Friends",
-        "wrong": [
-          "Powerpuff Girls",
-          "Dexter's Lab",
-          "Chowder"
-        ],
-        "template": "cartoons-mastery"
-      },
-      {
-        "id": "531de9d8be33",
-        "q": "What is the premise of the animated cartoon \"Foster's Home for Imaginary Friends\"?",
-        "correct": "Craig McCracken",
-        "wrong": [
-          "A documentary about live penguins",
-          "A daily live-action morning news broadcast",
-          "A black and white French drama with no sound"
-        ],
-        "template": "cartoons-mastery"
       },
       {
         "id": "57f1761d15db",
@@ -162130,9 +161800,9 @@
         "q": "Which author wrote 'Prose Edda'?",
         "correct": "Snorri Sturluson",
         "wrong": [
-          "Sebastian Brant",
-          "Agatha Christie",
-          "Rainer Maria Rilke"
+          "Michael Ende",
+          "Astrid Lindgren",
+          "Elias Lönnrot"
         ]
       },
       {
@@ -162160,9 +161830,9 @@
         "q": "Which author wrote 'Mary Stuart'?",
         "correct": "Friedrich Schiller",
         "wrong": [
-          "Sebastian Brant",
-          "Agatha Christie",
-          "Rainer Maria Rilke"
+          "James Fenimore Cooper",
+          "Philip Reeve",
+          "Alice Munro"
         ]
       },
       {
@@ -162200,9 +161870,9 @@
         "q": "Which author wrote 'Heimskringla'?",
         "correct": "Snorri Sturluson",
         "wrong": [
-          "Sebastian Brant",
-          "Agatha Christie",
-          "Rainer Maria Rilke"
+          "Arthur Conan Doyle",
+          "Charles Perrault",
+          "Francisco Quevedo"
         ]
       },
       {
@@ -162220,9 +161890,9 @@
         "q": "Which author wrote 'A Little Princess'?",
         "correct": "Frances Hodgson Burnett",
         "wrong": [
-          "Robert Louis Stevenson",
-          "Arthur Conan Doyle",
-          "Joseph Conrad"
+          "Mario Puzo",
+          "Hans Christian Andersen",
+          "Philip Pullman"
         ]
       },
       {
@@ -162330,9 +162000,9 @@
         "q": "Which author wrote 'Too Much Happiness'?",
         "correct": "Alice Munro",
         "wrong": [
-          "Ivan Turgenev",
-          "E. T. A. Hoffmann",
-          "Alphonse Daudet"
+          "Oscar Wilde",
+          "Washington Irving",
+          "Émile Zola"
         ]
       },
       {
@@ -162340,9 +162010,9 @@
         "q": "Which author wrote 'The Dark Tower'?",
         "correct": "Stephen King",
         "wrong": [
-          "H. P. Lovecraft",
-          "Edgar Allan Poe",
-          "Jack Vance"
+          "Charles Dickens",
+          "Meg Cabot",
+          "Agatha Christie"
         ]
       },
       {
@@ -162390,9 +162060,9 @@
         "q": "Which author wrote 'Bleak House'?",
         "correct": "Charles Dickens",
         "wrong": [
-          "Oscar Wilde",
-          "Joseph Conrad",
-          "Henryk Sienkiewicz"
+          "Jane Austen",
+          "Alice Munro",
+          "James Joyce"
         ]
       },
       {
@@ -162490,9 +162160,9 @@
         "q": "Which author wrote 'Duch Německa'?",
         "correct": "Friedrich Schiller",
         "wrong": [
-          "Sebastian Brant",
-          "Agatha Christie",
-          "Rainer Maria Rilke"
+          "Mario Puzo",
+          "Miguel de Cervantes",
+          "Kurt Vonnegut"
         ]
       },
       {
@@ -162500,9 +162170,9 @@
         "q": "Which author wrote 'The Tempest'?",
         "correct": "William Shakespeare",
         "wrong": [
-          "Arthur C. Clarke",
-          "Isaac Newton",
-          "Enid Blyton"
+          "Kurt Vonnegut",
+          "Michael Crichton",
+          "Friedrich Schiller"
         ]
       },
       {
@@ -162540,9 +162210,9 @@
         "q": "Which author wrote 'A Christmas Carol'?",
         "correct": "Charles Dickens",
         "wrong": [
-          "Oscar Wilde",
-          "Joseph Conrad",
-          "Henryk Sienkiewicz"
+          "Charles Perrault",
+          "Johannes V. Jensen",
+          "Oscar Wilde"
         ]
       },
       {
@@ -162640,9 +162310,9 @@
         "q": "Which author wrote 'The Labours of Hercules'?",
         "correct": "Agatha Christie",
         "wrong": [
-          "Robert Louis Stevenson",
-          "Charles Dickens",
-          "Lewis Carroll"
+          "Edgar Allan Poe",
+          "F. Scott Fitzgerald",
+          "Yanka Kupala"
         ]
       },
       {
@@ -162660,9 +162330,9 @@
         "q": "Which author wrote 'The Steadfast Tin Soldier'?",
         "correct": "Hans Christian Andersen",
         "wrong": [
-          "Beatrix Potter",
-          "Søren Kierkegaard",
-          "Oscar Wilde"
+          "C. S. Lewis",
+          "Alphonse Daudet",
+          "Dan Brown"
         ]
       },
       {
@@ -162680,9 +162350,9 @@
         "q": "Which author wrote 'Witness for the Prosecution'?",
         "correct": "Agatha Christie",
         "wrong": [
-          "Robert Louis Stevenson",
-          "Charles Dickens",
-          "Lewis Carroll"
+          "Ursula K. Le Guin",
+          "Mario Puzo",
+          "Kurt Vonnegut"
         ]
       },
       {
@@ -162710,9 +162380,9 @@
         "q": "Which author wrote 'Just After Sunset'?",
         "correct": "Stephen King",
         "wrong": [
-          "H. P. Lovecraft",
-          "Edgar Allan Poe",
-          "Jack Vance"
+          "Alexander Pushkin",
+          "Charles Dickens",
+          "William Shakespeare"
         ]
       },
       {
@@ -162750,9 +162420,9 @@
         "q": "Which author wrote 'Coriolanus'?",
         "correct": "William Shakespeare",
         "wrong": [
-          "Arthur C. Clarke",
-          "Isaac Newton",
-          "Enid Blyton"
+          "Henry James",
+          "J. K. Rowling",
+          "Agatha Christie"
         ]
       },
       {
@@ -162770,9 +162440,9 @@
         "q": "Which author wrote 'A Study in Scarlet'?",
         "correct": "Arthur Conan Doyle",
         "wrong": [
-          "Agatha Christie",
-          "Oscar Wilde",
-          "George Orwell"
+          "Douglas Adams",
+          "John le Carré",
+          "Alphonse Daudet"
         ]
       },
       {
@@ -162970,9 +162640,9 @@
         "q": "Which author wrote 'Fragile Things'?",
         "correct": "Neil Gaiman",
         "wrong": [
-          "Stephen King",
-          "H. P. Lovecraft",
-          "Douglas Adams"
+          "Émile Zola",
+          "Fyodor Dostoyevsky",
+          "Joseph Heller"
         ]
       },
       {
@@ -163000,9 +162670,9 @@
         "q": "Which author wrote 'Intrigue and Love'?",
         "correct": "Friedrich Schiller",
         "wrong": [
-          "Sebastian Brant",
-          "Agatha Christie",
-          "Rainer Maria Rilke"
+          "Isaac Asimov",
+          "Michael Crichton",
+          "Robert E. Howard"
         ]
       },
       {
@@ -163060,9 +162730,9 @@
         "q": "Which author wrote 'The Secret Garden'?",
         "correct": "Frances Hodgson Burnett",
         "wrong": [
-          "Robert Louis Stevenson",
-          "Arthur Conan Doyle",
-          "Joseph Conrad"
+          "Snorri Sturluson",
+          "Stendhal",
+          "Edgar Allan Poe"
         ]
       },
       {
@@ -163180,9 +162850,9 @@
         "q": "Which author wrote 'The Nightingale'?",
         "correct": "Hans Christian Andersen",
         "wrong": [
-          "Beatrix Potter",
-          "Søren Kierkegaard",
-          "Oscar Wilde"
+          "Douglas Adams",
+          "Philip Pullman",
+          "John le Carré"
         ]
       },
       {
@@ -163190,9 +162860,9 @@
         "q": "Which author wrote 'Trigger Warning: Short Fictions and Disturbances'?",
         "correct": "Neil Gaiman",
         "wrong": [
-          "Stephen King",
-          "H. P. Lovecraft",
-          "Douglas Adams"
+          "Henryk Sienkiewicz",
+          "Arthur Conan Doyle",
+          "Henry James"
         ]
       },
       {
@@ -163350,9 +163020,9 @@
         "q": "Which author wrote 'Evenings on a Farm Near Dikanka'?",
         "correct": "Nikolai Gogol",
         "wrong": [
-          "Virginia Woolf",
-          "Alexander Pushkin",
-          "Ayn Rand"
+          "Michael Ende",
+          "Robert E. Howard",
+          "Edgar Rice Burroughs"
         ]
       },
       {
@@ -163420,9 +163090,9 @@
         "q": "Which author wrote 'Smoke and Mirrors'?",
         "correct": "Neil Gaiman",
         "wrong": [
-          "Stephen King",
-          "H. P. Lovecraft",
-          "Douglas Adams"
+          "Fyodor Dostoyevsky",
+          "Francisco Quevedo",
+          "Paulo Coelho"
         ]
       },
       {
@@ -163460,9 +163130,9 @@
         "q": "Which author wrote ''Salem's Lot'?",
         "correct": "Stephen King",
         "wrong": [
-          "H. P. Lovecraft",
-          "Edgar Allan Poe",
-          "Jack Vance"
+          "Friedrich Schiller",
+          "Ursula K. Le Guin",
+          "Robert E. Howard"
         ]
       },
       {
@@ -163480,9 +163150,9 @@
         "q": "Which author wrote 'The Sign of the Four'?",
         "correct": "Arthur Conan Doyle",
         "wrong": [
-          "Agatha Christie",
-          "Oscar Wilde",
-          "George Orwell"
+          "Guy de Maupassant",
+          "Johannes V. Jensen",
+          "Oscar Wilde"
         ]
       },
       {
@@ -163580,9 +163250,9 @@
         "q": "Which author wrote 'The War of the Jewels'?",
         "correct": "J. R. R. Tolkien",
         "wrong": [
-          "G. K. Chesterton",
-          "Philip Pullman",
-          "C. S. Lewis"
+          "John le Carré",
+          "C.S. Lewis",
+          "William Shakespeare"
         ]
       },
       {
@@ -163590,9 +163260,9 @@
         "q": "Which author wrote 'Much Ado About Nothing'?",
         "correct": "William Shakespeare",
         "wrong": [
-          "Arthur C. Clarke",
-          "Isaac Newton",
-          "Enid Blyton"
+          "Gaston Leroux",
+          "Ian Fleming",
+          "Philip Pullman"
         ]
       },
       {
@@ -163660,9 +163330,9 @@
         "q": "Which author wrote 'Dead Souls'?",
         "correct": "Nikolai Gogol",
         "wrong": [
-          "Virginia Woolf",
-          "Alexander Pushkin",
-          "Ayn Rand"
+          "Michael Ende",
+          "Charles and Mary Lamb",
+          "James Joyce"
         ]
       },
       {
@@ -163691,8 +163361,8 @@
         "correct": "Alice Munro",
         "wrong": [
           "Ivan Turgenev",
-          "E. T. A. Hoffmann",
-          "Alphonse Daudet"
+          "Émile Zola",
+          "Stendhal"
         ]
       },
       {
@@ -163760,9 +163430,9 @@
         "q": "Which author wrote 'Nightmares & Dreamscapes'?",
         "correct": "Stephen King",
         "wrong": [
-          "H. P. Lovecraft",
-          "Edgar Allan Poe",
-          "Jack Vance"
+          "Henryk Sienkiewicz",
+          "Charles Dickens",
+          "Mario Puzo"
         ]
       },
       {
@@ -163790,9 +163460,9 @@
         "q": "Which author wrote 'The Caves of Steel'?",
         "correct": "Isaac Asimov",
         "wrong": [
-          "Ursula K. Le Guin",
-          "Philip K. Dick",
-          "Stephen King"
+          "Arthur Conan Doyle",
+          "Philip Pullman",
+          "Philip Reeve"
         ]
       },
       {
@@ -163900,9 +163570,9 @@
         "q": "Which author wrote 'Runaway'?",
         "correct": "Alice Munro",
         "wrong": [
-          "Ivan Turgenev",
-          "E. T. A. Hoffmann",
-          "Alphonse Daudet"
+          "J. R. R. Tolkien",
+          "Robert E. Howard",
+          "C.S. Lewis"
         ]
       },
       {
@@ -163950,9 +163620,9 @@
         "q": "Which author wrote 'Family Furnishings: Selected Stories 1995-2014'?",
         "correct": "Alice Munro",
         "wrong": [
-          "Ivan Turgenev",
-          "E. T. A. Hoffmann",
-          "Alphonse Daudet"
+          "Émile Zola",
+          "Meg Cabot",
+          "Isaac Asimov"
         ]
       },
       {
@@ -163960,9 +163630,9 @@
         "q": "Which author wrote 'The Overcoat'?",
         "correct": "Nikolai Gogol",
         "wrong": [
-          "Virginia Woolf",
-          "Alexander Pushkin",
-          "Ayn Rand"
+          "P. L. Travers",
+          "Leo Tolstoy",
+          "Philip Reeve"
         ]
       },
       {
@@ -164020,9 +163690,9 @@
         "q": "Which author wrote 'The Bazaar of Bad Dreams'?",
         "correct": "Stephen King",
         "wrong": [
-          "H. P. Lovecraft",
-          "Edgar Allan Poe",
-          "Jack Vance"
+          "Charles and Mary Lamb",
+          "J. R. R. Tolkien",
+          "George R. R. Martin"
         ]
       },
       {
@@ -164070,8 +163740,8 @@
         "q": "Which author wrote 'The Ugly Duckling'?",
         "correct": "Hans Christian Andersen",
         "wrong": [
-          "Beatrix Potter",
-          "Søren Kierkegaard",
+          "Ivan Turgenev",
+          "Alexander Pushkin",
           "Oscar Wilde"
         ]
       },
@@ -164170,9 +163840,9 @@
         "q": "Which author wrote 'William Tell'?",
         "correct": "Friedrich Schiller",
         "wrong": [
-          "Sebastian Brant",
-          "Agatha Christie",
-          "Rainer Maria Rilke"
+          "Victor Hugo",
+          "Alphonse Daudet",
+          "James Joyce"
         ]
       },
       {
@@ -164230,9 +163900,9 @@
         "q": "Which author wrote 'Macbeth'?",
         "correct": "William Shakespeare",
         "wrong": [
-          "Arthur C. Clarke",
-          "Isaac Newton",
-          "Enid Blyton"
+          "Voltaire",
+          "Snorri Sturluson",
+          "John le Carré"
         ]
       },
       {
@@ -164270,9 +163940,9 @@
         "q": "Which author wrote 'Mother Gooſe’s Melody'?",
         "correct": "William Shakespeare",
         "wrong": [
-          "Arthur C. Clarke",
-          "Isaac Newton",
-          "Enid Blyton"
+          "Snorri Sturluson",
+          "Michael Crichton",
+          "Guy de Maupassant"
         ]
       },
       {
@@ -164390,9 +164060,9 @@
         "q": "Which author wrote 'Little Lord Fauntleroy'?",
         "correct": "Frances Hodgson Burnett",
         "wrong": [
-          "Robert Louis Stevenson",
-          "Arthur Conan Doyle",
-          "Joseph Conrad"
+          "Albert Camus",
+          "Mikhail Sholokhov",
+          "Hans Christian Andersen"
         ]
       },
       {
@@ -164500,9 +164170,9 @@
         "q": "Which author wrote 'Skeleton Crew'?",
         "correct": "Stephen King",
         "wrong": [
-          "H. P. Lovecraft",
-          "Edgar Allan Poe",
-          "Jack Vance"
+          "William Gibson",
+          "Agatha Christie",
+          "Frances Hodgson Burnett"
         ]
       },
       {
@@ -164510,9 +164180,9 @@
         "q": "Which author wrote 'Pebble in the Sky'?",
         "correct": "Isaac Asimov",
         "wrong": [
-          "Ursula K. Le Guin",
-          "Philip K. Dick",
-          "Stephen King"
+          "Agatha Christie",
+          "Philip Reeve",
+          "P. L. Travers"
         ]
       },
       {
@@ -164520,9 +164190,9 @@
         "q": "Which author wrote 'The Moons of Jupiter'?",
         "correct": "Alice Munro",
         "wrong": [
-          "Ivan Turgenev",
-          "E. T. A. Hoffmann",
-          "Alphonse Daudet"
+          "Michael Crichton",
+          "Agatha Christie",
+          "Charles Dickens"
         ]
       },
       {
@@ -164550,9 +164220,9 @@
         "q": "Which author wrote 'The Book of Lost Tales'?",
         "correct": "J. R. R. Tolkien",
         "wrong": [
-          "G. K. Chesterton",
-          "Philip Pullman",
-          "C. S. Lewis"
+          "Leo Tolstoy",
+          "Robert E. Howard",
+          "Michael Ende"
         ]
       },
       {
@@ -164650,9 +164320,9 @@
         "q": "Which author wrote 'Great Expectations'?",
         "correct": "Charles Dickens",
         "wrong": [
-          "Oscar Wilde",
-          "Joseph Conrad",
-          "Henryk Sienkiewicz"
+          "Michael Crichton",
+          "C. S. Lewis",
+          "Fyodor Dostoyevsky"
         ]
       },
       {
@@ -164680,9 +164350,9 @@
         "q": "Which author wrote 'Carrie'?",
         "correct": "Stephen King",
         "wrong": [
-          "H. P. Lovecraft",
-          "Edgar Allan Poe",
-          "Jack Vance"
+          "Frances Hodgson Burnett",
+          "Dan Brown",
+          "Edgar Rice Burroughs"
         ]
       },
       {
@@ -164690,9 +164360,9 @@
         "q": "Which author wrote 'Thumbelina'?",
         "correct": "Hans Christian Andersen",
         "wrong": [
-          "Beatrix Potter",
-          "Søren Kierkegaard",
-          "Oscar Wilde"
+          "Fyodor Dostoyevsky",
+          "Joseph Heller",
+          "Washington Irving"
         ]
       },
       {
@@ -164700,9 +164370,9 @@
         "q": "Which author wrote 'Partners in Crime'?",
         "correct": "Agatha Christie",
         "wrong": [
-          "Robert Louis Stevenson",
-          "Charles Dickens",
-          "Lewis Carroll"
+          "Douglas Adams",
+          "Nikolai Gogol",
+          "C. S. Lewis"
         ]
       },
       {
@@ -164840,9 +164510,9 @@
         "q": "Which author wrote 'Carried Away'?",
         "correct": "Alice Munro",
         "wrong": [
-          "Ivan Turgenev",
-          "E. T. A. Hoffmann",
-          "Alphonse Daudet"
+          "Mikhail Sholokhov",
+          "James Joyce",
+          "Stephen King"
         ]
       },
       {
@@ -164850,9 +164520,9 @@
         "q": "Which author wrote 'Lucky Starr series'?",
         "correct": "Isaac Asimov",
         "wrong": [
-          "Ursula K. Le Guin",
-          "Philip K. Dick",
-          "Stephen King"
+          "J. K. Rowling",
+          "Karl May",
+          "Frances Hodgson Burnett"
         ]
       },
       {
@@ -164880,9 +164550,9 @@
         "q": "Which author wrote 'The Children of Húrin'?",
         "correct": "J. R. R. Tolkien",
         "wrong": [
-          "G. K. Chesterton",
-          "Philip Pullman",
-          "C. S. Lewis"
+          "Gaston Leroux",
+          "Truman Capote",
+          "Paulo Coelho"
         ]
       },
       {
@@ -164920,9 +164590,9 @@
         "q": "Which author wrote 'Othello'?",
         "correct": "William Shakespeare",
         "wrong": [
-          "Arthur C. Clarke",
-          "Isaac Newton",
-          "Enid Blyton"
+          "Albert Camus",
+          "James Joyce",
+          "Michael Ende"
         ]
       },
       {
@@ -164950,9 +164620,9 @@
         "q": "Which author wrote 'Tales from Shakspeare'?",
         "correct": "Charles and Mary Lamb",
         "wrong": [
-          "Sebastian Brant",
-          "Agatha Christie",
-          "Rainer Maria Rilke"
+          "Stendhal",
+          "Dan Brown",
+          "Albert Camus"
         ]
       },
       {
@@ -164960,9 +164630,9 @@
         "q": "Which author wrote 'The Adventure of the Red-Headed League'?",
         "correct": "Arthur Conan Doyle",
         "wrong": [
-          "Agatha Christie",
-          "Oscar Wilde",
-          "George Orwell"
+          "Charles Perrault",
+          "Johannes V. Jensen",
+          "J. K. Rowling"
         ]
       },
       {
@@ -170613,9 +170283,9 @@
         "q": "Which mythological deity is described here: \"Greek King of the Gods, ruler of Mount Olympus, god of the sky and thunder; symbol is the thunderbolt\"?",
         "correct": "Zeus",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Hermes",
+          "Artemis",
+          "Aphrodite"
         ],
         "template": "myth-gods"
       },
@@ -170635,9 +170305,9 @@
         "q": "Which mythological deity is described here: \"Greek god of the sea, earthquakes, and horses; symbol is the trident\"?",
         "correct": "Poseidon",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Athena",
+          "Apollo",
+          "Hermes"
         ],
         "template": "myth-gods"
       },
@@ -170657,9 +170327,9 @@
         "q": "Which mythological deity is described here: \"Greek god of the underworld and the dead, brother of Zeus and Poseidon; possesses the Helm of Darkness\"?",
         "correct": "Hades",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Apollo",
+          "Ares",
+          "Hephaestus"
         ],
         "template": "myth-gods"
       },
@@ -170679,9 +170349,9 @@
         "q": "Which mythological deity is described here: \"Greek goddess of wisdom, tactical warfare, and handicrafts; born fully armored from Zeus's forehead\"?",
         "correct": "Athena",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Zeus",
+          "Aphrodite",
+          "Hades"
         ],
         "template": "myth-gods"
       },
@@ -170701,9 +170371,9 @@
         "q": "Which mythological deity is described here: \"Greek and Roman god of the sun, music, poetry, archery, and prophecy; twin brother of Artemis\"?",
         "correct": "Apollo",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Hephaestus",
+          "Hermes",
+          "Athena"
         ],
         "template": "myth-gods"
       },
@@ -170723,9 +170393,9 @@
         "q": "Which mythological deity is described here: \"Greek goddess of the hunt, wilderness, moon, and chastity; twin sister of Apollo\"?",
         "correct": "Artemis",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Aphrodite",
+          "Poseidon",
+          "Hades"
         ],
         "template": "myth-gods"
       },
@@ -170745,9 +170415,9 @@
         "q": "Which mythological deity is described here: \"Greek god of war, violence, and bloodshed; son of Zeus and Hera\"?",
         "correct": "Ares",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Poseidon",
+          "Athena",
+          "Zeus"
         ],
         "template": "myth-gods"
       },
@@ -170767,9 +170437,9 @@
         "q": "Which mythological deity is described here: \"Greek goddess of love, beauty, and passion; born from the sea foam\"?",
         "correct": "Aphrodite",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Hephaestus",
+          "Hades",
+          "Poseidon"
         ],
         "template": "myth-gods"
       },
@@ -170789,9 +170459,9 @@
         "q": "Which mythological deity is described here: \"Greek messenger of the gods, god of trade, thieves, and travelers; wears winged sandals (Talaria) and carries the Caduceus\"?",
         "correct": "Hermes",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Athena",
+          "Dionysus",
+          "Artemis"
         ],
         "template": "myth-gods"
       },
@@ -170811,9 +170481,9 @@
         "q": "Which mythological deity is described here: \"Greek blacksmith god of fire, metalworking, and craftsmanship; forged the weapons of the gods\"?",
         "correct": "Hephaestus",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Zeus",
+          "Aphrodite",
+          "Athena"
         ],
         "template": "myth-gods"
       },
@@ -170833,9 +170503,9 @@
         "q": "Which mythological deity is described here: \"Greek god of wine, winemaking, festivity, ritual madness, and theatre\"?",
         "correct": "Dionysus",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Artemis",
+          "Hermes",
+          "Zeus"
         ],
         "template": "myth-gods"
       },
@@ -170855,9 +170525,9 @@
         "q": "Which mythological deity is described here: \"Norse Allfather, god of wisdom, war, poetry, and magic; sacrificed his eye at Mimir's well for knowledge; owns ravens Huginn & Muninn\"?",
         "correct": "Odin",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Thor",
+          "Freya",
+          "Heimdall"
         ],
         "template": "myth-gods"
       },
@@ -170877,9 +170547,9 @@
         "q": "Which mythological deity is described here: \"Norse god of thunder, strength, and storms; wields the mighty hammer Mjölnir and rides a chariot pulled by goats\"?",
         "correct": "Thor",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Freya",
+          "Heimdall",
+          "Odin"
         ],
         "template": "myth-gods"
       },
@@ -170899,9 +170569,9 @@
         "q": "Which mythological deity is described here: \"Norse trickster god and shapeshifter, father of the wolf Fenrir, the Midgard Serpent Jörmungandr, and Hel\"?",
         "correct": "Loki",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Thor",
+          "Heimdall",
+          "Freya"
         ],
         "template": "myth-gods"
       },
@@ -170921,9 +170591,9 @@
         "q": "Which mythological deity is described here: \"Norse goddess of love, beauty, fertility, gold, and seidr magic; rides a chariot pulled by two blue cats\"?",
         "correct": "Freya",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Heimdall",
+          "Odin",
+          "Loki"
         ],
         "template": "myth-gods"
       },
@@ -170943,9 +170613,9 @@
         "q": "Which mythological deity is described here: \"Norse guardian god of the rainbow bridge Bifröst, possessing keen eyesight and hearing; blows the horn Gjallarhorn at Ragnarok\"?",
         "correct": "Heimdall",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Freya",
+          "Loki",
+          "Odin"
         ],
         "template": "myth-gods"
       },
@@ -170965,9 +170635,9 @@
         "q": "Which mythological deity is described here: \"Ancient Egyptian jackal-headed god of mummification, the afterlife, and the weighing of the heart against the feather of Ma'at\"?",
         "correct": "Anubis",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Hades",
+          "Thor",
+          "Aphrodite"
         ],
         "template": "myth-gods"
       },
@@ -170987,9 +170657,9 @@
         "q": "Which mythological deity is described here: \"Ancient Egyptian supreme sun god who travels through the sky by day and the underworld by night on his solar barque\"?",
         "correct": "Ra",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Freya",
+          "Aphrodite",
+          "Horus"
         ],
         "template": "myth-gods"
       },
@@ -171009,9 +170679,9 @@
         "q": "Which mythological deity is described here: \"Ancient Egyptian god of the underworld, rebirth, and agriculture; murdered and dismembered by his brother Seth, resurrected by Isis\"?",
         "correct": "Osiris",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Dionysus",
+          "Horus",
+          "Ares"
         ],
         "template": "myth-gods"
       },
@@ -171031,9 +170701,9 @@
         "q": "Which mythological deity is described here: \"Ancient Egyptian falcon-headed god of the sky and kingship, son of Osiris and Isis, who defeated Seth to avenge his father\"?",
         "correct": "Horus",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Apollo",
+          "Zeus",
+          "Ares"
         ],
         "template": "myth-gods"
       },
@@ -171053,9 +170723,9 @@
         "q": "Which mythological deity is described here: \"Ancient Egyptian ibis-headed god of wisdom, writing, hieroglyphs, science, and magic; scribe of the gods\"?",
         "correct": "Thoth",
         "wrong": [
-          "Jupiter",
-          "Mars",
-          "Mercury"
+          "Poseidon",
+          "Ra",
+          "Zeus"
         ],
         "template": "myth-gods"
       },
@@ -178717,9 +178387,9 @@
         "q": "Which automotive brand is headquartered in Maranello, Italy?",
         "correct": "Ferrari",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Pagani",
+          "Lamborghini",
+          "Porsche"
         ],
         "template": "auto-brands"
       },
@@ -178739,9 +178409,9 @@
         "q": "Which automotive brand is headquartered in Sant'Agata Bolognese, Italy?",
         "correct": "Lamborghini",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Pagani",
+          "Ferrari",
+          "Honda"
         ],
         "template": "auto-brands"
       },
@@ -178761,9 +178431,9 @@
         "q": "Which automotive brand is headquartered in Stuttgart, Germany?",
         "correct": "Porsche",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Audi",
+          "BMW",
+          "Volkswagen"
         ],
         "template": "auto-brands"
       },
@@ -178783,9 +178453,9 @@
         "q": "Which automotive brand is headquartered in Munich, Germany?",
         "correct": "BMW",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Audi",
+          "Volkswagen",
+          "Porsche"
         ],
         "template": "auto-brands"
       },
@@ -178816,9 +178486,9 @@
         "q": "Which automotive brand is headquartered in Ingolstadt, Germany?",
         "correct": "Audi",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Volkswagen",
+          "Porsche",
+          "BMW"
         ],
         "template": "auto-brands"
       },
@@ -178838,9 +178508,9 @@
         "q": "Which automotive brand is headquartered in Wolfsburg, Germany?",
         "correct": "Volkswagen",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Porsche",
+          "Audi",
+          "BMW"
         ],
         "template": "auto-brands"
       },
@@ -178860,9 +178530,9 @@
         "q": "Which automotive brand is headquartered in Aichi Prefecture, Japan?",
         "correct": "Toyota",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Honda",
+          "Nissan",
+          "Mazda"
         ],
         "template": "auto-brands"
       },
@@ -178882,9 +178552,9 @@
         "q": "Which automotive brand is headquartered in Tokyo, Japan?",
         "correct": "Honda",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Mazda",
+          "Toyota",
+          "Nissan"
         ],
         "template": "auto-brands"
       },
@@ -178904,9 +178574,9 @@
         "q": "Which automotive brand is headquartered in Yokohama, Japan?",
         "correct": "Nissan",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Honda",
+          "Toyota",
+          "Mazda"
         ],
         "template": "auto-brands"
       },
@@ -178926,9 +178596,9 @@
         "q": "Which automotive brand is headquartered in Hiroshima, Japan?",
         "correct": "Mazda",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Nissan",
+          "Honda",
+          "Toyota"
         ],
         "template": "auto-brands"
       },
@@ -178959,9 +178629,9 @@
         "q": "Which automotive brand is headquartered in Gaydon, Warwickshire, England?",
         "correct": "Aston Martin",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Lotus Cars",
+          "Bentley",
+          "McLaren Automotive"
         ],
         "template": "auto-brands"
       },
@@ -178981,9 +178651,9 @@
         "q": "Which automotive brand is headquartered in Goodwood, West Sussex, England?",
         "correct": "Rolls-Royce Motor Cars",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Aston Martin",
+          "McLaren Automotive",
+          "Lotus Cars"
         ],
         "template": "auto-brands"
       },
@@ -179003,9 +178673,9 @@
         "q": "Which automotive brand is headquartered in Crewe, Cheshire, England?",
         "correct": "Bentley",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "McLaren Automotive",
+          "Lotus Cars",
+          "Aston Martin"
         ],
         "template": "auto-brands"
       },
@@ -179025,9 +178695,9 @@
         "q": "Which automotive brand is headquartered in Woking, Surrey, England?",
         "correct": "McLaren Automotive",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Bentley",
+          "Rolls-Royce Motor Cars",
+          "Lotus Cars"
         ],
         "template": "auto-brands"
       },
@@ -179047,9 +178717,9 @@
         "q": "Which automotive brand is headquartered in Hethel, Norfolk, England?",
         "correct": "Lotus Cars",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Aston Martin",
+          "Rolls-Royce Motor Cars",
+          "Bentley"
         ],
         "template": "auto-brands"
       },
@@ -179069,9 +178739,9 @@
         "q": "Which automotive brand is headquartered in Molsheim, Alsace, France?",
         "correct": "Bugatti",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Lotus Cars",
+          "Koenigsegg",
+          "Mazda"
         ],
         "template": "auto-brands"
       },
@@ -179091,9 +178761,9 @@
         "q": "Which automotive brand is headquartered in Ängelholm, Sweden?",
         "correct": "Koenigsegg",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Volvo",
+          "Volkswagen",
+          "Bugatti"
         ],
         "template": "auto-brands"
       },
@@ -179113,9 +178783,9 @@
         "q": "Which automotive brand is headquartered in San Cesario sul Panaro, Modena, Italy?",
         "correct": "Pagani",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Ferrari",
+          "Lamborghini",
+          "Bugatti"
         ],
         "template": "auto-brands"
       },
@@ -179135,9 +178805,9 @@
         "q": "Which automotive brand is headquartered in Sveta Nedelja, Croatia?",
         "correct": "Rimac Automobili",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Lamborghini",
+          "Nissan",
+          "Bugatti"
         ],
         "template": "auto-brands"
       },
@@ -179157,9 +178827,9 @@
         "q": "Which automotive brand is headquartered in Gothenburg, Sweden?",
         "correct": "Volvo",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Koenigsegg",
+          "Bugatti",
+          "Nissan"
         ],
         "template": "auto-brands"
       },
@@ -179179,9 +178849,9 @@
         "q": "Which automotive brand is headquartered in Seoul, South Korea?",
         "correct": "Hyundai",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Volkswagen",
+          "Koenigsegg",
+          "Tesla"
         ],
         "template": "auto-brands"
       },
@@ -179212,9 +178882,9 @@
         "q": "Which automotive brand is headquartered in Austin, Texas, USA?",
         "correct": "Tesla",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Ford",
+          "Chevrolet",
+          "Pagani"
         ],
         "template": "auto-brands"
       },
@@ -179234,9 +178904,9 @@
         "q": "Which automotive brand is headquartered in Dearborn, Michigan, USA?",
         "correct": "Ford",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Tesla",
+          "Chevrolet",
+          "Rimac Automobili"
         ],
         "template": "auto-brands"
       },
@@ -179256,9 +178926,9 @@
         "q": "Which automotive brand is headquartered in Detroit, Michigan, USA?",
         "correct": "Chevrolet",
         "wrong": [
-          "Peugeot",
-          "Renault",
-          "Fiat"
+          "Tesla",
+          "Ford",
+          "Honda"
         ],
         "template": "auto-brands"
       },
@@ -179487,9 +179157,9 @@
         "q": "Which automotive manufacturer produces the following lineup: Supra, Land Cruiser, RAV4, Camry, Prius?",
         "correct": "Toyota",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Porsche",
+          "Land Rover",
+          "Audi"
         ],
         "template": "car-lineups"
       },
@@ -179509,9 +179179,9 @@
         "q": "Which automotive manufacturer produces the following lineup: Civic, Accord, CR-V, NSX, Prelude?",
         "correct": "Honda",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Chevrolet",
+          "Mercedes-Benz",
+          "Ford"
         ],
         "template": "car-lineups"
       },
@@ -179531,9 +179201,9 @@
         "q": "Which automotive manufacturer produces the following lineup: M3, M5, 3 Series, X5, i8?",
         "correct": "BMW",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Lamborghini",
+          "Mercedes-Benz",
+          "Honda"
         ],
         "template": "car-lineups"
       },
@@ -179553,9 +179223,9 @@
         "q": "Which automotive manufacturer produces the following lineup: C-Class, E-Class, S-Class, G-Class (G-Wagon), SL?",
         "correct": "Mercedes-Benz",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Lamborghini",
+          "Audi",
+          "Nissan"
         ],
         "template": "car-lineups"
       },
@@ -179575,9 +179245,9 @@
         "q": "Which automotive manufacturer produces the following lineup: R8, RS6 Avant, A4, Q7, e-tron GT?",
         "correct": "Audi",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Ferrari",
+          "Subaru",
+          "Honda"
         ],
         "template": "car-lineups"
       },
@@ -179597,9 +179267,9 @@
         "q": "Which automotive manufacturer produces the following lineup: 911 (Carrera/GT3 RS), Taycan, Cayenne, Panamera, Cayman?",
         "correct": "Porsche",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Land Rover",
+          "Toyota",
+          "BMW"
         ],
         "template": "car-lineups"
       },
@@ -179619,9 +179289,9 @@
         "q": "Which automotive manufacturer produces the following lineup: 296 GTB, SF90 Stradale, Purosangue, Roma, 12Cilindri?",
         "correct": "Ferrari",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Lamborghini",
+          "Porsche",
+          "Honda"
         ],
         "template": "car-lineups"
       },
@@ -179641,9 +179311,9 @@
         "q": "Which automotive manufacturer produces the following lineup: Revuelto, Huracán, Urus, Countach, Diablo?",
         "correct": "Lamborghini",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Ferrari",
+          "Audi",
+          "BMW"
         ],
         "template": "car-lineups"
       },
@@ -179663,9 +179333,9 @@
         "q": "Which automotive manufacturer produces the following lineup: Mustang, F-150, Bronco, GT, Explorer?",
         "correct": "Ford",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Land Rover",
+          "Chevrolet",
+          "BMW"
         ],
         "template": "car-lineups"
       },
@@ -179685,9 +179355,9 @@
         "q": "Which automotive manufacturer produces the following lineup: Corvette (Stingray/Z06/ZR1), Camaro, Silverado, Tahoe, Suburban?",
         "correct": "Chevrolet",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Honda",
+          "BMW",
+          "Mercedes-Benz"
         ],
         "template": "car-lineups"
       },
@@ -179707,9 +179377,9 @@
         "q": "Which automotive manufacturer produces the following lineup: GT-R (\"Godzilla\"), 370Z, 400Z, Patrol, Skyline?",
         "correct": "Nissan",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Lamborghini",
+          "Honda",
+          "Ford"
         ],
         "template": "car-lineups"
       },
@@ -179729,9 +179399,9 @@
         "q": "Which automotive manufacturer produces the following lineup: WRX STI, Impreza, Outback, Forester, BRZ?",
         "correct": "Subaru",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Honda",
+          "Ferrari",
+          "Lamborghini"
         ],
         "template": "car-lineups"
       },
@@ -179751,9 +179421,9 @@
         "q": "Which automotive manufacturer produces the following lineup: Defender, Range Rover, Discovery, Range Rover Sport?",
         "correct": "Land Rover",
         "wrong": [
-          "Hyundai",
-          "Peugeot",
-          "Renault"
+          "Subaru",
+          "Audi",
+          "Ferrari"
         ],
         "template": "car-lineups"
       },
@@ -187584,237 +187254,6 @@
           "Peyton Manning"
         ],
         "template": "sports-icons"
-      },
-      {
-        "id": "27059b17f1ca",
-        "q": "Which sport or historic competition is associated with France?",
-        "correct": "2024 Summer Olympics",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "8572a35499d4",
-        "q": "Which sport or historic competition is associated with Italy?",
-        "correct": "2026 Winter Olympics",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "1548aecb0893",
-        "q": "Which sport or historic competition is associated with United States?",
-        "correct": "2028 Summer Olympics",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "e45a698c211b",
-        "q": "Which sport or historic competition is associated with Australia?",
-        "correct": "2032 Summer Olympics",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "553233e509df",
-        "q": "Which sport or historic competition is associated with Lin Dan?",
-        "correct": "Badminton",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "693ded98bf52",
-        "q": "Which sport or historic competition is associated with Ma Long?",
-        "correct": "Table Tennis",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "7209f459d26c",
-        "q": "Which sport or historic competition is associated with Ronnie O'Sullivan?",
-        "correct": "Snooker",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "e819eb570e79",
-        "q": "Which sport or historic competition is associated with Phil Taylor?",
-        "correct": "Darts",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "9bf6901480c7",
-        "q": "Which sport or historic competition is associated with Jon Jones?",
-        "correct": "MMA / UFC",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "3fd3ef403d2c",
-        "q": "Which sport or historic competition is associated with Khabib Nurmagomedov?",
-        "correct": "MMA / UFC",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "4473c5d89ede",
-        "q": "Which sport or historic competition is associated with Conor McGregor?",
-        "correct": "MMA / UFC",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "b1be8f00d3c8",
-        "q": "Which sport or historic competition is associated with Israel Adesanya?",
-        "correct": "MMA / UFC",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "634563e61c11",
-        "q": "Which sport or historic competition is associated with Kamaru Usman?",
-        "correct": "MMA / UFC",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "dcc8b9d75088",
-        "q": "Which sport or historic competition is associated with Francis Ngannou?",
-        "correct": "MMA / UFC",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "b79120a1533e",
-        "q": "Which sport or historic competition is associated with Brian Lara?",
-        "correct": "Cricket",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "f960c813de0d",
-        "q": "Which sport or historic competition is associated with Virat Kohli?",
-        "correct": "Cricket",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "5eed29934d85",
-        "q": "Which sport or historic competition is associated with Kobe Bryant?",
-        "correct": "Basketball",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "15f180281ad8",
-        "q": "Which sport or historic competition is associated with Shaquille O'Neal?",
-        "correct": "Basketball",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "3357a3bf2231",
-        "q": "Which sport or historic competition is associated with Hakeem Olajuwon?",
-        "correct": "Basketball",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "54ecedfc132d",
-        "q": "Which sport or historic competition is associated with Giannis Antetokounmpo?",
-        "correct": "Basketball",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
-      },
-      {
-        "id": "cd5146910449",
-        "q": "Which sport or historic competition is associated with Nikola Jokić?",
-        "correct": "Basketball",
-        "wrong": [
-          "Curling",
-          "Water Polo",
-          "Archery"
-        ],
-        "template": "sports-mastery"
       },
       {
         "id": "7465a5905fff",
@@ -200322,9 +199761,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Thriller (1982)\"?",
         "correct": "Michael Jackson",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Nirvana",
+          "Bruno Mars",
+          "Kendrick Lamar"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200344,9 +199783,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Billie Jean\"?",
         "correct": "Michael Jackson",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Taylor Swift",
+          "Bob Marley & The Wailers",
+          "The Beatles"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200366,9 +199805,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Bohemian Rhapsody (1975)\"?",
         "correct": "Queen",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Kendrick Lamar",
+          "Beyoncé",
+          "Eminem"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200388,9 +199827,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Hey Jude (1968)\"?",
         "correct": "The Beatles",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Dua Lipa",
+          "Michael Jackson",
+          "Queen"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200410,9 +199849,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Cruel Summer\"?",
         "correct": "Taylor Swift",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Coldplay",
+          "Michael Jackson",
+          "Bob Marley & The Wailers"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200432,9 +199871,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Blank Space\"?",
         "correct": "Taylor Swift",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Kendrick Lamar",
+          "Nirvana",
+          "The Beatles"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200454,9 +199893,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Crazy in Love (feat. Jay-Z)\"?",
         "correct": "Beyoncé",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Michael Jackson",
+          "Coldplay",
+          "Drake"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200476,9 +199915,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Texas Hold 'Em\"?",
         "correct": "Beyoncé",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Coldplay",
+          "Bruno Mars",
+          "Adele"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200498,9 +199937,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"God's Plan\"?",
         "correct": "Drake",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Dua Lipa",
+          "Bob Marley & The Wailers",
+          "Taylor Swift"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200520,9 +199959,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Lose Yourself (2002)\"?",
         "correct": "Eminem",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Rihanna",
+          "Billie Eilish",
+          "Coldplay"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200542,9 +199981,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Umbrella (feat. Jay-Z)\"?",
         "correct": "Rihanna",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "The Weeknd",
+          "Nirvana",
+          "The Beatles"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200564,9 +200003,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Uptown Funk (with Mark Ronson)\"?",
         "correct": "Bruno Mars",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Coldplay",
+          "Kendrick Lamar",
+          "Eminem"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200586,9 +200025,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Blinding Lights (2019)\"?",
         "correct": "The Weeknd",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Eminem",
+          "Beyoncé",
+          "Coldplay"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200608,9 +200047,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Rolling in the Deep (2010)\"?",
         "correct": "Adele",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "The Beatles",
+          "Eminem",
+          "Dua Lipa"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200630,9 +200069,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Not Like Us (2024)\"?",
         "correct": "Kendrick Lamar",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Billie Eilish",
+          "Nirvana",
+          "Adele"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200652,9 +200091,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Bad Guy (2019)\"?",
         "correct": "Billie Eilish",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Beyoncé",
+          "Bruno Mars",
+          "Taylor Swift"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200674,9 +200113,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Levitating (2020)\"?",
         "correct": "Dua Lipa",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Queen",
+          "Bob Marley & The Wailers",
+          "Taylor Swift"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200696,9 +200135,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Viva La Vida (2008)\"?",
         "correct": "Coldplay",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Bob Marley & The Wailers",
+          "Beyoncé",
+          "Drake"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200718,9 +200157,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"Smells Like Teen Spirit (1991)\"?",
         "correct": "Nirvana",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Adele",
+          "Beyoncé",
+          "Dua Lipa"
         ],
         "template": "mainstream-music-hits"
       },
@@ -200740,9 +200179,9 @@
         "q": "Who is the world-renowned recording artist behind the hit track \"No Woman, No Cry (1974)\"?",
         "correct": "Bob Marley & The Wailers",
         "wrong": [
-          "Justin Timberlake",
-          "Katy Perry",
-          "Post Malone"
+          "Taylor Swift",
+          "Kendrick Lamar",
+          "Coldplay"
         ],
         "template": "mainstream-music-hits"
       },
@@ -219432,9 +218871,9 @@
         "q": "Which television series is described: \"Vince Gilligan (Walter White / Heisenberg, Jesse Pinkman in Albuquerque)\"?",
         "correct": "Breaking Bad",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "The Wire",
+          "Peaky Blinders",
+          "The Sopranos"
         ],
         "template": "tv-creators"
       },
@@ -219465,9 +218904,9 @@
         "q": "Which television series is described: \"David Chase (Tony Soprano mob boss in New Jersey, Dr. Melfi therapy)\"?",
         "correct": "The Sopranos",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Severance",
+          "The Crown",
+          "Mad Men"
         ],
         "template": "tv-creators"
       },
@@ -219487,9 +218926,9 @@
         "q": "Which television series is described: \"David Simon (Baltimore drug trade, dock workers, politics, schools, journalism)\"?",
         "correct": "The Wire",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Sherlock",
+          "The Last of Us",
+          "Peaky Blinders"
         ],
         "template": "tv-creators"
       },
@@ -219509,9 +218948,9 @@
         "q": "Which television series is described: \"Matthew Weiner (Don Draper 1960s Madison Avenue advertising agency Sterling Cooper)\"?",
         "correct": "Mad Men",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Chernobyl",
+          "Succession",
+          "Squid Game"
         ],
         "template": "tv-creators"
       },
@@ -219531,9 +218970,9 @@
         "q": "Which television series is described: \"Jesse Armstrong (Logan Roy and Roy siblings battling for Waystar RoyCo)\"?",
         "correct": "Succession",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Squid Game",
+          "Peaky Blinders",
+          "Severance"
         ],
         "template": "tv-creators"
       },
@@ -219553,9 +218992,9 @@
         "q": "Which television series is described: \"Peter Morgan (Historical drama chronicling the reign of Queen Elizabeth II across decades)\"?",
         "correct": "The Crown",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Stranger Things",
+          "Peaky Blinders",
+          "House of the Dragon"
         ],
         "template": "tv-creators"
       },
@@ -219575,9 +219014,9 @@
         "q": "Which television series is described: \"Steven Knight (Tommy Shelby and the Shelby crime family in post-WWI Birmingham)\"?",
         "correct": "Peaky Blinders",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "The Wire",
+          "Succession",
+          "The Crown"
         ],
         "template": "tv-creators"
       },
@@ -219597,9 +219036,9 @@
         "q": "Which television series is described: \"Steven Moffat and Mark Gatiss (Benedict Cumberbatch as the main character, Martin Freeman as Watson)\"?",
         "correct": "Sherlock",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Stranger Things",
+          "The Boys",
+          "Succession"
         ],
         "template": "tv-creators"
       },
@@ -219619,9 +219058,9 @@
         "q": "Which television series is described: \"Sydney Newman, C. E. Webber, and Donald Wilson (TARDIS, Time Lord from Gallifrey)\"?",
         "correct": "Doctor Who",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "The Sopranos",
+          "The Crown",
+          "The Last of Us"
         ],
         "template": "tv-creators"
       },
@@ -219641,9 +219080,9 @@
         "q": "Which television series is described: \"The Duffer Brothers (Hawkins, Indiana - Eleven, Upside Down, Demogorgon, Vecna)\"?",
         "correct": "Stranger Things",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Mad Men",
+          "Succession",
+          "The Crown"
         ],
         "template": "tv-creators"
       },
@@ -219663,9 +219102,9 @@
         "q": "Which television series is described: \"Craig Mazin and Neil Druckmann (Pedro Pascal as Joel, Bella Ramsey as Ellie in Cordyceps apocalypse)\"?",
         "correct": "The Last of Us",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Chernobyl",
+          "The Boys",
+          "The Crown"
         ],
         "template": "tv-creators"
       },
@@ -219685,9 +219124,9 @@
         "q": "Which television series is described: \"Ryan Condal and George R. R. Martin (Targaryen civil war \"Dance of the Dragons\")\"?",
         "correct": "House of the Dragon",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Doctor Who",
+          "The Wire",
+          "The Sopranos"
         ],
         "template": "tv-creators"
       },
@@ -219707,9 +219146,9 @@
         "q": "Which television series is described: \"Eric Kripke (Satirical superhero show featuring Homelander, Billy Butcher, Vought)\"?",
         "correct": "The Boys",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Succession",
+          "The Crown",
+          "The Sopranos"
         ],
         "template": "tv-creators"
       },
@@ -219729,9 +219168,9 @@
         "q": "Which television series is described: \"Dan Erickson & Ben Stiller (Lumon Industries separating work memories from personal memories)\"?",
         "correct": "Severance",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Sherlock",
+          "Chernobyl",
+          "Breaking Bad"
         ],
         "template": "tv-creators"
       },
@@ -219751,9 +219190,9 @@
         "q": "Which television series is described: \"Hwang Dong-hyuk (Deadly Korean children's survival games for 45.6 billion won)\"?",
         "correct": "Squid Game",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Mad Men",
+          "The Boys",
+          "Stranger Things"
         ],
         "template": "tv-creators"
       },
@@ -219773,9 +219212,9 @@
         "q": "Which television series is described: \"Craig Mazin (1986 Soviet nuclear power plant disaster directed by Johan Renck)\"?",
         "correct": "Chernobyl",
         "wrong": [
-          "Lost",
-          "The Walking Dead",
-          "Prison Break"
+          "Mad Men",
+          "The Crown",
+          "The Last of Us"
         ],
         "template": "tv-creators"
       },
@@ -268216,9 +267655,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Pumps oxygenated blood through the circulatory system to all body tissues\"?",
         "correct": "Heart",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin B1",
+          "Vitamin B3",
+          "Pancreas"
         ],
         "template": "health-anatomy"
       },
@@ -268238,9 +267677,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Largest internal organ; detoxifies chemicals, metabolizes drugs, and produces bile\"?",
         "correct": "Liver",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin B12",
+          "Skin",
+          "Large Intestine"
         ],
         "template": "health-anatomy"
       },
@@ -268260,9 +267699,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Primary organs of the respiratory system responsible for gas exchange (O2 and CO2) in alveoli\"?",
         "correct": "Lungs",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin C",
+          "Pancreas",
+          "Stomach"
         ],
         "template": "health-anatomy"
       },
@@ -268282,9 +267721,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Filter blood to remove waste products and excess fluid, producing urine and regulating blood pressure\"?",
         "correct": "Kidneys",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin A",
+          "Iodine",
+          "Stomach"
         ],
         "template": "health-anatomy"
       },
@@ -268304,9 +267743,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Produces digestive enzymes and secretes hormones insulin and glucagon to regulate blood glucose\"?",
         "correct": "Pancreas",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Large Intestine",
+          "Vitamin C",
+          "Lungs"
         ],
         "template": "health-anatomy"
       },
@@ -268326,9 +267765,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Secretes gastric acid (hydrochloric acid) and pepsin to break down food into chyme\"?",
         "correct": "Stomach",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Spleen",
+          "Pancreas",
+          "Vitamin C"
         ],
         "template": "health-anatomy"
       },
@@ -268348,9 +267787,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Composed of duodenum, jejunum, and ileum; absorbs 90% of nutrients from food\"?",
         "correct": "Small Intestine",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin D",
+          "Skin",
+          "Lungs"
         ],
         "template": "health-anatomy"
       },
@@ -268370,9 +267809,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Absorbs water and electrolytes from indigestible food matter and forms stool\"?",
         "correct": "Large Intestine",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Liver",
+          "Heart",
+          "Skin"
         ],
         "template": "health-anatomy"
       },
@@ -268392,9 +267831,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"The largest organ of the human body by surface area and weight, providing protection and temperature regulation\"?",
         "correct": "Skin",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin K",
+          "Pancreas",
+          "Vitamin A"
         ],
         "template": "health-anatomy"
       },
@@ -268414,9 +267853,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Filters blood, recycles old red blood cells, and stores platelets and white blood cells for immune response\"?",
         "correct": "Spleen",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Heart",
+          "Pancreas",
+          "Skin"
         ],
         "template": "health-anatomy"
       },
@@ -268436,9 +267875,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Essential for vision, immune function, and skin health; deficiency causes night blindness (nyctalopia)\"?",
         "correct": "Vitamin A",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Lungs",
+          "Vitamin D",
+          "Vitamin B1"
         ],
         "template": "health-anatomy"
       },
@@ -268458,9 +267897,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Essential for glucose metabolism and nerve function; severe deficiency causes Beriberi and Wernicke-Korsakoff syndrome\"?",
         "correct": "Vitamin B1",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Pancreas",
+          "Skin",
+          "Spleen"
         ],
         "template": "health-anatomy"
       },
@@ -268480,9 +267919,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Essential for cellular energy; severe deficiency causes Pellagra (the 4 Ds: Diarrhea, Dermatitis, Dementia, Death)\"?",
         "correct": "Vitamin B3",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Kidneys",
+          "Heart",
+          "Small Intestine"
         ],
         "template": "health-anatomy"
       },
@@ -268502,9 +267941,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Crucial for DNA synthesis and fetal neural tube formation; deficiency in pregnancy causes spina bifida\"?",
         "correct": "Vitamin B9",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Small Intestine",
+          "Iodine",
+          "Vitamin C"
         ],
         "template": "health-anatomy"
       },
@@ -268524,9 +267963,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Essential for red blood cell formation and neurological function; deficiency causes pernicious anemia\"?",
         "correct": "Vitamin B12",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Small Intestine",
+          "Iron",
+          "Vitamin C"
         ],
         "template": "health-anatomy"
       },
@@ -268546,9 +267985,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Potent antioxidant essential for collagen synthesis and immune defense; deficiency causes Scurvy (bleeding gums)\"?",
         "correct": "Vitamin C",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin K",
+          "Kidneys",
+          "Spleen"
         ],
         "template": "health-anatomy"
       },
@@ -268568,9 +268007,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Synthesized in the skin via sunlight exposure; aids calcium absorption; deficiency causes Rickets in children and osteomalacia in adults\"?",
         "correct": "Vitamin D",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin K",
+          "Vitamin C",
+          "Vitamin B9"
         ],
         "template": "health-anatomy"
       },
@@ -268590,9 +268029,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Crucial cofactor for blood clotting (coagulation factors II, VII, IX, X); deficiency causes excessive bleeding and bruising\"?",
         "correct": "Vitamin K",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Large Intestine",
+          "Stomach",
+          "Pancreas"
         ],
         "template": "health-anatomy"
       },
@@ -268612,9 +268051,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Essential mineral component of hemoglobin in red blood cells that transports oxygen; deficiency causes microcytic hypochromic anemia\"?",
         "correct": "Iron",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Vitamin C",
+          "Iodine",
+          "Stomach"
         ],
         "template": "health-anatomy"
       },
@@ -268634,9 +268073,9 @@
         "q": "Which organ or nutrient is defined by this clinical fact: \"Essential trace mineral required for thyroid hormone production; deficiency causes Goiter (enlarged thyroid gland)\"?",
         "correct": "Iodine",
         "wrong": [
-          "Appendix",
-          "Gallbladder",
-          "Thyroid"
+          "Small Intestine",
+          "Vitamin K",
+          "Liver"
         ],
         "template": "health-anatomy"
       },
@@ -268656,9 +268095,9 @@
         "q": "Which medical condition or term matches: \"Chronically elevated blood pressure (typically 130/80 mmHg or higher), often called the \"silent killer\"\"?",
         "correct": "Hypertension",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Type 1 Diabetes",
+          "Malignant Tumor",
+          "Type 2 Diabetes"
         ],
         "template": "medical-terms"
       },
@@ -268678,9 +268117,9 @@
         "q": "Which medical condition or term matches: \"Abnormally low blood pressure that can cause dizziness, fainting, and insufficient oxygen delivery\"?",
         "correct": "Hypotension",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Type 1 Diabetes",
+          "Benign Tumor",
+          "Malignant Tumor"
         ],
         "template": "medical-terms"
       },
@@ -268700,9 +268139,9 @@
         "q": "Which medical condition or term matches: \"An autoimmune condition where the immune system destroys insulin-producing beta cells in the pancreas\"?",
         "correct": "Type 1 Diabetes",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Benign Tumor",
+          "Vaccine",
+          "Antibiotics"
         ],
         "template": "medical-terms"
       },
@@ -268722,9 +268161,9 @@
         "q": "Which medical condition or term matches: \"A chronic metabolic condition characterized by insulin resistance and relative insulin deficiency\"?",
         "correct": "Type 2 Diabetes",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Hypotension",
+          "Benign Tumor",
+          "Vaccine"
         ],
         "template": "medical-terms"
       },
@@ -268744,9 +268183,9 @@
         "q": "Which medical condition or term matches: \"A medical emergency caused by interrupted blood supply to part of the brain (ischemic or hemorrhagic)\"?",
         "correct": "Stroke",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Myocardial Infarction",
+          "Malignant Tumor",
+          "Type 2 Diabetes"
         ],
         "template": "medical-terms"
       },
@@ -268766,9 +268205,9 @@
         "q": "Which medical condition or term matches: \"Ischemia and necrosis of heart muscle caused by acute obstruction of a coronary artery\"?",
         "correct": "Myocardial Infarction",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Hypotension",
+          "Type 2 Diabetes",
+          "Vaccine"
         ],
         "template": "medical-terms"
       },
@@ -268788,9 +268227,9 @@
         "q": "Which medical condition or term matches: \"Medications that treat bacterial infections by killing bacteria or inhibiting their growth (ineffective against viruses)\"?",
         "correct": "Antibiotics",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Malignant Tumor",
+          "Hypertension",
+          "Type 2 Diabetes"
         ],
         "template": "medical-terms"
       },
@@ -268810,9 +268249,9 @@
         "q": "Which medical condition or term matches: \"A biological preparation that provides active acquired immunity to a specific infectious disease by training the immune system\"?",
         "correct": "Vaccine",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Antibiotics",
+          "Hypotension",
+          "Malignant Tumor"
         ],
         "template": "medical-terms"
       },
@@ -268832,9 +268271,9 @@
         "q": "Which medical condition or term matches: \"A cancerous growth capable of invading surrounding tissues and metastasizing to distant parts of the body\"?",
         "correct": "Malignant Tumor",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Vaccine",
+          "Myocardial Infarction",
+          "Type 2 Diabetes"
         ],
         "template": "medical-terms"
       },
@@ -268854,9 +268293,9 @@
         "q": "Which medical condition or term matches: \"A non-cancerous growth that does not invade nearby tissues or spread (metastasize) to other parts of the body\"?",
         "correct": "Benign Tumor",
         "wrong": [
-          "Pneumonia",
-          "Asthma",
-          "Arthritis"
+          "Type 2 Diabetes",
+          "Hypertension",
+          "Vaccine"
         ],
         "template": "medical-terms"
       },
@@ -284539,9 +283978,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Superstar (2011)\"?",
         "correct": "Wizkid",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Olamide",
+          "Davido",
+          "Tiwa Savage"
         ],
         "template": "album-lore"
       },
@@ -284561,9 +284000,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Ayo (Joy, 2014)\"?",
         "correct": "Wizkid",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Olamide",
+          "Burna Boy",
+          "Tiwa Savage"
         ],
         "template": "album-lore"
       },
@@ -284583,9 +284022,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"More Love, Less Ego (2022)\"?",
         "correct": "Wizkid",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Seyi Vibez",
+          "Shallipopi",
+          "Burna Boy"
         ],
         "template": "album-lore"
       },
@@ -284605,9 +284044,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Omo Baba Olowo (2012)\"?",
         "correct": "Davido",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Olamide",
+          "Burna Boy",
+          "Tiwa Savage"
         ],
         "template": "album-lore"
       },
@@ -284627,9 +284066,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"A Good Time (2019)\"?",
         "correct": "Davido",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Ayra Starr",
+          "Burna Boy",
+          "Olamide"
         ],
         "template": "album-lore"
       },
@@ -284649,9 +284088,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"A Better Time (2020)\"?",
         "correct": "Davido",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Olamide",
+          "Ayra Starr",
+          "Burna Boy"
         ],
         "template": "album-lore"
       },
@@ -284671,9 +284110,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"L.I.F.E (2013)\"?",
         "correct": "Burna Boy",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Davido",
+          "Tiwa Savage",
+          "Wizkid"
         ],
         "template": "album-lore"
       },
@@ -284693,9 +284132,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"African Giant (2019)\"?",
         "correct": "Burna Boy",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Fireboy DML",
+          "Tiwa Savage",
+          "Davido"
         ],
         "template": "album-lore"
       },
@@ -284715,9 +284154,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Love, Damini (2022)\"?",
         "correct": "Burna Boy",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Seyi Vibez",
+          "Asake",
+          "Wizkid"
         ],
         "template": "album-lore"
       },
@@ -284737,9 +284176,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"I Told Them... (2023)\"?",
         "correct": "Burna Boy",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Seyi Vibez",
+          "Shallipopi",
+          "Ayra Starr"
         ],
         "template": "album-lore"
       },
@@ -284759,9 +284198,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Rapsodi (2011)\"?",
         "correct": "Olamide",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Wizkid",
+          "Burna Boy",
+          "Tiwa Savage"
         ],
         "template": "album-lore"
       },
@@ -284781,9 +284220,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"YBNL (2012)\"?",
         "correct": "Olamide",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Tiwa Savage",
+          "Burna Boy",
+          "Davido"
         ],
         "template": "album-lore"
       },
@@ -284803,9 +284242,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Baddest Guy Ever Liveth (2013)\"?",
         "correct": "Olamide",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Wizkid",
+          "Burna Boy",
+          "Davido"
         ],
         "template": "album-lore"
       },
@@ -284825,9 +284264,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Carpe Diem (2020)\"?",
         "correct": "Olamide",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Davido",
+          "Tiwa Savage",
+          "Fireboy DML"
         ],
         "template": "album-lore"
       },
@@ -284847,9 +284286,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Once Upon a Time (2013)\"?",
         "correct": "Tiwa Savage",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Olamide",
+          "Burna Boy",
+          "Davido"
         ],
         "template": "album-lore"
       },
@@ -284869,9 +284308,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Celia (2020)\"?",
         "correct": "Tiwa Savage",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Burna Boy",
+          "Olamide",
+          "Fireboy DML"
         ],
         "template": "album-lore"
       },
@@ -284891,9 +284330,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Mr. Money With The Vibe (2022)\"?",
         "correct": "Asake",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Wizkid",
+          "Ayra Starr",
+          "Shallipopi"
         ],
         "template": "album-lore"
       },
@@ -284913,9 +284352,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Work of Art (2023)\"?",
         "correct": "Asake",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Burna Boy",
+          "Ayra Starr",
+          "Rema"
         ],
         "template": "album-lore"
       },
@@ -284935,9 +284374,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Lungu Boy (2024)\"?",
         "correct": "Asake",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Seyi Vibez",
+          "Wizkid",
+          "Ayra Starr"
         ],
         "template": "album-lore"
       },
@@ -284957,9 +284396,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Rave & Roses (2022)\"?",
         "correct": "Rema",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Burna Boy",
+          "Wizkid",
+          "Ayra Starr"
         ],
         "template": "album-lore"
       },
@@ -284979,9 +284418,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"HEIS (2024)\"?",
         "correct": "Rema",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Seyi Vibez",
+          "Burna Boy",
+          "Shallipopi"
         ],
         "template": "album-lore"
       },
@@ -285001,9 +284440,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"19 & Dangerous (2021)\"?",
         "correct": "Ayra Starr",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Fireboy DML",
+          "Olamide",
+          "Burna Boy"
         ],
         "template": "album-lore"
       },
@@ -285023,9 +284462,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"The Year I Turned 21 (2024)\"?",
         "correct": "Ayra Starr",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Wizkid",
+          "Fireboy DML",
+          "Shallipopi"
         ],
         "template": "album-lore"
       },
@@ -285045,9 +284484,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Apollo (2020)\"?",
         "correct": "Fireboy DML",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Davido",
+          "Tiwa Savage",
+          "Burna Boy"
         ],
         "template": "album-lore"
       },
@@ -285067,9 +284506,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Playboy (2022)\"?",
         "correct": "Fireboy DML",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Burna Boy",
+          "Seyi Vibez",
+          "Ayra Starr"
         ],
         "template": "album-lore"
       },
@@ -285089,9 +284528,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Presido La Pluto (2023)\"?",
         "correct": "Shallipopi",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Wizkid",
+          "Ayra Starr",
+          "Rema"
         ],
         "template": "album-lore"
       },
@@ -285111,9 +284550,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Shakespopi (2024)\"?",
         "correct": "Shallipopi",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Rema",
+          "Burna Boy",
+          "Wizkid"
         ],
         "template": "album-lore"
       },
@@ -285133,9 +284572,9 @@
         "q": "Which Nigerian artist released the acclaimed album \"Billion Dollar Baby (2022)\"?",
         "correct": "Seyi Vibez",
         "wrong": [
-          "Kizz Daniel",
-          "Flavour",
-          "Patoranking"
+          "Wizkid",
+          "Asake",
+          "Shallipopi"
         ],
         "template": "album-lore"
       },
@@ -293554,9 +292993,9 @@
         "q": "Who starred in the hit Nollywood production \"Lionheart\"?",
         "correct": "Genevieve Nnaji",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Nonso Diobi",
+          "Zubby Michael",
+          "Joke Silva"
         ],
         "template": "nollywood-stars"
       },
@@ -293576,9 +293015,9 @@
         "q": "Who starred in the hit Nollywood production \"Blood Sisters (2003)\"?",
         "correct": "Omotola Jalade Ekeinde",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Nonso Diobi",
+          "Olu Jacobs",
+          "Kunle Remi"
         ],
         "template": "nollywood-stars"
       },
@@ -293598,9 +293037,9 @@
         "q": "Who starred in the hit Nollywood production \"Out of Bounds (1997)\"?",
         "correct": "Richard Mofe-Damijo",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Sola Sobowale",
+          "Deyemi Okanlawon",
+          "Timini Egbuson"
         ],
         "template": "nollywood-stars"
       },
@@ -293620,9 +293059,9 @@
         "q": "Who starred in the hit Nollywood production \"The Figurine (Araromire)\"?",
         "correct": "Ramsey Nouah",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Joke Silva",
+          "Olu Jacobs",
+          "Ini Edo"
         ],
         "template": "nollywood-stars"
       },
@@ -293642,9 +293081,9 @@
         "q": "Who starred in the hit Nollywood production \"The Royal Tears\"?",
         "correct": "Olu Jacobs",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Funke Akindele",
+          "Joke Silva",
+          "Chidi Mokeme"
         ],
         "template": "nollywood-stars"
       },
@@ -293664,9 +293103,9 @@
         "q": "Who starred in the hit Nollywood production \"The Secret Laughter of Women\"?",
         "correct": "Joke Silva",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Deyemi Okanlawon",
+          "Yul Edochie",
+          "Sola Sobowale"
         ],
         "template": "nollywood-stars"
       },
@@ -293686,9 +293125,9 @@
         "q": "Who starred in the hit Nollywood production \"Jenifa (2008)\"?",
         "correct": "Funke Akindele",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Yul Edochie",
+          "Mike Ezuruonye",
+          "Ini Edo"
         ],
         "template": "nollywood-stars"
       },
@@ -293708,9 +293147,9 @@
         "q": "Who starred in the hit Nollywood production \"Asewo To Re Mecca (1992)\"?",
         "correct": "Sola Sobowale",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Richard Mofe-Damijo",
+          "Bimbo Ademoye",
+          "Ini Edo"
         ],
         "template": "nollywood-stars"
       },
@@ -293730,9 +293169,9 @@
         "q": "Who starred in the hit Nollywood production \"Osuofia in London\"?",
         "correct": "Nkem Owoh",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Olu Jacobs",
+          "Chidi Mokeme",
+          "Bimbo Ademoye"
         ],
         "template": "nollywood-stars"
       },
@@ -293752,9 +293191,9 @@
         "q": "Who starred in the hit Nollywood production \"Aki na Ukwa\"?",
         "correct": "Chinedu Ikedieze",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Odunlade Adekola",
+          "Bimbo Ademoye",
+          "Femi Adebayo"
         ],
         "template": "nollywood-stars"
       },
@@ -293785,9 +293224,9 @@
         "q": "Who starred in the hit Nollywood production \"Dumebi the Dirty Girl\"?",
         "correct": "Mercy Johnson Okojie",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Joke Silva",
+          "Tonto Dikeh",
+          "Femi Adebayo"
         ],
         "template": "nollywood-stars"
       },
@@ -293807,9 +293246,9 @@
         "q": "Who starred in the hit Nollywood production \"The Meeting (2012)\"?",
         "correct": "Rita Dominic",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Tonto Dikeh",
+          "Femi Adebayo",
+          "Mike Ezuruonye"
         ],
         "template": "nollywood-stars"
       },
@@ -293829,9 +293268,9 @@
         "q": "Who starred in the hit Nollywood production \"World Apart (2004)\"?",
         "correct": "Ini Edo",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Funke Akindele",
+          "Yul Edochie",
+          "Mike Ezuruonye"
         ],
         "template": "nollywood-stars"
       },
@@ -293851,9 +293290,9 @@
         "q": "Who starred in the hit Nollywood production \"Dirty Secret (2010)\"?",
         "correct": "Tonto Dikeh",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Rita Dominic",
+          "Femi Adebayo",
+          "Bisola Aiyeola"
         ],
         "template": "nollywood-stars"
       },
@@ -293873,9 +293312,9 @@
         "q": "Who starred in the hit Nollywood production \"Last Flight to Abuja\"?",
         "correct": "Jim Iyke",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Nonso Diobi",
+          "Yul Edochie",
+          "Kunle Remi"
         ],
         "template": "nollywood-stars"
       },
@@ -293895,9 +293334,9 @@
         "q": "Who starred in the hit Nollywood production \"Hatred (2001)\"?",
         "correct": "Nonso Diobi",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Omotola Jalade Ekeinde",
+          "Chinedu Ikedieze",
+          "Jim Iyke"
         ],
         "template": "nollywood-stars"
       },
@@ -293917,9 +293356,9 @@
         "q": "Who starred in the hit Nollywood production \"Critical Decision (2004)\"?",
         "correct": "Mike Ezuruonye",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Yul Edochie",
+          "Funke Akindele",
+          "Ini Edo"
         ],
         "template": "nollywood-stars"
       },
@@ -293939,9 +293378,9 @@
         "q": "Who starred in the hit Nollywood production \"Wind of Glory (2007)\"?",
         "correct": "Yul Edochie",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Funke Akindele",
+          "Ini Edo",
+          "Mike Ezuruonye"
         ],
         "template": "nollywood-stars"
       },
@@ -293961,9 +293400,9 @@
         "q": "Who starred in the hit Nollywood production \"Sunday Dagboru\"?",
         "correct": "Odunlade Adekola",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Kunle Remi",
+          "Nkem Owoh",
+          "Chinedu Ikedieze"
         ],
         "template": "nollywood-stars"
       },
@@ -293983,9 +293422,9 @@
         "q": "Who starred in the hit Nollywood production \"Jelili (2011)\"?",
         "correct": "Femi Adebayo",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Tonto Dikeh",
+          "Rita Dominic",
+          "Mike Ezuruonye"
         ],
         "template": "nollywood-stars"
       },
@@ -294005,9 +293444,9 @@
         "q": "Who starred in the hit Nollywood production \"Ayinla (2021)\"?",
         "correct": "Lateef Adedimeji",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Bisola Aiyeola",
+          "Tonto Dikeh",
+          "Sola Sobowale"
         ],
         "template": "nollywood-stars"
       },
@@ -294027,9 +293466,9 @@
         "q": "Who starred in the hit Nollywood production \"Aníkúlápó (Arolake)\"?",
         "correct": "Bimbo Ademoye",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Funke Akindele",
+          "Chinedu Ikedieze",
+          "Omotola Jalade Ekeinde"
         ],
         "template": "nollywood-stars"
       },
@@ -294049,9 +293488,9 @@
         "q": "Who starred in the hit Nollywood production \"Sugar Rush (2019)\"?",
         "correct": "Bisola Aiyeola",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Lateef Adedimeji",
+          "Sola Sobowale",
+          "Tonto Dikeh"
         ],
         "template": "nollywood-stars"
       },
@@ -294071,9 +293510,9 @@
         "q": "Who starred in the hit Nollywood production \"A Tribe Called Judah\"?",
         "correct": "Timini Egbuson",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Yul Edochie",
+          "Ramsey Nouah",
+          "Rita Dominic"
         ],
         "template": "nollywood-stars"
       },
@@ -294093,9 +293532,9 @@
         "q": "Who starred in the hit Nollywood production \"Brotherhood & Gangs of Lagos\"?",
         "correct": "Tobi Bakre",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Funke Akindele",
+          "Kunle Remi",
+          "Richard Mofe-Damijo"
         ],
         "template": "nollywood-stars"
       },
@@ -294115,9 +293554,9 @@
         "q": "Who starred in the hit Nollywood production \"Shanty Town (Scar)\"?",
         "correct": "Chidi Mokeme",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Richard Mofe-Damijo",
+          "Mike Ezuruonye",
+          "Mercy Johnson Okojie"
         ],
         "template": "nollywood-stars"
       },
@@ -294137,9 +293576,9 @@
         "q": "Who starred in the hit Nollywood production \"Omo Ghetto: The Saga\"?",
         "correct": "Zubby Michael",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Joke Silva",
+          "Genevieve Nnaji",
+          "Yul Edochie"
         ],
         "template": "nollywood-stars"
       },
@@ -294159,9 +293598,9 @@
         "q": "Who starred in the hit Nollywood production \"Aníkúlápó (Saro)\"?",
         "correct": "Kunle Remi",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Mike Ezuruonye",
+          "Chinedu Ikedieze",
+          "Femi Adebayo"
         ],
         "template": "nollywood-stars"
       },
@@ -294181,9 +293620,9 @@
         "q": "Who starred in the hit Nollywood production \"Blood Sisters (Kola Ademola)\"?",
         "correct": "Deyemi Okanlawon",
         "wrong": [
-          "Kenneth Okonkwo",
-          "Fred Amata",
-          "Kanayo O. Kanayo"
+          "Bisola Aiyeola",
+          "Sola Sobowale",
+          "Chidi Mokeme"
         ],
         "template": "nollywood-stars"
       },
