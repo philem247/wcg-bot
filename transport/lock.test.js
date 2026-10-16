@@ -2,8 +2,9 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
+import { spawn } from 'node:child_process'
 
-const { acquireLock, releaseLock, isProcessAlive } = await import('./lock.js')
+const { acquireLock, releaseLock, isProcessAlive, isLikelyThisBot } = await import('./lock.js')
 
 function tmpDir() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'wcg-lock-'))
@@ -27,16 +28,43 @@ const tests = [
     },
   },
   {
-    name: 'a second acquireLock in the same dir fails while the first is held',
+    name: 'acquireLock fails while another live bot process holds the lock',
+    fn: async () => {
+      const dir = tmpDir()
+      // A real second process whose cmdline contains "wcg", standing in for a
+      // running instance.
+      const child = spawn(process.execPath, ['-e', 'setTimeout(() => {}, 30000)', 'wcg-bot'], { stdio: 'ignore' })
+      try {
+        await new Promise((resolve) => child.once('spawn', resolve))
+        fs.writeFileSync(path.join(dir, '.lock'), String(child.pid))
+        assert.throws(() => acquireLock(dir), /already running/)
+      } finally {
+        child.kill()
+        fs.rmSync(dir, { recursive: true, force: true })
+      }
+    },
+  },
+  {
+    name: 'a lock naming our own pid (recycled after a container restart) is retaken',
     fn: async () => {
       const dir = tmpDir()
       try {
-        acquireLock(dir)
-        assert.throws(() => acquireLock(dir), /already running/)
+        fs.writeFileSync(path.join(dir, '.lock'), String(process.pid))
+        acquireLock(dir, silentLogger)
+        assert.equal(fs.readFileSync(path.join(dir, '.lock'), 'utf8'), String(process.pid))
       } finally {
         releaseLock()
         fs.rmSync(dir, { recursive: true, force: true })
       }
+    },
+  },
+  {
+    name: 'isLikelyThisBot: matches the bot cmdline, rejects unrelated, holds on unreadable',
+    fn: async () => {
+      assert.equal(isLikelyThisBot(1, () => '/usr/bin/node\0/app/index.js\0'), true)
+      assert.equal(isLikelyThisBot(1, () => 'node\0/home/container/wcg-bot/start.js\0'), true)
+      assert.equal(isLikelyThisBot(1, () => '/bin/sh\0-c\0sleep 100\0'), false)
+      assert.equal(isLikelyThisBot(1, () => { throw new Error('ENOENT') }), true)
     },
   },
   {

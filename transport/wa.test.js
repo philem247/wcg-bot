@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { DatabaseSync } from 'node:sqlite'
 import { useSqliteAuthState } from '../store/auth.js'
 
-const { shouldForceReconnect, shouldRepairPreKeys, shouldForceFlush, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid } = await import('./wa.js')
+const { shouldForceReconnect, shouldRepairPreKeys, shouldForceFlush, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid, phoneFormOf, resolvePn } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -230,6 +230,44 @@ const tests = [
     fn: () => {
       assert.equal(shouldIgnoreJid(undefined), false)
       assert.equal(shouldIgnoreJid(''), false)
+    },
+  },
+  {
+    name: 'phoneFormOf: group @lid sender resolved from participantAlt and cached',
+    fn: async () => {
+      const key = { remoteJid: '1@g.us', participant: '111@lid', participantAlt: '2340000000001@s.whatsapp.net' }
+      assert.equal(await phoneFormOf(key, '111@lid', null), '2340000000001@s.whatsapp.net')
+      assert.equal(resolvePn('111@lid'), '2340000000001@s.whatsapp.net')
+    },
+  },
+  {
+    name: 'phoneFormOf: DM @lid sender resolved from remoteJidAlt',
+    fn: async () => {
+      const key = { remoteJid: '222@lid', remoteJidAlt: '2340000000002@s.whatsapp.net' }
+      assert.equal(await phoneFormOf(key, '222@lid', null), '2340000000002@s.whatsapp.net')
+    },
+  },
+  {
+    name: 'phoneFormOf: phone-form sender returned as-is, its lid alt remembered',
+    fn: async () => {
+      const key = { remoteJid: '1@g.us', participant: '2340000000003@s.whatsapp.net', participantAlt: '333@lid' }
+      assert.equal(await phoneFormOf(key, '2340000000003@s.whatsapp.net', null), '2340000000003@s.whatsapp.net')
+      assert.equal(resolvePn('333@lid'), '2340000000003@s.whatsapp.net')
+    },
+  },
+  {
+    name: 'phoneFormOf: no alt -> falls back to the LID mapping store (device suffix stripped)',
+    fn: async () => {
+      const lidMapping = { getPNForLID: async (lid) => (lid === '444@lid' ? '2340000000004:12@s.whatsapp.net' : null) }
+      assert.equal(await phoneFormOf({ remoteJid: '1@g.us', participant: '444@lid' }, '444@lid', lidMapping), '2340000000004@s.whatsapp.net')
+      assert.equal(resolvePn('444@lid'), '2340000000004@s.whatsapp.net')
+    },
+  },
+  {
+    name: 'phoneFormOf: unknown lid with a throwing mapping store -> undefined',
+    fn: async () => {
+      const lidMapping = { getPNForLID: async () => { throw new Error('boom') } }
+      assert.equal(await phoneFormOf({ remoteJid: '1@g.us', participant: '555@lid' }, '555@lid', lidMapping), undefined)
     },
   },
 ]

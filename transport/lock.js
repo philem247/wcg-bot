@@ -25,6 +25,16 @@ function writeLock(file) {
   lockPath = file;
 }
 
+// Containers reuse small pids, so after a force-kill the lock's pid can belong
+// to some unrelated live process (or to us, on a restarted container). Only
+// treat the lock as held if that pid's command line looks like this bot.
+// Unreadable cmdline (no /proc, other user) errs on the side of "held".
+export function isLikelyThisBot(pid, readCmdline = (p) => fs.readFileSync(`/proc/${p}/cmdline`, 'utf8')) {
+  let cmd;
+  try { cmd = readCmdline(pid); } catch { return true; }
+  return /index\.js|wcg/.test(cmd.replace(/\0/g, ' '));
+}
+
 // Throws if a live instance already holds the lock. Clears + retakes a stale
 // lock (dead pid) left behind by a crash.
 export function acquireLock(dir, logger = console) {
@@ -43,7 +53,7 @@ export function acquireLock(dir, logger = console) {
 
   const pidStr = fs.readFileSync(file, 'utf8').trim();
   const pid = Number(pidStr);
-  if (pid && isProcessAlive(pid)) {
+  if (pid && pid !== process.pid && isProcessAlive(pid) && isLikelyThisBot(pid)) {
     throw new Error(
       `Another wcg-bot instance is already running against "${dir}" (pid ${pid}). ` +
       `Refusing to start: two processes sharing session/ corrupts the WhatsApp session.`

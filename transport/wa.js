@@ -321,6 +321,35 @@ export function resolvePn(jid) {
   return lidToPhone.get(jid);
 }
 
+// Phone-form JID for a message's sender. Baileys v7 dropped key.participantPn;
+// each key now carries the sender's *other* address form instead -
+// participantAlt in groups, remoteJidAlt in DMs. When the sender is already
+// phone-form, learn its lid from the alt and return it unchanged. When it's
+// @lid, prefer the alt, then our cache, then baileys' persisted LID mapping
+// store. Undefined if none of those know the phone number.
+export async function phoneFormOf(key, sender, lidMapping = sock?.signalRepository?.lidMapping) {
+  const alt = key.participant ? key.participantAlt : key.remoteJidAlt;
+  if (!sender?.endsWith('@lid')) {
+    if (alt?.endsWith('@lid')) rememberLidPhone(alt, sender);
+    return sender;
+  }
+  if (alt && !alt.endsWith('@lid')) {
+    rememberLidPhone(sender, alt);
+    return alt;
+  }
+  const cached = resolvePn(sender);
+  if (cached) return cached;
+  try {
+    const pn = await lidMapping?.getPNForLID?.(sender);
+    if (pn) {
+      const phone = `${toNumber(pn)}@s.whatsapp.net`;
+      rememberLidPhone(sender, phone);
+      return phone;
+    }
+  } catch (_) {}
+  return undefined;
+}
+
 // ponytail: bounded id cache instead of a real LRU/expiry — we only need to recognize
 // the immediate echo of our own sends, so keeping the most-recent 500 ids is plenty.
 export const SENT_ID_CAP = 500;
@@ -540,11 +569,8 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
         const ownJid = `${toNumber(sock.user?.id)}@s.whatsapp.net`;
         const sender = resolveSender(msg.key, jid, ownJid);
         // Phone-form JID alongside `sender`, which may be @lid under lid addressing.
-        // No participant (DM) means sender is already phone-form; participantPn may
-        // legitimately be undefined (non-lid groups, or older baileys behaviour).
-        const senderPn = msg.key.fromMe
-          ? ownJid
-          : msg.key.participant ? msg.key.participantPn : sender;
+        // Keeps admin/owner checks working for LID senders; see phoneFormOf.
+        const senderPn = msg.key.fromMe ? ownJid : await phoneFormOf(msg.key, sender);
         const isGroup = jid.endsWith('@g.us');
 
         inboundStats.dispatched++;
