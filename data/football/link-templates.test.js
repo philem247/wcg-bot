@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { shortClub, isReserveSide, clubLinkQuestions, bothClubsQuestions, seededRandom } from './link-templates.mjs'
+import { shortClub, isReserveSide, clubLinkQuestions, bothClubsQuestions, seededRandom, looksLikeName } from './link-templates.mjs'
 
 const players = JSON.parse(readFileSync('data/football/career-paths.json', 'utf8'))
 const clubsOf = new Map(players.map((p) => [p.name, new Set(p.clubs.filter((c) => !isReserveSide(c)).map(shortClub))]))
@@ -55,6 +55,20 @@ const tests = [
           assert.ok(s.has(x) !== s.has(y), `${w} should have played for exactly one of them: ${q.q}`)
         }
       }
+    },
+  },
+  {
+    name: 'looksLikeName: vandalised labels are rejected, real names with particles pass',
+    fn: () => {
+      for (const n of ['Pierre Cardin picha grande', 'Takuma ano', 'Rafael Márquez El piojo']) assert.ok(!looksLikeName(n), n)
+      for (const n of ['Virgil van Dijk', 'Kevin De Bruyne', "Samuel Eto'o", 'Marco van Basten', 'Rafael da Silva']) assert.ok(looksLikeName(n), n)
+    },
+  },
+  {
+    name: 'every player in the career data has a clean name',
+    fn: () => {
+      const bad = players.filter((p) => !looksLikeName(p.name)).map((p) => p.name)
+      assert.deepEqual(bad, [])
     },
   },
   {

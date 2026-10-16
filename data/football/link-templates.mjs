@@ -98,10 +98,17 @@ export function isReserveSide(label) {
 // player -> Set of short club names, senior sides only. A name two pool
 // players share (two different "Ronaldo"s) would make a question ambiguous,
 // so those players are left out entirely.
+// Wikidata labels get vandalised ("Pierre Cardin picha grande" for
+// Aubameyang). A real name capitalises every word but particles.
+const PARTICLES = new Set(['de', 'da', 'do', 'dos', 'das', 'van', 'von', 'der', 'den', 'di', 'del', 'della', 'le', 'la', 'el', 'al', 'bin', 'ibn', 'ter', 'ten', 'y', 'e', 'du', 'zu'])
+export function looksLikeName(name) {
+  return String(name).split(/\s+/).every((w) => PARTICLES.has(w) || /^[\p{Lu}\d'’]/u.test(w))
+}
+
 function clubSets(players) {
   const count = new Map()
   for (const p of players) count.set(p.name, (count.get(p.name) ?? 0) + 1)
-  return players.filter((p) => count.get(p.name) === 1).map((p) => ({
+  return players.filter((p) => count.get(p.name) === 1 && looksLikeName(p.name)).map((p) => ({
     name: p.name,
     clubs: new Set(p.clubs.filter((c) => !isReserveSide(c)).map(shortClub)),
   }))

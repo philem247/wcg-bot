@@ -165,6 +165,38 @@ const FIX = {
     wrong: ['Ronaldo, Benzema & Asensio', 'Ronaldo, Casemiro & Isco', 'Benzema, Bale & Asensio'],
   },
 
+  // Same-size decoys, each partly right, so only knowing the full set works.
+  'f627665ceaea': {
+    q: "Which three players scored Barcelona's goals in their 3-1 win over Juventus in the 2015 Champions League final?",
+    correct: 'Rakitić, Suárez & Neymar',
+    wrong: ['Rakitić, Messi & Neymar', 'Suárez, Iniesta & Pedro', 'Messi, Suárez & Neymar'],
+  },
+  '87a6ef64354d': {
+    q: "Which four players scored Real Madrid's goals in their 4-1 extra-time win over Atlético Madrid in the 2014 Champions League final?",
+    correct: 'Ramos, Bale, Marcelo & Ronaldo',
+    wrong: ['Ramos, Bale, Isco & Ronaldo', 'Ramos, Di María, Marcelo & Ronaldo', 'Benzema, Bale, Marcelo & Ronaldo'],
+  },
+
+  // Wrong answer: Southampton LOST 9-0 twice; Leicester were the winners.
+  'afae10ec4f57': {
+    q: 'Which three clubs had recorded 9-0 wins, the biggest in Premier League history, by the end of 2024?',
+    correct: 'Man United, Leicester & Liverpool',
+    wrong: ['Man United, Southampton & Liverpool', 'Chelsea, Man City & Arsenal', 'Man United, Chelsea & Tottenham'],
+  },
+  'f7a2fc12c081': { correct: 'Villa vs Birmingham' },
+  'feda07300cd0': { correct: 'Forest vs Derby' },
+  '87e5ef72adeb': { correct: 'Sheffield United vs Wednesday' },
+  '533beb6d82ff': { correct: 'Palace vs Brighton' },
+  'ce3076524600': { correct: 'Chelsea, Fulham & QPR' },
+  'e3f07ba180a5': { correct: 'Bayern vs Dortmund' },
+  '842774d8ec39': { correct: 'Salah, Firmino, Mané' },
+  'fff0163e4171': { correct: 'Messi and Ronaldo' },
+  '48f4dd62e997': { correct: 'Zaire' },
+  '6d0e99fcb376': { correct: 'Zaire' },
+  'd5cdd2dc4505': { correct: 'DR Congo' },
+  'da0039dbd906': { correct: 'Egypt' },
+  '07507584a8a9': { correct: 'Tüpraş Stadium' },
+
   // ── Answer was the only option written out in full ──
   '1e6c9313bbba': { correct: 'Dortmund vs Schalke' },
   '521076710b33': { correct: 'PSG vs Marseille' },
@@ -233,6 +265,16 @@ for (const q of trivia.categories.football) {
   kept.push(q)
 }
 const eraChanged = eraDecoys(kept)
+// FPL names come from the API's first + second name: "Bruno Miguel Borges
+// Fernandes" next to "Wilfried Zaha" is a giveaway. Use the name fans use.
+const FPL_NAMES = { 'Bruno Miguel Borges Fernandes': 'Bruno Fernandes' }
+for (const q of trivia.categories.fpl ?? []) {
+  const before = JSON.stringify(q)
+  q.correct = FPL_NAMES[q.correct] ?? q.correct
+  q.wrong = q.wrong.map((w) => FPL_NAMES[w] ?? w)
+  for (const [long, short] of Object.entries(FPL_NAMES)) q.q = q.q.split(long).join(short)
+  if (JSON.stringify(q) !== before) fixed++
+}
 trivia.categories.football = kept
 writeFileSync(PATH, JSON.stringify(trivia, null, 2) + '\n')
 const missing = Object.keys(FIX).filter((id) => !kept.some((q) => q.id === id))
