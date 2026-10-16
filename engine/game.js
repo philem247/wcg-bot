@@ -62,10 +62,12 @@ export function createGame({ mode = 'easy', type = 'chain', dict, starter, now, 
   const queuedList = []
 
   function nextLetter() {
-    if (type === 'random') return dict.randomLetter()
+    // minLength: the dictionary weights letters by how many words of the
+    // current required length start with them (see dictionary.randomLetter).
+    if (type === 'random') return dict.randomLetter(curMinLength, random)
     // chain: same rule as `random` for the very first turn (no previous word yet),
     // then the last letter of the previous word for every turn after.
-    return lastWordLastLetter ?? dict.randomLetter()
+    return lastWordLastLetter ?? dict.randomLetter(curMinLength, random)
   }
 
   function ensureAnnounced(events) {

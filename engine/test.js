@@ -146,6 +146,28 @@ const tests = [
     },
   },
 
+  {
+    name: 'randomLetter: weighted by word count, and never a letter with no word of the required length',
+    fn: () => {
+      const dict = loadDictionary({ dataDir: 'data', langs: [], extraWords: [] })
+      // Seeded LCG so the draw is reproducible.
+      let seed = 42
+      const random = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648)
+      const counts = {}
+      for (let i = 0; i < 20000; i++) {
+        const l = dict.randomLetter(3, random)
+        counts[l] = (counts[l] ?? 0) + 1
+      }
+      assert.ok((counts.s ?? 0) > 3 * (counts.x ?? 0), `s=${counts.s} x=${counts.x}: common letters must come up far more often`)
+      assert.ok((counts.x ?? 0) > 0, 'rare letters still appear')
+      // At an absurd length, every pick must still have at least one valid word.
+      for (let i = 0; i < 200; i++) {
+        const l = dict.randomLetter(20, random)
+        assert.ok(l !== null)
+      }
+    },
+  },
+
   // validate.js tests
   {
     name: 'validate: not_starting_with',

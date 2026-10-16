@@ -52,6 +52,18 @@ export function loadDictionary({ dataDir = 'data', langs = ['es', 'fr', 'de', 'i
   // Build sorted array and letter-to-range index
   let sortedWords = Array.from(words).sort()
   const letterIndex = new Map()
+  // letter -> counts[n] = words starting with that letter of length >= n.
+  // Lets randomLetter() weight by how many words can actually answer a turn.
+  const MAX_LEN = 32
+  const lengthCounts = new Map()
+  for (const w of sortedWords) {
+    let c = lengthCounts.get(w[0])
+    if (!c) { c = new Array(MAX_LEN + 1).fill(0); lengthCounts.set(w[0], c) }
+    c[Math.min(w.length, MAX_LEN)]++
+  }
+  for (const c of lengthCounts.values()) {
+    for (let n = MAX_LEN - 1; n >= 0; n--) c[n] += c[n + 1]
+  }
 
   for (let i = 0; i < sortedWords.length; i++) {
     const firstChar = sortedWords[i][0]
@@ -100,9 +112,31 @@ export function loadDictionary({ dataDir = 'data', langs = ['es', 'fr', 'de', 'i
       return null
     },
 
-    randomLetter() {
-      const letters = Array.from(letterIndex.keys())
-      return letters.length > 0 ? letters[Math.floor(Math.random() * letters.length)] : null
+    // Weighted by sqrt(number of words of at least `minLength` starting with
+    // the letter). Uniform picking served X (516 words) as often as S (41k),
+    // and late in a game, at minLength 10+, a letter with next to no valid
+    // words was a near-unwinnable turn. sqrt keeps rare letters in play
+    // without letting S/P/C swamp every game. Letters with no word long
+    // enough are never picked.
+    randomLetter(minLength = 0, random = Math.random) {
+      const n = Math.max(0, Math.min(minLength, MAX_LEN))
+      let total = 0
+      const weighted = []
+      for (const [letter, c] of lengthCounts) {
+        const w = Math.sqrt(c[n])
+        if (w > 0) { weighted.push([letter, w]); total += w }
+      }
+      if (total === 0) {
+        // Nothing that long anywhere: fall back to any letter with words.
+        const letters = Array.from(letterIndex.keys())
+        return letters.length > 0 ? letters[Math.floor(random() * letters.length)] : null
+      }
+      let r = random() * total
+      for (const [letter, w] of weighted) {
+        r -= w
+        if (r < 0) return letter
+      }
+      return weighted[weighted.length - 1][0]
     },
   }
 }

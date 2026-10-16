@@ -572,8 +572,10 @@ const tests = [
       let lastExclude = null
       const bank = {
         categories: () => ['general', 'science'],
-        pick: ({ category, exclude }) => {
-          lastExclude = exclude
+        pick: ({ category, exclude, count }) => {
+          // The first draw of a game asks for a full game; only that one carries
+          // the group's history (a top-up draw excludes just what was picked).
+          if (count === 10) lastExclude = exclude
           if (category === 'mixed') return [{ id: 'g1', q: 'Q?', correct: 'r', wrong: ['a', 'b', 'c'], category: 'general' }]
           return [{ id: `${category[0]}2`, q: 'Q?', correct: 'r', wrong: ['a', 'b', 'c'], category }]
         },
@@ -596,6 +598,50 @@ const tests = [
     },
   },
   {
+    name: '/trivia tops up to a full game when the group has only a few unasked questions left',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      const { loadBank } = await import('../engine/bank.js')
+      const questions = Array.from({ length: 12 }, (_, i) => ({ id: `q${i}`, q: `Question ${i}?`, correct: 'r', wrong: ['a', 'b', 'c'] }))
+      const bank = loadBank({ data: { categories: { general: questions } } })
+      // 9 of 12 already asked here: only 3 fresh ones left.
+      db.markAsked('g-topup@g.us', questions.slice(0, 9).map((q) => ({ id: q.id, category: 'general' })), 0)
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['a@s.whatsapp.net'], db, bank, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g-topup@g.us', sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/trivia general', isGroup: true }, 0)
+      assert.ok(sent.some((t) => t.includes('*Q1/10*')), 'a full 10-question game, not a 3-question one')
+      const asked = db.askedIds('g-topup@g.us')
+      for (const q of questions.slice(9)) assert.ok(asked.has(q.id), 'the 3 fresh questions are in this game')
+      db.close()
+    },
+  },
+  {
+    name: '/scramble does not repeat words within a group across games',
+    fn: async () => {
+      const games = new Map()
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games, enqueue: () => {},
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => ['a@s.whatsapp.net'], db, resolvePn: () => undefined,
+      })
+      const jid = 'g-scr-norepeat@g.us'
+      await router.handleMessage({ jid, sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/scramble start', isGroup: true }, 0)
+      const first = new Set([...db.askedIds(jid)].filter((id) => id.startsWith('scramble:')))
+      games.clear()
+      await router.handleMessage({ jid, sender: 'a@s.whatsapp.net', senderPn: 'a@s.whatsapp.net', text: '/scramble start', isGroup: true }, 60_000)
+      const all = [...db.askedIds(jid)].filter((id) => id.startsWith('scramble:'))
+      assert.equal(first.size, 10)
+      assert.equal(all.length, 20, 'second game drew 10 words the group had not seen')
+      db.close()
+    },
+  },
+  {
     name: '/trivia still starts when db.askedIds throws (store failure must never break gameplay)',
     fn: async () => {
       const sent = []
@@ -603,7 +649,9 @@ const tests = [
       const bank = {
         categories: () => ['general'],
         pick: ({ exclude }) => {
-          assert.equal(exclude.size, 0, 'falls back to an empty Set when the store fails')
+          // Only the first draw sees the store's history; a later top-up draw
+          // (this fake only ever has one question) excludes what was picked.
+          if (!exclude.has('q0')) assert.equal(exclude.size, 0, 'falls back to an empty Set when the store fails')
           return [{ id: 'q0', q: 'Q?', correct: 'right', wrong: ['a', 'b', 'c'], category: 'general' }]
         },
       }

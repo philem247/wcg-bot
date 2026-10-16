@@ -506,6 +506,32 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
   const flagBank = loadFlagBank()
   const wordleBank = loadWordleBank()
   const categoryBank = loadCategoryBank()
+
+  // Picks `count` items this group hasn't had, recorded in asked_questions
+  // under `category`. When fewer than `count` are left, takes what's left,
+  // starts a fresh cycle for this category, and tops up from the rest — a
+  // group near the end of a pool still gets a full game, never a short one.
+  function pickFresh({ jid, category, count, pool, idOf }) {
+    let exclude
+    try {
+      exclude = db?.askedIds(jid) ?? new Set()
+    } catch (e) {
+      logger?.error({ err: e }, `Failed loading asked ${category} items`)
+      exclude = new Set()
+    }
+    let picked = shuffle(pool.filter((x) => !exclude.has(idOf(x))), Math.random).slice(0, count)
+    if (picked.length < count) {
+      try { db?.clearAsked(jid, category) } catch (e) { logger?.error({ err: e }, `Failed clearing asked ${category} items`) }
+      const have = new Set(picked.map(idOf))
+      picked = picked.concat(shuffle(pool.filter((x) => !have.has(idOf(x))), Math.random).slice(0, count - picked.length))
+    }
+    try {
+      db?.markAsked(jid, picked.map((x) => ({ id: idOf(x), category })), Date.now())
+    } catch (e) {
+      logger?.error({ err: e }, `Failed recording asked ${category} items`)
+    }
+    return picked
+  }
   // Engine games don't expose who started them; track it here, mirroring `games`.
   // ponytail: scheduler-driven deletions (timeout/lobby-fail) don't clean this map,
   // it's overwritten on the jid's next game — bounded leak, fix if it ever matters.
@@ -644,16 +670,14 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
-    // Pick random unique words from the pure English dictionary pool
-    const selectedIndexes = new Set()
-    const words = []
-    while (selectedIndexes.size < SCRAMBLE_COUNT) {
-      const idx = Math.floor(Math.random() * scramblePool.length)
-      if (!selectedIndexes.has(idx)) {
-        selectedIndexes.add(idx)
-        words.push({ correct: scramblePool[idx] })
-      }
-    }
+    // Words this group hasn't had yet, topped up from a fresh cycle once the
+    // pool runs low. Stored in asked_questions under category 'scramble' with
+    // a 'scramble:' id prefix, so it can never collide with a trivia id.
+    const picked = pickFresh({
+      jid, category: 'scramble', count: SCRAMBLE_COUNT,
+      pool: scramblePool, idOf: (w) => `scramble:${w}`,
+    })
+    const words = picked.map((w) => ({ correct: w }))
 
     enqueue(jid, { text: `🔠 *Scramble Game started!*\n${SCRAMBLE_COUNT} words. You have 15 seconds per word. Get ready...`, mentions: [], kind: 'misc' })
     
@@ -717,8 +741,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       exclude = new Set()
     }
     let picked = bank.pick({ category, count: QUESTION_COUNT, exclude, random: Math.random })
-    // Pool exhausted for this group: recycle rather than serving a short game.
-    if (picked.length === 0) {
+    // Pool (nearly) exhausted for this group: recycle and top up, rather than
+    // serving a short game. This used to wait for exactly zero left, so a
+    // group with 3 unasked questions got a 3-question game.
+    if (picked.length < QUESTION_COUNT) {
       try {
         // Mixed draws from every category, and rows are tagged by each
         // question's own source category (not 'mixed') — recycle them all.
@@ -730,7 +756,9 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       } catch (e) {
         logger?.error({ err: e }, 'Failed clearing asked questions')
       }
-      picked = bank.pick({ category, count: QUESTION_COUNT, exclude: new Set(), random: Math.random })
+      const have = new Set(picked.map((q) => q.id))
+      const topUp = bank.pick({ category, count: QUESTION_COUNT - picked.length, exclude: have, random: Math.random })
+      picked = picked.concat(topUp.filter((q) => !have.has(q.id) && have.add(q.id)))
     }
     if (picked.length === 0) {
       enqueue(jid, { text: `No questions available for that category.`, mentions: [], kind: 'misc' })
@@ -780,22 +808,18 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       logger?.error({ err: e }, 'Failed loading asked players')
       exclude = new Set()
     }
-    let available = erasPool.filter((p) => !exclude.has(p.id))
-    // Pool exhausted for this group: recycle rather than serving a short game.
-    if (available.length === 0) {
+    let picked = shuffle(erasPool.filter((p) => !exclude.has(p.id)), Math.random).slice(0, CAREERPATH_ROUND_COUNT)
+    // Pool (nearly) exhausted for this group: recycle and top up rather than
+    // serving a short game.
+    if (picked.length < CAREERPATH_ROUND_COUNT) {
       try {
         db?.clearAsked(jid, 'careerpath')
       } catch (e) {
         logger?.error({ err: e }, 'Failed clearing asked players')
       }
-      available = erasPool
+      const have = new Set(picked.map((p) => p.id))
+      picked = picked.concat(shuffle(erasPool.filter((p) => !have.has(p.id)), Math.random).slice(0, CAREERPATH_ROUND_COUNT - picked.length))
     }
-    if (available.length === 0) {
-      enqueue(jid, { text: `Career Path is not available yet.`, mentions: [], kind: 'misc' })
-      return
-    }
-
-    const picked = shuffle(available, Math.random).slice(0, CAREERPATH_ROUND_COUNT)
     const game = createCareerPathGame({ pool: picked, now, random: Math.random })
     games.set(jid, game)
     starters.set(jid, sender)
@@ -1041,8 +1065,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
-    // sort(() => random - 0.5) is a biased shuffle; Fisher-Yates is not.
-    const gameLogos = shuffle(pool, Math.random).slice(0, LOGO_COUNT)
+    // Logos this group hasn't seen yet (same 'asked' mechanism as Scramble).
+    const gameLogos = pickFresh({
+      jid, category: 'logo', count: LOGO_COUNT,
+      pool, idOf: (l) => `logo:${l.answer}`,
+    })
 
     const game = createLogoGame({ logos: gameLogos, now, random: Math.random })
     games.set(jid, game)
@@ -1076,13 +1103,15 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     }
 
     let gameFlags = flagBank.pickFlags({ count: FLAG_COUNT, exclude, random: Math.random })
-    if (gameFlags.length === 0) {
+    if (gameFlags.length < FLAG_COUNT) {
+      // Recycle and top up instead of a short game.
       try {
         db?.clearAskedFlags(jid)
       } catch (e) {
         logger?.error({ err: e }, 'Failed clearing asked flags')
       }
-      gameFlags = flagBank.pickFlags({ count: FLAG_COUNT, exclude: new Set(), random: Math.random })
+      const have = new Set(gameFlags.map((f) => f.code))
+      gameFlags = gameFlags.concat(flagBank.pickFlags({ count: FLAG_COUNT - gameFlags.length, exclude: have, random: Math.random }))
     }
 
     if (gameFlags.length === 0) {
@@ -1196,13 +1225,15 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     }
 
     let picked = riddleBank.pickRiddles({ count: RIDDLE_COUNT, exclude, random: Math.random })
-    if (picked.length === 0) {
+    if (picked.length < RIDDLE_COUNT) {
+      // Recycle and top up instead of a short game.
       try {
         db?.clearAskedRiddles(jid)
       } catch (e) {
         logger?.error({ err: e }, 'Failed clearing asked riddles')
       }
-      picked = riddleBank.pickRiddles({ count: RIDDLE_COUNT, exclude: new Set(), random: Math.random })
+      const have = new Set(picked.map((r) => r.id))
+      picked = picked.concat(riddleBank.pickRiddles({ count: RIDDLE_COUNT - picked.length, exclude: have, random: Math.random }))
     }
 
     if (picked.length === 0) {
