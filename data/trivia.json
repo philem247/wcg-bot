@@ -104585,6 +104585,630 @@
           "Jupiter"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "e4175ae0aeed",
+        "q": "In which year did Einstein publish his general theory of relativity?",
+        "correct": "1915",
+        "wrong": [
+          "1905",
+          "1921",
+          "1909"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "3e86548ecc9d",
+        "q": "For what did Einstein win his Nobel Prize?",
+        "correct": "The photoelectric effect",
+        "wrong": [
+          "Relativity",
+          "Brownian motion",
+          "Mass-energy equivalence"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "04b0d91255c7",
+        "q": "What is absolute zero in degrees Celsius?",
+        "correct": "-273.15",
+        "wrong": [
+          "-100",
+          "-459.67",
+          "-173.15"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "e83092d3c8b3",
+        "q": "At what temperature do the Celsius and Fahrenheit scales read the same?",
+        "correct": "-40",
+        "wrong": [
+          "0",
+          "-32",
+          "100"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "5fdb6faf0f26",
+        "q": "In which of these does sound travel fastest?",
+        "correct": "Steel",
+        "wrong": [
+          "Water",
+          "Air",
+          "A vacuum"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "3eda8918f635",
+        "q": "Which law says current through a conductor is proportional to the voltage?",
+        "correct": "Ohm's law",
+        "wrong": [
+          "Hooke's law",
+          "Boyle's law",
+          "Coulomb's law"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "646342704019",
+        "q": "Which law relates gas pressure and volume at constant temperature?",
+        "correct": "Boyle's law",
+        "wrong": [
+          "Charles's law",
+          "Ohm's law",
+          "Hooke's law"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "7760a1c772fe",
+        "q": "Roughly how long does sunlight take to reach Earth?",
+        "correct": "8 minutes",
+        "wrong": [
+          "8 seconds",
+          "80 minutes",
+          "8 hours"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "39502b5f9fad",
+        "q": "Who discovered X-rays in 1895?",
+        "correct": "Wilhelm Röntgen",
+        "wrong": [
+          "Henri Becquerel",
+          "Thomas Edison",
+          "Nikola Tesla"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "d57a7b9f711b",
+        "q": "Who discovered radioactivity in 1896?",
+        "correct": "Henri Becquerel",
+        "wrong": [
+          "Marie Curie",
+          "Wilhelm Röntgen",
+          "Ernest Rutherford"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "48cdf74d4e83",
+        "q": "Who discovered the electron?",
+        "correct": "J.J. Thomson",
+        "wrong": [
+          "Ernest Rutherford",
+          "Niels Bohr",
+          "James Chadwick"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "44c7370fced5",
+        "q": "Who discovered the neutron?",
+        "correct": "James Chadwick",
+        "wrong": [
+          "J.J. Thomson",
+          "Ernest Rutherford",
+          "Enrico Fermi"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "9c27ec0072a8",
+        "q": "Whose gold foil experiment revealed the atom's nucleus?",
+        "correct": "Ernest Rutherford",
+        "wrong": [
+          "J.J. Thomson",
+          "Niels Bohr",
+          "James Chadwick"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "50f0ecacda50",
+        "q": "Who published the first widely recognised periodic table in 1869?",
+        "correct": "Dmitri Mendeleev",
+        "wrong": [
+          "John Dalton",
+          "Antoine Lavoisier",
+          "Henry Moseley"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "51b98e1b6a03",
+        "q": "Which is the most abundant element in Earth's crust?",
+        "correct": "Oxygen",
+        "wrong": [
+          "Silicon",
+          "Aluminium",
+          "Iron"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "b9c2c1f78f33",
+        "q": "Which is the only metal that is liquid at room temperature?",
+        "correct": "Mercury",
+        "wrong": [
+          "Gallium",
+          "Caesium",
+          "Sodium"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "c2bf39318eed",
+        "q": "Dry ice is the solid form of which substance?",
+        "correct": "Carbon dioxide",
+        "wrong": [
+          "Nitrogen",
+          "Water",
+          "Methane"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "22269421c99f",
+        "q": "Which gas is known as laughing gas?",
+        "correct": "Nitrous oxide",
+        "wrong": [
+          "Nitrogen dioxide",
+          "Carbon monoxide",
+          "Methane"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "361abb32c8a1",
+        "q": "What is the softest mineral on the Mohs scale?",
+        "correct": "Talc",
+        "wrong": [
+          "Gypsum",
+          "Calcite",
+          "Graphite"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "5af79b80172d",
+        "q": "Which organelle carries out photosynthesis?",
+        "correct": "Chloroplast",
+        "wrong": [
+          "Mitochondrion",
+          "Ribosome",
+          "Vacuole"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "a776bdc12df3",
+        "q": "How many chromosomes are in a normal human body cell?",
+        "correct": "46",
+        "wrong": [
+          "44",
+          "48",
+          "23"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "70f537fefa63",
+        "q": "Which part of the brain mainly controls balance and coordination?",
+        "correct": "Cerebellum",
+        "wrong": [
+          "Cerebrum",
+          "Medulla",
+          "Hypothalamus"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "41ebfc609b2b",
+        "q": "What is the largest organ of the human body?",
+        "correct": "Skin",
+        "wrong": [
+          "Liver",
+          "Lungs",
+          "Brain"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "7c86272837db",
+        "q": "A lack of vitamin C causes which disease?",
+        "correct": "Scurvy",
+        "wrong": [
+          "Rickets",
+          "Beriberi",
+          "Pellagra"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "7c1a25a6c210",
+        "q": "A lack of vitamin D in children causes which disease?",
+        "correct": "Rickets",
+        "wrong": [
+          "Scurvy",
+          "Beriberi",
+          "Goitre"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "6926789e84a9",
+        "q": "Who proposed evolution by natural selection at the same time as Darwin?",
+        "correct": "Alfred Russel Wallace",
+        "wrong": [
+          "Gregor Mendel",
+          "Jean-Baptiste Lamarck",
+          "Thomas Huxley"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "7da5b5ca5b33",
+        "q": "Who is known as the father of genetics?",
+        "correct": "Gregor Mendel",
+        "wrong": [
+          "Charles Darwin",
+          "James Watson",
+          "Louis Pasteur"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "cf2697289e5d",
+        "q": "Whose X-ray image \"Photo 51\" was key to discovering the structure of DNA?",
+        "correct": "Rosalind Franklin",
+        "wrong": [
+          "Maurice Wilkins",
+          "Linus Pauling",
+          "Barbara McClintock"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "bd6dca8402ce",
+        "q": "What is the most common blood type in the world?",
+        "correct": "O positive",
+        "wrong": [
+          "A positive",
+          "B positive",
+          "AB positive"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "6b4487ffe6c2",
+        "q": "Which organ produces insulin?",
+        "correct": "Pancreas",
+        "wrong": [
+          "Liver",
+          "Kidney",
+          "Spleen"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "a7861f1b5f2c",
+        "q": "What is the scientific study of fungi called?",
+        "correct": "Mycology",
+        "wrong": [
+          "Phycology",
+          "Virology",
+          "Bryology"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "664d92dd9614",
+        "q": "What is the scientific study of birds called?",
+        "correct": "Ornithology",
+        "wrong": [
+          "Entomology",
+          "Herpetology",
+          "Ichthyology"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "80b7b3d50179",
+        "q": "What is the closest star to Earth after the Sun?",
+        "correct": "Proxima Centauri",
+        "wrong": [
+          "Sirius",
+          "Alpha Centauri A",
+          "Betelgeuse"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "8115e6a6d7c9",
+        "q": "Which planet takes longest to spin once on its axis?",
+        "correct": "Venus",
+        "wrong": [
+          "Mercury",
+          "Jupiter",
+          "Mars"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "84d79a48de26",
+        "q": "Which planet is tilted so far that it spins on its side?",
+        "correct": "Uranus",
+        "wrong": [
+          "Neptune",
+          "Saturn",
+          "Venus"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "13036edc9ebd",
+        "q": "What is the largest moon in the solar system?",
+        "correct": "Ganymede",
+        "wrong": [
+          "Titan",
+          "Callisto",
+          "Io"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "4d8240863d39",
+        "q": "Which moon has a thick, nitrogen-rich atmosphere?",
+        "correct": "Titan",
+        "wrong": [
+          "Europa",
+          "Ganymede",
+          "Io"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "47bbae293cb7",
+        "q": "Who published the Sun-centred model of the solar system in 1543?",
+        "correct": "Nicolaus Copernicus",
+        "wrong": [
+          "Galileo Galilei",
+          "Johannes Kepler",
+          "Tycho Brahe"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "5b2ea62599be",
+        "q": "Which planet has the Great Red Spot?",
+        "correct": "Jupiter",
+        "wrong": [
+          "Saturn",
+          "Mars",
+          "Neptune"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "31991a4b2169",
+        "q": "Which dwarf planet was reclassified from planet status in 2006?",
+        "correct": "Pluto",
+        "wrong": [
+          "Ceres",
+          "Eris",
+          "Makemake"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "b75fe4410045",
+        "q": "What was the first artificial satellite, launched in 1957?",
+        "correct": "Sputnik 1",
+        "wrong": [
+          "Explorer 1",
+          "Vostok 1",
+          "Telstar 1"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "2ec9b0cf53c2",
+        "q": "Which space telescope was launched in December 2021?",
+        "correct": "James Webb",
+        "wrong": [
+          "Hubble",
+          "Kepler",
+          "Spitzer"
+        ],
+        "template": "hard-space",
+        "hard": true
+      },
+      {
+        "id": "a3421ecc0929",
+        "q": "What is the chemical formula of ozone?",
+        "correct": "O3",
+        "wrong": [
+          "O2",
+          "CO2",
+          "H2O2"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "74f636397559",
+        "q": "Which is the most electronegative element?",
+        "correct": "Fluorine",
+        "wrong": [
+          "Oxygen",
+          "Chlorine",
+          "Nitrogen"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "75a6083f3ea9",
+        "q": "Which noble gas gives classic advertising signs their red-orange glow?",
+        "correct": "Neon",
+        "wrong": [
+          "Argon",
+          "Xenon",
+          "Krypton"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "385e2a179dec",
+        "q": "Roughly what is the half-life of carbon-14?",
+        "correct": "5,730 years",
+        "wrong": [
+          "1,600 years",
+          "24,000 years",
+          "50,000 years"
+        ],
+        "template": "hard-chemistry",
+        "hard": true
+      },
+      {
+        "id": "d54273eb1e10",
+        "q": "Which physicist is known for the uncertainty principle?",
+        "correct": "Werner Heisenberg",
+        "wrong": [
+          "Erwin Schrödinger",
+          "Max Planck",
+          "Niels Bohr"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "80d5ebbbb329",
+        "q": "Who introduced the idea of energy quanta in 1900?",
+        "correct": "Max Planck",
+        "wrong": [
+          "Albert Einstein",
+          "Niels Bohr",
+          "Werner Heisenberg"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "28fa354156c5",
+        "q": "Whose oil-drop experiment measured the electron's charge?",
+        "correct": "Robert Millikan",
+        "wrong": [
+          "J.J. Thomson",
+          "Michael Faraday",
+          "Ernest Rutherford"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "e99ad86734fd",
+        "q": "What is the SI unit of radioactive activity?",
+        "correct": "Becquerel",
+        "wrong": [
+          "Sievert",
+          "Gray",
+          "Curie"
+        ],
+        "template": "hard-physics",
+        "hard": true
+      },
+      {
+        "id": "01482d0da1ea",
+        "q": "Which part of the eye adjusts how much light gets in?",
+        "correct": "Iris",
+        "wrong": [
+          "Pupil",
+          "Retina",
+          "Cornea"
+        ],
+        "template": "hard-biology",
+        "hard": true
+      },
+      {
+        "id": "10afc7d546a1",
+        "q": "Which gland is often called the master gland?",
+        "correct": "Pituitary",
+        "wrong": [
+          "Thyroid",
+          "Adrenal",
+          "Pineal"
+        ],
+        "template": "hard-biology",
+        "hard": true
       }
     ],
     "tech": [
@@ -124897,6 +125521,618 @@
           "1955"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "207fa208ae9a",
+        "q": "Which empire was ruled by Mansa Musa?",
+        "correct": "Mali",
+        "wrong": [
+          "Songhai",
+          "Ghana",
+          "Kanem"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "196c101084fd",
+        "q": "What was the capital of the Songhai Empire?",
+        "correct": "Gao",
+        "wrong": [
+          "Timbuktu",
+          "Djenné",
+          "Niani"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "ab319825a815",
+        "q": "Which 1591 battle against Morocco brought down the Songhai Empire?",
+        "correct": "Battle of Tondibi",
+        "wrong": [
+          "Battle of Adwa",
+          "Battle of Isandlwana",
+          "Battle of Kirina"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "3483d3cc27bd",
+        "q": "Which country defeated Italy at the Battle of Adwa in 1896?",
+        "correct": "Ethiopia",
+        "wrong": [
+          "Eritrea",
+          "Somalia",
+          "Sudan"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "fe357fc5cc95",
+        "q": "Which of these West African countries was never colonised?",
+        "correct": "Liberia",
+        "wrong": [
+          "Ghana",
+          "Sierra Leone",
+          "Gambia"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "449526630f67",
+        "q": "Who was Africa's first elected female head of state?",
+        "correct": "Ellen Johnson Sirleaf",
+        "wrong": [
+          "Joyce Banda",
+          "Sahle-Work Zewde",
+          "Samia Suluhu Hassan"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "f94bb5464478",
+        "q": "Which present-day country was formerly called Dahomey?",
+        "correct": "Benin",
+        "wrong": [
+          "Togo",
+          "Burkina Faso",
+          "Niger"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "5564154f8f9a",
+        "q": "Which present-day country was formerly called Upper Volta?",
+        "correct": "Burkina Faso",
+        "wrong": [
+          "Mali",
+          "Niger",
+          "Chad"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "a330911407f2",
+        "q": "Which present-day country was formerly called Southern Rhodesia?",
+        "correct": "Zimbabwe",
+        "wrong": [
+          "Zambia",
+          "Malawi",
+          "Botswana"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "41d93889eb8c",
+        "q": "In which year was the Organisation of African Unity founded?",
+        "correct": "1963",
+        "wrong": [
+          "1960",
+          "1965",
+          "1958"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "77fd886c8f10",
+        "q": "In which year did the OAU become the African Union?",
+        "correct": "2002",
+        "wrong": [
+          "2000",
+          "1999",
+          "2004"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "61f7a2cc32c8",
+        "q": "Which kingdom did Shaka lead?",
+        "correct": "Zulu",
+        "wrong": [
+          "Xhosa",
+          "Ndebele",
+          "Sotho"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "744daedfe3f1",
+        "q": "At which 1879 battle did the Zulu army defeat the British?",
+        "correct": "Isandlwana",
+        "wrong": [
+          "Rorke's Drift",
+          "Ulundi",
+          "Blood River"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "afe555dc9d9f",
+        "q": "Which territory did King Leopold II rule as his personal property?",
+        "correct": "Congo Free State",
+        "wrong": [
+          "German East Africa",
+          "French Equatorial Africa",
+          "Ruanda-Urundi"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "bf2014f6ecf5",
+        "q": "In which year did the Berlin Conference on Africa open?",
+        "correct": "1884",
+        "wrong": [
+          "1878",
+          "1890",
+          "1899"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "d3429c710f7d",
+        "q": "Who was the first UN Secretary-General from sub-Saharan Africa?",
+        "correct": "Kofi Annan",
+        "wrong": [
+          "Boutros Boutros-Ghali",
+          "Ban Ki-moon",
+          "Javier Pérez de Cuéllar"
+        ],
+        "template": "hard-africa",
+        "hard": true
+      },
+      {
+        "id": "63c3e8181e83",
+        "q": "Whose assassination in 1914 triggered the First World War?",
+        "correct": "Archduke Franz Ferdinand",
+        "wrong": [
+          "Kaiser Wilhelm II",
+          "Tsar Nicholas II",
+          "King Umberto I"
+        ],
+        "template": "hard-wars",
+        "hard": true
+      },
+      {
+        "id": "312780e72f78",
+        "q": "Which treaty formally ended the First World War with Germany?",
+        "correct": "Treaty of Versailles",
+        "wrong": [
+          "Treaty of Paris",
+          "Treaty of Ghent",
+          "Treaty of Utrecht"
+        ],
+        "template": "hard-wars",
+        "hard": true
+      },
+      {
+        "id": "73aefa48ec2e",
+        "q": "Which city was hit by the second atomic bomb in 1945?",
+        "correct": "Nagasaki",
+        "wrong": [
+          "Hiroshima",
+          "Kokura",
+          "Osaka"
+        ],
+        "template": "hard-wars",
+        "hard": true
+      },
+      {
+        "id": "9d423f33995b",
+        "q": "Who was British Prime Minister when the Second World War began?",
+        "correct": "Neville Chamberlain",
+        "wrong": [
+          "Winston Churchill",
+          "Stanley Baldwin",
+          "Clement Attlee"
+        ],
+        "template": "hard-wars",
+        "hard": true
+      },
+      {
+        "id": "9aa5242f41d2",
+        "q": "Which US president was elected to four terms?",
+        "correct": "Franklin D. Roosevelt",
+        "wrong": [
+          "Theodore Roosevelt",
+          "Woodrow Wilson",
+          "Harry S. Truman"
+        ],
+        "template": "hard-wars",
+        "hard": true
+      },
+      {
+        "id": "eeb2f15993c6",
+        "q": "Who was the first Roman emperor?",
+        "correct": "Augustus",
+        "wrong": [
+          "Julius Caesar",
+          "Nero",
+          "Caligula"
+        ],
+        "template": "hard-ancient",
+        "hard": true
+      },
+      {
+        "id": "847a0a8a6726",
+        "q": "In which year is the Western Roman Empire traditionally said to have fallen?",
+        "correct": "476",
+        "wrong": [
+          "410",
+          "455",
+          "527"
+        ],
+        "template": "hard-ancient",
+        "hard": true
+      },
+      {
+        "id": "5c4c73bb2d71",
+        "q": "In which year did Constantinople fall to the Ottomans?",
+        "correct": "1453",
+        "wrong": [
+          "1492",
+          "1415",
+          "1517"
+        ],
+        "template": "hard-ancient",
+        "hard": true
+      },
+      {
+        "id": "58a244b0433e",
+        "q": "Whose tomb was discovered by Howard Carter in 1922?",
+        "correct": "Tutankhamun",
+        "wrong": [
+          "Ramesses II",
+          "Akhenaten",
+          "Khufu"
+        ],
+        "template": "hard-ancient",
+        "hard": true
+      },
+      {
+        "id": "9b8e431dd86d",
+        "q": "The Rosetta Stone was the key to decoding which script?",
+        "correct": "Egyptian hieroglyphs",
+        "wrong": [
+          "Cuneiform",
+          "Linear B",
+          "Mayan glyphs"
+        ],
+        "template": "hard-ancient",
+        "hard": true
+      },
+      {
+        "id": "a3d23eec1387",
+        "q": "Which civilisation built Machu Picchu?",
+        "correct": "Inca",
+        "wrong": [
+          "Aztec",
+          "Maya",
+          "Olmec"
+        ],
+        "template": "hard-ancient",
+        "hard": true
+      },
+      {
+        "id": "40599ab6a324",
+        "q": "Who was the first European to reach India by sea?",
+        "correct": "Vasco da Gama",
+        "wrong": [
+          "Bartolomeu Dias",
+          "Ferdinand Magellan",
+          "Christopher Columbus"
+        ],
+        "template": "hard-explorers",
+        "hard": true
+      },
+      {
+        "id": "18d4795bf8cf",
+        "q": "Who was the first European to sail around the Cape of Good Hope?",
+        "correct": "Bartolomeu Dias",
+        "wrong": [
+          "Vasco da Gama",
+          "Henry the Navigator",
+          "Diogo Cão"
+        ],
+        "template": "hard-explorers",
+        "hard": true
+      },
+      {
+        "id": "5ccc76659c9d",
+        "q": "Whose expedition was the first to sail around the world?",
+        "correct": "Ferdinand Magellan",
+        "wrong": [
+          "Vasco da Gama",
+          "Christopher Columbus",
+          "Francis Drake"
+        ],
+        "template": "hard-explorers",
+        "hard": true
+      },
+      {
+        "id": "cfc4ebac8047",
+        "q": "In which year did the Titanic sink?",
+        "correct": "1912",
+        "wrong": [
+          "1910",
+          "1914",
+          "1908"
+        ],
+        "template": "hard-explorers",
+        "hard": true
+      },
+      {
+        "id": "50440a910d7e",
+        "q": "In which year did the French Revolution begin?",
+        "correct": "1789",
+        "wrong": [
+          "1776",
+          "1799",
+          "1792"
+        ],
+        "template": "hard-revolutions",
+        "hard": true
+      },
+      {
+        "id": "1dbc74732ca9",
+        "q": "Which French queen was executed in 1793?",
+        "correct": "Marie Antoinette",
+        "wrong": [
+          "Catherine de' Medici",
+          "Joséphine",
+          "Marie Louise"
+        ],
+        "template": "hard-revolutions",
+        "hard": true
+      },
+      {
+        "id": "ec4945f9cf53",
+        "q": "At which 1815 battle was Napoleon finally defeated?",
+        "correct": "Waterloo",
+        "wrong": [
+          "Leipzig",
+          "Austerlitz",
+          "Trafalgar"
+        ],
+        "template": "hard-revolutions",
+        "hard": true
+      },
+      {
+        "id": "7e262fc83205",
+        "q": "To which island was Napoleon exiled for the last time?",
+        "correct": "Saint Helena",
+        "wrong": [
+          "Elba",
+          "Corsica",
+          "Malta"
+        ],
+        "template": "hard-revolutions",
+        "hard": true
+      },
+      {
+        "id": "96322831e733",
+        "q": "Who declared Haiti's independence in 1804?",
+        "correct": "Jean-Jacques Dessalines",
+        "wrong": [
+          "Toussaint Louverture",
+          "Henri Christophe",
+          "Alexandre Pétion"
+        ],
+        "template": "hard-revolutions",
+        "hard": true
+      },
+      {
+        "id": "097e80dd1ab0",
+        "q": "In which year did Britain abolish the transatlantic slave trade?",
+        "correct": "1807",
+        "wrong": [
+          "1833",
+          "1792",
+          "1815"
+        ],
+        "template": "hard-revolutions",
+        "hard": true
+      },
+      {
+        "id": "e32dd10b484f",
+        "q": "Who became the world's first female prime minister, in 1960?",
+        "correct": "Sirimavo Bandaranaike",
+        "wrong": [
+          "Indira Gandhi",
+          "Golda Meir",
+          "Margaret Thatcher"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "e53233ce6a93",
+        "q": "Who was the first president of Ghana?",
+        "correct": "Kwame Nkrumah",
+        "wrong": [
+          "Jerry Rawlings",
+          "Kofi Busia",
+          "John Kufuor"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "5a60e54729fc",
+        "q": "Who was the first president of Tanzania?",
+        "correct": "Julius Nyerere",
+        "wrong": [
+          "Kenneth Kaunda",
+          "Ali Hassan Mwinyi",
+          "Milton Obote"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "d3fc670611e5",
+        "q": "Who was the first prime minister of the Democratic Republic of the Congo?",
+        "correct": "Patrice Lumumba",
+        "wrong": [
+          "Joseph Kasa-Vubu",
+          "Mobutu Sese Seko",
+          "Moïse Tshombe"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "26dd9ff2faa0",
+        "q": "Who led Burkina Faso from 1983 until his assassination in 1987?",
+        "correct": "Thomas Sankara",
+        "wrong": [
+          "Blaise Compaoré",
+          "Jerry Rawlings",
+          "Sékou Touré"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "ae8a44900d3a",
+        "q": "Who was the first president of independent Senegal?",
+        "correct": "Léopold Sédar Senghor",
+        "wrong": [
+          "Abdou Diouf",
+          "Abdoulaye Wade",
+          "Mamadou Dia"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "866599a7db33",
+        "q": "Who was the first president of Zambia?",
+        "correct": "Kenneth Kaunda",
+        "wrong": [
+          "Frederick Chiluba",
+          "Levy Mwanawasa",
+          "Julius Nyerere"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "195fd811bafe",
+        "q": "Who led Libya from 1969 until 2011?",
+        "correct": "Muammar Gaddafi",
+        "wrong": [
+          "Hosni Mubarak",
+          "Gamal Abdel Nasser",
+          "Idi Amin"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "c0a3663dc2ec",
+        "q": "Which Egyptian leader nationalised the Suez Canal in 1956?",
+        "correct": "Gamal Abdel Nasser",
+        "wrong": [
+          "Anwar Sadat",
+          "Hosni Mubarak",
+          "King Farouk"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "541cebea0276",
+        "q": "Who was the last Emperor of Ethiopia?",
+        "correct": "Haile Selassie",
+        "wrong": [
+          "Menelik II",
+          "Tewodros II",
+          "Yohannes IV"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "515888f3ad4f",
+        "q": "Who led the 1930 Salt March against British rule in India?",
+        "correct": "Mahatma Gandhi",
+        "wrong": [
+          "Jawaharlal Nehru",
+          "Subhas Chandra Bose",
+          "Muhammad Ali Jinnah"
+        ],
+        "template": "hard-leaders",
+        "hard": true
+      },
+      {
+        "id": "dbb3d2da2245",
+        "q": "In which year did India gain independence from Britain?",
+        "correct": "1947",
+        "wrong": [
+          "1945",
+          "1950",
+          "1948"
+        ],
+        "template": "hard-wars",
+        "hard": true
+      },
+      {
+        "id": "5d0e309b6d3c",
+        "q": "In which year did the Soviet Union dissolve?",
+        "correct": "1991",
+        "wrong": [
+          "1989",
+          "1993",
+          "1990"
+        ],
+        "template": "hard-wars",
+        "hard": true
+      },
+      {
+        "id": "c1675c735a4b",
+        "q": "In which year did the Rwandan genocide take place?",
+        "correct": "1994",
+        "wrong": [
+          "1992",
+          "1996",
+          "1990"
+        ],
+        "template": "hard-wars",
+        "hard": true
       }
     ],
     "geography": [
@@ -195952,6 +197188,618 @@
           "Led Zeppelin"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "3d0967ae0150",
+        "q": "Which Beatles album features \"Here Comes the Sun\"?",
+        "correct": "Abbey Road",
+        "wrong": [
+          "Let It Be",
+          "Revolver",
+          "Help!"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "84a3ecd1629e",
+        "q": "In which year was Michael Jackson's Thriller released?",
+        "correct": "1982",
+        "wrong": [
+          "1983",
+          "1980",
+          "1984"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "79d1fea03f9b",
+        "q": "Which was Michael Jackson's first solo album with Quincy Jones producing?",
+        "correct": "Off the Wall",
+        "wrong": [
+          "Bad",
+          "Thriller",
+          "Dangerous"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "1c3a9baa12fa",
+        "q": "Which Taylor Swift album includes \"Shake It Off\"?",
+        "correct": "1989",
+        "wrong": [
+          "Red",
+          "Reputation",
+          "Fearless"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "f35b886619d3",
+        "q": "On which Queen album does \"Bohemian Rhapsody\" appear?",
+        "correct": "A Night at the Opera",
+        "wrong": [
+          "News of the World",
+          "A Day at the Races",
+          "The Game"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "51f34d28240a",
+        "q": "Which band released The Dark Side of the Moon (1973)?",
+        "correct": "Pink Floyd",
+        "wrong": [
+          "Led Zeppelin",
+          "The Who",
+          "Genesis"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "eca2e151b722",
+        "q": "Which 1991 album includes \"Smells Like Teen Spirit\"?",
+        "correct": "Nevermind",
+        "wrong": [
+          "In Utero",
+          "Bleach",
+          "Incesticide"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "200b5dda666b",
+        "q": "Which Prince album and film came out in 1984?",
+        "correct": "Purple Rain",
+        "wrong": [
+          "1999",
+          "Sign o' the Times",
+          "Parade"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "2c164337d663",
+        "q": "What was the title of Tupac's 1996 double album?",
+        "correct": "All Eyez on Me",
+        "wrong": [
+          "Me Against the World",
+          "2Pacalypse Now",
+          "Makaveli"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "623a220735ac",
+        "q": "What was The Notorious B.I.G.'s debut album?",
+        "correct": "Ready to Die",
+        "wrong": [
+          "Life After Death",
+          "Illmatic",
+          "Reasonable Doubt"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "983af226c184",
+        "q": "Which album by The Weeknd contains \"Blinding Lights\"?",
+        "correct": "After Hours",
+        "wrong": [
+          "Starboy",
+          "Dawn FM",
+          "Kiss Land"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "df1a0a21c082",
+        "q": "Which Adele album includes \"Hello\"?",
+        "correct": "25",
+        "wrong": [
+          "21",
+          "19",
+          "30"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "fe994b7be365",
+        "q": "Which Ed Sheeran album includes \"Shape of You\"?",
+        "correct": "Divide",
+        "wrong": [
+          "Multiply",
+          "Plus",
+          "Equals"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "a6fbb9423412",
+        "q": "Which Beyoncé album won Album of the Year at the 2025 Grammys?",
+        "correct": "Cowboy Carter",
+        "wrong": [
+          "Renaissance",
+          "Lemonade",
+          "4"
+        ],
+        "template": "hard-albums",
+        "hard": true
+      },
+      {
+        "id": "b991f60c6300",
+        "q": "Which singer was born Stefani Germanotta?",
+        "correct": "Lady Gaga",
+        "wrong": [
+          "Gwen Stefani",
+          "Katy Perry",
+          "Pink"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "9710ec85174b",
+        "q": "Which singer was born Robyn Fenty?",
+        "correct": "Rihanna",
+        "wrong": [
+          "Beyoncé",
+          "Ciara",
+          "Brandy"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "23cf060c7771",
+        "q": "Which rapper was born Shawn Carter?",
+        "correct": "Jay-Z",
+        "wrong": [
+          "Diddy",
+          "Nas",
+          "Busta Rhymes"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "8b8f78fd6b84",
+        "q": "Which rapper was born Aubrey Graham?",
+        "correct": "Drake",
+        "wrong": [
+          "The Weeknd",
+          "J. Cole",
+          "Future"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "a5cc2848a6da",
+        "q": "Which singer was born Abel Tesfaye?",
+        "correct": "The Weeknd",
+        "wrong": [
+          "Frank Ocean",
+          "Miguel",
+          "Daniel Caesar"
+        ],
+        "template": "hard-real-names",
+        "hard": true
+      },
+      {
+        "id": "cfa33cd77f1e",
+        "q": "Who was the first rapper to win the Pulitzer Prize for Music?",
+        "correct": "Kendrick Lamar",
+        "wrong": [
+          "J. Cole",
+          "Jay-Z",
+          "Kanye West"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "d48c828c7413",
+        "q": "As of 2025, who has won the most Grammy Awards ever?",
+        "correct": "Beyoncé",
+        "wrong": [
+          "Georg Solti",
+          "Quincy Jones",
+          "Alison Krauss"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "fd59c5901f88",
+        "q": "Which band's video was the first ever played on MTV in 1981?",
+        "correct": "The Buggles",
+        "wrong": [
+          "Duran Duran",
+          "The Police",
+          "Pat Benatar"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "24214bf8e201",
+        "q": "Which music streaming service was launched in Sweden in 2008?",
+        "correct": "Spotify",
+        "wrong": [
+          "Deezer",
+          "Pandora",
+          "Napster"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "c0a1824f9022",
+        "q": "Who was the Beatles' drummer before Ringo Starr?",
+        "correct": "Pete Best",
+        "wrong": [
+          "Stuart Sutcliffe",
+          "Tommy Moore",
+          "Brian Epstein"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "7251a5a31a2f",
+        "q": "Which Nirvana drummer went on to found Foo Fighters?",
+        "correct": "Dave Grohl",
+        "wrong": [
+          "Krist Novoselic",
+          "Chad Channing",
+          "Pat Smear"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "5f55b1659629",
+        "q": "In which year did Michael Jackson die?",
+        "correct": "2009",
+        "wrong": [
+          "2008",
+          "2010",
+          "2011"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "8e12d3db9965",
+        "q": "In which year did Bob Marley die?",
+        "correct": "1981",
+        "wrong": [
+          "1980",
+          "1983",
+          "1979"
+        ],
+        "template": "hard-records",
+        "hard": true
+      },
+      {
+        "id": "25df1d6731a7",
+        "q": "Which 1985 charity single was recorded by USA for Africa?",
+        "correct": "We Are the World",
+        "wrong": [
+          "Do They Know It's Christmas?",
+          "Heal the World",
+          "Sun City"
+        ],
+        "template": "hard-songs",
+        "hard": true
+      },
+      {
+        "id": "1b342aef9e42",
+        "q": "Who co-wrote \"We Are the World\" with Michael Jackson?",
+        "correct": "Lionel Richie",
+        "wrong": [
+          "Quincy Jones",
+          "Stevie Wonder",
+          "Harry Belafonte"
+        ],
+        "template": "hard-songs",
+        "hard": true
+      },
+      {
+        "id": "bd4755f3ad9f",
+        "q": "Who wrote \"I Will Always Love You\", later a Whitney Houston hit?",
+        "correct": "Dolly Parton",
+        "wrong": [
+          "Diane Warren",
+          "Carole King",
+          "Tracy Chapman"
+        ],
+        "template": "hard-songs",
+        "hard": true
+      },
+      {
+        "id": "91c26c01165a",
+        "q": "Whitney Houston's \"I Will Always Love You\" was recorded for which film?",
+        "correct": "The Bodyguard",
+        "wrong": [
+          "Waiting to Exhale",
+          "The Preacher's Wife",
+          "Sparkle"
+        ],
+        "template": "hard-songs",
+        "hard": true
+      },
+      {
+        "id": "a48a3a60fc34",
+        "q": "Which female rapper released \"Super Bass\"?",
+        "correct": "Nicki Minaj",
+        "wrong": [
+          "Cardi B",
+          "Iggy Azalea",
+          "Missy Elliott"
+        ],
+        "template": "hard-songs",
+        "hard": true
+      },
+      {
+        "id": "c47391a92083",
+        "q": "Which singer was known as the \"Queen of Soul\"?",
+        "correct": "Aretha Franklin",
+        "wrong": [
+          "Diana Ross",
+          "Tina Turner",
+          "Whitney Houston"
+        ],
+        "template": "hard-songs",
+        "hard": true
+      },
+      {
+        "id": "5f675997715c",
+        "q": "Chester Bennington was the lead singer of which band?",
+        "correct": "Linkin Park",
+        "wrong": [
+          "Limp Bizkit",
+          "Evanescence",
+          "Papa Roach"
+        ],
+        "template": "hard-songs",
+        "hard": true
+      },
+      {
+        "id": "2c2ce7255703",
+        "q": "Bob Marley recorded with which backing band?",
+        "correct": "The Wailers",
+        "wrong": [
+          "The Skatalites",
+          "The Maytals",
+          "Black Uhuru"
+        ],
+        "template": "hard-songs",
+        "hard": true
+      },
+      {
+        "id": "fef3c5cbedec",
+        "q": "Which South African singer made \"Pata Pata\" famous?",
+        "correct": "Miriam Makeba",
+        "wrong": [
+          "Brenda Fassie",
+          "Angélique Kidjo",
+          "Yvonne Chaka Chaka"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "10edb85e2264",
+        "q": "Which Senegalese singer recorded \"7 Seconds\" with Neneh Cherry?",
+        "correct": "Youssou N'Dour",
+        "wrong": [
+          "Baaba Maal",
+          "Ismaël Lô",
+          "Salif Keita"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "55707ba54aa9",
+        "q": "Koffi Olomide and Papa Wemba are stars of which genre?",
+        "correct": "Soukous",
+        "wrong": [
+          "Mbalax",
+          "Kwaito",
+          "Highlife"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "2ac599eed833",
+        "q": "In which country did amapiano originate?",
+        "correct": "South Africa",
+        "wrong": [
+          "Kenya",
+          "Zimbabwe",
+          "Ghana"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "c57c6b9e5d8c",
+        "q": "E.T. Mensah of Ghana was known as the king of which genre?",
+        "correct": "Highlife",
+        "wrong": [
+          "Hiplife",
+          "Kwaito",
+          "Afrobeat"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "abf0156a3fb7",
+        "q": "Angélique Kidjo is from which country?",
+        "correct": "Benin",
+        "wrong": [
+          "Togo",
+          "Senegal",
+          "Cameroon"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "a9738a3f99d5",
+        "q": "Which Cameroonian saxophonist recorded \"Soul Makossa\"?",
+        "correct": "Manu Dibango",
+        "wrong": [
+          "Francis Bebey",
+          "Richard Bona",
+          "Sam Fan Thomas"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "44ea7e0139b3",
+        "q": "Which Malian singer is known as the \"Golden Voice of Africa\"?",
+        "correct": "Salif Keita",
+        "wrong": [
+          "Ali Farka Touré",
+          "Oumou Sangaré",
+          "Toumani Diabaté"
+        ],
+        "template": "hard-african",
+        "hard": true
+      },
+      {
+        "id": "94192f3a55f0",
+        "q": "Which jazz trumpeter recorded the album Kind of Blue?",
+        "correct": "Miles Davis",
+        "wrong": [
+          "Louis Armstrong",
+          "Dizzy Gillespie",
+          "Chet Baker"
+        ],
+        "template": "hard-classical",
+        "hard": true
+      },
+      {
+        "id": "01c9227b026d",
+        "q": "Who composed The Four Seasons?",
+        "correct": "Antonio Vivaldi",
+        "wrong": [
+          "Johann Sebastian Bach",
+          "George Frideric Handel",
+          "Wolfgang Amadeus Mozart"
+        ],
+        "template": "hard-classical",
+        "hard": true
+      },
+      {
+        "id": "281cba115927",
+        "q": "How many symphonies did Beethoven complete?",
+        "correct": "Nine",
+        "wrong": [
+          "Seven",
+          "Eleven",
+          "Five"
+        ],
+        "template": "hard-classical",
+        "hard": true
+      },
+      {
+        "id": "5f8945ec5fd3",
+        "q": "Who composed the opera The Magic Flute?",
+        "correct": "Mozart",
+        "wrong": [
+          "Beethoven",
+          "Haydn",
+          "Wagner"
+        ],
+        "template": "hard-classical",
+        "hard": true
+      },
+      {
+        "id": "d3fba69a7e06",
+        "q": "Which composer kept writing music after going almost completely deaf?",
+        "correct": "Beethoven",
+        "wrong": [
+          "Mozart",
+          "Chopin",
+          "Tchaikovsky"
+        ],
+        "template": "hard-classical",
+        "hard": true
+      },
+      {
+        "id": "6fa338410a97",
+        "q": "Who composed the ballet Swan Lake?",
+        "correct": "Tchaikovsky",
+        "wrong": [
+          "Stravinsky",
+          "Prokofiev",
+          "Rachmaninoff"
+        ],
+        "template": "hard-classical",
+        "hard": true
+      },
+      {
+        "id": "1dbb85ae8b4f",
+        "q": "Which instrument did jazz legend Thelonious Monk play?",
+        "correct": "Piano",
+        "wrong": [
+          "Saxophone",
+          "Trumpet",
+          "Double bass"
+        ],
+        "template": "hard-classical",
+        "hard": true
+      },
+      {
+        "id": "452d523b26cf",
+        "q": "Which instrument is John Coltrane best known for?",
+        "correct": "Saxophone",
+        "wrong": [
+          "Trumpet",
+          "Piano",
+          "Clarinet"
+        ],
+        "template": "hard-classical",
+        "hard": true
       }
     ],
     "movies": [
@@ -292697,6 +294545,630 @@
           "Kongi's Harvest"
         ],
         "template": "backfill-2026-08"
+      },
+      {
+        "id": "6efba35f07d3",
+        "q": "In which year were the Northern and Southern Protectorates amalgamated?",
+        "correct": "1914",
+        "wrong": [
+          "1900",
+          "1906",
+          "1922"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "845b7495f3b9",
+        "q": "Who was the first Nigerian to serve as Governor-General?",
+        "correct": "Nnamdi Azikiwe",
+        "wrong": [
+          "Tafawa Balewa",
+          "Obafemi Awolowo",
+          "Ahmadu Bello"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "c6a27546ad03",
+        "q": "Who was Nigeria's only Prime Minister?",
+        "correct": "Tafawa Balewa",
+        "wrong": [
+          "Nnamdi Azikiwe",
+          "Obafemi Awolowo",
+          "Ahmadu Bello"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "ab2353788cab",
+        "q": "In which year did Nigeria become a republic?",
+        "correct": "1963",
+        "wrong": [
+          "1960",
+          "1962",
+          "1966"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "c5be9e353a49",
+        "q": "Who is called the father of Nigerian nationalism?",
+        "correct": "Herbert Macaulay",
+        "wrong": [
+          "Nnamdi Azikiwe",
+          "Obafemi Awolowo",
+          "Anthony Enahoro"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "2dac40be66f4",
+        "q": "Who moved the 1953 motion calling for self-government?",
+        "correct": "Anthony Enahoro",
+        "wrong": [
+          "Obafemi Awolowo",
+          "Nnamdi Azikiwe",
+          "Ahmadu Bello"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "b24045a95138",
+        "q": "Which party did Obafemi Awolowo found in 1951?",
+        "correct": "Action Group",
+        "wrong": [
+          "NCNC",
+          "NPC",
+          "NEPU"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "fc25e7275979",
+        "q": "Which traditional title did Ahmadu Bello hold?",
+        "correct": "Sardauna of Sokoto",
+        "wrong": [
+          "Sultan of Sokoto",
+          "Emir of Kano",
+          "Waziri of Sokoto"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "3e7e0a7df60d",
+        "q": "Which party was led by Aminu Kano?",
+        "correct": "NEPU",
+        "wrong": [
+          "NPC",
+          "NCNC",
+          "Action Group"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "549f065af15e",
+        "q": "Which city was the capital of the old Northern Region?",
+        "correct": "Kaduna",
+        "wrong": [
+          "Kano",
+          "Sokoto",
+          "Zaria"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "292939a3112e",
+        "q": "Which city was the capital of the old Eastern Region?",
+        "correct": "Enugu",
+        "wrong": [
+          "Port Harcourt",
+          "Onitsha",
+          "Aba"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "e5713fc833d7",
+        "q": "Which of these was NOT one of Nigeria's three regions at independence?",
+        "correct": "Mid-Western Region",
+        "wrong": [
+          "Northern Region",
+          "Eastern Region",
+          "Western Region"
+        ],
+        "template": "hard-independence",
+        "hard": true
+      },
+      {
+        "id": "e1b4205b6cd8",
+        "q": "In which year did Nigeria's first military coup take place?",
+        "correct": "1966",
+        "wrong": [
+          "1965",
+          "1967",
+          "1975"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "73b521a0ea3f",
+        "q": "Who became head of state after the January 1966 coup?",
+        "correct": "Johnson Aguiyi-Ironsi",
+        "wrong": [
+          "Yakubu Gowon",
+          "Murtala Mohammed",
+          "Olusegun Obasanjo"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "e3224bacee85",
+        "q": "In which year did the Nigerian Civil War begin?",
+        "correct": "1967",
+        "wrong": [
+          "1966",
+          "1968",
+          "1965"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "a9eeeeb12ee2",
+        "q": "In which year did the Nigerian Civil War end?",
+        "correct": "1970",
+        "wrong": [
+          "1969",
+          "1971",
+          "1968"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "4641f3ed7687",
+        "q": "Who declared the Republic of Biafra?",
+        "correct": "Odumegwu Ojukwu",
+        "wrong": [
+          "Philip Effiong",
+          "Nnamdi Azikiwe",
+          "Alex Ekwueme"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "d56af85b4aec",
+        "q": "Who announced Biafra's surrender in January 1970?",
+        "correct": "Philip Effiong",
+        "wrong": [
+          "Odumegwu Ojukwu",
+          "Alexander Madiebo",
+          "Christopher Okigbo"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "80895bede047",
+        "q": "Which head of state was assassinated in February 1976?",
+        "correct": "Murtala Mohammed",
+        "wrong": [
+          "Johnson Aguiyi-Ironsi",
+          "Yakubu Gowon",
+          "Sani Abacha"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "1e547fc31d41",
+        "q": "Which military ruler handed power to an elected civilian government in 1979?",
+        "correct": "Olusegun Obasanjo",
+        "wrong": [
+          "Yakubu Gowon",
+          "Murtala Mohammed",
+          "Ibrahim Babangida"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "20087c72c9a2",
+        "q": "In which year did Sani Abacha die?",
+        "correct": "1998",
+        "wrong": [
+          "1997",
+          "1999",
+          "1996"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "cea203936773",
+        "q": "Who succeeded Sani Abacha as head of state?",
+        "correct": "Abdulsalami Abubakar",
+        "wrong": [
+          "Oladipo Diya",
+          "Jerry Useni",
+          "Ibrahim Babangida"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "beacb4a35fb3",
+        "q": "Who headed the Interim National Government in 1993?",
+        "correct": "Ernest Shonekan",
+        "wrong": [
+          "Sani Abacha",
+          "Bashir Tofa",
+          "Ibrahim Babangida"
+        ],
+        "template": "hard-military",
+        "hard": true
+      },
+      {
+        "id": "d64f05f7f537",
+        "q": "Who was president of the Second Republic?",
+        "correct": "Shehu Shagari",
+        "wrong": [
+          "Alex Ekwueme",
+          "Nnamdi Azikiwe",
+          "Obafemi Awolowo"
+        ],
+        "template": "hard-democracy",
+        "hard": true
+      },
+      {
+        "id": "ce5210cadbc1",
+        "q": "Who was Shehu Shagari's vice president?",
+        "correct": "Alex Ekwueme",
+        "wrong": [
+          "Umaru Dikko",
+          "Obafemi Awolowo",
+          "Joseph Wayas"
+        ],
+        "template": "hard-democracy",
+        "hard": true
+      },
+      {
+        "id": "585f444c112c",
+        "q": "On which date was the famous 1993 presidential election held?",
+        "correct": "June 12",
+        "wrong": [
+          "May 29",
+          "October 1",
+          "June 4"
+        ],
+        "template": "hard-democracy",
+        "hard": true
+      },
+      {
+        "id": "d6a9d4857e75",
+        "q": "Who was the presumed winner of the annulled 1993 election?",
+        "correct": "MKO Abiola",
+        "wrong": [
+          "Bashir Tofa",
+          "Ernest Shonekan",
+          "Olu Falae"
+        ],
+        "template": "hard-democracy",
+        "hard": true
+      },
+      {
+        "id": "cf2a4a8bc7b8",
+        "q": "Who was MKO Abiola's opponent in the 1993 election?",
+        "correct": "Bashir Tofa",
+        "wrong": [
+          "Olu Falae",
+          "Ernest Shonekan",
+          "Shehu Yar'Adua"
+        ],
+        "template": "hard-democracy",
+        "hard": true
+      },
+      {
+        "id": "1f95c0360344",
+        "q": "On which date did Nigeria return to civilian rule in 1999?",
+        "correct": "May 29",
+        "wrong": [
+          "June 12",
+          "October 1",
+          "January 15"
+        ],
+        "template": "hard-democracy",
+        "hard": true
+      },
+      {
+        "id": "399164bc6cde",
+        "q": "Which president died in office in 2010?",
+        "correct": "Umaru Yar'Adua",
+        "wrong": [
+          "Shehu Shagari",
+          "Olusegun Obasanjo",
+          "Goodluck Jonathan"
+        ],
+        "template": "hard-democracy",
+        "hard": true
+      },
+      {
+        "id": "58d753f0e4cf",
+        "q": "Who was the first incumbent president to lose an election, in 2015?",
+        "correct": "Goodluck Jonathan",
+        "wrong": [
+          "Olusegun Obasanjo",
+          "Umaru Yar'Adua",
+          "Shehu Shagari"
+        ],
+        "template": "hard-democracy",
+        "hard": true
+      },
+      {
+        "id": "4ee3511ee0b1",
+        "q": "How many states did Yakubu Gowon create in 1967?",
+        "correct": "12",
+        "wrong": [
+          "19",
+          "21",
+          "10"
+        ],
+        "template": "hard-states",
+        "hard": true
+      },
+      {
+        "id": "e4f46b259b02",
+        "q": "How many states did Murtala Mohammed create in 1976?",
+        "correct": "19",
+        "wrong": [
+          "21",
+          "12",
+          "30"
+        ],
+        "template": "hard-states",
+        "hard": true
+      },
+      {
+        "id": "f9a76ac81189",
+        "q": "Six new states in 1996 brought the total to how many?",
+        "correct": "36",
+        "wrong": [
+          "30",
+          "33",
+          "37"
+        ],
+        "template": "hard-states",
+        "hard": true
+      },
+      {
+        "id": "33daff87a404",
+        "q": "Which state was carved out of Ondo State in 1996?",
+        "correct": "Ekiti",
+        "wrong": [
+          "Osun",
+          "Kogi",
+          "Edo"
+        ],
+        "template": "hard-states",
+        "hard": true
+      },
+      {
+        "id": "442737c5fefd",
+        "q": "Bayelsa State was created out of which state?",
+        "correct": "Rivers",
+        "wrong": [
+          "Delta",
+          "Akwa Ibom",
+          "Cross River"
+        ],
+        "template": "hard-states",
+        "hard": true
+      },
+      {
+        "id": "e669d6de95f9",
+        "q": "Akwa Ibom State was created out of which state in 1987?",
+        "correct": "Cross River",
+        "wrong": [
+          "Rivers",
+          "Imo",
+          "Abia"
+        ],
+        "template": "hard-states",
+        "hard": true
+      },
+      {
+        "id": "5b92bad8c68a",
+        "q": "Who founded the Sokoto Caliphate?",
+        "correct": "Usman dan Fodio",
+        "wrong": [
+          "Muhammad Bello",
+          "Ahmadu Bello",
+          "Abdullahi dan Fodio"
+        ],
+        "template": "hard-kingdoms",
+        "hard": true
+      },
+      {
+        "id": "92f68bd3c3fe",
+        "q": "In which year did Usman dan Fodio's jihad begin?",
+        "correct": "1804",
+        "wrong": [
+          "1800",
+          "1810",
+          "1796"
+        ],
+        "template": "hard-kingdoms",
+        "hard": true
+      },
+      {
+        "id": "d7a7c24db077",
+        "q": "Which kingdom made the famous bronzes looted by the British in 1897?",
+        "correct": "Benin",
+        "wrong": [
+          "Oyo",
+          "Ife",
+          "Nri"
+        ],
+        "template": "hard-kingdoms",
+        "hard": true
+      },
+      {
+        "id": "d29cbac262c6",
+        "q": "Which Oba of Benin was exiled after the 1897 British expedition?",
+        "correct": "Ovonramwen",
+        "wrong": [
+          "Ewuare",
+          "Esigie",
+          "Akenzua"
+        ],
+        "template": "hard-kingdoms",
+        "hard": true
+      },
+      {
+        "id": "4c44bff00ef8",
+        "q": "Which ancient culture, named after a village in southern Kaduna, made terracotta heads?",
+        "correct": "Nok",
+        "wrong": [
+          "Igbo-Ukwu",
+          "Ife",
+          "Benin"
+        ],
+        "template": "hard-kingdoms",
+        "hard": true
+      },
+      {
+        "id": "a775bbe38f4b",
+        "q": "Roughly which century are the Igbo-Ukwu bronzes dated to?",
+        "correct": "9th century",
+        "wrong": [
+          "13th century",
+          "15th century",
+          "5th century"
+        ],
+        "template": "hard-kingdoms",
+        "hard": true
+      },
+      {
+        "id": "ebfd01893a07",
+        "q": "What was the title of the king of the Oyo Empire?",
+        "correct": "Alaafin",
+        "wrong": [
+          "Ooni",
+          "Oba",
+          "Olu"
+        ],
+        "template": "hard-kingdoms",
+        "hard": true
+      },
+      {
+        "id": "d326c83d2875",
+        "q": "Which 1929 uprising by Igbo and Ibibio women protested colonial taxation?",
+        "correct": "Aba Women's War",
+        "wrong": [
+          "Egba Women's Revolt",
+          "Ogoni Uprising",
+          "Iva Valley Strike"
+        ],
+        "template": "hard-society",
+        "hard": true
+      },
+      {
+        "id": "c390cc977390",
+        "q": "Who led the Egba (Abeokuta) Women's Revolt of the 1940s?",
+        "correct": "Funmilayo Ransome-Kuti",
+        "wrong": [
+          "Margaret Ekpo",
+          "Gambo Sawaba",
+          "Flora Nwapa"
+        ],
+        "template": "hard-society",
+        "hard": true
+      },
+      {
+        "id": "37062cabf917",
+        "q": "Where was crude oil first found in commercial quantities in 1956?",
+        "correct": "Oloibiri",
+        "wrong": [
+          "Bonny",
+          "Ogoni",
+          "Eket"
+        ],
+        "template": "hard-society",
+        "hard": true
+      },
+      {
+        "id": "01dd76d53c56",
+        "q": "In which year did Nigeria join OPEC?",
+        "correct": "1971",
+        "wrong": [
+          "1965",
+          "1973",
+          "1960"
+        ],
+        "template": "hard-society",
+        "hard": true
+      },
+      {
+        "id": "5e77cd6f8248",
+        "q": "Which activist was executed with eight other Ogoni men in 1995?",
+        "correct": "Ken Saro-Wiwa",
+        "wrong": [
+          "Ledum Mitee",
+          "Gani Fawehinmi",
+          "Beko Ransome-Kuti"
+        ],
+        "template": "hard-society",
+        "hard": true
+      },
+      {
+        "id": "04e0e727a6c3",
+        "q": "In which year did Nigeria host FESTAC, the World Black Festival of Arts?",
+        "correct": "1977",
+        "wrong": [
+          "1975",
+          "1979",
+          "1973"
+        ],
+        "template": "hard-society",
+        "hard": true
+      },
+      {
+        "id": "ed8bab17bcc4",
+        "q": "Which country was handed the Bakassi Peninsula?",
+        "correct": "Cameroon",
+        "wrong": [
+          "Equatorial Guinea",
+          "Benin",
+          "Gabon"
+        ],
+        "template": "hard-society",
+        "hard": true
+      },
+      {
+        "id": "ff04cfbb232e",
+        "q": "In which year did the International Court of Justice rule on Bakassi?",
+        "correct": "2002",
+        "wrong": [
+          "2006",
+          "1998",
+          "2008"
+        ],
+        "template": "hard-society",
+        "hard": true
       }
     ],
     "got": [
