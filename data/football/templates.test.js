@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { pickDistractors, makeQuestion, winnerQuestions, neverWonQuestions, clubKey, neverPlayedForQuestions, venueQuestions, nationalityQuestions, clubVenueQuestions, sharesNameWord } from './templates.mjs'
+import { pickDistractors, makeQuestion, winnerQuestions, neverWonQuestions, clubKey, neverPlayedForQuestions, venueQuestions, nationalityQuestions, clubVenueQuestions, sharesNameWord, clubLabel } from './templates.mjs'
 import { isQid } from './queries.mjs'
 
 const fixed = (v = 0) => () => v
@@ -226,6 +226,23 @@ const tests = [
       assert.equal(qs.length, 4)
       const all = rows.map((r) => r.venue)
       for (const q of qs) for (const w of q.wrong) assert.ok(all.includes(w))
+    },
+  },
+  {
+    name: 'a club SEASON label from Wikidata is mapped back to the club in venue questions',
+    fn: () => {
+      assert.equal(clubLabel('2022–23 Manchester City F.C. season'), 'Manchester City F.C.')
+      assert.equal(clubLabel('2016-17 Stade Rennais F.C. season'), 'Stade Rennais F.C.')
+      assert.equal(clubLabel('Arsenal F.C.'), 'Arsenal F.C.')
+      const rows = [
+        { club: '2022–23 Manchester City F.C. season', venue: 'Etihad Stadium' },
+        { club: 'Arsenal F.C.', venue: 'Emirates Stadium' },
+        { club: 'Chelsea F.C.', venue: 'Stamford Bridge' },
+        { club: 'Everton F.C.', venue: 'Goodison Park' },
+      ]
+      const all = [...venueQuestions(rows, { league: 'pl', random: fixed(0) }), ...clubVenueQuestions(rows, { league: 'pl', random: fixed(0) })]
+      assert.ok(all.length > 0)
+      for (const q of all) assert.ok(!JSON.stringify(q).includes('season'), q.q)
     },
   },
   {

@@ -193,6 +193,15 @@ export function clubPlayerQuestions(rows, { league, random }) {
   return out
 }
 
+// Wikidata sometimes tags a club's SEASON item ("2022–23 Manchester City F.C.
+// season") with the club's venue. Map it back to the club, so it never shows
+// up as "At which stadium does 2022–23 Manchester City F.C. season play...?"
+const SEASON_LABEL = /^\d{4}[–-]\d{2,4}\s+(.+?)\s+season$/i
+export function clubLabel(label) {
+  const m = String(label ?? '').match(SEASON_LABEL)
+  return m ? m[1] : label
+}
+
 // Words too generic to give a club away when they also appear in its ground's
 // name ("Manchester City" / "City Ground" share nothing that identifies either).
 const GENERIC_NAME_WORDS = new Set([
@@ -221,8 +230,9 @@ export function venueQuestions(rows, { league, random }) {
   const byClub = new Map() // clubKey -> { name, venues: Set }
   for (const r of rows) {
     if (!r.club || !r.venue) continue
-    const key = clubKey(r.club)
-    if (!byClub.has(key)) byClub.set(key, { name: r.club, venues: new Set() })
+    const club = clubLabel(r.club)
+    const key = clubKey(club)
+    if (!byClub.has(key)) byClub.set(key, { name: club, venues: new Set() })
     byClub.get(key).venues.add(r.venue)
   }
   const allVenues = [...new Set(rows.map((r) => r.venue).filter(Boolean))]
@@ -278,10 +288,11 @@ export function clubVenueQuestions(rows, { league, random }) {
   const allClubs = new Set()
   for (const r of rows) {
     if (!r.club || !r.venue) continue
+    const club = clubLabel(r.club)
     const vKey = r.venue.toLowerCase()
     if (!byVenue.has(vKey)) byVenue.set(vKey, { venue: r.venue, clubs: new Set() })
-    byVenue.get(vKey).clubs.add(r.club)
-    allClubs.add(r.club)
+    byVenue.get(vKey).clubs.add(club)
+    allClubs.add(club)
   }
   const out = []
   for (const { venue, clubs } of byVenue.values()) {

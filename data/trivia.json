@@ -52,18 +52,6 @@
         "template": "venue"
       },
       {
-        "id": "9ffd5bf9d655",
-        "q": "At which stadium does 2016–17 Stade Rennais F.C. season play its home games?",
-        "correct": "Roazhon Park",
-        "wrong": [
-          "Stade Victor Boucquey",
-          "stade Marie-Marvingt",
-          "Stade de l'Abbé-Deschamps"
-        ],
-        "league": "other",
-        "template": "venue"
-      },
-      {
         "id": "c46315ae4da4",
         "q": "Who won the 2010 FIFA World Cup?",
         "correct": "Spain men's national football team",
@@ -2830,7 +2818,7 @@
         "wrong": [
           "Stade Brestois 29",
           "Toulouse FC",
-          "2016–17 Stade Rennais F.C. season"
+          "Stade Rennais F.C."
         ],
         "league": "other",
         "template": "club-venue"
@@ -7121,7 +7109,7 @@
       },
       {
         "id": "7eaf7809060b",
-        "q": "At which stadium does 2020–21 F.C. Crotone season play its home games?",
+        "q": "At which stadium does F.C. Crotone play its home games?",
         "correct": "Stadio Ezio Scida",
         "wrong": [
           "Mapei Stadium - Città del Tricolore",
@@ -7402,7 +7390,7 @@
         "wrong": [
           "Bologna F.C. 1909",
           "Venezia F.C.",
-          "2020–21 F.C. Crotone season"
+          "F.C. Crotone"
         ],
         "league": "other",
         "template": "club-venue"
@@ -7926,7 +7914,7 @@
       {
         "id": "012c4b026e28",
         "q": "Which club plays its home games at Stadio Ezio Scida?",
-        "correct": "2020–21 F.C. Crotone season",
+        "correct": "F.C. Crotone",
         "wrong": [
           "US Sassuolo Calcio",
           "SSC Napoli",
@@ -8237,7 +8225,7 @@
       },
       {
         "id": "efb1e291577b",
-        "q": "At which stadium does 2021–22 U.C. Sampdoria season play its home games?",
+        "q": "At which stadium does U.C. Sampdoria play its home games?",
         "correct": "Stadio Luigi Ferraris",
         "wrong": [
           "Giuseppe Meazza Stadium",
@@ -8452,18 +8440,6 @@
         "template": "nationality"
       },
       {
-        "id": "76e58aa7dcb2",
-        "q": "At which stadium does 2022–23 Manchester City F.C. season play its home games?",
-        "correct": "Etihad Stadium",
-        "wrong": [
-          "Stamford Bridge",
-          "Old Trafford",
-          "Coventry Building Society Arena"
-        ],
-        "league": "pl",
-        "template": "venue"
-      },
-      {
         "id": "83e0d90e5d6b",
         "q": "Who won the 2008 FA Community Shield?",
         "correct": "Manchester United F.C.",
@@ -8540,7 +8516,7 @@
         "q": "Which club plays its home games at Stadio Brianteo?",
         "correct": "AC Monza",
         "wrong": [
-          "2020–21 F.C. Crotone season",
+          "F.C. Crotone",
           "Bologna F.C. 1909",
           "Frosinone Calcio"
         ],
@@ -13245,7 +13221,7 @@
         "correct": "Parma Calcio 1913",
         "wrong": [
           "AC Monza",
-          "2020–21 F.C. Crotone season",
+          "F.C. Crotone",
           "US Sassuolo Calcio"
         ],
         "league": "other",
@@ -15634,7 +15610,7 @@
         "wrong": [
           "F.C. Lorient",
           "AS Monaco FC",
-          "2016–17 Stade Rennais F.C. season"
+          "Stade Rennais F.C."
         ],
         "league": "other",
         "template": "club-venue"
@@ -16538,18 +16514,6 @@
         ],
         "league": "other",
         "template": "nationality"
-      },
-      {
-        "id": "b82122089aca",
-        "q": "Which club plays its home games at Stamford Bridge?",
-        "correct": "Chelsea F.C.",
-        "wrong": [
-          "Ipswich Town F.C.",
-          "Manchester City F.C.",
-          "2022–23 Manchester City F.C. season"
-        ],
-        "league": "pl",
-        "template": "club-venue"
       },
       {
         "id": "4d53748b83cd",
@@ -18117,7 +18081,7 @@
         "correct": "AFC Bournemouth",
         "wrong": [
           "Fulham F.C.",
-          "2022–23 Manchester City F.C. season",
+          "Manchester City F.C.",
           "Arsenal F.C."
         ],
         "league": "pl",
