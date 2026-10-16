@@ -81,7 +81,7 @@ const pool = [
     '2024-25', ['2023-24', '2025-26', '2022-23'], 'pl', 'modern-classics'),
   makeQ('Cristiano Ronaldo joined Al-Nassr in January 2023 in a move that triggered a wave of global stars joining the Saudi Pro League. In which season did Ronaldo finally win his first Saudi league title with the club?',
     '2024-25', ['2022-23', '2023-24', '2025-26'], 'world', 'modern-classics'),
-  makeQ('Lionel Messi won his first trophy with Inter Miami just seven games into his MLS career, lifting the 2023 Leagues Cup. What was the name of the cross-border competition he won?',
+  makeQ('Lionel Messi won his first trophy with Inter Miami just seven games into his MLS career. What was the name of the cross-border competition he won?',
     'Leagues Cup', ['MLS Cup', 'US Open Cup', 'Supporters\' Shield'], 'world', 'modern-classics'),
 
   // --- Euro 2024 drama beyond the final ---

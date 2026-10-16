@@ -193,6 +193,26 @@ export function clubPlayerQuestions(rows, { league, random }) {
   return out
 }
 
+// Words too generic to give a club away when they also appear in its ground's
+// name ("Manchester City" / "City Ground" share nothing that identifies either).
+const GENERIC_NAME_WORDS = new Set([
+  'fc', 'afc', 'cf', 'ac', 'sc', 'cd', 'rcd', 'ss', 'us', 'club', 'calcio', 'city', 'town',
+  'united', 'athletic', 'sporting', 'real', 'olympic', 'olimpico', 'stadium', 'stadio', 'stade',
+  'stadion', 'estadio', 'park', 'arena', 'ground', 'road', 'lane', 'the', 'de', 'del', 'la', 'le',
+  'der', 'des', 'di', 'do', 'da', 'and', 'of', 'municipal', 'nuevo', 'new',
+])
+const nameWords = (s) =>
+  (String(s).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().match(/[a-z]+/g) ?? [])
+    .filter((w) => w.length >= 3 && !GENERIC_NAME_WORDS.has(w))
+
+// True when a club and a venue share a distinctive name word — Aston Villa /
+// Villa Park, Juventus / Juventus Stadium, Torino / Stadio Olimpico Grande
+// Torino. Asking one to get the other is then a giveaway, not a question.
+export function sharesNameWord(club, venue) {
+  const clubWords = new Set(nameWords(club))
+  return nameWords(venue).some((w) => clubWords.has(w))
+}
+
 // "Which club plays its home games at Anfield?" — asked venue -> club so the
 // distractors are other venues, which reads better than four club names.
 // A club with more than one recorded venue is dropped: historic grounds mean
@@ -210,6 +230,7 @@ export function venueQuestions(rows, { league, random }) {
   const out = []
   for (const { name, venues } of byClub.values()) {
     if (venues.size !== 1) continue
+    if (sharesNameWord(name, [...venues][0])) continue // the club's name gives the ground away
     const question = makeQuestion({
       q: `At which stadium does ${name} play its home games?`,
       correct: [...venues][0],
@@ -265,6 +286,7 @@ export function clubVenueQuestions(rows, { league, random }) {
   const out = []
   for (const { venue, clubs } of byVenue.values()) {
     if (clubs.size !== 1) continue // multiple clubs at same stadium -> ambiguous answer
+    if (sharesNameWord([...clubs][0], venue)) continue // the ground's name gives the club away
     const notClubs = [...allClubs].filter(c => !clubs.has(c))
     const question = makeQuestion({
       q: `Which club plays its home games at ${venue}?`,

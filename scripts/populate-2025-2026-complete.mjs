@@ -74,7 +74,7 @@ const europeanVenues2025_2026 = [
   makeQ('Which stadium in Budapest, Hungary was selected by UEFA to host the 2026 UEFA Champions League Final in May 2026?', 'Puskás Aréna (Budapest)', ['Groupama Arena (Budapest)', 'National Stadium (Warsaw)', 'Ernst Happel Stadion (Vienna)'], 'ucl', 'euro-venues-25-26'),
   makeQ('Which historic Spanish stadium in Bilbao hosted the 2025 UEFA Europa League Final in May 2025?', 'San Mamés (Bilbao, Spain)', ['Estadio de La Cartuja (Seville)', 'Mestalla (Valencia)', 'Metropolitano (Madrid)'], 'ucl', 'euro-venues-25-26'),
   makeQ('Which Turkish stadium in Istanbul was selected to host the 2026 UEFA Europa League Final in May 2026?', 'Beşiktaş Stadium / Tüpraş Stadium (Istanbul)', ['Atatürk Olympic Stadium (Istanbul)', 'Rams Park (Galatasaray)', 'Şükrü Saracoğlu Stadium (Fenerbahçe)'], 'ucl', 'euro-venues-25-26'),
-  makeQ('Which Polish stadium in Wrocław hosted the 2025 UEFA Conference League Final in May 2025?', 'Tarczyński Arena Wrocław (Poland)', ['PGE Narodowy (Warsaw)', 'Stadion Śląski (Chorzów)', 'Stadion Miejski (Poznań)'], 'ucl', 'euro-venues-25-26'),
+  makeQ('Which Polish stadium hosted the 2025 UEFA Conference League Final in May 2025?', 'Tarczyński Arena Wrocław (Poland)', ['PGE Narodowy (Warsaw)', 'Stadion Śląski (Chorzów)', 'Stadion Miejski (Poznań)'], 'ucl', 'euro-venues-25-26'),
   makeQ('Which German stadium in Leipzig was chosen to host the 2026 UEFA Conference League Final in May 2026?', 'Red Bull Arena (Leipzig, Germany)', ['Deutsche Bank Park (Frankfurt)', 'BayArena (Leverkusen)', 'Volksparkstadion (Hamburg)'], 'ucl', 'euro-venues-25-26')
 ];
 

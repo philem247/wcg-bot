@@ -187,7 +187,7 @@ const allUclFinals = [
   ['1968 (Wembley, London)', 'Manchester United (4-1 AET vs Benfica, Charlton brace, Best & Kidd under Busby)', ['Benfica', 'Real Madrid', 'Juventus']],
   ['1967 (Lisbon)', 'Celtic (2-1 vs Inter Milan, Tommy Gemmell & Stevie Chalmers "Lisbon Lions" - Treble)', ['Inter Milan', 'Dukla Prague', 'CSKA Sofia']],
   ['1966 (Brussels)', 'Real Madrid (2-1 vs Partizan Belgrade, Amancio & Serena "Yé-yé" team)', ['Partizan Belgrade', 'Inter Milan', 'Manchester United']],
-  ['1965 (San Siro, Milan)', 'Inter Milan (1-0 vs Benfica, Jair 42nd min under Helenio Herrera)', ['Benfica', 'Liverpool', 'Győri ETO']],
+  ['1965', 'Inter Milan (1-0 vs Benfica, Jair 42nd min under Helenio Herrera)', ['Benfica', 'Liverpool', 'Győri ETO']],
   ['1964 (Vienna)', 'Inter Milan (3-1 vs Real Madrid, Sandro Mazzola brace & Milani)', ['Real Madrid', 'Borussia Dortmund', 'Zürich']],
   ['1963 (Wembley, London)', 'AC Milan (2-1 vs Benfica, José Altafini brace under Nereo Rocco)', ['Benfica', 'Dundee', 'Feyenoord']],
   ['1962 (Amsterdam)', 'Benfica (5-3 vs Real Madrid, Eusébio brace & Águas under Béla Guttmann)', ['Real Madrid', 'Tottenham Hotspur', 'Standard Liège']],
@@ -195,7 +195,7 @@ const allUclFinals = [
   ['1960 (Hampden Park, Glasgow)', 'Real Madrid (7-3 vs Eintracht Frankfurt, Puskás 4 goals & Di Stéfano 3 goals)', ['Eintracht Frankfurt', 'Barcelona', 'Rangers']],
   ['1959 (Stuttgart)', 'Real Madrid (2-0 vs Stade de Reims, Mateos & Di Stéfano)', ['Stade de Reims', 'Atlético Madrid', 'Young Boys']],
   ['1958 (Brussels)', 'Real Madrid (3-2 AET vs AC Milan, Di Stéfano, Rial & Gento 107th min)', ['AC Milan', 'Vasas', 'Manchester United']],
-  ['1957 (Santiago Bernabéu, Madrid)', 'Real Madrid (2-0 vs Fiorentina, Di Stéfano pen & Gento)', ['Fiorentina', 'Manchester United', 'Red Star Belgrade']],
+  ['1957', 'Real Madrid (2-0 vs Fiorentina, Di Stéfano pen & Gento)', ['Fiorentina', 'Manchester United', 'Red Star Belgrade']],
   ['1956 (Parc des Princes, Paris)', 'Real Madrid (4-3 vs Stade de Reims, First-ever European Cup Final)', ['Stade de Reims', 'Milan', 'Hibernian']]
 ];
 

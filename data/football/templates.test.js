@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { pickDistractors, makeQuestion, winnerQuestions, neverWonQuestions, clubKey, neverPlayedForQuestions, venueQuestions, nationalityQuestions } from './templates.mjs'
+import { pickDistractors, makeQuestion, winnerQuestions, neverWonQuestions, clubKey, neverPlayedForQuestions, venueQuestions, nationalityQuestions, clubVenueQuestions, sharesNameWord } from './templates.mjs'
 import { isQid } from './queries.mjs'
 
 const fixed = (v = 0) => () => v
@@ -226,6 +226,36 @@ const tests = [
       assert.equal(qs.length, 4)
       const all = rows.map((r) => r.venue)
       for (const q of qs) for (const w of q.wrong) assert.ok(all.includes(w))
+    },
+  },
+  {
+    name: 'sharesNameWord: flags club/ground pairs that name each other, ignores generic words',
+    fn: () => {
+      assert.ok(sharesNameWord('Aston Villa F.C.', 'Villa Park'))
+      assert.ok(sharesNameWord('Juventus FC', 'Juventus Stadium'))
+      assert.ok(sharesNameWord('Torino FC', 'Stadio Olimpico Grande Torino'))
+      assert.ok(sharesNameWord('Borussia Mönchengladbach', 'ista-Borussia-Park'))
+      assert.ok(!sharesNameWord('Liverpool F.C.', 'Anfield'))
+      assert.ok(!sharesNameWord('Manchester City F.C.', 'City Ground'), '"city" alone is not a giveaway')
+      assert.ok(!sharesNameWord('Sunderland A.F.C.', 'Stadium of Light'))
+    },
+  },
+  {
+    name: 'venue and club-venue questions skip pairs where one name gives the other away',
+    fn: () => {
+      const rows = [
+        { club: 'Aston Villa F.C.', venue: 'Villa Park' },
+        { club: 'Arsenal F.C.', venue: 'Emirates Stadium' },
+        { club: 'Chelsea F.C.', venue: 'Stamford Bridge' },
+        { club: 'Everton F.C.', venue: 'Goodison Park' },
+        { club: 'Liverpool F.C.', venue: 'Anfield' },
+      ]
+      const a = venueQuestions(rows, { league: 'pl', random: fixed(0) })
+      const b = clubVenueQuestions(rows, { league: 'pl', random: fixed(0) })
+      assert.ok(!a.some((q) => q.q.includes('Aston Villa')))
+      assert.ok(!b.some((q) => q.q.includes('Villa Park')))
+      assert.equal(a.length, 4)
+      assert.equal(b.length, 4)
     },
   },
   {

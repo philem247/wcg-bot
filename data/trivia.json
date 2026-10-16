@@ -436,18 +436,6 @@
         "template": "winner"
       },
       {
-        "id": "e853d2623118",
-        "q": "At which stadium does Borussia Mönchengladbach play its home games?",
-        "correct": "ista-Borussia-Park",
-        "wrong": [
-          "Stadion An der Alten Försterei",
-          "WWK Arena",
-          "Home Deluxe Arena"
-        ],
-        "league": "other",
-        "template": "venue"
-      },
-      {
         "id": "83e93c0393bc",
         "q": "Which of these clubs has won the UEFA Champions League?",
         "correct": "Manchester City F.C.",
@@ -3436,18 +3424,6 @@
         "template": "winner"
       },
       {
-        "id": "519dc234a4d3",
-        "q": "Which club plays its home games at Villa Park?",
-        "correct": "Aston Villa F.C.",
-        "wrong": [
-          "Arsenal F.C.",
-          "Sunderland A.F.C.",
-          "Brentford F.C."
-        ],
-        "league": "pl",
-        "template": "club-venue"
-      },
-      {
         "id": "52b27f9d2264",
         "q": "Which club did Mirko Vučinić play for?",
         "correct": "US Lecce",
@@ -5318,18 +5294,6 @@
         ],
         "league": "other",
         "template": "nationality"
-      },
-      {
-        "id": "01b09ec80562",
-        "q": "Which club plays its home games at Stadio Olimpico Grande Torino?",
-        "correct": "Torino FC",
-        "wrong": [
-          "US Lecce",
-          "ACF Fiorentina",
-          "Juventus FC"
-        ],
-        "league": "other",
-        "template": "club-venue"
       },
       {
         "id": "55d0d664f741",
@@ -7600,18 +7564,6 @@
         "template": "played-for"
       },
       {
-        "id": "2fbd4516f5f6",
-        "q": "Which club plays its home games at Tottenham Hotspur Stadium?",
-        "correct": "Tottenham Hotspur F.C.",
-        "wrong": [
-          "Chelsea F.C.",
-          "Ipswich Town F.C.",
-          "Coventry City F.C."
-        ],
-        "league": "pl",
-        "template": "club-venue"
-      },
-      {
         "id": "d7c678664161",
         "q": "Who won the 2018 FIFA World Cup?",
         "correct": "France men's national association football team",
@@ -8006,18 +7958,6 @@
         ],
         "league": "other",
         "template": "played-for"
-      },
-      {
-        "id": "b6f5491fc442",
-        "q": "At which stadium does Juventus FC play its home games?",
-        "correct": "Juventus Stadium",
-        "wrong": [
-          "Stadion Kantrida",
-          "Giuseppe Meazza Stadium",
-          "Stadio Artemio Franchi"
-        ],
-        "league": "other",
-        "template": "venue"
       },
       {
         "id": "56378dd26917",
@@ -8750,18 +8690,6 @@
         ],
         "league": "other",
         "template": "played-for"
-      },
-      {
-        "id": "eb4e2b3d0195",
-        "q": "At which stadium does Olympique Lyonnais play its home games?",
-        "correct": "Parc Olympique Lyonnais",
-        "wrong": [
-          "Allianz Riviera",
-          "Parc des Princes",
-          "Stadium Municipal"
-        ],
-        "league": "other",
-        "template": "venue"
       },
       {
         "id": "f8a9094a24ae",
@@ -9796,18 +9724,6 @@
         "template": "never-played"
       },
       {
-        "id": "5b1fdb5ebc29",
-        "q": "At which stadium does Aston Villa F.C. play its home games?",
-        "correct": "Villa Park",
-        "wrong": [
-          "Emirates Stadium",
-          "Dean Court",
-          "Craven Cottage"
-        ],
-        "league": "pl",
-        "template": "venue"
-      },
-      {
         "id": "44194829c247",
         "q": "Which club did Chris Wood play for?",
         "correct": "Newcastle United F.C.",
@@ -10096,18 +10012,6 @@
         "template": "club-player"
       },
       {
-        "id": "08b26b1613a1",
-        "q": "At which stadium does Coventry City F.C. play its home games?",
-        "correct": "Coventry Building Society Arena",
-        "wrong": [
-          "Villa Park",
-          "Elland Road",
-          "City Ground"
-        ],
-        "league": "pl",
-        "template": "venue"
-      },
-      {
         "id": "a1dbd318d905",
         "q": "Which club did Adriano play for?",
         "correct": "AS Roma",
@@ -10238,18 +10142,6 @@
         ],
         "league": "other",
         "template": "played-for"
-      },
-      {
-        "id": "2ec8e25866e9",
-        "q": "Which club plays its home games at Juventus Stadium?",
-        "correct": "Juventus FC",
-        "wrong": [
-          "2020–21 F.C. Crotone season",
-          "Cagliari Calcio",
-          "SS Lazio"
-        ],
-        "league": "other",
-        "template": "club-venue"
       },
       {
         "id": "683a80bf6afe",
@@ -13060,18 +12952,6 @@
         "template": "club-venue"
       },
       {
-        "id": "ed0395093a14",
-        "q": "Which club plays its home games at ista-Borussia-Park?",
-        "correct": "Borussia Mönchengladbach",
-        "wrong": [
-          "TSG 1899 Hoffenheim",
-          "VfB Stuttgart",
-          "SV Elversberg"
-        ],
-        "league": "other",
-        "template": "club-venue"
-      },
-      {
         "id": "3a6e110db6e2",
         "q": "Which of these clubs did Federico Balzaretti NOT play for?",
         "correct": "AC Monza",
@@ -13598,18 +13478,6 @@
         ],
         "league": "other",
         "template": "played-for"
-      },
-      {
-        "id": "b57b65ddf6ed",
-        "q": "Which club plays its home games at Brighton Community Stadium?",
-        "correct": "Brighton & Hove Albion F.C.",
-        "wrong": [
-          "AFC Bournemouth",
-          "Crystal Palace F.C.",
-          "Ipswich Town F.C."
-        ],
-        "league": "pl",
-        "template": "club-venue"
       },
       {
         "id": "61333024bdaf",
@@ -14740,18 +14608,6 @@
         "template": "played-for"
       },
       {
-        "id": "8f8a650b1c65",
-        "q": "At which stadium does Tottenham Hotspur F.C. play its home games?",
-        "correct": "Tottenham Hotspur Stadium",
-        "wrong": [
-          "City Ground",
-          "Craven Cottage",
-          "Brighton Community Stadium"
-        ],
-        "league": "pl",
-        "template": "venue"
-      },
-      {
         "id": "dddd9b9ac10f",
         "q": "Which of these players played for Ipswich Town F.C.?",
         "correct": "Chris Wood",
@@ -15434,18 +15290,6 @@
         ],
         "league": "other",
         "template": "winner"
-      },
-      {
-        "id": "d4f19c16a277",
-        "q": "At which stadium does Brighton & Hove Albion F.C. play its home games?",
-        "correct": "Brighton Community Stadium",
-        "wrong": [
-          "MKM Stadium",
-          "Elland Road",
-          "Coventry Building Society Arena"
-        ],
-        "league": "pl",
-        "template": "venue"
       },
       {
         "id": "58afbff06b87",
@@ -16658,18 +16502,6 @@
         ],
         "league": "pl",
         "template": "winner"
-      },
-      {
-        "id": "ad9731cb3a42",
-        "q": "Which club plays its home games at Coventry Building Society Arena?",
-        "correct": "Coventry City F.C.",
-        "wrong": [
-          "Manchester City F.C.",
-          "Sunderland A.F.C.",
-          "Chelsea F.C."
-        ],
-        "league": "pl",
-        "template": "club-venue"
       },
       {
         "id": "4b4247489944",
@@ -18554,18 +18386,6 @@
         ],
         "league": "other",
         "template": "winner"
-      },
-      {
-        "id": "0e52f37ce718",
-        "q": "At which stadium does Torino FC play its home games?",
-        "correct": "Stadio Olimpico Grande Torino",
-        "wrong": [
-          "Stadio Ennio Tardini",
-          "Stadio Renato Dall'Ara",
-          "Unipol Domus"
-        ],
-        "league": "other",
-        "template": "venue"
       },
       {
         "id": "75afc80809f6",
@@ -22877,7 +22697,7 @@
       },
       {
         "id": "262e789d3a42",
-        "q": "Which country hosted the 2013 Africa Cup of Nations?",
+        "q": "Which country hosted AFCON 2013?",
         "correct": "South Africa",
         "wrong": [
           "Egypt",
@@ -23081,7 +22901,7 @@
       },
       {
         "id": "9dc250c59e4e",
-        "q": "Which national team won the 1996 Africa Cup of Nations (AFCON)?",
+        "q": "Which national team won AFCON 1996?",
         "correct": "South Africa",
         "wrong": [
           "Tunisia",
@@ -23093,7 +22913,7 @@
       },
       {
         "id": "f7dddb521fe4",
-        "q": "Which country hosted the 1996 Africa Cup of Nations?",
+        "q": "Which country hosted AFCON 1996?",
         "correct": "South Africa",
         "wrong": [
           "Egypt",
@@ -23399,18 +23219,6 @@
           "Manchester United vs Liverpool",
           "Everton vs Tranmere",
           "Liverpool vs Man City"
-        ],
-        "league": "other",
-        "template": "derby-match"
-      },
-      {
-        "id": "4b9c91c72bf8",
-        "q": "Which two clubs contest the famous \"Manchester Derby\"?",
-        "correct": "Manchester United vs Manchester City",
-        "wrong": [
-          "Man United vs Leeds",
-          "Man City vs Liverpool",
-          "Man United vs Arsenal"
         ],
         "league": "other",
         "template": "derby-match"
@@ -23795,18 +23603,6 @@
           "Sunderland",
           "Middlesbrough",
           "Leeds United"
-        ],
-        "league": "other",
-        "template": "stadium-club"
-      },
-      {
-        "id": "398f1f1d2b96",
-        "q": "Which football club plays its home matches at Villa Park?",
-        "correct": "Aston Villa",
-        "wrong": [
-          "Birmingham City",
-          "Wolves",
-          "West Bromwich Albion"
         ],
         "league": "other",
         "template": "stadium-club"
@@ -28770,11 +28566,11 @@
       {
         "id": "e272bd2163c6",
         "q": "Who won the European Golden Shoe (top league goalscorer in Europe) for 2013/14?",
-        "correct": "Cristiano Ronaldo & Luis Suárez - 31 goals",
+        "correct": "Cristiano Ronaldo & Luis Suárez",
         "wrong": [
-          "Lionel Messi",
-          "Diego Costa",
-          "Zlatan Ibrahimović"
+          "Lionel Messi & Diego Costa",
+          "Zlatan Ibrahimović & Lionel Messi",
+          "Diego Costa & Zlatan Ibrahimović"
         ],
         "league": "world",
         "template": "golden-shoe"
@@ -30089,7 +29885,7 @@
       },
       {
         "id": "46db00c85c2c",
-        "q": "Who won the PFA Young Player of the Year award in the 2008/09 season?",
+        "q": "Who won the PFA's award for the best player under 23 in the 2008/09 season?",
         "correct": "Ashley Young",
         "wrong": [
           "Gabriel Agbonlahor",
@@ -33185,8 +32981,8 @@
       },
       {
         "id": "0c4d18f98e13",
-        "q": "Which iconic stadium in Milan is officially named Stadio Giuseppe Meazza when Inter play at home and San Siro when AC Milan play?",
-        "correct": "San Siro / Stadio Giuseppe Meazza",
+        "q": "By what name is the Stadio Giuseppe Meazza, shared by AC Milan and Inter, more commonly known?",
+        "correct": "San Siro",
         "wrong": [
           "Stadio Olimpico",
           "Allianz Stadium",
@@ -37745,7 +37541,7 @@
       },
       {
         "id": "107ec1cda7db",
-        "q": "Who won the European Cup / UEFA Champions League in the 1965 (San Siro, Milan) final?",
+        "q": "Who won the European Cup / UEFA Champions League in the 1965 final?",
         "correct": "Inter Milan",
         "wrong": [
           "Benfica",
@@ -37841,7 +37637,7 @@
       },
       {
         "id": "f6c034f67efe",
-        "q": "Who won the European Cup / UEFA Champions League in the 1957 (Santiago Bernabéu, Madrid) final?",
+        "q": "Who won the European Cup / UEFA Champions League in the 1957 final?",
         "correct": "Real Madrid",
         "wrong": [
           "Fiorentina",
@@ -40037,7 +39833,7 @@
       },
       {
         "id": "b0f3ff171be9",
-        "q": "Who won the CAF Champions League in 2022 (Casablanca)?",
+        "q": "Who won the CAF Champions League in 2022?",
         "correct": "Wydad Casablanca",
         "wrong": [
           "Al Ahly",
@@ -40337,12 +40133,12 @@
       },
       {
         "id": "7340afe8f9ea",
-        "q": "Which teams contest \"The Casablanca Derby\"?",
+        "q": "Which two clubs contest Morocco's fiercest city derby, played at the Stade Mohammed V?",
         "correct": "Raja Casablanca vs Wydad Casablanca",
         "wrong": [
-          "FAR Rabat vs Wydad",
-          "Raja vs FAR Rabat",
-          "FUS Rabat vs Wydad"
+          "FAR Rabat vs Wydad Casablanca",
+          "Raja Casablanca vs FAR Rabat",
+          "FUS Rabat vs Wydad Casablanca"
         ],
         "league": "other",
         "template": "rivalry-derby"
@@ -40373,12 +40169,12 @@
       },
       {
         "id": "c764f02de321",
-        "q": "Which teams contest \"The Belgrade Eternal Derby\"?",
+        "q": "Which two clubs contest Serbia's \"Eternal Derby\"?",
         "correct": "Red Star Belgrade vs Partizan Belgrade",
         "wrong": [
-          "Vojvodina vs Red Star",
-          "Partizan vs Rad",
-          "Cukaricki vs Partizan"
+          "Vojvodina vs Red Star Belgrade",
+          "Partizan Belgrade vs FK Rad",
+          "FK Čukarički vs Partizan Belgrade"
         ],
         "league": "other",
         "template": "rivalry-derby"
@@ -41333,7 +41129,7 @@
       },
       {
         "id": "2b485758839d",
-        "q": "Which Polish stadium in Wrocław hosted the 2025 UEFA Conference League Final in May 2025?",
+        "q": "Which Polish stadium hosted the 2025 UEFA Conference League Final in May 2025?",
         "correct": "Tarczyński Arena Wrocław",
         "wrong": [
           "PGE Narodowy",
@@ -41573,17 +41369,6 @@
           "San Mamés",
           "Puskás Aréna",
           "Wrocław Stadium"
-        ],
-        "template": "curated-2026"
-      },
-      {
-        "id": "7351d35413cf",
-        "q": "Which stadium in Wrocław, Poland hosted the 2025 UEFA Conference League Final?",
-        "correct": "Wrocław Stadium",
-        "wrong": [
-          "Red Bull Arena Leipzig",
-          "Agia Sophia Stadium",
-          "Eden Arena"
         ],
         "template": "curated-2026"
       },
@@ -42070,7 +41855,7 @@
       },
       {
         "id": "1ed8dfcab163",
-        "q": "Which Argentine legend shared a dressing room as teammates with Diego Simeone at Sevilla during the 1992/93 season?",
+        "q": "Which Argentine legend shared a dressing room as teammates with Simeone at Sevilla during the 1992/93 season?",
         "correct": "Diego Maradona",
         "wrong": [
           "Gabriel Batistuta",
@@ -42958,7 +42743,7 @@
       },
       {
         "id": "03e0aba3c695",
-        "q": "Complete Brian Moore's historic 1989 commentary as Michael Thomas scored in stoppage time at Anfield: 'It's up for grabs now... ______!'",
+        "q": "Complete Brian Moore's historic 1989 commentary as Arsenal snatched the title with a stoppage-time goal at Anfield: 'It's up for grabs now... ______!'",
         "correct": "Thomas!",
         "wrong": [
           "Arsenal!",
@@ -43270,7 +43055,7 @@
       },
       {
         "id": "ecbdb666323f",
-        "q": "Which modern tactical role sees full-backs tuck into central midfield during possession rather than overlapping down the flanks?",
+        "q": "Which modern tactical role sees wide defenders tuck into central midfield during possession rather than overlapping down the flanks?",
         "correct": "Inverted Full-backs",
         "wrong": [
           "Wing-backs",
@@ -43283,7 +43068,7 @@
       {
         "id": "ee0158021236",
         "q": "Which revolutionary 3-2-2-3 formation was created in the 1920s by legendary Arsenal manager Herbert Chapman to counter the new offside rule?",
-        "correct": "WM Formation",
+        "correct": "WM",
         "wrong": [
           "Metodo",
           "Catenaccio",
@@ -43354,7 +43139,7 @@
       },
       {
         "id": "1671639ec77c",
-        "q": "Who scored a legendary 35-yard stoppage-time equalizer in the 91st minute against West Ham United to rescue Liverpool in the 2006 FA Cup Final ('The Gerrard Final')?",
+        "q": "Who scored a legendary 35-yard stoppage-time equalizer in the 91st minute against West Ham United to rescue Liverpool in the 2006 FA Cup Final?",
         "correct": "Steven Gerrard",
         "wrong": [
           "Xabi Alonso",
@@ -44230,7 +44015,7 @@
       },
       {
         "id": "0c53b32c631c",
-        "q": "Lionel Messi won his first trophy with Inter Miami just seven games into his MLS career, lifting the 2023 Leagues Cup. What was the name of the cross-border competition he won?",
+        "q": "Lionel Messi won his first trophy with Inter Miami just seven games into his MLS career. What was the name of the cross-border competition he won?",
         "correct": "Leagues Cup",
         "wrong": [
           "MLS Cup",
@@ -76332,7 +76117,7 @@
       },
       {
         "id": "4d8e7ffa6e37",
-        "q": "Which FPL chip allows you to make unlimited free transfers for a single gameweek before your team reverts to its previous state?",
+        "q": "Which FPL chip allows you to make unlimited transfers for a single gameweek before your team reverts to its previous state?",
         "correct": "Free Hit",
         "wrong": [
           "Wildcard",

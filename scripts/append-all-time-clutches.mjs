@@ -5,7 +5,7 @@ const allTimeClutches = [
   {
     template: 'match-drama',
     league: 'football',
-    q: "Who scored a legendary 35-yard stoppage-time equalizer in the 91st minute against West Ham United to rescue Liverpool in the 2006 FA Cup Final ('The Gerrard Final')?",
+    q: "Who scored a legendary 35-yard stoppage-time equalizer in the 91st minute against West Ham United to rescue Liverpool in the 2006 FA Cup Final?",
     correct: "Steven Gerrard",
     wrong: ["Xabi Alonso", "Djibril Cissé", "Peter Crouch"],
   },

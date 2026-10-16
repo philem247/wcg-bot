@@ -6,7 +6,7 @@ const questions = [
   {
     template: 'shared-dressing-room',
     league: 'football',
-    q: "Which Argentine legend shared a dressing room as teammates with Diego Simeone at Sevilla during the 1992/93 season?",
+    q: "Which Argentine legend shared a dressing room as teammates with Simeone at Sevilla during the 1992/93 season?",
     correct: "Diego Maradona",
     wrong: ["Gabriel Batistuta", "Claudio Caniggia", "Jorge Valdano"],
   },
@@ -528,7 +528,7 @@ const questions = [
   {
     template: 'commentary-quotes',
     league: 'football',
-    q: "Complete Brian Moore's historic 1989 commentary as Michael Thomas scored in stoppage time at Anfield: 'It's up for grabs now... ______!'",
+    q: "Complete Brian Moore's historic 1989 commentary as Arsenal snatched the title with a stoppage-time goal at Anfield: 'It's up for grabs now... ______!'",
     correct: "Thomas!",
     wrong: ["Arsenal!", "He scores!", "Winner!"],
   },

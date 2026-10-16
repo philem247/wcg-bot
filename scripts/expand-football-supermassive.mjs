@@ -108,7 +108,7 @@ for (const [match, champion, runners] of libertadoresFinals) {
 const cafClFinals = [
   ['2024', 'Al Ahly (1-0 agg vs Espérance de Tunis, Rami Rabia header in Cairo)', ['Espérance de Tunis', 'Mamelodi Sundowns', 'TP Mazembe']],
   ['2023', 'Al Ahly (3-2 agg vs Wydad Casablanca, Mohamed Abdelmonem 78th min header in Casablanca)', ['Wydad Casablanca', 'Mamelodi Sundowns', 'Espérance de Tunis']],
-  ['2022 (Casablanca)', 'Wydad Casablanca (2-0 vs Al Ahly, Zouhair El Moutaraji long-range brace)', ['Al Ahly', 'Petro de Luanda', 'ES Sétif']],
+  ['2022', 'Wydad Casablanca (2-0 vs Al Ahly, Zouhair El Moutaraji long-range brace)', ['Al Ahly', 'Petro de Luanda', 'ES Sétif']],
   ['2021 (Casablanca)', 'Al Ahly (3-0 vs Kaizer Chiefs, Sherif, Magdy Afsha & El Solia under Pitso Mosimane)', ['Kaizer Chiefs', 'Espérance de Tunis', 'Wydad Casablanca']],
   ['2020 (Cairo - "Century Derby")', 'Al Ahly (2-1 vs Zamalek, Mohamed Magdy Afsha 86th min volley "Kadhia Momkna")', ['Zamalek', 'Raja Casablanca', 'Wydad Casablanca']],
   ['2019', 'Espérance de Tunis (vs Wydad Casablanca in controversial VAR final)', ['Wydad Casablanca', 'TP Mazembe', 'Mamelodi Sundowns']],
