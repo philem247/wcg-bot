@@ -148,6 +148,24 @@ const tests = [
     },
   },
   {
+    name: 'mergeFootball: hand-written football/FPL questions survive a rebuild; generated ones are replaced',
+    fn: () => {
+      const bank = {
+        categories: {
+          football: [{ id: 'old-gen', template: 'winner' }, { id: 'hand', template: 'hard-records' }],
+          fpl: [{ id: 'old-fpl', template: 'fpl-points' }, { id: 'hand-fpl', template: 'fpl-lore' }],
+        },
+      }
+      const out = mergeFootball(bank, make('pl', 2), make('fpl', 1))
+      const ids = (c) => out.categories[c].map((q) => q.id)
+      assert.ok(ids('football').includes('hand'))
+      assert.ok(!ids('football').includes('old-gen'))
+      assert.ok(ids('fpl').includes('hand-fpl'))
+      assert.ok(!ids('fpl').includes('old-fpl'))
+      assert.equal(out.categories.football.length, 3)
+    },
+  },
+  {
     name: 'mergeFootball: does not mutate the bank it was given',
     fn: () => {
       const bank = { categories: { general: [{ id: 'g1' }], football: [], fpl: [] } }

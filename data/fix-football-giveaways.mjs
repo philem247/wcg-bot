@@ -24,6 +24,11 @@ const REMOVE = new Set([
 
 // id -> { from: old question text, ...replacement fields }
 const REWRITE = {
+  // Not a giveaway, a factual slip: Martins was Birmingham's striker, scoring against Arsenal.
+  '3dd6b4bc3385': {
+    from: 'Which Arsenal striker scored the 89th-minute winner against Arsenal for Birmingham City in the 2011 League Cup final after a mix-up between Koscielny and Szczęsny?',
+    q: 'Which Birmingham City striker scored the 89th-minute winner against Arsenal in the 2011 League Cup final after a mix-up between Koscielny and Szczęsny?',
+  },
   '1671639ec77c': {
     from: "Who scored a legendary 35-yard stoppage-time equalizer in the 91st minute against West Ham United to rescue Liverpool in the 2006 FA Cup Final ('The Gerrard Final')?",
     q: 'Who scored a legendary 35-yard stoppage-time equalizer in the 91st minute against West Ham United to rescue Liverpool in the 2006 FA Cup Final?',

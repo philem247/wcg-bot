@@ -9,7 +9,7 @@ import { readFile, writeFile, rename } from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 import { shuffle } from '../engine/bank.js'
 import { LEAGUES, leagueWinners, playerClubs, clubVenues, cupWinners, playerNationalities } from './football/queries.mjs'
-import { winnerQuestions, neverWonQuestions, neverPlayedForQuestions, venueQuestions, nationalityQuestions, playedForQuestions, clubPlayerQuestions, clubVenueQuestions, nationalityPlayerQuestions, hasWonQuestions } from './football/templates.mjs'
+import { winnerQuestions, neverWonQuestions, neverPlayedForQuestions, venueQuestions, playedForQuestions, clubPlayerQuestions, clubVenueQuestions, nationalityPlayerQuestions, hasWonQuestions } from './football/templates.mjs'
 import { fetchBootstrap, fplQuestions, seasonFolders, fetchSeasons, fplSeasonQuestions, fplGoalsQuestions, fplSeasonPositionQuestions, fplAssistsQuestions, fplCleanSheetsQuestions } from './football/fpl.mjs'
 
 // The bank ships every valid question generated — no target size, no per-league
@@ -37,11 +37,29 @@ export function capAnswers(questions, random) {
 }
 
 // Returns a NEW bank; never mutates the one passed in.
+// Templates this build generates. A rebuild replaces exactly these; every
+// other football/FPL question (the hand-written packs, data/add-football-
+// variety.mjs's output) is kept. This used to replace the whole category,
+// which silently deleted every hand-written question on a rebuild.
+export const GENERATED_TEMPLATES = new Set([
+  'winner', 'has-won', 'never-won', 'never-played', 'venue', 'club-venue',
+  'nationality', 'nationality-player', 'played-for', 'club-player',
+  'fpl-assists', 'fpl-cleansheets', 'fpl-club', 'fpl-goals', 'fpl-past-position',
+  'fpl-points', 'fpl-position', 'fpl-season-top',
+])
+
+const keepHandWritten = (questions) =>
+  (questions ?? []).filter((q) => q.template && !GENERATED_TEMPLATES.has(q.template))
+
 export function mergeFootball(bank, football, fpl) {
   return {
     ...bank,
     generated: new Date().toISOString(),
-    categories: { ...bank.categories, football, fpl },
+    categories: {
+      ...bank.categories,
+      football: [...football, ...keepHandWritten(bank.categories?.football)],
+      fpl: [...fpl, ...keepHandWritten(bank.categories?.fpl)],
+    },
   }
 }
 
@@ -101,7 +119,10 @@ async function main() {
       ...neverPlayedForQuestions(clubs, { league: league.tag, random }),
       ...venueQuestions(venues, { league: league.tag, random }),
       ...clubVenueQuestions(venues, { league: league.tag, random }),
-      ...nationalityQuestions(nationalities, { league: league.tag, random }),
+      // nationalityQuestions retired (2026-10): "What nationality is X?" with
+      // decoys drawn from the whole world was the easiest, most repetitive
+      // shape in the bank. The country-flag template covers national teams
+      // with neighbour-country decoys instead.
       ...nationalityPlayerQuestions(nationalities, { league: league.tag, random }),
       ...playedForQuestions(clubs, { league: league.tag, random }),
       ...clubPlayerQuestions(clubs, { league: league.tag, random }),

@@ -24,6 +24,23 @@ const fixture = {
 
 const tests = [
   {
+    name: 'pick: questions flagged hard fill 30% of a single-category game, the rest come from the normal pool',
+    fn: () => {
+      const qs = [
+        ...Array.from({ length: 30 }, (_, i) => ({ id: `n${i}`, q: `N${i}?`, correct: 'a', wrong: ['b', 'c', 'd'], template: `t${i % 5}` })),
+        ...Array.from({ length: 30 }, (_, i) => ({ id: `h${i}`, q: `H${i}?`, correct: 'a', wrong: ['b', 'c', 'd'], template: `hard-${i % 3}`, hard: true })),
+      ]
+      const bank = loadBank({ data: { categories: { football: qs } } })
+      const picked = bank.pick({ category: 'football', count: 10, random: Math.random })
+      assert.equal(picked.length, 10)
+      assert.equal(picked.filter((q) => q.hard).length, 3)
+      // Once the normal pool is used up, the hard tier tops the game up to full length.
+      const exclude = new Set(qs.filter((q) => !q.hard).slice(0, 28).map((q) => q.id))
+      const late = bank.pick({ category: 'football', count: 10, exclude, random: Math.random })
+      assert.equal(late.length, 10)
+    },
+  },
+  {
     name: 'CATEGORIES lists all thirty, with football and fpl included',
     fn: () => {
       assert.equal(CATEGORIES.length, 30)

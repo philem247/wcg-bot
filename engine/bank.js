@@ -3,6 +3,9 @@
 // reproducible, same rule as the rest of engine/.
 import { readFileSync } from 'node:fs'
 
+// Share of a single-category game reserved for questions flagged `hard`.
+export const HARD_SHARE = 0.3
+
 export const CATEGORIES = ['general', 'football', 'fpl', 'sports', 'science', 'tech', 'movies', 'tv-shows', 'geography', 'history', 'anime', 'animals', 'videogames', 'cartoons', 'art', 'mythology', 'vehicles', 'nigerian-music', 'nigerian-entertainment', 'nigerian-history', 'nigerian-food', 'pidgin-english', 'web3', 'bible', 'music', 'food', 'got', 'naruto', 'health', 'tech-gadgets']
 
 // Fisher-Yates. Returns a new array; the caller's is untouched.
@@ -92,7 +95,23 @@ export function loadBank({ path = 'data/trivia.json', data = null } = {}) {
     pick({ category, count, exclude = new Set(), random = Math.random }) {
       if (category !== 'mixed') {
         const pool = poolOf(category, exclude)
-        return sampleDiverse(pool, count, random).map((q) => ({ ...q, category }))
+        // Questions flagged `hard` (data/add-football-variety.mjs) get a
+        // guaranteed share of every game. Spread evenly across ~130 templates
+        // they'd surface about once a game, and a game would still feel easy.
+        const hardPool = pool.filter((q) => q.hard)
+        const nHard = Math.min(hardPool.length, Math.round(count * HARD_SHARE))
+        const picked = nHard > 0
+          ? [
+              ...sampleDiverse(hardPool, nHard, random),
+              ...sampleDiverse(pool.filter((q) => !q.hard), count - nHard, random),
+            ]
+          : sampleDiverse(pool, count, random)
+        // Topped up from the hard tier if the normal pool alone ran short.
+        if (picked.length < count && nHard > 0) {
+          const have = new Set(picked.map((q) => q.id))
+          picked.push(...sampleDiverse(hardPool.filter((q) => !have.has(q.id)), count - picked.length, random))
+        }
+        return shuffle(picked, random).map((q) => ({ ...q, category }))
       }
 
       const ANIMATION_CATEGORIES = new Set(['anime', 'naruto', 'cartoons'])
