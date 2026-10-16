@@ -10,7 +10,16 @@ export const SCRAMBLE_COUNT = 10
 export const CLOCK_SECONDS = 15
 export const GAP_SECONDS = 10
 
-export function createScrambleGame({ words, clockSeconds = CLOCK_SECONDS, gapSeconds = GAP_SECONDS, now = 0, random = () => 0.5 }) {
+// Same letters, same count. Used to accept a different valid word from the
+// same tiles ("opts" scrambled from "stop" -> "pots"/"tops"/"spot").
+function sameLetters(a, b) {
+  return a.length === b.length && [...a].sort().join('') === [...b].sort().join('')
+}
+
+// `isValidWord` (optional): when given, any real word using exactly the
+// scrambled letters scores, not just the one the bot happened to pick —
+// otherwise a correct-but-different anagram was silently ignored.
+export function createScrambleGame({ words, clockSeconds = CLOCK_SECONDS, gapSeconds = GAP_SECONDS, now = 0, random = () => 0.5, isValidWord = null }) {
   const clockMs = clockSeconds * 1000
   const gapMs = gapSeconds * 1000
   const scores = new Map()      // player -> points
@@ -90,9 +99,10 @@ export function createScrambleGame({ words, clockSeconds = CLOCK_SECONDS, gapSec
       if (state !== 'playing' || phase !== 'asking') return []
       if (at > deadline) return [] // should have been caught by tick(), but safe
 
-      const guess = String(text || '').trim()
-      // Only exact matches are accepted (ignoring case)
-      if (fold(guess) === fold(currentWord)) {
+      const guess = fold(String(text || '').trim())
+      const target = fold(currentWord)
+      // The picked word, or (with isValidWord) any real word from the same letters.
+      if (guess === target || (isValidWord && sameLetters(guess, target) && isValidWord(guess))) {
         scores.set(player, (scores.get(player) ?? 0) + 1)
         if (!scoredAt.has(player)) scoredAt.set(player, at)
         

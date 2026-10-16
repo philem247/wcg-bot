@@ -1666,6 +1666,60 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'a non-admin typing another bot\'s command gets no reply (only known commands are refused)',
+    fn: async () => {
+      const sent = []
+      const db = openDb(':memory:')
+      const router = createRouter({
+        dict: new Set(), games: new Map(), enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => [], db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid: 'g-otherbot@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/menu', isGroup: true }, 0)
+      assert.equal(sent.length, 0)
+      await router.handleMessage({ jid: 'g-otherbot@g.us', sender: 'nonadmin@s.whatsapp.net', senderPn: 'nonadmin@s.whatsapp.net', text: '/help', isGroup: true }, 0)
+      assert.equal(sent.length, 1)
+      assert.ok(sent[0].includes('Only admins'))
+      db.close()
+    },
+  },
+  {
+    name: '/wcg end never ends a game that replaced the targeted one during the admin lookup',
+    fn: async () => {
+      const sent = []
+      const games = new Map()
+      const db = openDb(':memory:')
+      let release
+      const admin = 'admin@s.whatsapp.net'
+      const jid = 'g-endrace@g.us'
+      let calls = 0
+      let blockOnCall = Infinity
+      let blocked
+      const reached = new Promise((r) => { blocked = r })
+      const router = createRouter({
+        dict: new Set(), games, enqueue: (j, m) => sent.push(m.text),
+        logger: { info() {}, error() {}, debug() {} },
+        getGroupAdmins: async () => {
+          if (++calls === blockOnCall) { blocked(); await new Promise((r) => { release = r }) }
+          return [admin]
+        },
+        db, resolvePn: () => undefined,
+      })
+      await router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/wcg start', isGroup: true }, 0)
+      // /wcg end: call 1 is the command gate, call 2 is endGame's own lookup — stall that one.
+      blockOnCall = calls + 2
+      const pending = router.handleMessage({ jid, sender: admin, senderPn: admin, text: '/wcg end', isGroup: true }, 1000)
+      await reached
+      // Meanwhile the original game is gone and another took its place.
+      const replacement = { state: 'lobby', end() { throw new Error('must not end the replacement') } }
+      games.set(jid, replacement)
+      release()
+      await pending
+      assert.equal(games.get(jid), replacement)
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

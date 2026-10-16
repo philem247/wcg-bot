@@ -29,11 +29,13 @@ import { join } from 'node:path'
 // This avoids foreign languages, proper nouns from the trivia bank, and
 // obscure words from the massive scrabble dictionary.
 let scramblePool = null
+let scramblePoolSet = null // same words, for O(1) "is this anagram a real word" checks
 try {
   scramblePool = readFileSync(join('data', 'common.txt'), 'utf8')
     .split('\n')
     .map(w => w.trim())
     .filter(w => /^[a-z]{4,7}$/.test(w))
+  scramblePoolSet = new Set(scramblePool)
 } catch (e) {
   // If words.txt doesn't exist or fails, it will remain null
 }
@@ -57,6 +59,14 @@ const MODE_NAMES = new Set(['easy', 'medium', 'hard'])
 // a mode missing from this set is a mode a banned player can still start.
 const GAME_COMMANDS = new Set([
   'wcg', 'wrg', 'trivia', 'scramble', 'logo', 'flag', 'riddle', 'tourney', 'wordle', 'concentration', 'careerpath',
+])
+
+// Every command handleCommand answers. Anything else is silently ignored
+// (another bot in the group may own it) — including the non-admin refusal.
+const KNOWN_COMMANDS = new Set([
+  ...GAME_COMMANDS,
+  'ping', 'help', 'admin', 'stats', 'pending', 'addword', 'delword',
+  'promote', 'demote', 'ban', 'unban', 'bans',
 ])
 
 // rejected events (engine/game.js) don't carry the required letter/minLength, only
@@ -647,7 +657,7 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
 
     enqueue(jid, { text: `🔠 *Scramble Game started!*\n${SCRAMBLE_COUNT} words. You have 15 seconds per word. Get ready...`, mentions: [], kind: 'misc' })
     
-    const game = createScrambleGame({ words, now, random: Math.random })
+    const game = createScrambleGame({ words, now, random: Math.random, isValidWord: (w) => scramblePoolSet.has(w) })
     games.set(jid, game)
     starters.set(jid, sender)
     gameTypes.set(jid, 'scramble')
@@ -988,6 +998,10 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
     if (!game) return
     if (expectedType && gameTypes.get(jid) !== expectedType) return
     const groupAdmins = await groupAdminsFor(jid, isGroup)
+    // The admin lookup can take seconds; the game may have finished (and a new
+    // one started) meanwhile. Never end — or games.delete() — a game other
+    // than the one this command was aimed at.
+    if (games.get(jid) !== game) return
     const allowed = sender === starters.get(jid) || isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid)
     if (!allowed) {
       enqueue(jid, { text: `Only the player who started the game or a group admin can end it.`, mentions: [], kind: 'misc' })
@@ -1027,9 +1041,8 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
       return
     }
 
-    // Shuffle the pool and pick LOGO_COUNT logos
-    pool.sort(() => Math.random() - 0.5)
-    const gameLogos = pool.slice(0, LOGO_COUNT)
+    // sort(() => random - 0.5) is a biased shuffle; Fisher-Yates is not.
+    const gameLogos = shuffle(pool, Math.random).slice(0, LOGO_COUNT)
 
     const game = createLogoGame({ logos: gameLogos, now, random: Math.random })
     games.set(jid, game)
@@ -1875,7 +1888,11 @@ export function createRouter({ dict, games, enqueue, logger, getGroupAdmins, db,
         if (TRACE_LOG) logger?.info(`TRACE: groupAdmins n=${groupAdmins?.length ?? 0}`)
         if (!isBotAdminEither(sender, senderPn, isGroup, groupAdmins, jid) && !isOwnerOrGlobalAdmin(sender, senderPn)) {
           if (TRACE_LOG) logger?.info(`TRACE: DENY not-admin sender=${sender} pn=${senderPn} owner=${OWNER}`)
-          enqueue(jid, { text: `Only admins and owners can use bot commands.`, mentions: [], kind: 'misc' })
+          // Only answer for commands this bot has: a group may run other bots,
+          // and refusing every "/<anything>" a member types is pure spam.
+          if (KNOWN_COMMANDS.has(parsed.cmd)) {
+            enqueue(jid, { text: `Only admins and owners can use bot commands.`, mentions: [], kind: 'misc' })
+          }
           return
         }
         if (TRACE_LOG) logger?.info(`TRACE: dispatching ${parsed.cmd}`)

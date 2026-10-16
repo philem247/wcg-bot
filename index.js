@@ -97,7 +97,11 @@ function onEvents(jid, events) {
   }
 }
 
-const scheduler = createScheduler({ games, onEvents });
+const scheduler = createScheduler({
+  games,
+  onEvents,
+  onError: (jid, e) => logger.error({ err: e }, `Game tick failed for ${jid}; game dropped`),
+});
 scheduler.start();
 
 let shuttingDown = false;
@@ -208,7 +212,7 @@ function onConnected() {
   // session setup. A short settle beats a message the phone cannot decrypt.
   const t = setTimeout(() => {
     if (!isConnected()) return; // dropped while we waited — not worth chasing
-    send(`${OWNER}@s.whatsapp.net`, { text: msg, mentions: [] });
+    send(`${OWNER}@s.whatsapp.net`, { text: msg, mentions: [] }).catch(() => {}); // send() already logged it
   }, WELCOME_DELAY_MS);
   t.unref?.();
 }

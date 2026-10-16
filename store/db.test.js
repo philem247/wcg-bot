@@ -756,6 +756,17 @@ const tests = [
       db.close()
     },
   },
+  {
+    name: 'leaderboard: careerpath games count on the careerpath board only, never on the WCG chain board',
+    fn: () => {
+      const db = openDb(':memory:')
+      db.recordGame({ jid: 'j', mode: 'careerpath', type: 'careerpath', startedAt: 0, endedAt: 1, words: 8, results: [{ player: 'cp', placement: 1 }] })
+      db.recordGame({ jid: 'j', mode: 'easy', type: 'chain', startedAt: 0, endedAt: 1, words: 5, results: [{ player: 'wcg', placement: 1 }] })
+      assert.deepEqual(db.leaderboard({ jid: 'j', type: 'careerpath' }).map((r) => r.player), ['cp'])
+      assert.deepEqual(db.leaderboard({ jid: 'j', type: 'chain' }).map((r) => r.player), ['wcg'])
+      db.close()
+    },
+  },
 ]
 
 let passed = 0

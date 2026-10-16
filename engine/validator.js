@@ -43,6 +43,14 @@ function cacheKey(categoryLabel, answer) {
   return `${categoryLabel.toLowerCase()}::${answer.trim().toLowerCase()}`
 }
 
+export const MAX_ANSWER_LENGTH = 40
+
+function isPlausibleAnswer(answer) {
+  if (typeof answer !== 'string') return false
+  const a = answer.trim()
+  return a.length > 0 && a.length <= MAX_ANSWER_LENGTH && !/["\n\r`]/.test(a)
+}
+
 function parseAnswerText(text) {
   if (!text || typeof text !== 'string') return null
   const cleaned = text.trim().toLowerCase()
@@ -90,12 +98,14 @@ async function callGemini({ key, model = 'gemini-2.5-flash', prompt, timeoutMs, 
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
   try {
-    const url = `${GEMINI_URL_BASE}/${model}:generateContent?key=${key}`
+    // Key in a header, not the query string: URLs end up in proxy/error logs.
+    const url = `${GEMINI_URL_BASE}/${model}:generateContent`
     const res = await fetchFn(url, {
       method: 'POST',
       signal: controller.signal,
       headers: {
         'content-type': 'application/json',
+        'x-goog-api-key': key,
       },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
@@ -180,6 +190,11 @@ export function createValidator({
     // must treat null exactly like false (leave the elimination standing).
     async check(categoryLabel, answer) {
       if (!token && !geminiKey && !youcomKey) return null
+      // `answer` is raw chat text spliced into an LLM prompt. A real category
+      // member is short and single-line; anything else is either chatter or an
+      // attempt to talk the judge into "yes" (prompt injection) to cheat back
+      // into the game. Never send it — and never cache it.
+      if (!isPlausibleAnswer(answer)) return null
 
       const key = cacheKey(categoryLabel, answer)
       if (cache.has(key)) return cache.get(key)

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { DatabaseSync } from 'node:sqlite'
 import { useSqliteAuthState } from '../store/auth.js'
 
-const { shouldForceReconnect, shouldRepairPreKeys, shouldForceFlush, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid, phoneFormOf, resolvePn } = await import('./wa.js')
+const { shouldForceReconnect, shouldRepairPreKeys, shouldForceFlush, armGraceFallback, withTimeout, wipeAllForReset, shouldIgnoreJid, phoneFormOf, resolvePn, isStaleMessage, STALE_MESSAGE_MS } = await import('./wa.js')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -268,6 +268,17 @@ const tests = [
     fn: async () => {
       const lidMapping = { getPNForLID: async () => { throw new Error('boom') } }
       assert.equal(await phoneFormOf({ remoteJid: '1@g.us', participant: '555@lid' }, '555@lid', lidMapping), undefined)
+    },
+  },
+  {
+    name: 'isStaleMessage: an offline message older than the cutoff is stale; a fresh or undated one is not',
+    fn: () => {
+      const now = 10_000_000_000
+      assert.equal(isStaleMessage({ messageTimestamp: (now - STALE_MESSAGE_MS - 1000) / 1000 }, now), true)
+      assert.equal(isStaleMessage({ messageTimestamp: (now - 5000) / 1000 }, now), false)
+      assert.equal(isStaleMessage({}, now), false)
+      // protobuf Long-like values coerce via Number()
+      assert.equal(isStaleMessage({ messageTimestamp: { valueOf: () => (now - 3_600_000) / 1000 } }, now), true)
     },
   },
 ]

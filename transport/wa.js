@@ -38,6 +38,22 @@ export function wipeAllForReset(db) {
   }
 }
 const RECONNECT_DELAY = 3000;
+const VERSION_FETCH_TIMEOUT_MS = 10_000;
+let waVersion = null;
+
+// Offline-queued messages (baileys upsert type 'append') are delivered in a
+// burst on every (re)connect. A short reconnect's backlog is still live play
+// and must go through, but a command typed hours ago while the bot was down
+// must not fire now (e.g. a stale "/trivia" starting a game nobody is
+// waiting for). Anything older than this is dropped.
+export const STALE_MESSAGE_MS = 2 * 60 * 1000;
+
+// messageTimestamp is unix SECONDS, as a number or a protobuf Long.
+export function isStaleMessage(msg, now = Date.now(), maxAgeMs = STALE_MESSAGE_MS) {
+  const ts = Number(msg?.messageTimestamp ?? 0);
+  if (!ts) return false; // unknown age: let it through rather than drop live traffic
+  return now - ts * 1000 > maxAgeMs;
+}
 
 // status@broadcast and @newsletter jids: the bot holds no sender-key for either
 // and never will (nothing to decrypt, nothing to act on). Baileys still tries
@@ -425,11 +441,22 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
   }
   const { state, saveCreds } = authState;
 
-  const { version, isLatest } = await fetchLatestBaileysVersion();
-  logger.info(`Auth: fetched WhatsApp v${version.join('.')} (isLatest: ${isLatest})`);
+  // Fetched once per process, not on every reconnect: it's a GitHub raw-file
+  // download with no timeout of its own, so a slow/hung fetch used to stall
+  // every reconnect behind it. Bounded; on timeout baileys' bundled version
+  // is used (version left unset so makeWASocket's default applies).
+  if (!waVersion) {
+    const fetched = await withTimeout(fetchLatestBaileysVersion(), VERSION_FETCH_TIMEOUT_MS, null);
+    if (fetched?.version) {
+      waVersion = fetched.version;
+      logger.info(`Auth: fetched WhatsApp v${waVersion.join('.')} (isLatest: ${fetched.isLatest})`);
+    } else {
+      logger.warn('Auth: WhatsApp version fetch timed out, using baileys\' bundled version');
+    }
+  }
 
   sock = makeWASocket({
-    version,
+    ...(waVersion ? { version: waVersion } : {}),
     auth: {
       creds: state.creds,
       keys: makeCacheableSignalKeyStore(state.keys, waLogger),
@@ -562,6 +589,7 @@ export async function connect(onMessage, appLogger, onConnected, existingDb) {
 
         const jid = msg.key.remoteJid;
         if (jid === 'status@broadcast' || jid.endsWith('@broadcast') || jid.endsWith('@newsletter')) continue;
+        if (isStaleMessage(msg)) { logger.debug('  skip: stale offline message'); continue; }
 
         // Own phone-form JID, device suffix stripped (":87@s.whatsapp.net" -> bare
         // number re-joined with the standard domain) so it matches the plain
@@ -610,6 +638,10 @@ export async function send(jid, payload) {
     addSentId(sentIds, result?.key?.id);
   } catch (e) {
     logger?.error({ err: e }, `Failed to send message to ${jid}`);
+    // Rethrow: the outbox (transport/outbox.js) retries a failed send once,
+    // but only sees the failure if it propagates. Swallowing it here made
+    // that retry dead code and silently dropped messages during a flap.
+    throw e;
   }
 }
 

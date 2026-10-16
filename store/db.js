@@ -161,7 +161,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
   const stmtSelectResultsChain = db.prepare(`
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
-    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo', 'riddle', 'flag', 'concentration')
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type NOT IN ('trivia', 'scramble', 'logo', 'riddle', 'flag', 'concentration', 'careerpath')
     ORDER BY player
   `)
   const stmtSelectResultsScramble = db.prepare(`
@@ -192,6 +192,12 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
     SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
     FROM results r JOIN games g ON g.id = r.game_id
     WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'riddle'
+    ORDER BY player
+  `)
+  const stmtSelectResultsCareerPath = db.prepare(`
+    SELECT COALESCE(r.player_pn, r.player) AS player, r.placement, r.player_count
+    FROM results r JOIN games g ON g.id = r.game_id
+    WHERE r.jid = ? AND r.ended_at >= ? AND g.type = 'careerpath'
     ORDER BY player
   `)
   const stmtMarkAsked = db.prepare(
@@ -340,6 +346,7 @@ export function openDb(path = process.env.DB_PATH ?? 'wcg.db') {
       else if (type === 'flag') stmt = stmtSelectResultsFlag;
       else if (type === 'concentration') stmt = stmtSelectResultsConcentration;
       else if (type === 'riddle') stmt = stmtSelectResultsRiddle;
+      else if (type === 'careerpath') stmt = stmtSelectResultsCareerPath;
       else stmt = stmtSelectResultsChain;
       const rows = stmt.all(jid, since)
 

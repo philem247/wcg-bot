@@ -357,6 +357,22 @@ const tests = [
       assert.equal(games.size, 1)
     },
   },
+  {
+    name: 'scheduler: a game whose tick throws is dropped and reported, other games keep ticking',
+    fn: () => {
+      const dict = makeDict([])
+      const ok = createGame({ dict, starter: 'a', now: 0 })
+      const broken = { state: 'playing', tick() { throw new Error('boom') } }
+      const games = new Map([['jidBad', broken], ['jidOk', ok]])
+      const calls = []
+      const errors = []
+      const scheduler = createScheduler({ games, onEvents: (jid) => calls.push(jid), onError: (jid, e) => errors.push([jid, e.message]) })
+      scheduler.pump(0) // must not throw
+      assert.deepEqual(errors, [['jidBad', 'boom']])
+      assert.equal(games.has('jidBad'), false)
+      assert.deepEqual(calls, ['jidOk'])
+    },
+  },
 ]
 
 let passed = 0

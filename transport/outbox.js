@@ -85,15 +85,17 @@ export function createOutbox({ sendFn, logger, isReady = () => true, perChatGapM
     // permanently block this chat's queue. The timeout fires an error that
     // the catch block handles like any other send failure.
     const SEND_TIMEOUT_MS = 30_000
-    const timeout = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error('send timed out after 30s')), SEND_TIMEOUT_MS)
-    )
+    let timeoutTimer
+    const timeout = new Promise((_, reject) => {
+      timeoutTimer = setTimeout(() => reject(new Error('send timed out after 30s')), SEND_TIMEOUT_MS)
+    })
 
     if (TRACE_LOG) logger?.info?.(`TRACE: dispatch jid=${jid}`)
     Promise.race([
       sendFn(jid, { text: msg.text, mentions: msg.mentions, quoted: msg.quoted, react: msg.react, imagePath: msg.imagePath }),
       timeout,
     ])
+      .finally(() => clearTimeout(timeoutTimer)) // don't leave a 30s timer alive per message
       .then(() => {
         if (TRACE_LOG) logger?.info?.(`TRACE: sent jid=${jid}`)
         inFlightChats.delete(jid)
