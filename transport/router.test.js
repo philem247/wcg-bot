@@ -6,6 +6,9 @@ import { join } from 'node:path'
 process.env.PHONE_NUMBER = '1234567890'
 process.env.OWNER = '15550000000'
 process.env.ADMINS = '15550000001'
+// The tests type '/' commands; pin the prefix so a host PREFIX (e.g. '#') doesn't
+// turn every command into plain chat.
+process.env.PREFIX = '/'
 
 import { openDb } from '../store/db.js'
 
