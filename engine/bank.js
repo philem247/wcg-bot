@@ -4,7 +4,7 @@
 import { readFileSync } from 'node:fs'
 
 // Share of a single-category game reserved for questions flagged `hard`.
-export const HARD_SHARE = 0.3
+export const HARD_SHARE = 0.4
 
 export const CATEGORIES = ['general', 'football', 'fpl', 'sports', 'science', 'tech', 'movies', 'tv-shows', 'geography', 'history', 'anime', 'animals', 'videogames', 'cartoons', 'art', 'mythology', 'vehicles', 'nigerian-music', 'nigerian-entertainment', 'nigerian-history', 'nigerian-food', 'pidgin-english', 'web3', 'bible', 'music', 'food', 'got', 'naruto', 'health', 'tech-gadgets']
 

@@ -5,7 +5,7 @@
 //      has played for both A and B?" — where every decoy is a club one of
 //      them DID play for / a player who DID play for one of the clubs
 //      (data/football/link-templates.mjs).
-//   2. Adds the hand-written hard pack (data/football/hard-pack.mjs).
+//   2. Adds the hand-written hard packs (data/football/hard-pack.mjs, hard-pack-2.mjs).
 //   3. Retires "What nationality is X?" — decoys drawn from the whole world
 //      made it the easiest, most repetitive shape in the bank.
 //   4. Cleans Wikidata's legal-style names in the generated questions:
@@ -18,6 +18,7 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { questionId } from './build-trivia.mjs'
 import { HARD_PACK } from './football/hard-pack.mjs'
+import { HARD_PACK_2 } from './football/hard-pack-2.mjs'
 import { clubLinkQuestions, bothClubsQuestions, seededRandom, shortClub } from './football/link-templates.mjs'
 
 const PATH = 'data/trivia.json'
@@ -75,7 +76,7 @@ const links = [
   ...clubLinkQuestions(players, { random: seededRandom(1) }),
   ...bothClubsQuestions(players, { random: seededRandom(2) }),
 ]
-const hard = HARD_PACK.map((h) => ({ id: questionId(h.q), q: h.q, correct: h.correct, wrong: h.wrong, league: 'football', template: h.template }))
+const hard = [...HARD_PACK, ...HARD_PACK_2].map((h) => ({ id: questionId(h.q), q: h.q, correct: h.correct, wrong: h.wrong, league: 'football', template: h.template }))
 
 const ids = new Set(kept.map((q) => q.id))
 const texts = new Set(kept.map((q) => q.q.toLowerCase()))

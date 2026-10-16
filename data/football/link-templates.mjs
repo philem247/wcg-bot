@@ -62,6 +62,20 @@ const CLUB_NAMES = {
   'Olympiacos F.C.': 'Olympiacos',
   'AEK Athens F.C.': 'AEK Athens',
   'Al Hilal SFC': 'Al Hilal',
+  'Como 1907': 'Como',
+  '1. FC Union Berlin': 'Union Berlin',
+  '1. FC Köln': 'Köln',
+  '1. FSV Mainz 05': 'Mainz',
+  '1. FC Nürnberg': 'Nürnberg',
+  '1. FC Kaiserslautern': 'Kaiserslautern',
+  'Stade Brestois 29': 'Brest',
+  'Montpellier Hérault Sport Club': 'Montpellier',
+  'En Avant de Guingamp': 'Guingamp',
+  'RC Strasbourg Alsace': 'Strasbourg',
+  'US Sassuolo Calcio': 'Sassuolo',
+  'US Lecce': 'Lecce',
+  'Bayern München': 'Bayern Munich',
+  'Paris FC': 'Paris FC', // not "Paris" — reads like a typo for Paris Saint-Germain
 }
 
 export function shortClub(label) {
